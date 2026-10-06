@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>عالم الحب</title>
+    <!-- استدعاء الخطوط الفخمة والمزخرفة من جوجل -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Monsieur+La+Doulaise&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #000000; color: #ffffff; text-align: center; padding-top: 10px;
+            font-family: 'Cairo', sans-serif; overflow-x: hidden; position: relative; min-height: 100vh;
+        }
+        
+        /* شريط البورصة والذهب والدولار السريع المستمر */
+        .crypto-ticker {
+            width: 100%; background: rgba(212, 175, 55, 0.08); border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 8px 0; overflow: hidden; position: relative; z-index: 100; display: flex;
+        }
+        .ticker-wrap { display: inline-flex; white-space: nowrap; animation: tickerMove 15s linear infinite; }
+        @keyframes tickerMove { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
+        .ticker-item { padding: 0 25px; font-size: 14px; color: #d4af37; font-weight: bold; display: flex; align-items: center; }
+        .ticker-item span { color: #ffffff; margin-right: 5px; }
+
+        .header-tools { display: flex; flex-direction: column; align-items: center; gap: 10px; margin: 15px auto; position: relative; z-index: 100; }
+        .live-info { font-size: 13px; color: #d4af37; background: rgba(212, 175, 55, 0.05); padding: 6px 22px; border-radius: 20px; border: 1px solid rgba(212, 175, 55, 0.2); }
+        .translate-btn { background: #111111; color: #d4af37; border: 1px solid #d4af37; padding: 4px 15px; font-size: 13px; border-radius: 15px; cursor: pointer; }
+
+        @keyframes pulseEffect {
+            0% { transform: scale(1); text-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+            50% { transform: scale(1.05); text-shadow: 0 0 30px rgba(212, 175, 55, 0.9); }
+            100% { transform: scale(1); text-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+        }
+
+        .title-block { display: inline-block; animation: pulseEffect 2s ease-in-out infinite; margin-bottom: 10px; }
+        h1 { color: #d4af37; font-size: 32px; font-weight: 700; margin: 0; }
+        .sub-title-en { font-family: 'Monsieur La Doulaise', cursive; color: #d4af37; font-size: 45px; margin: -10px 0 0 0; letter-spacing: 2px; }
+
+        /* صناديق المحتوى الاحترافية */
+        .content-box {
+            background-color: #0d0d0d; border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px; max-width: 500px; margin: 20px auto; padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5); position: relative; z-index: 10;
+        }
+        .box-title { color: #d4af37; font-size: 18px; font-weight: bold; margin-bottom: 12px; border-bottom: 1px dashed rgba(212, 175, 55, 0.2); padding-bottom: 6px; }
+
+        /* الألوان المطلوبة لـ MTC و Alfa و PUBG */
+        .mtc-color { color: #ff3333; font-weight: bold; }
+        .alfa-color { color: #ff3333; font-weight: bold; }
+        .pubg-color { color: #ffffff; font-weight: bold; }
+
+        @keyframes glowAnimation {
+            0% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); transform: scale(1); }
+            50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.8); transform: scale(1.03); }
+            100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); transform: scale(1); }
+        }
+        .pubg-img { width: 100%; max-width: 400px; height: auto; border-radius: 10px; border: 2px solid #d4af37; margin: 15px auto; display: block; animation: glowAnimation 3s ease-in-out infinite; }
+        .quran-container { width: 100%; height: 220px; border-radius: 10px; border: 1px solid #d4af37; background: #000; margin-top: 15px; }
+
+        /* عناصر التحكم والأزرار التفاعلية */
+        .cat-btn { background: #111111; color: #ffffff; border: 1px solid #d4af37; padding: 6px 12px; margin: 4px; font-family: 'Cairo', sans-serif; border-radius: 20px; cursor: pointer; transition: 0.3s; font-size: 13px; }
+        .cat-btn:hover { background: #d4af37; color: #000000; font-weight: bold; }
+        .phrase-display { margin-top: 15px; color: #dddddd; font-size: 16px; line-height: 1.7; min-height: 60px; text-align: justify; }
+        .coffee-btn { background: none; border: none; font-size: 50px; cursor: pointer; animation: pulseEffect 3s infinite; outline: none; }
+        
+        .pubg-input { width: 80%; padding: 8px; font-family: 'Cairo', sans-serif; font-size: 14px; background: #111; border: 1px solid #d4af37; border-radius: 20px; color: #fff; text-align: center; outline: none; }
+        .pubg-output { color: #ffeb3b; font-size: 17px; font-weight: bold; min-height: 30px; margin-top: 10px; }
+        
+        /* أدوات الذكاء الاصطناعي */
+        .ai-input { width: 85%; padding: 10px; font-family: 'Cairo', sans-serif; font-size: 14px; background: #111; border: 1px solid #d4af37; border-radius: 20px; color: #fff; text-align: center; outline: none; margin-bottom: 12px; }
+        .ai-btn { background: #d4af37; color: #000000; font-weight: bold; border: none; padding: 8px 25px; border-radius: 20px; cursor: pointer; font-family: 'Cairo', sans-serif; font-size: 14px; box-shadow: 0 0 10px rgba(212,175,55,0.2); }
+        .ai-output { margin-top: 15px; color: #ffeb3b; font-size: 16px; font-weight: bold; line-height: 1.7; min-height: 50px; text-align: justify; padding: 10px; border-radius: 10px; background: rgba(255,235,59,0.02); }
+
+        .puzzle-grid { display: grid; grid-template-columns: repeat(2, 80px); gap: 5px; justify-content: center; margin: 15px auto; }
+        .puzzle-piece { width: 80px; height: 80px; background-color: #222; border: 1px solid #d4af37; display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer; user-select: none; border-radius: 5px; }
+        .win-msg { display: none; color: #ffeb3b; font-weight: bold; font-size: 16px; margin-top: 10px; animation: pulseEffect 1s infinite; }
+
+        .whatsapp-link-btn {
+            display: inline-block; background-color: transparent; color: #d4af37; border: 2px solid #d4af37; padding: 10px 25px; font-size: 15px;
+            font-weight: bold; font-family: 'Cairo', sans-serif; border-radius: 25px; text-decoration: none; transition: 0.3s ease; margin-top: 10px; width: 85%;
+        }
+        .whatsapp-link-btn:hover { background-color: #d4af37; color: #000000; box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+
+        .divider { display: flex; align-items: center; justify-content: center; max-width: 300px; margin: 20px auto; }
+        .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: linear-gradient(to right, transparent, #d4af37, transparent); }
+        .logo-btn { background: none; border: none; cursor: pointer; outline: none; }
+        .logo { font-family: 'Monsieur La Doulaise', cursive; font-size: 100px; color: #d4af37; animation: pulseEffect 2s ease-in-out infinite; }
+        .visitor-counter { font-size: 14px; color: #d4af37; background: rgba(212, 175, 55, 0.03); display: inline-block; padding: 4px 20px; border-radius: 10px; border: 1px dashed rgba(212, 175, 55, 0.2); }
+        .drop { position: absolute; top: -30px; color: #d4af37; opacity: 0.3; animation: fall linear infinite; pointer-events: none; z-index: 1; }
+        @keyframes fall { to { transform: translateY(105vh); } }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+    <!-- شريط البورصة والذهب السريع والمستمر -->
+    <div class="crypto-ticker">
+        <div class="ticker-wrap">
+            <div class="ticker-item">💵 فريش دولار: <span>89,500 ل.ل</span></div>
+            <div class="ticker-item">✨ أونصة الذهب: <span>2,650\$</span></div>
+            <div class="ticker-item">🔱 غرام عيار 21: <span>75.40\$</span></div>
+            <div class="ticker-item">📊 بورصة نيويورك (Dow Jones): <span>42,350 📈</span></div>
+            <div class="ticker-item">🪙 بيتكوين (Bitcoin): <span>64,200\$ 📈</span></div>
+            <div class="ticker-item">⛽ نفط برنت عالمياً: <span>78.50\$</span></div>
+            <!-- التكرار الدائري لمنع الفراغ -->
+            <div class="ticker-item">💵 فريش دولار: <span>89,500 ل.ل</span></div>
+            <div class="ticker-item">✨ أونصة الذهب: <span>2,650\$</span></div>
+            <div class="ticker-item">🔱 غرام عيار 21: <span>75.40\$</span></div>
+            <div class="ticker-item">📊 بورصة نيويورك (Dow Jones): <span>42,350 📈</span></div>
+            <div class="ticker-item">🪙 بيتكوين (Bitcoin): <span>64,200\$ 📈</span></div>
+            <div class="ticker-item">⛽ نفط برنت عالمياً: <span>78.50\$</span></div>
+        </div>
+    </div>
+
+    <div class="header-tools"><div class="live-info" id="liveInfo">جاري تحميل البيانات...</div></div>
+
+    <!-- الاسم المزدوج النبضي القدير -->
+    <div class="title-block">
+        <h1>عالم الحب</h1>
+        <div class="sub-title-en">World of Love</div>
+    </div>
+
+    <!-- 1. صندوق مستشار الذكاء الاصطناعي وجبر الخواطر -->
+    <div class="content-box">
+        <div class="box-title">🤖 مستشار الذكاء الاصطناعي وجبر الخواطر الحقيقي</div>
+        <div style="font-size:13px; color:#aaa; margin-bottom:10px;">اكتبي شعوركِ الحالي (مثال: متعبة، زعلانة، قلقة، فرحانة) ودعي الذكاء الاصطناعي يحلله برواقة:</div>
+        <input type="text" id="aiMoodInput" class="ai-input" placeholder="بماذا تشعرين الآن؟ اكتبيه هنا...">
+        <br>
+        <button class="ai-btn" onclick="askAiMood()">✨ تحليل المشاعر وجبر الخواطر</button>
+        <div class="ai-output" id="aiMoodOutput">💬 بانتظار سماع نبض قلبكِ لنسج كلمات تريح روحكِ...</div>
+    </div>
+
+    <!-- 2. 🕌 صندوق واحة السكينة والذكر الحكيم المبارك -->
+    <div class="content-box">
+        <div class="box-title">🕌 واحة السكينة والذكر الحكيم</div>
