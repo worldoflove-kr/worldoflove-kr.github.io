@@ -8,7 +8,7 @@
         body {
             background-color: #050505;
             color: #f4f4f4;
-            font-family: sans-serif;
+            font-family: system-ui, -apple-system, sans-serif;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
@@ -20,6 +20,8 @@
             from { background-position: 0 0, 0 0; }
             to { background-position: 400px 800px, 300px 600px; }
         }
+        
+        /* شريط البورصة والذهب السريع والمتصل (تكرار مزدوج لمنع الفراغ الأسود) */
         .ticker-wrap {
             width: 100%;
             background: linear-gradient(90deg, #111, #222);
@@ -28,11 +30,13 @@
             white-space: nowrap;
             padding: 12px 0;
             box-shadow: 0 2px 15px rgba(255,215,0,0.3);
+            display: flex;
         }
         .ticker {
             display: inline-block;
-            padding-right: 100%;
-            animation: tickerAnimation 25s linear infinite;
+            white-space: nowrap;
+            padding-right: 50px;
+            animation: tickerAnimation 18s linear infinite;
             color: #ffd700;
             font-weight: bold;
             font-size: 15px;
@@ -41,21 +45,22 @@
             0% { transform: translate3d(0, 0, 0); }
             100% { transform: translate3d(-100%, 0, 0); }
         }
-        .ticker span { display: inline-block; padding: 0 30px; }
+        .ticker span { display: inline-block; padding: 0 20px; }
         
         .container {
             max-width: 600px;
             margin: 25px auto;
             padding: 20px;
-            background: rgba(10, 10, 10, 0.95);
+            background: rgba(10, 10, 10, 0.97);
             border: 2px solid #ffd700;
             border-radius: 20px;
             box-shadow: 0 0 30px rgba(255, 215, 0, 0.25);
             text-align: center;
         }
         
+        /* لاقطات الطقس والميتا الحية */
         .live-meta {
-            background: rgba(25, 25, 25, 0.8);
+            background: rgba(25, 25, 25, 0.85);
             border: 1px dashed #ffd700;
             padding: 10px;
             border-radius: 10px;
@@ -67,19 +72,36 @@
             font-weight: bold;
         }
 
+        /* رأس الصفحة المشتعل بالنبض والحركة */
+        .brand-section { margin: 20px 0; }
         h1.pulse-title {
             color: #ffd700;
-            font-size: 38px;
-            margin: 10px 0;
-            text-shadow: 0 0 10px rgba(255,215,0,0.5);
-            animation: titlePulse 2s ease-in-out infinite alternate;
+            font-size: 40px;
+            margin: 5px 0;
+            text-shadow: 0 0 10px rgba(255,215,0,0.6);
+            animation: pulseGlow 1.8s ease-in-out infinite alternate;
         }
-        @keyframes titlePulse {
-            0% { transform: scale(1); text-shadow: 0 0 10px rgba(255,215,0,0.5); }
-            100% { transform: scale(1.04); text-shadow: 0 0 25px rgba(255,215,0,0.8); }
+        .star-divider {
+            color: #ffd700;
+            font-size: 24px;
+            display: inline-block;
+            animation: pulseGlow 1.2s ease-in-out infinite alternate;
         }
-        .subtitle { color: #888; font-size: 15px; margin-bottom: 25px; font-style: italic; }
+        .en-subtitle {
+            color: #ffd700;
+            font-size: 22px;
+            font-weight: bold;
+            font-style: italic;
+            margin: 5px 0;
+            text-shadow: 0 0 8px rgba(255,215,0,0.4);
+            animation: pulseGlow 2.2s ease-in-out infinite alternate;
+        }
+        @keyframes pulseGlow {
+            0% { transform: scale(1); text-shadow: 0 0 8px rgba(255,215,0,0.4); }
+            100% { transform: scale(1.05); text-shadow: 0 0 20px rgba(255,215,0,0.8); }
+        }
         
+        /* صناديق الأقسام المنظمة */
         .section-box {
             background: rgba(20, 20, 20, 0.95);
             border: 1px solid #ffd700;
@@ -87,121 +109,108 @@
             border-radius: 15px;
             margin-bottom: 25px;
             text-align: right;
-            box-shadow: inset 0 0 10px rgba(255,215,0,0.1);
         }
-        .section-title { color: #ffd700; font-size: 19px; font-weight: bold; border-bottom: 2px solid #ffd700; padding-bottom: 8px; margin-bottom: 15px; }
+        .section-title { color: #ffd700; font-size: 18px; font-weight: bold; border-bottom: 2px solid #ffd700; padding-bottom: 6px; margin-bottom: 15px; }
         
         select, textarea, input[type="text"] {
             width: 100%; padding: 12px; background: #000; border: 1px solid #ffd700; color: #fff; border-radius: 8px; box-sizing: border-box; margin-bottom: 15px; font-size: 15px;
         }
         button.btn-gold {
-            background: linear-gradient(45deg, #ffd700, #b8860b); color: #000; border: none; padding: 12px 25px; font-weight: bold; border-radius: 8px; cursor: pointer; width: 100%; font-size: 16px; transition: 0.3s; box-shadow: 0 4px 15px rgba(255,215,0,0.2); margin-bottom: 10px;
+            background: linear-gradient(45deg, #ffd700, #b8860b); color: #000; border: none; padding: 12px 25px; font-weight: bold; border-radius: 8px; cursor: pointer; width: 100%; font-size: 16px; transition: 0.3s;
         }
-        button.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,215,0,0.4); }
+        button.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(255,215,0,0.4); }
         
-        /* زر واتساب بيضاوي مفرغ مثل الصور تماماً */
         .btn-wa-outline {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background: transparent;
-            border: 2px solid #ffd700;
-            color: #ffd700;
-            font-weight: bold;
-            font-size: 16px;
-            border-radius: 30px;
-            text-decoration: none;
-            text-align: center;
-            box-sizing: border-box;
-            margin: 15px 0;
-            transition: 0.3s;
+            display: block; width: 100%; padding: 12px; background: transparent; border: 2px solid #ffd700; color: #ffd700; font-weight: bold; font-size: 16px; border-radius: 30px; text-decoration: none; text-align: center; box-sizing: border-box; margin: 10px 0; transition: 0.3s;
         }
-        .btn-wa-outline:hover { background: rgba(255, 215, 0, 0.1); transform: scale(1.02); }
+        .btn-wa-outline:hover { background: rgba(255, 215, 0, 0.1); transform: scale(1.01); }
 
         .result-box { background: #111; border-right: 4px solid #ffd700; padding: 15px; margin-top: 15px; border-radius: 5px; color: #ffeb3b; font-weight: 500; line-height: 1.7; white-space: pre-line; }
+        
+        /* تحديد الألوان الجذابة والأمـان لشعار KR */
         .highlight-red { color: #ff3333; font-weight: bold; }
+        .highlight-white { color: #ffffff; font-weight: bold; }
         
         .footer-logo-kr {
-            font-size: 34px;
-            font-weight: bold;
-            color: #ffd700;
-            margin-top: 25px;
-            display: inline-block;
-            text-shadow: 0 0 8px rgba(255,215,0,0.6);
+            font-size: 36px; font-weight: bold; color: #ffd700; margin-top: 25px; display: inline-block;
             animation: krPulse 1.5s ease-in-out infinite alternate;
         }
         @keyframes krPulse {
-            0% { transform: skewX(-15deg) scale(1); }
-            100% { transform: skewX(-15deg) scale(1.08); text-shadow: 0 0 20px rgba(255,215,0,0.9); }
+            0% { transform: skewX(-15deg) scale(1); text-shadow: 0 0 8px rgba(255,215,0,0.5); }
+            100% { transform: skewX(-15deg) scale(1.08); text-shadow: 0 0 22px rgba(255,215,0,0.9); }
         }
+        .pubg-img { width: 60px; height: auto; animation: moveStars 5s linear infinite alternate; margin-bottom: 10px; }
+        .lang-switch { display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 15px; }
+        .lang-btn { background: #222; border: 1px solid #ffd700; color: #ffd700; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 12px; }
     </style>
 </head>
 <body>
 
+    <!-- شريط البورصة والذهب المتصل المستمر السريع (مزدوج لمنع الفراغات) -->
     <div class="ticker-wrap">
         <div class="ticker">
             <span>💵 صرف الدولار الفرش في لبنان: 89,500 ل.ل 🔄</span>
             <span>✨ أونصة الذهب العالمية: 2,650$ 📈</span>
             <span>🔱 غرام الذهب عيار 21: 75.40$ ⚡</span>
-            <span>👥 عدد زوار الموقع الحالي: 1,324 زائر كاش 📊</span>
+            <span>👥 عدد زوار الموقع التراكمي الحين: 2,458 زائر كاش 📊</span>
+        </div>
+        <div class="ticker">
+            <span>💵 صرف الدولار الفرش في لبنان: 89,500 ل.ل 🔄</span>
+            <span>✨ أونصة الذهب العالمية: 2,650$ 📈</span>
+            <span>🔱 غرام الذهب عيار 21: 75.40$ ⚡</span>
+            <span>👥 عدد زوار الموقع التراكمي الحين: 2,458 زائر كاش 📊</span>
         </div>
     </div>
 
     <div class="container">
+        <!-- تبديل اللغة الفوري المكتمل -->
+        <div class="lang-switch">
+            <button class="lang-btn" onclick="toggleLang('ar')">العربية</button>
+            <button class="lang-btn" onclick="toggleLang('en')">English</button>
+        </div>
+
+        <!-- لافتة الطقس والميتا الحية تحت البورصة مباشرة -->
         <div class="live-meta">
-            <span>📅 الأربعاء 7 تشرين الأول 2026</span>
-            <span>⏰ الساعة: 08:03 صباحاً</span>
-            <span>🌤️ طقس لبنان: نجوم متحركة تفاعلية</span>
+            <span id="meta-date">📅 الأربعاء 7 تشرين الأول 2026</span>
+            <span id="meta-time">⏰ الساعة: 08:15 مساءً</span>
+            <span id="meta-weather">🌤️ بيروت: 24°C | رطوبة: 62%</span>
         </div>
 
-        <h1 class="pulse-title">عالم الحب</h1>
-        <div class="subtitle">World of Love</div>
+        <div class="brand-section">
+            <h1 class="pulse-title" id="main-title">عالم الحب</h1>
+            <div class="star-divider">🌟</div>
+            <div class="en-subtitle">𝒲𝑜𝓇𝓁𝒹 𝒪𝒻 ℒ𝑜𝓋𝑒</div>
+        </div>
 
-        <!-- موسوعة الخواطر الملكية -->
+        <!-- شريط بحث جوجل مدمج باسم عالم الحب -->
         <div class="section-box">
-            <div class="section-title">✍️ موسوعة العبارات والخواطر والأدعية الملكية</div>
-            <p style="font-size: 13px; color: #ccc; margin-bottom: 12px;">اقتصي التصنيف لتوليد الكلمات ومشاركتها مع الأصدقاء برواقة:</p>
-            <select id="quoteCategory">
-                <option value="mother">❤️ عبارات حنونة عن الأم الغالية</option>
-                <option value="father">👑 كلمات فخر عن الأب السند والتاج</option>
-                <option value="sister">🌸 خواطر عذبة عن الأخت الحبيبة ورفيقة الروح</option>
-                <option value="brother">⚔️ عبارات هيبة عن الأخ السند والعزوة</option>
-                <option value="child">👶 كلمات رقة عن براءة الطفل وضحكة المنزل</option>
-                <option value="life">🌿 حكم عميقة عن الصداقة والوفاء والحياة</option>
-                <option value="khwater">✨ خواطر تريح النفس وجبر الخواطر الحقيقي</option>
-                <option value="douaa">🤲 أدعية مباركة تثلج الصدور للجروبات</option>
+            <div class="section-title">🔍 محرك بحث جوجل الذكي - عالم الحب</div>
+            <input type="text" id="googleQuery" placeholder="ابحث في الإنترنت عن أي شيء من هنا الحين...">
+            <button class="btn-gold" onclick="searchGoogle()">ابحث عبر جوجل</button>
+        </div>
+
+        <!-- قسم الصوتيات والقرآن الكريم التفاعلي -->
+        <div class="section-box">
+            <div class="section-title">🕌 واحة القرآن الكريم والذكر الحكيم التفاعلية</div>
+            <p style="font-size: 13px; color: #ccc;">اختر القارئ واستمع لتفسير وتلاوة آيات السكينة مع روابط تحميل ومشاركة مباركة باسم صفحتنا:</p>
+            <select id="quranSelect">
+                <option value="1">الشيخ عبد الباسط عبد الصمد (تلاوة خاشعة + التفسير)</option>
+                <option value="2">الشيخ مشاري العفاسي (تلاوة مرتل عذب)</option>
+                <option value="3">الشيخ ماهر المعيقلي (سورة البقرة لجلب البركة)</option>
             </select>
-            <button class="btn-gold" onclick="generateQuote()">💎 توليد ونسخ العبارة السحرية</button>
-            <div id="quoteResult" class="result-box">📌 اختر تصنيفاً واكبس الزر لتظهر روائع الكلمات...</div>
+            <button class="btn-gold" onclick="triggerQuran('play')">🎵 تشغيل واستماع الحين</button>
+            <button class="btn-gold" style="margin-top:5px; background:#222; color:#ffd700;" onclick="triggerQuran('share')">🔗 مشاركة وتحميل الآية باسم عالم الحب</button>
+            <div id="quranResult" class="result-box" style="display:none;"></div>
         </div>
 
-        <!-- مستشار الذكاء الاصطناعي وجبر الخواطر -->
+        <!-- محرك بحث الأغاني والأهداءات -->
         <div class="section-box">
-            <div class="section-title">🤖 مستشار الذكاء الاصطناعي وجبر الخواطر الحقيقي</div>
-            <textarea id="feelingInput" rows="2" placeholder="بماذا تشعرين الآن؟ اكتبيه هنا (متعبة، قلقة، زعلانة، فرحانة)..."></textarea>
-            <button class="btn-gold" onclick="analyzeFeeling()">✨ تشغيل مستشار جبر الخواطر</button>
-            <div id="aiResult" class="result-box">💬 اكتبِ نبض قلبكِ ليرد المستشار فوراً...</div>
+            <div class="section-title">🎵 محرك بحث الموسيقى والإهداءات الملوكية</div>
+            <input type="text" id="musicQuery" placeholder="اكتبي اسم الأغنية المطلوبة للبحث والإهداء الحين...">
+            <input type="text" id="dedicateName" placeholder="اسم الشخص المهدى إليه (اختياري)...">
+            <button class="btn-gold" onclick="searchMusic()">🔎 بحث وتوليد بطاقة الإهداء والمشاركة</button>
+            <div id="musicResult" class="result-box" style="display:none;"></div>
         </div>
 
-        <!-- القسم الأول من الصورة: خدمات تشريج الخطوط والإنترنت الموثوقة بالملّيمتر -->
+        <!-- محرك ترجمة النصوص الفوري الموثوق 100% -->
         <div class="section-box">
-            <div class="section-title">📱 خدمات تشريج الخطوط والإنترنت الموثوقة</div>
-            <p style="font-size: 14px; color: #ccc; line-height: 1.6;">دليلكِ الآمن والكامل لتشريج خطوط <span class="highlight-red">Alfa</span> وتاتش <span class="highlight-red">MTC</span> وتجديد اشتراكات بطاقات إنترنت <span class="highlight-red">Ushare</span> برواقة تامة وبأعلى مصداقية في لبنان. تواصلوا مباشرة مع الموزع المعتمد لقفل طلباتكم بثقة تامة وسرية:</p>
-            <a href="https://wa.me" target="_blank" class="btn-wa-outline">💬 اطلب تشريج خطك الآن (واتساب)</a>
-        </div>
-
-        <!-- القسم الثاني من الصورة: خدمات شحن PUBG ومشتريات SHEIN -->
-        <div class="section-box">
-            <div class="section-title">🛒 خدمات شحن PUBG ومشتريات SHEIN</div>
-            <p style="font-size: 14px; color: #ccc; line-height: 1.6;">اشحني حسابكِ وألعابكِ بثقة تامة! محطتكِ المتكاملة لطلب وشحن مشتريات وطلبيات ومحفظة <span class="highlight-red">SHEIN</span> بالإضافة لتأمين شدات لعبة بيجي <span class="highlight-red">PUBG</span> وجيمينج بأعلى درجات المصداقية وحماية كاملة لحساباتكم وبأسرع خدمة كاش:</p>
-            <a href="https://wa.me" target="_blank" class="btn-wa-outline">🎮 PUBG Gaming (شحن فوري)</a>
-            <a href="https://wa.me" target="_blank" class="btn-wa-outline">🛍️ اطلب شحن طلبيات SHEIN الحين</a>
-        </div>
-
-        <div class="footer-logo-kr">『𝓚𝓡』</div>
-    </div>
-
-    <script>
-        const database = {
-            mother: "❤️ أمي الغالية هي <span class='highlight-red'>جنة الأرض</span> ونبض الحياة، اللهم احفظها بحفظك وبارك في عمرها ونور وجهها بسكينة وبركة. 🌿",
-            father: "👑 أبي هو <span class='highlight-red'>السند الحقيقي</span> والتاج الذي أفتخر به أمام العالم، رجل تفخر به الأيام وتبقى هيبته عزاً لنا. ⚔️",
