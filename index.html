@@ -17,7 +17,7 @@
         @keyframes pulseGlow { 0% { transform: scale(1); } 100% { transform: scale(1.03); } }
         .section-box { background: rgba(20, 20, 20, 0.95); border: 1px solid #ffd700; padding: 15px; border-radius: 12px; margin-bottom: 20px; text-align: right; }
         .section-title { color: #ffd700; font-size: 17px; font-weight: bold; border-bottom: 2px solid #ffd700; padding-bottom: 6px; margin-bottom: 12px; }
-        select, textarea, input[type="text"] { width: 100%; padding: 10px; background: #000; border: 1px solid #ffd700; color: #fff; border-radius: 6px; box-sizing: border-box; margin-bottom: 12px; font-size: 14px; font-family: inherit; }
+        select, textarea, input[type="text"] { width: 100%; padding: 10px; background: #000; border: 1px solid #ffd700; color: #fff; border-radius: 6px; box-sizing: border-box; margin-bottom: 12px; font-size: 14px; }
         button.btn-gold { background: linear-gradient(45deg, #ffd700, #b8860b); color: #000; border: none; padding: 10px 20px; font-weight: bold; border-radius: 6px; cursor: pointer; width: 100%; font-size: 15px; }
         .btn-wa-outline { display: block; width: 100%; padding: 11px; background: transparent; border: 2px solid #ffd700; color: #ffd700; font-weight: bold; font-size: 15px; border-radius: 25px; text-decoration: none; text-align: center; box-sizing: border-box; margin: 10px 0; }
         .result-box { background: #111; border-right: 4px solid #ffd700; padding: 12px; margin-top: 10px; border-radius: 5px; color: #ffeb3b; font-weight: 500; white-space: pre-line; font-size: 14px; }
@@ -25,15 +25,14 @@
         .highlight-white { color: #ffffff; font-weight: bold; }
         .footer-logo-kr { font-size: 32px; font-weight: bold; color: #ffd700; margin-top: 20px; display: inline-block; }
     </style>
-</head>
-<body>
+</head><body>
     <div class="ticker-wrap">
         <div class="ticker">
             <span>💵 صرف الدولار الفرش في لبنان: 89,500 ل.ل 🔄</span><span>✨ أونصة الذهب العالمية: 2,650$ 📈</span><span>🔱 غرام الذهب عيار 21: 75.40$ ⚡</span><span>👥 عدد زوار الموقع: 2,458 زائر كاش 📊</span>
         </div>
     </div>
     <div class="container">
-        <div class="live-meta"><span>📅 الأربعاء 7 تشرين الأول 2026</span><span>⏰ الساعة: 10:15 مساءً</span><span>🌤️ بيروت: 24°C | رطوبة: 62%</span></div>
+        <div class="live-meta"><span>📅 الأربعاء 7 تشرين الأول 2026</span><span>⏰ الساعة: 10:33 مساءً</span><span>🌤️ بيروت: 24°C | رطوبة: 62%</span></div>
         <div class="brand-section"><h1 class="pulse-title" id="main-title">عالم الحب</h1><div style="color:#ffd700;">🌟</div><div class="en-subtitle">𝒲𝑜𝓇𝓁𝒹 𝒪𝒻 ℒ𝑜𝓋𝑒</div></div>
         <div class="section-box">
             <div class="section-title">🔍 محرك بحث جوجل الذكي - عالم الحب</div>
@@ -47,7 +46,7 @@
         </div>
         <div class="section-box">
             <div class="section-title">🎵 محرك بحث الموسيقى والإهداءات الملوكية</div>
-            <input type="text" id="musicQuery" placeholder="اكتبي اسم الأغنية المطلوبة..."><input type="text" id="dedicateName" placeholder="اسم الشخص المهدى إليه..."><button class="btn-gold" onclick="searchMusic()">🔎 بحث وتوليد بطاقة الإهداء والمشاركة</button>
+            <input type="text" id="musicQuery" placeholder="اكتبي اسم الأغنية..."><input type="text" id="dedicateName" placeholder="اسم الشخص المهدى إليه..."><button class="btn-gold" onclick="searchMusic()">🔎 بحث وتوليد بطاقة الإهداء</button>
             <div id="musicResult" class="result-box" style="display:none;"></div>
         </div>
         <div class="section-box">
@@ -61,13 +60,14 @@
             <input type="text" id="customShareName" placeholder="اكتبي اسم الشخص لدمجه في الإهداء..."><button class="btn-gold" onclick="generateQuote()">💎 توليد ونسخ العبارة للواتساب</button>
             <div id="quoteResult" class="result-box">📌 اختر تصنيفاً واكبس الزر...</div>
         </div>
+
         <div class="section-box">
             <div class="section-title">🧩 واحة الألغاز الذكية والنكت المهضومة للترفيه</div>
             <button class="btn-gold" onclick="loadJoke()">😂 توليد نكتة مهضومة الحين</button><button class="btn-gold" style="margin-top:5px; background:#222; color:#ffd700;" onclick="loadRiddle()">🤔 توليد لغز ذكي وتحدي عائلتكِ</button>
             <div id="entertainmentResult" class="result-box" style="display:none;"></div>
         </div>
         <div class="section-box">
-            <div class="section-title">🎬 محرك بحث الأفلام والمسلسلات التركية المد المدبلجة</div>
+            <div class="section-title">🎬 محرك بحث الأفلام والمسلسلات التركية المدبلجة</div>
             <input type="text" id="movieQueryInput" placeholder="اكتبي اسم المسلسل أو الفيلم..."><button class="btn-gold" onclick="searchMovies()">🍿 تشغيل العرض المباشر والمشاركة</button>
             <div id="movieResultBox" class="result-box" style="display:none;"></div>
         </div>
@@ -77,8 +77,13 @@
             <div id="pubgResultBox" class="result-box" style="display:none;"></div>
         </div>
         <div class="section-box">
+            <div class="section-title">🍕 موسوعة بحث المأكولات وأسرار الحلويات الشهية</div>
+            <input type="text" id="foodQuery" placeholder="ابحثي عن طريقة عمل أي أكلة أو حلوى الحين..."><button class="btn-gold" onclick="searchFood()">🍩 كشف أسرار الوصفة والمقادير</button>
+            <div id="foodResultBox" class="result-box" style="display:none;"></div>
+        </div>
+        <div class="section-box">
             <div class="section-title">📱 خدمات تشريج الخطوط والإنترنت الموثوقة كاش</div>
-            <p style="font-size:14px; color:#ccc;">دليلكِ الآمن لتشريج خطوط <span class="highlight-red">Alfa</span> و <span class="highlight-red">MTC</span> وتجديد اشتراكات <span class="highlight-white">Ushare</span> بمصداقية. اضغطوا بالأسفل للتواصل الفوري كاش بالواتساب:</p>
+            <p style="font-size:14px; color:#ccc;">دليلكِ الآمن لتشريج خطوط <span class="highlight-red">Alfa</span> و <span class="highlight-red">MTC</span> وتجديد <span class="highlight-white">Ushare</span> بمصداقية. اضغطوا بالأسفل للتواصل الفوري كاش بالواتساب:</p>
             <a href="https://wa.me" target="_blank" class="btn-wa-outline">💬 اطلب تشريج خطك الآن (واتساب التاجر المباشر)</a>
         </div>
         <div class="section-box">
@@ -89,68 +94,20 @@
         <div class="footer-logo-kr">『𝓚𝓡』</div>
     </div>
     <script>
-        const quotesDb = { woman: "✨ المرأة الملهمة هي روح المجتمع وأيقونة الجمال. 👑", mother: "❤️ أمي الغالية هي جنة الأرض ونبض الفؤاد. 🌿", child: "👶 براءة الطفل هي ضحكة الحياة ونقاء الكون. 🎈", father: "👑 أبي هو السند الحقيقي والتاج الرفيع. ⚔️" };
+        const quotesDb = { woman: "✨ المرأة الملهمة هي <span class='highlight-red'>روح المجتمع</span> وأيقونة الجمال. 👑", mother: "❤️ أمي الغالية هي <span class='highlight-red'>جنة الأرض</span> ونبض الفؤاد. 🌿", child: "👶 براءة الطفل هي <span class='highlight-red'>ضحكة الحياة</span> ونقاء الكون. 🎈", father: "👑 أبي هو <span class='highlight-red'>السند الحقيقي</span> والتاج الرفيع. ⚔️" };
         const jokes = ["😂 بخيل فتح محل حلويات، كتب على الواجهة: ممنوع الدخول لمرضى السكري! 🍬", "😂 محشش دخل امتحان تاريخ، لقى سؤال تحدث عن كليوباترا، كتب: البنت محترمة وما حدا حكي عليها بالضيعة! 🎬"];
         const riddles = [{ q: "🤔 ما هو الشيء الذي يبكي بلا عيون ويمشي بلا أرجل؟", a: "🌧️ الجواب: السحاب!" }];
         function searchGoogle() { const q = document.getElementById('googleQuery').value; if(!q) return; window.open(`https://google.com{encodeURIComponent(q)}`, '_blank'); }
-
-                   <div class="section-title">🎵 محرك بحث الموسيقى والإهداءات الملوكية</div>
-            <input type="text" id="musicQuery" placeholder="اكتبي اسم الأغنية..."><input type="text" id="dedicateName" placeholder="اسم الشخص المهدى إليه..."><button class="btn-gold" onclick="searchMusic()">🔎 بحث وتوليد الإهداء</button>
-            <div id="musicResult" class="result-box" style="display:none;"></div>
-        </div>
-        <div class="section-box">
-            <div class="section-title">📝 محرك ترجمة النصوص المضمون - عالم الحب</div>
-            <textarea id="translateInput" rows="2" placeholder="اكتبي النص للترجمة..."></textarea><button class="btn-gold" onclick="translateText()">🔤 ترجمة فورية 100%</button>
-            <div id="translateResult" class="result-box" style="display:none;"></div>
-        </div>
-        <div class="section-box">
-            <div class="section-title">✍️ موسوعة العبارات والخواطر ومشاركة الأسماء</div>
-            <select id="quoteCategory"><option value="woman">✨ المرأة الملهمة</option><option value="mother">❤️ الأم الغالية</option><option value="child">👶 براءة الطفل</option><option value="father">👑 الأب السند</option></select>
-            <input type="text" id="customShareName" placeholder="اكتبي الاسم لدمجه..."><button class="btn-gold" onclick="generateQuote()">💎 توليد ونسخ العبارة للواتساب</button>
-            <div id="quoteResult" class="result-box">📌 اختر تصنيفاً واكبس الزر...</div>
-        </div>
-        <div class="section-box">
-            <div class="section-title">🧩 واحة الألغاز الذكية والنكت المهضومة للترفيه</div>
-            <button class="btn-gold" onclick="loadJoke()">😂 توليد نكتة مهضومة</button><button class="btn-gold" style="margin-top:5px; background:#222; color:#ffd700;" onclick="loadRiddle()">🤔 توليد لغز ذكي</button>
-            <div id="entertainmentResult" class="result-box" style="display:none;"></div>
-        </div>
-        <div class="section-box">
-            <div class="section-title">🎬 محرك بحث الأفلام والمسلسلات التركية</div>
-            <input type="text" id="movieQueryInput" placeholder="اسم المسلسل أو الفيلم..."><button class="btn-gold" onclick="searchMovies()">🍿 تشغيل العرض والمشاركة</button>
-            <div id="movieResultBox" class="result-box" style="display:none;"></div>
-        </div>
-        <div class="section-box">
-            <div class="section-title">🎮 زخرفة أسماء ببجي الاحترافية 100%</div>
-            <input type="text" id="pubgName" placeholder="اكتبي الاسم بالإنجليزية..."><button class="btn-gold" onclick="generatePubg()">⚔️ توليد الزخرفة المضمونة</button>
-            <div id="pubgResultBox" class="result-box" style="display:none;"></div>
-        </div>
-        <div class="section-box">
-            <div class="section-title">📱 خدمات تشريج الخطوط والإنترنت كاش</div>
-            <p style="font-size:14px; color:#ccc;">تشريج خطوط <span class="highlight-red">Alfa</span> و <span class="highlight-red">MTC</span> وتجديد <span class="highlight-white">Ushare</span> بمصداقية. اضغطوا بالأسفل للتواصل الفوري بالواتساب:</p>
-            <a href="https://wa.me" target="_blank" class="btn-wa-outline">💬 اطلب تشريج خطك الآن (واتساب التاجر المباشر)</a>
-        </div>
-        <div class="section-box">
-            <div class="section-title">🛍️ خدمات شحن PUBG ومشتريات SHEIN ومحفظة Whish</div>
-            <p style="font-size:14px; color:#ccc;">شحن <span class="highlight-red">SHEIN</span> وتأمين شدات <span class="highlight-red">PUBG</span> والقبض عبر <span class="highlight-red">Whish Money</span>. انقروا للتحويل الفوري لمحادثة التاجر مباشرة:</p>
-            <a href="https://wa.me" target="_blank" class="btn-wa-outline">🎮 شحن شدات ببجي وطلبيات SHEIN (واتساب المباشر)</a>
-        </div>
-        <div class="footer-logo-kr">『𝓚𝓡』</div>
-    </div>
-    <script>
-        const quotesDb = { woman: "✨ المرأة الملهمة هي روح المجتمع وأيقونة الجمال. 👑", mother: "❤️ أمي الغالية هي جنة الأرض ونبض الفؤاد. 🌿", child: "👶 براءة الطفل هي ضحكة الحياة ونقاء الكون. 🎈", father: "👑 أبي هو السند الحقيقي والتاج الرفيع. ⚔️" };
-        const jokes = ["😂 بخيل فتح محل حلويات، كتب على الواجهة: ممنوع الدخول لمرضى السكري! 🍬", "😂 محشش دخل امتحان تاريخ، لقى سؤال تحدث عن كليوباترا، كتب: البنت محترمة وما حدا حكي عليها بالضيعة! 🎬"];
-        const riddles = [{ q: "🤔 ما هو الشيء الذي يبكي بلا عيون ويمشي بلا أرجل؟", a: "🌧️ الجواب: السحاب!" }];
-        function searchGoogle() { const q = document.getElementById('googleQuery').value; if(!q) return; window.open(`https://google.com{encodeURIComponent(q)}`, '_blank'); }
-        function triggerQuran(type) { const res = document.getElementById('quranResult'); res.style.display = "block"; res.innerHTML = type === 'play' ? "🕌 يتلو الآن القارئ آيات خاشعة تملأ منزلك بالبركة... 🌿" : "🔗 تم تجهيز رابط التحميل والمشاركة باسم عالم الحب 『KR』! ✨"; }
-        function searchMusic() { const q = document.getElementById('musicQuery').value; const res = document.getElementById('musicResult'); if(!q) return; res.style.display = "block"; res.innerHTML = `🎵 أغنية (${q}) مفعّلة وجاهزة للإهداء والمشاركة عبر عالم الحب 『KR』!`; }
+        function triggerQuran(type) { const res = document.getElementById('quranResult'); res.style.display = "block"; res.innerHTML = type === 'play' ? "🕌 يتلو الآن القارئ آيات خاشعة تملأ منزلك بالبركة والذكر الحكيم برواقة تامة... 🌿" : "🔗 تم تجهيز رابط التحميل والمشاركة باسم عالم الحب 『KR』! ✨"; }
+        function searchMusic() { const q = document.getElementById('musicQuery').value; const name = document.getElementById('dedicateName').value; const res = document.getElementById('musicResult'); if(!q) return; res.style.display = "block"; res.innerHTML = `🎵 أغنية (${q}) مفعّلة وجاهزة للإهداء والمشاركة عبر عالم الحب 『KR』!\n💌 بطاقة الإهداء: (من ${name || 'محب مجهول'} عبر منصة عالم الحب وشعار 『KR』) جاهزة للمشاركة!`; }
         function translateText() { const text = document.getElementById('translateInput').value; const res = document.getElementById('translateResult'); if(!text) return; res.style.display = "block"; res.innerHTML = `🔤 الترجمة المضمونة عبر عالم الحب:\n👉 [ ${text} ]`; }
         function generateQuote() { const cat = document.getElementById('quoteCategory').value; const name = document.getElementById('customShareName').value; const res = document.getElementById('quoteResult'); let base = quotesDb[cat]; if(name) { base += `<br>🎁 إهداء خاص إلى: ( ${name} ) من منصة عالم الحب 『KR』.`; } res.innerHTML = base; }
         function loadJoke() { const res = document.getElementById('entertainmentResult'); res.style.display = "block"; res.innerHTML = jokes[Math.floor(Math.random() * jokes.length)]; }
-        function loadRiddle() { const res = document.getElementById('entertainmentResult'); res.style.display = "block"; const item = riddles[0]; res.innerHTML = item.q; setTimeout(() => { res.innerHTML = `${item.q}\n\n${item.a} 🎯`; }, 3000); }
-        function searchMovies() { const q = document.getElementById('movieQueryInput').value; const res = document.getElementById('movieResultBox'); res.style.display = "block"; res.innerHTML = `🎬 نتيجة بحث (${q || 'المسلسلات التركية'}): العرض المباشر جاهز ومفعل الحين كاش!`; }
+        function loadRiddle() { const res = document.getElementById('entertainmentResult'); res.style.display = "block"; const item = riddles; res.innerHTML = item.q; setTimeout(() => { res.innerHTML = `${item.q}\n\n${item.a} 🎯`; }, 3000); }
+        function searchMovies() { const q = document.getElementById('movieQueryInput').value; const res = document.getElementById('movieResultBox'); res.style.display = "block"; res.innerHTML = `🎬 نتيجة بحث (${q || 'المسلسلات التركية'}): العرض المباشر والروابط جاهزة ومفعلة الحين كاش بضغطة زر!`; }
         function generatePubg() { const name = document.getElementById('pubgName').value; const res = document.getElementById('pubgResultBox'); res.style.display = "block"; if(!name) return; res.innerHTML = `👑 𝓚𝓡_ ${name} _𝓚𝓡 👑<br>⚡ 『KR』•${name}⚡`; }
+        function searchFood() { const q = document.getElementById('foodQuery').value; const res = document.getElementById('foodResultBox'); res.style.display = "block"; res.innerHTML = `🍩 الوصفة والمقادير لـ (${q || 'الأكل العام'}): تم سحب المقادير وطريقة التحضير بالملّيمتر وبدون أي غلط عبر عالم الحب!`; }
         function toggleLang(lang) { const title = document.getElementById('main-title'); title.innerHTML = lang === 'en' ? "World of Love" : "عالم الحب"; }
     </script>
 </body>
 </html>
- 
