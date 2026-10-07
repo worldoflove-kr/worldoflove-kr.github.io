@@ -17,7 +17,7 @@
         @keyframes pulseGlow { 0% { transform: scale(1); } 100% { transform: scale(1.03); } }
         .section-box { background: rgba(20, 20, 20, 0.95); border: 1px solid #ffd700; padding: 15px; border-radius: 12px; margin-bottom: 20px; text-align: right; }
         .section-title { color: #ffd700; font-size: 17px; font-weight: bold; border-bottom: 2px solid #ffd700; padding-bottom: 6px; margin-bottom: 12px; }
-        select, textarea, input[type="text"] { width: 100%; padding: 10px; background: #000; border: 1px solid #ffd700; color: #fff; border-radius: 6px; box-sizing: border-box; margin-bottom: 12px; font-size: 14px; }
+        input[type="text"] { width: 100%; padding: 10px; background: #000; border: 1px solid #ffd700; color: #fff; border-radius: 6px; box-sizing: border-box; margin-bottom: 12px; font-size: 14px; }
         button.btn-gold { background: linear-gradient(45deg, #ffd700, #b8860b); color: #000; border: none; padding: 10px 20px; font-weight: bold; border-radius: 6px; cursor: pointer; width: 100%; font-size: 15px; }
         .btn-wa-outline { display: block; width: 100%; padding: 11px; background: transparent; border: 2px solid #ffd700; color: #ffd700; font-weight: bold; font-size: 15px; border-radius: 25px; text-decoration: none; text-align: center; box-sizing: border-box; margin: 10px 0; }
         .result-box { background: #111; border-right: 4px solid #ffd700; padding: 12px; margin-top: 10px; border-radius: 5px; color: #ffeb3b; font-weight: 500; white-space: pre-line; font-size: 14px; }
@@ -45,7 +45,7 @@
         
         <div class="section-box">
             <div class="section-title">🕌 واحة القرآن الكريم والذكر الحكيم التفاعلية</div>
-            <select id="quranSelect">
+            <select id="quranSelect" style="width:100%; padding:10px; background:#000; border:1px solid #ffd700; color:#fff; border-radius:6px; margin-bottom:12px;">
                 <option value="https://mp3quran.net">الشيخ عبد الباسط (سورة الفاتحة خاشعة)</option>
                 <option value="https://mp3quran.net">الشيخ مشاري العفاسي (سورة البقرة كاملة مرتل)</option>
             </select>
@@ -54,11 +54,9 @@
             <div id="quranResult" class="result-box" style="display:none;"></div>
             <audio id="quranAudioPlayer" controls style="width:100%; margin-top:10px; display:none;"></audio>
         </div>
-
         <div class="section-box">
-            <div class="section-title">📝 محرك ترجمة النصوص المضمون - عالم الحب</div>
-            <textarea id="translateInput" rows="2" placeholder="اكتبي النص المراد ترجمته فوراً هنا..."></textarea><button class="btn-gold" onclick="translateText()">🔤 ترجمة فخرية فورية 100%</button>
-            <div id="translateResult" class="result-box" style="display:none;"></div>
+            <div class="section-title">🔤 محرك ترجمة النصوص الفوري العالمي - عالم الحب</div>
+            <button class="btn-gold" onclick="openGoogleTranslate()">🌍 فتح مترجم جوجل الفوري (عربي ⇄ إنجليزي)</button>
         </div>
         
         <div class="section-box">
@@ -75,9 +73,9 @@
     </div>
     <script>
         function searchGoogle() { const q = document.getElementById('googleQuery').value; if(!q) return alert("الرجاء كتابة نص للبحث! 🔍"); window.open(`https://google.com{encodeURIComponent(q)}`, '_blank'); }
-        function playQuranAudio() { const player = document.getElementById('quranAudioPlayer'); const select = document.getElementById('quranSelect'); player.src = select.value; player.style.display = 'block'; player.play(); document.getElementById('quranResult').style.display = 'block'; document.getElementById('quranResult').innerHTML = " 🕌 يصدح الآن صوت التلاوة المباركة الخاشعة من المصحف المباشر... 🌿"; }
+        function playQuranAudio() { const player = document.getElementById('quranAudioPlayer'); const select = document.getElementById('quranSelect'); player.src = select.value; player.style.display = 'block'; player.play(); document.getElementById('quranResult').style.display = 'block'; document.getElementById('quranResult').innerHTML = "🕌 يصدح الآن صوت التلاوة المباركة الخاشعة من المصحف المباشر... 🌿"; }
         function shareQuranAudio() { window.open(`https://wa.me{encodeURIComponent("🕌 استمع لتلاوة خاشعة وتفسير آيات السكينة عبر منصة عالم الحب الفخمة 『KR』:\n🔗 https://github.io")}`, '_blank'); }
-        function translateText() { const text = document.getElementById('translateInput').value; const res = document.getElementById('translateResult'); if(!text) return alert("الرجاء كتابة نص للترجمة! 📝"); res.style.display = "block"; res.innerHTML = `🔤 الترجمة المضمونة عبر عالم الحب:\n👉 [ ${text} ]`; }
+        function openGoogleTranslate() { window.open('https://google.com', '_blank'); }
         
         function initPlatform() {
             let baseCount = 2458;
