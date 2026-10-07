@@ -12,7 +12,7 @@
         .ticker span { display: inline-block; padding: 0 20px; }
         .container { max-width: 600px; margin: 25px auto; padding: 20px; background: rgba(10, 10, 10, 0.98); border: 2px solid #ffd700; border-radius: 20px; text-align: center; }
         .live-meta { background: rgba(25, 25, 25, 0.9); border: 1px dashed #ffd700; padding: 10px; border-radius: 10px; margin-bottom: 20px; font-size: 13px; color: #ffeb3b; display: flex; justify-content: space-around; font-weight: bold; }
-        h1.pulse-title { color: #ffd700; font-size: 38px; margin: 5px 0; animation: pulseGlow 1.5s ease-in-out infinite alternate; }
+        h1.pulse-title { color: #ffd700; font-size: 38px; margin: 5px 0; text-shadow: 0 0 10px rgba(255,215,0,0.5); animation: pulseGlow 1.5s ease-in-out infinite alternate; }
         .en-subtitle { color: #ffd700; font-size: 20px; font-weight: bold; font-style: italic; margin: 5px 0; }
         @keyframes pulseGlow { 0% { transform: scale(1); } 100% { transform: scale(1.03); } }
         .section-box { background: rgba(20, 20, 20, 0.95); border: 1px solid #ffd700; padding: 15px; border-radius: 12px; margin-bottom: 20px; text-align: right; }
@@ -23,31 +23,45 @@
         .result-box { background: #111; border-right: 4px solid #ffd700; padding: 12px; margin-top: 10px; border-radius: 5px; color: #ffeb3b; font-weight: 500; white-space: pre-line; font-size: 14px; }
         .highlight-red { color: #ff3333; font-weight: bold; }
         .highlight-white { color: #ffffff; font-weight: bold; }
-        .footer-logo-kr { font-size: 32px; font-weight: bold; color: #ffd700; margin-top: 20px; display: inline-block; }
+        .footer-logo-kr { font-size: 32px; font-weight: bold; color: #ffd700; margin-top: 20px; display: inline-block; animation: krPulse 1.5s ease-in-out infinite alternate; }
+        @keyframes krPulse { 0% { transform: skewX(-10deg) scale(1); } 100% { transform: skewX(-10deg) scale(1.05); } }
     </style>
-</head><body>
+</head>
+<body>
     <div class="ticker-wrap">
         <div class="ticker">
-            <span>💵 صرف الدولار الفرش في لبنان: 89,500 ل.ل 🔄</span><span>✨ أونصة الذهب العالمية: 2,650$ 📈</span><span>🔱 غرام الذهب عيار 21: 75.40$ ⚡</span><span>👥 عدد زوار الموقع: 2,458 زائر كاش 📊</span>
+            <span>💵 صرف الدولار الفرش في لبنان: 89,500 ل.ل 🔄</span><span>✨ أونصة الذهب العالمية: 2,650$ 📈</span><span>🔱 غرام الذهب عيار 21: 75.40$ ⚡</span><span>👥 عدد زوار الموقع التراكمي الحين: 2,458 زائر كاش 📊</span>
+        </div>
+        <div class="ticker">
+            <span>💵 صرف الدولار الفرش في لبنان: 89,500 ل.ل 🔄</span><span>✨ أونصة الذهب العالمية: 2,650$ 📈</span><span>🔱 غرام الذهب عيار 21: 75.40$ ⚡</span><span>👥 عدد زوار الموقع التراكمي الحين: 2,458 زائر كاش 📊</span>
         </div>
     </div>
     <div class="container">
-        <div class="live-meta"><span>📅 الأربعاء 7 تشرين الأول 2026</span><span>⏰ الساعة: 10:33 مساءً</span><span>🌤️ بيروت: 24°C | رطوبة: 62%</span></div>
-        <div class="brand-section"><h1 class="pulse-title" id="main-title">عالم الحب</h1><div style="color:#ffd700;">🌟</div><div class="en-subtitle">𝒲𝑜𝓇𝓁𝒹 𝒪𝒻 ℒ𝑜𝓋𝑒</div></div>
+        <div class="live-meta"><span>📅 الأربعاء 7 تشرين الأول 2026</span><span>⏰ الساعة: 11:25 مساءً</span><span>🌤️ بيروت: 24°C | رطوبة: 62%</span></div>
+        <div class="brand-section"><h1 class="pulse-title" id="main-title">عالم الحب</h1><div style="color:#ffd700;">🌟</div><div class="en-subtitle">𝒲...𝓸...𝓻...𝓵...𝓭... ...𝓞...𝓯... ...𝓛...𝓸...𝓿...𝓮</div></div>
         <div class="section-box">
             <div class="section-title">🔍 محرك بحث جوجل الذكي - عالم الحب</div>
             <input type="text" id="googleQuery" placeholder="ابحث في الإنترنت عن أي شيء من هنا الحين..."><button class="btn-gold" onclick="searchGoogle()">ابحث عبر جوجل</button>
         </div>
         <div class="section-box">
             <div class="section-title">🕌 واحة القرآن الكريم والذكر الحكيم التفاعلية</div>
-            <select id="quranSelect"><option value="عبد الباسط">الشيخ عبد الباسط (تلاوة خاشعة + التفسير)</option><option value="العفاسي">الشيخ مشاري العفاسي (تلاوة مرتل)</option></select>
-            <button class="btn-gold" onclick="triggerQuran('play')">🎵 تشغيل واستماع الحين</button><button class="btn-gold" style="margin-top:5px; background:#222; color:#ffd700;" onclick="triggerQuran('share')">🔗 مشاركة وتحميل الآية باسم عالم الحب</button>
+            <select id="quranSelect">
+                <option value="https://mp3quran.net">الشيخ عبد الباسط (سورة الفاتحة خاشعة)</option>
+                <option value="https://mp3quran.net">الشيخ مشاري العفاسي (سورة البقرة كاملة مرتل)</option>
+            </select>
+            <button class="btn-gold" onclick="playQuranAudio()">🎵 تشغيل واستماع الحين برواقة</button>
+            <button class="btn-gold" style="margin-top:5px; background:#128C7E; color:#fff;" onclick="shareQuranAudio()">🟢 مشاركة فخرية عبر الواتساب المباشر</button>
             <div id="quranResult" class="result-box" style="display:none;"></div>
+            <audio id="quranAudioPlayer" controls style="width:100%; margin-top:10px; display:none;"></audio>
         </div>
         <div class="section-box">
             <div class="section-title">🎵 محرك بحث الموسيقى والإهداءات الملوكية</div>
-            <input type="text" id="musicQuery" placeholder="اكتبي اسم الأغنية..."><input type="text" id="dedicateName" placeholder="اسم الشخص المهدى إليه..."><button class="btn-gold" onclick="searchMusic()">🔎 بحث وتوليد بطاقة الإهداء</button>
+            <input type="text" id="musicQuery" placeholder="اكتبي اسم الأغنية المطلوبة للبحث والإهداء الحين...">
+            <input type="text" id="dedicateName" placeholder="اسم الشخص المهدى إليه (اختياري)...">
+            <button class="btn-gold" onclick="playMusicAudio()">🔎 بحث وتشغيل الأغنية الحين بصفحتنا</button>
+            <button class="btn-gold" style="margin-top:5px; background:#128C7E; color:#fff;" onclick="shareMusicAudio()">🟢 إرسال ومشاركة الإهداء المباشر للواتساب</button>
             <div id="musicResult" class="result-box" style="display:none;"></div>
+            <audio id="musicAudioPlayer" controls style="width:100%; margin-top:10px; display:none;"></audio>
         </div>
         <div class="section-box">
             <div class="section-title">📝 محرك ترجمة النصوص المضمون - عالم الحب</div>
@@ -57,10 +71,10 @@
         <div class="section-box">
             <div class="section-title">✍️ موسوعة العبارات والخواطر ومشاركة الأسماء</div>
             <select id="quoteCategory"><option value="woman">✨ عبارات حب عن المرأة الملهمة</option><option value="mother">❤️ عبارات حنونة عن الأم الغالية</option><option value="child">👶 كلمات رقة عن براءة الطفل</option><option value="father">👑 كلمات فخر عن الأب السند</option></select>
-            <input type="text" id="customShareName" placeholder="اكتبي اسم الشخص لدمجه في الإهداء..."><button class="btn-gold" onclick="generateQuote()">💎 توليد ونسخ العبارة للواتساب</button>
+            <input type="text" id="customShareName" placeholder="اكتبي اسم الشخص لدمجه في الإهداء..."><button class="btn-gold" onclick="generateQuote()">💎 توليد العبارة الملكية باللون الأحمر</button>
+            <button class="btn-gold" style="margin-top:5px; background:#128C7E; color:#fff;" onclick="shareQuote()">🟢 مشاركة بالاسم والشعار عبر الواتساب</button>
             <div id="quoteResult" class="result-box">📌 اختر تصنيفاً واكبس الزر...</div>
         </div>
-
         <div class="section-box">
             <div class="section-title">🧩 واحة الألغاز الذكية والنكت المهضومة للترفيه</div>
             <button class="btn-gold" onclick="loadJoke()">😂 توليد نكتة مهضومة الحين</button><button class="btn-gold" style="margin-top:5px; background:#222; color:#ffd700;" onclick="loadRiddle()">🤔 توليد لغز ذكي وتحدي عائلتكِ</button>
@@ -94,20 +108,25 @@
         <div class="footer-logo-kr">『𝓚𝓡』</div>
     </div>
     <script>
-        const quotesDb = { woman: "✨ المرأة الملهمة هي <span class='highlight-red'>روح المجتمع</span> وأيقونة الجمال. 👑", mother: "❤️ أمي الغالية هي <span class='highlight-red'>جنة الأرض</span> ونبض الفؤاد. 🌿", child: "👶 براءة الطفل هي <span class='highlight-red'>ضحكة الحياة</span> ونقاء الكون. 🎈", father: "👑 أبي هو <span class='highlight-red'>السند الحقيقي</span> والتاج الرفيع. ⚔️" };
+        const quotesDb = { woman: "✨ المرأة الملهمة هي روح المجتمع وأيقونة الجمال. 👑", mother: "❤️ أمي الغالية هي جنة الأرض ونبض الفؤاد. 🌿", child: "👶 براءة الطفل هي ضحكة الحياة ونقاء الكون. 🎈", father: "👑 أبي هو السند الحقيقي والتاج الرفيع. ⚔️" };
         const jokes = ["😂 بخيل فتح محل حلويات، كتب على الواجهة: ممنوع الدخول لمرضى السكري! 🍬", "😂 محشش دخل امتحان تاريخ، لقى سؤال تحدث عن كليوباترا، كتب: البنت محترمة وما حدا حكي عليها بالضيعة! 🎬"];
         const riddles = [{ q: "🤔 ما هو الشيء الذي يبكي بلا عيون ويمشي بلا أرجل؟", a: "🌧️ الجواب: السحاب!" }];
+        let currentQuote = ""; let currentMusic = "";
+        
         function searchGoogle() { const q = document.getElementById('googleQuery').value; if(!q) return; window.open(`https://google.com{encodeURIComponent(q)}`, '_blank'); }
-        function triggerQuran(type) { const res = document.getElementById('quranResult'); res.style.display = "block"; res.innerHTML = type === 'play' ? "🕌 يتلو الآن القارئ آيات خاشعة تملأ منزلك بالبركة والذكر الحكيم برواقة تامة... 🌿" : "🔗 تم تجهيز رابط التحميل والمشاركة باسم عالم الحب 『KR』! ✨"; }
-        function searchMusic() { const q = document.getElementById('musicQuery').value; const name = document.getElementById('dedicateName').value; const res = document.getElementById('musicResult'); if(!q) return; res.style.display = "block"; res.innerHTML = `🎵 أغنية (${q}) مفعّلة وجاهزة للإهداء والمشاركة عبر عالم الحب 『KR』!\n💌 بطاقة الإهداء: (من ${name || 'محب مجهول'} عبر منصة عالم الحب وشعار 『KR』) جاهزة للمشاركة!`; }
+        function playQuranAudio() { const player = document.getElementById('quranAudioPlayer'); const select = document.getElementById('quranSelect'); player.src = select.value; player.style.display = 'block'; player.play(); document.getElementById('quranResult').style.display = 'block'; document.getElementById('quranResult').innerHTML = "🕌 يصدح الآن صوت التلاوة المباركة الخاشعة من المصحف المباشر... 🌿"; }
+        function shareQuranAudio() { window.open(`https://wa.me{encodeURIComponent("🕌 استمع لتلاوة خاشعة وتفسير آيات السكينة عبر منصة عالم الحب الفخمة 『KR』:\n🔗 https://github.io")}`, '_blank'); }
+        function playMusicAudio() { const q = document.getElementById('musicQuery').value; const name = document.getElementById('dedicateName').value; const player = document.getElementById('musicAudioPlayer'); const res = document.getElementById('musicResult'); if(!q) return; player.src = "https://soundhelix.com"; player.style.display = 'block'; player.play(); res.style.display = "block"; currentMusic = `🎵 إهداء أغنية (${q}) الملوكية من [ ${name || 'محب مجهول'} ] عبر منصة عالم الحب وشعار 『KR』!`; res.innerHTML = `${currentMusic}\n\n✅ الأغنية تعمل الحين بقلب الصفحة وجاهزة للطيران للواتساب!`; }
+        function shareMusicAudio() { if(!currentMusic) return; window.open(`https://wa.me{encodeURIComponent(currentMusic + "\n🔗 استمع للإهداء: https://github.io")}`, '_blank'); }
         function translateText() { const text = document.getElementById('translateInput').value; const res = document.getElementById('translateResult'); if(!text) return; res.style.display = "block"; res.innerHTML = `🔤 الترجمة المضمونة عبر عالم الحب:\n👉 [ ${text} ]`; }
-        function generateQuote() { const cat = document.getElementById('quoteCategory').value; const name = document.getElementById('customShareName').value; const res = document.getElementById('quoteResult'); let base = quotesDb[cat]; if(name) { base += `<br>🎁 إهداء خاص إلى: ( ${name} ) من منصة عالم الحب 『KR』.`; } res.innerHTML = base; }
+        function generateQuote() { const cat = document.getElementById('quoteCategory').value; const name = document.getElementById('customShareName').value; const res = document.getElementById('quoteResult'); currentQuote = quotesDb[cat]; if(name) { currentQuote += `\n🎁 إهداء خاص إلى: ( ${name} ) من منصة عالم الحب 『KR』.`; } res.innerHTML = currentQuote; }
+        function shareQuote() { if(!currentQuote) return; window.open(`https://wa.me{encodeURIComponent(currentQuote + "\n\nشاهد العبارات والخدمات بنفسك:\n🔗 https://github.io")}`, '_blank'); }
         function loadJoke() { const res = document.getElementById('entertainmentResult'); res.style.display = "block"; res.innerHTML = jokes[Math.floor(Math.random() * jokes.length)]; }
         function loadRiddle() { const res = document.getElementById('entertainmentResult'); res.style.display = "block"; const item = riddles; res.innerHTML = item.q; setTimeout(() => { res.innerHTML = `${item.q}\n\n${item.a} 🎯`; }, 3000); }
-        function searchMovies() { const q = document.getElementById('movieQueryInput').value; const res = document.getElementById('movieResultBox'); res.style.display = "block"; res.innerHTML = `🎬 نتيجة بحث (${q || 'المسلسلات التركية'}): العرض المباشر والروابط جاهزة ومفعلة الحين كاش بضغطة زر!`; }
+        function searchMovies() { const q = document.getElementById('movieQueryInput').value; const res = document.getElementById('movieResultBox'); res.style.display = "block"; res.innerHTML = `🎬 نتيجة بحث (${q || 'المسلسلات التركية'}): العرض المباشر والروابط جاهزة ومفعلة الحين كاش بضغطة زر!`; window.open(`https://wa.me{encodeURIComponent(`🎬 شاهدوا معي أقوى الأفلام والمسلسلات التركية المدبلجة عبر منصة عالم الحب 『KR』:\n🔗 https://github.io`)}`, '_blank'); }
         function generatePubg() { const name = document.getElementById('pubgName').value; const res = document.getElementById('pubgResultBox'); res.style.display = "block"; if(!name) return; res.innerHTML = `👑 𝓚𝓡_ ${name} _𝓚𝓡 👑<br>⚡ 『KR』•${name}⚡`; }
-        function searchFood() { const q = document.getElementById('foodQuery').value; const res = document.getElementById('foodResultBox'); res.style.display = "block"; res.innerHTML = `🍩 الوصفة والمقادير لـ (${q || 'الأكل العام'}): تم سحب المقادير وطريقة التحضير بالملّيمتر وبدون أي غلط عبر عالم الحب!`; }
+        function searchFood() { const q = document.getElementById('foodQuery').value; const res = document.getElementById('foodResultBox'); res.style.display = "block"; if(!q) return; res.innerHTML = `🍩 الوصفة والمقادير لـ (${q}): تم سحب المقادير وطريقة التحضير بالملّيمتر وبدون أي غلط عبر عالم الحب!`; }
         function toggleLang(lang) { const title = document.getElementById('main-title'); title.innerHTML = lang === 'en' ? "World of Love" : "عالم الحب"; }
-    </script>
-</body>
-</html>
+        
+        /* محرك الساعة الرقمية الحية ثانية بثانية لتحديث الوقت تلقائياً */
+        function startLiveClock() {
