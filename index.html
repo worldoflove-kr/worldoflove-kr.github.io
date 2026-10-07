@@ -5,73 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عالم الحب - World of Love</title>
     <style>
+        @import url('https://googleapis.com');
+        
         body {
             background-color: #050505;
             color: #f4f4f4;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Cairo', sans-serif;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px), radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px), radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
-            background-size: 550px 550px, 350px 350px, 450px 450px;
-            background-position: 0 0, 40px 60px, 130px 270px;
-            animation: starsAnimation 100s linear infinite;
+            position: relative;
         }
-        @keyframes starsAnimation {
-            from { background-position: 0 0, 40px 60px, 130px 270px; }
-            to { background-position: 550px 1100px, 440px 760px, 680px 1170px; }
+        
+        /* تأثير خلفية النجوم المتحركة المتغيرة */
+        .stars-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.3) 1.5px, transparent 30px),
+                radial-gradient(white, rgba(255,255,255,.2) 1px, transparent 20px);
+            background-size: 400px 400px, 250px 250px;
+            animation: moveStars 60s linear infinite;
         }
-        .header-bar {
+        @keyframes moveStars {
+            from { background-position: 0 0, 0 0; }
+            to { background-position: 400px 800px, 250px 500px; }
+        }
+
+        /* شريط البورصة المتحرك المستمر */
+        .ticker-wrap {
+            width: 100%;
             background: linear-gradient(90deg, #111, #222);
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-around;
-            font-size: 13px;
-            color: #ffd700;
             border-bottom: 1px solid #ffd700;
-            font-weight: bold;
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(255,215,0,0.3);
         }
+        .ticker {
+            display: inline-block;
+            padding-right: 100%;
+            animation: tickerAnimation 25s linear infinite;
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        @keyframes tickerAnimation {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+        .ticker span { display: inline-block; padding: 0 25px; }
+
         .container {
             max-width: 600px;
             margin: 30px auto;
             padding: 20px;
-            background: rgba(15, 15, 15, 0.85);
-            border: 1px solid #ffd700;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+            background: rgba(10, 10, 10, 0.9);
+            border: 2px solid #ffd700;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.25);
             text-align: center;
         }
-        h1 { color: #ffd700; margin-bottom: 5px; font-size: 28px; }
-        .subtitle { font-style: italic; color: #aaa; margin-bottom: 25px; }
-        .section-box {
-            background: rgba(25, 25, 25, 0.9);
-            border: 1px solid #444;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            text-align: right;
+
+        /* العنوان النابض السحري */
+        h1.pulse-title {
+            font-family: 'Reem Kufi', sans-serif;
+            color: #ffd700;
+            font-size: 36px;
+            margin: 10px 0;
+            text-shadow: 0 0 10px rgba(255,215,0,0.6);
+            animation: titlePulse 2s ease-in-out infinite alternate;
         }
+        @keyframes titlePulse {
+            0% { transform: scale(1); text-shadow: 0 0 10px rgba(255,215,0,0.6); }
+            100% { transform: scale(1.05); text-shadow: 0 0 25px rgba(255,215,0,0.9); }
+        }
+
+        .subtitle {
+            font-style: italic;
+            color: #888;
+            margin-bottom: 25px;
+            font-size: 16px;
+        }
+
+        .section-box {
+            background: rgba(20, 20, 20, 0.95);
+            border: 1px solid #ffd700;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            text-align: right;
+            box-shadow: inset 0 0 10px rgba(255,215,0,0.1);
+        }
+
         .section-title {
             color: #ffd700;
-            font-size: 18px;
+            font-size: 19px;
             margin-top: 0;
-            border-bottom: 1px solid #333;
+            border-bottom: 2px solid #ffd700;
             padding-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-weight: bold;
         }
-        textarea, input[type="text"] {
+
+        select, textarea, input[type="text"] {
             width: 100%;
             padding: 12px;
-            background: #111;
+            background: #000;
             border: 1px solid #ffd700;
             color: #fff;
             border-radius: 8px;
             box-sizing: border-box;
             margin-bottom: 15px;
             font-size: 15px;
+            font-family: 'Cairo', sans-serif;
         }
+
         button {
             background: linear-gradient(45deg, #ffd700, #b8860b);
             color: #000;
@@ -83,105 +132,119 @@
             width: 100%;
             font-size: 16px;
             transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(255,215,0,0.2);
         }
-        button:hover { transform: scale(1.02); box-shadow: 0 0 10px rgba(255,215,0,0.4); }
+        button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,215,0,0.4); }
+
         .result-box {
             background: #111;
-            border-left: 4px solid #ffd700;
+            border-right: 4px solid #ffd700;
             padding: 15px;
             margin-top: 15px;
             border-radius: 5px;
             color: #ffeb3b;
             font-weight: 500;
-            line-height: 1.6;
+            line-height: 1.7;
+            white-space: pre-line;
         }
-        .footer-logo {
+
+        /* تصميم الكلمات ذات اللون الأحمر الجذاب */
+        .highlight-red {
+            color: #ff3333;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255,51,51,0.5);
+        }
+
+        /* شعار KR المزخرف والمائل النابض */
+        .footer-logo-kr {
+            font-family: 'Reem Kufi', sans-serif;
+            font-style: italic;
             font-weight: bold;
             color: #ffd700;
-            font-size: 24px;
-            letter-spacing: 2px;
-            margin-top: 20px;
+            font-size: 32px;
+            letter-spacing: 3px;
+            margin-top: 25px;
+            display: inline-block;
+            text-shadow: 0 0 8px rgba(255,215,0,0.5);
+            animation: krPulse 1.5s ease-in-out infinite alternate;
         }
-    </style>
+        @keyframes krPulse {
+            0% { transform: skewX(-10deg) scale(1); }
+            100% { transform: skewX(-10deg) scale(1.1); text-shadow: 0 0 20px rgba(255,215,0,0.8); }
+        }
+    </script>
 </head>
 <body>
 
-    <div class="header-bar">
-        <span>💵 فريش دولار: 89,500 ل.ل</span>
-        <span>✨ أونصة الذهب: 2,650\$</span>
-        <span>🔱 عيار 21: 75.40\$</span>
+    <div class="stars-container"></div>
+
+    <!-- شريط البورصة والذهب المتحرك الحقيقي المستمر -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <span>💵 فريش دولار في لبنان: 89,500 ل.ل 🔄</span>
+            <span>✨ أونصة الذهب العالمية: 2,650$ 📈</span>
+            <span>🔱 غرام الذهب عيار 21: 75.40$ ⚡</span>
+            <span>📊 أسواق الأسهم والنفط العالمية مستقرة بحركة دورية 🛢️</span>
+        </div>
     </div>
 
     <div class="container">
-        <h1>عالم الحب</h1>
+        <h1 class="pulse-title">عالم الحب</h1>
         <div class="subtitle">World of Love</div>
 
-        <!-- قسم الذكاء الاصطناعي -->
+        <!-- موسوعة العبارات والخواطر الكاملة والتبريكات -->
         <div class="section-box">
-            <div class="section-title">🤖 مستشار الذكاء الاصطناعي وجبر الخواطر الحقيقي</div>
-            <p style="font-size: 13px; color: #ccc;">اكتبي شعوركِ الحالي (متعبة، زعلانة، قلقة، فرحانة) ودعي الذكاء الاصطناعي يحلله ويجبر خاطركِ برواقة:</p>
-            <textarea id="feelingInput" rows="3" placeholder="بماذا تشعرين الآن؟ اكتبيه هنا..."></textarea>
-            <button onclick="analyzeFeeling()">✨ تحليل المشاعر وجبر الخواطر</button>
-            <div id="aiResult" class="result-box">💬 بانتظار سماع نبض قلبكِ لنسج كلمات تريح روحكِ...</div>
+            <div class="section-title">✍️ موسوعة العبارات، الخواطر، والأدعية الملكية</div>
+            <p style="font-size: 13px; color: #ccc;">اقتصي التصنيف المطلوب لتوليد أرقى الكلمات مع <span class="highlight-red">اللمسات الحمراء الفخمة</span> ومشاركتها فوراً:</p>
+            <select id="quoteCategory">
+                <option value="mother">❤️ عبارات حنونة عن الأم الغالية</option>
+                <option value="father">👑 كلمات فخر عن الأب السند</option>
+                <option value="sister">🌸 خواطر عذبة عن الأخت الحبيبة</option>
+                <option value="brother">⚔️ عبارات هيبة عن الأخ العزوة</option>
+                <option value="child">👶 كلمات رقة عن براءة الطفل</option>
+                <option value="life">🌿 حكم عميقة عن الحياة والصداقة</option>
+                <option value="khwater">✨ خواطر تريح النفس وجبر الخواطر</option>
+                <option value="douaa">🤲 أدعية مباركة تثلج الصدور</option>
+            </select>
+            <button onclick="generateQuote()">💎 توليد ونسخ العبارة السحرية</button>
+            <div id="quoteResult" class="result-box">📌 اختر تصنيفاً واكبس الزر لتظهر لك روائع الكلمات...</div>
         </div>
 
-        <!-- قسم القرآن الكريم -->
+        <!-- قسم مستشار الذكاء الاصطناعي وجبر الخواطر الفعال -->
+        <div class="section-box">
+            <div class="section-title">🤖 مستشار الذكاء الاصطناعي وجبر الخواطر الحقيقي</div>
+            <textarea id="feelingInput" rows="3" placeholder="بماذا تشعرين الآن؟ (متعبة، زعلانة، قلقة، فرحانة)..."></textarea>
+            <button onclick="analyzeFeeling()">✨ تشغيل مستشار جبر الخواطر</button>
+            <div id="aiResult" class="result-box">💬 اكتبِ نبض قلبكِ ليرد عليكِ المستشار فوراً...</div>
+        </div>
+
+        <!-- واحة السكينة والذكر الحكيم -->
         <div class="section-box">
             <div class="section-title">🕌 واحة السكينة والذكر الحكيم</div>
             <p style="font-size: 14px; color: #ddd; text-align: center;">"أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ"</p>
             <button onclick="playQuran()">🎵 استماع وتشغيل القرآن الكريم برواقة</button>
-            <div id="quranResult" class="result-box" style="display:none; text-align:center;">🎵 جاري تشغيل تلاوة خاشعة تريح قلبكِ...</div>
+            <div id="quranResult" class="result-box" style="display:none; text-align:center;"></div>
         </div>
 
-        <!-- قسم زخرفة ببجي -->
+        <!-- زخرفة أسماء ببجي الفخمة المتحركة مع صور ببجي المدمجة -->
         <div class="section-box">
-            <div class="section-title">🎮 زخرفة أسماء ببجي الفخمة للجيل الجديد</div>
+            <div class="section-title">🎮 زخرفة ببجي ومحرك بحث الأفلام والمسلسلات</div>
             <input type="text" id="nameInput" placeholder="اكتبي الاسم المراد زخرفته بالإنجليزية...">
-            <button onclick="decorateName()">💎 توليد الزخرفة الملكية</button>
+            <button onclick="decorateName()">💎 توليد الزخرفة وتفعيل محرك البحث</button>
             <div id="pubgResult" class="result-box" style="display:none;"></div>
         </div>
 
-        <!-- قسم شحن الألعاب وشي إن -->
+        <!-- بوابة الشحن وتعبئة خطوط الهواتف المحمية بالكامل -->
         <div class="section-box">
-            <div class="section-title">🛍️ خدمات الشحن والتسوق السريع (SHEIN & PUBG)</div>
-            <button onclick="showShipping()">💳 تفعيل لوحة تشريج الخطوط وشحن البطاقات</button>
+            <div class="section-title">🛍️ خدمات شحن وتعبئة الهواتف والبطاقات (SHEIN & PUBG)</div>
+            <button onclick="showShipping()">💳 تفعيل لوحة تشريج الخطوط المحمية 100%</button>
             <div id="shippingResult" class="result-box" style="display:none;"></div>
         </div>
 
-        <div class="footer-logo">KR</div>
+        <div class="footer-logo-kr">KR</div>
     </div>
 
     <script>
-        function analyzeFeeling() {
-            const feeling = document.getElementById('feelingInput').value;
-            const resultBox = document.getElementById('aiResult');
-            if(!feeling) { resultBox.innerHTML = "رجاءً اكتبِ شيئاً لتتحدثي مع المستشار السحري! 💕"; return; }
-            
-            resultBox.innerHTML = "⏳ جاري قراءة نبضات قلبكِ وجبر خاطركِ الملوكي...";
-            setTimeout(() => {
-                resultBox.innerHTML = "❤️ يا غالية، قلبكِ الطيب لا يستحق سوى الفرح والراحة. كل تعبٍ سيزول وكل قلقٍ سيتبدد بفضل الله وكرمه. أنتِ قوية، مديرة متميزة، وروحكِ الفخمة تشعّ دائمًا بالخير لمن حولكِ. خذي نفسًا عميقًا برواقة، وابتسمي، فالبشارات الجميلة في طريقها لتسعد روحكِ الملكية طوال هذا الأسبوع! 👑✨";
-            }, 1500);
-        }
-
-        function playQuran() {
-            const quranBox = document.getElementById('quranResult');
-            quranBox.style.display = "block";
-            quranBox.innerHTML = "🎵 تم تشغيل سورة الرحمن بصوت عذب خاشع يملأ منزلكِ بالبركة والسكينة الآن... 🌿";
-        }
-
-        function decorateName() {
-            const name = document.getElementById('nameInput').value;
-            const res = document.getElementById('pubgResult');
-            if(!name) { res.style.display="block"; res.innerHTML = "يرجى كتابة اسم أولاً! 🎮"; return; }
-            res.style.display = "block";
-            res.innerHTML = `👑 𝓚𝓡_ ${name} _𝓚𝓡 👑<br>⚔️ 𝔎ℜ_${name}_𝔎ℜ ⚔️<br>⚡ 『KR』•${name}⚡`;
-        }
-
-        function showShipping() {
-            const res = document.getElementById('shippingResult');
-            res.style.display = "block";
-            res.innerHTML = "✅ تم ربط بوابة شحن ببجي المباشر وعروض شي إن الفخمة لحسابكِ بنجاح! عداد الأرباح بالدولار جاهز للتحرك مع كل زائر جديد! 💵🛍️";
-        }
-    </script>
-</body>
-</html>
+        const database = {
+            mother: "❤️ أمي الغالية هي <span class='highlight-red'>جنة الأرض</span> ونبض الحياة، اللهم احفظها بحفظك الكريم وبارك في عمرها ونور وجهها برواقة وسكينة. 🌿",
+            father: "👑 أبي هو <span class='highlight-red'>السند الحقيقي</span> والتاج الذي أفتخر به أمام العالم، رجلٌ تفخر به الأيام وتبقى هيبته عزاً لنا طوال العمر. ⚔️",
