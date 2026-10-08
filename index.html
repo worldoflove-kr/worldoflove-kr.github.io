@@ -18,7 +18,7 @@
         .lang-btn.active { background: #ffd700; color: #000; }
         .section-box { background: #111; border: 1px solid #333; border-radius: 12px; padding: 25px 15px; margin: 20px auto; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
         .box-title { color: #ffd700; font-size: 18px; font-weight: bold; margin-bottom: 15px; }
-        .btn-gold-link { display: block; background: linear-gradient(45deg, #ffd700, #b8860b); border: none; color: #000; padding: 14px; font-size: 16px; font-weight: bold; border-radius: 8px; text-decoration: none; cursor: pointer; box-sizing: border-box; }
+        .btn-gold-link { display: block; background: linear-gradient(45deg, #ffd700, #b8860b); border: none; color: #000; padding: 14px; font-size: 15px; font-weight: bold; border-radius: 8px; text-decoration: none; cursor: pointer; box-sizing: border-box; line-height: 1.4; }
         .visitor-counter { color: #ffd700; font-size: 13px; font-weight: bold; margin-top: 20px; background: #000; padding: 8px 15px; border-radius: 20px; border: 1px dashed #ffd700; display: inline-block; }
     </style>
     <script>
@@ -39,13 +39,13 @@
             document.getElementById("btn-en").classList.toggle("active", lang === 'en');
             if (lang === 'en') {
                 document.getElementById("main-title").innerText = "World of Love";
-                document.getElementById("title-search").innerText = "🌐 Open Google Browser";
-                document.getElementById("btn-search").innerText = "Click Here to Open Google";
+                document.getElementById("title-search").innerText = "🌐 Google Search Engine";
+                document.getElementById("btn-search").innerText = "Type to search anything on Google browser - Click Here";
                 document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,350</span>";
             } else {
                 document.getElementById("main-title").innerText = "عالم الحب";
-                document.getElementById("title-search").innerText = "🔍 متصفح جوجل الذكي";
-                document.getElementById("btn-search").innerText = "اضغط هنا للدخول إلى جوجل العادي الحين";
+                document.getElementById("title-search").innerText = "🔍 محرك بحث جوجل الذكي";
+                document.getElementById("btn-search").innerText = "اكتب للبحث عن أي شيء بمتصفح جوجل - اضغط هنا";
                 document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,350</span> زائر";
             }
             updateClock();
@@ -79,10 +79,10 @@
         </div>
         <h1 style="color: #ffd700; margin: 15px 0 5px 0; font-size: 34px;" id="main-title">عالم الحب</h1>
         
-        <!-- صندوق الزر السحري المباشر المفتوح لمتصفح جوجل العادي دغري وبأعلى دقة وموثوقية -->
+        <!-- صندوق الزر السحري بالعبارة الجديدة الدقيقة والمعدلة بالبكسل لعيونك -->
         <div class="section-box">
-            <div class="box-title" id="title-search">🔍 متصفح جوجل الذكي</div>
-            <a href="https://google.com" target="_blank" class="btn-gold-link" id="btn-search">اضغط هنا للدخول إلى جوجل العادي الحين</a>
+            <div class="box-title" id="title-search">🔍 محرك بحث جوجل الذكي</div>
+            <a href="https://google.com" target="_blank" class="btn-gold-link" id="btn-search">اكتب للبحث عن أي شيء بمتصفح جوجل - اضغط هنا</a>
         </div>
         
         <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1350</span> زائر</div>
