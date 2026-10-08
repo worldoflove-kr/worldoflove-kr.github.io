@@ -1,89 +1,3 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عالم الحب - World of Love</title>
-    <style>
-        body { background-color: #050505; color: #ffffff; font-family: sans-serif; margin: 0; padding: 0; text-align: center; }
-        .ticker-container { width: 100%; background-color: #000000; border-bottom: 2px solid #ffd700; overflow: hidden; padding: 12px 0; }
-        .ticker-wrapper { display: inline-block; white-space: nowrap; animation: marquee-live 20s linear infinite; }
-        .ticker-link { text-decoration: none; color: inherit; font-weight: bold; font-size: 13px; padding: 0 20px; }
-        .price { color: #ffd700; margin: 0 4px; }
-        .up { color: #00ff66; } .down { color: #ff3333; }
-        @keyframes marquee-live { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
-        .container { max-width: 500px; width: 90%; margin: 20px auto; }
-        .live-meta { background: #111; border: 1px solid #ffd700; border-radius: 12px; padding: 12px; margin-bottom: 20px; font-size: 13px; color: #e0e0e0; line-height: 1.6; }
-        .lang-btn { background: #000; border: 1px solid #ffd700; color: #ffd700; padding: 5px 12px; border-radius: 5px; cursor: pointer; font-weight: bold; margin: 0 3px; }
-        .lang-btn.active { background: #ffd700; color: #000; }
-        .section-box { background: #111; border: 1px solid #333; border-radius: 12px; padding: 15px; margin: 15px auto; text-align: right; }
-        .box-title { color: #ffd700; font-size: 16px; font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #ffd700; padding-bottom: 5px; }
-        input[type="text"] { width: 100%; padding: 10px; background: #000; border: 1px solid #ffd700; border-radius: 6px; color: #fff; box-sizing: border-box; text-align: right; font-size: 14px; }
-        .btn-gold { width: 100%; background: linear-gradient(45deg, #ffd700, #b8860b); border: none; color: #000; padding: 10px; font-size: 15px; font-weight: bold; border-radius: 6px; margin-top: 10px; cursor: pointer; }
-        .visitor-counter { color: #ffd700; font-size: 13px; font-weight: bold; margin-top: 20px; background: #000; padding: 8px 15px; border-radius: 20px; border: 1px dashed #ffd700; display: inline-block; }
-    </style>
-    <script>
-        var currentLang = 'ar';
-        function updateClock() {
-            var now = new Date();
-            var timeStr = now.toLocaleTimeString(currentLang === 'ar' ? 'ar-LB' : 'en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
-            var dateStr = now.toLocaleDateString(currentLang === 'ar' ? 'ar-LB' : 'en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-            if(currentLang === 'ar') {
-                document.getElementById("live-clock").innerHTML = `📅 ${dateStr} | ⏰ الساعة: ${timeStr} <br> ☀️ بيروت: 24°C | 💧 الرطوبة: 62%`;
-            } else {
-                document.getElementById("live-clock").innerHTML = `📅 ${dateStr} | ⏰ Time: ${timeStr} <br> ☀️ Beirut: 24°C | 💧 Humidity: 62%`;
-            }
-        }
-        
-        // الدوال البرمجية الحركية المباشرة التي تنقل المستخدم دغري للنتائج في نفس الصفحة لتتخطى حظر المتصفحات
-        function startSearch() {
-            var query = document.getElementById("search-input").value;
-            if (query.trim() !== "") {
-                window.location.href = "https://google.com" + encodeURIComponent(query);
-            }
-        }
-        function startTranslate() {
-            var text = document.getElementById("trans-input").value;
-            if (text.trim() !== "") {
-                window.location.href = "https://google.com" + encodeURIComponent(text) + "&op=translate";
-            }
-        }
-        
-        function switchLang(lang) {
-            currentLang = lang;
-            document.getElementById("btn-ar").classList.toggle("active", lang === 'ar');
-            document.getElementById("btn-en").classList.toggle("active", lang === 'en');
-            if (lang === 'en') {
-                document.getElementById("main-title").innerText = "World of Love";
-                document.getElementById("title-search").innerText = "🔍 Google Smart Search";
-                document.getElementById("search-input").placeholder = "Search anything on Google...";
-                document.getElementById("btn-search").innerText = "Search Now";
-                document.getElementById("title-trans").innerText = "🌐 Instant Translation (Arabic ➔ English)";
-                document.getElementById("trans-input").placeholder = "Type Arabic text here to translate...";
-                document.getElementById("btn-trans").innerText = "Translate Now";
-                document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,324</span>";
-            } else {
-                document.getElementById("main-title").innerText = "عالم الحب";
-                document.getElementById("title-search").innerText = "🔍 محرك بحث جوجل الذكي";
-                document.getElementById("search-input").placeholder = "اكتب ما تريد البحث عنه الحين...";
-                document.getElementById("btn-search").innerText = "ابحث عبر جوجل واعرض النتائج فوراً";
-                document.getElementById("title-trans").innerText = "🌐 الترجمة الفورية السريعة (عربي ➔ English)";
-                document.getElementById("trans-input").placeholder = "اكتب النص العربي هنا للترجمة فوراً...";
-                document.getElementById("btn-trans").innerText = "ترجم النص واعرض النتيجة فوراً";
-                document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,324</span> زائر";
-            }
-            updateClock();
-            document.getElementById("counter-val").innerText = localStorage.getItem('page_view') || 1324;
-        }
-        window.onload = function() {
-            setInterval(updateClock, 1000); updateClock();
-            var count = localStorage.getItem('page_view') || 1324;
-            count = parseInt(count) + 1; localStorage.setItem('page_view', count);
-            document.getElementById("counter-val").innerText = count;
-        };
-    </script>
-</head>
-<body>
     <div class="ticker-container">
         <div class="ticker-wrapper">
             <a href="https://kitco.com" target="_blank" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">\$2,624.50</span> <span class="down">▼ نازل</span></a>
@@ -95,31 +9,20 @@
         </div>
     </div>
     <div class="container">
-        <div class="live-meta">
-            <div style="margin-bottom: 8px;">
-                <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية</button>
-                <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English</button>
-            </div>
-            <div id="live-clock">📅 جاري تشغيل ساعة الثواني الحية...</div>
-        </div>
-        <h1 style="color: #ffd700; margin: 10px 0;" id="main-title">عالم الحب</h1>
+        <div class="live-meta" id="live-clock">📅 جاري تشغيل ساعة الثواني الحية...</div>
+        <h1 style="color: #ffd700; margin: 10px 0;">عالم الحب</h1>
         <p style="color: #ffd700; font-style: italic; margin-bottom: 20px;">World of Love</p>
         
-        <!-- صندوق محرك البحث المباشر المصحح بدون تداخل ليعمل فوراً للموبايل -->
+        <!-- نموذج بحث ميكانيكي مباشر وصارم يوجه دغري لنتائج جوجل الجاهزة للطلب بدون وساطة جافا سكريبت -->
         <div class="section-box">
-            <div class="box-title" id="title-search">🔍 محرك بحث جوجل الذكي</div>
-            <input type="text" id="search-input" placeholder="اكتب ما تريد البحث عنه الحين..." required>
-            <button type="button" class="btn-gold" id="btn-search" onclick="startSearch()">ابحث عبر جوجل واعرض النتائج فوراً</button>
+            <div class="box-title">🔍 محرك بحث جوجل الذكي</div>
+            <form action="https://google.com" method="GET" target="_blank">
+                <input type="text" name="q" placeholder="اكتب ما تريد البحث عنه الحين..." required>
+                <button type="submit" class="btn-gold">ابحث عبر جوجل واعرض النتائج فوراً</button>
+            </form>
         </div>
         
-        <!-- صندوق الترجمة الفورية المباشر المصحح بدون تداخل ليعمل فوراً للموبايل -->
-        <div class="section-box">
-            <div class="box-title" id="title-trans">🌐 الترجمة الفورية السريعة (عربي ➔ English)</div>
-            <input type="text" id="trans-input" placeholder="اكتب النص العربي هنا للترجمة فوراً..." required>
-            <button type="button" class="btn-gold" id="btn-trans" onclick="startTranslate()">ترجم النص واعرض النتيجة فوراً</button>
-        </div>
-        
-        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1324</span> زائر</div>
+        <div class="visitor-counter">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1350</span> زائر</div>
         <div style="font-size: 28px; font-weight: bold; color: #ffd700; margin-top: 20px;">KR</div>
     </div>
 </body>
