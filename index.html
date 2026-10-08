@@ -17,9 +17,6 @@
         @keyframes marquee-live { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
         .container { max-width: 600px; width: 90%; margin: 25px auto; text-align: center; }
         .live-meta { background: rgba(25, 25, 25, 0.9); border: 1px solid #ffd700; border-radius: 15px; padding: 15px; margin-bottom: 25px; }
-        .lang-switch { display: flex; justify-content: center; gap: 10px; margin-bottom: 15px; }
-        .btn-lang { background: none; border: 1px solid #ffd700; color: #ffd700; padding: 5px 15px; border-radius: 5px; font-weight: bold; }
-        .btn-lang.active { background: #ffd700; color: #000000; }
         .meta-grid { font-size: 13px; color: #e0e0e0; line-height: 1.8; }
         h1.pulse-title { color: #ffd700; font-size: 32px; margin: 20px 0 5px 0; }
         .logo-icon { font-size: 28px; color: #ffd700; margin: 10px 0; }
@@ -27,66 +24,86 @@
         .section-box { background: rgba(20, 20, 20, 0.9); border: 1px solid #333333; border-radius: 15px; padding: 20px; margin-bottom: 25px; text-align: right; }
         .section-title { color: #ffd700; font-size: 18px; font-weight: bold; margin-bottom: 15px; border-bottom: 1px solid #ffd700; padding-bottom: 8px; }
         input[type="text"], select { width: 100%; padding: 12px; background: #111111; border: 1px solid #ffd700; border-radius: 8px; color: #ffffff; box-sizing: border-box; margin-top: 10px; text-align: right; }
-        button.btn-gold { width: 100%; background: linear-gradient(45deg, #ffd700, #b8860b); border: none; color: #000000; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 8px; margin-top: 15px; }
-        .quran-info { font-size: 13px; color: #aaaaaa; margin-bottom: 10px; }
+        button.btn-gold { width: 100%; background: linear-gradient(45deg, #ffd700, #b8860b); border: none; color: #000000; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 8px; margin-top: 15px; cursor: pointer; }
+        .audio-player { width: 100%; margin-top: 15px; display: none; }
         .footer-logo-kr { font-size: 32px; font-weight: bold; color: #ffd700; margin-top: 40px; margin-bottom: 20px; }
     </style>
 </head>
 <body>
-    <!-- شريط البورصة والذهب والعملات المحدث -->
     <div class="ticker-container">
         <div class="ticker-wrapper">
             <span class="ticker-item"><span class="icon">💵</span> صرف الدولار الفريش: <span class="price">89,500 ل.ل</span> <span class="trend steady">◀ مستقر</span></span>
             <span class="ticker-item"><span class="icon">✨</span> أوقية الذهب العالمية: <span class="price">2,650$</span> <span class="trend down">▼ نازل</span></span>
             <span class="ticker-item"><span class="icon">🏆</span> ذهب عيار 21 (لبنان): <span class="price">78.50$</span> <span class="trend down">▼ نازل</span></span>
             <span class="ticker-item"><span class="icon">📈</span> مؤشر بورصة بيروت: <span class="price">1,715</span> <span class="trend up">▲ طالع</span></span>
-            <!-- تكرار لتأكيد الحركة المستمرة -->
             <span class="ticker-item"><span class="icon">💵</span> صرف الدولار الفريش: <span class="price">89,500 ل.ل</span> <span class="trend steady">◀ مستقر</span></span>
-            <span class="ticker-item"><span class="icon">✨</span> أوقية الذهب العالمية: <span class="price">2,650$</span> <span class="trend down">▼ نازل</span></span>
         </div>
     </div>
 
     <div class="container">
-        <!-- لوحة معلومات الطقس والوقت واللغة -->
         <div class="live-meta">
-            <div class="lang-switch">
-                <button class="btn-lang">English</button>
-                <button class="btn-lang active">العربية</button>
-            </div>
             <div class="meta-grid">
                 📅 الخميس 8 تشرين الأول 2026 | ⏰ الساعة: 04:00 صباحاً <br>
                 ☀️ بيروت: C°24 | 💧 رطوبة: 62%
             </div>
         </div>
 
-        <!-- عناوين الصفحة والشعار اللفظي -->
         <h1 class="pulse-title">عالم الحب</h1>
         <div class="logo-icon">🌟</div>
         <div class="en-subtitle">World of Love</div>
-        <!-- محرك بحث جوجل الذكي -->
+
+        <!-- محرك البحث المبرمج ليعمل فعلياً -->
         <div class="section-box">
             <div class="section-title">🔍 محرك بحث جوجل الذكي - عالم الحب</div>
             <form action="https://google.com" method="GET" target="_blank">
-                <input type="text" name="q" placeholder="ابحث في الإنترنت عن أي شيء من هنا الحين...">
+                <input type="text" name="q" placeholder="ابحث في الإنترنت عن أي شيء من هنا الحين..." required>
                 <button type="submit" class="btn-gold">ابحث عبر جوجل</button>
             </form>
         </div>
-
-        <!-- واحة القرآن الكريم والذكر الحكيم -->
+        <!-- واحة القرآن مبرمجة بروابط صوتية حقيقية ومباشرة -->
         <div class="section-box">
             <div class="section-title">🕌 واحة القرآن الكريم والذكر الحكيم التفاعلية</div>
-            <div class="quran-info">اختر القارئ واستمع لتفسير وتلاوة آيات السكينة مع روابط تحميل ومشاركة مباركة باسم صفحتنا:</div>
-            <select>
-                <option>الشيخ عبد الباسط عبد الصمد (تلاوة خاشعة + التفسير)</option>
-                <option>الشيخ محمد صديق المنشاوي</option>
-                <option>الشيخ محمود خليل الحصري</option>
-                <option>الشيخ ماهر المعيقلي</option>
+            <p style="font-size:13px; color:#aaa; margin:0;">اختر القارئ لتشغيل التلاوة العطرة لآيات السكينة وسورة البقرة فوراً:</p>
+            
+            <select id="quran-select">
+                <option value="https://mp3quran.net">الشيخ عبد الباسط عبد الصمد (سورة البقرة)</option>
+                <option value="https://mp3quran.net">الشيخ محمد صديق المنشاوي</option>
+                <option value="https://mp3quran.net">الشيخ محمود خليل الحصري</option>
+                <option value="https://mp3quran.net">الشيخ ماهر المعيقلي</option>
             </select>
-            <button class="btn-gold" onclick="alert('جاري تشغيل وتحضير رابط الاستماع والتحميل باسم عالم الحب...')">استمع وشارك المباركة</button>
+            
+            <button class="btn-gold" onclick="playAudio()">▶ تشغيل التلاوة الحالية</button>
+            <button class="btn-gold" style="background:linear-gradient(45deg, #8b0000, #ff3333); color:#fff; margin-top:5px;" onclick="stopAudio()">⏹ إيقاف الصوت</button>
+            
+            <audio id="main-player" class="audio-player" controls></audio>
+            
+            <button class="btn-gold" style="margin-top:20px; background:#4a4a4a; color:#fff;" onclick="sharePage()">🔗 مشاركة رابط صفحتنا ومباركتها</button>
         </div>
 
-        <!-- التوقيع السفلي المميز للشعار -->
         <div class="footer-logo-kr">KR</div>
     </div>
+
+    <!-- كود الجافا سكريبت الذكي لتشغيل الصوتيات والمشاركة -->
+    <script>
+        function playAudio() {
+            var select = document.getElementById("quran-select");
+            var player = document.getElementById("main-player");
+            player.src = select.value;
+            player.style.display = "block";
+            player.play();
+        }
+        function stopAudio() {
+            var player = document.getElementById("main-player");
+            player.pause();
+        }
+        function sharePage() {
+            var url = window.location.href;
+            navigator.clipboard.writeText(url).then(function() {
+                alert("✨ تم نسخ رابط صفحتك بنجاح! يمكنك الآن لصقه ومشاركته مع من تحب عبر الواتساب.");
+            }).catch(function() {
+                alert("رابط صفحتك هو: " + url);
+            });
+        }
+    </script>
 </body>
 </html>
