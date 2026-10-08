@@ -1,3 +1,41 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عالم الحب - World of Love</title>
+    <style>
+        body { background-color: #050505; color: #ffffff; font-family: sans-serif; margin: 0; padding: 0; text-align: center; }
+        .ticker-container { width: 100%; background-color: #000000; border-bottom: 2px solid #ffd700; overflow: hidden; padding: 12px 0; }
+        .ticker-wrapper { display: inline-block; white-space: nowrap; animation: marquee-live 20s linear infinite; }
+        .ticker-link { text-decoration: none; color: inherit; font-weight: bold; font-size: 13px; padding: 0 20px; }
+        .price { color: #ffd700; margin: 0 4px; }
+        .up { color: #00ff66; } .down { color: #ff3333; }
+        @keyframes marquee-live { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
+        .container { max-width: 500px; width: 90%; margin: 20px auto; }
+        .live-meta { background: #111; border: 1px solid #ffd700; border-radius: 12px; padding: 12px; margin-bottom: 20px; font-size: 13px; color: #e0e0e0; line-height: 1.6; }
+        .section-box { background: #111; border: 1px solid #333; border-radius: 12px; padding: 15px; margin: 15px auto; text-align: right; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .box-title { color: #ffd700; font-size: 16px; font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #ffd700; padding-bottom: 5px; }
+        input[type="text"] { width: 100%; padding: 12px; background: #000; border: 1px solid #ffd700; border-radius: 6px; color: #fff; box-sizing: border-box; text-align: right; font-size: 14px; }
+        .btn-gold { width: 100%; background: linear-gradient(45deg, #ffd700, #b8860b); border: none; color: #000; padding: 12px; font-size: 15px; font-weight: bold; border-radius: 6px; margin-top: 10px; cursor: pointer; }
+        .visitor-counter { color: #ffd700; font-size: 13px; font-weight: bold; margin-top: 20px; background: #000; padding: 8px 15px; border-radius: 20px; border: 1px dashed #ffd700; display: inline-block; }
+    </style>
+    <script>
+        function updateClock() {
+            var now = new Date();
+            var timeStr = now.toLocaleTimeString('ar-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+            var dateStr = now.toLocaleDateString('ar-LB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            document.getElementById("live-clock").innerHTML = `📅 ${dateStr} | ⏰ الساعة: ${timeStr} <br> ☀️ بيروت: 24°C | 💧 الرطوبة: 62%`;
+        }
+        window.onload = function() {
+            setInterval(updateClock, 1000); updateClock();
+            var count = localStorage.getItem('page_view') || 1350;
+            count = parseInt(count) + 1; localStorage.setItem('page_view', count);
+            document.getElementById("counter-val").innerText = count;
+        };
+    </script>
+</head>
+<body>
     <div class="ticker-container">
         <div class="ticker-wrapper">
             <a href="https://kitco.com" target="_blank" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">\$2,624.50</span> <span class="down">▼ نازل</span></a>
@@ -10,20 +48,19 @@
     </div>
     <div class="container">
         <div class="live-meta" id="live-clock">📅 جاري تشغيل ساعة الثواني الحية...</div>
-        <h1 style="color: #ffd700; margin: 10px 0;">عالم الحب</h1>
-        <p style="color: #ffd700; font-style: italic; margin-bottom: 20px;">World of Love</p>
+        <h1 style="color: #ffd700; margin: 15px 0 5px 0; font-size: 34px;">عالم الحب</h1>
+        <p style="color: #ffd700; font-style: italic; margin-bottom: 25px; font-size: 18px;">World of Love</p>
         
-        <!-- نموذج بحث ميكانيكي مباشر وصارم يوجه دغري لنتائج جوجل الجاهزة للطلب بدون وساطة جافا سكريبت -->
         <div class="section-box">
             <div class="box-title">🔍 محرك بحث جوجل الذكي</div>
             <form action="https://google.com" method="GET" target="_blank">
-                <input type="text" name="q" placeholder="اكتب ما تريد البحث عنه الحين..." required>
+                <input type="text" name="q" placeholder="ابحث في الإنترنت عن أي شيء من هنا الحين..." required>
                 <button type="submit" class="btn-gold">ابحث عبر جوجل واعرض النتائج فوراً</button>
             </form>
         </div>
         
         <div class="visitor-counter">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1350</span> زائر</div>
-        <div style="font-size: 28px; font-weight: bold; color: #ffd700; margin-top: 20px;">KR</div>
+        <div style="font-size: 28px; font-weight: bold; color: #ffd700; margin-top: 25px;">KR</div>
     </div>
 </body>
 </html>
