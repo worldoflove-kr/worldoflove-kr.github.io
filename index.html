@@ -7,17 +7,22 @@
     <style>
         body { background-color: #050505; color: #ffffff; font-family: sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
         
-        /* شريط البورصة العالمي المتطور - حركة دائرية متصلة ومزدحمة بدون أي فراغات */
+        /* شريط البورصة العالمي المتطور - حركة دائرية متصلة ومزدحمة تمنع الفراغ الأسود كلياً */
         .ticker-container { width: 100%; background-color: #000000; border-bottom: 2px solid #ffd700; overflow: hidden; box-sizing: border-box; padding: 12px 0; position: relative; }
-        .ticker-wrapper { display: inline-block; white-space: nowrap; animation: marquee-live 30s linear infinite; }
+        .ticker-wrapper { display: inline-block; white-space: nowrap; animation: marquee-live 25s linear infinite; }
         .ticker-container:hover .ticker-wrapper { animation-play-state: paused; }
         .ticker-link { text-decoration: none; color: inherit; cursor: pointer; }
-        .ticker-item { display: inline-block; padding: 0 35px; font-size: 14px; font-weight: bold; }
+        .ticker-item { display: inline-block; padding: 0 40px; font-size: 14px; font-weight: bold; }
         .ticker-item .price { color: #ffd700; margin: 0 5px; }
         .trend.up { color: #00ff66; font-size: 13px; font-weight: bold; }
         .trend.down { color: #ff3333; font-size: 13px; font-weight: bold; }
         .trend.steady { color: #aaaaaa; font-size: 13px; font-weight: bold; }
-        @keyframes marquee-live { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
+        
+        /* ضبط نقطة التكرار هندسياً عند منتصف المحتوى تماماً لإلغاء أي سواد وفراغات */
+        @keyframes marquee-live { 
+            0% { transform: translate3d(0, 0, 0); } 
+            100% { transform: translate3d(-50%, 0, 0); } 
+        }
         
         .container { max-width: 600px; width: 90%; margin: 30px auto; text-align: center; }
         .live-meta { background: rgba(25, 25, 25, 0.9); border: 1px solid #ffd700; border-radius: 15px; padding: 15px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.1); font-size: 14px; color: #e0e0e0; line-height: 1.8; }
@@ -35,67 +40,88 @@
         .visitor-counter { color: #ffd700; font-size: 15px; font-weight: bold; margin-top: 40px; background: #000; padding: 10px 20px; border-radius: 20px; border: 1px dashed #ffd700; display: inline-block; }
         .footer-logo-kr { font-size: 32px; font-weight: bold; color: #ffd700; margin-top: 30px; }
     </style>
+
+    <!-- الأكواد البرمجية بالرأس لتفعيل تشغيل ساعة الثواني والبورصة فوراً للموبايل دون حظر -->
+    <script>
+        var currentLang = 'ar';
+
+        function updateClockAndWeather() {
+            var now = new Date();
+            var timeString = now.toLocaleTimeString(currentLang === 'ar' ? 'ar-LB' : 'en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+            
+            if (currentLang === 'ar') {
+                var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                var dateString = now.toLocaleDateString('ar-LB', options);
+                document.getElementById("live-clock-weather").innerHTML = `📅 ${dateString} | ⏰ الساعة: ${timeString} <br> ☀️ بيروت: C°24 | 💧 الرطوبة: 62%`;
+            } else {
+                var optionsEn = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                var dateStringEn = now.toLocaleDateString('en-US', optionsEn);
+                document.getElementById("live-clock-weather").innerHTML = `📅 ${dateStringEn} | ⏰ Time: ${timeString} <br> ☀️ Beirut: 24°C | 💧 Humidity: 62%`;
+            }
+        }
+
+        function translateText() {
+            var text = document.getElementById("trans-text").value;
+            if(text.trim() !== "") {
+                window.open("https://google.com" + encodeURIComponent(text) + "&op=translate", '_blank');
+            } else { 
+                alert(currentLang === 'ar' ? "الرجاء كتابة نص أولاً لترجمته!" : "Please type text first to translate!"); 
+            }
+        }
+
+        function switchLang(lang) {
+            currentLang = lang;
+            document.getElementById("btn-ar").classList.toggle("active", lang === 'ar');
+            document.getElementById("btn-en").classList.toggle("active", lang === 'en');
+            
+            if (lang === 'en') {
+                document.getElementById("main-title").innerText = "World of Love";
+                document.getElementById("title-search").innerText = "🔍 Google Smart Search - World of Love";
+                document.getElementById("input-search").placeholder = "Type what you want to search (e.g., New Elissa song)...";
+                document.getElementById("btn-search").innerText = "Search via Google & Show Results Immediately";
+                document.getElementById("title-trans").innerText = "🌐 Instant Translation (Arabic ➔ English)";
+                document.getElementById("trans-text").placeholder = "Type Arabic text here to translate instantly...";
+                document.getElementById("btn-trans").innerText = "Translate Text & Show Results Immediately";
+                document.getElementById("visitor-box").innerHTML = "👥 Our Live Visitors: <span style='color:#fff;' id='counter-val'>1,254</span> Visitors";
+            } else {
+                document.getElementById("main-title").innerText = "عالم الحب";
+                document.getElementById("title-search").innerText = "🔍 محرك بحث جوجل الذكي - عالم الحب";
+                document.getElementById("input-search").placeholder = "اكتب ما تريد البحث عنه (مثال: أغنية إليسا الجديدة)...";
+                document.getElementById("btn-search").innerText = "ابحث عبر جوجل واعرض النتائج فوراً";
+                document.getElementById("title-trans").innerText = "🌐 الترجمة الفورية السريعة (عربي ➔ English)";
+                document.getElementById("trans-text").placeholder = "اكتب الكلمة أو الجملة العربية هنا للترجمة فوراً...";
+                document.getElementById("btn-trans").innerText = "ترجم النص واعرض النتيجة فوراً";
+                document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,254</span> زائر";
+            }
+            updateClockAndWeather();
+            var count = localStorage.getItem('page_view') || 1254;
+            document.getElementById("counter-val").innerText = count;
+        }
+
+        // تشغيل برمجيات العداد والساعة فور فتح الواجهة مباشرة
+        window.onload = function() {
+            setInterval(updateClockAndWeather, 1000);
+            updateClockAndWeather();
+
+            var count = localStorage.getItem('page_view');
+            if (count === null) { count = 1254; } else { count = parseInt(count) + 1; }
+            localStorage.setItem('page_view', count);
+            document.getElementById("counter-val").innerText = count;
+        };
+    </script>
 </head>
 <body>
 
-    <!-- شريط البورصة العالمي المزدحم والمكرر 6 مرات هندسياً لإلغاء الفراغ الأسود كلياً -->
+    <!-- شريط البورصة العالمي المزدحم والمكرر هندسياً لإلغاء الفراغ الأسود كلياً وبشكل متصل -->
     <div class="ticker-container">
         <div class="ticker-wrapper">
-            <!-- المجموعة 1 -->
+            <!-- المجموعة الأساسية -->
             <a href="https://kitco.com" target="_blank" class="ticker-link"><span class="ticker-item">✨ أوقية الذهب العالمية: <span class="price">$2,624.50</span> <span class="trend down">▼ نازل</span></span></a>
             <a href="https://xe.com" target="_blank" class="ticker-link"><span class="ticker-item">💵 مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="trend up">▲ طالع</span></span></a>
             <a href="https://apmex.com" target="_blank" class="ticker-link"><span class="ticker-item">🏆 ذهب عيار 21 (المحلي): <span class="price">$77.60</span> <span class="trend down">▼ نازل</span></span></a>
             <a href="https://lebanonfiles.com" target="_blank" class="ticker-link"><span class="ticker-item">💵 صرف الدولار المحلي: <span class="price">89,500 ل.ل</span> <span class="trend steady">◀ مستقر</span></span></a>
             
-            <!-- المجموعة 2 -->
+            <!-- مجموعة التكرار الفوري المتصل لمنع الفراغ الأسود تماماً وبشكل دائم -->
             <a href="https://kitco.com" target="_blank" class="ticker-link"><span class="ticker-item">✨ أوقية الذهب العالمية: <span class="price">$2,624.50</span> <span class="trend down">▼ نازل</span></span></a>
             <a href="https://xe.com" target="_blank" class="ticker-link"><span class="ticker-item">💵 مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="trend up">▲ طالع</span></span></a>
             <a href="https://apmex.com" target="_blank" class="ticker-link"><span class="ticker-item">🏆 ذهب عيار 21 (المحلي): <span class="price">$77.60</span> <span class="trend down">▼ نازل</span></span></a>
-            <a href="https://lebanonfiles.com" target="_blank" class="ticker-link"><span class="ticker-item">💵 صرف الدولار المحلي: <span class="price">89,500 ل.ل</span> <span class="trend steady">◀ مستقر</span></span></a>
-
-            <!-- المجموعة 3 -->
-            <a href="https://kitco.com" target="_blank" class="ticker-link"><span class="ticker-item">✨ أوقية الذهب العالمية: <span class="price">$2,624.50</span> <span class="trend down">▼ نازل</span></span></a>
-            <a href="https://xe.com" target="_blank" class="ticker-link"><span class="ticker-item">💵 مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="trend up">▲ طالع</span></span></a>
-            <a href="https://lebanonfiles.com" target="_blank" class="ticker-link"><span class="ticker-item">💵 صرف الدولار المحلي: <span class="price">89,500 ل.ل</span> <span class="trend steady">◀ مستقر</span></span></a>
-
-            <!-- تكرار النصف الثاني الكامل لمنع توقف الرسوم المتحركة وجعل الحركة دائرية لا تنتهي -->
-            <a href="https://kitco.com" target="_blank" class="ticker-link"><span class="ticker-item">✨ أوقية الذهب العالمية: <span class="price">$2,624.50</span> <span class="trend down">▼ نازل</span></span></a>
-            <a href="https://xe.com" target="_blank" class="ticker-link"><span class="ticker-item">💵 مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="trend up">▲ طالع</span></span></a>
-            <a href="https://apmex.com" target="_blank" class="ticker-link"><span class="ticker-item">🏆 ذهب عيار 21 (المحلي): <span class="price">$77.60</span> <span class="trend down">▼ نازل</span></span></a>
-            <a href="https://lebanonfiles.com" target="_blank" class="ticker-link"><span class="ticker-item">💵 صرف الدولار المحلي: <span class="price">89,500 ل.ل</span> <span class="trend steady">◀ مستقر</span></span></a>
-            
-            <a href="https://kitco.com" target="_blank" class="ticker-link"><span class="ticker-item">✨ أوقية الذهب العالمية: <span class="price">$2,624.50</span> <span class="trend down">▼ نازل</span></span></a>
-            <a href="https://xe.com" target="_blank" class="ticker-link"><span class="ticker-item">💵 مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="trend up">▲ طالع</span></span></a>
-            <a href="https://apmex.com" target="_blank" class="ticker-link"><span class="ticker-item">🏆 ذهب عيار 21 (المحلي): <span class="price">$77.60</span> <span class="trend down">▼ نازل</span></span></a>
-            <a href="https://lebanonfiles.com" target="_blank" class="ticker-link"><span class="ticker-item">💵 صرف الدولار المحلي: <span class="price">89,500 ل.ل</span> <span class="trend steady">◀ مستقر</span></span></a>
-
-            <a href="https://kitco.com" target="_blank" class="ticker-link"><span class="ticker-item">✨ أوقية الذهب العالمية: <span class="price">$2,624.50</span> <span class="trend down">▼ نازل</span></span></a>
-            <a href="https://xe.com" target="_blank" class="ticker-link"><span class="ticker-item">💵 مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="trend up">▲ طالع</span></span></a>
-            <a href="https://lebanonfiles.com" target="_blank" class="ticker-link"><span class="ticker-item">💵 صرف الدولار المحلي: <span class="price">89,500 ل.ل</span> <span class="trend steady">◀ مستقر</span></span></a>
-        </div>
-    </div>
-
-    <div class="container">
-        <!-- لوحة تحديث الوقت والطقس المباشرة لبيروت -->
-        <div class="live-meta">
-            <div style="margin-bottom: 12px;">
-                <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية</button>
-                <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English</button>
-            </div>
-            <div id="live-clock-weather">📅 الخميس 8 تشرين الأول 2026 | ⏰ الساعة: 08:31 مساءً <br> ☀️ بيروت: C°24 | 💧 الرطوبة: 62%</div>
-        </div>
-
-        <h1 class="pulse-title" id="main-title">عالم الحب</h1>
-        <div class="en-subtitle" id="sub-title">World of Love</div>
-        
-        <!-- صندوق محرك البحث المباشر الفعال والذكي عبر خوادم جوجل فوراً -->
-        <div class="section-box">
-            <div class="box-title" id="title-search">🔍 محرك بحث جوجل الذكي - عالم الحب</div>
-            <form action="https://google.com" method="GET" target="_blank">
-                <input type="text" name="q" id="input-search" placeholder="اكتب ما تريد البحث عنه (مثال: أغنية إليسا الجديدة)..." required>
-                <button type="submit" class="btn-gold" id="btn-search">ابحث عبر جوجل واعرض النتائج فوراً</button>
-            </form>
-        </div>
-
-        <!-- صندوق الترجمة الفورية المطور إلى جوجل ترانسليت مباشرة -->
-        <div class="section-box">
