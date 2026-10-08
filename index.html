@@ -34,14 +34,6 @@
                 document.getElementById("live-clock").innerHTML = `📅 ${dateStr} | ⏰ Time: ${timeStr} <br> ☀️ Beirut: 24°C | 💧 Humidity: 62%`;
             }
         }
-        function startSearch() {
-            var query = document.getElementById("search-input").value;
-            if (query.trim() !== "") { window.location.href = "https://google.com" + encodeURIComponent(query); }
-        }
-        function startTranslate() {
-            var text = document.getElementById("trans-input").value;
-            if (text.trim() !== "") { window.location.href = "https://google.com" + encodeURIComponent(text) + "&op=translate"; }
-        }
         function switchLang(lang) {
             currentLang = lang;
             document.getElementById("btn-ar").classList.toggle("active", lang === 'ar');
@@ -98,16 +90,25 @@
         <h1 style="color: #ffd700; margin: 10px 0;" id="main-title">عالم الحب</h1>
         <p style="color: #ffd700; font-style: italic; margin-bottom: 20px;">World of Love</p>
         
+        <!-- نموذج بحث ميكانيكي مباشر يوجه المتصفح دغري لنتائج جوجل الجاهزة للطلب -->
         <div class="section-box">
             <div class="box-title" id="title-search">🔍 محرك بحث جوجل الذكي</div>
-            <input type="text" id="search-input" placeholder="اكتب ما تريد البحث عنه الحين..." required>
-            <button type="button" class="btn-gold" id="btn-search" onclick="startSearch()">ابحث عبر جوجل واعرض النتائج فوراً</button>
+            <form action="https://google.com" method="GET" target="_blank">
+                <input type="text" name="q" id="search-input" placeholder="اكتب ما تريد البحث عنه الحين..." required>
+                <button type="submit" class="btn-gold" id="btn-search">ابحث عبر جوجل واعرض النتائج فوراً</button>
+            </form>
         </div>
         
+        <!-- نموذج ترجمة ميكانيكي مباشر يوجه المتصفح دغري لمترجم جوجل محمل بالكلمة والترجمة -->
         <div class="section-box">
             <div class="box-title" id="title-trans">🌐 الترجمة الفورية السريعة (عربي ➔ English)</div>
-            <input type="text" id="trans-input" placeholder="اكتب النص العربي هنا للترجمة فوراً..." required>
-            <button type="button" class="btn-gold" id="btn-trans" onclick="startTranslate()">ترجم النص واعرض النتيجة فوراً</button>
+            <form action="https://google.com" method="GET" target="_blank">
+                <input type="hidden" name="sl" value="ar">
+                <input type="hidden" name="tl" value="en">
+                <input type="hidden" name="op" value="translate">
+                <input type="text" name="text" id="trans-input" placeholder="اكتب النص العربي هنا للترجمة فوراً..." required>
+                <button type="submit" class="btn-gold" id="btn-trans">ترجم النص واعرض النتيجة فوراً</button>
+            </form>
         </div>
         
         <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1324</span> زائر</div>
