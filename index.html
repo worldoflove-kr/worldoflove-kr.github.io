@@ -35,23 +35,6 @@
             }
         }
 
-        // جعل التوجيه يتم في نفس الصفحة لتخطي حظر المتصفح كلياً
-        function executeGoogleSearch() {
-            var query = document.getElementById("input-search").value;
-            if(query.trim() !== "") {
-                window.location.href = "https://google.com" + encodeURIComponent(query);
-            }
-            return false;
-        }
-
-        function executeTranslation() {
-            var text = document.getElementById("trans-txt").value;
-            if(text.trim() !== "") {
-                window.location.href = "https://google.com" + encodeURIComponent(text) + "&op=translate";
-            }
-            return false;
-        }
-
         function switchLang(lang) {
             currentLang = lang;
             document.getElementById("btn-ar").classList.toggle("active", lang === 'ar');
@@ -64,7 +47,7 @@
                 document.getElementById("title-trans").innerText = "🌐 Instant Translation (Arabic ➔ English)";
                 document.getElementById("trans-txt").placeholder = "Type Arabic text here to translate...";
                 document.getElementById("btn-trans").innerText = "Translate Now";
-                document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,309</span>";
+                document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,324</span>";
             } else {
                 document.getElementById("main-title").innerText = "عالم الحب";
                 document.getElementById("title-search").innerText = "🔍 محرك بحث جوجل الذكي";
@@ -73,15 +56,15 @@
                 document.getElementById("title-trans").innerText = "🌐 الترجمة الفورية السريعة (عربي ➔ English)";
                 document.getElementById("trans-txt").placeholder = "اكتب النص العربي هنا للترجمة فوراً...";
                 document.getElementById("btn-trans").innerText = "ترجم النص واعرض النتيجة فوراً";
-                document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,309</span> زائر";
+                document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,324</span> زائر";
             }
             updateClock();
-            document.getElementById("counter-val").innerText = localStorage.getItem('page_view') || 1309;
+            document.getElementById("counter-val").innerText = localStorage.getItem('page_view') || 1324;
         }
 
         window.onload = function() {
             setInterval(updateClock, 1000); updateClock();
-            var count = localStorage.getItem('page_view') || 1309;
+            var count = localStorage.getItem('page_view') || 1324;
             count = parseInt(count) + 1; localStorage.setItem('page_view', count);
             document.getElementById("counter-val").innerText = count;
         };
@@ -90,12 +73,12 @@
 <body>
     <div class="ticker-container">
         <div class="ticker-wrapper">
-            <a href="https://kitco.com" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">\$2,624.50</span> <span class="down">▼ نازل</span></a>
-            <a href="https://xe.com" class="ticker-link">💵 مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="up">▲ طالع</span></a>
-            <a href="https://lebanonfiles.com" class="ticker-link">💵 صرف الدولار في لبنان: <span class="price">89,500 ل.ل</span> ◀ مستقر</a>
-            <a href="https://kitco.com" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">\$2,624.50</span> <span class="down">▼ نازل</span></a>
-            <a href="https://xe.com" class="ticker-link">💵 مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="up">▲ طالع</span></a>
-            <a href="https://lebanonfiles.com" class="ticker-link">💵 صرف الدولار في لبنان: <span class="price">89,500 ل.ل</span> ◀ مستقر</a>
+            <a href="https://kitco.com" target="_blank" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">\$2,624.50</span> <span class="down">▼ نازل</span></a>
+            <a href="https://xe.com" target="_blank" class="ticker-link">💵 مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="up">▲ طالع</span></a>
+            <a href="https://lebanonfiles.com" target="_blank" class="ticker-link">💵 صرف الدولار في لبنان: <span class="price">89,500 ل.ل</span> ◀ مستقر</a>
+            <a href="https://kitco.com" target="_blank" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">\$2,624.50</span> <span class="down">▼ نازل</span></a>
+            <a href="https://xe.com" target="_blank" class="ticker-link">💵 مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="up">▲ طالع</span></a>
+            <a href="https://lebanonfiles.com" target="_blank" class="ticker-link">💵 صرف الدولار في لبنان: <span class="price">89,500 ل.ل</span> ◀ مستقر</a>
         </div>
     </div>
     <div class="container">
@@ -109,23 +92,28 @@
         <h1 style="color: #ffd700; margin: 10px 0;" id="main-title">عالم الحب</h1>
         <p style="color: #ffd700; font-style: italic; margin-bottom: 20px;">World of Love</p>
         
+        <!-- صندوق محرك البحث المباشر المصحح بالكامل بالرابط الرسمي الجاهز والمفتوح -->
         <div class="section-box">
             <div class="box-title" id="title-search">🔍 محرك بحث جوجل الذكي</div>
-            <form onsubmit="return executeGoogleSearch();">
-                <input type="text" id="input-search" placeholder="اكتب ما تريد البحث عنه الحين..." required>
+            <form action="https://google.com" method="GET">
+                <input type="text" name="q" id="input-search" placeholder="اكتب ما تريد البحث عنه الحين..." required>
                 <button type="submit" class="btn-gold" id="btn-search">ابحث عبر جوجل واعرض النتائج فوراً</button>
             </form>
         </div>
         
+        <!-- صندوق الترجمة الفورية المباشر المصحح بالكامل بالرابط الرسمي الجاهز والمفتوح -->
         <div class="section-box">
             <div class="box-title" id="title-trans">🌐 الترجمة الفورية السريعة (عربي ➔ English)</div>
-            <form onsubmit="return executeTranslation();">
-                <input type="text" id="trans-txt" placeholder="اكتب النص العربي هنا للترجمة فوراً..." required>
+            <form action="https://google.com" method="GET">
+                <input type="hidden" name="sl" value="ar">
+                <input type="hidden" name="tl" value="en">
+                <input type="hidden" name="op" value="translate">
+                <input type="text" name="text" id="trans-txt" placeholder="اكتب النص العربي هنا للترجمة فوراً..." required>
                 <button type="submit" class="btn-gold" id="btn-trans">ترجم النص واعرض النتيجة فوراً</button>
             </form>
         </div>
         
-        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1309</span> زائر</div>
+        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1324</span> زائر</div>
         <div style="font-size: 28px; font-weight: bold; color: #ffd700; margin-top: 20px;">KR</div>
     </div>
 </body>
