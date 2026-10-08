@@ -19,21 +19,17 @@
         
         .container { max-width: 600px; width: 90%; margin: 30px auto; text-align: center; }
         .live-meta { background: rgba(25, 25, 25, 0.9); border: 1px solid #ffd700; border-radius: 15px; padding: 15px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.1); font-size: 14px; color: #e0e0e0; line-height: 1.8; }
-        
-        /* أزرار تبديل لغة الموقع بالكامل */
         .lang-btn { background: #111; border: 1px solid #ffd700; color: #ffd700; padding: 5px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; margin: 0 5px; }
         .lang-btn.active { background: #ffd700; color: #000; }
         
         h1.pulse-title { color: #ffd700; font-size: 36px; margin: 20px 0 5px 0; }
         .en-subtitle { color: #ffd700; font-style: italic; font-size: 20px; margin-bottom: 30px; }
         
-        /* تصميم الصناديق الفخمة */
         .section-box { background: rgba(20, 20, 20, 0.9); border: 1px solid #333333; border-radius: 15px; padding: 20px; margin: 25px auto; text-align: right; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
         .box-title { color: #ffd700; font-size: 18px; font-weight: bold; margin-bottom: 15px; border-bottom: 1px solid #ffd700; padding-bottom: 8px; display: flex; align-items: center; gap: 8px; }
         input[type="text"] { width: 100%; padding: 12px; background: #111111; border: 1px solid #ffd700; border-radius: 8px; color: #ffffff; box-sizing: border-box; margin-top: 10px; text-align: right; font-size: 14px; }
         button.btn-gold { width: 100%; background: linear-gradient(45deg, #ffd700, #b8860b); border: none; color: #000000; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 8px; margin-top: 15px; cursor: pointer; }
         
-        /* عداد الزوار الذهبي المباشر */
         .visitor-counter { color: #ffd700; font-size: 15px; font-weight: bold; margin-top: 40px; background: #000; padding: 10px 20px; border-radius: 20px; border: 1px dashed #ffd700; display: inline-block; }
         .footer-logo-kr { font-size: 32px; font-weight: bold; color: #ffd700; margin-top: 30px; }
     </style>
@@ -60,20 +56,20 @@
         <h1 class="pulse-title" id="main-title">عالم الحب</h1>
         <div class="en-subtitle" id="sub-title">World of Love</div>
         
-        <!-- صندوق محرك البحث الذكي -->
+        <!-- صندوق محرك البحث المباشر الفعال والذكي عبر خوادم جوجل فوراً -->
         <div class="section-box">
             <div class="box-title" id="title-search">🔍 محرك بحث جوجل الذكي - عالم الحب</div>
             <form action="https://google.com" method="GET" target="_blank">
-                <input type="text" name="q" id="input-search" placeholder="ابحث في الإنترنت عن أي شيء من هنا الحين..." required>
-                <button type="submit" class="btn-gold" id="btn-search">ابحث عبر جوجل</button>
+                <input type="text" name="q" id="input-search" placeholder="اكتب ما تريد البحث عنه (مثال: أغنية إليسا الجديدة)..." required>
+                <button type="submit" class="btn-gold" id="btn-search">ابحث عبر جوجل واعرض النتائج فوراً</button>
             </form>
         </div>
 
-        <!-- صندوق الترجمة الفورية المطور إلى جوجل مباشرة -->
+        <!-- صندوق الترجمة الفورية المطور إلى جوجل ترانسليت مباشرة -->
         <div class="section-box">
             <div class="box-title" id="title-trans">🌐 الترجمة الفورية السريعة (عربي ➔ English)</div>
             <input type="text" id="trans-text" placeholder="اكتب الكلمة أو الجملة العربية هنا للترجمة فوراً..." required>
-            <button class="btn-gold" id="btn-trans" onclick="translateText()">ترجم النص عبر جوجل</button>
+            <button class="btn-gold" id="btn-trans" onclick="translateText()">ترجم النص واعرض النتيجة فوراً</button>
         </div>
         
         <!-- عداد الزوار الرقمي التلقائي المباشر -->
@@ -101,7 +97,6 @@
             document.getElementById("live-clock-weather").innerHTML = `📅 ${dateString} | ⏰ الساعة: ${timeString} <br> ☀️ بيروت: C°24 | 💧 الرطوبة: 62%`;
         }
 
-        // دالة الترجمة الفورية لفتح جوجل ترانسليت مباشرة
         function translateText() {
             var text = document.getElementById("trans-text").value;
             if(text.trim() !== "") {
@@ -110,28 +105,28 @@
             } else { alert("الرجاء كتابة نص أولاً لترجمته!"); }
         }
 
-        // دالة تحويل لغة الصفحة بالكامل (عربي / إنجليزي)
         function switchLang(lang) {
             document.getElementById("btn-ar").classList.toggle("active", lang === 'ar');
             document.getElementById("btn-en").classList.toggle("active", lang === 'en');
             if (lang === 'en') {
                 document.getElementById("main-title").innerText = "World of Love";
                 document.getElementById("title-search").innerText = "🔍 Google Smart Search - World of Love";
-                document.getElementById("input-search").placeholder = "Search anything on the internet from here now...";
-                document.getElementById("btn-search").innerText = "Search via Google";
+                document.getElementById("input-search").placeholder = "Type what you want to search (e.g., New Elissa song)...";
+                document.getElementById("btn-search").innerText = "Search via Google & Show Results Immediately";
                 document.getElementById("title-trans").innerText = "🌐 Instant Translation (Arabic ➔ English)";
                 document.getElementById("trans-text").placeholder = "Type Arabic text here to translate instantly...";
-                document.getElementById("btn-trans").innerText = "Translate Text via Google";
+                document.getElementById("btn-trans").innerText = "Translate Text & Show Results Immediately";
                 document.getElementById("visitor-box").innerHTML = "👥 Our Live Visitors: <span style='color:#fff;'>1,248</span> Visitors";
             } else {
                 document.getElementById("main-title").innerText = "عالم الحب";
                 document.getElementById("title-search").innerText = "🔍 محرك بحث جوجل الذكي - عالم الحب";
-                document.getElementById("input-search").placeholder = "ابحث في الإنترنت عن أي شيء من هنا الحين...";
-                document.getElementById("btn-search").innerText = "ابحث عبر جوجل";
+                document.getElementById("input-search").placeholder = "اكتب ما تريد البحث عنه (مثال: أغنية إليسا الجديدة)...";
+                document.getElementById("btn-search").innerText = "ابحث عبر جوجل واعرض النتائج فوراً";
                 document.getElementById("title-trans").innerText = "🌐 الترجمة الفورية السريعة (عربي ➔ English)";
                 document.getElementById("trans-text").placeholder = "اكتب الكلمة أو الجملة العربية هنا للترجمة فوراً...";
-                document.getElementById("btn-trans").innerText = "ترجم النص عبر جوجل";
+                document.getElementById("btn-trans").innerText = "ترجم النص واعرض النتيجة فوراً";
                 document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;'>1,248</span> زائر";
             }
         }
 
+        var count = localStorage.getItem('page_view');
