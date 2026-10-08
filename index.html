@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عالم الحب - World of Love</title>
     <style>
-        body { background-color: #050505; color: #f4f4f4; font-family: system-ui, sans-serif; margin: 0; padding: 0; overflow-x: hidden; background-image: radial-gradient(white, rgba(255,255,255,.1) 1.5px, transparent 30px); background-size: 350px 350px; }
-        .ticker-wrap { width: 100%; background: linear-gradient(90deg, #111, #222); border-bottom: 2px solid #ffd700; overflow: hidden; white-space: nowrap; padding: 12px 0; display: flex; }
-        .ticker { display: inline-block; white-space: nowrap; padding-right: 50px; animation: tickerAnimation 15s linear infinite; color: #ffd700; font-weight: bold; font-size: 15px; }
-        @keyframes tickerAnimation { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
-        .ticker span { display: inline-block; padding: 0 20px; }
+                .ticker-container { width: 100%; background-color: #050505; border-bottom: 2px solid #ffd700; overflow: hidden; box-sizing: border-box; padding: 10px 0; }
+        .ticker-wrapper { display: inline-block; white-space: nowrap; padding-left: 100%; animation: marquee-live 28s linear infinite; }
+        .ticker-item { display: inline-block; padding: 0 35px; font-family: sans-serif; font-size: 14px; color: #ffffff; font-weight: bold; }
+        .ticker-item .price { color: #ffd700; margin: 0 5px; }
+        .trend.up { color: #00ff66; font-size: 12px; }
+        .trend.down { color: #ff3333; font-size: 12px; }
+        .trend.steady { color: #aaaaaa; font-size: 12px; }
+        @keyframes marquee-live { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+
         .container { max-width: 600px; margin: 25px auto; padding: 20px; background: rgba(10, 10, 10, 0.98); border: 2px solid #ffd700; border-radius: 20px; text-align: center; }
         .live-meta { background: rgba(25, 25, 25, 0.9); border: 1px dashed #ffd700; padding: 10px; border-radius: 10px; margin-bottom: 20px; font-size: 13px; color: #ffeb3b; display: flex; justify-content: space-around; font-weight: bold; }
         h1.pulse-title { color: #ffd700; font-size: 38px; margin: 5px 0; text-shadow: 0 0 10px rgba(255,215,0,0.5); animation: pulseGlow 1.5s ease-in-out infinite alternate; }
@@ -26,14 +30,21 @@
     </style>
 </head>
 <body>
-    <div class="ticker-wrap">
-        <div class="ticker">
-            <span>💵 صرف الدولار الفرش في لبنان: 89,500 ل.ل 🔄</span><span>✨ أونصة الذهب العالمية: 2,650 📈</span><span>🔱 غرام الذهب عيار 21: 75.40 ⚡</span><span id="visitorCount">👥 عدد زوار الموقع التراكمي الحين: 2,458 زائر كاش 📊</span>
-        </div>
-        <div class="ticker">
-            <span>💵 صرف الدولار الفرش في لبنان: 89,500 ل.ل 🔄</span><span>✨ أونصة الذهب العالمية: 2,650 📈</span><span>🔱 غرام الذهب عيار 21: 75.40 ⚡</span><span id="visitorCount2">👥 عدد زوار الموقع التراكمي الحين: 2,458 زائر كاش 📊</span>
-        </div>
+<!-- شريط البورصة والذهب والدولار التفاعلي مع مؤشرات الصعود والهبوط -->
+<div class="ticker-container">
+    <div class="ticker-wrapper">
+        <span class="ticker-item"><span class="icon">💵</span> صرف الدولار الفريش: <span class="price">89,500 ل.ل</span> <span class="trend steady">◀ مستقر</span></span>
+        <span class="ticker-item"><span class="icon">✨</span> أوقية الذهب العالمية: <span class="price">2,650$</span> <span class="trend down">▼ نازل</span></span>
+        <span class="ticker-item"><span class="icon">🏆</span> ذهب عيار 21 (لبنان): <span class="price">78.50$</span> <span class="trend down">▼ نازل</span></span>
+        <span class="ticker-item"><span class="icon">📈</span> مؤشر بورصة بيروت: <span class="price">1,715</span> <span class="trend up">▲ طالع</span></span>
+        
+        <!-- تكرار العناصر لضمان استمرار الحركة بدون انقطاع -->
+        <span class="ticker-item"><span class="icon">💵</span> صرف الدولار الفريش: <span class="price">89,500 ل.ل</span> <span class="trend steady">◀ مستقر</span></span>
+        <span class="ticker-item"><span class="icon">✨</span> أوقية الذهب العالمية: <span class="price">2,650$</span> <span class="trend down">▼ نازل</span></span>
+        <span class="ticker-item"><span class="icon">🏆</span> ذهب عيار 21 (لبنان): <span class="price">78.50$</span> <span class="trend down">▼ نازل</span></span>
     </div>
+</div>
+
     <div class="container">
         <div class="live-meta"><span>📅 الخميس 8 تشرين الأول 2026</span><span id="liveClock">⏰ جاري تحميل الساعة الحية...</span><span>🌤️ بيروت: 24°C | رطوبة: 62%</span></div>
         <div class="brand-section"><h1 class="pulse-title" id="main-title">عالم الحب</h1><div style="color:#ffd700;">🌟</div><div class="en-subtitle">𝒲𝑜𝓇𝓁𝒹 𝒪𝒻 ℒ𝑜𝓋𝑒</div></div>
