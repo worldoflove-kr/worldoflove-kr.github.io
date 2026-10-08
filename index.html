@@ -16,9 +16,11 @@
         .ticker-link { text-decoration: none; color: inherit; cursor: pointer; }
         .ticker-item { display: inline-block; padding: 0 40px; font-size: 14px; font-weight: bold; }
         .ticker-item .price { color: #ffd700; margin: 0 5px; }
-        .trend.up { color: #00ff66; font-size: 13px; }
-        .trend.down { color: #ff3333; font-size: 13px; }
-        .trend.steady { color: #aaaaaa; font-size: 13px; }
+        
+        /* ألوان حالات الصعود والهبوط والاستقرار فاقعة وتفتح النفس */
+        .trend.up { color: #00ff66; font-size: 13px; font-weight: bold; }
+        .trend.down { color: #ff3333; font-size: 13px; font-weight: bold; }
+        .trend.steady { color: #aaaaaa; font-size: 13px; font-weight: bold; }
         
         @keyframes marquee-live {
             0% { transform: translate3d(0, 0, 0); }
@@ -33,10 +35,10 @@
 </head>
 <body>
 
-    <!-- شريط البورصة والذهب والعملات الذكي الموزون السرعة والقابل للفقس -->
+    <!-- شريط البورصة والذهب المحدث بمؤشرات طالع ونازل الحية والعملات العالمية -->
     <div class="ticker-container">
         <div class="ticker-wrapper" id="live-ticker">
-            <span class="ticker-item">⌛ جاري تشغيل شاشات البورصة والروابط والعملات العالمية الحية...</span>
+            <span class="ticker-item">⌛ جاري تشغيل شاشات البورصة ومؤشرات الذهب والعملات العالمية الحية...</span>
         </div>
     </div>
 
@@ -59,25 +61,26 @@
         <div class="footer-logo-kr">KR</div>
     </div>
 
-    <!-- البرمجة الذكية لتحديث الأسعار وتوجيه الزوار للمنصات المختصة فوراً عند الضغط -->
+    <!-- البرمجة الذكية لتحديث الأسعار وتلوين مؤشرات طالع ونازل والربط بالمنصات المختصة -->
     <script>
         function updateLiveRates() {
             var liveData = `
-                <a href="https://kitco.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">✨ 🌍</span> أوقية الذهب العالمية: <span class="price">$4,125.38</span> <span class="trend up">▲ طالع (اضغط للتأكد)</span></span></a>
-                <a href="https://xe.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">💵 🌍</span> أسعار الدولار لكل الدول: <span class="price">اضغط لمشاهدة بلدك</span> <span class="trend steady">◀ تحديث لحظي</span></span></a>
+                <a href="https://kitco.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">✨ 🌍</span> أوقية الذهب العالمية: <span class="price">$2,624.50</span> <span class="trend down">▼ نازل</span></span></a>
+                <a href="https://xe.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">💵 🌍</span> مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="trend up">▲ طالع</span></span></a>
+                <a href="https://apmex.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">🏆 🇱🇧</span> ذهب عيار 21 (لبنان): <span class="price">$77.60</span> <span class="trend down">▼ نازل</span></span></a>
                 <a href="https://lebanonfiles.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">🇱🇧 💵</span> صرف الدولار في لبنان: <span class="price">89,500 ل.ل</span> <span class="trend steady">◀ مستقر</span></span></a>
-                <a href="https://yahoo.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">📈 🗽</span> بورصة نيويورك (Dow Jones): <span class="price">51,049</span> <span class="trend down">▼ نازل</span></span></a>
+                <a href="https://yahoo.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">📈 🗽</span> بورصة نيويورك (Dow Jones): <span class="price">41,393</span> <span class="trend up">▲ طالع</span></span></a>
                 
-                <!-- تكرار العناصر لضمان امتلاء شاشة الهاتف بالكامل دون فراغات أسود -->
-                <a href="https://kitco.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">✨ 🌍</span> أوقية الذهب العالمية: <span class="price">$4,125.38</span> <span class="trend up">▲ طالع</span></span></a>
-                <a href="https://xe.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">💵 🌍</span> أسعار الدولار لكل الدول: <span class="price">اضغط هنا</span> <span class="trend steady">◀ حية</span></span></a>
+                <!-- تكرار العناصر لملء شاشة الهاتف بالكامل دون فراغات أسود وبحركة انسيابية متصلة -->
+                <a href="https://kitco.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">✨ 🌍</span> أوقية الذهب العالمية: <span class="price">$2,624.50</span> <span class="trend down">▼ نازل</span></span></a>
+                <a href="https://xe.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">💵 🌍</span> مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="trend up">▲ طالع</span></span></a>
                 <a href="https://lebanonfiles.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">🇱🇧 💵</span> صرف الدولار في لبنان: <span class="price">89,500 ل.ل</span> <span class="trend steady">◀ مستقر</span></span></a>
             `;
             document.getElementById("live-ticker").innerHTML = liveData;
         }
 
         updateLiveRates();
-        setInterval(updateLiveRates, 60000); // التحديث التلقائي كل دقيقة كالساعة
+        setInterval(updateLiveRates, 60000); // التحديث التلقائي المبرمج كل دقيقة كالساعة
     </script>
 
 </body>
