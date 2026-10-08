@@ -5,105 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عالم الحب - World of Love</title>
     <style>
+        /* ألوان الهوية الفاخرة لصفحتنا */
         body { background-color: #050505; color: #ffffff; font-family: sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
-        .ticker-container { width: 100%; background-color: #000000; border-bottom: 2px solid #ffd700; overflow: hidden; box-sizing: border-box; padding: 10px 0; }
-        .ticker-wrapper { display: inline-block; white-space: nowrap; padding-left: 100%; animation: marquee-live 25s linear infinite; }
-        .ticker-container:hover .ticker-wrapper { animation-play-state: paused; }
-        .ticker-item { display: inline-block; padding: 0 35px; font-size: 14px; font-weight: bold; }
+        
+        /* شريط البورصة والذهب المتطور - حركة دائرية مستمرة بدون فراغات */
+        .ticker-container { width: 100%; background-color: #000000; border-bottom: 2px solid #ffd700; overflow: hidden; box-sizing: border-box; padding: 12px 0; position: relative; }
+        .ticker-wrapper { display: inline-block; white-space: nowrap; animation: marquee-live 25s linear infinite; padding-left: 100%; }
+        .ticker-item { display: inline-block; padding: 0 40px; font-size: 14px; font-weight: bold; }
         .ticker-item .price { color: #ffd700; margin: 0 5px; }
-        .trend.up { color: #00ff66; font-size: 12px; }
-        .trend.down { color: #ff3333; font-size: 12px; }
-        .trend.steady { color: #aaaaaa; font-size: 12px; }
-        @keyframes marquee-live { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
-        .container { max-width: 600px; width: 90%; margin: 25px auto; text-align: center; }
-        .live-meta { background: rgba(25, 25, 25, 0.9); border: 1px solid #ffd700; border-radius: 15px; padding: 15px; margin-bottom: 25px; }
-        .meta-grid { font-size: 13px; color: #e0e0e0; line-height: 1.8; }
-        h1.pulse-title { color: #ffd700; font-size: 32px; margin: 20px 0 5px 0; }
-        .logo-icon { font-size: 28px; color: #ffd700; margin: 10px 0; }
-        .en-subtitle { color: #ffd700; font-style: italic; font-size: 20px; margin-bottom: 30px; }
-        .section-box { background: rgba(20, 20, 20, 0.9); border: 1px solid #333333; border-radius: 15px; padding: 20px; margin-bottom: 25px; text-align: right; }
-        .section-title { color: #ffd700; font-size: 18px; font-weight: bold; margin-bottom: 15px; border-bottom: 1px solid #ffd700; padding-bottom: 8px; }
-        input[type="text"], select { width: 100%; padding: 12px; background: #111111; border: 1px solid #ffd700; border-radius: 8px; color: #ffffff; box-sizing: border-box; margin-top: 10px; text-align: right; }
-        button.btn-gold { width: 100%; background: linear-gradient(45deg, #ffd700, #b8860b); border: none; color: #000000; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 8px; margin-top: 15px; cursor: pointer; }
-        .audio-player { width: 100%; margin-top: 15px; display: none; }
-        .footer-logo-kr { font-size: 32px; font-weight: bold; color: #ffd700; margin-top: 40px; margin-bottom: 20px; }
+        .trend.up { color: #00ff66; font-size: 13px; }
+        .trend.down { color: #ff3333; font-size: 13px; }
+        .trend.steady { color: #aaaaaa; font-size: 13px; }
+        
+        @keyframes marquee-live {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+        
+        .container { max-width: 600px; width: 90%; margin: 50px auto; text-align: center; }
+        h1.pulse-title { color: #ffd700; font-size: 36px; margin: 20px 0 5px 0; }
+        .en-subtitle { color: #ffd700; font-style: italic; font-size: 20px; margin-bottom: 40px; }
+        .footer-logo-kr { font-size: 32px; font-weight: bold; color: #ffd700; margin-top: 60px; }
     </style>
 </head>
 <body>
+
+    <!-- شريط البورصة والذهب والدولار المتكامل -->
     <div class="ticker-container">
         <div class="ticker-wrapper">
             <span class="ticker-item"><span class="icon">💵</span> صرف الدولار الفريش: <span class="price">89,500 ل.ل</span> <span class="trend steady">◀ مستقر</span></span>
-            <span class="ticker-item"><span class="icon">✨</span> أوقية الذهب العالمية: <span class="price">2,650$</span> <span class="trend down">▼ نازل</span></span>
-            <span class="ticker-item"><span class="icon">🏆</span> ذهب عيار 21 (لبنان): <span class="price">78.50$</span> <span class="trend down">▼ نازل</span></span>
+            <span class="ticker-item"><span class="icon">✨</span> أوقية الذهب العالمية: <span class="price">4,122$</span> <span class="trend up">▲ مرتفع</span></span>
+            <span class="ticker-item"><span class="icon">🏆</span> ذهب عيار 21 (لبنان): <span class="price">10,395,000 ل.ل</span> <span class="trend up">▲ مرتفع</span></span>
             <span class="ticker-item"><span class="icon">📈</span> مؤشر بورصة بيروت: <span class="price">1,715</span> <span class="trend up">▲ طالع</span></span>
+            
+            <!-- التكرار البرمجي المزدوج لملء الشاشة وضمان انسياب الحركة -->
             <span class="ticker-item"><span class="icon">💵</span> صرف الدولار الفريش: <span class="price">89,500 ل.ل</span> <span class="trend steady">◀ مستقر</span></span>
+            <span class="ticker-item"><span class="icon">✨</span> أوقية الذهب العالمية: <span class="price">4,122$</span> <span class="trend up">▲ مرتفع</span></span>
+            <span class="ticker-item"><span class="icon">🏆</span> ذهب عيار 21 (لبنان): <span class="price">10,395,000 ل.ل</span> <span class="trend up">▲ مرتفع</span></span>
+            <span class="ticker-item"><span class="icon">📈</span> مؤشر بورصة بيروت: <span class="price">1,715</span> <span class="trend up">▲ طالع</span></span>
         </div>
     </div>
 
+    <!-- محتوى صفحتنا الأساسي النظيف -->
     <div class="container">
-        <div class="live-meta">
-            <div class="meta-grid">
-                📅 الخميس 8 تشرين الأول 2026 | ⏰ الساعة: 04:00 صباحاً <br>
-                ☀️ بيروت: C°24 | 💧 رطوبة: 62%
-            </div>
-        </div>
-
         <h1 class="pulse-title">عالم الحب</h1>
-        <div class="logo-icon">🌟</div>
         <div class="en-subtitle">World of Love</div>
-
-        <!-- محرك البحث المبرمج ليعمل فعلياً -->
-        <div class="section-box">
-            <div class="section-title">🔍 محرك بحث جوجل الذكي - عالم الحب</div>
-            <form action="https://google.com" method="GET" target="_blank">
-                <input type="text" name="q" placeholder="ابحث في الإنترنت عن أي شيء من هنا الحين..." required>
-                <button type="submit" class="btn-gold">ابحث عبر جوجل</button>
-            </form>
-        </div>
-        <!-- واحة القرآن مبرمجة بروابط صوتية حقيقية ومباشرة -->
-        <div class="section-box">
-            <div class="section-title">🕌 واحة القرآن الكريم والذكر الحكيم التفاعلية</div>
-            <p style="font-size:13px; color:#aaa; margin:0;">اختر القارئ لتشغيل التلاوة العطرة لآيات السكينة وسورة البقرة فوراً:</p>
-            
-            <select id="quran-select">
-                <option value="https://mp3quran.net">الشيخ عبد الباسط عبد الصمد (سورة البقرة)</option>
-                <option value="https://mp3quran.net">الشيخ محمد صديق المنشاوي</option>
-                <option value="https://mp3quran.net">الشيخ محمود خليل الحصري</option>
-                <option value="https://mp3quran.net">الشيخ ماهر المعيقلي</option>
-            </select>
-            
-            <button class="btn-gold" onclick="playAudio()">▶ تشغيل التلاوة الحالية</button>
-            <button class="btn-gold" style="background:linear-gradient(45deg, #8b0000, #ff3333); color:#fff; margin-top:5px;" onclick="stopAudio()">⏹ إيقاف الصوت</button>
-            
-            <audio id="main-player" class="audio-player" controls></audio>
-            
-            <button class="btn-gold" style="margin-top:20px; background:#4a4a4a; color:#fff;" onclick="sharePage()">🔗 مشاركة رابط صفحتنا ومباركتها</button>
-        </div>
-
+        
         <div class="footer-logo-kr">KR</div>
     </div>
 
-    <!-- كود الجافا سكريبت الذكي لتشغيل الصوتيات والمشاركة -->
-    <script>
-        function playAudio() {
-            var select = document.getElementById("quran-select");
-            var player = document.getElementById("main-player");
-            player.src = select.value;
-            player.style.display = "block";
-            player.play();
-        }
-        function stopAudio() {
-            var player = document.getElementById("main-player");
-            player.pause();
-        }
-        function sharePage() {
-            var url = window.location.href;
-            navigator.clipboard.writeText(url).then(function() {
-                alert("✨ تم نسخ رابط صفحتك بنجاح! يمكنك الآن لصقه ومشاركته مع من تحب عبر الواتساب.");
-            }).catch(function() {
-                alert("رابط صفحتك هو: " + url);
-            });
-        }
-    </script>
 </body>
 </html>
