@@ -48,7 +48,7 @@
                 document.getElementById("name-input").placeholder = "Type your name here...";
                 document.getElementById("title-preview").innerText = "📖 Selected Dua Text:";
                 document.getElementById("btn-share").innerText = "Send Gift & Share on WhatsApp 🟢";
-                document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,393</span>";
+                document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,395</span>";
             } else {
                 document.getElementById("main-title").innerText = "عالم الحب";
                 document.getElementById("title-search").innerText = "🔍 محرك بحث جوجل الذكي";
@@ -57,22 +57,30 @@
                 document.getElementById("name-input").placeholder = "اكتب اسمك هنا الحين...";
                 document.getElementById("title-preview").innerText = "📖 كلمات الدعاء المختار حالياً:";
                 document.getElementById("btn-share").innerText = "أرسل الإهداء وشارك عبر الواتساب 🟢";
-                document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,393</span> زائر";
+                document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,395</span> زائر";
             }
             updateClock();
         }
+        
+        // استخدام الرابط المباشر الخاص بالتطبيق للتغلب على حظر متصفحات النظام بالكامل
         function prepareWhatsAppLink() {
             var userName = document.getElementById("name-input").value;
             var duaText = document.getElementById("dua-select").value;
             document.getElementById("dua-text-preview").innerText = duaText;
             if(userName.trim() === "") { userName = "محب للخير"; }
-            var fullMessage = `🎁 إهداء خاص مـن: *[ ${userName} ]* \n\n✨ *الدعاء:* \n" ${duaText} " \n\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n🌐 *رابط الصفحة المباشر:* \nhttps://github.io`;
-            var finalUrl = "https://whatsapp.com" + encodeURIComponent(fullMessage);
+            
+            var fullMessage = `🎁 إهداء خاص مـن: *[ ${userName} ]* \n\n` + 
+                              `✨ *الدعاء:* \n" ${duaText} " \n\n` + 
+                              `🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n` + 
+                              `🌐 *رابط الصفحة المباشر:* \nhttps://github.io`;
+            
+            var finalUrl = "whatsapp://send?text=" + encodeURIComponent(fullMessage);
             document.getElementById("whatsapp-anchor").setAttribute("href", finalUrl);
         }
+        
         window.onload = function() {
             setInterval(updateClock, 1000); updateClock();
-            var count = localStorage.getItem('page_view') || 1393;
+            var count = localStorage.getItem('page_view') || 1395;
             count = parseInt(count) + 1; localStorage.setItem('page_view', count);
             document.getElementById("counter-val").innerText = count;
             prepareWhatsAppLink();
@@ -112,20 +120,3 @@
             <select id="dua-select" onchange="prepareWhatsAppLink()">
                 <option value="اللهم احفظ لي أحبتي وأهلي ولا تريني فيهم بأساً يبكيني، واستودعتك قلوبهم وحياتهم وصحتهم فاحفظهم بحفظك يا كريم.">🤲 دعاء لحفظ الأهل والأحبة</option>
                 <option value="اللهم افتح لنا أبواب الرزق الحلال الطيب، واقضِ عنا الدين، واغننا بفضلك عمن سواك، واجعل التوفيق حليفنا في كل خطوة.">💰 دعاء سعة الرزق وتيسير الأمور</option>
-                <option value="أسأل الله العظيم أن يزيل عنكم كل ضيق، وأن يشفي مرضاكم، ويرحم موتاكم، ويجعل أيامكم القادمة مليئة بالفرح والفرج والسرور.">🌹 إهداء دعاء تفريج الهم والشفاء</option>
-                <option value="ربِّ اجعل هذا البلد آمناً مطمئناً وسائر بلاد المسلمين، واحفظ أهلنا في لبنان واشفِ جرحاهم وارحم شهداءهم وعمّ بالسلام أراضينا.">🇱🇧 دعاء خاص لحفظ لبنان والسلام</option>
-            </select>
-            
-            <div style="color: #ffd700; font-size: 13px; font-weight: bold; margin-bottom: 5px;" id="title-preview">📖 كلمات الدعاء المختار حالياً:</div>
-            <div class="preview-box" id="dua-text-preview">جاري تحميل نص الدعاء...</div>
-            
-            <a href="https://whatsapp.com" id="whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none;">
-                <span id="btn-share">أرسل الإهداء وشارك عبر الواتساب 🟢</span>
-            </a>
-        </div>
-        
-        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1393</span> زائر</div>
-        <div style="font-size: 28px; font-weight: bold; color: #ffd700; margin-top: 25px;">KR</div>
-    </div>
-</body>
-</html>
