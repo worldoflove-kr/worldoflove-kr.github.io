@@ -16,7 +16,7 @@
         .live-meta { background: #111; border: 1px solid #ffd700; border-radius: 12px; padding: 12px; margin-bottom: 20px; font-size: 13px; color: #e0e0e0; line-height: 1.6; }
         .lang-btn { background: #000; border: 1px solid #ffd700; color: #ffd700; padding: 5px 12px; border-radius: 5px; cursor: pointer; font-weight: bold; margin: 0 3px; }
         .lang-btn.active { background: #ffd700; color: #000; }
-        .section-box { background: #111; border: 1px solid #33; border-radius: 12px; padding: 15px; margin: 15px auto; text-align: right; }
+        .section-box { background: #111; border: 1px solid #333; border-radius: 12px; padding: 15px; margin: 15px auto; text-align: right; }
         .box-title { color: #ffd700; font-size: 16px; font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #ffd700; padding-bottom: 5px; }
         input[type="text"] { width: 100%; padding: 10px; background: #000; border: 1px solid #ffd700; border-radius: 6px; color: #fff; box-sizing: border-box; text-align: right; font-size: 14px; }
         .btn-gold { width: 100%; background: linear-gradient(45deg, #ffd700, #b8860b); border: none; color: #000; padding: 10px; font-size: 15px; font-weight: bold; border-radius: 6px; margin-top: 10px; cursor: pointer; }
@@ -37,6 +37,7 @@
         function doTrans() {
             var txt = document.getElementById("trans-txt").value;
             if(txt.trim() !== "") { window.open("https://google.com" + encodeURIComponent(txt) + "&op=translate", '_blank'); }
+            return false;
         }
         function switchLang(lang) {
             currentLang = lang;
@@ -76,7 +77,7 @@
     <div class="ticker-container">
         <div class="ticker-wrapper">
             <a href="https://kitco.com" target="_blank" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">\$2,624.50</span> <span class="down">▼ نازل</span></a>
-            <a href="https://xe.com" target="_blank" class="ticker-link">💵 مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="up">▲ طالع</span></a>
+            <a href="https://xe.com" target="_blank" class="ticker-link">💵 مؤشن الدولار عالمياً: <span class="price">102.50</span> <span class="up">▲ طالع</span></a>
             <a href="https://lebanonfiles.com" target="_blank" class="ticker-link">💵 صرف الدولار في لبنان: <span class="price">89,500 ل.ل</span> ◀ مستقر</a>
             <a href="https://kitco.com" target="_blank" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">\$2,624.50</span> <span class="down">▼ نازل</span></a>
             <a href="https://xe.com" target="_blank" class="ticker-link">💵 مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="up">▲ طالع</span></a>
@@ -104,8 +105,10 @@
         
         <div class="section-box">
             <div class="box-title" id="title-trans">🌐 الترجمة الفورية السريعة (عربي ➔ English)</div>
-            <input type="text" id="trans-txt" placeholder="اكتب النص العربي هنا للترجمة فوراً..." required>
-            <button class="btn-gold" id="btn-trans" onclick="doTrans()">ترجم النص واعرض النتيجة فوراً</button>
+            <form onsubmit="doTrans(); return false;">
+                <input type="text" id="trans-txt" placeholder="اكتب النص العربي هنا للترجمة فوراً..." required>
+                <button type="submit" class="btn-gold" id="btn-trans">ترجم النص واعرض النتيجة فوراً</button>
+            </form>
         </div>
         
         <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1254</span> زائر</div>
