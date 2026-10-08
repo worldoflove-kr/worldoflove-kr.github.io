@@ -14,18 +14,41 @@
         @keyframes marquee-live { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
         .container { max-width: 500px; width: 90%; margin: 20px auto; }
         .live-meta { background: #111; border: 1px solid #ffd700; border-radius: 12px; padding: 12px; margin-bottom: 20px; font-size: 13px; color: #e0e0e0; line-height: 1.6; }
-        .section-box { background: #111; border: 1px solid #333; border-radius: 12px; padding: 15px; margin: 15px auto; text-align: right; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
-        .box-title { color: #ffd700; font-size: 16px; font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #ffd700; padding-bottom: 5px; }
-        input[type="text"] { width: 100%; padding: 12px; background: #000; border: 1px solid #ffd700; border-radius: 6px; color: #fff; box-sizing: border-box; text-align: right; font-size: 14px; }
-        .btn-gold { width: 100%; background: linear-gradient(45deg, #ffd700, #b8860b); border: none; color: #000; padding: 12px; font-size: 15px; font-weight: bold; border-radius: 6px; margin-top: 10px; cursor: pointer; }
+        .lang-btn { background: #000; border: 1px solid #ffd700; color: #ffd700; padding: 5px 12px; border-radius: 5px; cursor: pointer; font-weight: bold; margin: 0 3px; }
+        .lang-btn.active { background: #ffd700; color: #000; }
+        .section-box { background: #111; border: 1px solid #333; border-radius: 12px; padding: 25px 15px; margin: 20px auto; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .box-title { color: #ffd700; font-size: 18px; font-weight: bold; margin-bottom: 15px; }
+        .btn-gold-link { display: block; background: linear-gradient(45deg, #ffd700, #b8860b); border: none; color: #000; padding: 14px; font-size: 16px; font-weight: bold; border-radius: 8px; text-decoration: none; cursor: pointer; box-sizing: border-box; }
         .visitor-counter { color: #ffd700; font-size: 13px; font-weight: bold; margin-top: 20px; background: #000; padding: 8px 15px; border-radius: 20px; border: 1px dashed #ffd700; display: inline-block; }
     </style>
     <script>
+        var currentLang = 'ar';
         function updateClock() {
             var now = new Date();
-            var timeStr = now.toLocaleTimeString('ar-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
-            var dateStr = now.toLocaleDateString('ar-LB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-            document.getElementById("live-clock").innerHTML = `📅 ${dateStr} | ⏰ الساعة: ${timeStr} <br> ☀️ بيروت: 24°C | 💧 الرطوبة: 62%`;
+            var timeStr = now.toLocaleTimeString(currentLang === 'ar' ? 'ar-LB' : 'en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+            var dateStr = now.toLocaleDateString(currentLang === 'ar' ? 'ar-LB' : 'en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            if(currentLang === 'ar') {
+                document.getElementById("live-clock").innerHTML = `📅 ${dateStr} | ⏰ الساعة: ${timeStr} <br> ☀️ بيروت: 24°C | 💧 الرطوبة: 62%`;
+            } else {
+                document.getElementById("live-clock").innerHTML = `📅 ${dateStr} | ⏰ Time: ${timeStr} <br> ☀️ Beirut: 24°C | 💧 Humidity: 62%`;
+            }
+        }
+        function switchLang(lang) {
+            currentLang = lang;
+            document.getElementById("btn-ar").classList.toggle("active", lang === 'ar');
+            document.getElementById("btn-en").classList.toggle("active", lang === 'en');
+            if (lang === 'en') {
+                document.getElementById("main-title").innerText = "World of Love";
+                document.getElementById("title-search").innerText = "🌐 Open Google Browser";
+                document.getElementById("btn-search").innerText = "Click Here to Open Google";
+                document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,350</span>";
+            } else {
+                document.getElementById("main-title").innerText = "عالم الحب";
+                document.getElementById("title-search").innerText = "🔍 متصفح جوجل الذكي";
+                document.getElementById("btn-search").innerText = "اضغط هنا للدخول إلى جوجل العادي الحين";
+                document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,350</span> زائر";
+            }
+            updateClock();
         }
         window.onload = function() {
             setInterval(updateClock, 1000); updateClock();
@@ -47,19 +70,22 @@
         </div>
     </div>
     <div class="container">
-        <div class="live-meta" id="live-clock">📅 جاري تشغيل ساعة الثواني الحية...</div>
-        <h1 style="color: #ffd700; margin: 15px 0 5px 0; font-size: 34px;">عالم الحب</h1>
-        <p style="color: #ffd700; font-style: italic; margin-bottom: 25px; font-size: 18px;">World of Love</p>
+        <div class="live-meta">
+            <div style="margin-bottom: 8px;">
+                <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية</button>
+                <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English</button>
+            </div>
+            <div id="live-clock">📅 جاري تشغيل ساعة الثواني الحية...</div>
+        </div>
+        <h1 style="color: #ffd700; margin: 15px 0 5px 0; font-size: 34px;" id="main-title">عالم الحب</h1>
         
+        <!-- صندوق الزر السحري المباشر المفتوح لمتصفح جوجل العادي دغري وبأعلى دقة وموثوقية -->
         <div class="section-box">
-            <div class="box-title">🔍 محرك بحث جوجل الذكي</div>
-            <form action="https://google.com" method="GET" target="_blank">
-                <input type="text" name="q" placeholder="ابحث في الإنترنت عن أي شيء من هنا الحين..." required>
-                <button type="submit" class="btn-gold">ابحث عبر جوجل واعرض النتائج فوراً</button>
-            </form>
+            <div class="box-title" id="title-search">🔍 متصفح جوجل الذكي</div>
+            <a href="https://google.com" target="_blank" class="btn-gold-link" id="btn-search">اضغط هنا للدخول إلى جوجل العادي الحين</a>
         </div>
         
-        <div class="visitor-counter">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1350</span> زائر</div>
+        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1350</span> زائر</div>
         <div style="font-size: 28px; font-weight: bold; color: #ffd700; margin-top: 25px;">KR</div>
     </div>
 </body>
