@@ -16,9 +16,11 @@
         .live-meta { background: #111; border: 1px solid #ffd700; border-radius: 12px; padding: 12px; margin-bottom: 20px; font-size: 13px; color: #e0e0e0; line-height: 1.6; }
         .lang-btn { background: #000; border: 1px solid #ffd700; color: #ffd700; padding: 5px 12px; border-radius: 5px; cursor: pointer; font-weight: bold; margin: 0 3px; }
         .lang-btn.active { background: #ffd700; color: #000; }
-        .section-box { background: #111; border: 1px solid #333; border-radius: 12px; padding: 25px 15px; margin: 20px auto; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
-        .box-title { color: #ffd700; font-size: 18px; font-weight: bold; margin-bottom: 15px; }
-        .btn-gold-link { display: block; background: linear-gradient(45deg, #ffd700, #b8860b); border: none; color: #000; padding: 14px; font-size: 15px; font-weight: bold; border-radius: 8px; text-decoration: none; cursor: pointer; box-sizing: border-box; line-height: 1.4; }
+        .section-box { background: #111; border: 1px solid #333; border-radius: 12px; padding: 20px 15px; margin: 20px auto; text-align: right; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .box-title { color: #ffd700; font-size: 16px; font-weight: bold; margin-bottom: 12px; border-bottom: 1px solid #ffd700; padding-bottom: 5px; display: flex; align-items: center; gap: 5px; }
+        input[type="text"], select { width: 100%; padding: 12px; background: #000; border: 1px solid #ffd700; border-radius: 6px; color: #fff; box-sizing: border-box; margin-bottom: 12px; text-align: right; font-size: 14px; }
+        .btn-gold-link { display: block; background: linear-gradient(45deg, #ffd700, #b8860b); border: none; color: #000; padding: 14px; font-size: 15px; font-weight: bold; border-radius: 8px; text-decoration: none; cursor: pointer; text-align: center; box-sizing: border-box; line-height: 1.4; }
+        .btn-whatsapp { display: block; background: linear-gradient(45deg, #25D366, #128C7E); border: none; color: #fff; padding: 14px; font-size: 15px; font-weight: bold; border-radius: 8px; text-decoration: none; cursor: pointer; text-align: center; box-sizing: border-box; margin-top: 5px; }
         .visitor-counter { color: #ffd700; font-size: 13px; font-weight: bold; margin-top: 20px; background: #000; padding: 8px 15px; border-radius: 20px; border: 1px dashed #ffd700; display: inline-block; }
     </style>
     <script>
@@ -41,14 +43,27 @@
                 document.getElementById("main-title").innerText = "World of Love";
                 document.getElementById("title-search").innerText = "🌐 Google Search Engine";
                 document.getElementById("btn-search").innerText = "Type to search anything on Google browser - Click Here";
+                document.getElementById("title-dua").innerText = "✨ Islamic Duas & Gifts Box";
+                document.getElementById("name-input").placeholder = "Type your name here...";
+                document.getElementById("btn-share").innerText = "Send Gift & Share on WhatsApp 🟢";
                 document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,350</span>";
             } else {
                 document.getElementById("main-title").innerText = "عالم الحب";
                 document.getElementById("title-search").innerText = "🔍 محرك بحث جوجل الذكي";
                 document.getElementById("btn-search").innerText = "اكتب للبحث عن أي شيء بمتصفح جوجل - اضغط هنا";
+                document.getElementById("title-dua").innerText = "✨ صندوق الأدعية والإهداءات التفاعلي";
+                document.getElementById("name-input").placeholder = "اكتب اسمك هنا الحين...";
+                document.getElementById("btn-share").innerText = "أرسل الإهداء وشارك عبر الواتساب 🟢";
                 document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,350</span> زائر";
             }
             updateClock();
+        }
+        function shareDua() {
+            var userName = document.getElementById("name-input").value;
+            var duaText = document.getElementById("dua-select").value;
+            if(userName.trim() === "") { alert(currentLang === 'ar' ? "الرجاء كتابة اسمك أولاً لكي يظهر في الإهداء!" : "Please type your name first!"); return; }
+            var fullMessage = `🎁 إهداء خاص مـن: *[ ${userName} ]* \n\n✨ *الدعاء:* \n"${duaText}" \n\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n🌐 *رابط الصفحة المباشر:* \nhttps://github.io`;
+            window.location.href = "https://whatsapp.com" + encodeURIComponent(fullMessage);
         }
         window.onload = function() {
             setInterval(updateClock, 1000); updateClock();
@@ -79,10 +94,21 @@
         </div>
         <h1 style="color: #ffd700; margin: 15px 0 5px 0; font-size: 34px;" id="main-title">عالم الحب</h1>
         
-        <!-- صندوق الزر السحري بالعبارة الجديدة الدقيقة والمعدلة بالبكسل لعيونك -->
         <div class="section-box">
             <div class="box-title" id="title-search">🔍 محرك بحث جوجل الذكي</div>
             <a href="https://google.com" target="_blank" class="btn-gold-link" id="btn-search">اكتب للبحث عن أي شيء بمتصفح جوجل - اضغط هنا</a>
+        </div>
+        
+        <div class="section-box">
+            <div class="box-title" id="title-dua">✨ صندوق الأدعية والإهداءات التفاعلي</div>
+            <input type="text" id="name-input" placeholder="اكتب اسمك هنا الحين..." required>
+            <select id="dua-select">
+                <option value="اللهم احفظ لي أحبتي وأهلي ولا تريني فيهم بأساً يبكيني، واستودعتك قلوبهم وحياتهم وصحتهم فاحفظهم بحفظك يا كريم.">🤲 دعاء لحفظ الأهل والأحبة</option>
+                <option value="اللهم افتح لنا أبواب الرزق الحلال الطيب، واقضِ عنا الدين، واغننا بفضلك عمن سواك، واجعل التوفيق حليفنا في كل خطوة.">💰 دعاء سعة الرزق وتيسير الأمور</option>
+                <option value="أسأل الله العظيم أن يزيل عنكم كل ضيق، وأن يشفي مرضاكم، ويرحم موتاكم، ويجعل أيامكم القادمة مليئة بالفرح والفرج والسرور.">🌹 إهداء دعاء تفريج الهم والشفاء</option>
+                <option value="ربِّ اجعل هذا البلد آمناً مطمئناً وسائر بلاد المسلمين، واحفظ أهلنا في لبنان واشفِ جرحاهم وارحم شهداءهم وعمّ بالسلام أراضينا.">🇱🇧 دعاء خاص لحفظ لبنان والسلام</option>
+            </select>
+            <button type="button" class="btn-whatsapp" id="btn-share" onclick="shareDua()">أرسل الإهداء وشارك عبر الواتساب 🟢</button>
         </div>
         
         <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1350</span> زائر</div>
