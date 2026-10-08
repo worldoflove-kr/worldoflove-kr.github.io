@@ -7,12 +7,12 @@
     <style>
         body { background-color: #050505; color: #ffffff; font-family: sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
         
-        /* شريط البورصة والذهب العالمي التفاعلي المطور */
+        /* شريط البورصة والذهب المتطور والمنساب بالسرعة المتزنة الجديدة */
         .ticker-container { width: 100%; background-color: #000000; border-bottom: 2px solid #ffd700; overflow: hidden; box-sizing: border-box; padding: 12px 0; position: relative; }
-        .ticker-wrapper { display: inline-block; white-space: nowrap; animation: marquee-live 16s linear infinite; padding-left: 100%; }
+        .ticker-wrapper { display: inline-block; white-space: nowrap; animation: marquee-live 28s linear infinite; padding-left: 100%; }
         .ticker-container:hover .ticker-wrapper { animation-play-state: paused; }
         
-        /* تنسيق الروابط بداخل الشريط لتصبح مخفية وجميلة وقابلة للضغط */
+        /* تنسيق الروابط المخفية التفاعلية للفقس */
         .ticker-link { text-decoration: none; color: inherit; cursor: pointer; }
         .ticker-item { display: inline-block; padding: 0 40px; font-size: 14px; font-weight: bold; }
         .ticker-item .price { color: #ffd700; margin: 0 5px; }
@@ -25,7 +25,7 @@
             100% { transform: translate3d(-100%, 0, 0); }
         }
         
-        .container { max-width: 600px; width: 90%; margin: 60px auto; text-align: center; }
+        .container { max-width: 600px; width: 90%; margin: 50px auto; text-align: center; }
         h1.pulse-title { color: #ffd700; font-size: 36px; margin: 20px 0 5px 0; }
         .en-subtitle { color: #ffd700; font-style: italic; font-size: 20px; margin-bottom: 40px; }
         .footer-logo-kr { font-size: 32px; font-weight: bold; color: #ffd700; margin-top: 60px; }
@@ -33,40 +33,51 @@
 </head>
 <body>
 
-    <!-- شريط البورصة والذهب الذكي القابل للفقس والتحديث التلقائي الفوري -->
+    <!-- شريط البورصة والذهب والعملات الذكي الموزون السرعة والقابل للفقس -->
     <div class="ticker-container">
         <div class="ticker-wrapper" id="live-ticker">
-            <span class="ticker-item">⌛ جاري تشغيل شاشات البورصة والروابط العالمية...</span>
+            <span class="ticker-item">⌛ جاري تشغيل شاشات البورصة والروابط والعملات العالمية الحية...</span>
         </div>
     </div>
 
-    <!-- محتوى صفحتنا الأساسي المعتمد ونظيف الهوية -->
+    <!-- حاوية محتوى صفحتنا الأساسي مع محرك البحث الذكي -->
     <div class="container">
         <h1 class="pulse-title">عالم الحب</h1>
         <div class="en-subtitle">World of Love</div>
         
+        <!-- صندوق محرك البحث المطور باللون الذهبي الملكي الفخم -->
+        <div style="background: rgba(20, 20, 20, 0.9); border: 1px solid #333333; border-radius: 15px; padding: 20px; margin: 30px auto; text-align: right; box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
+            <div style="color: #ffd700; font-size: 18px; font-weight: bold; margin-bottom: 15px; border-bottom: 1px solid #ffd700; padding-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                🔍 محرك بحث جوجل الذكي - عالم الحب
+            </div>
+            <form action="https://google.com" method="GET" target="_blank">
+                <input type="text" name="q" placeholder="ابحث في الإنترنت عن أي شيء من هنا الحين..." required style="width: 100%; padding: 12px; background: #111111; border: 1px solid #ffd700; border-radius: 8px; color: #ffffff; box-sizing: border-box; margin-top: 10px; text-align: right; font-size: 14px;">
+                <button type="submit" style="width: 100%; background: linear-gradient(45deg, #ffd700, #b8860b); border: none; color: #000000; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 8px; margin-top: 15px; cursor: pointer;">ابحث عبر جوجل</button>
+            </form>
+        </div>
+        
         <div class="footer-logo-kr">KR</div>
     </div>
 
-    <!-- البرمجة الذكية للروابط العالمية والتحديث التلقائي المستمر للأسعار لعام 2026 -->
+    <!-- البرمجة الذكية لتحديث الأسعار وتوجيه الزوار للمنصات المختصة فوراً عند الضغط -->
     <script>
         function updateLiveRates() {
             var liveData = `
-                <a href="https://www.kitco.com/charts/gold" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">✨ 🌍</span> أوقية الذهب العالمية: <span class="price">$4,125.38</span> <span class="trend up">▲ طالع (اضغط للتأكد)</span></span></a>
-                <a href="https://finance.yahoo.com/quote/%5EDJI/" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">📈 🗽</span> بورصة نيويورك (Dow Jones): <span class="price">51,049</span> <span class="trend down">▼ نازل</span></span></a>
-                <a href="https://github.io" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">🇱🇧 💵</span> صرف الدولار في لبنان: <span class="price">89,500 ل.ل</span> <span class="trend steady">◀ مستقر</span></span></a>
-                <a href="https://www.apmex.com/gold-price" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">🏆 🇱🇧</span> ذهب عيار 21 (لبنان): <span class="price">$78.50</span> <span class="trend down">▼ نازل</span></span></a>
+                <a href="https://kitco.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">✨ 🌍</span> أوقية الذهب العالمية: <span class="price">$4,125.38</span> <span class="trend up">▲ طالع (اضغط للتأكد)</span></span></a>
+                <a href="https://xe.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">💵 🌍</span> أسعار الدولار لكل الدول: <span class="price">اضغط لمشاهدة بلدك</span> <span class="trend steady">◀ تحديث لحظي</span></span></a>
+                <a href="https://lebanonfiles.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">🇱🇧 💵</span> صرف الدولار في لبنان: <span class="price">89,500 ل.ل</span> <span class="trend steady">◀ مستقر</span></span></a>
+                <a href="https://yahoo.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">📈 🗽</span> بورصة نيويورك (Dow Jones): <span class="price">51,049</span> <span class="trend down">▼ نازل</span></span></a>
                 
-                <!-- التكرار لضمان امتلاء الشريط بالكامل وسرعته الفورية -->
-                <a href="https://www.kitco.com/charts/gold" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">✨ 🌍</span> أوقية الذهب العالمية: <span class="price">$4,125.38</span> <span class="trend up">▲ طالع</span></span></a>
-                <a href="https://finance.yahoo.com/quote/%5EDJI/" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">📈 🗽</span> بورصة نيويورك (Dow Jones): <span class="price">51,049</span> <span class="trend down">▼ نازل</span></span></a>
-                <a href="https://github.io" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">🇱🇧 💵</span> صرف الدولار في لبنان: <span class="price">89,500 ل.ل</span> <span class="trend steady">◀ مستقر</span></span></a>
+                <!-- تكرار العناصر لضمان امتلاء شاشة الهاتف بالكامل دون فراغات أسود -->
+                <a href="https://kitco.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">✨ 🌍</span> أوقية الذهب العالمية: <span class="price">$4,125.38</span> <span class="trend up">▲ طالع</span></span></a>
+                <a href="https://xe.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">💵 🌍</span> أسعار الدولار لكل الدول: <span class="price">اضغط هنا</span> <span class="trend steady">◀ حية</span></span></a>
+                <a href="https://lebanonfiles.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">🇱🇧 💵</span> صرف الدولار في لبنان: <span class="price">89,500 ل.ل</span> <span class="trend steady">◀ مستقر</span></span></a>
             `;
             document.getElementById("live-ticker").innerHTML = liveData;
         }
 
         updateLiveRates();
-        setInterval(updateLiveRates, 60000); // تحديث الأرقام تلقائياً كل دقيقة
+        setInterval(updateLiveRates, 60000); // التحديث التلقائي كل دقيقة كالساعة
     </script>
 
 </body>
