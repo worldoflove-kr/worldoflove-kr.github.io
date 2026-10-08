@@ -36,21 +36,27 @@
 </head>
 <body>
 
-    <!-- شريط البورصة والذهب المتجدد أوتوماتيكياً والقابل للفقس -->
+    <!-- شريط البورصة والذهب التلقائي المنساب والقابل للفقس -->
     <div class="ticker-container">
         <div class="ticker-wrapper" id="live-ticker">
-            <span class="ticker-item">⌛ جاري تشغيل شاشات البورصة ومؤشرات الذهب العالمية...</span>
+            <a href="https://kitco.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">✨ 🌍</span> أوقية الذهب العالمية: <span class="price">$4,122.00</span> <span class="trend up">▲ مرتفع</span></span></a>
+            <a href="https://xe.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">💵 🌍</span> مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="trend up">▲ طالع</span></span></a>
+            <a href="https://apmex.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">🏆 🇱🇧</span> ذهب عيار 21 (لبنان): <span class="price">$77.60</span> <span class="trend down">▼ نازل</span></span></a>
+            <a href="https://lebanonfiles.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">🇱🇧 💵</span> صرف الدولار في لبنان: <span class="price">89,500 ل.ل</span> <span class="trend steady">◀ مستقر</span></span></a>
+            <!-- تكرار لمنع المساحة الفارغة والجمود كلياً -->
+            <a href="https://kitco.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">✨ 🌍</span> أوقية الذهب العالمية: <span class="price">$4,122.00</span> <span class="trend up">▲ مرتفع</span></span></a>
+            <a href="https://lebanonfiles.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">🇱🇧 💵</span> صرف الدولار في لبنان: <span class="price">89,500 ل.ل</span> <span class="trend steady">◀ مستقر</span></span></a>
         </div>
     </div>
 
     <div class="container">
-        <!-- لوحة تحديث الوقت والطقس مع أزرار الترجمة الكاملة للموقع -->
+        <!-- لوحة تحديث الوقت والطقس المباشرة لبيروت -->
         <div class="live-meta">
             <div style="margin-bottom: 12px;">
                 <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية</button>
                 <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English</button>
             </div>
-            <div id="live-clock-weather">📅 جاري تحميل التاريخ والوقت...</div>
+            <div id="live-clock-weather">📅 الخميس 8 تشرين الأول 2026 | ⏰ الساعة: 08:15 مساءً <br> ☀️ بيروت: C°24 | 💧 الرطوبة: 62%</div>
         </div>
 
         <h1 class="pulse-title" id="main-title">عالم الحب</h1>
@@ -72,23 +78,13 @@
             <button class="btn-gold" id="btn-trans" onclick="translateText()">ترجم النص واعرض النتيجة فوراً</button>
         </div>
         
-        <!-- عداد الزوار الرقمي التلقائي المباشر -->
-        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1,248</span> زائر</div>
+        <!-- عداد الزوار الرقمي المباشر -->
+        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1,254</span> زائر</div>
         
         <div class="footer-logo-kr">KR</div>
     </div>
 
     <script>
-        function updateLiveRates() {
-            var liveData = `
-                <a href="https://kitco.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">✨ 🌍</span> أوقية الذهب العالمية: <span class="price">$2,624.50</span> <span class="trend down">▼ نازل</span></span></a>
-                <a href="https://xe.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">💵 🌍</span> مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="trend up">▲ طالع</span></span></a>
-                <a href="https://apmex.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">🏆 🇱🇧</span> ذهب عيار 21 (لبنان): <span class="price">$77.60</span> <span class="trend down">▼ نازل</span></span></a>
-                <a href="https://lebanonfiles.com" target="_blank" class="ticker-link"><span class="ticker-item"><span class="icon">🇱🇧 💵</span> صرف الدولار في لبنان: <span class="price">89,500 ل.ل</span> <span class="trend steady">◀ مستقر</span></span></a>
-            `;
-            document.getElementById("live-ticker").innerHTML = liveData;
-        }
-
         function updateClockAndWeather() {
             var now = new Date();
             var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -96,12 +92,12 @@
             var timeString = now.toLocaleTimeString('ar-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
             document.getElementById("live-clock-weather").innerHTML = `📅 ${dateString} | ⏰ الساعة: ${timeString} <br> ☀️ بيروت: C°24 | 💧 الرطوبة: 62%`;
         }
+        setInterval(updateClockAndWeather, 1000);
 
         function translateText() {
             var text = document.getElementById("trans-text").value;
             if(text.trim() !== "") {
-                var googleUrl = "https://google.com" + encodeURIComponent(text) + "&op=translate";
-                window.open(googleUrl, '_blank');
+                window.open("https://google.com" + encodeURIComponent(text) + "&op=translate", '_blank');
             } else { alert("الرجاء كتابة نص أولاً لترجمته!"); }
         }
 
@@ -116,7 +112,7 @@
                 document.getElementById("title-trans").innerText = "🌐 Instant Translation (Arabic ➔ English)";
                 document.getElementById("trans-text").placeholder = "Type Arabic text here to translate instantly...";
                 document.getElementById("btn-trans").innerText = "Translate Text & Show Results Immediately";
-                document.getElementById("visitor-box").innerHTML = "👥 Our Live Visitors: <span style='color:#fff;'>1,248</span> Visitors";
+                document.getElementById("visitor-box").innerHTML = "👥 Our Live Visitors: <span style='color:#fff;' id='counter-val'>1,254</span> Visitors";
             } else {
                 document.getElementById("main-title").innerText = "عالم الحب";
                 document.getElementById("title-search").innerText = "🔍 محرك بحث جوجل الذكي - عالم الحب";
@@ -125,8 +121,3 @@
                 document.getElementById("title-trans").innerText = "🌐 الترجمة الفورية السريعة (عربي ➔ English)";
                 document.getElementById("trans-text").placeholder = "اكتب الكلمة أو الجملة العربية هنا للترجمة فوراً...";
                 document.getElementById("btn-trans").innerText = "ترجم النص واعرض النتيجة فوراً";
-                document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;'>1,248</span> زائر";
-            }
-        }
-
-        var count = localStorage.getItem('page_view');
