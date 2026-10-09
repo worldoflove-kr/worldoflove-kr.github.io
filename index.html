@@ -33,20 +33,20 @@
         .tasbih-reset { display: inline-block; background: #222; border: 1px dashed #ffd700; color: #ffd700; padding: 6px 15px; font-size: 12px; font-weight: bold; border-radius: 20px; cursor: pointer; text-decoration: none; margin-top: 5px; }
         .secret-output { background: rgba(0,0,0,0.6); border: 2px dashed #ffd700; border-radius: 8px; padding: 15px; color: #ffd700; font-size: 15px; font-weight: bold; text-align: center; margin-top: 15px; line-height: 1.6; min-height: 25px; display: none; }
         .secret-btn { display: block; width: 100%; background: linear-gradient(45deg, #ffd700, #b8860b); color: #000; border: none; padding: 12px; font-size: 14px; font-weight: bold; border-radius: 6px; cursor: pointer; box-shadow: 0 4px 10px rgba(255,215,0,0.2); }
-        
-        /* ميكانيكية التنسيق الفخم: الباندا المضاء على اليمين والعبارات على اليسار بجانبه بالملي */
         .panda-welcome-flex { display: flex; flex-direction: row-reverse; align-items: center; justify-content: center; gap: 15px; margin: 20px auto; max-width: 460px; padding: 10px; background: rgba(255,215,0,0.02); border-radius: 15px; border: 1px dashed rgba(255,215,0,0.15); }
-        .panda-symbol-box { font-size: 52px; display: flex; align-items: center; justify-content: center; filter: drop-shadow(0 0 12px rgba(255,255,255,0.4)); animation: panda-float 2s ease-in-out infinite; }
+        .panda-large-box { width: 100px; height: 125px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .panda-large-box img { width: 100%; height: 100%; object-fit: contain; }
         .welcome-content-wrapper { display: flex; flex-direction: column; align-items: flex-end; text-align: right; flex: 1; }
         .welcome-bibi-text-box { font-size: 21px; font-weight: bold; font-family: 'Georgia', serif; letter-spacing: 1px; margin-bottom: 5px; animation: text-pulsing-soft 1.3s ease-in-out infinite; }
         .w-red { color: #ff3333; text-shadow: 0 0 10px #ff0000; } .b-white { color: #ffffff; text-shadow: 0 0 10px #ffffff; }
         .panda-features-desc { color: #ffd700; font-size: 12px; line-height: 1.4; font-style: italic; text-shadow: 0 0 5px rgba(255,215,0,0.3); }
+        .panda-footer-new-box { width: 140px; height: 210px; margin: 25px auto 10px auto; display: flex; align-items: center; justify-content: center; filter: drop-shadow(0 0 15px rgba(255,255,255,0.25)); }
+        .panda-footer-new-box img { width: 100%; height: 100%; object-fit: contain; border-radius: 8px; }
+        .visitor-counter { color: #ffd700; font-size: 13px; font-weight: bold; margin-top: 10px; background: #000; padding: 8px 15px; border-radius: 20px; border: 1px dashed #ffd700; display: inline-block; }
+        .family-logo-wrapper { margin-top: 25px; margin-bottom: 15px; display: inline-block; transform: rotate(-8deg); animation: logo-pulsing 1.2s ease-in-out infinite; }
+        .family-logo { font-size: 36px; font-weight: bold; color: #ffd700; letter-spacing: 3px; font-family: 'Georgia', serif; padding: 4px 22px; border-top: 3px double #ffd700; border-bottom: 3px double #ffd700; text-shadow: 0 0 10px #ffd700; }
         @keyframes text-pulsing-soft { 0% { transform: scale(1); } 50% { transform: scale(1.03); filter: brightness(1.2); } 100% { transform: scale(1); } }
         @keyframes panda-float { 0% { transform: translateY(0px); } 50% { transform: translateY(-5px); } 100% { transform: translateY(0px); } }
-        
-        .visitor-counter { color: #ffd700; font-size: 13px; font-weight: bold; margin-top: 20px; background: #000; padding: 8px 15px; border-radius: 20px; border: 1px dashed #ffd700; display: inline-block; }
-        .family-logo-wrapper { margin-top: 30px; margin-bottom: 15px; display: inline-block; transform: rotate(-8deg); animation: logo-pulsing 1.2s ease-in-out infinite; }
-        .family-logo { font-size: 36px; font-weight: bold; color: #ffd700; letter-spacing: 3px; font-family: 'Georgia', serif; padding: 4px 22px; border-top: 3px double #ffd700; border-bottom: 3px double #ffd700; text-shadow: 0 0 10px #ffd700; }
         @keyframes logo-pulsing { 0% { transform: rotate(-8deg) scale(1); } 50% { transform: rotate(-8deg) scale(1.06); filter: drop-shadow(0 0 15px #ffd700); } 100% { transform: rotate(-8deg) scale(1); } }
         .pulse-fast { animation: fast-pulsing 1.2s ease-in-out infinite; }
         @keyframes fast-pulsing { 0% { transform: scale(1); text-shadow: 0 0 5px #ffd700; } 50% { transform: scale(1.04); text-shadow: 0 0 20px #ffd700, 0 0 30px #b8860b; } 100% { transform: scale(1); text-shadow: 0 0 5px #ffd700; } }
@@ -131,7 +131,6 @@
             <div id="live-clock">📅 جاري تشغيل ساعة الثواني الحية...</div>
         </div>
         
-        <!-- 🐼 لوحة الباندا الحقيقي على اليمين والعبارات والكلام الذهبي للميزات لعيونك الحين -->
         <div class="panda-welcome-flex">
             <div class="panda-symbol-box">🐼</div>
             <div class="welcome-content-wrapper">
@@ -223,10 +222,5 @@
         </div>
 
         <div class="section-box">
-            <div class="box-title" id="title-secret">🔐 صندوق الرسائل السرية والمفاجآت العاطفية المغلقة</div><p id="secret-desc-text" style="color:#e0e0e0;font-size:13px;margin:0 0 15px 0;line-height:1.5;text-align:right;">هذا الصندوق تفاعلي آمن ومحمي ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. لكي يفتح القفل وتكشف الرسائل العاطفية المخفية، يرجى كتابة أحد الأكواد الفعالة الحين (مثلاً: جرب كتابة الرقم 123 أو كود العائلة KR) ثم اضغط على زر الفتح بالأسفل بكل أمان وطمأنينة الحين:</p><input type="text" id="secret-input" placeholder="اكتب الكلمة السرية أو الكود السري هنا الحين..."><button class="secret-btn" id="secret-btn-click" onclick="unlockSecret()">افتح واكشف المفاجأة السرية الحين 🔓</button><div class="secret-output" id="secret-box-output"></div>
-        </div>
-
-        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1,573</span> زائر</div><br><div class="family-logo-wrapper"><div class="family-logo pulse-fast">👑 KR 👑</div></div>
-    </div>
-</body>
-</html>
+            <div class="box-title" id="title-secret">🔐 صندوق الرسائل السرية والمفاجآت العاطفية المغلقة</div>
+            <p id="secret-desc-text" style="color:#e0e0e0; font-size:13px; margin:0 0 15px 0; line-height:1.5; text-align:right;">هذا الصندوق تفاعلي آمن ومحمي ومفرمل كلياً، ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. لكي يفتح القفل وتكشف الرسائل العاطفية المخفية، يرجى كتابة أحد الأكواد الفعالة الحين (مثلاً: جرب كتابة الرقم 123 أو كود العائلة KR) ثم اضغط على زر الفتح بالأسفل بكل أمان وطمأنينة الحين:</p>
