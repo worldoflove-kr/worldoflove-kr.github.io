@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عالم الحب - World of Love</title>
     <style>
-        body { background-color: #050505; color: #ffffff; font-family: sans-serif; margin: 0; padding: 0; text-align: center; }
+        /* كود خلفية النجوم اللامعة والتحصين وقفل النسخ تماماً عن المتطفلين والسرقة */
+        body { background-color: #050505; background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px), radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px), radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px); background-size: 550px 550px, 350px 350px, 250px 250px; background-position: 0 0, 40px 60px, 130px 270px; color: #ffffff; font-family: sans-serif; margin: 0; padding: 0; text-align: center; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
         .ticker-container { width: 100%; background-color: #000000; border-bottom: 2px solid #ffd700; overflow: hidden; padding: 12px 0; }
         .ticker-wrapper { display: inline-block; white-space: nowrap; animation: marquee-live 20s linear infinite; }
         .ticker-link { text-decoration: none; color: inherit; font-weight: bold; font-size: 13px; padding: 0 20px; }
@@ -23,18 +24,30 @@
         .btn-gold-link { display: block; background: linear-gradient(45deg, #ffd700, #b8860b); border: none; color: #000; padding: 14px; font-size: 15px; font-weight: bold; border-radius: 8px; text-decoration: none; cursor: pointer; text-align: center; box-sizing: border-box; line-height: 1.4; }
         .btn-whatsapp-btn { display: block; width: 100%; background: linear-gradient(45deg, #25D366, #128C7E); border: none; color: #fff; padding: 14px; font-size: 15px; font-weight: bold; border-radius: 8px; text-decoration: none; cursor: pointer; text-align: center; box-sizing: border-box; margin-top: 5px; }
         
-        /* ضبط وتثبيت تصميم أزرار الموزعين الدائرية الفخمة بالبكسل من صورتكِ */
+        /* ضبط وتثبيت أزرار الموزعين الدائرية الفخمة بالبكسل لتطابق الصورة */
         .shop-box-desc { color: #e0e0e0; font-size: 13.5px; margin: 0 0 15px 0; line-height: 1.6; text-align: right; }
         .text-red { color: #ff3333; font-weight: bold; }
         .text-white { color: #ffffff; font-weight: bold; }
-        .round-gold-btn { display: block; background: #050505; border: 2px solid #ffd700; color: #ffd700; padding: 13px; font-size: 14px; font-weight: bold; border-radius: 25px; text-decoration: none; text-align: center; margin: 15px auto 5px auto; width: 90%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .round-pink-btn { display: block; background: #050505; border: 2px solid #ff3366; color: #ff3366; padding: 13px; font-size: 14px; font-weight: bold; border-radius: 25px; text-decoration: none; text-align: center; margin: 10px auto 5px auto; width: 90%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .round-gold-btn { display: block; background: #050505; border: 2px solid #ffd700; color: #ffd700; padding: 13px; font-size: 14px; font-weight: bold; border-radius: 25px; text-decoration: none; text-align: center; margin: 15px auto 5px auto; width: 90%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; }
+        .round-pink-btn { display: block; background: #050505; border: 2px solid #ff3366; color: #ff3366; padding: 13px; font-size: 14px; font-weight: bold; border-radius: 25px; text-decoration: none; text-align: center; margin: 10px auto 5px auto; width: 90%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; }
         .pubg-btn-static { display: block; background: #050505; border: 1px solid #ffffff; color: #ffffff; padding: 10px; font-size: 13px; font-weight: bold; border-radius: 5px; text-decoration: none; text-align: center; margin: 10px auto; width: 90%; box-sizing: border-box; }
+        
+        /* تصميم وتطوير لوغو KR المائل والمزخرف بالنبض السريع واللمعان الإيطالي الفخم */
+        .family-logo-wrapper { margin-top: 30px; margin-bottom: 15px; display: inline-block; transform: rotate(-8deg); animation: logo-pulsing 1.2s ease-in-out infinite; }
+        .family-logo { font-size: 36px; font-weight: bold; color: #ffd700; letter-spacing: 3px; font-family: 'Georgia', serif; padding: 4px 22px; border-top: 3px double #ffd700; border-bottom: 3px double #ffd700; text-shadow: 0 0 10px #ffd700; }
+        @keyframes logo-pulsing { 0% { transform: rotate(-8deg) scale(1); } 50% { transform: rotate(-8deg) scale(1.06); filter: drop-shadow(0 0 15px #ffd700); } 100% { transform: rotate(-8deg) scale(1); } }
+        
+        /* كود النبض السريع المخصص للعناوين الكبيرة عالم الحب */
+        .pulse-fast { animation: fast-pulsing 1.2s ease-in-out infinite; }
+        @keyframes fast-pulsing { 0% { transform: scale(1); text-shadow: 0 0 5px #ffd700; } 50% { transform: scale(1.04); text-shadow: 0 0 20px #ffd700, 0 0 30px #b8860b; } 100% { transform: scale(1); text-shadow: 0 0 5px #ffd700; } }
         
         .visitor-counter { color: #ffd700; font-size: 13px; font-weight: bold; margin-top: 20px; background: #000; padding: 8px 15px; border-radius: 20px; border: 1px dashed #ffd700; display: inline-block; }
     </style>
     <script>
         var currentLang = 'ar';
+        // قفل كود الحماية المانع لفتح القوائم الجانبية أو محاولات سرقة الشيفرة والنسخ كلياً للحصانة
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        
         function updateClock() {
             var now = new Date();
             var timeStr = now.toLocaleTimeString(currentLang === 'ar' ? 'ar-LB' : 'en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
@@ -61,6 +74,7 @@
                 document.getElementById("love-name-input").placeholder = "Type your name here...";
                 document.getElementById("title-love-preview").innerText = "Selected Love Expression:";
                 document.getElementById("btn-love-share").innerText = "Send Love Expression via WhatsApp 🟢";
+                document.getElementById("title-shop").innerText = "📱 Authorized Lebanese Telecom & Gaming Agents";
                 document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,435</span>";
             } else {
                 document.getElementById("main-title").innerText = "عالم الحب";
@@ -74,6 +88,7 @@
                 document.getElementById("love-name-input").placeholder = "اكتب اسمك هنا الحين...";
                 document.getElementById("title-love-preview").innerText = "📖 كلمات العبارة المختارة حالياً:";
                 document.getElementById("btn-love-share").innerText = "أرسل عبارة الحب وشارك عبر الواتساب 🟢";
+                document.getElementById("title-shop").innerText = "📱 لوحة خدمات التشريج، شحن الألعاب و SHEIN (لبنان)";
                 document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,435</span> زائر";
             }
             updateClock();
@@ -109,80 +124,3 @@
     </script>
 </head>
 <body>
-    <div class="ticker-container">
-        <div class="ticker-wrapper">
-            <a href="https://kitco.com" target="_blank" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">\$2,624.50</span> <span class="down">▼ نازل</span></a>
-            <a href="https://xe.com" target="_blank" class="ticker-link">💵 مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="up">▲ طالع</span></a>
-            <a href="https://lebanonfiles.com" target="_blank" class="ticker-link">💵 صرف الدولار في لبنان: <span class="price">89,500 ل.ل</span> ◀ مستقر</a>
-        </div>
-    </div>
-    <div class="container">
-        <div class="live-meta">
-            <div style="margin-bottom: 8px;">
-                <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية</button>
-                <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English</button>
-            </div>
-            <div id="live-clock">📅 جاري تشغيل ساعة الثواني الحية...</div>
-        </div>
-        <h1 style="color: #ffd700; margin: 15px 0 5px 0; font-size: 34px;" id="main-title">عالم الحب</h1>
-        
-        <div class="section-box">
-            <div class="box-title" id="title-search">🔍 محرك بحث جوجل الذكي</div>
-            <a href="https://google.com" target="_blank" class="btn-gold-link" id="btn-search">اكتب للبحث عن أي شيء بمتصفح جوجل - اضغط هنا</a>
-        </div>
-        
-        <div class="section-box">
-            <div class="box-title" id="title-dua">✨ صندوق الأدعية والإهداءات التفاعلي</div>
-            <input type="text" id="name-input" placeholder="اكتب اسمك هنا الحين..." oninput="refreshAndBuildWhatsAppLink()" required>
-            <select id="dua-select" onchange="refreshAndBuildWhatsAppLink()">
-                <option value="اللهم احفظ لي أحبتي وأهلي ولا تريني فيهم بأساً يبكيني، واستودعتك قلوبهم وحياتهم وصحتهم فاحفظهم بحفظك يا كريم.">🤲 دعاء لحفظ الأهل والأحبة</option>
-                <option value="اللهم افتح لنا أبواب الرزق الحلال الطيب، واقضِ عنا الدين، واغننا بفضلك عمن سواك، واجعل التوفيق حليفنا في كل خطوة.">💰 دعاء سعة الرزق وتيسير الأمور</option>
-                <option value="أسأل الله العظيم أن يزيل عنكم كل ضيق، وأن يشفي مرضاكم، ويرحم موتاكم، ويجعل أيامكم القادمة مليئة بالفرح والفرج والسرور.">🌹 إهداء دعاء تفريج الهم والشفاء</option>
-                <option value="ربِّ اجعل هذا البلد آمناً مطمئناً وسائر بلاد المسلمين، واحفظ أهلنا في لبنان واشفِ جرحاهم وارحم شهداءهم وعمّ بالسلام أراضينا.">🇱🇧 دعاء خاص لحفظ لبنان والسلام</option>
-            </select>
-            <div style="color: #ffd700; font-size: 13px; font-weight: bold; margin-bottom: 5px;" id="title-preview">📖 كلمات الدعاء المختار حالياً:</div>
-            <div class="preview-box" id="dua-text-preview">جاري تحميل نص الدعاء...</div>
-            <a href="whatsapp://send?text=" id="whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none;">
-                <span id="btn-share">أرسل الإهداء وشارك عبر الواتساب 🟢</span>
-            </a>
-        </div>
-
-        <div class="section-box">
-            <div class="box-title" id="title-love">❤️ صندوق عبارات الحب والاشتياق التفاعلي</div>
-            <input type="text" id="love-name-input" placeholder="اكتب اسمك هنا الحين..." oninput="buildLoveWhatsAppLink()" required>
-            <select id="love-select" onchange="buildLoveWhatsAppLink()">
-                <option value="أشتاق إليك شوقاً يملأ الكون صخباً، وأحبك حباً يجعل من دقات قلبي عزفاً لاسمك الدافيء دائماً وأبداً.">🥀 عبارة اشتياق وحنين جارف</option>
-                <option value="أنت لست مجرد شخص عابر في حياتي، أنت عمري، وأجمل أقداري، ونبض قلبي الذي لا أعيش بدونه يوماً واحداً.">💍 عبارة حب أبدي وعهود صادقة</option>
-                <option value="لو كان للحب والاشتياق عنوان، لكان عينيك الفاتنتين، ولو كان لي في هذا العالم أمنية، لكانت البقاء بجانبك طول العمر.">🌹 عبارة رومانسية راقية وهدية عاطفية</option>
-                <option value="تغيب الشمس ويحل الظلام، لكن دفء حبك بقلبي لا يغيب أبداً، تظل أنت الأول والأخير بقلبي وعالمي الجميل.">✨ عبارة غرام عاطفية ليلية</option>
-            </select>
-            <div style="color: #ffd700; font-size: 13px; font-weight: bold; margin-bottom: 5px;" id="title-love-preview">📖 كلمات العبارة المختارة حالياً:</div>
-            <div class="preview-box" id="love-text-preview">جاري تحميل العبارة العاطفية...</div>
-            <a href="whatsapp://send?text=" id="love-whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none; background: linear-gradient(45deg, #e91e63, #b71c1c);">
-                <span id="btn-love-share">أرسل عبارة الحب وشارك عبر الواتساب 🟢</span>
-            </a>
-        </div>
-        <!-- الصندوق الأول: خدمات التشريج والإنترنت الموثوقة المنسق كلياً طبق الأصل من صورتكِ -->
-        <div class="section-box">
-            <div class="box-title">📱 خدمات تشريج الخطوط والإنترنت الموثوقة</div>
-            <p class="shop-box-desc">دليلكِ الآمن والكامل لتشريج خطوط <span class="text-red">Alfa</span> وتاتش <span class="text-red">MTC</span> وتجديد اشتراكات بطاقات إنترنت <span class="text-white">Ushare</span> برواقة تامة وبأعلى مصداقية في لبنان. تواصلوا مباشرة مع الموزع المستقل المعتمد لقفل طلباتكم بثقة وسرية:</p>
-            <a href="https://whatsapp.com" class="round-gold-btn">
-                💬 اطلب تشريج خطك الآن (واتساب)
-            </a>
-        </div>
-
-        <!-- الصندوق الثاني: خدمات شحن PUBG ومشتريات SHEIN المنسق كلياً طبق الأصل من صورتكِ -->
-        <div class="section-box">
-            <div class="box-title">🛒 خدمات شحن PUBG ومشتريات SHEIN</div>
-            <p class="shop-box-desc">اشحني حسابكِ وألعابكِ بثقة تامة! محطتكِ المتكاملة لطلب وشحن مشتريات وطلبيات ومحفظة SHEIN بالإضافة لتأمين شدات لعبة ببجي PUBG وجيمنج بأعلى درجات المصداقية وحماية كاملة لحساباتكم وبأسرع خدمة كاش:</p>
-            <div class="pubg-btn-static">PUBG Gaming 🎮</div>
-            <a href="https://whatsapp.com" class="round-pink-btn">
-                🛍️ للطلب وشحن الشدات و SHEIN (واتساب)
-            </a>
-        </div>
-        
-        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1435</span> زائر</div>
-        <div style="font-size: 28px; font-weight: bold; color: #ffd700; margin-top: 25px;">KR</div>
-    </div>
-</body>
-</html>
