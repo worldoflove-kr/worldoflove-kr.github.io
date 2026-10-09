@@ -112,3 +112,114 @@
     </script>
 </head>
 <body>
+    <div class="ticker-container">
+        <div class="ticker-wrapper">
+            <a href="#" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">$2,624.50</span> <span class="down">▼ نازل</span></a>
+            <a href="#" class="ticker-link">💵 الدولار عالمياً: <span class="price">102.50</span> <span class="up">▲ طالع</span></a>
+            <a href="#" class="ticker-link">💵 صرف لبنان: <span class="price">89,500 ل.ل</span> ◀ مستقر</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="live-meta">
+            <div style="margin-bottom: 8px;">
+                <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية</button>
+                <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English</button>
+            </div>
+            <div id="live-clock">📅 جاري تشغيل ساعة الثواني الحية...</div>
+        </div>
+        
+        <!-- 🐼 لوحة الباندا الحقيقي على اليمين والعبارات والكلام الذهبي للميزات لعيونك الحين -->
+        <div class="panda-welcome-flex">
+            <div class="panda-large-box">
+                <img src="https://ibb.co" alt="Panda">
+            </div>
+            <div class="welcome-content-wrapper">
+                <div class="welcome-bibi-text-box"><span class="w-red">Welcome</span> <span class="b-white">BiBi</span></div>
+                <div class="panda-features-desc" id="panda-desc-text">✨ منصة العائلة الملكية المخصصة لأجمل إهداءات الأدعية التفاعلية، وعبارات الحب الصادقة، وتأمين خدمات تشريج الخطوط وشحن الألعاب المعتمدة بأعلى درجات السرية، الأمان الصارم، والمصداقية الكبرى عالمياً الحين. 👑🔒</div>
+            </div>
+        </div>
+        
+        <h1 style="color: #ffd700; margin: 15px 0 0 0; font-size: 34px;" id="main-title" class="pulse-fast">عالم الحب</h1>
+        <div id="sub-title" class="sub-title-en pulse-fast">World of Love</div>
+        
+        <div class="section-box">
+            <div class="box-title" id="title-search">🔍 محرك بحث جوجل الذكي</div>
+            <a href="https://google.com" target="_blank" class="btn-gold-link" id="btn-search">اجمع للبحث عن أي شيء بمتصفح جوجل - اضغط هنا</a>
+        </div>
+        
+        <div class="section-box">
+            <div class="box-title" id="title-dua">✨ صندوق الأدعية والإهداءات التفاعلي</div>
+            <input type="text" id="name-input" placeholder="اكتب اسمك هنا الحين..." oninput="refreshAndBuildWhatsAppLink()" required>
+            <select id="dua-select" onchange="refreshAndBuildWhatsAppLink()">
+                <option value="اللهم احفظ لي أحبتي وأهلي ولا تريني فيهم بأساً يبكيني، واستودعتك قلوبهم وحياتهم وصحتهم فاحفظهم بحفظك يا كريم.">🤲 دعاء لحفظ الأهل والأحبة</option>
+                <option value="اللهم افتح لنا أبواب الرزق الحلال الطيب، واقضِ عنا الدين، واغننا بفضلك عمن سواك، واجعل التوفيق حليفنا في كل خطوة.">💰 دعاء سعة الرزق وتيسير الأمور</option>
+                <option value="أسأل الله العظيم أن يزيل عنكم كل ضيق، وأن يشفي مرضاكم، ويرحم موتاكم، ويجعل أيامكم القادمة مليئة بالفرح والفرج والسرور.">🌹 إهداء دعاء تفريج الهم والشفاء</option>
+                <option value="ربِّ اجعل هذا البلد آمناً مطمئناً وسائر بلاد المسلمين، واحفظ أهلنا في لبنان واشفِ جرحاهم وارحم شهداءهم وعمّ بالسلام أراضينا.">🇱🇧 دعاء خاص لحفظ لبنان والسلام</option>
+            </select>
+            <div style="color: #ffd700; font-size: 13px; font-weight: bold; margin-bottom: 5px;" id="title-preview">📖 كلمات الدعاء المختار حالياً:</div>
+            <div class="preview-box" id="dua-text-preview">جاري تحميل نص الدعاء...</div>
+            <a href="#" id="whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none;">
+                <span id="btn-share">أرسل الإهداء وشارك عبر الواتساب 🟢</span>
+            </a>
+        </div>
+
+        <div class="section-box">
+            <div class="box-title" id="title-love">❤️ صندوق عبارات الحب والاشتياق التفاعلي</div>
+            <input type="text" id="love-name-input" placeholder="اكتب اسمك هنا الحين..." oninput="buildLoveWhatsAppLink()" required>
+            <select id="love-select" onchange="buildLoveWhatsAppLink()">
+                <option value="أشتاق إليك شوقاً يملأ الكون صخباً، وأحبك حباً يجعل من دقات قلبي عزفاً لاسمك الدافيء دائماً وأبداً.">🥀 عبارة اشتياق وحنين جارف</option>
+                <option value="أنت لست مجرد شخص عابر في حياتي، أنت عمري، وأجمل أقداري، ونبض قلبي الذي لا أعيش بدونه يوماً واحداً.">💍 عبارة حب أبدي وعهود صادقة</option>
+                <option value="لو كان للحب والاشتياق عنوان، لكان عينيك الفاتنتين، ولو كان لي في هذا العالم أمنية، لكانت البقاء بجانبك طول العمر.">🌹 عبارة رومانسية راقية وهدية عاطفية</option>
+                <option value="تغيب الشمس ويحل الظلام، لكن دفء حبك بقلبي لا يغيب أبداً، تظل أنت الأول والأخير بقلبي وعالمي الجميل.">✨ عبارة غرام عاطفية ليلية</option>
+                <option value="أحن لأيامنا الخوالي، لتفاصيل صغيرة ضحكنا لها معاً، لزمان مضى وترك في القلب غصة حنين دافئة لا تموت أبداً مع السنين.">🕰️ عبارة حنين للماضي وذكريات زمان القديمة</option>
+            </select>
+            <div style="color: #ffd700; font-size: 13px; font-weight: bold; margin-bottom: 5px;" id="title-love-preview">📖 كلمات العبارة المختارة حالياً:</div>
+            <div class="preview-box" id="love-text-preview">جاري تحميل العبارة العاطفية...</div>
+            <a href="#" id="love-whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none; background: linear-gradient(45deg, #e91e63, #b71c1c);">
+                <span id="btn-love-share">أرسل عبارة الحب وشارك عبر الواتساب 🟢</span>
+            </a>
+        </div>
+
+        <div class="section-box">
+            <div class="box-title" id="title-congrat">🎉 صندوق التهنئة والمباركة للمناسبات والأعياد</div>
+            <input type="text" id="congrat-name-input" placeholder="اكتب اسمك هنا الحين..." oninput="buildCongratWhatsAppLink()" required>
+            <select id="congrat-select" onchange="buildCongratWhatsAppLink()">
+                <option value="تقبل الله منا ومنكم صالح الأعمال، وكل عام وأنتم بخير وصحة وعافية بمناسبة عيد الفطر السعيد، أعاده الله علينا وعليكم باليمن والبركات.">🌙 مباركة عيد الفطر السعيد والبركات</option>
+                <option value="مع بداية العام الجديد، أتمنى لكم عاماً مليئاً بالفرح والنجاح والسلامة، وأن تتحقق فيه كل أمنياتكم الطيبة، كل عام وأنتم بألف خير.">✨ تهنئة بالعام الجديد والأمنيات الطيبة</option>
+                <option value="ألف مبروك الزواج الميمون، بارك الله لكما وبارك عليكما وجمع بينكما في خير، وجعل أيامكم القادمة كلها حب وسعادة واستقرار أبدي.">💍 مباركة وتهنئة بالزواج السعيد</option>
+                <option value="ما شاء الله تبارك الرحمن، بورك لكم في الموهوب وشكرتم الواهب وبلغ أشده ورزقتم بره، ألف مبروك المولود الجديد والرزق النظيف.">👶 تهنئة بالمولود الجديد السعيد</option>
+                <option value="ألف مبروك النجاح والتفوق الباهر الّذي يرفع الرأس! هذا الحصاد الجميل هو ثمرة صبركم وتعبكم، ومن نجاح إلى نجاح دائم ومستمر.">🎓 تهنئة بالنجاح الباهر والتفوق</option>
+            </select>
+            <div style="color: #ffd700; font-size: 13px; font-weight: bold; margin-bottom: 5px;" id="title-congrat-preview">📖 كلمات التهنئة المختارة حالياً:</div>
+            <div class="preview-box" id="congrat-text-preview">جاري تحميل نص التهنئة السعيدة...</div>
+            <a href="#" id="congrat-whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none; background: linear-gradient(45deg, #ff9800, #f57c00); display: block; width: 100%; border: none; color: #fff; padding: 14px; font-size: 15px; font-weight: bold; border-radius: 8px; text-align: center; box-sizing: border-box; margin-top: 5px;"><span id="btn-congrat-share">أرسل التهنئة وشارك عبر الواتساب 🟢</span></a>
+        </div>
+
+        <div class="section-box">
+            <div class="box-title" id="title-shop">📱 خدمات تشريج الخطوط والإنترنت الموثوقة</div>
+            <p class="shop-box-desc">دليلكِ الآمن والكامل لتشريج خطوط Alfa وتاتش MTC وتجديد اشتراكات بطاقات إنترنت Ushare برواقة تامة وبأعلى مصداقية في لبنان. تواصلوا مباشرة مع الموزع المستقل المعتمد لقفل طلباتكم بثقة وسرية:</p>
+            <a href="whatsapp://send?phone=96179320900&text=مرحبا، بدي أطلب تشريج خطوط" class="round-gold-btn">
+                💬 اطلب تشريج خطك الآن (واتساب)
+            </a>
+        </div>
+
+        <div class="section-box">
+            <div class="box-title">🛒 خدمات شحن PUBG ومشتريات SHEIN</div>
+            <p class="shop-box-desc">اشحني حسابكِ وألعابكِ بثقة تامة! محطتكِ المتكاملة لطلب وشحن مشتريات وطلبيات ومحفظة SHEIN بالإضافة لتأمين شدات لعبة ببجي PUBG وجيمنج بأعلى درجات المصداقية وحماية كاملة لحساباتكم وبأسرع خدمة كاش:</p>
+            <div class="pubg-btn-static">PUBG Gaming 🎮</div>
+            <a href="whatsapp://send?phone=96171689517&text=مرحبا، بدي شحن ألعاب" class="round-pink-btn">
+                🛍️ للطلب وشحن الشدات و SHEIN (واتساب)
+            </a>
+        </div>
+
+        <div class="section-box">
+            <div class="box-title" id="title-tasbih">📿 صندوق لوحة عداد التسبيح والاستغفار الرقمي</div>
+            <div class="tasbih-display" id="tasbih-display-box"><span id="tasbih-val">0</span></div>
+            <button class="tasbih-btn" onclick="countTasbih()">اضغط<br>هنا 📿</button>
+            <div style="text-align: center; margin-top: 5px;">
+                <button class="tasbih-reset" id="tasbih-reset-btn" onclick="resetTasbih()">إعادة تصفير العداد 🔄</button>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <div class="box-title" id="title-secret">🔐 صندوق الرسائل السرية والمفاجآت العاطفية المغلقة</div>
