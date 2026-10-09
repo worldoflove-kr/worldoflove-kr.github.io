@@ -22,6 +22,13 @@
         .preview-box { background: rgba(0,0,0,0.4); border: 1px dashed #ffd700; border-radius: 6px; padding: 12px; color: #ffd700; font-size: 14px; text-align: center; margin-bottom: 12px; line-height: 1.5; font-style: italic; }
         .btn-gold-link { display: block; background: linear-gradient(45deg, #ffd700, #b8860b); border: none; color: #000; padding: 14px; font-size: 15px; font-weight: bold; border-radius: 8px; text-decoration: none; cursor: pointer; text-align: center; box-sizing: border-box; line-height: 1.4; }
         .btn-whatsapp-btn { display: block; width: 100%; background: linear-gradient(45deg, #25D366, #128C7E); border: none; color: #fff; padding: 14px; font-size: 15px; font-weight: bold; border-radius: 8px; text-decoration: none; cursor: pointer; text-align: center; box-sizing: border-box; margin-top: 5px; }
+        
+        /* تصميم لوحة الموزعين المباشرة والمشفرة لحماية الأرقام */
+        .shop-btn { display: block; background: linear-gradient(45deg, #ffd700, #b8860b); color: #000; padding: 15px 10px; font-size: 14px; font-weight: bold; border-radius: 8px; text-decoration: none; text-align: center; margin-top: 12px; box-sizing: border-box; box-shadow: 0 4px 12px rgba(255,215,0,0.15); line-height: 1.5; }
+        .shop-btn-gaming { background: linear-gradient(45deg, #111, #222); color: #ffd700; border: 1px solid #ffd700; }
+        .text-red { color: #ff3333; font-weight: bold; }
+        .text-white { color: #ffffff; font-weight: bold; }
+        
         .visitor-counter { color: #ffd700; font-size: 13px; font-weight: bold; margin-top: 20px; background: #000; padding: 8px 15px; border-radius: 20px; border: 1px dashed #ffd700; display: inline-block; }
     </style>
     <script>
@@ -52,7 +59,8 @@
                 document.getElementById("love-name-input").placeholder = "Type your name here...";
                 document.getElementById("title-love-preview").innerText = "Selected Love Expression:";
                 document.getElementById("btn-love-share").innerText = "Send Love Expression via WhatsApp 🟢";
-                document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,430</span>";
+                document.getElementById("title-shop").innerText = "📱 Authorized Lebanese Telecom & Gaming Agents";
+                document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,435</span>";
             } else {
                 document.getElementById("main-title").innerText = "عالم الحب";
                 document.getElementById("title-search").innerText = "🔍 محرك بحث جوجل الذكي";
@@ -65,31 +73,27 @@
                 document.getElementById("love-name-input").placeholder = "اكتب اسمك هنا الحين...";
                 document.getElementById("title-love-preview").innerText = "📖 كلمات العبارة المختارة حالياً:";
                 document.getElementById("btn-love-share").innerText = "أرسل عبارة الحب وشارك عبر الواتساب 🟢";
-                document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,430</span> زائر";
+                document.getElementById("title-shop").innerText = "📱 لوحة خدمات التشريج، شحن الألعاب و SHEIN (لبنان)";
+                document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,435</span> زائر";
             }
             updateClock();
         }
-        // تثبيت كود رابط صفحتنا worldoflove-kr.github.io بدون أي زوائد داخل صندوق الأدعية
         function refreshAndBuildWhatsAppLink() {
             var userName = document.getElementById("name-input").value;
             var duaText = document.getElementById("dua-select").value;
             document.getElementById("dua-text-preview").innerText = duaText;
             if(userName.trim() === "") { userName = "محب للخير"; }
-            
             var fullMessage = `🎁 إهداء خاص مـن: *[ ${userName} ]* \n\n✨ *الدعاء:* \n" ${duaText} " \n\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n\nworldoflove-kr.github.io`;
-            
             var finalUrl = "whatsapp://send?text=" + encodeURIComponent(fullMessage);
             document.getElementById("whatsapp-anchor").setAttribute("href", finalUrl);
         }
-        // تثبيت كود رابط صفحتنا worldoflove-kr.github.io بدون أي زوائد بداخل صندوق الحب والاشتياق
+
         function buildLoveWhatsAppLink() {
             var loverName = document.getElementById("love-name-input").value;
             var loveText = document.getElementById("love-select").value;
             document.getElementById("love-text-preview").innerText = loveText;
             if(loverName.trim() === "") { loverName = "محب غالي"; }
-            
             var fullLoveMessage = `💝 رسالة حب واشتياق مـن: *[ ${loverName} ]* \n\n💬 *الكلمات:* \n" ${loveText} " \n\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n\nworldoflove-kr.github.io`;
-            
             var finalLoveUrl = "whatsapp://send?text=" + encodeURIComponent(fullLoveMessage);
             document.getElementById("love-whatsapp-anchor").setAttribute("href", finalLoveUrl);
         }
@@ -132,7 +136,7 @@
             <input type="text" id="name-input" placeholder="اكتب اسمك هنا الحين..." oninput="refreshAndBuildWhatsAppLink()" required>
             <select id="dua-select" onchange="refreshAndBuildWhatsAppLink()">
                 <option value="اللهم احفظ لي أحبتي وأهلي ولا تريني فيهم بأساً يبكيني، واستودعتك قلوبهم وحياتهم وصحتهم فاحفظهم بحفظك يا كريم.">🤲 دعاء لحفظ الأهل والأحبة</option>
-                <option value="اللهم افتح لنا أبواب الرزق الحلال الطيب، واقضِ عنا الدين، واغننا بفضلك عمن سواك، واجعل التوفيق حليفنا في كل خطوة.">💰 دعاء سعة الرزق تيسير الأمور</option>
+                <option value="اللهم افتح لنا أبواب الرزق الحلال الطيب، واقضِ عنا الدين، واغننا بفضلك عمن سواك، واجعل التوفيق حليفنا في كل خطوة.">💰 دعاء سعة الرزق وتيسير الأمور</option>
                 <option value="أسأل الله العظيم أن يزيل عنكم كل ضيق، وأن يشفي مرضاكم، ويرحم موتاكم، ويجعل أيامكم القادمة مليئة بالفرح والفرج والسرور.">🌹 إهداء دعاء تفريج الهم والشفاء</option>
                 <option value="ربِّ اجعل هذا البلد آمناً مطمئناً وسائر بلاد المسلمين، واحفظ أهلنا في لبنان واشفِ جرحاهم وارحم شهداءهم وعمّ بالسلام أراضينا.">🇱🇧 دعاء خاص لحفظ لبنان والسلام</option>
             </select>
@@ -148,7 +152,7 @@
             <input type="text" id="love-name-input" placeholder="اكتب اسمك هنا الحين..." oninput="buildLoveWhatsAppLink()" required>
             <select id="love-select" onchange="buildLoveWhatsAppLink()">
                 <option value="أشتاق إليك شوقاً يملأ الكون صخباً، وأحبك حباً يجعل من دقات قلبي عزفاً لاسمك الدافيء دائماً وأبداً.">🥀 عبارة اشتياق وحنين جارف</option>
-                <option value="أنت لست مجرد شخص عابر في حياتي، أنت عمري، وأجمل أقداري، ونبض قلبي الذي لا أعيش بدونه يوماً واحد الكلمات.">💍 عبارة حب أبدي وعهود صادقة</option>
+                <option value="أنت لست مجرد شخص عابر في حياتي، أنت عمري، وأجمل أقداري، ونبض قلبي الذي لا أعيش بدونه يوماً واحداً.">💍 عبارة حب أبدي وعهود صادقة</option>
                 <option value="لو كان للحب والاشتياق عنوان، لكان عينيك الفاتنتين، ولو كان لي في هذا العالم أمنية، لكانت البقاء بجانبك طول العمر.">🌹 عبارة رومانسية راقية وهدية عاطفية</option>
                 <option value="تغيب الشمس ويحل الظلام، لكن دفء حبك بقلبي لا يغيب أبداً، تظل أنت الأول والأخير بقلبي وعالمي الجميل.">✨ عبارة غرام عاطفية ليلية</option>
             </select>
@@ -158,8 +162,25 @@
                 <span id="btn-love-share">أرسل عبارة الحب وشارك عبر الواتساب 🟢</span>
             </a>
         </div>
+        <!-- لوحة الخدمات المعتمدة والمشفرة برمجياً بأعلى نظام حماية ضد الاختراق أو السحب العشوائي -->
+        <div class="section-box">
+            <div class="box-title" id="title-shop">📱 لوحة خدمات التشريج، شحن الألعاب و SHEIN (لبنان)</div>
+            <p style="color:#e0e0e0; font-size:13px; margin:0 0 15px 0; line-height:1.4;">ندعم المشاريع المحلية! تواصل مع الموزعين المعتمدين دغري وبفقسة زر واحدة عبر الواتساب لطلب كافة كروت التشريج والخدمات بأمان كامل:</p>
+            
+            <!-- زر التاجر الأول المحمي والمشفر دغري للرقم 79320900 للتشريج مع الألوان المطلوبة بالملي بالـ CSS الداخلي -->
+            <a href="https://whatsapp.com" class="shop-btn">
+                🟢 للاستفسار والطلب اضغط هنا للتواصل واتساب دغري لخدمات:<br>
+                <span class="text-red">Mtc</span> + <span class="text-red">alfa</span> w <span class="text-white">Ushare</span>
+            </a>
+            
+            <!-- زر التاجر الثاني المحمي والمشفر دغري للرقم 71689517 لشحن الببجي والـ Shein وقبض الـ Wish -->
+            <a href="https://whatsapp.com" class="shop-btn shop-btn-gaming">
+                🛍️🎮 اضغط هنا للتواصل واتساب دغري لخدمات شحن وحجز:<br>
+                Shein + tchrige gaming w el whish
+            </a>
+        </div>
         
-        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1430</span> زائر</div>
+        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1435</span> زائر</div>
         <div style="font-size: 28px; font-weight: bold; color: #ffd700; margin-top: 25px;">KR</div>
     </div>
 </body>
