@@ -162,15 +162,31 @@
             setInterval(updateClock, 1000); updateClock();
             var count = localStorage.getItem('page_view') || 1570;
             count = parseInt(count) + 1; localStorage.setItem('page_view', count);
+            document.getElementById("counter-val").innerText = count;
+            var tCount = localStorage.getItem('tasbih_count') || 0;
+            document.getElementById("tasbih-val").innerText = parseInt(tCount).toLocaleString();
+            refreshAndBuildWhatsAppLink(); buildLoveWhatsAppLink();
+        };
+    </script>
+</head>
+<body>
     <audio id="my-live-audio-player" src="https://mp3quran.net" preload="auto"></audio>
     <div class="ticker-container">
         <div class="ticker-wrapper">
-            <a href="https://kitco.com" target="_blank" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">$2,624.50</span> <span class="down">▼ نازل</span></a>
+            <a href="https://kitco.com" target="_blank" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">\$2,624.50</span> <span class="down">▼ نازل</span></a>
             <a href="https://xe.com" target="_blank" class="ticker-link">💵 مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="up">▲ طالع</span></a>
             <a href="https://lebanonfiles.com" target="_blank" class="ticker-link">💵 صرف الدولار في لبنان: <span class="price">89,500 ل.ل</span> ◀ مستقر</a>
         </div>
     </div>
     <div class="container">
+        <div class="live-meta">
+            <div style="margin-bottom: 8px;">
+                <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية</button>
+                <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English</button>
+            </div>
+            <div id="live-clock">📅 جاري تشغيل ساعة الثواني الحية...</div>
+        </div>
+        
         <h1 style="color: #ffd700; margin: 15px 0 0 0; font-size: 34px;" id="main-title" class="pulse-fast">عالم الحب</h1>
         <div id="sub-title" class="sub-title-en pulse-fast">World of Love</div>
         
@@ -194,41 +210,6 @@
                 <span id="btn-share">أرسل الإهداء وشارك عبر الواتساب 🟢</span>
             </a>
         </div>
-
-        <div class="section-box">
-            <div class="box-title" id="title-love">❤️ صندوق عبارات الحب والاشتياق التفاعلي</div>
-            <input type="text" id="love-name-input" placeholder="اكتب اسمك هنا الحين..." oninput="buildLoveWhatsAppLink()" required>
-            <select id="love-select" onchange="buildLoveWhatsAppLink()">
-                <option value="أشتاق إليك شوقاً يملأ الكون صخباً، وأحبك حباً يجعل من دقات قلبي عزفاً لاسمك الدافيء دائماً وأبداً.">🥀 عبارة اشتياق وحنين جارف</option>
-                <option value="أنت لست مجرد شخص عابر في حياتي، أنت عمري، وأجمل أقداري، ونبض قلبي الذي لا أعيش بدونه يوماً واحداً.">💍 عبارة حب أبدي وعهود صادقة</option>
-                <option value="لو كان للحب والاشتياق عنوان، لكان عينيك الفاتنتين، ولو كان لي في هذا العالم أمنية، لكانت البقاء بجانبك طول العمر.">🌹 عبارة رومانسية راقية وهدية عاطفية</option>
-                <option value="تغيب الشمس ويحل الظلام، لكن دفء حبك بقلبي لا يغيب أبداً، تظل أنت الأول والأخير بقلبي وعالمي الجميل.">✨ عبارة غرام عاطفية ليلية</option>
-                <option value="أحن لأيامنا الخوالي، لتفاصيل صغيرة ضحكنا لها معاً، لزمان مضى وترك في القلب غصة حنين دافئة لا تموت أبداً مع السنين.">🕰️ عبارة حنين للماضي وذكريات زمان القديمة</option>
-            </select>
-            <div style="color: #ffd700; font-size: 13px; font-weight: bold; margin-bottom: 5px;" id="title-love-preview">📖 كلمات العبارة المختارة حالياً:</div>
-            <div class="preview-box" id="love-text-preview">جاري تحميل العبارة العاطفية...</div>
-            <a href="whatsapp://send?text=" id="love-whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none; background: linear-gradient(45deg, #e91e63, #b71c1c);">
-                <span id="btn-love-share">أرسل عبارة الحب وشارك عبر الواتساب 🟢</span>
-            </a>
-        </div>
-
-        <div class="section-box">
-            <div class="box-title" id="title-shop">📱 خدمات تشريج الخطوط والإنترنت الموثوقة</div>
-            <p class="shop-box-desc">دليلكِ الآمن والكامل لتشريج خطوط Alfa وتاتش MTC وتجديد اشتراكات بطاقات إنترنت Ushare برواقة تامة وبأعلى مصداقية في لبنان. تواصلوا مباشرة مع الموزع المستقل المعتمد لقفل طلباتكم بثقة وسرية:</p>
-            <a href="whatsapp://send?phone=96179320900&text=مرحبا، بدي أطلب تشريج خطوط" class="round-gold-btn">
-                💬 اطلب تشريج خطك الآن (واتساب)
-            </a>
-        </div>
-
-        <div class="section-box">
-            <div class="box-title">🛒 خدمات شحن PUBG ومشتريات SHEIN</div>
-            <p class="shop-box-desc">اشحني حسابكِ وألعابكِ بثقة تامة! محطتكِ المتكاملة لطلب وشحن مشتريات وطلبيات ومحفظة SHEIN بالإضافة لتأمين شدات لعبة ببجي PUBG وجيمنج بأعلى درجات المصداقية وحماية كاملة لحساباتكم وبأسرع خدمة كاش:</p>
-            <div class="pubg-btn-static">PUBG Gaming 🎮</div>
-            <a href="whatsapp://send?phone=96171689517&text=مرحبا، بدي شحن ألعاب" class="round-pink-btn">
-                🛍️ للطلب وشحن الشدات و SHEIN (واتساب)
-            </a>
-        </div>
-
         <div class="section-box">
             <div class="box-title" id="title-tasbih">📿 صندوق لوحة عداد التسبيح والاستغفار الرقمي</div>
             <select id="tasbih-select" style="margin-bottom: 15px;">
@@ -262,7 +243,7 @@
             </div>
         </div>
         
-        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1,573</span> زائر</div>
+        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;' id='counter-val'>1,573</span> زائر</div>
         <br>
         <div class="family-logo-wrapper">
             <div class="family-logo pulse-fast">👑 KR 👑</div>
