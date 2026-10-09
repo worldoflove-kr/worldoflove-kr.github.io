@@ -52,7 +52,7 @@
                 document.getElementById("love-name-input").placeholder = "Type your name here...";
                 document.getElementById("title-love-preview").innerText = "📖 Selected Love Expression:";
                 document.getElementById("btn-love-share").innerText = "Send Love Expression via WhatsApp 🟢";
-                document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,425</span>";
+                document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,430</span>";
             } else {
                 document.getElementById("main-title").innerText = "عالم الحب";
                 document.getElementById("title-search").innerText = "🔍 محرك بحث جوجل الذكي";
@@ -65,7 +65,7 @@
                 document.getElementById("love-name-input").placeholder = "اكتب اسمك هنا الحين...";
                 document.getElementById("title-love-preview").innerText = "📖 كلمات العبارة المختارة حالياً:";
                 document.getElementById("btn-love-share").innerText = "أرسل عبارة الحب وشارك عبر الواتساب 🟢";
-                document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,425</span> زائر";
+                document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,430</span> زائر";
             }
             updateClock();
         }
@@ -74,25 +74,30 @@
             var duaText = document.getElementById("dua-select").value;
             document.getElementById("dua-text-preview").innerText = duaText;
             if(userName.trim() === "") { userName = "محب للخير"; }
-            var fullMessage = `🎁 إهداء خاص مـن: *[ ${userName} ]* \n\n✨ *الدعاء:* \n" ${duaText} " \n\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love`;
+            
+            // تثبيت رابط صفحتنا الكامل والصحيح مع بروتوكول الأمان المباشر للواتساب
+            var fullMessage = `🎁 إهداء خاص مـن: *[ ${userName} ]* \n\n✨ *الدعاء:* \n" ${duaText} " \n\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n🌐 *رابط الصفحة المباشر:* \nhttps://github.io`;
+            
             var finalUrl = "whatsapp://send?text=" + encodeURIComponent(fullMessage);
             document.getElementById("whatsapp-anchor").setAttribute("href", finalUrl);
         }
 
-        // دالة مخصصة ونظيفة لتجميع رسائل الحب والاشتياق دغري للواتساب
         function buildLoveWhatsAppLink() {
             var loverName = document.getElementById("love-name-input").value;
             var loveText = document.getElementById("love-select").value;
             document.getElementById("love-text-preview").innerText = loveText;
             if(loverName.trim() === "") { loverName = "محب غالي"; }
-            var fullLoveMessage = `💝 رسالة حب واشتياق مـن: *[ ${loverName} ]* \n\n💬 *الكلمات:* \n" ${loveText} " \n\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love`;
+            
+            // تثبيت رابط صفحتنا الكامل والصحيح مع بروتوكول الأمان المباشر لرسائل الحب
+            var fullLoveMessage = `💝 رسالة حب واشتياق مـن: *[ ${loverName} ]* \n\n💬 *الكلمات:* \n" ${loveText} " \n\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n🌐 *رابط الصفحة المباشر:* \nhttps://github.io`;
+            
             var finalLoveUrl = "whatsapp://send?text=" + encodeURIComponent(fullLoveMessage);
             document.getElementById("love-whatsapp-anchor").setAttribute("href", finalLoveUrl);
         }
         
         window.onload = function() {
             setInterval(updateClock, 1000); updateClock();
-            var count = localStorage.getItem('page_view') || 1425;
+            var count = localStorage.getItem('page_view') || 1430;
             count = parseInt(count) + 1; localStorage.setItem('page_view', count);
             document.getElementById("counter-val").innerText = count;
             refreshAndBuildWhatsAppLink();
@@ -139,7 +144,6 @@
             </a>
         </div>
 
-        <!-- صندوق عبارات الحب والاشتياق التفاعلي الملكي الجديد -->
         <div class="section-box">
             <div class="box-title" id="title-love">❤️ صندوق عبارات الحب والاشتياق التفاعلي</div>
             <input type="text" id="love-name-input" placeholder="اكتب اسمك هنا الحين..." oninput="buildLoveWhatsAppLink()" required>
@@ -156,7 +160,7 @@
             </a>
         </div>
         
-        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1425</span> زائر</div>
+        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1430</span> زائر</div>
         <div style="font-size: 28px; font-weight: bold; color: #ffd700; margin-top: 25px;">KR</div>
     </div>
 </body>
