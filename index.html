@@ -88,6 +88,41 @@
             document.getElementById("btn-search").innerText = isAr ? "اجمع للبحث عن أي شيء بمتصفح جوجل - اضغط هنا" : "Type to search anything on Google browser - Click Here";
             document.getElementById("title-dua").innerText = isAr ? "✨ صندوق الأدعية والإهداءات التفاعلي" : "✨ Islamic Duas & Gifts Box";
             document.getElementById("name-input").placeholder = isAr ? "اكتب اسمك هنا الحين..." : "Type your name here...";
+            document.getElementById("title-preview").innerText = isAr ? "📖 كلمات الدعاء المختار حالياً:" : "📖 Selected Dua Text:";
+            document.getElementById("btn-share").innerText = isAr ? "أرسل الإهداء وشارك عبر الواتساب 🟢" : "Send Gift & Share on WhatsApp 🟢";
+            document.getElementById("title-love").innerText = isAr ? "❤️ صندوق عبارات الحب والاشتياق التفاعلي" : "❤️ Love & Longing Expressions Box";
+            document.getElementById("love-name-input").placeholder = isAr ? "اكتب اسمك هنا الحين..." : "Type your name here...";
+            document.getElementById("title-love-preview").innerText = isAr ? "📖 كلمات العبارة المختارة حالياً:" : "Selected Love Expression:";
+            document.getElementById("btn-love-share").innerText = isAr ? "أرسل عبارة الحب وشارك عبر الواتساب 🟢" : "Send Love Expression via WhatsApp 🟢";
+            document.getElementById("title-congrat").innerText = isAr ? "🎉 صندوق التهنئة والمباركة للمناسبات والأعياد" : "🎉 Celebrations & Happy Occasions Box";
+            document.getElementById("congrat-name-input").placeholder = isAr ? "اكتب اسمك هنا الحين..." : "Type your name here...";
+            document.getElementById("title-congrat-preview").innerText = isAr ? "📖 كلمات التهنئة المختارة حالياً:" : "Selected Congratulation Text:";
+            document.getElementById("btn-congrat-share").innerText = isAr ? "أرسل التهنئة وشارك عبر الواتساب 🟢" : "Send Congratulation via WhatsApp 🟢";
+            document.getElementById("panda-desc-text").innerText = isAr ? "✨ منصة العائلة الملكية المخصصة لأجمل إهداءات الأدعية التفاعلية، وعبارات الحب الصادقة، وتأمين خدمات الموزعين المعتمدة بأعلى درجات السرية والمصداقية." : "The royal platform for beautiful duas, authentic love expressions, and trusted dealer services.";
+            document.getElementById("title-tasbih").innerText = isAr ? "📿 صندوق لوحة عداد التسبيح والاستغفار الرقمي" : "📿 Digital Tasbih & Dhikr Counter Box";
+            document.getElementById("tasbih-reset-btn").innerText = isAr ? "إعادة تصفير العداد 🔄" : "Reset Counter 🔄";
+            document.getElementById("title-secret").innerText = isAr ? "🔐 صندوق الرسائل السرية والمفاجآت العاطفية المغلقة" : "🔐 Secret Locked Messages & Surprises Box";
+            document.getElementById("secret-desc-text").innerText = isAr ? "هذا الصندوق تفاعلي آمن ومحمي ومفرمل كلياً، ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور." : "This is a secure gift box. To unlock rewards, please type 123 or the family code KR.";
+            document.getElementById("secret-input").placeholder = isAr ? "اكتب الكلمة السرية أو الكود السري هنا الحين..." : "Type the secret word code here...";
+            document.getElementById("secret-btn-click").innerText = isAr ? "افتح واكشف المفاجأة السرية الحين 🔓" : "Open & Unlock Secret Surprise 🔓";
+            document.getElementById("visitor-box").innerHTML = isAr ? "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,573</span> زائر" : "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,573</span>";
+            updateClock();
+        }
+        function refreshAndBuildWhatsAppLink() {
+            var n = document.getElementById("name-input").value || "محب للخير"; var t = document.getElementById("dua-select").value; document.getElementById("dua-text-preview").innerText = t;
+            document.getElementById("whatsapp-anchor").setAttribute("href", "whatsapp://send?text=" + encodeURIComponent(`🎁 إهداء خاص مـن: *[ ${n} ]* \n\n✨ *الدعاء:* \n" ${t} " \n\n worldoflove-kr.github.io`));
+        }
+        function buildLoveWhatsAppLink() {
+            var n = document.getElementById("love-name-input").value || "محب غالي"; var t = document.getElementById("love-select").value; document.getElementById("love-text-preview").innerText = t;
+            document.getElementById("love-whatsapp-anchor").setAttribute("href", "whatsapp://send?text=" + encodeURIComponent(`💝 رسالة حب واشتياق مـن: *[ ${n} ]* \n\n💬 *الكلمات:* \n" ${t} " \n\n worldoflove-kr.github.io`));
+        }
+        function buildCongratWhatsAppLink() {
+            var n = document.getElementById("congrat-name-input").value || "مهنئ غالي"; var t = document.getElementById("congrat-select").value; document.getElementById("congrat-text-preview").innerText = t;
+            document.getElementById("congrat-whatsapp-anchor").setAttribute("href", "whatsapp://send?text=" + encodeURIComponent(`🎉 إهداء مباركة وتهنئة مـن: *[ ${n} ]* \n\n✨ *التهنئة:* \n" ${t} " \n\n worldoflove-kr.github.io`));
+        }
+    </script>
+</head>
+<body>
     <div class="ticker-container">
         <div class="ticker-wrapper">
             <a href="#" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">$2,624.50</span> <span class="down">▼ نازل</span></a>
@@ -179,7 +214,7 @@
 
         <div class="section-box">
             <div class="box-title" id="title-shop">📱 خدمات تشريج الخطوط والإنترنت الموثوقة</div>
-            <p class="shop-box-desc">دليلكِ الآمن والكامل لتشريج خطوط Alfa وتاتش MTC وتجديد اشتراكات بطاقات إنترنت Ushare برواقة تامة وبأعلى مصداقية في لبنان. تواصلوا مباشرة مع الموزع المستقل المعتمد لقفل طلباتكم بثقة وسرية:</p>
+            <p class="shop-box-desc">دليلكِ الآمن والكامل لتشريج خطوط Alfa وتاتش MTC وتجديد اشتраكات بطاقات إنترنت Ushare برواقة تامة وبأعلى مصداقية في لبنان. تواصلوا مباشرة مع الموزع المستقل المعتمد لقفل طلباتكم بثقة وسرية:</p>
             <a href="whatsapp://send?phone=96179320900&text=مرحبا، بدي أطلب تشريج خطوط" class="round-gold-btn">
                 💬 اطلب تشريج خطك الآن (واتساب)
             </a>
