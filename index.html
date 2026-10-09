@@ -50,7 +50,7 @@
                 document.getElementById("btn-share").innerText = "Send Gift & Share on WhatsApp 🟢";
                 document.getElementById("title-love").innerText = "❤️ Love & Longing Expressions Box";
                 document.getElementById("love-name-input").placeholder = "Type your name here...";
-                document.getElementById("title-love-preview").innerText = "📖 Selected Love Expression:";
+                document.getElementById("title-love-preview").innerText = "Selected Love Expression:";
                 document.getElementById("btn-love-share").innerText = "Send Love Expression via WhatsApp 🟢";
                 document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,435</span>";
             } else {
@@ -69,27 +69,27 @@
             }
             updateClock();
         }
-        // قفل الرابط الرسمي لصفحتنا عالم الحب بالملي بداخل مسج صندوق الأدعية والإهداءات
+        // تم تصليح نص رسالة الأدعية وفصل الرابط في سطر مستقل ونظيف تماماً ليظهر كاملاً كأنه مكتوب بيدكِ
         function refreshAndBuildWhatsAppLink() {
             var userName = document.getElementById("name-input").value;
             var duaText = document.getElementById("dua-select").value;
             document.getElementById("dua-text-preview").innerText = duaText;
             if(userName.trim() === "") { userName = "محب للخير"; }
             
-            var fullMessage = `🎁 إهداء خاص مـن: *[ ${userName} ]* \n\n✨ *الدعاء:* \n" ${duaText} " \n\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n🌐 *رابط صفحتنا المباشر والوحيد:* \nhttps://github.io`;
+            var fullMessage = `🎁 إهداء خاص مـن: *[ ${userName} ]* \n\n✨ *الدعاء:* \n" ${duaText} " \n\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n\nhttps://github.io`;
             
             var finalUrl = "whatsapp://send?text=" + encodeURIComponent(fullMessage);
             document.getElementById("whatsapp-anchor").setAttribute("href", finalUrl);
         }
 
-        // قفل الرابط الرسمي لصفحتنا عالم الحب بالملي بداخل مسج صندوق الحب والاشتياق العاطفي
+        // تم تصليح نص رسالة عبارات الحب وفصل الرابط في سطر مستقل ونظيف تماماً ليتطابق الصندوقان مئة بالمئة
         function buildLoveWhatsAppLink() {
             var loverName = document.getElementById("love-name-input").value;
             var loveText = document.getElementById("love-select").value;
             document.getElementById("love-text-preview").innerText = loveText;
             if(loverName.trim() === "") { loverName = "محب غالي"; }
             
-            var fullLoveMessage = `💝 رسالة حب واشتياق مـن: *[ ${loverName} ]* \n\n💬 *الكلمات:* \n" ${loveText} " \n\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n🌐 *رابط صفحتنا المباشر والوحيد:* \nhttps://github.io`;
+            var fullLoveMessage = `💝 رسالة حب واشتياق مـن: *[ ${loverName} ]* \n\n💬 *الكلمات:* \n" ${loveText} " \n\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n\nhttps://github.io`;
             
             var finalLoveUrl = "whatsapp://send?text=" + encodeURIComponent(fullLoveMessage);
             document.getElementById("love-whatsapp-anchor").setAttribute("href", finalLoveUrl);
@@ -110,7 +110,7 @@
         <div class="ticker-wrapper">
             <a href="https://kitco.com" target="_blank" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">\$2,624.50</span> <span class="down">▼ نازل</span></a>
             <a href="https://xe.com" target="_blank" class="ticker-link">💵 مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="up">▲ طالع</span></a>
-            <a href="https://lebanonfiles.com" target="_blank" class="ticker-link">💵 صرف الدولار in لبنان: <span class="price">89,500 ل.ل</span> ◀ مستقر</a>
+            <a href="https://lebanonfiles.com" target="_blank" class="ticker-link">💵 صرف الدولار في لبنان: <span class="price">89,500 ل.ل</span> ◀ مستقر</a>
         </div>
     </div>
     <div class="container">
@@ -148,7 +148,7 @@
             <div class="box-title" id="title-love">❤️ صندوق عبارات الحب والاشتياق التفاعلي</div>
             <input type="text" id="love-name-input" placeholder="اكتب اسمك هنا الحين..." oninput="buildLoveWhatsAppLink()" required>
             <select id="love-select" onchange="buildLoveWhatsAppLink()">
-                <option value="أشتاق إليك شوقاً يملأ الكون صخباً، وأحبك حباً يجعل من دقات قلبي عزفاً لاسمك الدافيء دائماً وأبداً.">🥀 عبارة اشتياق وحنين جارف</option>
+                <option value="أشتاق إليك شوقاً يملأ Universe صخباً، وأحبك حباً يجعل من دقات قلبي عزفاً لاسمك الدافيء دائماً وأبداً.">🥀 عبارة اشتياق وحنين جارف</option>
                 <option value="أنت لست مجرد شخص عابر في حياتي، أنت عمري، وأجمل أقداري، ونبض قلبي الذي لا أعيش بدونه يوماً واحداً.">💍 عبارة حب أبدي وعهود صادقة</option>
                 <option value="لو كان للحب والاشتياق عنوان، لكان عينيك الفاتنتين، ولو كان لي في هذا العالم أمنية، لكانت البقاء بجانبك طول العمر.">🌹 عبارة رومانسية راقية وهدية عاطفية</option>
                 <option value="تغيب الشمس ويحل الظلام، لكن دفء حبك بقلبي لا يغيب أبداً، تظل أنت الأول والأخير بقلبي وعالمي الجميل.">✨ عبارة غرام عاطفية ليلية</option>
