@@ -28,6 +28,10 @@
         .round-gold-btn { display: block; background: #050505; border: 2px solid #ffd700; color: #ffd700; padding: 13px; font-size: 14px; font-weight: bold; border-radius: 25px; text-decoration: none; text-align: center; margin: 15px auto 5px auto; width: 90%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; }
         .round-pink-btn { display: block; background: #050505; border: 2px solid #ff3366; color: #ff3366; padding: 13px; font-size: 14px; font-weight: bold; border-radius: 25px; text-decoration: none; text-align: center; margin: 10px auto 5px auto; width: 90%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; }
         .pubg-btn-static { display: block; background: #050505; border: 1px solid #ffffff; color: #ffffff; padding: 10px; font-size: 13px; font-weight: bold; border-radius: 5px; text-decoration: none; text-align: center; margin: 10px auto; width: 90%; box-sizing: border-box; }
+        
+        /* تنسيق العنوان الإنجليزي الزخرفي المائل والمنبض بدقة */
+        .sub-title-en { font-size: 20px; font-weight: bold; color: #ffd700; margin: -2px 0 15px 0; font-style: italic; font-family: 'Georgia', serif; letter-spacing: 1px; }
+        
         .family-logo-wrapper { margin-top: 30px; margin-bottom: 15px; display: inline-block; transform: rotate(-8deg); animation: logo-pulsing 1.2s ease-in-out infinite; }
         .family-logo { font-size: 36px; font-weight: bold; color: #ffd700; letter-spacing: 3px; font-family: 'Georgia', serif; padding: 4px 22px; border-top: 3px double #ffd700; border-bottom: 3px double #ffd700; text-shadow: 0 0 10px #ffd700; }
         @keyframes logo-pulsing { 0% { transform: rotate(-8deg) scale(1); } 50% { transform: rotate(-8deg) scale(1.06); filter: drop-shadow(0 0 15px #ffd700); } 100% { transform: rotate(-8deg) scale(1); } }
@@ -54,6 +58,7 @@
             document.getElementById("btn-en").classList.toggle("active", lang === 'en');
             if (lang === 'en') {
                 document.getElementById("main-title").innerText = "World of Love";
+                document.getElementById("sub-title").innerText = "World of Love";
                 document.getElementById("title-search").innerText = "🔍 Google Smart Search";
                 document.getElementById("btn-search").innerText = "Type to search anything on Google browser - Click Here";
                 document.getElementById("title-dua").innerText = "✨ Islamic Duas & Gifts Box";
@@ -67,6 +72,7 @@
                 document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,435</span>";
             } else {
                 document.getElementById("main-title").innerText = "عالم الحب";
+                document.getElementById("sub-title").innerText = "World of Love";
                 document.getElementById("title-search").innerText = "🔍 محرك بحث جوجل الذكي";
                 document.getElementById("btn-search").innerText = "اجمع للبحث عن أي شيء بمتصفح جوجل - اضغط هنا";
                 document.getElementById("title-dua").innerText = "✨ صندوق الأدعية والإهداءات التفاعلي";
@@ -125,7 +131,10 @@
             </div>
             <div id="live-clock">📅 جاري تشغيل ساعة الثواني الحية...</div>
         </div>
-        <h1 style="color: #ffd700; margin: 15px 0 5px 0; font-size: 34px;" id="main-title" class="pulse-fast">عالم الحب</h1>
+        
+        <!-- إضافة العنوانين معاً بالنبض السريع واللمعان والميلان الساحر لعيونكِ -->
+        <h1 style="color: #ffd700; margin: 15px 0 0 0; font-size: 34px;" id="main-title" class="pulse-fast">عالم الحب</h1>
+        <div id="sub-title" class="sub-title-en pulse-fast">World of Love</div>
         
         <div class="section-box">
             <div class="box-title" id="title-search">🔍 محرك بحث جوجل الذكي</div>
@@ -138,7 +147,7 @@
             <select id="dua-select" onchange="refreshAndBuildWhatsAppLink()">
                 <option value="اللهم احفظ لي أحبتي وأهلي ولا تريني فيهم بأساً يبكيني، واستودعتك قلوبهم وحياتهم وصحتهم فاحفظهم بحفظك يا كريم.">🤲 دعاء لحفظ الأهل والأحبة</option>
                 <option value="اللهم افتح لنا أبواب الرزق الحلال الطيب، واقضِ عنا الدين، واغننا بفضلك عمن سواك، واجعل التوفيق حليفنا في كل خطوة.">💰 دعاء سعة الرزق وتيسير الأمور</option>
-                <option value="أسأل الله العظيم أن يزيل عنكم كل ضيق، وأن يشفي مرضاكم, ويرحم موتاكم، ويجعل أيامكم القادمة مليئة بالفرح والفرج والسرور.">🌹 إهداء دعاء تفريج الهم والشفاء</option>
+                <option value="أسأل الله العظيم أن يزيل عنكم كل ضيق، وأن يشفي مرضاكم، ويرحم موتاكم، ويجعل أيامكم القادمة مليئة بالفرح والفرج والسرور.">🌹 إهداء دعاء تفريج الهم والشفاء</option>
                 <option value="ربِّ اجعل هذا البلد آمناً مطمئناً وسائر بلاد المسلمين، واحفظ أهلنا في لبنان واشفِ جرحاهم وارحم شهداءهم وعمّ بالسلام أراضينا.">🇱🇧 دعاء خاص لحفظ لبنان والسلام</option>
             </select>
             <div style="color: #ffd700; font-size: 13px; font-weight: bold; margin-bottom: 5px;" id="title-preview">📖 كلمات الدعاء المختار حالياً:</div>
@@ -164,21 +173,19 @@
             </a>
         </div>
 
-        <!-- تم تصليح الإملاء لـ مرحباً داخل الرابط الميكانيكي المباشر دغري للتاجر الأول 79320900 -->
         <div class="section-box">
             <div class="box-title" id="title-shop">📱 خدمات تشريج الخطوط والإنترنت الموثوقة</div>
-            <p class="shop-box-desc">دليلكِ الآمن والكامل لتشريج خطوط <span class="text-red">Alfa</span> وتاتش <span class="text-red">MTC</span> وتجديد اشتраكات بطاقات إنترنت <span class="text-white">Ushare</span> برواقة تامة وبأعلى مصداقية في لبنان. تواصلوا مباشرة مع الموزع المستقل المعتمد لقفل طلباتكم بثقة وسرية:</p>
-            <a href="whatsapp://send?phone=96179320900&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%86%D8%A7%20%D8%AF%D8%AE%D9%84%D8%AA%20%D9%85%D9%86%20%D9%85%D9%84%D9%81%20%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%AD%D8%A8%20%D9%88%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D9%88%D8%A3%D8%B7%D9%8A%D8%A8%20%D8%AA%D8%B4%D8%B1%D9%8A%D8%AC%20%D8%A7%D9%84%D8%AE%D8%B7%D9%88%D8%B7" class="round-gold-btn">
+            <p class="shop-box-desc">دليلكِ الآمن والكامل لتشريج خطوط <span class="text-red">Alfa</span> وتاتش <span class="text-red">MTC</span> وتجديد اشتراكات بطاقات إنترنت <span class="text-white">Ushare</span> برواقة تامة وبأعلى مصداقية في لبنان. تواصلوا مباشرة مع الموزع المستقل المعتمد لقفل طلباتكم بثقة وسرية:</p>
+            <a href="whatsapp://send?phone=96179320900&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%86%D8%A7%20%D8%AF%D8%AE%D9%84%D8%AA%20%D9%85%D9%86%20%D9%85%D9%84%D9%81%20%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%AD%D8%A8%20%D9%88%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D9%88%D8%A3%D8%B7%D9%84%D8%A8%20%D8%AA%D8%B4%D8%B1%D9%8A%D8%AC%20%D8%A7%D9%84%D0%AE%D8%B7%D9%88%D8%B7" class="round-gold-btn">
                 💬 اطلب تشريج خطك الآن (واتساب)
             </a>
         </div>
 
-        <!-- تم تصليح الإملاء لـ مرحباً داخل الرابط الميكانيكي المباشر دغري للتاجر الثاني 71689517 -->
         <div class="section-box">
             <div class="box-title">🛒 خدمات شحن PUBG ومشتريات SHEIN</div>
             <p class="shop-box-desc">اشحني حسابكِ وألعابكِ بثقة تامة! محطتكِ المتكاملة لطلب وشحن مشتريات وطلبيات ومحفظة SHEIN بالإضافة لتأمين شدات لعبة ببجي PUBG وجيمنج بأعلى درجات المصداقية وحماية كاملة لحساباتكم وبأسرع خدمة كاش:</p>
             <div class="pubg-btn-static">PUBG Gaming 🎮</div>
-            <a href="whatsapp://send?phone=96171689517&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%86%D8%A7%20%D8%AF%D8%AE%D9%84%D8%AA%20%D9%85%D9%86%20%D9%85%D9%84%D9%81%20%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%AD%D8%A8%20%D9%88%D8%A8%D8%AF%D9%8A%20%D8%A3%D8%B7%D9%84%D8%A8%20%D8%B4%D8%AD%D9%86%20%D8%A3%D9%84%D8%B9%D8%A7%D8%A8" class="round-pink-btn">
+            <a href="whatsapp://send?phone=96171689517&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%86%D8%A7%20%D8%AF%D8%AE%D9%84%D8%AA%20%D9%85%D9%86%20%D9%85%D9%84%D9%81%20%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%AD%D8%A8%20%D9%88%D8%A2%D8%AA%D9%8A%20%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D9%88%D8%A3%D8%B7%D9%84%D8%A8%20%D8%B4%D8%AD%D9%86%20%D8%A3%D9%84%D8%B9%D8%A7%D8%A8" class="round-pink-btn">
                 🛍️ للطلب وشحن الشدات و SHEIN (واتساب)
             </a>
         </div>
