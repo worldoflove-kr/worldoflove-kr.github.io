@@ -33,14 +33,17 @@
         .tasbih-reset { display: inline-block; background: #222; border: 1px dashed #ffd700; color: #ffd700; padding: 6px 15px; font-size: 12px; font-weight: bold; border-radius: 20px; cursor: pointer; text-decoration: none; margin-top: 5px; }
         .secret-output { background: rgba(0,0,0,0.6); border: 2px dashed #ffd700; border-radius: 8px; padding: 15px; color: #ffd700; font-size: 15px; font-weight: bold; text-align: center; margin-top: 15px; line-height: 1.6; min-height: 25px; display: none; }
         .secret-btn { display: block; width: 100%; background: linear-gradient(45deg, #ffd700, #b8860b); color: #000; border: none; padding: 12px; font-size: 14px; font-weight: bold; border-radius: 6px; cursor: pointer; box-shadow: 0 4px 10px rgba(255,215,0,0.2); }
+        
+        /* ميكانيكية التنسيق الفخم: الباندا المضاء على اليمين والعبارات على اليسار بجانبه بالملي */
         .panda-welcome-flex { display: flex; flex-direction: row-reverse; align-items: center; justify-content: center; gap: 15px; margin: 20px auto; max-width: 460px; padding: 10px; background: rgba(255,215,0,0.02); border-radius: 15px; border: 1px dashed rgba(255,215,0,0.15); }
-        .panda-large-box { width: 100px; height: 125px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-        .panda-large-box img { width: 100%; height: 100%; object-fit: contain; }
+        .panda-symbol-box { font-size: 52px; display: flex; align-items: center; justify-content: center; filter: drop-shadow(0 0 12px rgba(255,255,255,0.4)); animation: panda-float 2s ease-in-out infinite; }
         .welcome-content-wrapper { display: flex; flex-direction: column; align-items: flex-end; text-align: right; flex: 1; }
         .welcome-bibi-text-box { font-size: 21px; font-weight: bold; font-family: 'Georgia', serif; letter-spacing: 1px; margin-bottom: 5px; animation: text-pulsing-soft 1.3s ease-in-out infinite; }
         .w-red { color: #ff3333; text-shadow: 0 0 10px #ff0000; } .b-white { color: #ffffff; text-shadow: 0 0 10px #ffffff; }
         .panda-features-desc { color: #ffd700; font-size: 12px; line-height: 1.4; font-style: italic; text-shadow: 0 0 5px rgba(255,215,0,0.3); }
         @keyframes text-pulsing-soft { 0% { transform: scale(1); } 50% { transform: scale(1.03); filter: brightness(1.2); } 100% { transform: scale(1); } }
+        @keyframes panda-float { 0% { transform: translateY(0px); } 50% { transform: translateY(-5px); } 100% { transform: translateY(0px); } }
+        
         .visitor-counter { color: #ffd700; font-size: 13px; font-weight: bold; margin-top: 20px; background: #000; padding: 8px 15px; border-radius: 20px; border: 1px dashed #ffd700; display: inline-block; }
         .family-logo-wrapper { margin-top: 30px; margin-bottom: 15px; display: inline-block; transform: rotate(-8deg); animation: logo-pulsing 1.2s ease-in-out infinite; }
         .family-logo { font-size: 36px; font-weight: bold; color: #ffd700; letter-spacing: 3px; font-family: 'Georgia', serif; padding: 4px 22px; border-top: 3px double #ffd700; border-bottom: 3px double #ffd700; text-shadow: 0 0 10px #ffd700; }
@@ -114,9 +117,9 @@
 <body>
     <div class="ticker-container">
         <div class="ticker-wrapper">
-            <a href="#" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">$2,624.50</span> <span class="down">▼ نازل</span></a>
-            <a href="#" class="ticker-link">💵 الدولار عالمياً: <span class="price">102.50</span> <span class="up">▲ طالع</span></a>
-            <a href="#" class="ticker-link">💵 صرف لبنان: <span class="price">89,500 ل.ل</span> ◀ مستقر</a>
+            <a href="https://kitco.com" target="_blank" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">$2,624.50</span> <span class="down">▼ نازل</span></a>
+            <a href="https://xe.com" target="_blank" class="ticker-link">💵 مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="up">▲ طالع</span></a>
+            <a href="https://lebanonfiles.com" target="_blank" class="ticker-link">💵 صرف الدولار في لبنان: <span class="price">89,500 ل.ل</span> ◀ مستقر</a>
         </div>
     </div>
     <div class="container">
@@ -130,9 +133,7 @@
         
         <!-- 🐼 لوحة الباندا الحقيقي على اليمين والعبارات والكلام الذهبي للميزات لعيونك الحين -->
         <div class="panda-welcome-flex">
-            <div class="panda-large-box">
-                <img src="https://ibb.co" alt="Panda">
-            </div>
+            <div class="panda-symbol-box">🐼</div>
             <div class="welcome-content-wrapper">
                 <div class="welcome-bibi-text-box"><span class="w-red">Welcome</span> <span class="b-white">BiBi</span></div>
                 <div class="panda-features-desc" id="panda-desc-text">✨ منصة العائلة الملكية المخصصة لأجمل إهداءات الأدعية التفاعلية، وعبارات الحب الصادقة، وتأمين خدمات تشريج الخطوط وشحن الألعاب المعتمدة بأعلى درجات السرية، الأمان الصارم، والمصداقية الكبرى عالمياً الحين. 👑🔒</div>
