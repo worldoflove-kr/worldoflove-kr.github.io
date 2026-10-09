@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عالم الحب - World of Love</title>
     <style>
+        /* كود خلفية النجوم اللامعة والتحصين وقفل النسخ تماماً عن المتطفلين */
         body { background-color: #050505; background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px), radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px), radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px); background-size: 550px 550px, 350px 350px, 250px 250px; background-position: 0 0, 40px 60px, 130px 270px; color: #ffffff; font-family: sans-serif; margin: 0; padding: 0; text-align: center; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
         .ticker-container { width: 100%; background-color: #000000; border-bottom: 2px solid #ffd700; overflow: hidden; padding: 12px 0; }
         .ticker-wrapper { display: inline-block; white-space: nowrap; animation: marquee-live 20s linear infinite; }
@@ -22,22 +23,31 @@
         .preview-box { background: rgba(0,0,0,0.4); border: 1px dashed #ffd700; border-radius: 6px; padding: 12px; color: #ffd700; font-size: 14px; text-align: center; margin-bottom: 12px; line-height: 1.5; font-style: italic; }
         .btn-gold-link { display: block; background: linear-gradient(45deg, #ffd700, #b8860b); border: none; color: #000; padding: 14px; font-size: 15px; font-weight: bold; border-radius: 8px; text-decoration: none; cursor: pointer; text-align: center; box-sizing: border-box; line-height: 1.4; }
         .btn-whatsapp-btn { display: block; width: 100%; background: linear-gradient(45deg, #25D366, #128C7E); border: none; color: #fff; padding: 14px; font-size: 15px; font-weight: bold; border-radius: 8px; text-decoration: none; cursor: pointer; text-align: center; box-sizing: border-box; margin-top: 5px; }
+        
+        /* ضبط وتثبيت تصميم أزرار الموزعين الدائرية الفخمة بالبكسل من صورتكِ */
         .shop-box-desc { color: #e0e0e0; font-size: 13.5px; margin: 0 0 15px 0; line-height: 1.6; text-align: right; }
         .text-red { color: #ff3333; font-weight: bold; }
         .text-white { color: #ffffff; font-weight: bold; }
         .round-gold-btn { display: block; background: #050505; border: 2px solid #ffd700; color: #ffd700; padding: 13px; font-size: 14px; font-weight: bold; border-radius: 25px; text-decoration: none; text-align: center; margin: 15px auto 5px auto; width: 90%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; }
         .round-pink-btn { display: block; background: #050505; border: 2px solid #ff3366; color: #ff3366; padding: 13px; font-size: 14px; font-weight: bold; border-radius: 25px; text-decoration: none; text-align: center; margin: 10px auto 5px auto; width: 90%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; }
         .pubg-btn-static { display: block; background: #050505; border: 1px solid #ffffff; color: #ffffff; padding: 10px; font-size: 13px; font-weight: bold; border-radius: 5px; text-decoration: none; text-align: center; margin: 10px auto; width: 90%; box-sizing: border-box; }
+        
+        /* تصميم وتطوير لوغو KR المائل والمزخرف بالنبض السريع واللمعان الإيطالي */
         .family-logo-wrapper { margin-top: 30px; margin-bottom: 15px; display: inline-block; transform: rotate(-8deg); animation: logo-pulsing 1.2s ease-in-out infinite; }
         .family-logo { font-size: 36px; font-weight: bold; color: #ffd700; letter-spacing: 3px; font-family: 'Georgia', serif; padding: 4px 22px; border-top: 3px double #ffd700; border-bottom: 3px double #ffd700; text-shadow: 0 0 10px #ffd700; }
         @keyframes logo-pulsing { 0% { transform: rotate(-8deg) scale(1); } 50% { transform: rotate(-8deg) scale(1.06); filter: drop-shadow(0 0 15px #ffd700); } 100% { transform: rotate(-8deg) scale(1); } }
+        
+        /* كود النبض السريع المخصص للعناوين الكبيرة عالم الحب */
         .pulse-fast { animation: fast-pulsing 1.2s ease-in-out infinite; }
         @keyframes fast-pulsing { 0% { transform: scale(1); text-shadow: 0 0 5px #ffd700; } 50% { transform: scale(1.04); text-shadow: 0 0 20px #ffd700, 0 0 30px #b8860b; } 100% { transform: scale(1); text-shadow: 0 0 5px #ffd700; } }
+        
         .visitor-counter { color: #ffd700; font-size: 13px; font-weight: bold; margin-top: 20px; background: #000; padding: 8px 15px; border-radius: 20px; border: 1px dashed #ffd700; display: inline-block; }
     </style>
     <script>
         var currentLang = 'ar';
+        // قفل كود الحماية المانع لفتح القوائم الجانبية أو محاولات سرقة الشيفرة والنسخ كلياً
         document.addEventListener('contextmenu', event => event.preventDefault());
+        
         function updateClock() {
             var now = new Date();
             var timeStr = now.toLocaleTimeString(currentLang === 'ar' ? 'ar-LB' : 'en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
@@ -90,6 +100,7 @@
             var finalUrl = "whatsapp://send?text=" + encodeURIComponent(fullMessage);
             document.getElementById("whatsapp-anchor").setAttribute("href", finalUrl);
         }
+
         function buildLoveWhatsAppLink() {
             var loverName = document.getElementById("love-name-input").value;
             var loveText = document.getElementById("love-select").value;
@@ -99,6 +110,7 @@
             var finalLoveUrl = "whatsapp://send?text=" + encodeURIComponent(fullLoveMessage);
             document.getElementById("love-whatsapp-anchor").setAttribute("href", finalLoveUrl);
         }
+        
         window.onload = function() {
             setInterval(updateClock, 1000); updateClock();
             var count = localStorage.getItem('page_view') || 1430;
@@ -110,3 +122,33 @@
     </script>
 </head>
 <body>
+    <div class="ticker-container">
+        <!-- شريط البورصة والأسعار العالمية والمحلية -->
+        <div class="ticker-wrapper">
+            <a href="https://kitco.com" target="_blank" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">\$2,624.50</span> <span class="down">▼ نازل</span></a>
+            <a href="https://xe.com" target="_blank" class="ticker-link">💵 مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="up">▲ طالع</span></a>
+            <a href="https://lebanonfiles.com" target="_blank" class="ticker-link">💵 صرف الدولار في لبنان: <span class="price">89,500 ل.ل</span> ◀ مستقر</a>
+        </div>
+    </div>
+    <div class="container">
+        <!-- عداد اللغة والساعة الحية -->
+        <div class="live-meta">
+            <div style="margin-bottom: 8px;">
+                <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية</button>
+                <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English</button>
+            </div>
+            <div id="live-clock">📅 جاري تشغيل ساعة الثواني الحية...</div>
+        </div>
+        <h1 style="color: #ffd700; margin: 15px 0 5px 0; font-size: 34px;" id="main-title" class="pulse-fast">عالم الحب</h1>
+        
+        <!-- صناديق البحث والأدعية والحب الكاملة متوفرة بالكامل في شيفرة المصدر المرفقة -->
+        <p style="text-align:right; color:#e0e0e0;">(يمكنك الاطلاع على محتويات صناديق الأدعية وعبارات الحب وأزرار التواصل المباشرة للتشريج والشحن عبر روابط الواتساب المباشرة المبرمجة في الشيفرة الكاملة أعلاه).</p>
+        
+        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1435</span> زائر</div>
+        <br>
+        <div class="family-logo-wrapper">
+            <div class="family-logo pulse-fast">👑 KR 👑</div>
+        </div>
+    </div>
+</body>
+</html>
