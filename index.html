@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عالم الحب - World of Love</title>
     <style>
-        body { background-color: #050505; background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px), radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px), radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px); background-size: 550px 550px, 350px 350px, 250px 250px; background-position: 0 0, 40px 60px, 130px 270px; color: #ffffff; font-family: sans-serif; margin: 0; padding: 0; text-align: center; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; position: relative; }
-        body::before { content: "🐼"; position: fixed; bottom: 20px; left: 20px; font-size: 75px; opacity: 0.22; pointer-events: none; z-index: -1; filter: drop-shadow(0 0 10px rgba(255,255,255,0.3)); }
-        body::after { content: "🐼"; position: fixed; top: 100px; right: 20px; font-size: 60px; opacity: 0.15; pointer-events: none; z-index: -1; filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); }
+        body { background-color: #050505; background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px), radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px), radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px); background-size: 550px 550px, 350px 350px, 250px 250px; background-position: 0 0, 40px 60px, 130px 270px; color: #ffffff; font-family: sans-serif; margin: 0; padding: 0; text-align: center; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
         .ticker-container { width: 100%; background-color: #000000; border-bottom: 2px solid #ffd700; overflow: hidden; padding: 12px 0; }
         .ticker-wrapper { display: inline-block; white-space: nowrap; animation: marquee-live 20s linear infinite; }
         .ticker-link { text-decoration: none; color: inherit; font-weight: bold; font-size: 13px; padding: 0 20px; }
-        .price { color: #ffd700; margin: 0 4px; } .up { color: #00ff66; } .down { color: #ff3333; }
+        .price { color: #ffd700; margin: 0 4px; }
+        .up { color: #00ff66; } .down { color: #ff3333; }
         @keyframes marquee-live { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
         .container { max-width: 500px; width: 90%; margin: 20px auto; }
         .live-meta { background: #111; border: 1px solid #ffd700; border-radius: 12px; padding: 12px; margin-bottom: 20px; font-size: 13px; color: #e0e0e0; line-height: 1.6; }
@@ -24,7 +23,8 @@
         .btn-gold-link { display: block; background: linear-gradient(45deg, #ffd700, #b8860b); border: none; color: #000; padding: 14px; font-size: 15px; font-weight: bold; border-radius: 8px; text-decoration: none; cursor: pointer; text-align: center; box-sizing: border-box; line-height: 1.4; }
         .btn-whatsapp-btn { display: block; width: 100%; background: linear-gradient(45deg, #25D366, #128C7E); border: none; color: #fff; padding: 14px; font-size: 15px; font-weight: bold; border-radius: 8px; text-decoration: none; cursor: pointer; text-align: center; box-sizing: border-box; margin-top: 5px; }
         .shop-box-desc { color: #e0e0e0; font-size: 13.5px; margin: 0 0 15px 0; line-height: 1.6; text-align: right; }
-        .text-red { color: #ff3333; font-weight: bold; } .text-white { color: #ffffff; font-weight: bold; }
+        .text-red { color: #ff3333; font-weight: bold; }
+        .text-white { color: #ffffff; font-weight: bold; }
         .round-gold-btn { display: block; background: #050505; border: 2px solid #ffd700; color: #ffd700; padding: 13px; font-size: 14px; font-weight: bold; border-radius: 25px; text-decoration: none; text-align: center; margin: 15px auto 5px auto; width: 90%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; }
         .round-pink-btn { display: block; background: #050505; border: 2px solid #ff3366; color: #ff3366; padding: 13px; font-size: 14px; font-weight: bold; border-radius: 25px; text-decoration: none; text-align: center; margin: 10px auto 5px auto; width: 90%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; }
         .pubg-btn-static { display: block; background: #050505; border: 1px solid #ffffff; color: #ffffff; padding: 10px; font-size: 13px; font-weight: bold; border-radius: 5px; text-decoration: none; text-align: center; margin: 10px auto; width: 90%; box-sizing: border-box; }
@@ -33,8 +33,11 @@
         .tasbih-btn { display: block; width: 140px; height: 140px; background: linear-gradient(45deg, #ffd700, #b8860b); color: #000; font-size: 22px; font-weight: bold; border-radius: 50%; border: 4px solid #000; box-shadow: 0 5px 20px rgba(255,215,0,0.4); cursor: pointer; margin: 15px auto; display: flex; align-items: center; justify-content: center; transition: transform 0.1s ease; }
         .tasbih-btn:active { transform: scale(0.92); }
         .tasbih-reset { display: inline-block; background: #222; border: 1px dashed #ffd700; color: #ffd700; padding: 6px 15px; font-size: 12px; font-weight: bold; border-radius: 20px; cursor: pointer; text-decoration: none; margin-top: 5px; }
+        
+        /* تنسيق علبة المخرجات لصندوق الرسائل السرية */
         .secret-output { background: rgba(0,0,0,0.6); border: 2px dashed #ffd700; border-radius: 8px; padding: 15px; color: #ffd700; font-size: 15px; font-weight: bold; text-align: center; margin-top: 15px; line-height: 1.6; min-height: 25px; display: none; }
         .secret-btn { display: block; width: 100%; background: linear-gradient(45deg, #ffd700, #b8860b); color: #000; border: none; padding: 12px; font-size: 14px; font-weight: bold; border-radius: 6px; cursor: pointer; box-shadow: 0 4px 10px rgba(255,215,0,0.2); }
+        
         .family-logo-wrapper { margin-top: 30px; margin-bottom: 15px; display: inline-block; transform: rotate(-8deg); animation: logo-pulsing 1.2s ease-in-out infinite; }
         .family-logo { font-size: 36px; font-weight: bold; color: #ffd700; letter-spacing: 3px; font-family: 'Georgia', serif; padding: 4px 22px; border-top: 3px double #ffd700; border-bottom: 3px double #ffd700; text-shadow: 0 0 10px #ffd700; }
         @keyframes logo-pulsing { 0% { transform: rotate(-8deg) scale(1); } 50% { transform: rotate(-8deg) scale(1.06); filter: drop-shadow(0 0 15px #ffd700); } 100% { transform: rotate(-8deg) scale(1); } }
@@ -44,34 +47,146 @@
     </style>
     <script>
         var currentLang = 'ar';
-        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        
         function unlockSecret() {
-            var c = document.getElementById("secret-input").value.trim();
-            var o = document.getElementById("secret-box-output"); o.style.display = "block";
-            if (c === "123") { o.style.borderColor = "#00ff66"; o.innerHTML = "✨ مفاجأة سرية لكم:<br>\"أنت نبض هذا القلب وأجمل أمنية في هذا العالم! 💖\""; }
-            else if (c.toUpperCase() === "KR") { o.style.borderColor = "#ffd700"; o.innerHTML = "👑 بصمة العائلة الملكية:<br>\"أهلاً بك في عالم السرية، المصداقية، والحب الأبدي! 👑\""; }
-            else if (c === "") { o.style.borderColor = "#ff3333"; o.innerHTML = "⚠️ اكتب الكلمة السرية أولاً لفتح القفل!"; }
-            else { o.style.borderColor = "#ff3333"; o.innerHTML = "❌ الكلمة السرية خاطئة.. حاول مجدداً بقفل الأمان!"; }
+            var code = document.getElementById("secret-input").value.trim();
+            var outBox = document.getElementById("secret-box-output");
+            outBox.style.display = "block";
+            if (code === "123") {
+                outBox.style.borderColor = "#00ff66";
+                outBox.innerHTML = "✨ مفاجأة سرية مذهلة لكم الحين:<br><span style='color:#fff;'>\" أنت نبض هذا القلب وأجمل أمنية في هذا العالم بالكامل! 💖 \"</span>";
+            } else if (code.toUpperCase() === "KR") {
+                outBox.style.borderColor = "#ffd700";
+                outBox.innerHTML = "👑 بصمة العائلة الملكية المخلصة ترحب بك كلياً الحين:<br><span style='color:#fff;'>\" أهلاً بك في عالم السرية، المصداقية الكبرى، والحب الأبدي الذي لا ينتهي! 👑 \"</span>";
+            } else if (code === "") {
+                outBox.style.borderColor = "#ff3333";
+                outBox.innerHTML = "⚠️ يرجى كتابة الكلمة السرية داخل الحقل أولاً لفتح القفل كلياً!";
+            } else {
+                outBox.style.borderColor = "#ff3333";
+                outBox.innerHTML = "❌ عذراً الكلمة السرية خاطئة ومجهولة.. حاول مجدداً بقفل الأمان الصارم للمنصة!";
+            }
         }
         function countTasbih() {
-            var v = parseInt(localStorage.getItem('tasbih_count') || 0) + 1; localStorage.setItem('tasbih_count', v);
-            document.getElementById("tasbih-val").innerText = v.toLocaleString(); if (navigator.vibrate) navigator.vibrate(30);
+            var count = localStorage.getItem('tasbih_count') || 0;
+            count = parseInt(count) + 1; localStorage.setItem('tasbih_count', count);
+            document.getElementById("tasbih-val").innerText = count.toLocaleString();
+            if (navigator.vibrate) { navigator.vibrate(30); }
         }
-        function resetTasbih() { localStorage.setItem('tasbih_count', 0); document.getElementById("tasbih-val").innerText = "0"; }
+        function resetTasbih() {
+            localStorage.setItem('tasbih_count', 0); document.getElementById("tasbih-val").innerText = "0";
+        }
         function updateClock() {
             var now = new Date();
-            var t = now.toLocaleTimeString(currentLang === 'ar' ? 'ar-LB' : 'en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
-            var d = now.toLocaleDateString(currentLang === 'ar' ? 'ar-LB' : 'en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-            document.getElementById("live-clock").innerHTML = currentLang === 'ar' ? `📅 ${d} | ⏰ الساعة: ${t} <br> ☀️ بيروت: 24°C | 💧 الرطوبة: 62%` : `📅 ${d} | ⏰ Time: ${t} <br> ☀️ Beirut: 24°C | 💧 Humidity: 62%`;
+            var timeStr = now.toLocaleTimeString(currentLang === 'ar' ? 'ar-LB' : 'en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+            var dateStr = now.toLocaleDateString(currentLang === 'ar' ? 'ar-LB' : 'en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            if(currentLang === 'ar') {
+                document.getElementById("live-clock").innerHTML = `📅 ${dateStr} | ⏰ الساعة: ${timeStr} <br> ☀️ بيروت: 24°C | 💧 الرطوبة: 62%`;
+            } else {
+                document.getElementById("live-clock").innerHTML = `📅 ${dateStr} | ⏰ Time: ${timeStr} <br> ☀️ Beirut: 24°C | 💧 Humidity: 62%`;
+            }
         }
-        function switchLang(l) {
-            currentLang = l; document.getElementById("btn-ar").classList.toggle("active", l === 'ar'); document.getElementById("btn-en").classList.toggle("active", l === 'en');
-            var isAr = l === 'ar';
-    <div class="ticker-container"><div class="ticker-wrapper"><a href="#" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">$2,624.50</span> <span class="down">▼ نازل</span></a><a href="#" class="ticker-link">💵 الدولار عالمياً: <span class="price">102.50</span> <span class="up">▲ طالع</span></a><a href="#" class="ticker-link">💵 صرف لبنان: <span class="price">89,500 ل.ل</span> ◀ مستقر</a></div></div>
+        function switchLang(lang) {
+            currentLang = lang;
+            document.getElementById("btn-ar").classList.toggle("active", lang === 'ar');
+            document.getElementById("btn-en").classList.toggle("active", lang === 'en');
+            if (lang === 'en') {
+                document.getElementById("main-title").innerText = "World of Love";
+                document.getElementById("sub-title").innerText = "World of Love";
+                document.getElementById("title-search").innerText = "🔍 Google Smart Search";
+                document.getElementById("btn-search").innerText = "Type to search anything on Google browser - Click Here";
+                document.getElementById("title-dua").innerText = "✨ Islamic Duas & Gifts Box";
+                document.getElementById("name-input").placeholder = "Type your name here...";
+                document.getElementById("title-preview").innerText = "📖 Selected Dua Text:";
+                document.getElementById("btn-share").innerText = "Send Gift & Share on WhatsApp 🟢";
+                document.getElementById("title-love").innerText = "❤️ Love & Longing Expressions Box";
+                document.getElementById("love-name-input").placeholder = "Type your name here...";
+                document.getElementById("title-love-preview").innerText = "Selected Love Expression:";
+                document.getElementById("btn-love-share").innerText = "Send Love Expression via WhatsApp 🟢";
+                document.getElementById("title-tasbih").innerText = "📿 Digital Tasbih & Dhikr Counter Box";
+                document.getElementById("tasbih-reset-btn").innerText = "Reset Counter 🔄";
+                document.getElementById("title-secret").innerText = "🔐 Secret Locked Messages & Surprises Box";
+                document.getElementById("secret-desc-text").innerText = "This is a secure and encrypted interactive gift box. To unlock hidden expressions or family rewards, please type one of the active secure codes (for example: try typing 123 or the family code KR) then press the unlock button below safely!";
+                document.getElementById("secret-input").placeholder = "Type the secret word code here...";
+                document.getElementById("secret-btn-click").innerText = "Open & Unlock Secret Surprise 🔓";
+                document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,435</span>";
+            } else {
+                document.getElementById("main-title").innerText = "عالم الحب";
+                document.getElementById("sub-title").innerText = "World of Love";
+                document.getElementById("title-search").innerText = "🔍 محرك بحث جوجل الذكي";
+                document.getElementById("btn-search").innerText = "اجمع للبحث عن أي شيء بمتصفح جوجل - اضغط هنا";
+                document.getElementById("title-dua").innerText = "✨ صندوق الأدعية والإهداءات التفاعلي";
+                document.getElementById("name-input").placeholder = "اكتب اسمك هنا الحين...";
+                document.getElementById("title-preview").innerText = "📖 كلمات الدعاء المختار حالياً:";
+                document.getElementById("btn-share").innerText = "أرسل الإهداء وشارك عبر الواتساب 🟢";
+                document.getElementById("title-love").innerText = "❤️ صندوق عبارات الحب والاشتياق التفاعلي";
+                document.getElementById("love-name-input").placeholder = "اكتب اسمك هنا الحين...";
+                document.getElementById("title-love-preview").innerText = "📖 كلمات العبارة المختارة حالياً:";
+                document.getElementById("btn-love-share").innerText = "أرسل عبارة الحب وشارك عبر الواتساب 🟢";
+                document.getElementById("title-tasbih").innerText = "📿 صندوق لوحة عداد التسبيح والاستغفار الرقمي";
+                document.getElementById("tasbih-reset-btn").innerText = "إعادة تصفير العداد 🔄";
+                document.getElementById("title-secret").innerText = "🔐 صندوق الرسائل السرية والمفاجآت العاطفية المغلقة";
+                document.getElementById("secret-desc-text").innerText = "هذا الصندوق تفاعلي آمن ومحمي ومفرمل كلياً، ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. لكي يفتح القفل وتكشف الرسائل العاطفية المخفية، يرجى كتابة أحد الأكواد الفعالة الحين (مثلاً: جرب كتابة الرقم 123 أو كود العائلة KR) ثم اضغط على زر الفتح بالأسفل بكل أمان وطمأنينة الحين:";
+                document.getElementById("secret-input").placeholder = "اكتب الكلمة السرية أو الكود السري هنا الحين...";
+                document.getElementById("secret-btn-click").innerText = "افتح واكشف المفاجأة السرية الحين 🔓";
+                document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,435</span> زائر";
+            }
+            updateClock();
+        }
+        function refreshAndBuildWhatsAppLink() {
+            var userName = document.getElementById("name-input").value;
+            var duaText = document.getElementById("dua-select").value;
+            document.getElementById("dua-text-preview").innerText = duaText;
+            if(userName.trim() === "") { userName = "محب للخير"; }
+            var fullMessage = `🎁 إهداء خاص مـن: *[ ${userName} ]* \n\n✨ *الدعاء:* \n" ${duaText} " \n\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n\nworldoflove-kr.github.io`;
+            var finalUrl = "whatsapp://send?text=" + encodeURIComponent(fullMessage);
+            document.getElementById("whatsapp-anchor").setAttribute("href", finalUrl);
+        }
+        function buildLoveWhatsAppLink() {
+            var loverName = document.getElementById("love-name-input").value;
+            var loveText = document.getElementById("love-select").value;
+            document.getElementById("love-text-preview").innerText = loveText;
+            if(loverName.trim() === "") { loverName = "محب غالي"; }
+            var fullLoveMessage = `💝 رسالة حب واشتياق مـن: *[ ${loverName} ]* \n\n💬 *الكلمات:* \n" ${loveText} " \n\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n\nworldoflove-kr.github.io`;
+            var finalLoveUrl = "whatsapp://send?text=" + encodeURIComponent(fullLoveMessage);
+            document.getElementById("love-whatsapp-anchor").setAttribute("href", finalLoveUrl);
+        }
+        window.onload = function() {
+            setInterval(updateClock, 1000); updateClock();
+            var count = localStorage.getItem('page_view') || 1430;
+            count = parseInt(count) + 1; localStorage.setItem('page_view', count);
+            document.getElementById("counter-val").innerText = count;
+            var tCount = localStorage.getItem('tasbih_count') || 0;
+            document.getElementById("tasbih-val").innerText = parseInt(tCount).toLocaleString();
+            refreshAndBuildWhatsAppLink(); buildLoveWhatsAppLink();
+        };
+    </script>
+</head>
+<body>
+    <div class="ticker-container">
+        <div class="ticker-wrapper">
+            <a href="https://kitco.com" target="_blank" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">\$2,624.50</span> <span class="down">▼ نازل</span></a>
+            <a href="https://xe.com" target="_blank" class="ticker-link">💵 مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="up">▲ طالع</span></a>
+            <a href="https://lebanonfiles.com" target="_blank" class="ticker-link">💵 صرف الدولار في لبنان: <span class="price">89,500 ل.ل</span> ◀ مستقر</a>
+        </div>
+    </div>
     <div class="container">
-        <div class="live-meta"><div style="margin-bottom:8px;"><button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية</button><button class="lang-btn" id="btn-en" onclick="switchLang('en')">English</button></div><div id="live-clock">📅 جاري تشغيل ساعة الثواني الحية...</div></div>
-        <h1 style="color:#ffd700;margin:15px 0 0 0;font-size:34px;" id="main-title" class="pulse-fast">عالم الحب</h1><div id="sub-title" class="sub-title-en pulse-fast">World of Love</div>
-        <div class="section-box"><div class="box-title" id="title-search">🔍 محرك بحث جوجل الذكي</div><a href="https://google.com" target="_blank" class="btn-gold-link" id="btn-search">اجمع للبحث عن أي شيء بمتصفح جوجل - اضغط هنا</a></div>
+        <div class="live-meta">
+            <div style="margin-bottom: 8px;">
+                <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية</button>
+                <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English</button>
+            </div>
+            <div id="live-clock">📅 جاري تشغيل ساعة الثواني الحية...</div>
+        </div>
+        
+        <h1 style="color: #ffd700; margin: 15px 0 0 0; font-size: 34px;" id="main-title" class="pulse-fast">عالم الحب</h1>
+        <div id="sub-title" class="sub-title-en pulse-fast">World of Love</div>
+        
+        <div class="section-box">
+            <div class="box-title" id="title-search">🔍 محرك بحث جوجل الذكي</div>
+            <a href="https://google.com" target="_blank" class="btn-gold-link" id="btn-search">اجمع للبحث عن أي شيء بمتصفح جوجل - اضغط هنا</a>
+        </div>
+        
         <div class="section-box">
             <div class="box-title" id="title-dua">✨ صندوق الأدعية والإهداءات التفاعلي</div>
             <input type="text" id="name-input" placeholder="اكتب اسمك هنا الحين..." oninput="refreshAndBuildWhatsAppLink()" required>
@@ -81,9 +196,13 @@
                 <option value="أسأل الله العظيم أن يزيل عنكم كل ضيق، وأن يشفي مرضاكم، ويرحم موتاكم، ويجعل أيامكم القادمة مليئة بالفرح والفرج والسرور.">🌹 إهداء دعاء تفريج الهم والشفاء</option>
                 <option value="ربِّ اجعل هذا البلد آمناً مطمئناً وسائر بلاد المسلمين، واحفظ أهلنا في لبنان واشفِ جرحاهم وارحم شهداءهم وعمّ بالسلام أراضينا.">🇱🇧 دعاء خاص لحفظ لبنان والسلام</option>
             </select>
-            <div style="color:#ffd700;font-size:13px;font-weight:bold;margin-bottom:5px;" id="title-preview">📖 كلمات الدعاء المختار حالياً:</div><div class="preview-box" id="dua-text-preview">جاري تحميل نص الدعاء...</div>
-            <a href="#" id="whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none;"><span id="btn-share">أرسل الإهداء وشارك عبر الواتساب 🟢</span></a>
+            <div style="color: #ffd700; font-size: 13px; font-weight: bold; margin-bottom: 5px;" id="title-preview">📖 كلمات الدعاء المختار حالياً:</div>
+            <div class="preview-box" id="dua-text-preview">جاري تحميل نص الدعاء...</div>
+            <a href="whatsapp://send?text=" id="whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none;">
+                <span id="btn-share">أرسل الإهداء وشارك عبر الواتساب 🟢</span>
+            </a>
         </div>
+
         <div class="section-box">
             <div class="box-title" id="title-love">❤️ صندوق عبارات الحب والاشتياق التفاعلي</div>
             <input type="text" id="love-name-input" placeholder="اكتب اسمك هنا الحين..." oninput="buildLoveWhatsAppLink()" required>
@@ -94,31 +213,60 @@
                 <option value="تغيب الشمس ويحل الظلام، لكن دفء حبك بقلبي لا يغيب أبداً، تظل أنت الأول والأخير بقلبي وعالمي الجميل.">✨ عبارة غرام عاطفية ليلية</option>
                 <option value="أحن لأيامنا الخوالي، لتفاصيل صغيرة ضحكنا لها معاً، لزمان مضى وترك في القلب غصة حنين دافئة لا تموت أبداً مع السنين.">🕰️ عبارة حنين للماضي وذكريات زمان القديمة</option>
             </select>
-            <div style="color:#ffd700;font-size:13px;font-weight:bold;margin-bottom:5px;" id="title-love-preview">📖 كلمات العبارة المختارة حالياً:</div><div class="preview-box" id="love-text-preview">جاري تحميل العبارة العاطفية...</div>
-            <a href="#" id="love-whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none;background:linear-gradient(45deg, #e91e63, #b71c1c);"><span id="btn-love-share">أرسل عبارة الحب وشارك عبر الواتساب 🟢</span></a>
+            <div style="color: #ffd700; font-size: 13px; font-weight: bold; margin-bottom: 5px;" id="title-love-preview">📖 كلمات العبارة المختارة حالياً:</div>
+            <div class="preview-box" id="love-text-preview">جاري تحميل العبارة العاطفية...</div>
+            <a href="whatsapp://send?text=" id="love-whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none; background: linear-gradient(45deg, #e91e63, #b71c1c);">
+                <span id="btn-love-share">أرسل عبارة الحب وشارك عبر الواتساب 🟢</span>
+            </a>
         </div>
+
         <div class="section-box">
-            <div class="box-title" id="title-congrat">🎉 صندوق التهنئة والمباركة للمناسبات والأعياد</div>
-            <input type="text" id="congrat-name-input" placeholder="اكتب اسمك هنا الحين..." oninput="buildCongratWhatsAppLink()" required>
-            <select id="congrat-select" onchange="buildCongratWhatsAppLink()">
-                <option value="تقبل الله منا ومنكم صالح الأعمال، وكل عام وأنتم بخير وصحة وعافية بمناسبة عيد الفطر السعيد، أعاده الله علينا وعليكم باليمن والبركات.">🌙 مباركة عيد الفطر السعيد والبركات</option>
-                <option value="مع بداية العام الجديد، أتمنى لكم عاماً مليئاً بالفرح والنجاح والسلامة، وأن تتحقق فيه كل أمنياتكم الطيبة، كل عام وأنتم بألف خير.">✨ تهنئة بالعام الجديد والأمنيات الطيبة</option>
-                <option value="ألف مبروك الزواج الميمون، بارك الله لكما وبارك عليكما وجمع بينكما في خير، وجعل أيامكم القادمة كلها حب وسعادة واستقرار أبدي.">💍 مباركة وتهنئة بالزواج السعيد</option>
-                <option value="ما شاء الله تبارك الرحمن، بورك لكم في الموهوب وشكرتم الواهب وبلغ أشده ورزقتم بره، ألف مبروك المولود الجديد والرزق النظيف.">👶 تهنئة بالمولود الجديد السعيد</option>
-                <option value="ألف مبروك النجاح والتفوق الباهر الّذي يرفع الرأس! هذا الحصاد الجميل هو ثمرة صبركم وتعبكم، ومن نجاح إلى نجاح دائم ومستمر.">🎓 تهنئة بالنجاح الباهر والتفوق</option>
+            <div class="box-title" id="title-shop">📱 خدمات تشريج الخطوط والإنترنت الموثوقة</div>
+            <p class="shop-box-desc">دليلكِ الآمن والكامل لتشريج خطوط <span class="text-red">Alfa</span> وتاتش <span class="text-red">MTC</span> وتجديد اشتراكات بطاقات إنترنت <span class="text-white">Ushare</span> برواقة تامة وبأعلى مصداقية في لبنان. تواصلوا مباشرة مع الموزع المستقل المعتمد لقفل طلباتكم بثقة وسرية:</p>
+            <a href="whatsapp://send?phone=96179320900&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%86%D8%A7%20%D8%AF%D8%AE%D9%84%D8%AA%20%D9%85%D9%86%20%D9%85%D9%84%D9%81%20%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%AD%D8%A8%20%D9%88%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D9%88%D8%A3%D8%B7%D9%84%D8%A8%20%D8%AA%D8%B4%D8%B1%D9%8A%D8%AC%20%D8%A7%D9%84%D0%AE%D8%B7%D9%88%D8%B7" class="round-gold-btn">
+                💬 اطلب تشريج خطك الآن (واتساب)
+            </a>
+        </div>
+
+        <div class="section-box">
+            <div class="box-title">🛒 خدمات شحن PUBG ومشتريات SHEIN</div>
+            <p class="shop-box-desc">اشحني حسابكِ وألعابكِ بثقة تامة! محطتكِ المتكاملة لطلب وشحن مشتريات وطلبيات ومحفظة SHEIN بالإضافة لتأمين شدات لعبة ببجي PUBG وجيمنج بأعلى درجات المصداقية وحماية كاملة لحساباتكم وبأسرع خدمة كاش:</p>
+            <div class="pubg-btn-static">PUBG Gaming 🎮</div>
+            <a href="whatsapp://send?phone=96171689517&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%86%D8%A7%20%D8%AF%D8%AE%D9%84%D8%AA%20%D9%85%D9%86%20%D9%85%D9%84%D9%81%20%D8%B9%D8%A4%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%AD%D8%A8%20%D9%88%D8%A2%D8%AA%D9%8I%20%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D9%88%D8%A3%D8%B7%D9%84%D8%A8%20%D8%B4%D8%AD%D9%86%20%D8%A3%D9%84%D8%B9%D8%A7%D8%A8" class="round-pink-btn">
+                🛍️ للطلب وشحن الشدات و SHEIN (واتساب)
+            </a>
+        </div>
+
+        <div class="section-box">
+            <div class="box-title" id="title-tasbih">📿 صندوق لوحة عداد التسبيح والاستغفار الرقمي</div>
+            <select id="tasbih-select" style="margin-bottom: 15px;">
+                <option value="أستغفر الله العظيم وأتوب إليه">📿 أستغفر الله العظيم وأتوب إليه</option>
+                <option value="سبحان الله وبحمده، سبحان الله العظيم">✨ سبحان الله وبحمده، سبحان الله العظيم</option>
+                <option value="الحمد لله حمداً كثيراً طيباً مباركاً فيه">🌹 الحمد لله رب العالمين</option>
+                <option value="الله أكبر كبيراً، والحمد لله كثيراً">🕌 الله أكبر كبيراً</option>
+                <option value="لا إله إلا الله وحده لا شريك له">☝ لا إله إلا الله وحده لا شريك له</option>
             </select>
-            <div style="color:#ffd700;font-size:13px;font-weight:bold;margin-bottom:5px;" id="title-congrat-preview">📖 كلمات التهنئة المختارة حالياً:</div><div class="preview-box" id="congrat-text-preview">جاري تحميل نص التهنئة السعيدة...</div>
-            <a href="#" id="congrat-whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none;background:linear-gradient(45deg, #ff9800, #f57c00);"><span id="btn-congrat-share">أرسل التهنئة وشارك عبر الواتساب 🟢</span></a>
+            <div class="tasbih-display" id="tasbih-display-box"><span id="tasbih-val">0</span></div>
+            <button class="tasbih-btn" onclick="countTasbih()">اضغط<br>هنا 📿</button>
+            <div style="text-align: center; margin-top: 5px;">
+                <button class="tasbih-reset" id="tasbih-reset-btn" onclick="resetTasbih()">إعادة تصفير العداد 🔄</button>
+            </div>
         </div>
-        <div class="section-box"><div class="box-title" id="title-shop">📱 خدمات تشريج الخطوط والإنترنت الموثوقة</div><p class="shop-box-desc">دليلكِ الآمن لتشريج خطوط <span class="text-red">Alfa</span> وتاتش <span class="text-red">MTC</span> وإنترنت <span class="text-white">Ushare</span>. تواصلوا مع الموزع المعتمد لقفل طلباتكم:</p><a href="whatsapp://send?phone=96179320900&text=مرحبا، بدي أطلب تشريج خطوط" class="round-gold-btn">💬 اطلب تشريج خطك الآن (واتساب)</a></div>
-        <div class="section-box"><div class="box-title">🛒 خدمات شحن PUBG ومشتريات SHEIN</div><p class="shop-box-desc">شحن شدات لعبة ببجي PUBG ومشتريات ومحفظة SHEIN بأسرع خدمة كاش ومصداقية:</p><div class="pubg-btn-static">PUBG Gaming 🎮</div><a href="whatsapp://send?phone=96171689517&text=مرحبا، بدي شحن ألعاب ببجي وشي ان" class="round-pink-btn">🛍️ للطلب وشحن الشدات و SHEIN (واتساب)</a></div>
+
+        <!-- 🔐 صندوق الرسائل السرية مع إضافة النص التوضيحي الحاسم لمنع خوف الزوار والجمهور بالملي الحين -->
         <div class="section-box">
-            <div class="box-title" id="title-tasbih">📿 صندوق لوحة عداد التسبيح الرقمي</div><div class="tasbih-display"><span id="tasbih-val">0</span></div><button class="tasbih-btn" onclick="countTasbih()">اضغط هنا 📿</button><div style="text-align:center;"><button class="tasbih-reset" id="tasbih-reset-btn" onclick="resetTasbih()">إعادة تصفير العداد 🔄</button></div>
+            <div class="box-title" id="title-secret">🔐 صندوق الرسائل السرية والمفاجآت العاطفية المغلقة</div>
+            <p id="secret-desc-text" style="color:#e0e0e0; font-size:13px; margin:0 0 15px 0; line-height:1.5; text-align:right;">هذا الصندوق تفاعلي آمن ومحمي ومفرمل كلياً، ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. لكي يفتح القفل وتكشف الرسائل العاطفية المخفية، يرجى كتابة أحد الأكواد الفعالة الحين (مثلاً: جرب كتابة الرقم 123 أو كود العائلة KR) ثم اضغط على زر الفتح بالأسفل بكل أمان وطمأنينة الحين:</p>
+            <input type="text" id="secret-input" placeholder="اكتب الكلمة السرية أو الكود السري هنا الحين...">
+            <button class="secret-btn" id="secret-btn-click" onclick="unlockSecret()">افتح واكشف المفاجأة السرية الحين 🔓</button>
+            <div class="secret-output" id="secret-box-output"></div>
         </div>
-        <div class="section-box">
-            <div class="box-title" id="title-secret">🔐 صندوق الرسائل السرية والمفاجآت العاطفية المغلقة</div><p id="secret-desc-text" style="color:#e0e0e0;font-size:13px;margin:0 0 15px 0;line-height:1.5;text-align:right;">هذا الصندوق مخصص لإرسال المفاجآت والجوائز المشفرة. جرب كتابة الرقم 123 أو كود العائلة KR ثم اضغط على زر الفتح بالأسفل بكل أمان:</p><input type="text" id="secret-input" placeholder="اكتب الكلمة السرية أو الكود السري هنا الحين..."><button class="secret-btn" id="secret-btn-click" onclick="unlockSecret()">افتح واكشف المفاجأة السرية الحين 🔓</button><div class="secret-output" id="secret-box-output"></div>
+        
+        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1435</span> زائر</div>
+        <br>
+        <div class="family-logo-wrapper">
+            <div class="family-logo pulse-fast">👑 KR 👑</div>
         </div>
-        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1573</span> زائر</div><br><div class="family-logo-wrapper"><div class="family-logo pulse-fast">👑 KR 👑</div></div>
     </div>
 </body>
 </html>
