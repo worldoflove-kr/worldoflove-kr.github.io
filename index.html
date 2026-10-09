@@ -52,7 +52,7 @@
                 document.getElementById("love-name-input").placeholder = "Type your name here...";
                 document.getElementById("title-love-preview").innerText = "📖 Selected Love Expression:";
                 document.getElementById("btn-love-share").innerText = "Send Love Expression via WhatsApp 🟢";
-                document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,430</span>";
+                document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,435</span>";
             } else {
                 document.getElementById("main-title").innerText = "عالم الحب";
                 document.getElementById("title-search").innerText = "🔍 محرك بحث جوجل الذكي";
@@ -65,31 +65,31 @@
                 document.getElementById("love-name-input").placeholder = "اكتب اسمك هنا الحين...";
                 document.getElementById("title-love-preview").innerText = "📖 كلمات العبارة المختارة حالياً:";
                 document.getElementById("btn-love-share").innerText = "أرسل عبارة الحب وشارك عبر الواتساب 🟢";
-                document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,430</span> زائر";
+                document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,435</span> زائر";
             }
             updateClock();
         }
+        // قفل الرابط الرسمي لصفحتنا عالم الحب بالملي بداخل مسج صندوق الأدعية والإهداءات
         function refreshAndBuildWhatsAppLink() {
             var userName = document.getElementById("name-input").value;
             var duaText = document.getElementById("dua-select").value;
             document.getElementById("dua-text-preview").innerText = duaText;
             if(userName.trim() === "") { userName = "محب للخير"; }
             
-            // تثبيت رابط صفحتنا الكامل والصحيح مع بروتوكول الأمان المباشر للواتساب
-            var fullMessage = `🎁 إهداء خاص مـن: *[ ${userName} ]* \n\n✨ *الدعاء:* \n" ${duaText} " \n\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n🌐 *رابط الصفحة المباشر:* \nhttps://github.io`;
+            var fullMessage = `🎁 إهداء خاص مـن: *[ ${userName} ]* \n\n✨ *الدعاء:* \n" ${duaText} " \n\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n🌐 *رابط صفحتنا المباشر والوحيد:* \nhttps://github.io`;
             
             var finalUrl = "whatsapp://send?text=" + encodeURIComponent(fullMessage);
             document.getElementById("whatsapp-anchor").setAttribute("href", finalUrl);
         }
 
+        // قفل الرابط الرسمي لصفحتنا عالم الحب بالملي بداخل مسج صندوق الحب والاشتياق العاطفي
         function buildLoveWhatsAppLink() {
             var loverName = document.getElementById("love-name-input").value;
             var loveText = document.getElementById("love-select").value;
             document.getElementById("love-text-preview").innerText = loveText;
             if(loverName.trim() === "") { loverName = "محب غالي"; }
             
-            // تثبيت رابط صفحتنا الكامل والصحيح مع بروتوكول الأمان المباشر لرسائل الحب
-            var fullLoveMessage = `💝 رسالة حب واشتياق مـن: *[ ${loverName} ]* \n\n💬 *الكلمات:* \n" ${loveText} " \n\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n🌐 *رابط الصفحة المباشر:* \nhttps://github.io`;
+            var fullLoveMessage = `💝 رسالة حب واشتياق مـن: *[ ${loverName} ]* \n\n💬 *الكلمات:* \n" ${loveText} " \n\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n🌐 *رابط صفحتنا المباشر والوحيد:* \nhttps://github.io`;
             
             var finalLoveUrl = "whatsapp://send?text=" + encodeURIComponent(fullLoveMessage);
             document.getElementById("love-whatsapp-anchor").setAttribute("href", finalLoveUrl);
@@ -110,7 +110,7 @@
         <div class="ticker-wrapper">
             <a href="https://kitco.com" target="_blank" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">\$2,624.50</span> <span class="down">▼ نازل</span></a>
             <a href="https://xe.com" target="_blank" class="ticker-link">💵 مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="up">▲ طالع</span></a>
-            <a href="https://lebanonfiles.com" target="_blank" class="ticker-link">💵 صرف الدولار في لبنان: <span class="price">89,500 ل.ل</span> ◀ مستقر</a>
+            <a href="https://lebanonfiles.com" target="_blank" class="ticker-link">💵 صرف الدولار in لبنان: <span class="price">89,500 ل.ل</span> ◀ مستقر</a>
         </div>
     </div>
     <div class="container">
