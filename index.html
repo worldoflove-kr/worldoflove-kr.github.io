@@ -131,7 +131,7 @@
                 document.getElementById("title-tasbih").innerText = "📿 صندوق لوحة عداد التسبيح والاستغفار الرقمي";
                 document.getElementById("tasbih-reset-btn").innerText = "إعادة تصفير العداد 🔄";
                 document.getElementById("title-secret").innerText = "🔐 صندوق الرسائل السرية والمفاجآت العاطفية المغلقة";
-                document.getElementById("secret-desc-text").innerText = "هذا الصندوق تفاعلي آمن ومحمي ومفرمل كلياً، ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. لكي يفتح القفل وتكشف الرسائل العاطفية المخفية، يرجى كتابة أحد الأكواد الفعالة الحين (مثلاً: جرب كتابة الرقم 123 أو كود العائلة KR) then اضغط على زر الفتح بالأسفل بكل أمان وطمأنينة الحين:";
+                document.getElementById("secret-desc-text").innerText = "هذا الصندوق تفاعلي آمن ومحمي ومفرمل كلياً، ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. لكي يفتح القفل وتكشف الرسائل العاطفية المخفية، يرجى كتابة أحد الأكواد الفعالة الحين (مثلاً: جرب كتابة الرقم 123 أو كود العائلة KR) ثم اضغط على زر الفتح بالأسفل بكل أمان وطمأنينة الحين:";
                 document.getElementById("secret-input").placeholder = "اكتب الكلمة السرية أو الكود السري هنا الحين...";
                 document.getElementById("secret-btn-click").innerText = "افتح واكشف المفاجأة السرية الحين 🔓";
                 document.getElementById("title-audio").innerText = "🎵 صندوق الصوتيات الروحانية والتلاوات الخلفية الهادئة";
@@ -163,6 +163,14 @@
             setInterval(updateClock, 1000); updateClock();
             var count = localStorage.getItem('page_view') || 1430;
             count = parseInt(count) + 1; localStorage.setItem('page_view', count);
+            document.getElementById("counter-val").innerText = count;
+            var tCount = localStorage.getItem('tasbih_count') || 0;
+            document.getElementById("tasbih-val").innerText = parseInt(tCount).toLocaleString();
+            refreshAndBuildWhatsAppLink(); buildLoveWhatsAppLink();
+        };
+    </script>
+</head>
+<body>
     <div class="ticker-container">
         <div class="ticker-wrapper">
             <a href="https://kitco.com" target="_blank" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">\$2,624.50</span> <span class="down">▼ نازل</span></a>
@@ -223,7 +231,7 @@
         <div class="section-box">
             <div class="box-title" id="title-shop">📱 خدمات تشريج الخطوط والإنترنت الموثوقة</div>
             <p class="shop-box-desc">دليلكِ الآمن والكامل لتشريج خطوط Alfa وتاتش MTC وتجديد اشتراكات بطاقات إنترنت Ushare برواقة تامة وبأعلى مصداقية في لبنان. تواصلوا مباشرة مع الموزع المستقل المعتمد لقفل طلباتكم بثقة وسرية:</p>
-            <a href="whatsapp://send?phone=96179320900&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%86%D8%A7%20%D8%AF%D8%AE%D9%84%D8%AA%20%D9%85%D9%86%20%D9%85%D9%84%D9%81%20%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%AD%D8%A8%20%D9%88%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D9%88%D8%A3%D8%B7%D9%84%D8%A8%20%D8%AA%D8%B4%D8%B1%D9%8A%D8%AC%20%D8%A7%D9%84%D0%AE%D8%B7%D9%88%D8%B7" class="round-gold-btn">
+            <a href="whatsapp://send?phone=96179320900&text=مرحبا، بدي أطلب تشريج خطوط" class="round-gold-btn">
                 💬 اطلب تشريج خطك الآن (واتساب)
             </a>
         </div>
@@ -232,7 +240,7 @@
             <div class="box-title">🛒 خدمات شحن PUBG ومشتريات SHEIN</div>
             <p class="shop-box-desc">اشحني حسابكِ وألعابكِ بثقة تامة! محطتكِ المتكاملة لطلب وشحن مشتريات وطلبيات ومحفظة SHEIN بالإضافة لتأمين شدات لعبة ببجي PUBG وجيمنج بأعلى درجات المصداقية وحماية كاملة لحساباتكم وبأسرع خدمة كاش:</p>
             <div class="pubg-btn-static">PUBG Gaming 🎮</div>
-            <a href="whatsapp://send?phone=96171689517&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%86%D8%A7%20%D8%AF%D8%AE%D9%84%D8%AA%20%D9%85%D9%86%20%D9%85%D9%84%D9%81%20%D8%B9%D8%A4%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%AD%D8%A8%20%D9%88%D8%A2%D8%AA%D9%8I%20%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D9%88%D8%A3%D8%B7%D9%84%D8%A8%20%D8%B4%D8%AD%D9%86%20%D8%A3%D9%84%D8%B9%D8%A7%D8%A8" class="round-pink-btn">
+            <a href="whatsapp://send?phone=96171689517&text=مرحبا، بدي شحن ألعاب" class="round-pink-btn">
                 🛍️ للطلب وشحن الشدات و SHEIN (واتساب)
             </a>
         </div>
