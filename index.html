@@ -48,7 +48,7 @@
                 document.getElementById("name-input").placeholder = "Type your name here...";
                 document.getElementById("title-preview").innerText = "📖 Selected Dua Text:";
                 document.getElementById("btn-share").innerText = "Send Gift & Share on WhatsApp 🟢";
-                document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,415</span>";
+                document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,420</span>";
             } else {
                 document.getElementById("main-title").innerText = "عالم الحب";
                 document.getElementById("title-search").innerText = "🔍 محرك بحث جوجل الذكي";
@@ -57,17 +57,18 @@
                 document.getElementById("name-input").placeholder = "اكتب اسمك هنا الحين...";
                 document.getElementById("title-preview").innerText = "📖 كلمات الدعاء المختار حالياً:";
                 document.getElementById("btn-share").innerText = "أرسل الإهداء وشارك عبر الواتساب 🟢";
-                document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,415</span> زائر";
+                document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,420</span> زائر";
             }
             updateClock();
         }
-        function prepareWhatsAppLink() {
+        // دالة برمجية مخصصة ومحمية إجبارياً لتثبيت رابط صفحتنا الكامل والدقيق داخل مسج الواتساب
+        function refreshAndBuildWhatsAppLink() {
             var userName = document.getElementById("name-input").value;
             var duaText = document.getElementById("dua-select").value;
             document.getElementById("dua-text-preview").innerText = duaText;
             if(userName.trim() === "") { userName = "محب للخير"; }
             
-            // تم دمج وتعديل الرابط ليصبح رابط صفحتنا الكامل والدقيق 100% داخل مسج الواتساب
+            // تم قفل وتأمين صيغة الرابط المشفر الكامل لصفحتنا عالم الحب بالملي
             var fullMessage = `🎁 إهداء خاص مـن: *[ ${userName} ]* \n\n` + 
                               `✨ *الدعاء:* \n" ${duaText} " \n\n` + 
                               `🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n` + 
@@ -78,10 +79,10 @@
         }
         window.onload = function() {
             setInterval(updateClock, 1000); updateClock();
-            var count = localStorage.getItem('page_view') || 1415;
+            var count = localStorage.getItem('page_view') || 1420;
             count = parseInt(count) + 1; localStorage.setItem('page_view', count);
             document.getElementById("counter-val").innerText = count;
-            prepareWhatsAppLink();
+            refreshAndBuildWhatsAppLink();
         };
     </script>
 </head>
@@ -113,9 +114,9 @@
         
         <div class="section-box">
             <div class="box-title" id="title-dua">✨ صندوق الأدعية والإهداءات التفاعلي</div>
-            <input type="text" id="name-input" placeholder="اكتب اسمك هنا الحين..." oninput="prepareWhatsAppLink()" required>
+            <input type="text" id="name-input" placeholder="اكتب اسمك هنا الحين..." oninput="refreshAndBuildWhatsAppLink()" required>
             
-            <select id="dua-select" onchange="prepareWhatsAppLink()">
+            <select id="dua-select" onchange="refreshAndBuildWhatsAppLink()">
                 <option value="اللهم احفظ لي أحبتي وأهلي ولا تريني فيهم بأساً يبكيني، واستودعتك قلوبهم وحياتهم وصحتهم فاحفظهم بحفظك يا كريم.">🤲 دعاء لحفظ الأهل والأحبة</option>
                 <option value="اللهم افتح لنا أبواب الرزق الحلال الطيب، واقضِ عنا الدين، واغننا بفضلك عمن سواك، واجعل التوفيق حليفنا في كل خطوة.">💰 دعاء سعة الرزق وتيسير الأمور</option>
                 <option value="أسأل الله العظيم أن يزيل عنكم كل ضيق، وأن يشفي مرضاكم، ويرحم موتاكم، ويجعل أيامكم القادمة مليئة بالفرح والفرج والسرور.">🌹 إهداء دعاء تفريج الهم والشفاء</option>
@@ -130,7 +131,7 @@
             </a>
         </div>
         
-        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1415</span> زائر</div>
+        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1420</span> زائر</div>
         <div style="font-size: 28px; font-weight: bold; color: #ffd700; margin-top: 25px;">KR</div>
     </div>
 </body>
