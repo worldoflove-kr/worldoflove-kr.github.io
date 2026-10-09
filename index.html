@@ -33,11 +33,11 @@
         .tasbih-btn { display: block; width: 140px; height: 140px; background: linear-gradient(45deg, #ffd700, #b8860b); color: #000; font-size: 22px; font-weight: bold; border-radius: 50%; border: 4px solid #000; box-shadow: 0 5px 20px rgba(255,215,0,0.4); cursor: pointer; margin: 15px auto; display: flex; align-items: center; justify-content: center; transition: transform 0.1s ease; }
         .tasbih-btn:active { transform: scale(0.92); }
         .tasbih-reset { display: inline-block; background: #222; border: 1px dashed #ffd700; color: #ffd700; padding: 6px 15px; font-size: 12px; font-weight: bold; border-radius: 20px; cursor: pointer; text-decoration: none; margin-top: 5px; }
+        
+        /* تنسيق علبة المخرجات لصندوق الرسائل السرية */
         .secret-output { background: rgba(0,0,0,0.6); border: 2px dashed #ffd700; border-radius: 8px; padding: 15px; color: #ffd700; font-size: 15px; font-weight: bold; text-align: center; margin-top: 15px; line-height: 1.6; min-height: 25px; display: none; }
         .secret-btn { display: block; width: 100%; background: linear-gradient(45deg, #ffd700, #b8860b); color: #000; border: none; padding: 12px; font-size: 14px; font-weight: bold; border-radius: 6px; cursor: pointer; box-shadow: 0 4px 10px rgba(255,215,0,0.2); }
-        .audio-player-box { background: #1a1a1a; border: 1px solid #ffd700; border-radius: 8px; padding: 10px; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .audio-ctrl-btn { background: #000; border: 1px solid #ffd700; color: #ffd700; padding: 8px 16px; border-radius: 5px; font-size: 13px; font-weight: bold; cursor: pointer; }
-        .audio-ctrl-btn:active { transform: scale(0.95); }
+        
         .family-logo-wrapper { margin-top: 30px; margin-bottom: 15px; display: inline-block; transform: rotate(-8deg); animation: logo-pulsing 1.2s ease-in-out infinite; }
         .family-logo { font-size: 36px; font-weight: bold; color: #ffd700; letter-spacing: 3px; font-family: 'Georgia', serif; padding: 4px 22px; border-top: 3px double #ffd700; border-bottom: 3px double #ffd700; text-shadow: 0 0 10px #ffd700; }
         @keyframes logo-pulsing { 0% { transform: rotate(-8deg) scale(1); } 50% { transform: rotate(-8deg) scale(1.06); filter: drop-shadow(0 0 15px #ffd700); } 100% { transform: rotate(-8deg) scale(1); } }
@@ -48,8 +48,7 @@
     <script>
         var currentLang = 'ar';
         document.addEventListener('contextmenu', event => event.preventDefault());
-        function playLiveAudio() { document.getElementById("my-live-audio-player").play(); }
-        function pauseLiveAudio() { document.getElementById("my-live-audio-player").pause(); }
+        
         function unlockSecret() {
             var code = document.getElementById("secret-input").value.trim();
             var outBox = document.getElementById("secret-box-output");
@@ -110,10 +109,7 @@
                 document.getElementById("secret-desc-text").innerText = "This is a secure and encrypted interactive gift box. To unlock hidden expressions or family rewards, please type one of the active secure codes (for example: try typing 123 or the family code KR) then press the unlock button below safely!";
                 document.getElementById("secret-input").placeholder = "Type the secret word code here...";
                 document.getElementById("secret-btn-click").innerText = "Open & Unlock Secret Surprise 🔓";
-                document.getElementById("title-audio").innerText = "🎵 Spiritual Sound & Calm Recitations Box";
-                document.getElementById("audio-play-text").innerText = "Play Audio ▶️";
-                document.getElementById("audio-pause-text").innerText = "Pause Audio ⏸️";
-                document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,573</span>";
+                document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,435</span>";
             } else {
                 document.getElementById("main-title").innerText = "عالم الحب";
                 document.getElementById("sub-title").innerText = "World of Love";
@@ -133,10 +129,7 @@
                 document.getElementById("secret-desc-text").innerText = "هذا الصندوق تفاعلي آمن ومحمي ومفرمل كلياً، ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. لكي يفتح القفل وتكشف الرسائل العاطفية المخفية، يرجى كتابة أحد الأكواد الفعالة الحين (مثلاً: جرب كتابة الرقم 123 أو كود العائلة KR) ثم اضغط على زر الفتح بالأسفل بكل أمان وطمأنينة الحين:";
                 document.getElementById("secret-input").placeholder = "اكتب الكلمة السرية أو الكود السري هنا الحين...";
                 document.getElementById("secret-btn-click").innerText = "افتح واكشف المفاجأة السرية الحين 🔓";
-                document.getElementById("title-audio").innerText = "🎵 صندوق الصوتيات الروحانية والتلاوات الخلفية الهادئة";
-                document.getElementById("audio-play-text").innerText = "تشغيل الصوت ▶️";
-                document.getElementById("audio-pause-text").innerText = "إيقاف مؤقت ⏸️";
-                document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,573</span> زائر";
+                document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,435</span> زائر";
             }
             updateClock();
         }
@@ -160,7 +153,7 @@
         }
         window.onload = function() {
             setInterval(updateClock, 1000); updateClock();
-            var count = localStorage.getItem('page_view') || 1570;
+            var count = localStorage.getItem('page_view') || 1430;
             count = parseInt(count) + 1; localStorage.setItem('page_view', count);
             document.getElementById("counter-val").innerText = count;
             var tCount = localStorage.getItem('tasbih_count') || 0;
@@ -170,7 +163,6 @@
     </script>
 </head>
 <body>
-    <audio id="my-live-audio-player" src="https://mp3quran.net" preload="auto"></audio>
     <div class="ticker-container">
         <div class="ticker-wrapper">
             <a href="https://kitco.com" target="_blank" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">\$2,624.50</span> <span class="down">▼ نازل</span></a>
@@ -210,6 +202,41 @@
                 <span id="btn-share">أرسل الإهداء وشارك عبر الواتساب 🟢</span>
             </a>
         </div>
+
+        <div class="section-box">
+            <div class="box-title" id="title-love">❤️ صندوق عبارات الحب والاشتياق التفاعلي</div>
+            <input type="text" id="love-name-input" placeholder="اكتب اسمك هنا الحين..." oninput="buildLoveWhatsAppLink()" required>
+            <select id="love-select" onchange="buildLoveWhatsAppLink()">
+                <option value="أشتاق إليك شوقاً يملأ الكون صخباً، وأحبك حباً يجعل من دقات قلبي عزفاً لاسمك الدافيء دائماً وأبداً.">🥀 عبارة اشتياق وحنين جارف</option>
+                <option value="أنت لست مجرد شخص عابر في حياتي، أنت عمري، وأجمل أقداري، ونبض قلبي الذي لا أعيش بدونه يوماً واحداً.">💍 عبارة حب أبدي وعهود صادقة</option>
+                <option value="لو كان للحب والاشتياق عنوان، لكان عينيك الفاتنتين، ولو كان لي في هذا العالم أمنية، لكانت البقاء بجانبك طول العمر.">🌹 عبارة رومانسية راقية وهدية عاطفية</option>
+                <option value="تغيب الشمس ويحل الظلام، لكن دفء حبك بقلبي لا يغيب أبداً، تظل أنت الأول والأخير بقلبي وعالمي الجميل.">✨ عبارة غرام عاطفية ليلية</option>
+                <option value="أحن لأيامنا الخوالي، لتفاصيل صغيرة ضحكنا لها معاً، لزمان مضى وترك في القلب غصة حنين دافئة لا تموت أبداً مع السنين.">🕰️ عبارة حنين للماضي وذكريات زمان القديمة</option>
+            </select>
+            <div style="color: #ffd700; font-size: 13px; font-weight: bold; margin-bottom: 5px;" id="title-love-preview">📖 كلمات العبارة المختارة حالياً:</div>
+            <div class="preview-box" id="love-text-preview">جاري تحميل العبارة العاطفية...</div>
+            <a href="whatsapp://send?text=" id="love-whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none; background: linear-gradient(45deg, #e91e63, #b71c1c);">
+                <span id="btn-love-share">أرسل عبارة الحب وشارك عبر الواتساب 🟢</span>
+            </a>
+        </div>
+
+        <div class="section-box">
+            <div class="box-title" id="title-shop">📱 خدمات تشريج الخطوط والإنترنت الموثوقة</div>
+            <p class="shop-box-desc">دليلكِ الآمن والكامل لتشريج خطوط <span class="text-red">Alfa</span> وتاتش <span class="text-red">MTC</span> وتجديد اشتراكات بطاقات إنترنت <span class="text-white">Ushare</span> برواقة تامة وبأعلى مصداقية في لبنان. تواصلوا مباشرة مع الموزع المستقل المعتمد لقفل طلباتكم بثقة وسرية:</p>
+            <a href="whatsapp://send?phone=96179320900&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%86%D8%A7%20%D8%AF%D8%AE%D9%84%D8%AA%20%D9%85%D9%86%20%D9%85%D9%84%D9%81%20%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%AD%D8%A8%20%D9%88%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D9%88%D8%A3%D8%B7%D9%84%D8%A8%20%D8%AA%D8%B4%D8%B1%D9%8A%D8%AC%20%D8%A7%D9%84%D0%AE%D8%B7%D9%88%D8%B7" class="round-gold-btn">
+                💬 اطلب تشريج خطك الآن (واتساب)
+            </a>
+        </div>
+
+        <div class="section-box">
+            <div class="box-title">🛒 خدمات شحن PUBG ومشتريات SHEIN</div>
+            <p class="shop-box-desc">اشحني حسابكِ وألعابكِ بثقة تامة! محطتكِ المتكاملة لطلب وشحن مشتريات وطلبيات ومحفظة SHEIN بالإضافة لتأمين شدات لعبة ببجي PUBG وجيمنج بأعلى درجات المصداقية وحماية كاملة لحساباتكم وبأسرع خدمة كاش:</p>
+            <div class="pubg-btn-static">PUBG Gaming 🎮</div>
+            <a href="whatsapp://send?phone=96171689517&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%86%D8%A7%20%D8%AF%D8%AE%D9%84%D8%AA%20%D9%85%D9%86%20%D9%85%D9%84%D9%81%20%D8%B9%D8%A4%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%AD%D8%A8%20%D9%88%D8%A2%D8%AA%D9%8I%20%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D9%88%D8%A3%D8%B7%D9%84%D8%A8%20%D8%B4%D8%AD%D9%86%20%D8%A3%D9%84%D8%B9%D8%A7%D8%A8" class="round-pink-btn">
+                🛍️ للطلب وشحن الشدات و SHEIN (واتساب)
+            </a>
+        </div>
+
         <div class="section-box">
             <div class="box-title" id="title-tasbih">📿 صندوق لوحة عداد التسبيح والاستغفار الرقمي</div>
             <select id="tasbih-select" style="margin-bottom: 15px;">
@@ -226,6 +253,7 @@
             </div>
         </div>
 
+        <!-- 🔐 صندوق الرسائل السرية مع إضافة النص التوضيحي الحاسم لمنع خوف الزوار والجمهور بالملي الحين -->
         <div class="section-box">
             <div class="box-title" id="title-secret">🔐 صندوق الرسائل السرية والمفاجآت العاطفية المغلقة</div>
             <p id="secret-desc-text" style="color:#e0e0e0; font-size:13px; margin:0 0 15px 0; line-height:1.5; text-align:right;">هذا الصندوق تفاعلي آمن ومحمي ومفرمل كلياً، ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. لكي يفتح القفل وتكشف الرسائل العاطفية المخفية، يرجى كتابة أحد الأكواد الفعالة الحين (مثلاً: جرب كتابة الرقم 123 أو كود العائلة KR) ثم اضغط على زر الفتح بالأسفل بكل أمان وطمأنينة الحين:</p>
@@ -233,17 +261,8 @@
             <button class="secret-btn" id="secret-btn-click" onclick="unlockSecret()">افتح واكشف المفاجأة السرية الحين 🔓</button>
             <div class="secret-output" id="secret-box-output"></div>
         </div>
-
-        <div class="section-box">
-            <div class="box-title" id="title-audio">🎵 صندوق الصوتيات الروحانية والتلاوات الخلفية الهادئة</div>
-            <div class="pulse-fast" style="font-size:18px; font-weight:bold; color:#ffd700; text-align:center; margin:10px 0 15px 0; text-shadow:0 0 10px #ffd700, 0 0 20px #b8860b;">🕋 أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ 🕋</div>
-            <div class="audio-player-box">
-                <button class="audio-ctrl-btn" id="audio-play-text" onclick="playLiveAudio()">تشغيل الصوت ▶️</button>
-                <button class="audio-ctrl-btn" id="audio-pause-text" onclick="pauseLiveAudio()">إيقاف مؤقت ⏸️</button>
-            </div>
-        </div>
         
-        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;' id='counter-val'>1,573</span> زائر</div>
+        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1435</span> زائر</div>
         <br>
         <div class="family-logo-wrapper">
             <div class="family-logo pulse-fast">👑 KR 👑</div>
