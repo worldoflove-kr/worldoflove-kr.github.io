@@ -47,10 +47,9 @@
     </style>
     <script>
         var currentLang = 'ar';
-        var audioObj = new Audio("https://mp3quran.net");
         document.addEventListener('contextmenu', event => event.preventDefault());
-        function playLiveAudio() { audioObj.play(); }
-        function pauseLiveAudio() { audioObj.pause(); }
+        function playLiveAudio() { document.getElementById("my-live-audio-player").play(); }
+        function pauseLiveAudio() { document.getElementById("my-live-audio-player").pause(); }
         function unlockSecret() {
             var code = document.getElementById("secret-input").value.trim();
             var outBox = document.getElementById("secret-box-output");
@@ -114,7 +113,7 @@
                 document.getElementById("title-audio").innerText = "🎵 Spiritual Sound & Calm Recitations Box";
                 document.getElementById("audio-play-text").innerText = "Play Audio ▶️";
                 document.getElementById("audio-pause-text").innerText = "Pause Audio ⏸️";
-                document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,435</span>";
+                document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,573</span>";
             } else {
                 document.getElementById("main-title").innerText = "عالم الحب";
                 document.getElementById("sub-title").innerText = "World of Love";
@@ -137,7 +136,7 @@
                 document.getElementById("title-audio").innerText = "🎵 صندوق الصوتيات الروحانية والتلاوات الخلفية الهادئة";
                 document.getElementById("audio-play-text").innerText = "تشغيل الصوت ▶️";
                 document.getElementById("audio-pause-text").innerText = "إيقاف مؤقت ⏸️";
-                document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,435</span> زائر";
+                document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,573</span> زائر";
             }
             updateClock();
         }
@@ -161,32 +160,17 @@
         }
         window.onload = function() {
             setInterval(updateClock, 1000); updateClock();
-            var count = localStorage.getItem('page_view') || 1430;
+            var count = localStorage.getItem('page_view') || 1570;
             count = parseInt(count) + 1; localStorage.setItem('page_view', count);
-            document.getElementById("counter-val").innerText = count;
-            var tCount = localStorage.getItem('tasbih_count') || 0;
-            document.getElementById("tasbih-val").innerText = parseInt(tCount).toLocaleString();
-            refreshAndBuildWhatsAppLink(); buildLoveWhatsAppLink();
-        };
-    </script>
-</head>
-<body>
+    <audio id="my-live-audio-player" src="https://mp3quran.net" preload="auto"></audio>
     <div class="ticker-container">
         <div class="ticker-wrapper">
-            <a href="https://kitco.com" target="_blank" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">\$2,624.50</span> <span class="down">▼ نازل</span></a>
+            <a href="https://kitco.com" target="_blank" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">$2,624.50</span> <span class="down">▼ نازل</span></a>
             <a href="https://xe.com" target="_blank" class="ticker-link">💵 مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="up">▲ طالع</span></a>
             <a href="https://lebanonfiles.com" target="_blank" class="ticker-link">💵 صرف الدولار في لبنان: <span class="price">89,500 ل.ل</span> ◀ مستقر</a>
         </div>
     </div>
     <div class="container">
-        <div class="live-meta">
-            <div style="margin-bottom: 8px;">
-                <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية</button>
-                <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English</button>
-            </div>
-            <div id="live-clock">📅 جاري تشغيل ساعة الثواني الحية...</div>
-        </div>
-        
         <h1 style="color: #ffd700; margin: 15px 0 0 0; font-size: 34px;" id="main-title" class="pulse-fast">عالم الحب</h1>
         <div id="sub-title" class="sub-title-en pulse-fast">World of Love</div>
         
@@ -278,7 +262,7 @@
             </div>
         </div>
         
-        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1435</span> زائر</div>
+        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1,573</span> زائر</div>
         <br>
         <div class="family-logo-wrapper">
             <div class="family-logo pulse-fast">👑 KR 👑</div>
