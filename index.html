@@ -23,11 +23,13 @@
         .btn-gold-link { display: block; background: linear-gradient(45deg, #ffd700, #b8860b); border: none; color: #000; padding: 14px; font-size: 15px; font-weight: bold; border-radius: 8px; text-decoration: none; cursor: pointer; text-align: center; box-sizing: border-box; line-height: 1.4; }
         .btn-whatsapp-btn { display: block; width: 100%; background: linear-gradient(45deg, #25D366, #128C7E); border: none; color: #fff; padding: 14px; font-size: 15px; font-weight: bold; border-radius: 8px; text-decoration: none; cursor: pointer; text-align: center; box-sizing: border-box; margin-top: 5px; }
         
-        /* تصميم لوحة الموزعين المباشرة والمشفرة لحماية الأرقام */
-        .shop-btn { display: block; background: linear-gradient(45deg, #ffd700, #b8860b); color: #000; padding: 15px 10px; font-size: 14px; font-weight: bold; border-radius: 8px; text-decoration: none; text-align: center; margin-top: 12px; box-sizing: border-box; box-shadow: 0 4px 12px rgba(255,215,0,0.15); line-height: 1.5; }
-        .shop-btn-gaming { background: linear-gradient(45deg, #111, #222); color: #ffd700; border: 1px solid #ffd700; }
+        /* ضبط وتثبيت تصميم أزرار الموزعين الدائرية الفخمة بالبكسل من صورتكِ */
+        .shop-box-desc { color: #e0e0e0; font-size: 13.5px; margin: 0 0 15px 0; line-height: 1.6; text-align: right; }
         .text-red { color: #ff3333; font-weight: bold; }
         .text-white { color: #ffffff; font-weight: bold; }
+        .round-gold-btn { display: block; background: #050505; border: 2px solid #ffd700; color: #ffd700; padding: 13px; font-size: 14px; font-weight: bold; border-radius: 25px; text-decoration: none; text-align: center; margin: 15px auto 5px auto; width: 90%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .round-pink-btn { display: block; background: #050505; border: 2px solid #ff3366; color: #ff3366; padding: 13px; font-size: 14px; font-weight: bold; border-radius: 25px; text-decoration: none; text-align: center; margin: 10px auto 5px auto; width: 90%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .pubg-btn-static { display: block; background: #050505; border: 1px solid #ffffff; color: #ffffff; padding: 10px; font-size: 13px; font-weight: bold; border-radius: 5px; text-decoration: none; text-align: center; margin: 10px auto; width: 90%; box-sizing: border-box; }
         
         .visitor-counter { color: #ffd700; font-size: 13px; font-weight: bold; margin-top: 20px; background: #000; padding: 8px 15px; border-radius: 20px; border: 1px dashed #ffd700; display: inline-block; }
     </style>
@@ -59,12 +61,11 @@
                 document.getElementById("love-name-input").placeholder = "Type your name here...";
                 document.getElementById("title-love-preview").innerText = "Selected Love Expression:";
                 document.getElementById("btn-love-share").innerText = "Send Love Expression via WhatsApp 🟢";
-                document.getElementById("title-shop").innerText = "📱 Authorized Lebanese Telecom & Gaming Agents";
                 document.getElementById("visitor-box").innerHTML = "👥 Live Visitors: <span style='color:#fff;' id='counter-val'>1,435</span>";
             } else {
                 document.getElementById("main-title").innerText = "عالم الحب";
                 document.getElementById("title-search").innerText = "🔍 محرك بحث جوجل الذكي";
-                document.getElementById("btn-search").innerText = "اكتب للبحث عن أي شيء بمتصفح جوجل - اضغط هنا";
+                document.getElementById("btn-search").innerText = "اجمع للبحث عن أي شيء بمتصفح جوجل - اضغط هنا";
                 document.getElementById("title-dua").innerText = "✨ صندوق الأدعية والإهداءات التفاعلي";
                 document.getElementById("name-input").placeholder = "اكتب اسمك هنا الحين...";
                 document.getElementById("title-preview").innerText = "📖 كلمات الدعاء المختار حالياً:";
@@ -73,7 +74,6 @@
                 document.getElementById("love-name-input").placeholder = "اكتب اسمك هنا الحين...";
                 document.getElementById("title-love-preview").innerText = "📖 كلمات العبارة المختارة حالياً:";
                 document.getElementById("btn-love-share").innerText = "أرسل عبارة الحب وشارك عبر الواتساب 🟢";
-                document.getElementById("title-shop").innerText = "📱 لوحة خدمات التشريج، شحن الألعاب و SHEIN (لبنان)";
                 document.getElementById("visitor-box").innerHTML = "👥 عدد زوار صفحتنا الحين: <span style='color:#fff;' id='counter-val'>1,435</span> زائر";
             }
             updateClock();
@@ -162,21 +162,22 @@
                 <span id="btn-love-share">أرسل عبارة الحب وشارك عبر الواتساب 🟢</span>
             </a>
         </div>
-        <!-- لوحة الخدمات المعتمدة والمشفرة برمجياً بأعلى نظام حماية ضد الاختراق أو السحب العشوائي -->
+        <!-- الصندوق الأول: خدمات التشريج والإنترنت الموثوقة المنسق كلياً طبق الأصل من صورتكِ -->
         <div class="section-box">
-            <div class="box-title" id="title-shop">📱 لوحة خدمات التشريج، شحن الألعاب و SHEIN (لبنان)</div>
-            <p style="color:#e0e0e0; font-size:13px; margin:0 0 15px 0; line-height:1.4;">ندعم المشاريع المحلية! تواصل مع الموزعين المعتمدين دغري وبفقسة زر واحدة عبر الواتساب لطلب كافة كروت التشريج والخدمات بأمان كامل:</p>
-            
-            <!-- زر التاجر الأول المحمي والمشفر دغري للرقم 79320900 للتشريج مع الألوان المطلوبة بالملي بالـ CSS الداخلي -->
-            <a href="https://whatsapp.com" class="shop-btn">
-                🟢 للاستفسار والطلب اضغط هنا للتواصل واتساب دغري لخدمات:<br>
-                <span class="text-red">Mtc</span> + <span class="text-red">alfa</span> w <span class="text-white">Ushare</span>
+            <div class="box-title">📱 خدمات تشريج الخطوط والإنترنت الموثوقة</div>
+            <p class="shop-box-desc">دليلكِ الآمن والكامل لتشريج خطوط <span class="text-red">Alfa</span> وتاتش <span class="text-red">MTC</span> وتجديد اشتراكات بطاقات إنترنت <span class="text-white">Ushare</span> برواقة تامة وبأعلى مصداقية في لبنان. تواصلوا مباشرة مع الموزع المستقل المعتمد لقفل طلباتكم بثقة وسرية:</p>
+            <a href="https://whatsapp.com" class="round-gold-btn">
+                💬 اطلب تشريج خطك الآن (واتساب)
             </a>
-            
-            <!-- زر التاجر الثاني المحمي والمشفر دغري للرقم 71689517 لشحن الببجي والـ Shein وقبض الـ Wish -->
-            <a href="https://whatsapp.com" class="shop-btn shop-btn-gaming">
-                🛍️🎮 اضغط هنا للتواصل واتساب دغري لخدمات شحن وحجز:<br>
-                Shein + tchrige gaming w el whish
+        </div>
+
+        <!-- الصندوق الثاني: خدمات شحن PUBG ومشتريات SHEIN المنسق كلياً طبق الأصل من صورتكِ -->
+        <div class="section-box">
+            <div class="box-title">🛒 خدمات شحن PUBG ومشتريات SHEIN</div>
+            <p class="shop-box-desc">اشحني حسابكِ وألعابكِ بثقة تامة! محطتكِ المتكاملة لطلب وشحن مشتريات وطلبيات ومحفظة SHEIN بالإضافة لتأمين شدات لعبة ببجي PUBG وجيمنج بأعلى درجات المصداقية وحماية كاملة لحساباتكم وبأسرع خدمة كاش:</p>
+            <div class="pubg-btn-static">PUBG Gaming 🎮</div>
+            <a href="https://whatsapp.com" class="round-pink-btn">
+                🛍️ للطلب وشحن الشدات و SHEIN (واتساب)
             </a>
         </div>
         
