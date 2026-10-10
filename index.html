@@ -294,3 +294,43 @@
 </div>
 </body>
 </html>
+<script>
+    function plantNewWish() {
+        var txt = document.getElementById("wish-input").value.trim(); if(txt === "") return;
+        var container = document.getElementById("wishes-box-list"); var id = Date.now();
+        var card = document.createElement("div"); card.className = "wish-item-card"; card.id = "wish-" + id;
+        card.innerHTML = `<span class="wish-text-content">✨ "${txt}"</span><button class="wish-support-btn" onclick="boostWishHeart(${id})">❤️ <span id="pulse-count-${id}">0</span></button>`;
+        container.insertBefore(card, container.firstChild);
+        localStorage.setItem('saved_wish_' + id, txt); localStorage.setItem('saved_wish_heart_' + id, 0);
+        localStorage.setItem('my_own_active_wish', id);
+        document.getElementById("wish-input").value = ""; if (navigator.vibrate) navigator.vibrate(30);
+    }
+    function boostWishHeart(id) {
+        var el = document.getElementById("pulse-count-" + id); var current = parseInt(el.innerText) + 1; el.innerText = current;
+        localStorage.setItem('saved_wish_heart_' + id, current);
+        var myOwnId = localStorage.getItem('my_own_active_wish');
+        if (myOwnId && String(myOwnId) === String(id)) {
+            var banner = document.getElementById("wish-noti-banner"); banner.style.display = "block";
+            if (navigator.vibrate) navigator.vibrate();
+            setTimeout(function() { banner.style.display = "none"; }, 6000);
+        } else {
+            if (navigator.vibrate) navigator.vibrate(30);
+        }
+        var btn = el.parentElement; btn.style.borderColor = "#00ffaa"; btn.style.color = "#00ffaa";
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+        var container = document.getElementById("wishes-box-list");
+        if(container) {
+            for (var i = 0; i < localStorage.length; i++) {
+                var key = localStorage.key(i);
+                if (key.startsWith('saved_wish_') && !key.startsWith('saved_wish_heart_') && key !== 'saved_wish_heart_') {
+                    var id = key.replace('saved_wish_', ''); var txt = localStorage.getItem(key);
+                    var hearts = localStorage.getItem('saved_wish_heart_' + id) || 0;
+                    var card = document.createElement("div"); card.className = "wish-item-card"; card.id = "wish-" + id;
+                    card.innerHTML = `<span class="wish-text-content">✨ "${txt}"</span><button class="wish-support-btn" onclick="boostWishHeart(${id})">❤️ <span id="pulse-count-${id}">${hearts}</span></button>`;
+                    container.appendChild(card);
+                }
+            }
+        }
+    });
+</script>
