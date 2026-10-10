@@ -295,5 +295,86 @@
 <br>
 <div class="family-logo-wrapper"><div class="family-logo pulse-fast">👑 KR 👑</div></div>
 </div>
+<script>
+    function generateDreamInterpretation() {
+        var input = document.getElementById("dream-input").value.trim(); var output = document.getElementById("dream-box-output");
+        if (input === "") { output.style.display = "block"; output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = "⚠️ من فضلكِ اكتب تفاصيل حلمكِ أولاً لكي يفك المستشار شفرته الحين!"; return; }
+        output.style.display = "block"; output.style.borderColor = "#ff9800"; output.style.color = "#ff9800";
+        var interpretations = [
+            "✨ فك تشفير حلمك الحين: رؤيتك تدل على طاقة فرج قريبة جداً وخروج من ضيق أو حيرة كنت تعيشها بالساعات الماضية. الرموز المضيئة بمنامك هي بشارة برزق نظيف عالي قادم لقلبك الطيب! 🪐",
+            "🪐 التفسير الفلكي السري: حلمك يعكس رغبة روحك بالتحرر والراحة. واعلم أن الرموز التي ظهرت لك هي إشارة إلهية لترتيب أمورك وتيسير عسر قادم، استبشر خيراً فمستقبلك محمي ومليء بالبركة! 🌌",
+            "🌌 رسالة مرآة الأحلام: لا تقلق من الغموض، رؤيتك ترمز لانتهاء مرحلة تعب وبداية عهد جديد يحمل لك نجاحاً باهراً وراحة بال طال انتظارها. نم قرير العين فالعوض القادم مذهل! ✨"
+        ];
+        output.innerHTML = interpretations[Math.floor(Math.random() * interpretations.length)];
+    }
+    function calculateGulfWealth() {
+        var money = parseFloat(document.getElementById("gulf-money").value || 0);
+        var gold = parseFloat(document.getElementById("gulf-gold").value || 0);
+        var curr = document.getElementById("gulf-currency").value;
+        var output = document.getElementById("gulf-box-output");
+        output.style.display = "block"; output.style.borderColor = "#00ffaa"; output.style.color = "#00ffaa";
+        var goldPriceInCurr = curr === "KWD" ? 26 : curr === "OMR" ? 32 : curr === "BHD" ? 31 : curr === "SAR" ? 316 : curr === "AED" ? 309 : curr === "QAR" ? 307 : 84;
+        var totalGoldValue = gold * goldPriceInCurr; var grandTotal = money + totalGoldValue;
+        var nisabInCurr = 85 * goldPriceInCurr;
+        if (grandTotal === 0) { output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = "⚠️ يرجى إدخال مبالغ نقدية أو جرامات الذهب أولاً لحساب التقرير الحين!"; return; }
+        var zakat = 0; var msg = `📜 <b>التقرير المالي الفلكي لـ [ عالم الحب KR ] :</b><br>💸 إجمالي ثروتك الحالية المكتشفة: <b>${grandTotal.toLocaleString()} ${curr}</b><br>`;
+        if (grandTotal >= nisabInCurr) { zakat = grandTotal * 0.025; msg += `✨ مبروك! أموالك بلغت النصاب الشرعي والادخاري المعتمد كلياً الحين.<br>🕋 مقدار الزكاة الواجبة إخراجها برواقة: <b>${zakat.toLocaleString()} ${curr}</b><br>💡 <b>نصيحة المستشار المالي بالذكاء الاصطناعي:</b> هالتوليفة النقدية والذهبية ممتازة جداً لحفظ القوة الشرائية in دول الخليج الحين، ننصحك بالاستمرار في تنمية جرامات الذهب والصدقة النظيفة لزيادة ميزاب بركتك وثراء حسابك! 🪙`; }
+        else { msg += `📉 أموالك الحالية لم تبلغ النصاب الشرعي والمالي الدقيق للحساب الحين (النصاب المقدر هو: ${Math.round(nisabInCurr).toLocaleString()} ${curr}).<br>🕋 لا زكاة واجبة عليك الحين برواقة وطمأنينة.<br>💡 <b>نصيحة المستشار المالي بالذكاء الاصطناعي:</b> طالما مدخراتك دون النصاب، ركز الحين على ادخار سبائك الذهب الصغيرة النظيفة بقلب محفظتك، لتدخل بوابات الثراء الخليجي الكبرى بأعلى حماية وراحة بال مستحقة مئة بالمئة! 💎`; }
+        output.innerHTML = msg;
+        if (navigator.vibrate) navigator.vibrate(30);
+    }
+    function generateGiftCardDownload() {
+        var from = document.getElementById("gift-from").value.trim(); var to = document.getElementById("gift-to").value.trim();
+        var style = document.getElementById("gift-style").value; var output = document.getElementById("gift-box-output");
+        if (from === "" || to === "") { output.style.display = "block"; output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = "⚠️ من فضلكِ اكتب اسمك واسم الشخص المهدى إليه أولاً لتوليد كرتك الحين!"; return; }
+        output.style.display = "block"; output.style.borderColor = "#ffd700"; output.style.color = "#ffd700";
+        var randomQuotes = {
+            "LOVE": [
+                "استودعت الله قلبك وخطواتك، وجعل التوفيق والراحة والسعادة الأبدية حليفك ليل نهار برواقة تامة الحين! ❤️",
+                "أشتاق إليك شوقاً يملأ الكون صخباً، وأحبك حباً يجعل من دقات قلبي عزفاً لاسمك الدافئ دائماً وأبداً! ✨",
+                "أنت لست مجرد شخص عابر في حياتي، أنت عمري، وأجمل أقداري، ونبض قلبي الذي لا أعيش بدونه يوماً واحدًا! 💍",
+                "تغيب الشمس ويحل الظلام، لكن دفء حبك بقلبي لا يغيب أبداً، تظل أنت الأول والأخير بقلبي وعالمي الجميل! 🌹"
+            ],
+            "CONGRAT": [
+                "تقبل الله منا ومنكم صالح الأعمال، وكل عام وأنتم بخير وصحة وعافية بمناسبة العيد السعيد وأجمل الأوقات! 🌙",
+                "ألف مبروك النجاح والتفوق الباهر الذي يرفع الرأس! هذا الحصاد الجميل هو ثمرة صبركم وتعبكم المستمر! 🎓",
+                "ألف مبروك الزواج الميمون، بارك الله لكما وبارك عليكما وجمع بينكما في خير، وجعل أيامكم كلها حب وسعادة! 🎉",
+                "مع بداية العام الجديد، أتمنى لكم عاماً مليئاً بالفرح والنجاح والسلامة، وأن تتحقق فيه كل أمنياتكم الطيبة! ✨"
+            ],
+            "DUA": [
+                "اللهم احفظ لي أحبتي وأهلي ولا تريني فيهم بأساً يبكيني، واستودعتك قلوبهم وحياتهم وصحتهم فاحفظهم بحفظك يا كريم! 🤲",
+                "أسأل الله العظيم أن يزيل عنكم كل ضيق، وأن يشفي مرضاكم، ويرحم موتاكم، ويجعل أيامكم القادمة مليئة بالفرح والسرور! 🌹",
+                "لو كان للحب والاشتياق عنوان لكان عينيك الفاتنتين، ولو كان لي أمنية لكانت البقاء بجانبك طول العمر برواقة! 💎",
+                "ربِّ اجعل هذا البلد آمناً مطمئناً وسائر بلاد المسلمين، واحفظ أهلنا في لبنان واشفِ جرحاهم وعمّ بالسلام أراضينا! 🇱🇧"
+            ]
+        };
+        var selectedCategory = style.includes("حب") ? "LOVE" : (style.includes("تهنئة") ? "CONGRAT" : "DUA");
+        var pool = randomQuotes[selectedCategory]; var finalQuote = pool[Math.floor(Math.random() * pool.length)];
+        var content = `👑 <b>بطاقة إهداء ملوكية معتمدة من [ منصة عالم الحب KR ]</b><br><br>🎨 النمط المختير الحين: <b>${style}</b><br>💝 🌟 مـن الغالي: <b>[ ${from} ]</b><br>🌹 ✨ إلـى الغالي: <b>[ ${to} ]</b><br><br>📜 <i>"${finalQuote}"</i><br><br><span style="background:#ffd700; color:#000; padding:8px 16px; border-radius:20px; font-size:13px; font-weight:bold; display:inline-block; margin-top:10px; cursor:pointer;" onclick="downloadCardAsImage('${from}','${to}','${style}','${finalQuote}')">📥 اضغطي الحين لتحميل البطاقة كصورة بالاستوديو دغري 🖼️</span>`;
+        output.innerHTML = content;
+        if (navigator.vibrate) navigator.vibrate(30);
+    }
+    function downloadCardAsImage(f, t, s, q) {
+        var canvas = document.createElement("canvas"); canvas.width = 600; canvas.height = 400; var ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#0f0f0f"; ctx.fillRect(0, 0, 600, 400);
+        ctx.strokeStyle = "#ffd700"; ctx.lineWidth = 6; ctx.strokeRect(15, 15, 570, 370);
+        ctx.strokeStyle = "#ffd700"; ctx.lineWidth = 2; ctx.strokeRect(22, 22, 556, 356);
+        ctx.fillStyle = "#ffd700"; ctx.font = "bold 24px sans-serif"; ctx.textAlign = "center"; ctx.fillText("👑 بطاقة إهداء ملوكية [ عالم الحب KR ] 👑", 300, 65);
+        ctx.fillStyle = "#ffffff"; ctx.font = "20px sans-serif"; ctx.fillText("🎨 النمط: " + s, 300, 115);
+        ctx.fillStyle = "#ff3366"; ctx.font = "bold 22px sans-serif"; ctx.fillText("💝 مـن الغالي: [ " + f + " ]", 300, 165);
+        ctx.fillStyle = "#00ffaa"; ctx.font = "bold 22px sans-serif"; ctx.fillText("🌹 إلـى الغالي: [ " + t + " ]", 300, 215);
+        ctx.fillStyle = "#e0e0e0"; ctx.font = "bold 15px sans-serif";
+        if (q.length > 55) {
+            ctx.fillText(q.substring(0, 52) + "...", 300, 275);
+            ctx.fillText(q.substring(52), 300, 305);
+        } else {
+            ctx.fillText(q, 300, 290);
+        }
+        ctx.fillStyle = "#ffd700"; ctx.font = "bold 14px sans-serif"; ctx.fillText("worldoflove-kr.github.io", 300, 365);
+        var link = document.createElement("a"); link.download = `KR-Gift-${f}-to-${t}.png`; link.href = canvas.toDataURL("image/png"); link.click();
+        var banner = document.getElementById("wish-noti-banner");
+        if(banner) { banner.style.display = "block"; banner.innerHTML = `🔔 إشعار من منصة [ عالم الحب KR ] : تم تحميل وتثبيت بطاقة إهدائك كصورة بنمط جديد كلياً وبنجاح 100% داخل جهازك! ✨`; setTimeout(function() { banner.style.display = "none"; }, 6000); }
+    }
+</script>
 </body>
 </html>
