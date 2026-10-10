@@ -17,14 +17,13 @@
         .lang-btn.active { background: #ffd700; color: #000; }
         .section-box { background: #111; border: 1px solid #333; border-radius: 12px; padding: 20px 15px; margin: 20px auto; text-align: right; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
         .box-title { color: #ffd700; font-size: 16px; font-weight: bold; margin-bottom: 12px; border-bottom: 1px solid #ffd700; padding-bottom: 5px; display: flex; align-items: center; gap: 5px; }
-        input[type="text"], select, textarea { width: 100%; padding: 12px; background: #000; border: 1px solid #ffd700; border-radius: 6px; color: #fff; box-sizing: border-box; margin-bottom: 12px; text-align: right; font-size: 14px; }
+        input[type="text"], input[type="number"], select, textarea { width: 100%; padding: 12px; background: #000; border: 1px solid #ffd700; border-radius: 6px; color: #fff; box-sizing: border-box; margin-bottom: 12px; text-align: right; font-size: 14px; }
         .preview-box { background: rgba(0,0,0,0.4); border: 1px dashed #ffd700; border-radius: 6px; padding: 12px; color: #ffd700; font-size: 14px; text-align: center; margin-bottom: 12px; line-height: 1.5; font-style: italic; }
         .btn-gold-link { display: block; background: linear-gradient(45deg, #ffd700, #b8860b); border: none; color: #000; padding: 14px; font-size: 15px; font-weight: bold; border-radius: 8px; text-decoration: none; cursor: pointer; text-align: center; box-sizing: border-box; line-height: 1.4; }
         .btn-whatsapp-btn { display: block; width: 100%; background: linear-gradient(45deg, #25D366, #128C7E); border: none; color: #fff; padding: 14px; font-size: 15px; font-weight: bold; border-radius: 8px; text-decoration: none; cursor: pointer; text-align: center; box-sizing: border-box; margin-top: 5px; }
         .shop-box-desc { color: #e0e0e0; font-size: 13.5px; margin: 0 0 15px 0; line-height: 1.6; text-align: right; }
         .round-gold-btn { display: block; background: #050505; border: 2px solid #ffd700; color: #ffd700; padding: 13px; font-size: 14px; font-weight: bold; border-radius: 25px; text-decoration: none; text-align: center; margin: 15px auto 5px auto; width: 90%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .round-pink-btn { display: block; background: #050505; border: 2px solid #ff3366; color: #ff3366; padding: 13px; font-size: 14px; font-weight: bold; border-radius: 25px; text-decoration: none; text-align: center; margin: 10px auto 5px auto; width: 90%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .pubg-btn-static { display: block; background: #050505; border: 1px solid #ffffff; color: #ffffff; padding: 10px; font-size: 13px; font-weight: bold; border-radius: 5px; text-decoration: none; text-align: center; margin: 10px auto; width: 90%; box-sizing: border-box; }
         .sub-title-en { font-size: 20px; font-weight: bold; color: #ffd700; margin: -2px 0 15px 0; font-style: italic; font-family: 'Georgia', serif; letter-spacing: 1px; }
         .tasbih-display { font-size: 42px; font-weight: bold; color: #ffd700; text-align: center; margin: 10px 0; font-family: monospace; letter-spacing: 2px; text-shadow: 0 0 15px rgba(255,215,0,0.4); }
         .tasbih-btn { display: block; width: 140px; height: 140px; background: linear-gradient(45deg, #ffd700, #b8860b); color: #000; font-size: 22px; font-weight: bold; border-radius: 50%; border: 4px solid #000; box-shadow: 0 5px 20px rgba(255,215,0,0.4); margin: 15px auto; display: flex; align-items: center; justify-content: center; transition: transform 0.1s ease; }
@@ -64,15 +63,16 @@
         function unlockSecret() {
             var c = document.getElementById("secret-input").value.trim();
             var o = document.getElementById("secret-box-output"); o.style.display = "block";
-            if (c === "123") { o.style.borderColor = "#00ff66"; o.innerHTML = "✨ مفاجأة سرية لكم:<br>\"أنت نبض هذا القلب وأجمل أمنية في هذا العالم بالكامل! 💖\""; }
-            else if (c.toUpperCase() === "KR") { o.style.borderColor = "#ffd700"; o.innerHTML = "👑 بصمة العائلة الملكية المخلصة ترحب بك كلياً:<br>\"أهلاً بك في عالم السرية، المصداقية الكبرى، والحب الأبدي الذي لا ينتهي! 👑\""; }
-            else if (c === "") { o.style.borderColor = "#ff3333"; o.innerHTML = "⚠️ يرجى كتابة الكلمة السرية داخل الحقل أولاً لفتح القفل كلياً!"; }
-            else { o.style.borderColor = "#ff3333"; o.innerHTML = "❌ عذراً الكلمة السرية خاطئة ومجهولة.. حاول مجدداً بقفل الأمان الصارم للمنصة!"; }
+            if (c === "123") { o.style.borderColor = "#00ff66"; o.innerHTML = currentLang === 'ar' ? "✨ مفاجأة سرية لكم:<br>\"أنت نبض هذا القفل وأجمل أمنية في هذا العالم بالكامل! 💖\"" : "✨ Secret Surprise:<br>\"You are the pulse of this lock and the most beautiful wish in this whole universe! 💖\""; }
+            else if (c.toUpperCase() === "KR") { o.style.borderColor = "#ffd700"; o.innerHTML = currentLang === 'ar' ? "👑 بصمة العائلة الملكية المخلصة ترحب بك كلياً:<br>\"أهلاً بك في عالم السرية، المصداقية الكبرى، والحب الأبدي الذي لا ينتهي! 👑\"" : "👑 The loyal Royal Family welcomes you:<br>\"Welcome to the world of privacy, absolute credibility, and eternal love! 👑\""; }
+            else if (c === "") { o.style.borderColor = "#ff3333"; o.innerHTML = currentLang === 'ar' ? "⚠️ يرجى كتابة الكلمة السرية داخل الحقل أولاً لفتح القفل كلياً!" : "⚠️ Please type the secret passcode first!"; }
+            else { o.style.borderColor = "#ff3333"; o.innerHTML = currentLang === 'ar' ? "❌ عذراً الكلمة السرية خاطئة ومجهولة.. حاول مجدداً بقفل الأمان الصارم للمنصة!" : "❌ Sorry, invalid code.. Please try again with the strict safety lock!"; }
         }
         function countTasbih() {
             var v = parseInt(localStorage.getItem('tasbih_count') || 0) + 1; localStorage.setItem('tasbih_count', v);
             document.getElementById("tasbih-val").innerText = v.toLocaleString(); if (navigator.vibrate) navigator.vibrate(30);
         }
+        function textMin(q, max) { return q.length > max ? q.substring(0, max - 3) + "..." : q; }
         function resetTasbih() { localStorage.setItem('tasbih_count', 0); document.getElementById("tasbih-val").innerText = "0"; }
         function generateWellnessHope() {
             var input = document.getElementById("wellness-input").value.trim();
@@ -86,18 +86,182 @@
             ];
             output.innerHTML = hopes[Math.floor(Math.random() * hopes.length)];
         }
-        function buildCongratWhatsAppLink() {
-            var n = document.getElementById("congrat-name-input").value || "مهنئ غالي"; var t = document.getElementById("congrat-select").value; document.getElementById("congrat-text-preview").innerText = t;
-            document.getElementById("congrat-whatsapp-anchor").setAttribute("href", "whatsapp://send?text=" + encodeURIComponent(`🎉 إهداء مباركة وتهنئة مـن: *[ ${n} ]* \n\n✨ *التهنئة:* \n" ${t} " \n\n worldoflove-kr.github.io`));
+        function plantNewWish() {
+            var txt = document.getElementById("wish-input").value.trim(); if(txt === "") return;
+            var container = document.getElementById("wishes-box-list"); var id = Date.now();
+            var card = document.createElement("div"); card.className = "wish-item-card"; card.id = "wish-" + id;
+            card.innerHTML = `<span class="wish-text-content">✨ "${txt}"</span><button class="wish-support-btn" onclick="boostWishHeart(${id})">❤️ <span id="pulse-count-${id}">0</span></button>`;
+            container.insertBefore(card, container.firstChild);
+            localStorage.setItem('saved_wish_' + id, txt); localStorage.setItem('saved_wish_heart_' + id, 0);
+            localStorage.setItem('my_own_active_wish', id);
+            document.getElementById("wish-input").value = ""; if (navigator.vibrate) navigator.vibrate(30);
+        }
+        function boostWishHeart(id) {
+            var el = document.getElementById("pulse-count-" + id); var current = parseInt(el.innerText) + 1; el.innerText = current;
+            localStorage.setItem('saved_wish_heart_' + id, current);
+            var myOwnId = localStorage.getItem('my_own_active_wish');
+            if (myOwnId && String(myOwnId) === String(id)) {
+                var banner = document.getElementById("wish-noti-banner"); if(banner) banner.style.display = "block";
+                if (navigator.vibrate) navigator.vibrate();
+                setTimeout(function() { if(banner) banner.style.display = "none"; }, 6000);
+            } else { if (navigator.vibrate) navigator.vibrate(30); }
+            var btn = el.parentElement; btn.style.borderColor = "#00ffaa"; btn.style.color = "#00ffaa";
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            setInterval(updateClock, 1000); updateClock();
+            var c = parseInt(localStorage.getItem('page_view') || 1570) + 1; localStorage.setItem('page_view', c); document.getElementById("counter-val").innerText = c;
+            var t = localStorage.getItem('tasbih_count') || 0; document.getElementById("tasbih-val").innerText = parseInt(t).toLocaleString();
+            var container = document.getElementById("wishes-box-list");
+            if (container) {
+                for (var i = 0; i < localStorage.length; i++) {
+                    var key = localStorage.key(i);
+                    if (key.startsWith('saved_wish_') && !key.startsWith('saved_wish_heart_') && key !== 'saved_wish_heart_') {
+                        var id = key.replace('saved_wish_', ''); var txt = localStorage.getItem(key);
+                        var hearts = localStorage.getItem('saved_wish_heart_' + id) || 0;
+                        var card = document.createElement("div"); card.className = "wish-item-card"; card.id = "wish-" + id;
+                        card.innerHTML = `<span class="wish-text-content">✨ "${txt}"</span><button class="wish-support-btn" onclick="boostWishHeart(${id})">❤️ <span id="pulse-count-${id}">${hearts}</span></button>`;
+                        container.appendChild(card);
+                    }
+                }
+            }
+        });
+        function updateClock() {
+            var now = new Date();
+            var t = now.toLocaleTimeString('ar-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+            var d = now.toLocaleDateString('ar-LB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            var clockEl = document.getElementById("live-clock");
+            if(clockEl) clockEl.innerHTML = `📅 ${d} | ⏰ الساعة: ${t} <br> ☀️ بيروت: 24°C | 💧 الرطوبة: 62%`;
+        }
+        function generateDreamInterpretation() {
+            var input = document.getElementById("dream-input").value.trim(); var output = document.getElementById("dream-box-output");
+            if (input === "") { output.style.display = "block"; output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = currentLang === 'ar' ? "⚠️ من فضلكِ اكتب تفاصيل حلمكِ أولاً لكي يفك المستشار شفرته الحين!" : "⚠️ Please type your dream details first!"; return; }
+            output.style.display = "block"; output.style.borderColor = "#ff9800"; output.style.color = "#ff9800";
+            var interpretations = [
+                "✨ فك تشفير حلمك الحين: رؤيتك تدل على طاقة فرج قريبة جداً وخروج من ضيق أو حيرة كنت تعيشها بالساعات الماضية. الرموز المضيئة بمنامك هي بشارة برزق نظيف عالي قادم لقلبك الطيب! 🪐",
+                "🪐 التفسير الفلكي السري: حلمك يعكس رغبة روحك بالتحرر والراحة. واعلم أن الرموز التي ظهرت لك هي إشارة إلهية لترتيب أمورك وتيسير عسر قادم، استبشر خيراً فمستقبلك محمي ومليء بالبركة! 🌌",
+                "🌌 رسالة مرآة الأحلام: لا تقلق من الغموض، رؤيتك ترمز لانتهاء مرحلة تعب وبداية عهد جديد يحمل لك نجاحاً باهراً وراحة بال طال انتظارها. نم قرير العين فالعوض القادم مذهل! ✨"
+            ];
+            output.innerHTML = interpretations[Math.floor(Math.random() * interpretations.length)];
+        }
+        function calculateGulfWealth() {
+            var money = parseFloat(document.getElementById("gulf-money").value || 0);
+            var gold = parseFloat(document.getElementById("gulf-gold").value || 0);
+            var curr = document.getElementById("gulf-currency").value;
+            var output = document.getElementById("gulf-box-output");
+            output.style.display = "block"; output.style.borderColor = "#00ffaa"; output.style.color = "#00ffaa";
+            var goldPriceInCurr = curr === "KWD" ? 26 : curr === "OMR" ? 32 : curr === "BHD" ? 31 : curr === "SAR" ? 316 : curr === "AED" ? 309 : curr === "QAR" ? 307 : 84;
+            var totalGoldValue = gold * goldPriceInCurr; var grandTotal = money + totalGoldValue;
+            var nisabInCurr = 85 * goldPriceInCurr;
+            if (grandTotal === 0) { output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = currentLang === 'ar' ? "⚠️ يرجى إدخال مبالغ نقدية أو جرامات الذهب أولاً لحساب التقرير الحين!" : "⚠️ Please enter values first!"; return; }
+            var msg = currentLang === 'ar' ? `📜 <b>التقرير المالي الفلكي لـ [ عالم الحب KR ] :</b><br>💸 إجمالي ثروتك الحالية المكتشفة: <b>${grandTotal.toLocaleString()} ${curr}</b><br>` : `📜 <b>Financial Report for [ World of Love KR ] :</b><br>💸 Total Wealth: <b>${grandTotal.toLocaleString()} ${curr}</b><br>`;
+            if (grandTotal >= nisabInCurr) {
+                var zakat = grandTotal * 0.025;
+                msg += currentLang === 'ar' ? `✨ مبروك! أموالك بلغت النصاب الشرعي والادخاري المعتمد كلياً الحين.<br>🕋 مقدار الزكاة الواجبة إخراجها برواقة: <b>${zakat.toLocaleString()} ${curr}</b><br>💡 <b>نصيحة المستشار المالي:</b> هالتوليفة ممتازة لحفظ القوة الشرائية، استمر في تنمية ثروتك والصدقة!` : `✨ Congratulation! Your wealth has reached the Nisab threshold.<br>🕋 Due Zakat Value: <b>${zakat.toLocaleString()} ${curr}</b><br>💡 <b>AI Financial Advice:</b> Excellent asset backup! Keep investing and donating.`;
+            } else {
+                msg += currentLang === 'ar' ? `📉 أموالك الحالية لم تبلغ النصاب الشرعي والمالي الدقيق للحساب الحين (النصاب المقدر هو: ${Math.round(nisabInCurr).toLocaleString()} ${curr}).<br>🕋 لا زكاة واجبة عليك الحين برواقة وطمأنينة.<br>💡 <b>نصيحة المستشار المالي:</b> ركز على ادخار سبائك الذهب الصغيرة لتنمية محفظتك بأمان!` : `📉 Your wealth is below the Nisab threshold (Estimated Nisab: ${Math.round(nisabInCurr).toLocaleString()} ${curr}).<br>🕋 No Zakat is due on you now.<br>💡 <b>AI Financial Advice:</b> Focus on saving physical gold bars to safely build your wealth stack!`;
+            }
+            output.innerHTML = msg; if (navigator.vibrate) navigator.vibrate(30);
+        }
+        function generateGiftCardDownload() {
+            var from = document.getElementById("gift-from").value.trim(); var to = document.getElementById("gift-to").value.trim();
+            var finalQuote = document.getElementById("gift-quote-select").value; var output = document.getElementById("gift-box-output");
+            if (from === "" || to === "") { output.style.display = "block"; output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = currentLang === 'ar' ? "⚠️ من فضلكِ اكتب اسمك واسم الشخص المهدى إليه أولاً لتوليد كرتك الحين!" : "⚠️ Name entries are required!"; return; }
+            output.style.display = "block"; output.style.borderColor = "#ffd700"; output.style.color = "#ffd700";
+            var selEl = document.getElementById("gift-quote-select"); var styleName = selEl.options[selEl.selectedIndex].parentElement.label || "إهداء ملكي خاص";
+            var btnText = currentLang === 'ar' ? "📥 اضغطي الحين لتحميل البطاقة كصورة بالاستوديو دغري 🖼️" : "📥 Click Here to Download Card directly to Gallery 🖼️";
+            var content = currentLang === 'ar' ? `👑 <b>بطاقة إهداء ملوكية معتمدة من [ منصة عالم الحب KR ]</b><br><br>🎨 الفئة: <b>${styleName}</b><br>💝 🌟 مـن الغالي: <b>[ ${from} ]</b><br>🌹 ✨ إلـى الغالي: <b>[ ${to} ]</b><br><br>📜 <i>" ${finalQuote} "</i><br><br><span style="background:#ffd700; color:#000; padding:8px 16px; border-radius:20px; font-size:13px; font-weight:bold; display:inline-block; margin-top:10px; cursor:pointer;" onclick="downloadCardAsImage('${from}','${to}','${styleName}','${finalQuote}')">${btnText}</span>` : `👑 <b>Royal Gift Card from [ World of Love KR ]</b><br><br>🎨 Type: <b>${styleName}</b><br>💝 🌟 From: <b>[ ${from} ]</b><br>🌹 ✨ To: <b>[ ${to} ]</b><br><br>📜 <i>" ${finalQuote} "</i><br><br><span style="background:#ffd700; color:#000; padding:8px 16px; border-radius:20px; font-size:13px; font-weight:bold; display:inline-block; margin-top:10px; cursor:pointer;" onclick="downloadCardAsImage('${from}','${to}','${styleName}','${finalQuote}')">${btnText}</span>`;
+            output.innerHTML = content; if (navigator.vibrate) navigator.vibrate(30);
+        }
+        function downloadCardAsImage(f, t, s, q) {
+            var canvas = document.createElement("canvas"); canvas.width = 600; canvas.height = 400; var ctx = canvas.getContext("2d");
+            ctx.fillStyle = "#0f0f0f"; ctx.fillRect(0, 0, 600, 400);
+            ctx.strokeStyle = "#ffd700"; ctx.lineWidth = 6; ctx.strokeRect(15, 15, 570, 370);
+            ctx.strokeStyle = "#ffd700"; ctx.lineWidth = 2; ctx.strokeRect(22, 22, 556, 356);
+            ctx.fillStyle = "#ffd700"; ctx.font = "bold 24px sans-serif"; ctx.textAlign = "center"; ctx.fillText(currentLang === 'ar' ? "👑 بطاقة إهداء ملوكية [ عالم الحب KR ] 👑" : "👑 Royal Gift Card [ World of Love KR ] 👑", 300, 65);
+            ctx.fillStyle = "#ffffff"; ctx.font = "18px sans-serif"; ctx.fillText((currentLang === 'ar' ? "🎨 النمط: " : "🎨 Style: ") + s, 300, 115);
+            ctx.fillStyle = "#ff3366"; ctx.font = "bold 21px sans-serif"; ctx.fillText((currentLang === 'ar' ? "💝 مـن الغالي: [ " : "💝 From: [ ") + f + " ]", 300, 165);
+            ctx.fillStyle = "#00ffaa"; ctx.font = "bold 21px sans-serif"; ctx.fillText((currentLang === 'ar' ? "🌹 إلـى الغالي: [ " : "🌹 To: [ ") + t + " ]", 300, 215);
+            ctx.fillStyle = "#e0e0e0"; ctx.font = "bold 14px sans-serif";
+            var textToDraw = textMin(q, 110);
+            if (textToDraw.length > 55) { ctx.fillText(textToDraw.substring(0, 52) + "...", 300, 275); ctx.fillText(textToDraw.substring(52), 300, 305); } else { ctx.fillText(textToDraw, 300, 290); }
+            ctx.fillStyle = "#ffd700"; ctx.font = "bold 14px sans-serif"; ctx.fillText("worldoflove-kr.github.io", 300, 365);
+            var link = document.createElement("a"); link.download = `KR-Gift-${f}-to-${t}.png`; link.href = canvas.toDataURL("image/png"); link.click();
+            var banner = document.getElementById("wish-noti-banner"); if(banner) { banner.style.display = "block"; banner.innerHTML = currentLang === 'ar' ? `🔔 إشعار من منصة [ عالم الحب KR ] : تم تحميل وتثبيت بطاقة إهدائك كصورة HD بنجاح 100% داخل جهازك الحين! ✨` : `🔔 Notification from [ World of Love KR ]: Your Gift Card PNG has been saved successfully to your gallery! ✨`; setTimeout(function() { if(banner) banner.style.display = "none"; }, 6000); }
+        }
+        function switchLang(l) {
+            currentLang = l; document.getElementById("btn-ar").classList.toggle("active", l === 'ar'); document.getElementById("btn-en").classList.toggle("active", l === 'en');
+            var isAr = l === 'ar'; document.body.style.direction = isAr ? "rtl" : "ltr";
+            document.getElementById("main-title").innerHTML = isAr ? "عالم الحب" : "World of Love";
+            document.getElementById("tick-gold").innerText = isAr ? "أوقية الذهب العالمية:" : "Global Gold Ounce:";
+            document.getElementById("tick-down").innerText = isAr ? "▼ نازل" : "▼ Down";
+            document.getElementById("tick-index").innerText = isAr ? "مؤشر الدولار عالمياً:" : "Global Dollar Index:";
+            document.getElementById("tick-up").innerText = isAr ? "▲ طالع" : "▲ Up";
+            document.getElementById("tick-lbp").innerText = isAr ? "صرف الدولار في لبنان:" : "Dollar Rate in Lebanon:";
+            document.getElementById("tick-stable").innerText = isAr ? "◀ مستقر" : "◀ Stable";
+            document.getElementById("title-search").innerText = isAr ? "🔍 محرك بحث جوجل الذكي" : "🔍 Google Smart Search";
+            document.getElementById("btn-search").innerText = isAr ? "اجمع للبحث عن أي شيء بمتصفح جوجل - اضغط هنا" : "Type to search anything on Google browser - Click Here";
+            document.getElementById("panda-desc-text").innerText = isAr ? "✨ منصة العائلة الملكية المخصصة لأجمل إهداءات الأدعية التفاعلية، وعبارات الحب الصادقة، وتأمين خدمات تشريج الخطوط وشحن الألعاب المعتمدة بأعلى درجات السرية، الأمان الصارم، والمصداقية الكبرى عالمياً الحين. 👑🔒" : "The royal family platform dedicated to beautiful interactive dua gifts, sincere expressions of love, trusted Alfa/Touch line recharge, and gaming shell load with maximum data safety, privacy, and top credibility worldwide.";
+            document.getElementById("title-wellness").innerText = isAr ? "🌿 مستشار الأمل وصندوق الفضفضة النفسية الذكي" : "🌿 AI Mental Hope & Wellness Sanctuary";
+            document.getElementById("wellness-input").placeholder = isAr ? "اكتب تعبك أو فضفض باللي جوات قلبك للمستشار الحين بكل سرية..." : "Type your stress or express your feelings here anonymously...";
+            document.getElementById("wellness-btn-click").innerText = isAr ? "اسحب جرعة الأمل والراحة الحين 🌟" : "Receive Your Hope Dose Now 🌟";
+            document.getElementById("title-tree").innerText = isAr ? "🌳 شجرة الأمنيات الكونية والنبض العاطفي الحي" : "🌳 KR Cosmic Wish Tree & Live Pulse";
+            document.getElementById("wish-input").placeholder = isAr ? "اكتب أمنيتك السرية في الحياة وعلقها على الشجرة الحين..." : "Type your secret wish and hang it on the tree now...";
+            document.getElementById("wish-btn-click").innerText = isAr ? "علّق أمنيتك المضيئة على الشجرة 🌳" : "Hang Your Glowing Wish Now 🌳";
+            document.getElementById("title-dream").innerText = isAr ? "🌌 مستكشف ومفسر الأحلام الفلكي الذكي" : "🌌 AI Dream Oracle & Universe Interpreter";
+            document.getElementById("dream-input").placeholder = isAr ? "اكتب تفاصيل حلمك أو الرموز التي شفتها بمنامك الحين بكل سرية..." : "Type your dream details here confidentially...";
+            document.getElementById("dream-btn-click").innerText = isAr ? "أطلق مستكشف الأحلام الذكي الحين 🪐" : "Launch AI Dream Oracle Now 🪐";
+            document.getElementById("title-shop").innerText = isAr ? "📱 خدمات تشريج الخطوط والإنترنت الموثوقة" : "📱 Reliable Telecom Recharge Services";
+            document.getElementById("shop-desc-lb").innerText = isAr ? "دليلكِ الآمن والكامل لتشريج خطوط Alfa وتاتش MTC برواقة تامة وبأعلى مصداقية في لبنان:" : "Your safe and full terminal to secure Alfa & Touch LBP vouchers under instant validation inside Lebanon:";
+            document.getElementById("btn-alfa-click").innerText = isAr ? "💬 اطلب تشريج خطك الآن (واتساب)" : "💬 Order Line Vouchers Now (WhatsApp)";
+            document.getElementById("title-pubg-box").innerText = isAr ? "🛒 خدمات شحن PUBG ومشتريات SHEIN" : "🛒 PUBG UCs Load & SHEIN Orders Store";
+            document.getElementById("pubg-desc-lb").innerText = isAr ? "اشحني حسابكِ وألعابكِ بثقة تامة! محطتكِ المتكاملة لتأمين شدات لعبة ببجي ومشتريات SHEIN بأسرع خدمة كاش:" : "Reload your gaming profiles with absolute safety! Your complete hub to supply PUBG UC coins and SHEIN packages under speedy handling:";
+            document.getElementById("btn-pubg-click").innerText = isAr ? "🛍️ للطلب وشحن الشدات و SHEIN (واتساب)" : "🛍️ Order Gaming Coins & SHEIN (WhatsApp)";
+            document.getElementById("title-gulf").innerText = isAr ? "🪙 المستشار المالي وحاسبة الزكاة والادخار الخليجي الذكي" : "🪙 AI Wealth Tracker, Gold & Zakat Oracle";
+            document.getElementById("gulf-money").placeholder = isAr ? "اكتب مقدار المال أو المدخرات النقدية الحين..." : "Type your cash assets or savings volume now...";
+            document.getElementById("gulf-gold").placeholder = isAr ? "اكتب وزن الذهب الحالي بالجرام (إن وُجد الحين)..." : "Type your current gold weight in grams (if available)...";
+            document.getElementById("btn-gulf-calc").innerText = isAr ? "احسب مدخراتك الفلكية وزكاة مالك الحين 📊" : "Calculate Assets & Due Zakat Now 📊";
+            document.getElementById("title-card-factory").innerText = isAr ? "📥 مصنع كروت الإهداءات والتحميل المباشر" : "📥 Image Gift Card Factory & Gallery Downloader";
+            document.getElementById("factory-desc-lb").innerText = isAr ? "اكتب اسمك واسم من تحب، واختر العبارة الّتي تعبر عن مشاعرك الحين لتوليد بطاقة إهدائك الملوكية وتحميلها مباشرة داخل استوديو الصور بجهازك كصورة HD مجاناً:" : "Type your name and your beloved's name, then select your text block to render your customized royal card and save it directly to device storage as HD PNG for free:";
+            document.getElementById("gift-from").placeholder = isAr ? "اكتب اسمك هنا الحين..." : "Type your name here...";
+            document.getElementById("gift-to").placeholder = isAr ? "اكتب اسم الشخص المهداة إليه الحين..." : "Type the recipient's name here...";
+            document.getElementById("gift-btn-click").innerText = isAr ? "بناء وصك كرت الإهداء الملوكي الحين 📥" : "Render & Forge Royal Gift Card Now 📥";
+            document.getElementById("title-tasbih").innerText = isAr ? "📿 صندوق لوحة عداد التسبيح والاستغفار الرقمي" : "📿 Digital Tasbih Counter & Remembrance Box";
+            document.getElementById("tasbih-reset-btn").innerText = isAr ? "إعادة تصفير العداد 🔄" : "Reset Counter Vibe 🔄";
+            document.getElementById("title-secret").innerText = isAr ? "🔐 صندوق الرسائل السرية والمفاجآت المغلقة" : "🔐 Secret Encrypted Board & Mystery Box";
+            document.getElementById("secret-desc-text").innerText = isAr ? "هذا الصندوق تفاعلي ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. اكتب الكود السري (123 أو كود العائلة KR) ثم اضغط على زر الفتح:" : "This interactive lockbox is securely designed to deploy hidden surprises and gifts. Enter the secret code (123 or KR family key) then hit the unlock button below:";
+            document.getElementById("secret-input").placeholder = isAr ? "اكتب الكلمة السرية هنا الحين..." : "Type the secret access pass code here...";
+            document.getElementById("secret-btn-click").innerText = isAr ? "افتح واكشف المفاجأة السرية الحين 🔓" : "Unlock & Reveal Hidden Surprise Now 🔓";
+            
+            var grpL = document.getElementById("grp-love"); var grpC = document.getElementById("grp-congrat"); var grpD = document.getElementById("grp-dua");
+            if(grpL) grpL.label = isAr ? "❤️ عبارات الحب والاشتياق العاطفية" : "❤️ Sincere Love & Longing Expressions";
+            if(grpC) grpC.label = isAr ? "🎉 عبارات التهنئة والمباركة للمناسبات" : "🎉 Celebrations & Happy Occasions";
+            if(grpD) grpD.label = isAr ? "🤲 عبارات الأدعية وإهداءات الخير" : "🤲 Blessed Islamic Duas & Warm Gifts";
+            
+            var sel = document.getElementById("gift-quote-select");
+            if(sel && sel.options.length >= 12) {
+                sel.options[0].text = isAr ? "❤️ استودعت الله قلبك وخطواتك السعيدة" : "❤️ I entrust your heart and steps to Allah";
+                sel.options[1].text = isAr ? "❤️ أشتاق إليك شوقاً يملأ الكون صخباً" : "❤️ I miss you with a longing that fills the universe";
+                sel.options[2].text = isAr ? "❤️ أنت لست شخص عابر أنت عمري ونبضي" : "❤️ You are not a passing shadow, you are my life";
+                sel.options[3].text = isAr ? "❤️ دفء حبك بقلبي لا يغيب الأول والأخير" : "❤️ The warmth of your love in my heart never fades";
+                sel.options[4].text = isAr ? "🎉 تقبل الله منا ومنكم وكل عام وأنتم بخير" : "🎉 May Allah accept from us, Happy Eid Season";
+                sel.options[5].text = isAr ? "🎉 ألف مبروك النجاح والتفوق ثمرة صبركم" : "🎉 Congratulations on your success, fruit of patience";
+                sel.options[6].text = isAr ? "🎉 ألف مبروك الزواج الميمون بارك الله لكما" : "🎉 Blessed Marriage, May Allah bless you both";
+                sel.options[7].text = isAr ? "🎉 التهنئة بالعام الجديد والأمنيات الطيبة لكم" : "🎉 Happy New Year, best wishes for your future";
+                sel.options[8].text = isAr ? "🤲 دعاء حفظ الأهل والأحبة والقلوب الغالية" : "🤲 Dua to protect family, beloved ones & pure hearts";
+                sel.options[9].text = isAr ? "🤲 إهداء تفريج الهم والشفاء والرحمة العميقة" : "🤲 Dedication for healing, relief & deep mercy";
+                sel.options[10].text = isAr ? "🤲 لو كان للحب عنوان أمنية البقاء بجانبك" : "🤲 If love had an address, my wish is to stay by you";
+                sel.options[11].text = isAr ? "🤲 دعاء حفظ لبنان والسلام الشامل لأراضينا" : "🤲 Dua to protect Lebanon and secure peace for our land";
+            }
+            updateClock();
         }
     </script>
 </head>
 <body>
     <div class="ticker-container">
         <div class="ticker-wrapper">
-            <a href="https://kitco.com" target="_blank" class="ticker-link">✨ أوقية الذهب العالمية: <span class="price">$2,624.50</span> <span class="down">▼ نازل</span></a>
-            <a href="https://xe.com" target="_blank" class="ticker-link">💵 مؤشر الدولار عالمياً: <span class="price">102.50</span> <span class="up">▲ طالع</span></a>
-            <a href="https://lebanonfiles.com" target="_blank" class="ticker-link">💵 صرف الدولار في لبنان: <span class="price">89,500 ل.ل</span> ◀ مستقر</a>
+            <a href="https://kitco.com" target="_blank" class="ticker-link">✨ <span id="tick-gold">أوقية الذهب العالمية:</span> <span class="price">$2,624.50</span> <span class="down" id="tick-down">▼ نازل</span></a>
+            <a href="https://xe.com" target="_blank" class="ticker-link">💵 <span id="tick-index">مؤشر الدولار عالمياً:</span> <span class="price">102.50</span> <span class="up" id="tick-up">▲ طالع</span></a>
+            <a href="https://lebanonfiles.com" target="_blank" class="ticker-link">💵 <span id="tick-lbp">صرف الدولار في لبنان:</span> <span class="price">89,500 ل.ل</span> <span id="tick-stable">◀ مستقر</span></a>
         </div>
     </div>
     <div class="container">
@@ -109,7 +273,7 @@
             <div id="live-clock">📅 جاري تشغيل ساعة الثواني الحية...</div>
         </div>
         <div class="panda-welcome-flex">
-            <div class="panda-symbol-box">🐼</div>
+            <div class="panda-symbol-box" style="font-size:40px;">🐼</div>
             <div class="welcome-content-wrapper">
                 <div class="welcome-bibi-text-box"><span class="w-red">Welcome</span> <span class="b-white">BiBi</span></div>
                 <div class="panda-features-desc" id="panda-desc-text">✨ منصة العائلة الملكية المخصصة لأجمل إهداءات الأدعية التفاعلية، وعبارات الحب الصادقة، وتأمين خدمات تشريج الخطوط وشحن الألعاب المعتمدة بأعلى درجات السرية، الأمان الصارم، والمصداقية الكبرى عالمياً الحين. 👑🔒</div>
@@ -117,338 +281,109 @@
         </div>
         <h1 style="color: #ffd700; margin: 15px 0 0 0; font-size: 34px;" id="main-title" class="pulse-fast">عالم الحب</h1>
         <div id="sub-title" class="sub-title-en pulse-fast">World of Love</div>
+        
         <div class="section-box" style="border-color: #00ffaa;">
             <div class="box-title" id="title-wellness" style="color: #00ffaa; border-bottom-color: #00ffaa;">🌿 مستشار الأمل وصندوق الفضفضة النفسية الذكي</div>
             <textarea class="wellness-input-box" id="wellness-input" placeholder="اكتب تعبك أو فضفض باللي جوات قلبك للمستشار الحين بكل سرية..."></textarea>
             <button class="wellness-btn" id="wellness-btn-click" onclick="generateWellnessHope()">اسحب جرعة الأمل والراحة الحين 🌟</button>
             <div class="wellness-output" id="wellness-box-output"></div>
         </div>
-    <div class="wish-tree-box">
-        <div class="box-title" id="title-tree" style="color: #ffd700; border-bottom-color: #ffd700;">🌳 شجرة الأمنيات الكونية والنبض العاطفي الحي</div>
-        <div id="wish-noti-banner" style="display:none; background:linear-gradient(45deg,#ff3366,#e91e63); color:#fff; font-size:13px; font-weight:bold; padding:10px; border-radius:6px; margin-bottom:12px; text-align:center; animation:pulse-fast 1s infinite;">🔔 إشعار من منصة [ عالم الحب KR ] : تلقيت الحين نبضة دعم وقلب جديد على أمنيتك المعلقة! ✨</div>
-        <div class="wish-tree-visual">🌳</div>
-        <input type="text" class="wish-input-field" id="wish-input" placeholder="اكتب أمنيتك السرية في الحياة وعلقها على الشجرة الحين...">
-        <button class="wish-submit-btn" id="wish-btn-click" onclick="plantNewWish()">علّق أمنيتك المضيئة على الشجرة 🌳</button>
-        <div class="wish-display-container" id="wishes-box-list"></div>
-    </div>
-    <div class="section-box">
-        <div class="box-title" id="title-search">🔍 محرك بحث جوجل الذكي</div>
-        <a href="https://google.com" target="_blank" class="btn-gold-link" id="btn-search">اجمع للبحث عن أي شيء بمتصفح جوجل - اضغط هنا</a>
-    </div>
-    <div class="section-box">
-        <div class="box-title" id="title-dua">✨ صندوق الأدعية والإهداءات التفاعلي</div>
-        <input type="text" id="name-input" placeholder="اكتب اسمك هنا الحين..." oninput="refreshAndBuildWhatsAppLink()" required>
-        <select id="dua-select" onchange="refreshAndBuildWhatsAppLink()">
-            <option value="اللهم احفظ لي أحبتي وأهلي ولا تريني فيهم بأساً يبكيني، واستودعتك قلوبهم وحياتهم وصحتهم فاحفظهم بحفظك يا كريم.">🤲 دعاء لحفظ الأهل والأحبة</option>
-            <option value="اللهم افتح لنا أبواب الرزق الحلال الطيب، واقضِ عنا الدين، واغننا بفضلك عمن سواك، واجعل التوفيق حليفنا في كل خطوة.">💰 دعاء سعة الرزق وتيسير الأمور</option>
-            <option value="أسأل الله العظيم أن يزيل عنكم كل ضيق، وأن يشفي مرضاكم، ويرحم موتاكم، ويجعل أيامكم القادمة مليئة بالفرح والفرج والسرور.">🌹 إهداء دعاء تفريج الهم والشفاء</option>
-            <option value="ربِّ اجعل هذا البلد آمناً مطمئناً وسائر بلاد المسلمين، واحفظ أهلنا في لبنان واشفِ جرحاهم وارحم شهداءهم وعمّ بالسلام أراضينا.">🇱🇧 دعاء خاص لحفظ لبنان والسلام</option>
-        </select>
-        <div style="color: #ffd700; font-size: 13px; font-weight: bold; margin-bottom: 5px;" id="title-preview">📖 كلمات الدعاء المختار حالياً:</div>
-        <div class="preview-box" id="dua-text-preview">جاري تحميل نص الدعاء...</div>
-        <a href="#" id="whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none;"><span id="btn-share">أرسل الإهداء وشارك عبر الواتساب 🟢</span></a>
-    </div>
-    <div class="section-box">
-        <div class="box-title" id="title-love">❤️ صندوق عبارات الحب والاشتياق التفاعلي</div>
-        <input type="text" id="love-name-input" placeholder="اكتب اسمك هنا الحين..." oninput="buildLoveWhatsAppLink()" required>
-        <select id="love-select" onchange="buildLoveWhatsAppLink()">
-            <option value="أشتاق إليك شوقاً يملأ الكون صخباً، وأحبك حباً يجعل من دقات قلبي عزفاً لاسمك الدافيء دائماً وأبداً.">🥀 عبارة اشتياق وحنين جارف</option>
-            <option value="أنت لست مجرد شخص عابر في حياتي، أنت عمري، وأجمل أقداري، ونبض قلبي الذي لا أعيش بدونه يوماً واحداً.">💍 عبارة حب أبدي وعهود صادقة</option>
-        </select>
-        <div style="color: #ffd700; font-size: 13px; font-weight: bold; margin-bottom: 5px;" id="title-love-preview">📖 كلمات العبارة المختارة حالياً:</div>
-        <div class="preview-box" id="love-text-preview">جاري تحميل العبارة...</div>
-        <a href="#" id="love-whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none; background: linear-gradient(45deg, #e91e63, #b71c1c);"><span id="btn-love-share">أرسل العبارة عبر الواتساب 🟢</span></a>
-    </div>
+        <div class="section-box" style="border-color: #ff9800;">
+            <div class="box-title" id="title-dream" style="color: #ff9800; border-bottom-color: #ff9800;">🌌 مستكشف ومفسر الأحلام الفلكي الذكي</div>
+            <textarea class="wellness-input-box" id="dream-input" placeholder="اكتب تفاصيل حلمك أو الرموز التي شفتها بمنامك الحين بكل سرية..."></textarea>
+            <button class="wellness-btn" id="dream-btn-click" style="background: linear-gradient(45deg, #ff9800, #e65100); color: #fff;" onclick="generateDreamInterpretation()">أطلق مستكشف الأحلام الذكي الحين 🪐</button>
+            <div class="wellness-output" id="dream-box-output"></div>
+        </div>
 
-    <div class="section-box">
-        <div class="box-title" id="title-congrat">🎉 صندوق التهنئة والمباركة للمناسبات والأعياد</div>
-        <input type="text" id="congrat-name-input" placeholder="اكتب اسمك هنا الحين..." oninput="buildCongratWhatsAppLink()" required>
-        <select id="congrat-select" onchange="buildCongratWhatsAppLink()">
-            <option value="تقبل الله منا ومنكم صالح الأعمال، وكل عام وأنتم بخير وصحة وعافية بمناسبة عيد الفطر السعيد.">🌙 مباركة عيد الفطر السعيد</option>
-            <option value="ألف مبروك النجاح والتفوق الباهر الذي يرفع الرأس! هذا الحصاد ثمرة صبركم وتعبكم.">🎓 تهنئة بالنجاح الباهر</option>
-        </select>
-        <div style="color: #ffd700; font-size: 13px; font-weight: bold; margin-bottom: 5px;" id="title-congrat-preview">📖 كلمات التهنئة المختارة حالياً:</div>
-        <div class="preview-box" id="congrat-text-preview">جاري تحميل التهنئة...</div>
-        <a href="#" id="congrat-whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none; background: linear-gradient(45deg, #ff9800, #f57c00);"><span id="btn-congrat-share">أرسل التهنئة عبر الواتساب 🟢</span></a>
-    </div>
+        <div class="wish-tree-box">
+            <div class="box-title" id="title-tree" style="color: #ffd700; border-bottom-color: #ffd700;">🌳 شجرة الأمنيات الكونية والنبض العاطفي الحي</div>
+            <div id="wish-noti-banner" style="display:none; background:linear-gradient(45deg,#ff3366,#e91e63); color:#fff; font-size:13px; font-weight:bold; padding:10px; border-radius:6px; margin-bottom:12px; text-align:center;">🔔 إشعار من منصة [ عالم الحب KR ] : تلقيت الحين نبضة دعم وقلب جديد على أمنيتك المعلقة! ✨</div>
+            <div class="wish-tree-visual">🌳</div>
+            <input type="text" class="wish-input-field" id="wish-input" placeholder="اكتب أمنيتك السرية في الحياة وعلقها على الشجرة الحين...">
+            <button class="wish-submit-btn" id="wish-btn-click" onclick="plantNewWish()">علّق أمنيتك المضيئة على الشجرة 🌳</button>
+            <div class="wish-display-container" id="wishes-box-list"></div>
+        </div>
+        <div class="section-box">
+            <div class="box-title" id="title-search">🔍 محرك بحث جوجل الذكي</div>
+            <a href="https://google.com" target="_blank" class="btn-gold-link" id="btn-search">اجمع للبحث عن أي شيء بمتصفح جوجل - اضغط هنا</a>
+        </div>
 
-    <div class="section-box">
-        <div class="box-title" id="title-shop">📱 خدمات تشريج الخطوط والإنترنت الموثوقة</div>
-        <p class="shop-box-desc">دليلكِ الآمن والكامل لتشريج خطوط Alfa وتاتش MTC برواقة تامة وبأعلى مصداقية في لبنان:</p>
-        <a href="whatsapp://send?phone=96179320900&text=مرحبا، بدي أطلب تشريج خطوط" class="round-gold-btn">💬 اطلب تشريج خطك الآن (واتساب)</a>
-    </div>
-    <div class="section-box">
-        <div class="box-title">🛒 خدمات شحن PUBG ومشتريات SHEIN</div>
-        <p class="shop-box-desc">اشحني حسابكِ وألعابكِ بثقة تامة! محطتكِ المتكاملة لتأمين شدات لعبة ببجي ومشتريات SHEIN بأسرع خدمة كاش:</p>
-        <a href="whatsapp://send?phone=96171689517&text=مرحبا، بدي شحن ألعاب" class="round-pink-btn">🛍️ للطلب وشحن الشدات و SHEIN (واتساب)</a>
-    </div>
+        <div class="section-box">
+            <div class="box-title" id="title-shop">📱 خدمات تشريج الخطوط والإنترنت الموثوقة</div>
+            <p class="shop-box-desc" id="shop-desc-lb">دليلكِ الآمن والكامل لتشريج خطوط Alfa وتاتش MTC برواقة تامة وبأعلى مصداقية في لبنان:</p>
+            <a href="whatsapp://send?phone=96179320900&text=مرحبا، بدي أطلب تشريج خطوط" class="round-gold-btn" id="btn-alfa-click">💬 اطلب تشريج خطك الآن (واتساب)</a>
+        </div>
 
-    <div class="section-box" style="border-color: #ff9800;">
-        <div class="box-title" id="title-dream" style="color: #ff9800; border-bottom-color: #ff9800;">🌌 مستكشف ومفسر الأحلام الفلكي الذكي</div>
-        <textarea class="wellness-input-box" id="dream-input" placeholder="اكتب تفاصيل حلمك أو الرموز التي شفتها بمنامك الحين بكل سرية..." style="border-color: #ff9800;"></textarea>
-        <button class="wellness-btn" id="dream-btn-click" style="background: linear-gradient(45deg, #ff9800, #e65100); color: #fff;" onclick="generateDreamInterpretation()">أطلق مستكشف الأحلام الذكي الحين 🪐</button>
-        <div class="wellness-output" id="dream-box-output" style="border-color: #ff9800; color: #ff9800; background: rgba(30,15,0,0.5);"></div>
-    </div>
-    <div class="section-box" style="border-color: #00ffaa;">
-        <div class="box-title" id="title-gulf" style="color: #00ffaa; border-bottom-color: #00ffaa;">🪙 المستشار المالي وحاسبة الزكاة والادخار الخليجي الذكي</div>
-        <select id="gulf-currency" style="border-color: #00ffaa;">
-            <option value="SAR">🇸🇦 ريال سعودي (SAR)</option>
-            <option value="AED">🇦🇪 درهم إماراتي (AED)</option>
-            <option value="KWD">🇰🇼 دينار كويتي (KWD)</option>
-            <option value="QAR">🇶🇦 ريال قطري (QAR)</option>
-            <option value="OMR">🇴🇲 ريال عُماني (OMR)</option>
-            <option value="BHD">🇧🇭 دينار بحريني (BHD)</option>
-            <option value="USD">🇺🇸 دولار أمريكي (USD)</option>
-        </select>
-        <input type="text" id="gulf-money" placeholder="اكتب مقدار المال أو المدخرات النقدية الحين..." oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-        <input type="text" id="gulf-gold" placeholder="اكتب وزن الذهب الحالي بالجرام (إن وُجد الحين)..." oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-        <button class="wellness-btn" style="background: linear-gradient(45deg, #00ffaa, #009955); color: #000;" onclick="calculateGulfWealth()">احسب مدخراتك الفلكية وزكاة مالك الحين 📊</button>
-        <div class="wellness-output" id="gulf-box-output" style="border-color: #00ffaa; color: #00ffaa; background: rgba(0,30,15,0.5);"></div>
-    </div>
+        <div class="section-box">
+            <div class="box-title" id="title-pubg-box">🛒 خدمات شحن PUBG ومشتريات SHEIN</div>
+            <p class="shop-box-desc" id="pubg-desc-lb">اشحني حسابكِ وألعابكِ بثقة تامة! محطتكِ المتكاملة لتأمين شدات لعبة ببجي ومشتريات SHEIN بأسرع خدمة كاش:</p>
+            <a href="whatsapp://send?phone=96171689517&text=مرحبا، بدي شحن ألعاب" class="round-pink-btn" id="btn-pubg-click">🛍️ للطلب وشحن الشدات و SHEIN (واتساب)</a>
+        </div>
+        <div class="section-box" style="border-color: #00ffaa;">
+            <div class="box-title" id="title-gulf" style="color: #00ffaa; border-bottom-color: #00ffaa;">🪙 المستشار المالي وحاسبة الزكاة والادخار الخليجي الذكي</div>
+            <select id="gulf-currency" style="border-color: #00ffaa;">
+                <option value="SAR">🇸🇦 ريال سعودي (SAR)</option>
+                <option value="AED">🇦🇪 درهم إماراتي (AED)</option>
+                <option value="KWD">🇰🇼 دينار كويتي (KWD)</option>
+                <option value="QAR">🇶🇦 ريال قطري (QAR)</option>
+                <option value="OMR">🇴🇲 ريال عُماني (OMR)</option>
+                <option value="BHD">🇧🇭 دينار بحريني (BHD)</option>
+                <option value="USD">🇺🇸 دولار أمريكي (USD)</option>
+            </select>
+            <input type="text" id="gulf-money" placeholder="اكتب مقدار المال أو المدخرات النقدية الحين..." oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+            <input type="text" id="gulf-gold" placeholder="اكتب وزن الذهب الحالي بالجرام (إن وُجد الحين)..." oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+            <button class="wellness-btn" id="btn-gulf-calc" style="background: linear-gradient(45deg, #00ffaa, #009955); color: #000;" onclick="calculateGulfWealth()">احسب مدخراتك الفلكية وزكاة مالك الحين 📊</button>
+            <div class="wellness-output" id="gulf-box-output"></div>
+        </div>
 
-    <div class="section-box">
-        <div class="box-title" id="title-tasbih">📿 صندوق لوحة عداد التسبيح والاستغفار الرقمي</div>
-        <div class="tasbih-display" id="tasbih-display-box"><span id="tasbih-val">0</span></div>
-        <button class="tasbih-btn" onclick="countTasbih()">اضغط هنا 📿</button>
-        <div style="text-align: center; margin-top: 5px;"><button class="tasbih-reset" id="tasbih-reset-btn" onclick="resetTasbih()">إعادة تصفير العداد 🔄</button></div>
-    </div>
+        <div class="section-box" style="border-color: #ffd700;">
+            <div class="box-title" id="title-card-factory" style="color: #ffd700; border-bottom-color: #ffd700;">📥 مصنع كروت الإهداءات والتحميل المباشر</div>
+            <p class="shop-box-desc" id="factory-desc-lb">اكتب اسمك واسم من تحب، واختر العبارة الّتي تعبر عن مشاعرك الحين لتوليد بطاقة إهدائك الملوكية وتحميلها مباشرة داخل استوديو الصور بجهازك كصورة HD مجاناً:</p>
+            <input type="text" id="gift-from" placeholder="اكتب اسمك هنا الحين..." style="border-color: #ffd700;">
+            <input type="text" id="gift-to" placeholder="اكتب اسم الشخص المهداة إليه الحين..." style="border-color: #ffd700;">
+            <select id="gift-quote-select" style="border-color: #ffd700;">
+                <optgroup label="❤️ عبارات الحب والاشتياق العاطفية" id="grp-love">
+                    <option value="استودعت الله قلبك وخطواتك، وجعل التوفيق والراحة والسعادة الأبدية حليفك ليل نهار برواقة تامة الحين! ❤️">❤️ استودعت الله قلبك وخطواتك السعيدة</option>
+                    <option value="أشتاق إليك شوقاً يملأ الكون صخباً، وأحبك حباً يجعل من دقات قلبي عزفاً لاسمك الدافيء دائماً وأبداً! ✨">❤️ أشتاق إليك شوقاً يملأ الكون صخباً</option>
+                    <option value="أنت لست مجرد شخص عابر في حياتي، أنت عمري، وأجمل أقداري، ونبض قلبي الذي لا أعيش بدونه يوماً واحداً! 💍">❤️ أنت لست شخص عابر أنت عمري ونبضي</option>
+                    <option value="تغيب الشمس ويحل الظلام، لكن دفء حبك بقلبي لا يغيب أبداً، تظل أنت الأول والأخير بقلبي وعالمي الجميل! 🌹">❤️ دفء حبك بقلبي لا يغيب الأول والأخير</option>
+                </optgroup>
+                <optgroup label="🎉 عبارات التهنئة والمباركة للمناسبات" id="grp-congrat">
+                    <option value="تقبل الله منا ومنكم صالح الأعمال، وكل عام وأنتم بخير وصحة وعافية بمناسبة العيد السعيد وأجمل الأوقات! 🌙">🎉 تقبل الله منا ومنكم وكل عام وأنتم بخير</option>
+                    <option value="ألف مبروك النجاح والتفوق الباهر الذي يرفع الرأس! هذا الحصاد الجميل هو ثمرة صبركم وتعبكم المستمر! 🎓">🎉 ألف مبروك النجاح والتفوق ثمرة صبركم</option>
+                    <option value="ألف مبروك الزواج الميمون، بارك الله لكما وبارك عليكما وجمع بينكما في خير، وجعل أيامكم كلها حب وسعادة! 💍">🎉 ألف مبروك الزواج الميمون بارك الله لكما</option>
+                    <option value="مع بداية العام الجديد، أتمنى لكم عاماً مليئاً بالفرح والنجاح والسلامة، وأن تتحقق فيه كل أمنياتكم الطيبة! ✨">🎉 تهنئة بالعام الجديد والأمنيات الطيبة لكم</option>
+                </optgroup>
+                <optgroup label="🤲 عبارات الأدعية وإهداءات الخير" id="grp-dua">
+                    <option value="اللهم احفظ لي أحبتي وأهلي ولا تريني فيهم بأساً يبكيني، واستودعتك قلوبهم وحياتهم وصحتهم فاحفظهم بحفظك يا كريم! 🤲">🤲 دعاء حفظ الأهل والأحبة والقلوب الغالية</option>
+                    <option value="أسأل الله العظيم أن يزيل عنكم كل ضيق، وأن يشفي مرضاكم، ويرحم موتاكم، ويجعل أيامكم القادمة مليئة بالفرح والسرور! 🌹">🤲 إهداء تفريج الهم والشفاء والرحمة العميقة</option>
+                    <option value="لو كان للحب والاشتياق عنوان لكان عينيك الفاتنتين، ولو كان لي أمنية لكانت البقاء بجانبك طول العمر برواقة! 💎">🤲 لو كان للحب عنوان أمنية البقاء بجانبك</option>
+                    <option value="ربِّ اجعل هذا البلد آمناً مطمئناً وسائر بلاد المسلمين، واحفظ أهلنا في لبنان واشفِ جرحاهم وعمّ بالسلام أراضينا! 🇱🇧">🤲 دعاء حفظ لبنان والسلام الشامل لأراضينا</option>
+                </optgroup>
+            </select>
+            <button class="wellness-btn" id="gift-btn-click" style="background: linear-gradient(45deg, #ffd700, #b8860b); color: #000;" onclick="generateGiftCardDownload()">بناء وصك كرت الإهداء الملوكي الحين 📥</button>
+            <div class="wellness-output" id="gift-box-output" style="border-color: #ffd700; color: #ffd700; background: rgba(30,20,0,0.5); font-family:serif; text-shadow: 0 0 5px rgba(255,215,0,0.3);"></div>
+        </div>
 
-    <!-- 📥 مصنع كروت الإهداءات والتحميل المباشر للصور بجهاز الزائر لعيون أعلى نقرات الكاش من جوجل أدسينس -->
-    <div class="section-box" style="border-color: #ffd700;">
-        <div class="box-title" id="title-card-factory" style="color: #ffd700; border-bottom-color: #ffd700;">📥 مصنع كروت الإهداءات والتحميل المباشر</div>
-        <p class="shop-box-desc">اكتب اسمك واسم من تحب، واختر نوع الكرت لتوليد وبناء بطاقة إهدائك الفخمة مخصصة لك بالملي وتحميلها مباشرة داخل استوديو الصور بجهازك مجاناً الحين:</p>
-        <input type="text" id="gift-from" placeholder="اكتب اسمك هنا الحين..." style="border-color: #ffd700;">
-        <input type="text" id="gift-to" placeholder="اكتب اسم الشخص المهداة إليه الحين..." style="border-color: #ffd700;">
-        <select id="gift-style" style="border-color: #ffd700;">
-            <option value="❤️ كرت حب واشتياق نيون نقي">❤️ كرت حب واشتياق عاطفي</option>
-            <option value="🎉 بطاقة تهنئة ومباركة مذهبة">🎉 بطاقة تهنئة ومباركة سعيدة</option>
-            <option value="🤲 كرت إهداء دعاء لحفظ الأحبة">🤲 كرت إهداء دعاء مستجاب</option>
-        </select>
-        <button class="wellness-btn" id="gift-btn-click" style="background: linear-gradient(45deg, #ffd700, #b8860b); color: #000;" onclick="generateGiftCardDownload()">صمم وحمّل كرت الإهداء الخاص بك الحين 📥</button>
-        <div class="wellness-output" id="gift-box-output" style="border-color: #ffd700; color: #ffd700; background: rgba(30,20,0,0.5); font-family:serif; text-shadow: 0 0 5px rgba(255,215,0,0.3);"></div>
-    </div>
+        <div class="section-box">
+            <div class="box-title" id="title-tasbih">📿 صندوق لوحة عداد التسبيح والاستغفار الرقمي</div>
+            <div class="tasbih-display" id="tasbih-display-box"><span id="tasbih-val">0</span></div>
+            <button class="tasbih-btn" onclick="countTasbih()">اضغط هنا 📿</button>
+            <div style="text-align: center; margin-top: 5px;"><button class="tasbih-reset" id="tasbih-reset-btn" onclick="resetTasbih()">إعادة تصفير العداد 🔄</button></div>
+        </div>
 
-   <script>
-    function generateDreamInterpretation() {
-        var input = document.getElementById("dream-input").value.trim(); var output = document.getElementById("dream-box-output");
-        if (input === "") { output.style.display = "block"; output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = "⚠️ من فضلكِ اكتب تفاصيل حلمكِ أولاً لكي يفك المستشار شفرته الحين!"; return; }
-        output.style.display = "block"; output.style.borderColor = "#ff9800"; output.style.color = "#ff9800";
-        var interpretations = [
-            "✨ فك تشفير حلمك الحين: رؤيتك تدل على طاقة فرج قريبة جداً وخروج من ضيق أو حيرة كنت تعيشها بالساعات الماضية. الرموز المضيئة بمنامك هي بشارة برزق نظيف عالي قادم لقلبك الطيب! 🪐",
-            "🪐 التفسير الفلكي السري: حلمك يعكس رغبة روحك بالتحرر والراحة. واعلم أن الرموز التي ظهرت لك هي إشارة إلهية لترتيب أمورك وتيسير عسر قادم، استبشر خيراً فمستقبلك محمي ومليء بالبركة! 🌌",
-            "🌌 رسالة مرآة الأحلام: لا تقلق من الغموض, رؤيتك ترمز لانتهاء مرحلة تعب وبداية عهد جديد يحمل لك نجاحاً باهراً وراحة بال طال انتظارها. نم قرير العين فالعوض القادم مذهل! ✨"
-        ];
-        output.innerHTML = interpretations[Math.floor(Math.random() * interpretations.length)];
-    }
-    function calculateGulfWealth() {
-        var money = parseFloat(document.getElementById("gulf-money").value || 0);
-        var gold = parseFloat(document.getElementById("gulf-gold").value || 0);
-        var curr = document.getElementById("gulf-currency").value;
-        var output = document.getElementById("gulf-box-output");
-        output.style.display = "block"; output.style.borderColor = "#00ffaa"; output.style.color = "#00ffaa";
-        var goldPriceInCurr = curr === "KWD" ? 26 : curr === "OMR" ? 32 : curr === "BHD" ? 31 : curr === "SAR" ? 316 : curr === "AED" ? 309 : curr === "QAR" ? 307 : 84;
-        var totalGoldValue = gold * goldPriceInCurr; var grandTotal = money + totalGoldValue;
-        var nisabInCurr = 85 * goldPriceInCurr;
-        if (grandTotal === 0) { output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = "⚠️ يرجى إدخال مبالغ نقدية أو جرامات الذهب أولاً لحساب التقرير الحين!"; return; }
-        var zakat = 0; var msg = `📜 <b>التقرير المالي الفلكي لـ [ عالم الحب KR ] :</b><br>💸 إجمالي ثروتك الحالية المكتشفة: <b>${grandTotal.toLocaleString()} ${curr}</b><br>`;
-        if (grandTotal >= nisabInCurr) { zakat = grandTotal * 0.025; msg += `✨ مبروك! أموالك بلغت النصاب الشرعي والادخاري المعتمد كلياً الحين.<br>🕋 مقدار الزكاة الواجبة إخراجها برواقة: <b>${zakat.toLocaleString()} ${curr}</b><br>💡 <b>نصيحة المستشار المالي بالذكاء الاصطناعي:</b> هالتوليفة النقدية والذهبية ممتازة جداً لحفظ القوة الشرائية في دول الخليج الحين، ننصحك بالاستمرار في تنمية جرامات الذهب والصدقة النظيفة لزيادة ميزاب بركتك وثراء حسابك! 🪙`; }
-        else { msg += `📉 أموالك الحالية لم تبلغ النصاب الشرعي والمالي الدقيق للحساب الحين (النصاب المقدر هو: ${Math.round(nisabInCurr).toLocaleString()} ${curr}).<br>🕋 لا زكاة واجبة عليك الحين برواقة وطمأنينة.<br>💡 <b>نصيحة المستشار المالي بالذكاء الاصطناعي:</b> طالما مدخراتك دون النصاب، ركز الحين على ادخار سبائك الذهب الصغيرة النظيفة بقلب محفظتك، لتدخل بوابات الثراء الخليجي الكبرى بأعلى حماية وراحة بال مستحقة مئة بالمئة! 💎`; }
-        output.innerHTML = msg;
-        if (navigator.vibrate) navigator.vibrate(30);
-    }
-    function generateGiftCardDownload() {
-        var from = document.getElementById("gift-from").value.trim(); var to = document.getElementById("gift-to").value.trim();
-        var style = document.getElementById("gift-style").value; var output = document.getElementById("gift-box-output");
-        if (from === "" || to === "") { output.style.display = "block"; output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = "⚠️ من فضلكِ اكتب اسمك واسم الشخص المهدى إليه أولاً لتوليد كرتك الحين!"; return; }
-        output.style.display = "block"; output.style.borderColor = "#ffd700"; output.style.color = "#ffd700";
-        var content = `👑 <b>بطاقة إهداء ملوكية معتمدة من [ منصة عالم الحب KR ]</b><br><br>🎨 النمط المختير الحين: <b>${style}</b><br>💝 🌟 مـن الغالي: <b>[ ${from} ]</b><br>🌹 ✨ إلـى الغالي: <b>[ ${to} ]</b><br><br>📜 <i>"استودعت الله قلبك وخطواتك، وجعل التوفيق والراحة والسعادة الأبدية حليفك في كل ثانية ودقيقة ليل نهار الحين الحين برواقة!"</i><br><br><span style="background:#ffd700; color:#000; padding:8px 16px; border-radius:20px; font-size:13px; font-weight:bold; display:inline-block; margin-top:10px; cursor:pointer;" onclick="downloadCardAsImage('${from}','${to}','${style}')">📥 اضغطي الحين لتحميل البطاقة كصورة بالاستوديو دغري 🖼️</span>`;
-        output.innerHTML = content;
-        if (navigator.vibrate) navigator.vibrate(30);
-    }
-    function downloadCardAsImage(f, t, s) {
-        var canvas = document.createElement("canvas"); canvas.width = 600; canvas.height = 400; var ctx = canvas.getContext("2d");
-        ctx.fillStyle = "#0f0f0f"; ctx.fillRect(0, 0, 600, 400);
-        ctx.strokeStyle = "#ffd700"; ctx.lineWidth = 6; ctx.strokeRect(15, 15, 570, 370);
-        ctx.strokeStyle = "#ffd700"; ctx.lineWidth = 2; ctx.strokeRect(22, 22, 556, 356);
-        ctx.fillStyle = "#ffd700"; ctx.font = "bold 24px sans-serif"; ctx.textAlign = "center"; ctx.fillText("👑 بطاقة إهداء ملوكية [ عالم الحب KR ] 👑", 300, 65);
-        ctx.fillStyle = "#ffffff"; ctx.font = "20px sans-serif"; ctx.fillText("🎨 النمط: " + s, 300, 120);
-        ctx.fillStyle = "#ff3366"; ctx.font = "bold 22px sans-serif"; ctx.fillText("💝 مـن الغالي: [ " + f + " ]", 300, 175);
-        ctx.fillStyle = "#00ffaa"; ctx.font = "bold 22px sans-serif"; ctx.fillText("🌹 إلـى الغالي: [ " + t + " ]", 300, 230);
-        ctx.fillStyle = "#e0e0e0"; ctx.font = "italic 16px sans-serif";
-        ctx.fillText('"استودعت الله قلبك وخطواتك، وجعل التوفيق والراحة والسعادة"', 300, 290);
-        ctx.fillText('حليفك ليل نهار برواقة تامة الحين الحين! ✨', 300, 320);
-        ctx.fillStyle = "#ffd700"; ctx.font = "bold 14px sans-serif"; ctx.fillText("worldoflove-kr.github.io", 300, 365);
-        var link = document.createElement("a"); link.download = `KR-Gift-${f}-to-${t}.png`; link.href = canvas.toDataURL("image/png"); link.click();
-        var banner = document.getElementById("wish-noti-banner");
-        if(banner) { banner.style.display = "block"; banner.innerHTML = `🔔 إشعار من منصة [ عالم الحب KR ] : تم تحميل وتثبيت بطاقة إهدائك كصورة HD بنجاح 100% داخل استوديو جهازك الحين! ✨`; setTimeout(function() { banner.style.display = "none"; }, 6000); }
-    }
-</script>
-<div class="section-box">
-    <div class="box-title" id="title-secret">🔐 صندوق الرسائل السرية والمفاجآت المغلقة</div>
-    <p id="secret-desc-text" style="color:#e0e0e0; font-size:13px; margin:0 0 15px 0; line-height:1.5; text-align:right;">هذا الصندوق تفاعلي ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. اكتب الكود السري (123 أو كود العائلة KR) ثم اضغط على زر الفتح:</p>
-    <input type="text" id="secret-input" placeholder="اكتب الكلمة السرية هنا الحين...">
-    <button class="secret-btn" id="secret-btn-click" onclick="unlockSecret()">افتح واكشف المفاجأة السرية الحين 🔓</button>
-    <div class="secret-output" id="secret-box-output"></div>
-</div>
-<div class="panda-footer-new-box"><span style="font-size: 75px; display: inline-block; filter: drop-shadow(0 0 15px rgba(255,255,255,0.45)); animation: panda-float 2s ease-in-out infinite;">🐼</span></div>
-<div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1573</span> زائر</div>
-<br>
-<div class="family-logo-wrapper"><div class="family-logo pulse-fast">👑 KR 👑</div></div>
-</div>
-<script>
-    function generateDreamInterpretation() {
-        var input = document.getElementById("dream-input").value.trim(); var output = document.getElementById("dream-box-output");
-        if (input === "") { output.style.display = "block"; output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = "⚠️ من فضلكِ اكتب تفاصيل حلمكِ أولاً لكي يفك المستشار شفرته الحين!"; return; }
-        output.style.display = "block"; output.style.borderColor = "#ff9800"; output.style.color = "#ff9800";
-        var interpretations = [
-            "✨ فك تشفير حلمك الحين: رؤيتك تدل على طاقة فرج قريبة جداً وخروج من ضيق أو حيرة كنت تعيشها بالساعات الماضية. الرموز المضيئة بمنامك هي بشارة برزق نظيف عالي قادم لقلبك الطيب! 🪐",
-            "🪐 التفسير الفلكي السري: حلمك يعكس رغبة روحك بالتحرر والراحة. واعلم أن الرموز التي ظهرت لك هي إشارة إلهية لترتيب أمورك وتيسير عسر قادم، استبشر خيراً فمستقبلك محمي ومليء بالبركة! 🌌",
-            "🌌 رسالة مرآة الأحلام: لا تقلق من الغموض، رؤيتك ترمز لانتهاء مرحلة تعب وبداية عهد جديد يحمل لك نجاحاً باهراً وراحة بال طال انتظارها. نم قرير العين فالعوض القادم مذهل! ✨"
-        ];
-        output.innerHTML = interpretations[Math.floor(Math.random() * interpretations.length)];
-    }
-    function calculateGulfWealth() {
-        var money = parseFloat(document.getElementById("gulf-money").value || 0);
-        var gold = parseFloat(document.getElementById("gulf-gold").value || 0);
-        var curr = document.getElementById("gulf-currency").value;
-        var output = document.getElementById("gulf-box-output");
-        output.style.display = "block"; output.style.borderColor = "#00ffaa"; output.style.color = "#00ffaa";
-        var goldPriceInCurr = curr === "KWD" ? 26 : curr === "OMR" ? 32 : curr === "BHD" ? 31 : curr === "SAR" ? 316 : curr === "AED" ? 309 : curr === "QAR" ? 307 : 84;
-        var totalGoldValue = gold * goldPriceInCurr; var grandTotal = money + totalGoldValue;
-        var nisabInCurr = 85 * goldPriceInCurr;
-        if (grandTotal === 0) { output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = "⚠️ يرجى إدخال مبالغ نقدية أو جرامات الذهب أولاً لحساب التقرير الحين!"; return; }
-        var zakat = 0; var msg = `📜 <b>التقرير المالي الفلكي لـ [ عالم الحب KR ] :</b><br>💸 إجمالي ثروتك الحالية المكتشفة: <b>${grandTotal.toLocaleString()} ${curr}</b><br>`;
-        if (grandTotal >= nisabInCurr) { zakat = grandTotal * 0.025; msg += `✨ مبروك! أموالك بلغت النصاب الشرعي والادخاري المعتمد كلياً الحين.<br>🕋 مقدار الزكاة الواجبة إخراجها برواقة: <b>${zakat.toLocaleString()} ${curr}</b><br>💡 <b>نصيحة المستشار المالي بالذكاء الاصطناعي:</b> هالتوليفة النقدية والذهبية ممتازة جداً لحفظ القوة الشرائية in دول الخليج الحين، ننصحك بالاستمرار في تنمية جرامات الذهب والصدقة النظيفة لزيادة ميزاب بركتك وثراء حسابك! 🪙`; }
-        else { msg += `📉 أموالك الحالية لم تبلغ النصاب الشرعي والمالي الدقيق للحساب الحين (النصاب المقدر هو: ${Math.round(nisabInCurr).toLocaleString()} ${curr}).<br>🕋 لا زكاة واجبة عليك الحين برواقة وطمأنينة.<br>💡 <b>نصيحة المستشار المالي بالذكاء الاصطناعي:</b> طالما مدخراتك دون النصاب، ركز الحين على ادخار سبائك الذهب الصغيرة النظيفة بقلب محفظتك، لتدخل بوابات الثراء الخليجي الكبرى بأعلى حماية وراحة بال مستحقة مئة بالمئة! 💎`; }
-        output.innerHTML = msg;
-        if (navigator.vibrate) navigator.vibrate(30);
-    }
-    function generateGiftCardDownload() {
-        var from = document.getElementById("gift-from").value.trim(); var to = document.getElementById("gift-to").value.trim();
-        var style = document.getElementById("gift-style").value; var output = document.getElementById("gift-box-output");
-        if (from === "" || to === "") { output.style.display = "block"; output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = "⚠️ من فضلكِ اكتب اسمك واسم الشخص المهدى إليه أولاً لتوليد كرتك الحين!"; return; }
-        output.style.display = "block"; output.style.borderColor = "#ffd700"; output.style.color = "#ffd700";
-        var randomQuotes = {
-            "LOVE": [
-                "استودعت الله قلبك وخطواتك، وجعل التوفيق والراحة والسعادة الأبدية حليفك ليل نهار برواقة تامة الحين! ❤️",
-                "أشتاق إليك شوقاً يملأ الكون صخباً، وأحبك حباً يجعل من دقات قلبي عزفاً لاسمك الدافئ دائماً وأبداً! ✨",
-                "أنت لست مجرد شخص عابر في حياتي، أنت عمري، وأجمل أقداري، ونبض قلبي الذي لا أعيش بدونه يوماً واحدًا! 💍",
-                "تغيب الشمس ويحل الظلام، لكن دفء حبك بقلبي لا يغيب أبداً، تظل أنت الأول والأخير بقلبي وعالمي الجميل! 🌹"
-            ],
-            "CONGRAT": [
-                "تقبل الله منا ومنكم صالح الأعمال، وكل عام وأنتم بخير وصحة وعافية بمناسبة العيد السعيد وأجمل الأوقات! 🌙",
-                "ألف مبروك النجاح والتفوق الباهر الذي يرفع الرأس! هذا الحصاد الجميل هو ثمرة صبركم وتعبكم المستمر! 🎓",
-                "ألف مبروك الزواج الميمون، بارك الله لكما وبارك عليكما وجمع بينكما في خير، وجعل أيامكم كلها حب وسعادة! 🎉",
-                "مع بداية العام الجديد، أتمنى لكم عاماً مليئاً بالفرح والنجاح والسلامة، وأن تتحقق فيه كل أمنياتكم الطيبة! ✨"
-            ],
-            "DUA": [
-                "اللهم احفظ لي أحبتي وأهلي ولا تريني فيهم بأساً يبكيني، واستودعتك قلوبهم وحياتهم وصحتهم فاحفظهم بحفظك يا كريم! 🤲",
-                "أسأل الله العظيم أن يزيل عنكم كل ضيق، وأن يشفي مرضاكم، ويرحم موتاكم، ويجعل أيامكم القادمة مليئة بالفرح والسرور! 🌹",
-                "لو كان للحب والاشتياق عنوان لكان عينيك الفاتنتين، ولو كان لي أمنية لكانت البقاء بجانبك طول العمر برواقة! 💎",
-                "ربِّ اجعل هذا البلد آمناً مطمئناً وسائر بلاد المسلمين، واحفظ أهلنا في لبنان واشفِ جرحاهم وعمّ بالسلام أراضينا! 🇱🇧"
-            ]
-        };
-        var selectedCategory = style.includes("حب") ? "LOVE" : (style.includes("تهنئة") ? "CONGRAT" : "DUA");
-        var pool = randomQuotes[selectedCategory]; var finalQuote = pool[Math.floor(Math.random() * pool.length)];
-        var content = `👑 <b>بطاقة إهداء ملوكية معتمدة من [ منصة عالم الحب KR ]</b><br><br>🎨 النمط المختير الحين: <b>${style}</b><br>💝 🌟 مـن الغالي: <b>[ ${from} ]</b><br>🌹 ✨ إلـى الغالي: <b>[ ${to} ]</b><br><br>📜 <i>"${finalQuote}"</i><br><br><span style="background:#ffd700; color:#000; padding:8px 16px; border-radius:20px; font-size:13px; font-weight:bold; display:inline-block; margin-top:10px; cursor:pointer;" onclick="downloadCardAsImage('${from}','${to}','${style}','${finalQuote}')">📥 اضغطي الحين لتحميل البطاقة كصورة بالاستوديو دغري 🖼️</span>`;
-        output.innerHTML = content;
-        if (navigator.vibrate) navigator.vibrate(30);
-    }
-    function downloadCardAsImage(f, t, s, q) {
-        var canvas = document.createElement("canvas"); canvas.width = 600; canvas.height = 400; var ctx = canvas.getContext("2d");
-        ctx.fillStyle = "#0f0f0f"; ctx.fillRect(0, 0, 600, 400);
-        ctx.strokeStyle = "#ffd700"; ctx.lineWidth = 6; ctx.strokeRect(15, 15, 570, 370);
-        ctx.strokeStyle = "#ffd700"; ctx.lineWidth = 2; ctx.strokeRect(22, 22, 556, 356);
-        ctx.fillStyle = "#ffd700"; ctx.font = "bold 24px sans-serif"; ctx.textAlign = "center"; ctx.fillText("👑 بطاقة إهداء ملوكية [ عالم الحب KR ] 👑", 300, 65);
-        ctx.fillStyle = "#ffffff"; ctx.font = "20px sans-serif"; ctx.fillText("🎨 النمط: " + s, 300, 115);
-        ctx.fillStyle = "#ff3366"; ctx.font = "bold 22px sans-serif"; ctx.fillText("💝 مـن الغالي: [ " + f + " ]", 300, 165);
-        ctx.fillStyle = "#00ffaa"; ctx.font = "bold 22px sans-serif"; ctx.fillText("🌹 إلـى الغالي: [ " + t + " ]", 300, 215);
-        ctx.fillStyle = "#e0e0e0"; ctx.font = "bold 15px sans-serif";
-        if (q.length > 55) {
-            ctx.fillText(q.substring(0, 52) + "...", 300, 275);
-            ctx.fillText(q.substring(52), 300, 305);
-        } else {
-            ctx.fillText(q, 300, 290);
-        }
-      var link = document.createElement("a"); link.download = `KR-Gift-${f}-to-${t}.png`; link.href = canvas.toDataURL("image/png"); link.click();
-    var banner = document.getElementById("wish-noti-banner");
-    if(banner) { banner.style.display = "block"; banner.innerHTML = `🔔 إشعار من منصة [ عالم الحب KR ] : تم تحميل وتثبيت بطاقة إهدائك كصورة HD بنجاح 100% داخل جهازك! ✨`; setTimeout(function() { banner.style.display = "none"; }, 6000); }
-}
-</script>
-<div class="section-box">
-    <div class="box-title" id="title-secret">🔐 صندوق الرسائل السرية والمفاجآت المغلقة</div>
-    <p id="secret-desc-text" style="color:#e0e0e0; font-size:13px; margin:0 0 15px 0; line-height:1.5; text-align:right;">هذا الصندوق تفاعلي ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. اكتب الكود السري (123 أو كود العائلة KR) then اضغط على زر الفتح:</p>
-    <input type="text" id="secret-input" placeholder="اكتب الكلمة السرية هنا الحين...">
-    <button class="secret-btn" id="secret-btn-click" onclick="unlockSecret()">افتح واكشف المفاجأة السرية الحين 🔓</button>
-    <div class="secret-output" id="secret-box-output"></div>
-</div>
-<div class="panda-footer-new-box"><span style="font-size: 75px; display: inline-block; filter: drop-shadow(0 0 15px rgba(255,255,255,0.45)); animation: panda-float 2s ease-in-out infinite;">🐼</span></div>
-<div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1573</span> زائر</div>
-<br>
-<div class="family-logo-wrapper"><div class="family-logo pulse-fast">👑 KR 👑</div></div>
-</div>
-<script>
-    function generateDreamInterpretation() {
-        var input = document.getElementById("dream-input").value.trim(); var output = document.getElementById("dream-box-output");
-        if (input === "") { output.style.display = "block"; output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = "⚠️ من فضلكِ اكتب تفاصيل حلمكِ أولاً لكي يفك المستشار شفرته الحين!"; return; }
-        output.style.display = "block"; output.style.borderColor = "#ff9800"; output.style.color = "#ff9800";
-        var interpretations = [
-            "✨ فك تشفير حلمك الحين: رؤيتك تدل على طاقة فرج قريبة جداً وخروج من ضيق أو حيرة كنت تعيشها بالساعات الماضية. الرموز المضيئة بمنامك هي بشارة برزق نظيف عالي قادم لقلبك الطيب! 🪐",
-            "🪐 التفسير الفلكي السري: حلمك يعكس رغبة روحك بالتحرر والراحة. واعلم أن الرموز التي ظهرت لك هي إشارة إلهية لترتيب أمورك وتيسير عسر قادم، استبشر خيراً فمستقبلك محمي ومليء بالبركة! 🌌",
-            "🌌 رسالة مرآة الأحلام: لا تقلق من الغموض، رؤيتك ترمز لانتهاء مرحلة تعب وبداية عهد جديد يحمل لك نجاحاً باهراً وراحة بال طال انتظارها. نم قرير العين فالعوض القادم مذهل! ✨"
-        ];
-        output.innerHTML = interpretations[Math.floor(Math.random() * interpretations.length)];
-    }
-    function calculateGulfWealth() {
-        var money = parseFloat(document.getElementById("gulf-money").value || 0);
-        var gold = parseFloat(document.getElementById("gulf-gold").value || 0);
-        var curr = document.getElementById("gulf-currency").value;
-        var output = document.getElementById("gulf-box-output");
-        output.style.display = "block"; output.style.borderColor = "#00ffaa"; output.style.color = "#00ffaa";
-        var goldPriceInCurr = curr === "KWD" ? 26 : curr === "OMR" ? 32 : curr === "BHD" ? 31 : curr === "SAR" ? 316 : curr === "AED" ? 309 : curr === "QAR" ? 307 : 84;
-        var totalGoldValue = gold * goldPriceInCurr; var grandTotal = money + totalGoldValue;
-        var nisabInCurr = 85 * goldPriceInCurr;
-        if (grandTotal === 0) { output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = "⚠️ يرجى إدخال مبالغ نقدية أو جرامات الذهب أولاً لحساب التقرير الحين!"; return; }
-        var zakat = 0; var msg = `📜 <b>التقرير المالي الفلكي لـ [ عالم الحب KR ] :</b><br>💸 إجمالي ثروتك الحالية المكتشفة: <b>${grandTotal.toLocaleString()} ${curr}</b><br>`;
-        if (grandTotal >= nisabInCurr) { zakat = grandTotal * 0.025; msg += `✨ مبروك! أموالك بلغت النصاب الشرعي والادخاري المعتمد كلياً الحين.<br>🕋 مقدار الزكاة الواجبة إخراجها برواقة: <b>${zakat.toLocaleString()} ${curr}</b><br>💡 <b>نصيحة المستشار المالي بالذكاء الاصطناعي:</b> هالتوليفة النقدية والذهبية ممتازة جداً لحفظ القوة الشرائية في دول الخليج الحين، ننصحك بالاستمرار في تنمية جرامات الذهب والصدقة النظيفة لزيادة ميزاب بركتك وثراء حسابك! 🪙`; }
-        else { msg += `📉 أموالك الحالية لم تبلغ النصاب الشرعي والمالي الدقيق للحساب الحين (النصاب المقدر هو: ${Math.round(nisabInCurr).toLocaleString()} ${curr}).<br>🕋 لا زكاة واجبة عليك الحين برواقة وطمأنينة.<br>💡 <b>نصيحة المستشار المالي بالذكاء الاصطناعي:</b> طالما مدخراتك دون النصاب، ركز الحين على ادخار سبائك الذهب الصغيرة النظيفة بقلب محفظتك، لتدخل بوابات الثراء الخليجي الكبرى بأعلى حماية وراحة بال مستحقة مئة بالمئة! 💎`; }
-        output.innerHTML = msg;
-        if (navigator.vibrate) navigator.vibrate(30);
-    }
-    function generateGiftCardDownload() {
-        var from = document.getElementById("gift-from").value.trim();
-        var to = document.getElementById("gift-to").value.trim();
-        var finalQuote = document.getElementById("gift-quote-select").value;
-        var output = document.getElementById("gift-box-output");
-        if (from === "" || to === "") { output.style.display = "block"; output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = "⚠️ من فضلكِ اكتب اسمك واسم الشخص المهدى إليه أولاً لتوليد كرتك الحين!"; return; }
-        output.style.display = "block"; output.style.borderColor = "#ffd700"; output.style.color = "#ffd700";
-        var selEl = document.getElementById("gift-quote-select");
-        var styleName = selEl.options[selEl.selectedIndex].parentElement.label || "إهداء ملكي خاص";
-        var content = `👑 <b>بطاقة إهداء ملوكية معتمدة من [ منصة عالم الحب KR ]</b><br><br>🎨 الفئة: <b>${styleName}</b><br>💝 🌟 مـن الغالي: <b>[ ${from} ]</b><br>🌹 ✨ إلـى الغالي: <b>[ ${to} ]</b><br><br>📜 <i>" ${finalQuote} "</i><br><br><span style="background:#ffd700; color:#000; padding:8px 16px; border-radius:20px; font-size:13px; font-weight:bold; display:inline-block; margin-top:10px; cursor:pointer;" onclick="downloadCardAsImage('${from}','${to}','${styleName}','${finalQuote}')">📥 اضغطي الحين لتحميل البطاقة كصورة بالاستوديو دغري 🖼️</span>`;
-        output.innerHTML = content;
-        if (navigator.vibrate) navigator.vibrate(30);
-    }
-    function downloadCardAsImage(f, t, s, q) {
-        var canvas = document.createElement("canvas"); canvas.width = 600; canvas.height = 400; var ctx = canvas.getContext("2d");
-        ctx.fillStyle = "#0f0f0f"; ctx.fillRect(0, 0, 600, 400);
-        ctx.strokeStyle = "#ffd700"; ctx.lineWidth = 6; ctx.strokeRect(15, 15, 570, 370);
-        ctx.strokeStyle = "#ffd700"; ctx.lineWidth = 2; ctx.strokeRect(22, 22, 556, 356);
-        ctx.fillStyle = "#ffd700"; ctx.font = "bold 24px sans-serif"; ctx.textAlign = "center"; ctx.fillText("👑 بطاقة إهداء ملوكية [ عالم الحب KR ] 👑", 300, 65);
-        ctx.fillStyle = "#ffffff"; ctx.font = "18px sans-serif"; ctx.fillText("🎨 النمط: " + s, 300, 115);
-        ctx.fillStyle = "#ff3366"; ctx.font = "bold 21px sans-serif"; ctx.fillText("💝 مـن الغالي: [ " + f + " ]", 300, 165);
-        ctx.fillStyle = "#00ffaa"; ctx.font = "bold 21px sans-serif"; ctx.fillText("🌹 إلـى الغالي: [ " + t + " ]", 300, 215);
-        ctx.fillStyle = "#e0e0e0"; ctx.font = "bold 14px sans-serif";
-        if (q.length > 55) {
-            ctx.fillText(q.substring(0, 52) + "...", 300, 275);
-            ctx.fillText(q.substring(52), 300, 305);
-        } else {
-            ctx.fillText(q, 300, 290);
-        }
-        ctx.fillStyle = "#ffd700"; ctx.font = "bold 14px sans-serif"; ctx.fillText("worldoflove-kr.github.io", 300, 365);
-        var link = document.createElement("a"); link.download = `KR-Gift-${f}-to-${t}.png`; link.href = canvas.toDataURL("image/png"); link.click();
-        var banner = document.getElementById("wish-noti-banner");
-        if(banner) { banner.style.display = "block"; banner.innerHTML = `🔔 إشعار من منصة [ عالم الحب KR ] : تم تحميل وتثبيت بطاقة إهدائك كصورة HD بنجاح 100% داخل جهازك! ✨`; setTimeout(function() { banner.style.display = "none"; }, 6000); }
-    }
-</script>
+        <div class="section-box">
+            <div class="box-title" id="title-secret">🔐 صندوق الرسائل السرية والمفاجآت المغلقة</div>
+            <p id="secret-desc-text" style="color:#e0e0e0; font-size:13px; margin:0 0 15px 0; line-height:1.5; text-align:right;">هذا الصندوق تفاعلي ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. اكتب الكود السري (123 أو كود العائلة KR) ثم اضغط على زر الفتح:</p>
+            <input type="text" id="secret-input" placeholder="اكتب الكلمة السرية هنا الحين...">
+            <button class="secret-btn" id="secret-btn-click" onclick="unlockSecret()">افتح واكشف المفاجأة السرية الحين 🔓</button>
+            <div class="secret-output" id="secret-box-output"></div>
+        </div>
+        
+        <div class="panda-footer-new-box"><span style="font-size: 75px; display: inline-block; filter: drop-shadow(0 0 15px rgba(255,255,255,0.45)); animation: panda-float 2s ease-in-out infinite;">🐼</span></div>
+        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1573</span> زائر</div>
+        <br>
+        <div class="family-logo-wrapper"><div class="family-logo pulse-fast">👑 KR 👑</div></div>
+    </div>
 </body>
 </html>
