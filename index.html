@@ -183,6 +183,12 @@
         <a href="whatsapp://send?phone=96171689517&text=مرحبا، بدي شحن ألعاب" class="round-pink-btn">🛍️ للطلب وشحن الشدات و SHEIN (واتساب)</a>
     </div>
 
+    <div class="section-box" style="border-color: #ff9800;">
+        <div class="box-title" id="title-dream" style="color: #ff9800; border-bottom-color: #ff9800;">🌌 مستكشف ومفسر الأحلام الفلكي الذكي</div>
+        <textarea class="wellness-input-box" id="dream-input" placeholder="اكتب تفاصيل حلمك أو الرموز التي شفتها بمنامك الحين بكل سرية..." style="border-color: #ff9800;"></textarea>
+        <button class="wellness-btn" id="dream-btn-click" style="background: linear-gradient(45deg, #ff9800, #e65100); color: #fff;" onclick="generateDreamInterpretation()">أطلق مستكشف الأحلام الذكي الحين 🪐</button>
+        <div class="wellness-output" id="dream-box-output" style="border-color: #ff9800; color: #ff9800; background: rgba(30,15,0,0.5);"></div>
+    </div>
     <div class="section-box">
         <div class="box-title" id="title-tasbih">📿 صندوق لوحة عداد التسبيح والاستغفار الرقمي</div>
         <div class="tasbih-display" id="tasbih-display-box"><span id="tasbih-val">0</span></div>
@@ -192,16 +198,30 @@
 
     <div class="section-box">
         <div class="box-title" id="title-secret">🔐 صندوق الرسائل السرية والمفاجآت المغلقة</div>
-        <p id="secret-desc-text" style="color:#e0e0e0; font-size:13px; margin:0 0 15px 0; line-height:1.5; text-align:right;">هذا الصندوق تفاعلي آمن ومحمي ومفرمل كلياً، ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. لكي يفتح القفل وتكشف الرسائل العاطفية المخفية، يرجى كتابة الكود السري (123 أو كود العائلة KR) ثم اضغط على زر الفتح:</p>
-        <input type="text" id="secret-input" placeholder="اكتب الكلمة السرية هنا الحين...">
+        <p id="secret-desc-text" style="color:#e0e0e0; font-size:13px; margin:0 0 15px 0; line-height:1.5; text-align:right;">هذا الصندوق تفاعلي آمن ومحمي ومفرمل كلياً، ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. لكي يفتح القفل وتكشف الرسائل العاطفية المخفية، يرجى كتابة أحد الأكواد الفعالة الحين (مثلاً: جرب كتابة الرقم 123 أو كود العائلة KR) ثم اضغط على زر الفتح بالأسفل بكل أمان وطمأنينة الحين:</p>
+        <input type="text" id="secret-input" placeholder="اكتب الكلمة السرية أو الكود السري هنا الحين...">
         <button class="secret-btn" id="secret-btn-click" onclick="unlockSecret()">افتح واكشف المفاجأة السرية الحين 🔓</button>
         <div class="secret-output" id="secret-box-output"></div>
     </div>
-    
     <div class="panda-footer-new-box"><span style="font-size: 75px; display: inline-block; filter: drop-shadow(0 0 15px rgba(255,255,255,0.45)); animation: panda-float 2s ease-in-out infinite;">🐼</span></div>
     <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1573</span> زائر</div>
     <br>
     <div class="family-logo-wrapper"><div class="family-logo pulse-fast">👑 KR 👑</div></div>
 </div>
+
+<script>
+    function generateDreamInterpretation() {
+        var input = document.getElementById("dream-input").value.trim();
+        var output = document.getElementById("dream-box-output");
+        if (input === "") { output.style.display = "block"; output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = "⚠️ من فضلكِ اكتب تفاصيل حلمكِ أولاً لكي يفك المستشار شفرته الحين!"; return; }
+        output.style.display = "block"; output.style.borderColor = "#ff9800"; output.style.color = "#ff9800";
+        var interpretations = [
+            "✨ فك تشفير حلمك الحين: رؤيتك تدل على طاقة فرج قريبة جداً وخروج من ضيق أو حيرة كنت تعيشها بالساعات الماضية. الرموز المضيئة بمنامك هي بشارة برزق نظيف عالي قادم لقلبك الطيب! 🪐",
+            "🪐 التفسير الفلكي السري: حلمك يعكس رغبة روحك بالتحرر والراحة. واعلم أن الرموز التي ظهرت لك هي إشارة إلهية لترتيب أمورك وتيسير عسر قادم، استبشر خيراً فمستقبلك محمي ومليء بالبركة! 🌌",
+            "🌌 رسالة مرآة الأحلام: لا تقلق من الغموض، رؤيتك ترمز لانتهاء مرحلة تعب وبداية عهد جديد يحمل لك نجاحاً باهراً وراحة بال طال انتظارها. نم قرير العين فالعوض القادم مذهل! ✨"
+        ];
+        output.innerHTML = interpretations[Math.floor(Math.random() * interpretations.length)];
+    }
+</script>
 </body>
 </html>
