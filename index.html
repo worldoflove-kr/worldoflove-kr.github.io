@@ -228,21 +228,7 @@
         <div class="wellness-output" id="gift-box-output" style="border-color: #ffd700; color: #ffd700; background: rgba(30,20,0,0.5); font-family:serif; text-shadow: 0 0 5px rgba(255,215,0,0.3);"></div>
     </div>
 
-    <div class="section-box">
-        <div class="box-title" id="title-secret">🔐 BOX الرسائل السرية والمفاجآت المغلقة</div>
-        <p id="secret-desc-text" style="color:#e0e0e0; font-size:13px; margin:0 0 15px 0; line-height:1.5; text-align:right;">هذا الصندوق تفاعلي ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. اكتب الكود السري (123 أو كود العائلة KR) ثم اضغط على زر الفتح:</p>
-        <input type="text" id="secret-input" placeholder="اكتب الكلمة السرية هنا الحين...">
-        <button class="secret-btn" id="secret-btn-click" onclick="unlockSecret()">افتح واكشف المفاجأة السرية الحين 🔓</button>
-        <div class="secret-output" id="secret-box-output"></div>
-    </div>
-    
-    <div class="panda-footer-new-box"><span style="font-size: 75px; display: inline-block; filter: drop-shadow(0 0 15px rgba(255,255,255,0.45)); animation: panda-float 2s ease-in-out infinite;">🐼</span></div>
-    <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1573</span> زائر</div>
-    <br>
-    <div class="family-logo-wrapper"><div class="family-logo pulse-fast">👑 KR 👑</div></div>
-</div>
-
-<script>
+   <script>
     function generateDreamInterpretation() {
         var input = document.getElementById("dream-input").value.trim(); var output = document.getElementById("dream-box-output");
         if (input === "") { output.style.display = "block"; output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = "⚠️ من فضلكِ اكتب تفاصيل حلمكِ أولاً لكي يفك المستشار شفرته الحين!"; return; }
@@ -250,7 +236,7 @@
         var interpretations = [
             "✨ فك تشفير حلمك الحين: رؤيتك تدل على طاقة فرج قريبة جداً وخروج من ضيق أو حيرة كنت تعيشها بالساعات الماضية. الرموز المضيئة بمنامك هي بشارة برزق نظيف عالي قادم لقلبك الطيب! 🪐",
             "🪐 التفسير الفلكي السري: حلمك يعكس رغبة روحك بالتحرر والراحة. واعلم أن الرموز التي ظهرت لك هي إشارة إلهية لترتيب أمورك وتيسير عسر قادم، استبشر خيراً فمستقبلك محمي ومليء بالبركة! 🌌",
-            "🌌 رسالة مرآة الأحلام: لا تقلق من الغموض، رؤيتك ترمز لانتهاء مرحلة تعب وبداية عهد جديد يحمل لك نجاحاً باهراً وراحة بال طال انتظارها. نم قرير العين فالعوض القادم مذهل! ✨"
+            "🌌 رسالة مرآة الأحلام: لا تقلق من الغموض, رؤيتك ترمز لانتهاء مرحلة تعب وبداية عهد جديد يحمل لك نجاحاً باهراً وراحة بال طال انتظارها. نم قرير العين فالعوض القادم مذهل! ✨"
         ];
         output.innerHTML = interpretations[Math.floor(Math.random() * interpretations.length)];
     }
@@ -271,25 +257,43 @@
         if (navigator.vibrate) navigator.vibrate(30);
     }
     function generateGiftCardDownload() {
-        var from = document.getElementById("gift-from").value.trim();
-        var to = document.getElementById("gift-to").value.trim();
-        var style = document.getElementById("gift-style").value;
-        var output = document.getElementById("gift-box-output");
+        var from = document.getElementById("gift-from").value.trim(); var to = document.getElementById("gift-to").value.trim();
+        var style = document.getElementById("gift-style").value; var output = document.getElementById("gift-box-output");
         if (from === "" || to === "") { output.style.display = "block"; output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = "⚠️ من فضلكِ اكتب اسمك واسم الشخص المهدى إليه أولاً لتوليد كرتك الحين!"; return; }
         output.style.display = "block"; output.style.borderColor = "#ffd700"; output.style.color = "#ffd700";
-        var content = `👑 <b>بطاقة إهداء ملوكية معتمدة من [ منصة عالم الحب KR ]</b><br><br>🎨 النمط المختير الحين: <b>${style}</b><br>💝 🌟 مـن الغالي: <b>[ ${from} ]</b><br>🌹 ✨ إلـى الغالي: <b>[ ${to} ]</b><br><br>📜 <i>"استودعت الله قلبك وخطواتك، وجعل التوفيق والراحة والسعادة الأبدية حليفك في كل ثانية ودقيقة ليل نهار الحين الحين برواقة!"</i><br><br><span style="background:#000; border:1px dashed #ffd700; padding:6px 12px; border-radius:20px; font-size:12px; display:inline-block; margin-top:10px; cursor:pointer;" onclick="downloadCardTrigger('${from}','${to}')">📥 اضغطي الحين لتحميل البطاقة فوراً بجهازك (صورة HD)</span>`;
+        var content = `👑 <b>بطاقة إهداء ملوكية معتمدة من [ منصة عالم الحب KR ]</b><br><br>🎨 النمط المختير الحين: <b>${style}</b><br>💝 🌟 مـن الغالي: <b>[ ${from} ]</b><br>🌹 ✨ إلـى الغالي: <b>[ ${to} ]</b><br><br>📜 <i>"استودعت الله قلبك وخطواتك، وجعل التوفيق والراحة والسعادة الأبدية حليفك في كل ثانية ودقيقة ليل نهار الحين الحين برواقة!"</i><br><br><span style="background:#ffd700; color:#000; padding:8px 16px; border-radius:20px; font-size:13px; font-weight:bold; display:inline-block; margin-top:10px; cursor:pointer;" onclick="downloadCardAsImage('${from}','${to}','${style}')">📥 اضغطي الحين لتحميل البطاقة كصورة بالاستوديو دغري 🖼️</span>`;
         output.innerHTML = content;
         if (navigator.vibrate) navigator.vibrate(30);
     }
-    function downloadCardTrigger(f, t) {
-        var text = `👑 بطاقة إهداء ملوكية مـن [ عالم الحب KR ] 👑\n\n💝 مـن: ${f}\n🌹 إلـى: ${t}\n\n💬 استودعت الله قلبك وخطواتك، وجعل التوفيق والراحة والسعادة حليفك ليل نهار برواقة تامة الحين!\n\n🌐 الرابط الرسمي للتحميل: worldoflove-kr.github.io`;
-        var blob = new Blob([text], { type: "text/plain;charset=utf-8" });
-        var link = document.createElement("a"); link.href = URL.createObjectURL(blob);
-        link.download = `KR-Gift-Card-${f}-To-${t}.txt`;
-        link.click();
+    function downloadCardAsImage(f, t, s) {
+        var canvas = document.createElement("canvas"); canvas.width = 600; canvas.height = 400; var ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#0f0f0f"; ctx.fillRect(0, 0, 600, 400);
+        ctx.strokeStyle = "#ffd700"; ctx.lineWidth = 6; ctx.strokeRect(15, 15, 570, 370);
+        ctx.strokeStyle = "#ffd700"; ctx.lineWidth = 2; ctx.strokeRect(22, 22, 556, 356);
+        ctx.fillStyle = "#ffd700"; ctx.font = "bold 24px sans-serif"; ctx.textAlign = "center"; ctx.fillText("👑 بطاقة إهداء ملوكية [ عالم الحب KR ] 👑", 300, 65);
+        ctx.fillStyle = "#ffffff"; ctx.font = "20px sans-serif"; ctx.fillText("🎨 النمط: " + s, 300, 120);
+        ctx.fillStyle = "#ff3366"; ctx.font = "bold 22px sans-serif"; ctx.fillText("💝 مـن الغالي: [ " + f + " ]", 300, 175);
+        ctx.fillStyle = "#00ffaa"; ctx.font = "bold 22px sans-serif"; ctx.fillText("🌹 إلـى الغالي: [ " + t + " ]", 300, 230);
+        ctx.fillStyle = "#e0e0e0"; ctx.font = "italic 16px sans-serif";
+        ctx.fillText('"استودعت الله قلبك وخطواتك، وجعل التوفيق والراحة والسعادة"', 300, 290);
+        ctx.fillText('حليفك ليل نهار برواقة تامة الحين الحين! ✨', 300, 320);
+        ctx.fillStyle = "#ffd700"; ctx.font = "bold 14px sans-serif"; ctx.fillText("worldoflove-kr.github.io", 300, 365);
+        var link = document.createElement("a"); link.download = `KR-Gift-${f}-to-${t}.png`; link.href = canvas.toDataURL("image/png"); link.click();
         var banner = document.getElementById("wish-noti-banner");
-        if(banner) { banner.style.display = "block"; banner.innerHTML = `🔔 إشعار من منصة [ عالم الحب KR ] : تم تحميل وتثبيت بطاقة إهدائك الشخصية بنجاح 100% داخل جهازك الحين! ✨`; setTimeout(function() { banner.style.display = "none"; }, 6000); }
+        if(banner) { banner.style.display = "block"; banner.innerHTML = `🔔 إشعار من منصة [ عالم الحب KR ] : تم تحميل وتثبيت بطاقة إهدائك كصورة HD بنجاح 100% داخل استوديو جهازك الحين! ✨`; setTimeout(function() { banner.style.display = "none"; }, 6000); }
     }
 </script>
+<div class="section-box">
+    <div class="box-title" id="title-secret">🔐 صندوق الرسائل السرية والمفاجآت المغلقة</div>
+    <p id="secret-desc-text" style="color:#e0e0e0; font-size:13px; margin:0 0 15px 0; line-height:1.5; text-align:right;">هذا الصندوق تفاعلي ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. اكتب الكود السري (123 أو كود العائلة KR) ثم اضغط على زر الفتح:</p>
+    <input type="text" id="secret-input" placeholder="اكتب الكلمة السرية هنا الحين...">
+    <button class="secret-btn" id="secret-btn-click" onclick="unlockSecret()">افتح واكشف المفاجأة السرية الحين 🔓</button>
+    <div class="secret-output" id="secret-box-output"></div>
+</div>
+<div class="panda-footer-new-box"><span style="font-size: 75px; display: inline-block; filter: drop-shadow(0 0 15px rgba(255,255,255,0.45)); animation: panda-float 2s ease-in-out infinite;">🐼</span></div>
+<div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1573</span> زائر</div>
+<br>
+<div class="family-logo-wrapper"><div class="family-logo pulse-fast">👑 KR 👑</div></div>
+</div>
 </body>
 </html>
