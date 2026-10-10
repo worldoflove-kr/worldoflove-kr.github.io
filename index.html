@@ -81,82 +81,16 @@
             output.style.display = "block"; output.style.borderColor = "#00ffaa"; output.style.color = "#00ffaa";
             var hopes = [
                 "✨ جرعة الأمل لك الحين: لا تضيق وتيأس، فكل مرّ سيمر، والضغط الذي تعيشه اليوم هو مجرد بداية لولادة فجر جديد مليء بالرزق والفرح والراحة. رب العالمين معك ولن يتركك أبداً الحين! 🌿",
-                "🌿 رسالة طمأنينة لقلبك: الفرج قريب جداً وفوق ما تتخيل، خذ نفساً عميقاً واعلم أن عسر اليوم يتبعه يسرين غداً بالملي. اترك قلق المستقبل للأقدار وعش اللحظة برضا وسلام داخلي! 🤍"
+                "🌿 رسالة طمأنينة لقلبك: الفرج قريب جداً وفوق ما تتخيل، خذ نفساً عميقاً واعلم أن عسر اليوم يتبعه يسرين غداً بالملي. اترك قلق المستقبل للأقدار وعش اللحظة برضا وسلام داخلي! 🤍",
+                "🤍 سند روحي دافئ: أنت شخص قوي وصبرت على الكثير، وما يحدث الحين هو مجرد ترتيب إلهي ليعوضك ببركة وخير ينسيك كل دموع وتعب الساعات الماضية. استبشر خيراً فالقادم مذهل! ✨"
             ];
             output.innerHTML = hopes[Math.floor(Math.random() * hopes.length)];
         }
-        function plantNewWish() {
-            var txt = document.getElementById("wish-input").value.trim();
-            if(txt === "") return;
-            var container = document.getElementById("wishes-box-list");
-            var id = Date.now();
-            var card = document.createElement("div");
-            card.className = "wish-item-card";
-            card.id = "wish-" + id;
-            card.innerHTML = `<span class="wish-text-content">✨ "${txt}"</span><button class="wish-support-btn" onclick="boostWishHeart(${id})">❤️ <span id="pulse-count-${id}">0</span></button>`;
-            container.insertBefore(card, container.firstChild);
-            document.getElementById("wish-input").value = "";
-            if (navigator.vibrate) navigator.vibrate(30);
-        }
-        function boostWishHeart(id) {
-            var el = document.getElementById("pulse-count-" + id);
-            el.innerText = parseInt(el.innerText) + 1;
-            var btn = el.parentElement; btn.style.borderColor = "#00ffaa"; btn.style.color = "#00ffaa";
-            if (navigator.vibrate) navigator.vibrate(30);
-        }
-        document.addEventListener("DOMContentLoaded", function() {
-            setInterval(updateClock, 1000); updateClock();
-            var c = parseInt(localStorage.getItem('page_view') || 1570) + 1; localStorage.setItem('page_view', c); document.getElementById("counter-val").innerText = c;
-            var t = localStorage.getItem('tasbih_count') || 0; document.getElementById("tasbih-val").innerText = parseInt(t).toLocaleString();
-            refreshAndBuildWhatsAppLink(); buildLoveWhatsAppLink(); buildCongratWhatsAppLink();
-        });
-        function updateClock() {
-            var now = new Date();
-            var t = now.toLocaleTimeString(currentLang === 'ar' ? 'ar-LB' : 'en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
-            var d = now.toLocaleDateString(currentLang === 'ar' ? 'ar-LB' : 'en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-            document.getElementById("live-clock").innerHTML = currentLang === 'ar' ? `📅 ${d} | ⏰ الساعة: ${t} <br> ☀️ بيروت: 24°C | 💧 الرطوبة: 62%` : `📅 ${d} | ⏰ Time: ${t} <br> ☀️ Beirut: 24°C | 💧 Humidity: 62%`;
-        }
-        function switchLang(l) {
-            currentLang = l; document.getElementById("btn-ar").classList.toggle("active", l === 'ar'); document.getElementById("btn-en").classList.toggle("active", l === 'en');
-            var isAr = l === 'ar';
-            document.getElementById("main-title").innerHTML = isAr ? "عالم الحب" : "World of Love";
-            document.getElementById("title-search").innerText = isAr ? "🔍 محرك بحث جوجل الذكي" : "🔍 Google Smart Search";
-            document.getElementById("btn-search").innerText = isAr ? "اجمع للبحث عن أي شيء بمتصفح جوجل - اضغط هنا" : "Type to search anything on Google browser - Click Here";
-            document.getElementById("title-dua").innerText = isAr ? "✨ صندوق الأدعية والإهداءات التفاعلي" : "✨ Islamic Duas & Gifts Box";
-            document.getElementById("name-input").placeholder = isAr ? "اكتب اسمك هنا الحين..." : "Type your name here...";
-            document.getElementById("title-preview").innerText = isAr ? "📖 كلمات الدعاء المختار حالياً:" : "📖 Selected Dua Text:";
-            document.getElementById("btn-share").innerText = isAr ? "أرسل الإهداء وشارك عبر الواتساب 🟢" : "Send Gift & Share on WhatsApp 🟢";
-            document.getElementById("title-love").innerText = isAr ? "❤️ صندوق عبارات الحب والاشتياق التفاعلي" : "❤️ Love & Longing Expressions Box";
-            document.getElementById("love-name-input").placeholder = isAr ? "اكتب اسمك هنا الحين..." : "Type your name here...";
-            document.getElementById("title-love-preview").innerText = isAr ? "📖 كلمات العبارة المختارة حالياً:" : "Selected Love Expression:";
-            document.getElementById("btn-love-share").innerText = isAr ? "أرسل عبارة الحب وشارك عبر الواتساب 🟢" : "Send Love Expression via WhatsApp 🟢";
-            document.getElementById("title-congrat").innerText = isAr ? "🎉 صندوق التهنئة والمباركة للمناسبات والأعياد" : "🎉 Celebrations & Happy Occasions Box";
-            document.getElementById("congrat-name-input").placeholder = isAr ? "اكتب اسمك هنا الحين..." : "Type your name here...";
-            document.getElementById("title-congrat-preview").innerText = isAr ? "📖 كلمات التهنئة المختارة حالياً:" : "Selected Congratulation Text:";
-            document.getElementById("btn-congrat-share").innerText = isAr ? "أرسل التهنئة وشارك عبر الواتساب 🟢" : "Send Congratulation via WhatsApp 🟢";
-            document.getElementById("panda-desc-text").innerText = isAr ? "✨ منصة العائلة الملكية المخصصة لأجمل إهداءات الأدعية التفاعلية، وعبارات الحب الصادقة، وتأمين خدمات تشريج الخطوط وشحن الألعاب المعتمدة بأعلى درجات السرية، الأمان الصارم، والمصداقية الكبرى عالمياً الحين. 👑🔒" : "The royal platform for beautiful duas, authentic love expressions, and trusted dealer services.";
-            document.getElementById("title-wellness").innerText = isAr ? "🌿 مستشار الأمل وصندوق الفضفضة النفسية الذكي" : "🌿 AI Mental Hope & Wellness Sanctuary";
-            document.getElementById("wellness-input").placeholder = isAr ? "اكتب تعبك أو فضفض باللي جوات قلبك للمستشار الحين بكل سرية..." : "Type your stress or express your feelings here anonymously...";
-            document.getElementById("wellness-btn-click").innerText = isAr ? "اسحب جرعة الأمل والراحة الحين 🌟" : "Receive Your Hope Dose Now 🌟";
-            document.getElementById("title-tree").innerText = isAr ? "🌳 شجرة الأمنيات الكونية والنبض العاطفي الحي" : "🌳 KR Cosmic Wish Tree & Live Pulse";
-            document.getElementById("wish-input").placeholder = isAr ? "اكتب أمنيتك السرية في الحياة وعلقها على الشجرة الحين..." : "Type your secret wish and hang it on the tree now...";
-            document.getElementById("wish-btn-click").innerText = isAr ? "علّق أمنيتك المضيئة على الشجرة 🌳" : "Hang Your Glowing Wish Now 🌳";
-            updateClock();
-        }
-        function refreshAndBuildWhatsAppLink() {
-            var n = document.getElementById("name-input").value || "محب للخير"; var t = document.getElementById("dua-select").value; document.getElementById("dua-text-preview").innerText = t;
-            document.getElementById("whatsapp-anchor").setAttribute("href", "whatsapp://send?text=" + encodeURIComponent(`🎁 إهداء خاص مـن: *[ ${n} ]* \n\n✨ *الدعاء:* \n" ${t} " \n\n worldoflove-kr.github.io`));
-        }
-        function buildLoveWhatsAppLink() {
-            var n = document.getElementById("love-name-input").value || "محب غالي"; var t = document.getElementById("love-select").value; document.getElementById("love-text-preview").innerText = t;
-            document.getElementById("love-whatsapp-anchor").setAttribute("href", "whatsapp://send?text=" + encodeURIComponent(`💝 رسالة حب واشتياق مـن: *[ ${n} ]* \n\n💬 *الكلمات:* \n" ${t} " \n\n worldoflove-kr.github.io`));
-        }
         function buildCongratWhatsAppLink() {
             var n = document.getElementById("congrat-name-input").value || "مهنئ غالي"; var t = document.getElementById("congrat-select").value; document.getElementById("congrat-text-preview").innerText = t;
-        var n = document.getElementById("congrat-name-input").value || "مهنئ غالي"; var t = document.getElementById("congrat-select").value; document.getElementById("congrat-text-preview").innerText = t;
-        document.getElementById("congrat-whatsapp-anchor").setAttribute("href", "whatsapp://send?text=" + encodeURIComponent(`🎉 إهداء مباركة وتهنئة مـن: *[ ${n} ]* \n\n✨ *التهنئة:* \n" ${t} " \n\n worldoflove-kr.github.io`));
-    }
-</script>
+            document.getElementById("congrat-whatsapp-anchor").setAttribute("href", "whatsapp://send?text=" + encodeURIComponent(`🎉 إهداء مباركة وتهنئة مـن: *[ ${n} ]* \n\n✨ *التهنئة:* \n" ${t} " \n\n worldoflove-kr.github.io`));
+        }
+    </script>
 </head>
 <body>
     <div class="ticker-container">
@@ -183,166 +117,15 @@
         </div>
         <h1 style="color: #ffd700; margin: 15px 0 0 0; font-size: 34px;" id="main-title" class="pulse-fast">عالم الحب</h1>
         <div id="sub-title" class="sub-title-en pulse-fast">World of Love</div>
-        
         <div class="section-box" style="border-color: #00ffaa;">
             <div class="box-title" id="title-wellness" style="color: #00ffaa; border-bottom-color: #00ffaa;">🌿 مستشار الأمل وصندوق الفضفضة النفسية الذكي</div>
             <textarea class="wellness-input-box" id="wellness-input" placeholder="اكتب تعبك أو فضفض باللي جوات قلبك للمستشار الحين بكل سرية..."></textarea>
             <button class="wellness-btn" id="wellness-btn-click" onclick="generateWellnessHope()">اسحب جرعة الأمل والراحة الحين 🌟</button>
             <div class="wellness-output" id="wellness-box-output"></div>
         </div>
-
-        <div class="wish-tree-box">
-            <div class="box-title" id="title-tree" style="color: #ffd700; border-bottom-color: #ffd700;">🌳 شجرة الأمنيات الكونية والنبض العاطفي الحي</div>
-            <div class="wish-tree-visual">🌳</div>
-            <input type="text" class="wish-input-field" id="wish-input" placeholder="اكتب أمنيتك السرية في الحياة وعلقها على الشجرة الحين...">
-            <button class="wish-submit-btn" id="wish-btn-click" onclick="plantNewWish()">علّق أمنيتك المضيئة على الشجرة 🌳</button>
-            <div class="wish-display-container" id="wishes-box-list"></div>
-        </div>
-
-        <div class="section-box">
-            <div class="box-title" id="title-search">🔍 محرك بحث جوجل الذكي</div>
-            <a href="https://google.com" target="_blank" class="btn-gold-link" id="btn-search">اجمع للبحث عن أي شيء بمتصفح جوجل - اضغط هنا</a>
-        </div>
-        
-        <div class="section-box">
-            <div class="box-title" id="title-dua">✨ صندوق الأدعية والإهداءات التفاعلي</div>
-            <input type="text" id="name-input" placeholder="اكتب اسمك هنا الحين..." oninput="refreshAndBuildWhatsAppLink()" required>
-            <select id="dua-select" onchange="refreshAndBuildWhatsAppLink()">
-                <option value="اللهم احفظ لي أحبتي وأهلي ولا تريني فيهم بأساً يبكيني، واستودعتك قلوبهم وحياتهم وصحتهم فاحفظهم بحفظك يا كريم.">🤲 دعاء لحفظ الأهل والأحبة</option>
-                <option value="اللهم افتح لنا أبواب الرزق الحلال الطيب، واقضِ عنا الدين، واغننا بفضلك عمن سواك، واجعل التوفيق حليفنا في كل خطوة.">💰 دعاء سعة الرزق وتيسير الأمور</option>
-                <option value="أسأل الله العظيم أن يزيل عنكم كل ضيق، وأن يشفي مرضاكم، ويرحم موتاكم، ويجعل أيامكم القادمة مليئة بالفرح والفرج والسرور.">🌹 إهداء دعاء تفريج الهم والشفاء</option>
-                <option value="ربِّ اجعل هذا البلد آمناً مطمئناً وسائر بلاد المسلمين، واحفظ أهلنا في لبنان واشفِ جرحاهم وارحم شهداءهم وعمّ بالسلام أراضينا.">🇱🇧 دعاء خاص لحفظ لبنان والسلام</option>
-            </select>
-            <div style="color: #ffd700; font-size: 13px; font-weight: bold; margin-bottom: 5px;" id="title-preview">📖 كلمات الدعاء المختار حالياً:</div>
-            <div class="preview-box" id="dua-text-preview">جاري تحميل نص الدعاء...</div>
-            <a href="#" id="whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none;">
-                <span id="btn-share">أرسل الإهداء وشارك عبر الواتساب 🟢</span>
-            </a>
-        </div>
-
-        <div class="section-box">
-            <div class="box-title" id="title-love">❤️ صندوق عبارات الحب والاشتياق التفاعلي</div>
-            <input type="text" id="love-name-input" placeholder="اكتب اسمك هنا الحين..." oninput="buildLoveWhatsAppLink()" required>
-            <select id="love-select" onchange="buildLoveWhatsAppLink()">
-                <option value="أشتاق إليك شوقاً يملأ Universe صخباً، وأحبك حباً يجعل من دقات قلبي عزفاً لاسمك الدافيء دائماً وأبداً.">🥀 عبارة اشتياق وحنين جارف</option>
-                <option value="أنت لست مجرد شخص عابر في حياتي، أنت عمري، وأجمل أقداري، ونبض قلبي الذي لا أعيش بدونه يوماً واحداً.">💍 عبارة حب أبدي وعهود صادقة</option>
-                <option value="لو كان للحب والاشتياق عنوان، لكان عينيك الفاتنتين، ولو كان لي في هذا العالم أمنية، لكانت البقاء بجانبك طول العمر.">🌹 عبارة رومانسية راقية وهدية عاطفية</option>
-                <option value="تغيب الشمس ويحل الظلام، لكن دفء حبك بقلبي لا يغيب أبداً، تظل أنت الأول والأخير بقلبي وعالمي الجميل.">✨ عبارة غرام عاطفية ليلية</option>
-                <option value="أحن لأيامنا الخوالي، لتفاصيل صغيرة ضحكنا لها معاً، لزمان مضى وترك في القلب غصة حنين دافئة لا تموت أبداً مع السنين.">🕰️ عبارة حنين للماضي وذكريات زمان القديمة</option>
-            </select>
-            <div style="color: #ffd700; font-size: 13px; font-weight: bold; margin-bottom: 5px;" id="title-love-preview">📖 كلمات العبارة المختارة حالياً:</div>
-            <div class="preview-box" id="love-text-preview">جاري تحميل العبارة العاطفية...</div>
-            <a href="#" id="love-whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none; background: linear-gradient(45deg, #e91e63, #b71c1c);">
-                <span id="btn-love-share">أرسل عبارة الحب وشارك عبر الواتساب 🟢</span>
-            </a>
-        </div>
-
-        <div class="section-box">
-            <div class="box-title" id="title-congrat">🎉 صندوق التهنئة والمباركة للمناسبات والأعياد</div>
-            <input type="text" id="congrat-name-input" placeholder="اكتب اسمك هنا الحين..." oninput="buildCongratWhatsAppLink()" required>
-            <select id="congrat-select" onchange="buildCongratWhatsAppLink()">
-                <option value="تقبل الله منا ومنكم صالح الأعمال، وكل عام وأنتم بخير وصحة وعافية بمناسبة عيد الفطر السعيد، أعاده الله علينا وعليكم باليمن والبركات.">🌙 مباركة عيد الفطر السعيد والبركات</option>
-                <option value="مع بداية العام الجديد، أتمنى لكم عاماً مليئاً بالفرح والنجاح والسلامة، وأن تتحقق فيه كل أمنياتكم الطيبة، كل عام وأنتم بألف خير.">✨ تهنئة بالعام الجديد والأمنيات الطيبة</option>
-                <option value="ألف مبروك الزواج الميمون، بارك الله لكما وبارك عليكما وجمع بينكما في خير، وجعل أيامكم القادمة كلها حب وسعادة واستقرار أبدي.">💍 مباركة وتهنئة بالزواج السعيد</option>
-                <option value="ما شاء الله تبارك الرحمن، بورك لكم في الموهوب وشكرتم الواهب وبلغ أشده ورزقتم بره، ألف مبروك المولود الجديد والرزق النظيف.">👶 تهنئة بالمولود الجديد السعيد</option>
-                <option value="ألف مبروك النجاح والتفوق الباهر الّذي يرفع الرأس! هذا الحصاد الجميل هو ثمرة صبركم وتعبكم، ومن نجاح إلى نجاح دائم ومستمر.">🎓 تهنئة بالنجاح الباهر والتفوق</option>
-            </select>
-            <div style="color: #ffd700; font-size: 13px; font-weight: bold; margin-bottom: 5px;" id="title-congrat-preview">📖 كلمات التهنئة المختارة حالياً:</div>
-            <div class="preview-box" id="congrat-text-preview">جاري تحميل نص التهنئة السعيدة...</div>
-            <a href="#" id="congrat-whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none; background: linear-gradient(45deg, #ff9800, #f57c00); display: block; width: 100%; border: none; color: #fff; padding: 14px; font-size: 15px; font-weight: bold; border-radius: 8px; text-align: center; box-sizing: border-box; margin-top: 5px;"><span id="btn-congrat-share">أرسل التهنئة وشارك عبر الواتساب 🟢</span></a>
-        </div>
-
-        <div class="section-box">
-            <div class="box-title" id="title-shop">📱 خدمات تشريج الخطوط والإنترنت الموثوقة</div>
-            <p class="shop-box-desc">دليلكِ الآمن والكامل لتشريج خطوط Alfa وتاتش MTC وتجديد اشتراكات بطاقات إنترنت Ushare برواقة تامة وبأعلى مصداقية في لبنان. تواصلوا مباشرة مع الموزع المستقل المعتمد لقفل طلباتكم بثقة وسرية:</p>
-            <a href="whatsapp://send?phone=96179320900&text=مرحبا، بدي أطلب تشريج خطوط" class="round-gold-btn">💬 اطلب تشريج خطك الآن (واتساب)</a>
-        </div>
-
-        <div class="section-box">
-        <div class="box-title">🛒 خدمات شحن PUBG ومشتريات SHEIN</div>
-        <p class="shop-box-desc">اشحني حسابكِ وألعابكِ بثقة تامة! محطتكِ المتكاملة لطلب وشحن مشتريات وطلبيات ومحفظة SHEIN بالإضافة لتأمين شدات لعبة ببجي PUBG وجيمنج بأعلى درجات المصداقية وحماية كاملة لحساباتكم وبأسرع خدمة كاش:</p>
-        <div class="pubg-btn-static">PUBG Gaming 🎮</div>
-        <a href="whatsapp://send?phone=96171689517&text=مرحبا، بدي شحن ألعاب" class="round-pink-btn">🛍️ للطلب وشحن الشدات و SHEIN (واتساب)</a>
-    </div>
-
-    <div class="section-box">
-        <div class="box-title" id="title-tasbih">📿 صندوق لوحة عداد التسبيح والاستغفار الرقمي</div>
-        <div class="tasbih-display" id="tasbih-display-box"><span id="tasbih-val">0</span></div>
-        <button class="tasbih-btn" onclick="countTasbih()">اضغط<br>هنا 📿</button>
-        <div style="text-align: center; margin-top: 5px;">
-            <button class="tasbih-reset" id="tasbih-reset-btn" onclick="resetTasbih()">إعادة تصفير العداد 🔄</button>
-        </div>
-    </div>
-
-    <div class="section-box">
-        <div class="box-title" id="title-secret">🔐 صندوق الرسائل السرية والمفاجآت العاطفية المغلقة</div>
-        <p id="secret-desc-text" style="color:#e0e0e0; font-size:13px; margin:0 0 15px 0; line-height:1.5; text-align:right;">هذا الصندوق تفاعلي آمن ومحمي ومفرمل كلياً، ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. لكي يفتح القفل وتكشف الرسائل العاطفية المخفية، يرجى كتابة أحد الأكواد الفعالة الحين (مثلاً: جرب كتابة الرقم 123 أو كود العائلة KR) ثم اضغط على زر الفتح بالأسفل بكل أمان وطمأنينة الحين:</p>
-        <input type="text" id="secret-input" placeholder="اكتب الكلمة السرية أو الكود السري هنا الحين...">
-        <button class="secret-btn" id="secret-btn-click" onclick="unlockSecret()">افتح واكشف المفاجأة السرية الحين 🔓</button>
-        <div class="secret-output" id="secret-box-output"></div>
-    </div>
-    
-    <div class="panda-footer-new-box">
-        <span style="font-size: 75px; display: inline-block; filter: drop-shadow(0 0 15px rgba(255,255,255,0.45)); animation: panda-float 2s ease-in-out infinite;">🐼</span>
-    </div>
-    
-    <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1573</span> زائر</div>
-    <br>
-    <div class="family-logo-wrapper">
-        <div class="family-logo pulse-fast">👑 KR 👑</div>
-    </div>
-</div>
-</body>
-</html>
-<script>
-    function plantNewWish() {
-        var txt = document.getElementById("wish-input").value.trim(); if(txt === "") return;
-        var container = document.getElementById("wishes-box-list"); var id = Date.now();
-        var card = document.createElement("div"); card.className = "wish-item-card"; card.id = "wish-" + id;
-        card.innerHTML = `<span class="wish-text-content">✨ "${txt}"</span><button class="wish-support-btn" onclick="boostWishHeart(${id})">❤️ <span id="pulse-count-${id}">0</span></button>`;
-        container.insertBefore(card, container.firstChild);
-        localStorage.setItem('saved_wish_' + id, txt); localStorage.setItem('saved_wish_heart_' + id, 0);
-        localStorage.setItem('my_own_active_wish', id);
-        document.getElementById("wish-input").value = ""; if (navigator.vibrate) navigator.vibrate(30);
-    }
-    function boostWishHeart(id) {
-        var el = document.getElementById("pulse-count-" + id); var current = parseInt(el.innerText) + 1; el.innerText = current;
-        localStorage.setItem('saved_wish_heart_' + id, current);
-        var myOwnId = localStorage.getItem('my_own_active_wish');
-        if (myOwnId && String(myOwnId) === String(id)) {
-            var banner = document.getElementById("wish-noti-banner"); banner.style.display = "block";
-            if (navigator.vibrate) navigator.vibrate();
-            setTimeout(function() { banner.style.display = "none"; }, 6000);
-        } else {
-            if (navigator.vibrate) navigator.vibrate(30);
-        }
-        var btn = el.parentElement; btn.style.borderColor = "#00ffaa"; btn.style.color = "#00ffaa";
-    }
-    document.addEventListener("DOMContentLoaded", function() {
-        var container = document.getElementById("wishes-box-list");
-        if(container) {
-            for (var i = 0; i < localStorage.length; i++) {
-                var key = localStorage.key(i);
-                if (key.startsWith('saved_wish_') && !key.startsWith('saved_wish_heart_') && key !== 'saved_wish_heart_') {
-                    var id = key.replace('saved_wish_', ''); var txt = localStorage.getItem(key);
-                    var hearts = localStorage.getItem('saved_wish_heart_' + id) || 0;
-                    var card = document.createElement("div"); card.className = "wish-item-card"; card.id = "wish-" + id;
-                    card.innerHTML = `<span class="wish-text-content">✨ "${txt}"</span><button class="wish-support-btn" onclick="boostWishHeart(${id})">❤️ <span id="pulse-count-${id}">${hearts}</span></button>`;
-                    container.appendChild(card);
-                }
-            }
-        }
-    });
-</script>
-    <div class="section-box" style="border-color: #ff9800;">
-        <div class="box-title" id="title-dream" style="color: #ff9800; border-bottom-color: #ff9800;">🌌 مستكشف ومفسر الأحلام الفلكي الذكي</div>
-        <textarea class="wellness-input-box" id="dream-input" placeholder="اكتب تفاصيل حلمك أو الرموز التي شفتها بمنامك الحين بكل سرية..." style="border-color: #ff9800;"></textarea>
-        <button class="wellness-btn" id="dream-btn-click" style="background: linear-gradient(45deg, #ff9800, #e65100); color: #fff;" onclick="generateDreamInterpretation()">أطلق مستكشف الأحلام الذكي الحين 🪐</button>
-        <div class="wellness-output" id="dream-box-output" style="border-color: #ff9800; color: #ff9800; background: rgba(30,15,0,0.5);"></div>
-    </div>
     <div class="wish-tree-box">
         <div class="box-title" id="title-tree" style="color: #ffd700; border-bottom-color: #ffd700;">🌳 شجرة الأمنيات الكونية والنبض العاطفي الحي</div>
-        <div id="wish-noti-banner" style="display:none; background:linear-gradient(45deg,#ff3366,#e91e63); color:#fff; font-size:13px; font-weight:bold; padding:10px; border-radius:6px; margin-bottom:12px; text-align:center;">🔔 إشعار من منصة [ عالم الحب KR ] : تلقيت الحين نبضة دعم وقلب جديد على أمنيتك المعلقة! ✨</div>
+        <div id="wish-noti-banner" style="display:none; background:linear-gradient(45deg,#ff3366,#e91e63); color:#fff; font-size:13px; font-weight:bold; padding:10px; border-radius:6px; margin-bottom:12px; text-align:center; animation:pulse-fast 1s infinite;">🔔 إشعار من منصة [ عالم الحب KR ] : تلقيت الحين نبضة دعم وقلب جديد على أمنيتك المعلقة! ✨</div>
         <div class="wish-tree-visual">🌳</div>
         <input type="text" class="wish-input-field" id="wish-input" placeholder="اكتب أمنيتك السرية في الحياة وعلقها على الشجرة الحين...">
         <button class="wish-submit-btn" id="wish-btn-click" onclick="plantNewWish()">علّق أمنيتك المضيئة على الشجرة 🌳</button>
@@ -352,7 +135,6 @@
         <div class="box-title" id="title-search">🔍 محرك بحث جوجل الذكي</div>
         <a href="https://google.com" target="_blank" class="btn-gold-link" id="btn-search">اجمع للبحث عن أي شيء بمتصفح جوجل - اضغط هنا</a>
     </div>
-    
     <div class="section-box">
         <div class="box-title" id="title-dua">✨ صندوق الأدعية والإهداءات التفاعلي</div>
         <input type="text" id="name-input" placeholder="اكتب اسمك هنا الحين..." oninput="refreshAndBuildWhatsAppLink()" required>
@@ -364,9 +146,7 @@
         </select>
         <div style="color: #ffd700; font-size: 13px; font-weight: bold; margin-bottom: 5px;" id="title-preview">📖 كلمات الدعاء المختار حالياً:</div>
         <div class="preview-box" id="dua-text-preview">جاري تحميل نص الدعاء...</div>
-        <a href="#" id="whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none;">
-            <span id="btn-share">أرسل الإهداء وشارك عبر الواتساب 🟢</span>
-        </a>
+        <a href="#" id="whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none;"><span id="btn-share">أرسل الإهداء وشارك عبر الواتساب 🟢</span></a>
     </div>
     <div class="section-box">
         <div class="box-title" id="title-love">❤️ صندوق عبارات الحب والاشتياق التفاعلي</div>
@@ -397,12 +177,12 @@
         <p class="shop-box-desc">دليلكِ الآمن والكامل لتشريج خطوط Alfa وتاتش MTC برواقة تامة وبأعلى مصداقية في لبنان:</p>
         <a href="whatsapp://send?phone=96179320900&text=مرحبا، بدي أطلب تشريج خطوط" class="round-gold-btn">💬 اطلب تشريج خطك الآن (واتساب)</a>
     </div>
-
     <div class="section-box">
         <div class="box-title">🛒 خدمات شحن PUBG ومشتريات SHEIN</div>
         <p class="shop-box-desc">اشحني حسابكِ وألعابكِ بثقة تامة! محطتكِ المتكاملة لتأمين شدات لعبة ببجي ومشتريات SHEIN بأسرع خدمة كاش:</p>
         <a href="whatsapp://send?phone=96171689517&text=مرحبا، بدي شحن ألعاب" class="round-pink-btn">🛍️ للطلب وشحن الشدات و SHEIN (واتساب)</a>
     </div>
+
     <div class="section-box">
         <div class="box-title" id="title-tasbih">📿 صندوق لوحة عداد التسبيح والاستغفار الرقمي</div>
         <div class="tasbih-display" id="tasbih-display-box"><span id="tasbih-val">0</span></div>
@@ -412,6 +192,7 @@
 
     <div class="section-box">
         <div class="box-title" id="title-secret">🔐 صندوق الرسائل السرية والمفاجآت المغلقة</div>
+        <p id="secret-desc-text" style="color:#e0e0e0; font-size:13px; margin:0 0 15px 0; line-height:1.5; text-align:right;">هذا الصندوق تفاعلي آمن ومحمي ومفرمل كلياً، ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. لكي يفتح القفل وتكشف الرسائل العاطفية المخفية، يرجى كتابة الكود السري (123 أو كود العائلة KR) ثم اضغط على زر الفتح:</p>
         <input type="text" id="secret-input" placeholder="اكتب الكلمة السرية هنا الحين...">
         <button class="secret-btn" id="secret-btn-click" onclick="unlockSecret()">افتح واكشف المفاجأة السرية الحين 🔓</button>
         <div class="secret-output" id="secret-box-output"></div>
@@ -422,20 +203,5 @@
     <br>
     <div class="family-logo-wrapper"><div class="family-logo pulse-fast">👑 KR 👑</div></div>
 </div>
-
-<script>
-    function generateDreamInterpretation() {
-        var input = document.getElementById("dream-input").value.trim();
-        var output = document.getElementById("dream-box-output");
-        if (input === "") { output.style.display = "block"; output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = "⚠️ من فضلكِ اكتب تفاصيل حلمكِ أولاً لكي يفك المستشار شفرته الحين!"; return; }
-        output.style.display = "block"; output.style.borderColor = "#ff9800"; output.style.color = "#ff9800";
-        var interpretations = [
-            "✨ فك تشفير حلمك الحين: رؤيتك تدل على طاقة فرج قريبة جداً وخروج من ضيق أو حيرة كنت تعيشها بالساعات الماضية. الرموز المضيئة بمنامك هي بشارة برزق نظيف عالي قادم لقلبك الطيب! 🪐",
-            "🪐 التفسير الفلكي السري: حلمك يعكس رغبة روحك بالتحرر والراحة. واعلم أن الرموز التي ظهرت لك هي إشارة إلهية لترتيب أمورك وتيسير عسر قادم، استبشر خيراً فمستقبلك محمي ومليء بالبركة! 🌌",
-            "🌌 رسالة مرآة الأحلام: لا تقلق من الغموض، رؤيتك ترمز لانتهاء مرحلة تعب وبداية عهد جديد يحمل لك نجاحاً باهراً وراحة بال طال انتظارها. نم قرير العين فالعوض القادم مذهل! ✨"
-        ];
-        output.innerHTML = interpretations[Math.floor(Math.random() * interpretations.length)];
-    }
-</script>
 </body>
 </html>
