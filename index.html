@@ -334,3 +334,108 @@
         }
     });
 </script>
+    <div class="section-box" style="border-color: #ff9800;">
+        <div class="box-title" id="title-dream" style="color: #ff9800; border-bottom-color: #ff9800;">🌌 مستكشف ومفسر الأحلام الفلكي الذكي</div>
+        <textarea class="wellness-input-box" id="dream-input" placeholder="اكتب تفاصيل حلمك أو الرموز التي شفتها بمنامك الحين بكل سرية..." style="border-color: #ff9800;"></textarea>
+        <button class="wellness-btn" id="dream-btn-click" style="background: linear-gradient(45deg, #ff9800, #e65100); color: #fff;" onclick="generateDreamInterpretation()">أطلق مستكشف الأحلام الذكي الحين 🪐</button>
+        <div class="wellness-output" id="dream-box-output" style="border-color: #ff9800; color: #ff9800; background: rgba(30,15,0,0.5);"></div>
+    </div>
+    <div class="wish-tree-box">
+        <div class="box-title" id="title-tree" style="color: #ffd700; border-bottom-color: #ffd700;">🌳 شجرة الأمنيات الكونية والنبض العاطفي الحي</div>
+        <div id="wish-noti-banner" style="display:none; background:linear-gradient(45deg,#ff3366,#e91e63); color:#fff; font-size:13px; font-weight:bold; padding:10px; border-radius:6px; margin-bottom:12px; text-align:center;">🔔 إشعار من منصة [ عالم الحب KR ] : تلقيت الحين نبضة دعم وقلب جديد على أمنيتك المعلقة! ✨</div>
+        <div class="wish-tree-visual">🌳</div>
+        <input type="text" class="wish-input-field" id="wish-input" placeholder="اكتب أمنيتك السرية في الحياة وعلقها على الشجرة الحين...">
+        <button class="wish-submit-btn" id="wish-btn-click" onclick="plantNewWish()">علّق أمنيتك المضيئة على الشجرة 🌳</button>
+        <div class="wish-display-container" id="wishes-box-list"></div>
+    </div>
+    <div class="section-box">
+        <div class="box-title" id="title-search">🔍 محرك بحث جوجل الذكي</div>
+        <a href="https://google.com" target="_blank" class="btn-gold-link" id="btn-search">اجمع للبحث عن أي شيء بمتصفح جوجل - اضغط هنا</a>
+    </div>
+    
+    <div class="section-box">
+        <div class="box-title" id="title-dua">✨ صندوق الأدعية والإهداءات التفاعلي</div>
+        <input type="text" id="name-input" placeholder="اكتب اسمك هنا الحين..." oninput="refreshAndBuildWhatsAppLink()" required>
+        <select id="dua-select" onchange="refreshAndBuildWhatsAppLink()">
+            <option value="اللهم احفظ لي أحبتي وأهلي ولا تريني فيهم بأساً يبكيني، واستودعتك قلوبهم وحياتهم وصحتهم فاحفظهم بحفظك يا كريم.">🤲 دعاء لحفظ الأهل والأحبة</option>
+            <option value="اللهم افتح لنا أبواب الرزق الحلال الطيب، واقضِ عنا الدين، واغننا بفضلك عمن سواك، واجعل التوفيق حليفنا في كل خطوة.">💰 دعاء سعة الرزق وتيسير الأمور</option>
+            <option value="أسأل الله العظيم أن يزيل عنكم كل ضيق، وأن يشفي مرضاكم، ويرحم موتاكم، ويجعل أيامكم القادمة مليئة بالفرح والفرج والسرور.">🌹 إهداء دعاء تفريج الهم والشفاء</option>
+            <option value="ربِّ اجعل هذا البلد آمناً مطمئناً وسائر بلاد المسلمين، واحفظ أهلنا في لبنان واشفِ جرحاهم وارحم شهداءهم وعمّ بالسلام أراضينا.">🇱🇧 دعاء خاص لحفظ لبنان والسلام</option>
+        </select>
+        <div style="color: #ffd700; font-size: 13px; font-weight: bold; margin-bottom: 5px;" id="title-preview">📖 كلمات الدعاء المختار حالياً:</div>
+        <div class="preview-box" id="dua-text-preview">جاري تحميل نص الدعاء...</div>
+        <a href="#" id="whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none;">
+            <span id="btn-share">أرسل الإهداء وشارك عبر الواتساب 🟢</span>
+        </a>
+    </div>
+    <div class="section-box">
+        <div class="box-title" id="title-love">❤️ صندوق عبارات الحب والاشتياق التفاعلي</div>
+        <input type="text" id="love-name-input" placeholder="اكتب اسمك هنا الحين..." oninput="buildLoveWhatsAppLink()" required>
+        <select id="love-select" onchange="buildLoveWhatsAppLink()">
+            <option value="أشتاق إليك شوقاً يملأ الكون صخباً، وأحبك حباً يجعل من دقات قلبي عزفاً لاسمك الدافيء دائماً وأبداً.">🥀 عبارة اشتياق وحنين جارف</option>
+            <option value="أنت لست مجرد شخص عابر في حياتي، أنت عمري، وأجمل أقداري، ونبض قلبي الذي لا أعيش بدونه يوماً واحداً.">💍 عبارة حب أبدي وعهود صادقة</option>
+        </select>
+        <div style="color: #ffd700; font-size: 13px; font-weight: bold; margin-bottom: 5px;" id="title-love-preview">📖 كلمات العبارة المختارة حالياً:</div>
+        <div class="preview-box" id="love-text-preview">جاري تحميل العبارة...</div>
+        <a href="#" id="love-whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none; background: linear-gradient(45deg, #e91e63, #b71c1c);"><span id="btn-love-share">أرسل العبارة عبر الواتساب 🟢</span></a>
+    </div>
+
+    <div class="section-box">
+        <div class="box-title" id="title-congrat">🎉 صندوق التهنئة والمباركة للمناسبات والأعياد</div>
+        <input type="text" id="congrat-name-input" placeholder="اكتب اسمك هنا الحين..." oninput="buildCongratWhatsAppLink()" required>
+        <select id="congrat-select" onchange="buildCongratWhatsAppLink()">
+            <option value="تقبل الله منا ومنكم صالح الأعمال، وكل عام وأنتم بخير وصحة وعافية بمناسبة عيد الفطر السعيد.">🌙 مباركة عيد الفطر السعيد</option>
+            <option value="ألف مبروك النجاح والتفوق الباهر الذي يرفع الرأس! هذا الحصاد ثمرة صبركم وتعبكم.">🎓 تهنئة بالنجاح الباهر</option>
+        </select>
+        <div style="color: #ffd700; font-size: 13px; font-weight: bold; margin-bottom: 5px;" id="title-congrat-preview">📖 كلمات التهنئة المختارة حالياً:</div>
+        <div class="preview-box" id="congrat-text-preview">جاري تحميل التهنئة...</div>
+        <a href="#" id="congrat-whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none; background: linear-gradient(45deg, #ff9800, #f57c00);"><span id="btn-congrat-share">أرسل التهنئة عبر الواتساب 🟢</span></a>
+    </div>
+
+    <div class="section-box">
+        <div class="box-title" id="title-shop">📱 خدمات تشريج الخطوط والإنترنت الموثوقة</div>
+        <p class="shop-box-desc">دليلكِ الآمن والكامل لتشريج خطوط Alfa وتاتش MTC برواقة تامة وبأعلى مصداقية في لبنان:</p>
+        <a href="whatsapp://send?phone=96179320900&text=مرحبا، بدي أطلب تشريج خطوط" class="round-gold-btn">💬 اطلب تشريج خطك الآن (واتساب)</a>
+    </div>
+
+    <div class="section-box">
+        <div class="box-title">🛒 خدمات شحن PUBG ومشتريات SHEIN</div>
+        <p class="shop-box-desc">اشحني حسابكِ وألعابكِ بثقة تامة! محطتكِ المتكاملة لتأمين شدات لعبة ببجي ومشتريات SHEIN بأسرع خدمة كاش:</p>
+        <a href="whatsapp://send?phone=96171689517&text=مرحبا، بدي شحن ألعاب" class="round-pink-btn">🛍️ للطلب وشحن الشدات و SHEIN (واتساب)</a>
+    </div>
+    <div class="section-box">
+        <div class="box-title" id="title-tasbih">📿 صندوق لوحة عداد التسبيح والاستغفار الرقمي</div>
+        <div class="tasbih-display" id="tasbih-display-box"><span id="tasbih-val">0</span></div>
+        <button class="tasbih-btn" onclick="countTasbih()">اضغط هنا 📿</button>
+        <div style="text-align: center; margin-top: 5px;"><button class="tasbih-reset" id="tasbih-reset-btn" onclick="resetTasbih()">إعادة تصفير العداد 🔄</button></div>
+    </div>
+
+    <div class="section-box">
+        <div class="box-title" id="title-secret">🔐 صندوق الرسائل السرية والمفاجآت المغلقة</div>
+        <input type="text" id="secret-input" placeholder="اكتب الكلمة السرية هنا الحين...">
+        <button class="secret-btn" id="secret-btn-click" onclick="unlockSecret()">افتح واكشف المفاجأة السرية الحين 🔓</button>
+        <div class="secret-output" id="secret-box-output"></div>
+    </div>
+    
+    <div class="panda-footer-new-box"><span style="font-size: 75px; display: inline-block; filter: drop-shadow(0 0 15px rgba(255,255,255,0.45)); animation: panda-float 2s ease-in-out infinite;">🐼</span></div>
+    <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1573</span> زائر</div>
+    <br>
+    <div class="family-logo-wrapper"><div class="family-logo pulse-fast">👑 KR 👑</div></div>
+</div>
+
+<script>
+    function generateDreamInterpretation() {
+        var input = document.getElementById("dream-input").value.trim();
+        var output = document.getElementById("dream-box-output");
+        if (input === "") { output.style.display = "block"; output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = "⚠️ من فضلكِ اكتب تفاصيل حلمكِ أولاً لكي يفك المستشار شفرته الحين!"; return; }
+        output.style.display = "block"; output.style.borderColor = "#ff9800"; output.style.color = "#ff9800";
+        var interpretations = [
+            "✨ فك تشفير حلمك الحين: رؤيتك تدل على طاقة فرج قريبة جداً وخروج من ضيق أو حيرة كنت تعيشها بالساعات الماضية. الرموز المضيئة بمنامك هي بشارة برزق نظيف عالي قادم لقلبك الطيب! 🪐",
+            "🪐 التفسير الفلكي السري: حلمك يعكس رغبة روحك بالتحرر والراحة. واعلم أن الرموز التي ظهرت لك هي إشارة إلهية لترتيب أمورك وتيسير عسر قادم، استبشر خيراً فمستقبلك محمي ومليء بالبركة! 🌌",
+            "🌌 رسالة مرآة الأحلام: لا تقلق من الغموض، رؤيتك ترمز لانتهاء مرحلة تعب وبداية عهد جديد يحمل لك نجاحاً باهراً وراحة بال طال انتظارها. نم قرير العين فالعوض القادم مذهل! ✨"
+        ];
+        output.innerHTML = interpretations[Math.floor(Math.random() * interpretations.length)];
+    }
+</script>
+</body>
+</html>
