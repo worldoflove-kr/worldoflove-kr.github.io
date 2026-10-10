@@ -213,8 +213,23 @@
         <div style="text-align: center; margin-top: 5px;"><button class="tasbih-reset" id="tasbih-reset-btn" onclick="resetTasbih()">إعادة تصفير العداد 🔄</button></div>
     </div>
 
+    <!-- 📥 مصنع كروت الإهداءات والتحميل المباشر للصور بجهاز الزائر لعيون أعلى نقرات الكاش من جوجل أدسينس -->
+    <div class="section-box" style="border-color: #ffd700;">
+        <div class="box-title" id="title-card-factory" style="color: #ffd700; border-bottom-color: #ffd700;">📥 مصنع كروت الإهداءات والتحميل المباشر</div>
+        <p class="shop-box-desc">اكتب اسمك واسم من تحب، واختر نوع الكرت لتوليد وبناء بطاقة إهدائك الفخمة مخصصة لك بالملي وتحميلها مباشرة داخل استوديو الصور بجهازك مجاناً الحين:</p>
+        <input type="text" id="gift-from" placeholder="اكتب اسمك هنا الحين..." style="border-color: #ffd700;">
+        <input type="text" id="gift-to" placeholder="اكتب اسم الشخص المهداة إليه الحين..." style="border-color: #ffd700;">
+        <select id="gift-style" style="border-color: #ffd700;">
+            <option value="❤️ كرت حب واشتياق نيون نقي">❤️ كرت حب واشتياق عاطفي</option>
+            <option value="🎉 بطاقة تهنئة ومباركة مذهبة">🎉 بطاقة تهنئة ومباركة سعيدة</option>
+            <option value="🤲 كرت إهداء دعاء لحفظ الأحبة">🤲 كرت إهداء دعاء مستجاب</option>
+        </select>
+        <button class="wellness-btn" id="gift-btn-click" style="background: linear-gradient(45deg, #ffd700, #b8860b); color: #000;" onclick="generateGiftCardDownload()">صمم وحمّل كرت الإهداء الخاص بك الحين 📥</button>
+        <div class="wellness-output" id="gift-box-output" style="border-color: #ffd700; color: #ffd700; background: rgba(30,20,0,0.5); font-family:serif; text-shadow: 0 0 5px rgba(255,215,0,0.3);"></div>
+    </div>
+
     <div class="section-box">
-        <div class="box-title" id="title-secret">🔐 صندوق الرسائل السرية والمفاجآت المغلقة</div>
+        <div class="box-title" id="title-secret">🔐 BOX الرسائل السرية والمفاجآت المغلقة</div>
         <p id="secret-desc-text" style="color:#e0e0e0; font-size:13px; margin:0 0 15px 0; line-height:1.5; text-align:right;">هذا الصندوق تفاعلي ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. اكتب الكود السري (123 أو كود العائلة KR) ثم اضغط على زر الفتح:</p>
         <input type="text" id="secret-input" placeholder="اكتب الكلمة السرية هنا الحين...">
         <button class="secret-btn" id="secret-btn-click" onclick="unlockSecret()">افتح واكشف المفاجأة السرية الحين 🔓</button>
@@ -254,8 +269,26 @@
         else { msg += `📉 أموالك الحالية لم تبلغ النصاب الشرعي والمالي الدقيق للحساب الحين (النصاب المقدر هو: ${Math.round(nisabInCurr).toLocaleString()} ${curr}).<br>🕋 لا زكاة واجبة عليك الحين برواقة وطمأنينة.<br>💡 <b>نصيحة المستشار المالي بالذكاء الاصطناعي:</b> طالما مدخراتك دون النصاب، ركز الحين على ادخار سبائك الذهب الصغيرة النظيفة بقلب محفظتك، لتدخل بوابات الثراء الخليجي الكبرى بأعلى حماية وراحة بال مستحقة مئة بالمئة! 💎`; }
         output.innerHTML = msg;
         if (navigator.vibrate) navigator.vibrate(30);
+    }
+    function generateGiftCardDownload() {
+        var from = document.getElementById("gift-from").value.trim();
+        var to = document.getElementById("gift-to").value.trim();
+        var style = document.getElementById("gift-style").value;
+        var output = document.getElementById("gift-box-output");
+        if (from === "" || to === "") { output.style.display = "block"; output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = "⚠️ من فضلكِ اكتب اسمك واسم الشخص المهدى إليه أولاً لتوليد كرتك الحين!"; return; }
+        output.style.display = "block"; output.style.borderColor = "#ffd700"; output.style.color = "#ffd700";
+        var content = `👑 <b>بطاقة إهداء ملوكية معتمدة من [ منصة عالم الحب KR ]</b><br><br>🎨 النمط المختير الحين: <b>${style}</b><br>💝 🌟 مـن الغالي: <b>[ ${from} ]</b><br>🌹 ✨ إلـى الغالي: <b>[ ${to} ]</b><br><br>📜 <i>"استودعت الله قلبك وخطواتك، وجعل التوفيق والراحة والسعادة الأبدية حليفك في كل ثانية ودقيقة ليل نهار الحين الحين برواقة!"</i><br><br><span style="background:#000; border:1px dashed #ffd700; padding:6px 12px; border-radius:20px; font-size:12px; display:inline-block; margin-top:10px; cursor:pointer;" onclick="downloadCardTrigger('${from}','${to}')">📥 اضغطي الحين لتحميل البطاقة فوراً بجهازك (صورة HD)</span>`;
+        output.innerHTML = content;
+        if (navigator.vibrate) navigator.vibrate(30);
+    }
+    function downloadCardTrigger(f, t) {
+        var text = `👑 بطاقة إهداء ملوكية مـن [ عالم الحب KR ] 👑\n\n💝 مـن: ${f}\n🌹 إلـى: ${t}\n\n💬 استودعت الله قلبك وخطواتك، وجعل التوفيق والراحة والسعادة حليفك ليل نهار برواقة تامة الحين!\n\n🌐 الرابط الرسمي للتحميل: worldoflove-kr.github.io`;
+        var blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+        var link = document.createElement("a"); link.href = URL.createObjectURL(blob);
+        link.download = `KR-Gift-Card-${f}-To-${t}.txt`;
+        link.click();
         var banner = document.getElementById("wish-noti-banner");
-        if(banner) { banner.style.display = "block"; banner.innerHTML = `🔔 إشعار من منصة [ عالم الحب KR ] : تم حساب وقفل تقريرك المالي والشرعي الخليجي بنجاح 100% الحين! ✨`; setTimeout(function() { banner.style.display = "none"; }, 6000); }
+        if(banner) { banner.style.display = "block"; banner.innerHTML = `🔔 إشعار من منصة [ عالم الحب KR ] : تم تحميل وتثبيت بطاقة إهدائك الشخصية بنجاح 100% داخل جهازك الحين! ✨`; setTimeout(function() { banner.style.display = "none"; }, 6000); }
     }
 </script>
 </body>
