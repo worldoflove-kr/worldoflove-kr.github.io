@@ -365,6 +365,12 @@
             <div class="wellness-output" id="gift-box-output" style="border-color: #ffd700; color: #ffd700; background: rgba(30,20,0,0.5); font-family:serif; text-shadow: 0 0 5px rgba(255,215,0,0.3);"></div>
         </div>
 
+        <div class="section-box" style="border-color: #25D366;">
+            <div class="box-title" id="title-wa-share" style="color: #25D366; border-bottom-color: #25D366;">🟢 صندوق الإرسال والمشاركة الفورية عبر الواتساب</div>
+            <p class="shop-box-desc" id="wa-desc-lb">يمكنك الحين إرسال ومشاركة نفس العبارة أو الدعاء المختار أعلاه كرسالة نصية مباشرة وسريعة عبر الواتساب لأحبابك برواقة تامة:</p>
+            <a href="#" id="global-whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none;" onclick="shareActiveQuoteToWhatsApp()"><span id="btn-global-share">أرسل العبارة الملوكية عبر الواتساب الحين 🟢</span></a>
+        </div>
+
         <div class="section-box">
             <div class="box-title" id="title-tasbih">📿 صندوق لوحة عداد التسبيح والاستغفار الرقمي</div>
             <div class="tasbih-display" id="tasbih-display-box"><span id="tasbih-val">0</span></div>
@@ -385,5 +391,29 @@
         <br>
         <div class="family-logo-wrapper"><div class="family-logo pulse-fast">👑 KR 👑</div></div>
     </div>
+    <script>
+        function shareActiveQuoteToWhatsApp() {
+            var from = document.getElementById("gift-from").value.trim();
+            var to = document.getElementById("gift-to").value.trim();
+            var finalQuote = document.getElementById("gift-quote-select").value;
+            var selEl = document.getElementById("gift-quote-select");
+            var styleName = selEl.options[selEl.selectedIndex].parentElement.label || "إهداء ملكي خاص";
+            
+            if (from === "" || to === "") {
+                alert(currentLang === 'ar' ? "⚠️ من فضلكِ اكتب اسمكِ واسم الشخص المهدى إليه أولاً في مصنع الكروت فوق لكي نصك الرسالة الحين!" : "⚠️ Please enter From and To names in the Card Factory first!");
+                return;
+            }
+            
+            var text = currentLang === 'ar' ? 
+                `👑 *بطاقة إهداء ملوكية معتمدة من [ منصة عالم الحب KR ]* 👑\n\n🎨 *الفئة:* ${styleName}\n💝 *مـن الغالي:* [ ${from} ]\n🌹 *إلـى الغالي:* [ ${to} ]\n\n📜 *الرسالة:*\n"${finalQuote}"\n\n🌐 *الرابط الرسمي للمنصة:* worldoflove-kr.github.io` : 
+                `👑 *Royal Gift Card from [ World of Love KR ]* 👑\n\n🎨 *Type:* ${styleName}\n💝 *From:* [ ${from} ]\n🌹 *To:* [ ${to} ]\n\n📜 *Message:*\n"${finalQuote}"\n\n🌐 *Official Platform:* worldoflove-kr.github.io`;
+            
+            var encodedText = encodeURIComponent(text);
+            var whatsappUrl = "whatsapp://send?text=" + encodedText;
+            
+            var anchor = document.getElementById("global-whatsapp-anchor");
+            anchor.href = whatsappUrl;
+        }
+    </script>
 </body>
 </html>
