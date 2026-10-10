@@ -364,27 +364,53 @@
         <button class="wellness-btn" id="gift-btn-click" style="background: linear-gradient(45deg, #ffd700, #b8860b); color: #000;" onclick="generateGiftCardDownload()">بناء وصك كرت الإهداء الملوكي الحين 📥</button>
         <div class="wellness-output" id="gift-box-output" style="border-color: #ffd700; color: #ffd700; background: rgba(30,20,0,0.5); font-family:serif; text-shadow: 0 0 5px rgba(255,215,0,0.3);"></div>
     </div>
-        <select id="gift-quote-select" style="border-color: #ffd700;">
-            <optgroup label="❤️ عبارات الحب والاشتياق العاطفية" id="grp-love">
-                <option value="استودعت الله قلبك وخطواتك، وجعل التوفيق والراحة والسعادة الأبدية حليفك ليل نهار برواقة تامة الحين! ❤️">❤️ استودعت الله قلبك وخطواتك السعيدة</option>
-                <option value="أشتاق إليك شوقاً يملأ الكون صخباً، وأحبك حباً يجعل من دقات قلبي عزفاً لاسمك الدافيء دائماً وأبداً! ✨">❤️ أشتاق إليك شوقاً يملأ الكون صخباً</option>
-                <option value="أنت لست مجرد شخص عابر في حياتي، أنت عمري، وأجمل أقداري، ونبض قلبي الذي لا أعيش بدونه يوماً واحداً! 💍">❤️ أنت لست شخص عابر أنت عمري ونبضي</option>
-                <option value="تغيب الشمس ويحل الظلام، لكن دفء حبك بقلبي لا يغيب أبداً، تظل أنت الأول والأخير بقلبي وعالمي الجميل! 🌹">❤️ دفء حبك بقلبي لا يغيب الأول والأخير</option>
-            </optgroup>
-            <optgroup label="🎉 عبارات التهنئة والمباركة للمناسبات" id="grp-congrat">
-                <option value="تقبل الله منا ومنكم صالح الأعمال، وكل عام وأنتم بخير وصحة وعافية بمناسبة العيد السعيد وأجمل الأوقات! 🌙">🎉 تقبل الله منا ومنكم وكل عام وأنتم بخير</option>
-                <option value="ألف مبروك النجاح والتفوق الباهر الذي يرفع الرأس! هذا الحصاد الجميل هو ثمرة صبركم وتعبكم المستمر! 🎓">🎉 ألف مبروك النجاح والتفوق ثمرة صبركم</option>
-                <option value="ألف مبروك الزواج الميمون، بارك الله لكما وبارك عليكما وجمع بينكما في خير، وجعل أيامكم كلها حب وسعادة! 💍">🎉 ألف مبروك الزواج الميمون بارك الله لكما</option>
-                <option value="مع بداية العام الجديد، أتمنى لكم عاماً مليئاً بالفرح والنجاح والسلامة، وأن تتحقق فيه كل أمنياتكم الطيبة! ✨">🎉 تهنئة بالعام الجديد والأمنيات الطيبة لكم</option>
-            </optgroup>
-            <optgroup label="🤲 عبارات الأدعية وإهداءات الخير" id="grp-dua">
-                <option value="اللهم احفظ لي أحبتي وأهلي ولا تريني فيهم بأساً يبكيني، واستودعتك قلوبهم وحياتهم وصحتهم فاحفظهم بحفظك يا كريم! 🤲">🤲 دعاء حفظ الأهل والأحبة والقلوب الغالية</option>
-                <option value="أسأل الله العظيم أن يزيل عنكم كل ضيق، وأن يشفي مرضاكم، ويرحم موتاكم، ويجعل أيامكم القادمة مليئة بالفرح والسرور! 🌹">🤲 إهداء تفريج الهم والشفاء والرحمة العميقة</option>
-                <option value="لو كان للحب والاشتياق عنوان لكان عينيك الفاتنتين، ولو كان لي أمنية لكانت البقاء بجانبك طول العمر برواقة! 💎">🤲 لو كان للحب عنوان أمنية البقاء بجانبك</option>
-                <option value="ربِّ اجعل هذا البلد آمناً مطمئناً وسائر بلاد المسلمين، واحفظ أهلنا في لبنان واشفِ جرحاهم وعمّ بالسلام أراضينا! 🇱🇧">🤲 دعاء حفظ لبنان والسلام الشامل لأراضينا</option>
-            </optgroup>
-        </select>
-        <button class="wellness-btn" id="gift-btn-click" style="background: linear-gradient(45deg, #ffd700, #b8860b); color: #000;" onclick="generateGiftCardDownload()">بناء وصك كرت الإهداء الملوكي الحين 📥</button>
-        <div class="wellness-output" id="gift-box-output" style="border-color: #ffd700; color: #ffd700; background: rgba(30,20,0,0.5); font-family:serif; text-shadow: 0 0 5px rgba(255,215,0,0.3);"></div>
-    </div>
+        <div class="section-box" style="border-color: #25D366;">
+            <div class="box-title" id="title-wa-share" style="color: #25D366; border-bottom-color: #25D366;">🟢 صندوق الإرسال والمشاركة الفورية عبر الواتساب</div>
+            <p class="shop-box-desc" id="wa-desc-lb">يمكنك الحين إرسال ومشاركة نفس العبارة أو الدعاء المختار أعلاه كرسالة نصية مباشرة وسريعة عبر الواتساب لأحبابك برواقة تامة:</p>
+            <a href="#" id="global-whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none;" onclick="shareActiveQuoteToWhatsApp()"><span id="btn-global-share">أرسل العبارة الملوكية عبر الواتساب الحين 🟢</span></a>
+        </div>
 
+        <div class="section-box">
+            <div class="box-title" id="title-tasbih">📿 صندوق لوحة عداد التسبيح والاستغفار الرقمي</div>
+            <div class="tasbih-display" id="tasbih-display-box"><span id="tasbih-val">0</span></div>
+            <button class="tasbih-btn" onclick="countTasbih()">اضغط هنا 📿</button>
+            <div style="text-align: center; margin-top: 5px;"><button class="tasbih-reset" id="tasbih-reset-btn" onclick="resetTasbih()">إعادة تصفير العداد 🔄</button></div>
+        </div>
+
+        <div class="section-box">
+            <div class="box-title" id="title-secret">🔐 صندوق الرسائل السرية والمفاجآت المغلقة</div>
+            <p id="secret-desc-text" style="color:#e0e0e0; font-size:13px; margin:0 0 15px 0; line-height:1.5; text-align:right;">هذا الصندوق تفاعلي ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. اكتب الكود السري (123 أو كود العائلة KR) ثم اضغط على زر الفتح:</p>
+            <input type="text" id="secret-input" placeholder="اكتب الكلمة السرية هنا الحين...">
+            <button class="secret-btn" id="secret-btn-click" onclick="unlockSecret()">افتح واكشف المفاجأة السرية الحين 🔓</button>
+            <div class="secret-output" id="secret-box-output"></div>
+        </div>
+        
+        <div class="panda-footer-new-box"><span style="font-size: 75px; display: inline-block; filter: drop-shadow(0 0 15px rgba(255,255,255,0.45)); animation: panda-float 2s ease-in-out infinite;">🐼</span></div>
+        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1573</span> زائر</div>
+        <br>
+        <div class="family-logo-wrapper"><div class="family-logo pulse-fast">👑 KR 👑</div></div>
+    </div>
+    <script>
+        function shareActiveQuoteToWhatsApp() {
+            var from = document.getElementById("gift-from").value.trim();
+            var to = document.getElementById("gift-to").value.trim();
+            var finalQuote = document.getElementById("gift-quote-select").value;
+            var selEl = document.getElementById("gift-quote-select");
+            var styleName = selEl.options[selEl.selectedIndex].parentElement.label || "إهداء ملكي خاص";
+            
+            if (from === "" || to === "") {
+                alert(currentLang === 'ar' ? "⚠️ من فضلكِ اكتب اسمكِ واسم الشخص المهدى إليه أولاً في مصنع الكروت فوق لكي نصك الرسالة الحين!" : "⚠️ Please enter From and To names in the Card Factory first!");
+                return;
+            }
+            
+            var text = currentLang === 'ar' ? 
+                `👑 *بطاقة إهداء ملوكية معتمدة من [ منصة عالم الحب KR ]* 👑\n\n🎨 *الفئة:* ${styleName}\n💝 *مـن الغالي:* [ ${from} ]\n🌹 *إلـى الغالي:* [ ${to} ]\n\n📜 *الرسالة:*\n"${finalQuote}"\n\n🌐 *الرابط الرسمي للمنصة:* worldoflove-kr.github.io` : 
+                `👑 *Royal Gift Card from [ World of Love KR ]* 👑\n\n🎨 *Type:* ${styleName}\n💝 *From:* [ ${from} ]\n🌹 *To:* [ ${to} ]\n\n📜 *Message:*\n"${finalQuote}"\n\n🌐 *Official Platform:* worldoflove-kr.github.io`;
+            
+            var encodedText = encodeURIComponent(text);
+            var whatsappUrl = "whatsapp://send?text=" + encodedText;
+            var anchor = document.getElementById("global-whatsapp-anchor"); anchor.href = whatsappUrl;
+        }
+    </script>
+</body>
+</html>
