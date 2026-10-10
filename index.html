@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عالم الحب - World of Love</title>
     <style>
-        body { background-color: #050505; background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px), radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px), radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px); background-size: 550px 550px, 350px 350px, 250px 250px; background-position: 0 0, 40px 60px, 130px 270px; color: #ffffff; font-family: sans-serif; margin: 0; padding: 0; text-align: center; -webkit-user-select: none; user-select: none; }
+        body { background-color: #050505; background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px), radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px), radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px); background-size: 550px 550px, 350px 350px, 250px 250px; background-position: 0 0, 40px 60px, 130px 270px; color: #ffffff; font-family: sans-serif; margin: 0; padding: 0; text-align: center; user-select: none; }
         .ticker-container { width: 100%; background-color: #000000; border-bottom: 2px solid #ffd700; overflow: hidden; padding: 12px 0; }
         .ticker-wrapper { display: inline-block; white-space: nowrap; animation: marquee-live 20s linear infinite; }
         .ticker-link { text-decoration: none; color: inherit; font-weight: bold; font-size: 13px; padding: 0 20px; }
@@ -22,16 +22,16 @@
         .btn-gold-link { display: block; background: linear-gradient(45deg, #ffd700, #b8860b); border: none; color: #000; padding: 14px; font-size: 15px; font-weight: bold; border-radius: 8px; text-decoration: none; cursor: pointer; text-align: center; box-sizing: border-box; line-height: 1.4; }
         .btn-whatsapp-btn { display: block; width: 100%; background: linear-gradient(45deg, #25D366, #128C7E); border: none; color: #fff; padding: 14px; font-size: 15px; font-weight: bold; border-radius: 8px; text-decoration: none; cursor: pointer; text-align: center; box-sizing: border-box; margin-top: 5px; }
         .shop-box-desc { color: #e0e0e0; font-size: 13.5px; margin: 0 0 15px 0; line-height: 1.6; text-align: right; }
-        .round-gold-btn { display: block; background: #050505; border: 2px solid #ffd700; color: #ffd700; padding: 13px; font-size: 14px; font-weight: bold; border-radius: 25px; text-decoration: none; text-align: center; margin: 15px auto 5px auto; width: 90%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; }
-        .round-pink-btn { display: block; background: #050505; border: 2px solid #ff3366; color: #ff3366; padding: 13px; font-size: 14px; font-weight: bold; border-radius: 25px; text-decoration: none; text-align: center; margin: 10px auto 5px auto; width: 90%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; }
+        .round-gold-btn { display: block; background: #050505; border: 2px solid #ffd700; color: #ffd700; padding: 13px; font-size: 14px; font-weight: bold; border-radius: 25px; text-decoration: none; text-align: center; margin: 15px auto 5px auto; width: 90%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .round-pink-btn { display: block; background: #050505; border: 2px solid #ff3366; color: #ff3366; padding: 13px; font-size: 14px; font-weight: bold; border-radius: 25px; text-decoration: none; text-align: center; margin: 10px auto 5px auto; width: 90%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .pubg-btn-static { display: block; background: #050505; border: 1px solid #ffffff; color: #ffffff; padding: 10px; font-size: 13px; font-weight: bold; border-radius: 5px; text-decoration: none; text-align: center; margin: 10px auto; width: 90%; box-sizing: border-box; }
         .sub-title-en { font-size: 20px; font-weight: bold; color: #ffd700; margin: -2px 0 15px 0; font-style: italic; font-family: 'Georgia', serif; letter-spacing: 1px; }
         .tasbih-display { font-size: 42px; font-weight: bold; color: #ffd700; text-align: center; margin: 10px 0; font-family: monospace; letter-spacing: 2px; text-shadow: 0 0 15px rgba(255,215,0,0.4); }
-        .tasbih-btn { display: block; width: 140px; height: 140px; background: linear-gradient(45deg, #ffd700, #b8860b); color: #000; font-size: 22px; font-weight: bold; border-radius: 50%; border: 4px solid #000; box-shadow: 0 5px 20px rgba(255,215,0,0.4); cursor: pointer; margin: 15px auto; display: flex; align-items: center; justify-content: center; transition: transform 0.1s ease; }
+        .tasbih-btn { display: block; width: 140px; height: 140px; background: linear-gradient(45deg, #ffd700, #b8860b); color: #000; font-size: 22px; font-weight: bold; border-radius: 50%; border: 4px solid #000; box-shadow: 0 5px 20px rgba(255,215,0,0.4); margin: 15px auto; display: flex; align-items: center; justify-content: center; transition: transform 0.1s ease; }
         .tasbih-btn:active { transform: scale(0.92); }
-        .tasbih-reset { display: inline-block; background: #222; border: 1px dashed #ffd700; color: #ffd700; padding: 6px 15px; font-size: 12px; font-weight: bold; border-radius: 20px; cursor: pointer; text-decoration: none; margin-top: 5px; }
+        .tasbih-reset { display: inline-block; background: #222; border: 1px dashed #ffd700; color: #ffd700; padding: 6px 15px; font-size: 12px; font-weight: bold; border-radius: 20px; margin-top: 5px; }
         .secret-output { background: rgba(0,0,0,0.6); border: 2px dashed #ffd700; border-radius: 8px; padding: 15px; color: #ffd700; font-size: 15px; font-weight: bold; text-align: center; margin-top: 15px; line-height: 1.6; min-height: 25px; display: none; }
-        .secret-btn { display: block; width: 100%; background: linear-gradient(45deg, #ffd700, #b8860b); color: #000; border: none; padding: 12px; font-size: 14px; font-weight: bold; border-radius: 6px; cursor: pointer; box-shadow: 0 4px 10px rgba(255,215,0,0.2); }
+        .secret-btn { display: block; width: 100%; background: linear-gradient(45deg, #ffd700, #b8860b); color: #000; border: none; padding: 12px; font-size: 14px; font-weight: bold; border-radius: 6px; box-shadow: 0 4px 10px rgba(255,215,0,0.2); }
         .panda-welcome-flex { display: flex; flex-direction: row-reverse; align-items: center; justify-content: center; gap: 15px; margin: 20px auto; max-width: 460px; padding: 10px; background: rgba(255,215,0,0.02); border-radius: 15px; border: 1px dashed rgba(255,215,0,0.15); }
         .welcome-content-wrapper { display: flex; flex-direction: column; align-items: flex-end; text-align: right; flex: 1; }
         .welcome-bibi-text-box { font-size: 21px; font-weight: bold; font-family: 'Georgia', serif; letter-spacing: 1px; margin-bottom: 5px; animation: text-pulsing-soft 1.3s ease-in-out infinite; }
@@ -39,19 +39,25 @@
         .panda-features-desc { color: #ffd700; font-size: 12px; line-height: 1.4; font-style: italic; text-shadow: 0 0 5px rgba(255,215,0,0.3); }
         .panda-footer-new-box { width: 140px; height: 140px; margin: 25px auto 10px auto; display: flex; align-items: center; justify-content: center; }
         .visitor-counter { color: #ffd700; font-size: 13px; font-weight: bold; margin-top: 10px; background: #000; padding: 8px 15px; border-radius: 20px; border: 1px dashed #ffd700; display: inline-block; }
-        .family-logo-wrapper { margin-top: 25px; margin-bottom: 15px; display: inline-block; transform: rotate(-8deg); animation: logo-pulsing 1.2s ease-in-out infinite; }
+        .family-logo-wrapper { margin-top: 25px; margin-bottom: 15px; display: inline-block; transform: rotate(-8deg) scale(1); animation: logo-pulsing 1.2s ease-in-out infinite; }
         .family-logo { font-size: 36px; font-weight: bold; color: #ffd700; letter-spacing: 3px; font-family: 'Georgia', serif; padding: 4px 22px; border-top: 3px double #ffd700; border-bottom: 3px double #ffd700; text-shadow: 0 0 10px #ffd700; }
         .wish-display-container { margin-top: 20px; text-align: right; max-height: 180px; overflow-y: auto; }
         .wish-item-card { background: #161616; border-right: 4px solid #00ffaa; border-radius: 6px; padding: 12px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
         .wish-text-content { color: #fff; font-size: 13.5px; flex: 1; line-height: 1.4; }
         .wish-support-btn { background: #000; border: 1px solid #ff3366; color: #ff3366; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; cursor: pointer; }
         .wellness-input-box { width: 100%; min-height: 90px; background: #000; border: 1px solid #00ffaa; border-radius: 6px; color: #fff; padding: 12px; font-size: 14px; text-align: right; box-sizing: border-box; margin-bottom: 12px; font-family: sans-serif; resize: none; }
-        .wellness-btn { display: block; width: 100%; background: linear-gradient(45deg, #00ffaa, #008855); color: #000; border: none; padding: 13px; font-size: 14.5px; font-weight: bold; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,255,170,0.2); }
+        .wellness-btn { display: block; width: 100%; background: linear-gradient(45deg, #00ffaa, #008855); color: #000; border: none; padding: 13px; font-size: 14.5px; font-weight: bold; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,255,170,0.2); }
         .wellness-output { background: rgba(0,30,15,0.5); border: 2px dashed #00ffaa; border-radius: 8px; padding: 15px; color: #00ffaa; font-size: 14.5px; font-weight: bold; text-align: center; margin-top: 15px; line-height: 1.6; display: none; }
         .wish-tree-box { text-align: center; margin: 20px auto; padding: 15px; background: rgba(0,0,0,0.6); border: 1px solid #ffd700; border-radius: 12px; }
         .wish-tree-visual { font-size: 65px; margin: 15px auto; display: inline-block; filter: drop-shadow(0 0 15px #00ffaa); animation: tree-glow-pulse 2.5s ease-in-out infinite; }
         .wish-input-field { width: 100%; padding: 12px; background: #000; border: 1px solid #ffd700; border-radius: 6px; color: #fff; text-align: right; box-sizing: border-box; margin-bottom: 12px; font-size: 14px; }
         .wish-submit-btn { display: block; width: 100%; background: linear-gradient(45deg, #ffd700, #e6c200); color: #000; border: none; padding: 13px; font-size: 15px; font-weight: bold; border-radius: 8px; cursor: pointer; }
+        @keyframes tree-glow-pulse { 0% { transform: scale(1); filter: drop-shadow(0 0 15px #00ffaa); } 50% { transform: scale(1.05); filter: drop-shadow(0 0 30px #ffd700); } 100% { transform: scale(1); filter: drop-shadow(0 0 15px #00ffaa); } }
+        @keyframes text-pulsing-soft { 0% { transform: scale(1); } 50% { transform: scale(1.03); filter: brightness(1.2); } 100% { transform: scale(1); } }
+        @keyframes logo-pulsing { 0% { transform: rotate(-8deg) scale(1); } 50% { transform: rotate(-8deg) scale(1.06); filter: drop-shadow(0 0 15px #ffd700); } 100% { transform: rotate(-8deg) scale(1); } }
+        .pulse-fast { animation: fast-pulsing 1.2s ease-in-out infinite; }
+        @keyframes fast-pulsing { 0% { transform: scale(1); text-shadow: 0 0 5px #ffd700; } 50% { transform: scale(1.04); text-shadow: 0 0 20px #ffd700, 0 0 30px #b8860b; } 100% { transform: scale(1); text-shadow: 0 0 5px #ffd700; } }
+    </style>
     <script>
         var currentLang = 'ar';
         document.addEventListener('contextmenu', e => e.preventDefault());
@@ -75,8 +81,7 @@
             output.style.display = "block"; output.style.borderColor = "#00ffaa"; output.style.color = "#00ffaa";
             var hopes = [
                 "✨ جرعة الأمل لك الحين: لا تضيق وتيأس، فكل مرّ سيمر، والضغط الذي تعيشه اليوم هو مجرد بداية لولادة فجر جديد مليء بالرزق والفرح والراحة. رب العالمين معك ولن يتركك أبداً الحين! 🌿",
-                "🌿 رسالة طمأنينة لقلبك: الفرج قريب جداً وفوق ما تتخيل، خذ نفساً عميقاً واعلم أن عسر اليوم يتبعه يسرين غداً بالملي. اترك قلق المستقبل للأقدار وعش اللحظة برضا وسلام داخلي! 🤍",
-                "🤍 سند روحي دافئ: أنت شخص قوي وصبرت على الكثير، وما يحدث الحين هو مجرد ترتيب إلهي ليعوضك ببركة وخير ينسيك كل دموع وتعب الساعات الماضية. استبشر خيراً فالقادم مذهل! ✨"
+                "🌿 رسالة طمأنينة لقلبك: الفرج قريب جداً وفوق ما تتخيل، خذ نفساً عميقاً واعلم أن عسر اليوم يتبعه يسرين غداً بالملي. اترك قلق المستقبل للأقدار وعش اللحظة برضا وسلام داخلي! 🤍"
             ];
             output.innerHTML = hopes[Math.floor(Math.random() * hopes.length)];
         }
@@ -147,6 +152,7 @@
             document.getElementById("love-whatsapp-anchor").setAttribute("href", "whatsapp://send?text=" + encodeURIComponent(`💝 رسالة حب واشتياق مـن: *[ ${n} ]* \n\n💬 *الكلمات:* \n" ${t} " \n\n worldoflove-kr.github.io`));
         }
         function buildCongratWhatsAppLink() {
+            var n = document.getElementById("congrat-name-input").value || "مهنئ غالي"; var t = document.getElementById("congrat-select").value; document.getElementById("congrat-text-preview").innerText = t;
         var n = document.getElementById("congrat-name-input").value || "مهنئ غالي"; var t = document.getElementById("congrat-select").value; document.getElementById("congrat-text-preview").innerText = t;
         document.getElementById("congrat-whatsapp-anchor").setAttribute("href", "whatsapp://send?text=" + encodeURIComponent(`🎉 إهداء مباركة وتهنئة مـن: *[ ${n} ]* \n\n✨ *التهنئة:* \n" ${t} " \n\n worldoflove-kr.github.io`));
     }
@@ -218,7 +224,7 @@
             <div class="box-title" id="title-love">❤️ صندوق عبارات الحب والاشتياق التفاعلي</div>
             <input type="text" id="love-name-input" placeholder="اكتب اسمك هنا الحين..." oninput="buildLoveWhatsAppLink()" required>
             <select id="love-select" onchange="buildLoveWhatsAppLink()">
-                <option value="أشتاق إليك شوقاً يملأ الكون صخباً، وأحبك حباً يجعل من دقات قلبي عزفاً لاسمك الدافيء دائماً وأبداً.">🥀 عبارة اشتياق وحنين جارف</option>
+                <option value="أشتاق إليك شوقاً يملأ Universe صخباً، وأحبك حباً يجعل من دقات قلبي عزفاً لاسمك الدافيء دائماً وأبداً.">🥀 عبارة اشتياق وحنين جارف</option>
                 <option value="أنت لست مجرد شخص عابر في حياتي، أنت عمري، وأجمل أقداري، ونبض قلبي الذي لا أعيش بدونه يوماً واحداً.">💍 عبارة حب أبدي وعهود صادقة</option>
                 <option value="لو كان للحب والاشتياق عنوان، لكان عينيك الفاتنتين، ولو كان لي في هذا العالم أمنية، لكانت البقاء بجانبك طول العمر.">🌹 عبارة رومانسية راقية وهدية عاطفية</option>
                 <option value="تغيب الشمس ويحل الظلام، لكن دفء حبك بقلبي لا يغيب أبداً، تظل أنت الأول والأخير بقلبي وعالمي الجميل.">✨ عبارة غرام عاطفية ليلية</option>
