@@ -341,84 +341,36 @@
             <p class="shop-box-desc" id="factory-desc-lb">اكتب اسمك واسم من تحب، واختر العبارة الّتي تعبر عن مشاعرك الحين لتوليد بطاقة إهدائك الملوكية وتحميلها مباشرة داخل استوديو الصور بجهازك كصورة HD مجاناً:</p>
             <input type="text" id="gift-from" placeholder="اكتب اسمك هنا الحين..." style="border-color: #ffd700;">
             <input type="text" id="gift-to" placeholder="اكتب اسم الشخص المهداة إليه الحين..." style="border-color: #ffd700;">
-         <select id="gift-quote-select" style="border-color: #ffd700;">
-            <optgroup label="❤️ عبارات الحب والاشتياق العاطفية" id="grp-love">
-                <option value="استودعت الله قلبك وخطواتك، وجعل التوفيق والراحة والسعادة الأبدية حليفك ليل نهار برواقة تامة الحين! ❤️">❤️ استودعت الله قلبك وخطواتك السعيدة</option>
-                <option value="أشتاق إليك شوقاً يملأ الكون صخباً، وأحبك حباً يجعل من دقات قلبي عزفاً لاسمك الدافيء دائماً وأبداً! ✨">❤️ أشتاق إليك شوقاً يملأ الكون صخباً</option>
-                <option value="أنت لست مجرد شخص عابر في حياتي، أنت عمري، وأجمل أقداري، ونبض قلبي الذي لا أعيش بدونه يوماً واحداً! 💍">❤️ أنت لست شخص عابر أنت عمري ونبضي</option>
-                <option value="تغيب الشمس ويحل الظلام، لكن دفء حبك بقلبي لا يغيب أبداً، تظل أنت الأول والأخير بقلبي وعالمي الجميل! 🌹">❤️ دفء حبك بقلبي لا يغيب الأول والأخير</option>
-            </optgroup>
-            <optgroup label="🎉 عبارات التهنئة والمباركة للمناسبات" id="grp-congrat">
-                <option value="تقبل الله منا ومنكم صالح الأعمال، وكل عام وأنتم بخير وصحة وعافية بمناسبة العيد السعيد وأجمل الأوقات! 🌙">🎉 تقبل الله منا ومنكم وكل عام وأنتم بخير</option>
-                <option value="ألف مبروك النجاح والتفوق الباهر الذي يرفع الرأس! هذا الحصاد الجميل هو ثمرة صبركم وتعبكم المستمر! 🎓">🎉 ألف مبروك النجاح والتفوق ثمرة صبركم</option>
-                <option value="ألف مبروك الزواج الميمون، بارك الله لكما وبارك عليكما وجمع بينكما في خير، وجعل أيامكم كلها حب وسعادة! 💍">🎉 ألف مبروك الزواج الميمون بارك الله لكما</option>
-                <option value="مع بداية العام الجديد، أتمنى لكم عاماً مليئاً بالفرح والنجاح والسلامة، وأن تتحقق فيه كل أمنياتكم الطيبة! ✨">🎉 تهنئة بالعام الجديد والأمنيات الطيبة لكم</option>
-            </optgroup>
-            <optgroup label="🤲 عبارات الأدعية وإهداءات الخير" id="grp-dua">
-                <option value="اللهم احفظ لي أحبتي وأهلي ولا تريني فيهم بأساً يبكيني، واستودعتك قلوبهم وحياتهم وصحتهم فاحفظهم بحفظك يا كريم! 🤲">🤲 دعاء حفظ الأهل والأحبة والقلوب الغالية</option>
-                <option value="أسأل الله العظيم أن يزيل عنكم كل ضيق، وأن يشفي مرضاكم، ويرحم موتاكم، ويجعل أيامكم القادمة مليئة بالفرح والسرور! 🌹">🤲 إهداء تفريج الهم والشفاء والرحمة العميقة</option>
-                <option value="لو كان للحب والاشتياق عنوان لكان عينيك الفاتنتين، ولو كان لي أمنية لكانت البقاء بجانبك طول العمر برواقة! 💎">🤲 لو كان للحب عنوان أمنية البقاء بجانبك</option>
-                <option value="ربِّ اجعل هذا البلد آمناً مطمئناً وسائر بلاد المسلمين، واحفظ أهلنا في لبنان واشفِ جرحاهم وعمّ بالسلام أراضينا! 🇱🇧">🤲 دعاء حفظ لبنان والسلام الشامل لأراضينا</option>
-            </optgroup>
-        </select>
-        <button class="wellness-btn" id="gift-btn-click" style="background: linear-gradient(45deg, #ffd700, #b8860b); color: #000;" onclick="generateGiftCardDownload()">بناء وصك كرت الإهداء الملوكي الحين 📥</button>
-        <div class="wellness-output" id="gift-box-output" style="border-color: #ffd700; color: #ffd700; background: rgba(30,20,0,0.5); font-family:serif; text-shadow: 0 0 5px rgba(255,215,0,0.3);"></div>
-    </div>
-        <div class="section-box" style="border-color: #25D366;">
-            <div class="box-title" id="title-wa-share" style="color: #25D366; border-bottom-color: #25D366;">🟢 صندوق الإرسال والمشاركة الفورية عبر الواتساب</div>
-            <p class="shop-box-desc" id="wa-desc-lb">يمكنك الحين إرسال ومشاركة نفس العبارة أو الدعاء المختار أعلاه كرسالة نصية مباشرة وسريعة عبر الواتساب لأحبابك برواقة تامة:</p>
-            <a href="#" id="global-whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none;" onclick="shareActiveQuoteToWhatsApp()"><span id="btn-global-share">أرسل العبارة الملوكية عبر الواتساب الحين 🟢</span></a>
+                 <!-- 🌿 صندوق الأدعية والإهداءات التفاعلي المنفصل -->
+        <div class="section-box" style="border-color: #ffd700;">
+            <div class="box-title" id="title-dua-box" style="color: #ffd700; border-bottom-color: #ffd700;">✨ صندوق الأدعية والإهداءات التفاعلي</div>
+            <input type="text" id="dua-name-input" placeholder="اكتب اسم المرسل هنا الحين..." oninput="updateDuaPreview()">
+            <select id="dua-quote-select" onchange="updateDuaPreview()">
+                <option value="اللهم احفظ لي أحبتي وأهلي ولا تريني فيهم بأساً يبكيني، فاحفظهم بحفظك يا كريم! 🤲">🤲 دعاء حفظ الأهل والأحبة والقلوب الغالية</option>
+                <option value="أسأل الله العظيم أن يزيل عنكم كل ضيق، وأن يشفي مرضاكم، ويرحم موتاكم، ويجعل أيامكم القادمة مليئة بالفرح! 🌹">🤲 إهداء تفريج الهم والشفاء والرحمة العميقة</option>
+                <option value="ربِّ اجعل هذا البلد آمناً مطمئناً، واحفظ أهلنا في لبنان واشفِ جرحاهم وعمّ بالسلام أراضينا! 🇱🇧">🤲 دعاء حفظ لبنان والسلام الشامل لأراضينا</option>
+            </select>
+            <button class="tasbih-reset" style="margin-bottom:12px; width:100%;" onclick="regenerateAiQuotes('dua')">🔄 توليد وتجديد أدعية جديدة بالذكاء الاصطناعي الحين</button>
+            <div class="shop-box-desc" id="title-dua-preview" style="color:#ffd700; font-weight:bold; margin-top:5px;">📖 كلمات الدعاء المختار حالياً:</div>
+            <div class="preview-box" id="dua-preview-text">اللهم احفظ لي أحبتي وأهلي...</div>
+            <a href="#" id="dua-whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none;" onclick="shareDuaToWhatsApp()"><span id="btn-dua-share">أرسل الإهداء وشارك عبر الواتساب 🟢</span></a>
         </div>
 
-        <div class="section-box">
-            <div class="box-title" id="title-tasbih">📿 صندوق لوحة عداد التسبيح والاستغفار الرقمي</div>
-            <div class="tasbih-display" id="tasbih-display-box"><span id="tasbih-val">0</span></div>
-            <button class="tasbih-btn" onclick="countTasbih()">اضغط هنا 📿</button>
-            <div style="text-align: center; margin-top: 5px;"><button class="tasbih-reset" id="tasbih-reset-btn" onclick="resetTasbih()">إعادة تصفير العداد 🔄</button></div>
+        <!-- ❤️ appreciation صندوق عبارات الحب والاشتياق التفاعلي المنفصل -->
+        <div class="section-box" style="border-color: #ff3366;">
+            <div class="box-title" id="title-love-box" style="color: #ff3366; border-bottom-color: #ff3366;">💝 صندوق عبارات الحب والاشتياق التفاعلي</div>
+            <input type="text" id="love-name-input" placeholder="اكتب اسم المرسل هنا الحين..." oninput="updateLovePreview()">
+            <select id="love-quote-select" onchange="updateLovePreview()">
+                <option value="استودعت الله قلبك وخطواتك، وجعل التوفيق والراحة والسعادة الأبدية حليفك ليل نهار برواقة تامة! ❤️">❤️ عبارة استودعت الله قلبك وخطواتك السعيدة</option>
+                <option value="أشتاق إليك شوقاً يملأ الكون صخباً، وأحبك حباً يجعل من دقات قلبي عزفاً لاسمك الدافيء دائماً! ✨">❤️ عبارة اشتياق وحنين جارف بالكون</option>
+                <option value="أنت لست مجرد شخص عابر في حياتي، أنت عمري، وأجمل أقداري، ونبض قلبي الذي لا أعيش بدونه! 💍">❤️ عبارة أنت لست شخص عابر أنت عمري ونبضي</option>
+            </select>
+            <button class="tasbih-reset" style="margin-bottom:12px; width:100%; border-color:#ff3366; color:#ff3366;" onclick="regenerateAiQuotes('love')">🔄 توليد وتجديد عبارات حب بالذكاء الاصطناعي الحين</button>
+            <div class="shop-box-desc" id="title-love-preview" style="color:#ff3366; font-weight:bold; margin-top:5px;">📖 كلمات العبارة المختارة حالياً:</div>
+            <div class="preview-box" id="love-preview-text" style="color:#ff3366; border-color:#ff3366;">استودعت الله قلبك وخطواتك...</div>
+            <a href="#" id="love-whatsapp-anchor" class="btn-whatsapp-btn" style="background:linear-gradient(45deg,#ff3366,#c2185b); text-decoration:none;" onclick="shareLoveToWhatsApp()"><span id="btn-love-share">أرسل العبارة وشارك عبر الواتساب 🟢</span></a>
         </div>
-
-        <div class="section-box">
-            <div class="box-title" id="title-secret">🔐 صندوق الرسائل السرية والمفاجآت المغلقة</div>
-            <p id="secret-desc-text" style="color:#e0e0e0; font-size:13px; margin:0 0 15px 0; line-height:1.5; text-align:right;">هذا الصندوق تفاعلي ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. اكتب الكود السري (123 أو كود العائلة KR) ثم اضغط على زر الفتح:</p>
-            <input type="text" id="secret-input" placeholder="اكتب الكلمة السرية هنا الحين...">
-            <button class="secret-btn" id="secret-btn-click" onclick="unlockSecret()">افتح واكشف المفاجأة السرية الحين 🔓</button>
-            <div class="secret-output" id="secret-box-output"></div>
-        </div>
-        
-        <div class="panda-footer-new-box"><span style="font-size: 75px; display: inline-block; filter: drop-shadow(0 0 15px rgba(255,255,255,0.45)); animation: panda-float 2s ease-in-out infinite;">🐼</span></div>
-        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1573</span> زائر</div>
-        <br>
-        <div class="family-logo-wrapper"><div class="family-logo pulse-fast">👑 KR 👑</div></div>
-    </div>
-    <script>
-        function generateDreamInterpretation() {
-            var input = document.getElementById("dream-input").value.trim(); var output = document.getElementById("dream-box-output");
-            if (input === "") { output.style.display = "block"; output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = currentLang === 'ar' ? "⚠️ من فضلكِ اكتب تفاصيل حلمكِ أولاً لكي يفك المستشار شفرته الحين!" : "⚠️ Please type your dream details first!"; return; }
-            output.style.display = "block"; output.style.borderColor = "#ff9800"; output.style.color = "#ff9800";
-            var interpretations = [
-                "✨ فك تشفير حلمك الحين: رؤيتك تدل على طاقة فرج قريبة جداً وخروج من ضيق أو حيرة كنت تعيشها بالساعات الماضية. الرموز المضيئة بمنامك هي بشارة برزق نظيف عالي قادم لقلبك الطيب! 🪐",
-                "🪐 التفسير الفلكي السري: حلمك يعكس رغبة روحك بالتحرر والراحة. واعلم أن الرموز التي ظهرت لك هي إشارة إلهية لترتيب أمورك وتيسير عسر قادم، استبشر خيراً فمستقبلك محمي ومليء بالبركة! 🌌",
-                "🌌 رسالة مرآة الأحلام: لا تقلق من الغموض، رؤيتك ترمز لانتهاء مرحلة تعب وبداية عهد جديد يحمل لك نجاحاً باهراً وراحة بال طال انتظارها. نم قرير العين فالعوض القادم مذهل! ✨"
-            ];
-            output.innerHTML = interpretations[Math.floor(Math.random() * interpretations.length)];
-        }
-        function calculateGulfWealth() {
-            var money = parseFloat(document.getElementById("gulf-money").value || 0); var gold = parseFloat(document.getElementById("gulf-gold").value || 0);
-            var curr = document.getElementById("gulf-currency").value; var output = document.getElementById("gulf-box-output");
-            output.style.display = "block"; output.style.borderColor = "#00ffaa"; output.style.color = "#00ffaa";
-            var goldPriceInCurr = curr === "KWD" ? 26 : curr === "OMR" ? 32 : curr === "BHD" ? 31 : curr === "SAR" ? 316 : curr === "AED" ? 309 : curr === "QAR" ? 307 : 84;
-            var grandTotal = money + (gold * goldPriceInCurr); var nisabInCurr = 85 * goldPriceInCurr;
-            if (grandTotal === 0) { output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = currentLang === 'ar' ? "⚠️ يرجى إدخال مبالغ نقدية أو جرامات الذهب أولاً لحساب التقرير الحين!" : "⚠️ Please enter values first!"; return; }
-            var msg = currentLang === 'ar' ? `📜 <b>التقرير المالي الفلكي لـ [ عالم الحب KR ] :</b><br>💸 إجمالي ثروتك الحالية المكتشفة: <b>${grandTotal.toLocaleString()} ${curr}</b><br>` : `📜 <b>Financial Report for [ World of Love KR ] :</b><br>💸 Total Wealth: <b>${grandTotal.toLocaleString()} ${curr}</b><br>`;
-            if (grandTotal >= nisabInCurr) { var zakat = grandTotal * 0.025; msg += currentLang === 'ar' ? `✨ مبروك! أموالك بلغت النصاب الشرعي والادخاري المعتمد كلياً الحين.<br>🕋 مقدار الزكاة الواجبة إخراجها برواقة: <b>${zakat.toLocaleString()} ${curr}</b><br>💡 <b>نصيحة المستشار المالي:</b> هالتوليفة ممتازة لحفظ القوة الشرائية، استمر في تنمية ثروتك والصدقة!` : `✨ Congratulation! Your wealth has reached the Nisab threshold.<br>🕋 Due Zakat Value: <b>${zakat.toLocaleString()} ${curr}</b><br>💡 <b>AI Financial Advice:</b> Excellent asset backup! Keep investing and donating.`; }
-            else { msg += currentLang === 'ar' ? `📉 أموالك الحالية لم تبلغ النصاب الشرعي والمالي الدقيق للحساب الحين (النصاب المقدر هو: ${Math.round(nisabInCurr).toLocaleString()} ${curr}).<br>🕋 لا زكاة واجبة عليك الحين برواقة وطمأنينة.<br>💡 <b>نصيحة المستشار المالي:</b> ركز على ادخار سبائك الذهب الصغيرة لتنمية محفظتك بأمان!` : `📉 Your wealth is below the Nisab threshold (Estimated Nisab: ${Math.round(nisabInCurr).toLocaleString()} ${curr}).<br>🕋 No Zakat is due on you now.<br>💡 <b>AI Financial Advice:</b> Focus on saving physical gold bars to safely build your wealth stack!`; }
-            output.innerHTML = msg; if (navigator.vibrate) navigator.vibrate(30);
-        }
-        var aiPools = {
-            "dua": [
-                ["اللهم احفظ لي أحبتي وأهلي ولا تريني فيهم بأساً يبكيني، واستودعتك قلوبهم وحياتهم وصحتهم فاحفظهم بحفظك يا كريم! 🤲", "O Allah, protect my family and loved ones, and keep them safe under Your divine care! 🤲"],
-                ["أسأل الله العظيم أن يزيل عنكم كل ضيق، وأن يشفي مرضاكم، ويرحم موتاكم، ويجعل أيامكم القادمة مليئة بالفرح والسرور! 🌹", "I ask Almighty Allah to relieve your distress, heal your sick, and fill your upcoming days with pure joy! 🌹"],
-                ["ربِّ اجعل this البلد آمناً مطمئناً وسائر بلاد المسلمين، واحفظ أهلنا في لبنان واشفِ جرحاهم وعمّ بالسلام أراضينا! 🇱🇧", "O Lord, make this land safe and secure, protect our people in Lebanon, and grant total peace to our lands! 🇱🇧"]
+لسلام أراضينا! 🇱🇧", "O Lord, make this land safe and secure, protect our people in Lebanon, and grant total peace to our lands! 🇱🇧"]
             ],
             "love": [
                 ["استودعت الله قلبك وخطواتك، وجعل التوفيق والراحة والسعادة الأبدية حليفك ليل نهار برواقة تامة الحين! ❤️", "I entrust your heart and steps to Allah, wishing you eternal comfort, happiness, and peace day and night! ❤️"],
