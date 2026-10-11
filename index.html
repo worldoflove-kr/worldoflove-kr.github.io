@@ -422,7 +422,176 @@
             document.getElementById("btn-sad-share").innerText = isAr ? "أرسل العبارة وشارك عبر الواتساب 🟢" : "Broadcast AI Blame via WhatsApp 🟢";
 
             ['dua', 'love', 'mother', 'sad'].forEach(regenerateAiQuotes); updateClock();
+        function updateBoxPreview(type) {
+            var select = document.getElementById(type + "-quote-select"); if(!select || select.options.length === 0) return;
+            var val = select.value; document.getElementById(type + "-preview-text").innerText = val;
+            var name = document.getElementById(type + "-name-input").value.trim();
+            var isAr = currentLang === 'ar';
+            var header = isAr ? `👑 *بطاقة إهداء ملوكية من الغالي:* [ ${name || "محب غالي"} ] 👑\n📜 *عبر منصة:* [ عالم الحب KR ]\n\n` : `👑 *Royal Gift Card From:* [ ${name || "Dear Guest"} ] 👑\n📜 *Via Official Platform:* [ World of Love KR ]\n\n`;
+            var msgStr = header + `"${val}"\n\n🌐 *رابط المنصة المباشر للزيارة:* worldoflove-kr.github.io`;
+            document.getElementById(type + "-whatsapp-anchor").href = "whatsapp://send?text=" + encodeURIComponent(msgStr);
+        }
+
+        function updateDuaPreview() { updateBoxPreview('dua'); } function shareDuaToWhatsApp() { updateBoxPreview('dua'); }
+        function updateLovePreview() { updateBoxPreview('love'); } function shareLoveToWhatsApp() { updateBoxPreview('love'); }
+        function updateMotherPreview() { updateBoxPreview('mother'); } function shareMotherToWhatsApp() { updateBoxPreview('mother'); }
+        function updateSadPreview() { updateBoxPreview('sad'); } function shareSadToWhatsApp() { updateBoxPreview('sad'); }
+
+        function switchLang(l) {
+            currentLang = l; document.getElementById("btn-ar").classList.toggle("active", l === 'ar'); document.getElementById("btn-en").classList.toggle("active", l === 'en');
+            var isAr = l === 'ar'; document.body.style.direction = isAr ? "rtl" : "ltr";
+            document.getElementById("main-title").innerHTML = isAr ? "عالم الحب" : "World of Love";
+            document.getElementById("tick-gold").innerText = isAr ? "أوقية الذهب العالمية:" : "Global Gold Ounce:";
+            document.getElementById("tick-down").innerText = isAr ? "▼ نازل" : "▼ Down";
+            document.getElementById("tick-index").innerText = isAr ? "مؤشر الدولار عالمياً:" : "Global Dollar Index:";
+            document.getElementById("tick-up").innerText = isAr ? "▲ طالع" : "▲ Up";
+            document.getElementById("tick-lbp").innerText = isAr ? "صرف الدولار في لبنان:" : "Dollar Rate in Lebanon:";
+            document.getElementById("tick-stable").innerText = isAr ? "◀ مستقر" : "◀ Stable";
+            document.getElementById("title-search").innerText = isAr ? "🔍 محرك بحث جوجل الذكي" : "🔍 Google Smart Search";
+            document.getElementById("btn-search").innerText = isAr ? "اجمع للبحث عن أي شيء بمتصفح جوجل - اضغط هنا" : "Type to search anything on Google browser - Click Here";
+            document.getElementById("panda-desc-text").innerText = isAr ? "✨ منصة العائلة الملكية المخصصة لأجمل إهداءات الأدعية التفاعلية، وعبارات الحب الصادقة، وتأمين خدمات تشريج الخطوط وشحن الألعاب المعتمدة بأعلى درجات السرية، الأمان الصارم، والمصداقية الكبرى عالمياً الحين. 👑🔒" : "The royal family platform dedicated to beautiful interactive dua gifts, sincere expressions of love, trusted Alfa/Touch line recharge, and gaming shell load with maximum data safety, privacy, and top credibility worldwide.";
+            document.getElementById("title-wellness").innerText = isAr ? "🌿 مستشار الأمل وصندوق الفضفضة النفسية الذكي" : "🌿 AI Mental Hope & Wellness Sanctuary";
+            document.getElementById("wellness-input").placeholder = isAr ? "اكتب تعبك أو فضفض باللي جوات قلبك للمستشار الحين بكل سرية..." : "Type your stress or express your feelings here anonymously...";
+            document.getElementById("wellness-btn-click").innerText = isAr ? "اسحب جرعة الأمل والراحة الحين 🌟" : "Receive Your Hope Dose Now 🌟";
+            document.getElementById("title-tree").innerText = isAr ? "🌳 شجرة الأمنيات الكونية والنبض العاطفي الحي" : "🌳 KR Cosmic Wish Tree & Live Pulse";
+            document.getElementById("wish-input").placeholder = isAr ? "اكتب أمنيتك السرية في الحياة وعلقها على الشجرة الحين..." : "Type your secret wish and hang it on the tree now...";
+            document.getElementById("wish-btn-click").innerText = isAr ? "علّق أمنيتك المضيئة على الشجرة 🌳" : "Hang Your Glowing Wish Now 🌳";
+            document.getElementById("title-dream").innerText = isAr ? "🌌 مستكشف ومفسر الأحلام الفلكي الذكي" : "🌌 AI Dream Oracle & Universe Interpreter";
+            document.getElementById("dream-input").placeholder = isAr ? "اكتب تفاصيل حلمك أو الرموز التي شفتها بمنامك الحين بكل سرية..." : "Type your dream details here confidentially...";
+            document.getElementById("dream-btn-click").innerText = isAr ? "أطلق مستكشف الأحلام الذكي الحين 🪐" : "Launch AI Dream Oracle Now 🪐";
+        var aiPools = {
+            "dua": [
+                ["اللهم احفظ لي أحبتي وأهلي ولا تريني فيهم بأساً يبكيني، واستودعتك قلوبهم وحياتهم وصحتهم فاحفظهم بحفظك يا كريم! 🤲", "O Allah, protect my family and loved ones, and keep them safe under Your divine care! 🤲"],
+                ["أسأل الله العظيم أن يزيل عنكم كل ضيق، وأن يشفي مرضاكم، ويرحم موتاكم، ويجعل أيامكم القادمة مليئة بالفرح والسرور! 🌹", "I ask Almighty Allah to relieve your distress, heal your sick, and fill your upcoming days with pure joy! 🌹"],
+                ["ربِّ اجعل هذا البلد آمناً مطمئناً وسائر بلاد المسلمين، واحفظ أهلنا في لبنان واشفِ جرحاهم وعمّ بالسلام أراضينا! 🇱🇧", "O Lord, make this land safe and secure, protect our people in Lebanon, and grant total peace to our lands! 🇱🇧"]
+            ],
+            "love": [
+                ["استودعت الله قلبك وخطواتك، وجعل التوفيق والراحة والسعادة الأبدية حليفك ليل نهار برواقة تامة الحين! ❤️", "I entrust your heart and steps to Allah, wishing you eternal comfort, happiness, and peace day and night! ❤️"],
+                ["أشتاق إليك شوقاً يملأ الكون صخباً، وأحبك حباً يجعل من دقات قلبي عزفاً لاسمك الدافيء دائماً وأبداً! ✨", "I miss you with a longing that fills the universe, and I love you with a bond that makes my heart beat only for you! ✨"],
+                ["أنت لست مجرد شخص عابر في حياتي، أنت عمري، وأجمل أقداري، ونبض قلبي الذي لا أعيش بدونه يوماً واحداً! 💍", "You are not just a passing face in my life, you are my age, my beautiful destiny, and the beat of my heart! 💍"]
+            ],
+            "mother": [
+                ["أمي يا نبض قلبي وأجمل عطايا الرحمن، استودعت الله عمرك وصحتك وابتسامتك، وجعل التوفيق والسعادة حليفك الحين! 🤱❤️", "My mother, the beat of my heart and Allah's most beautiful gift, may Allah protect your health and sweet smile! 🤱❤️"],
+                ["إلى جنّتي على الأرض، رضاكِ هو طمأنينتي وصوتكِ هو سلامي الداخلي، اللهم احفظ أمي وأطل في عمرها برواقة تامة! ✨", "To my heaven on earth, your satisfaction is my comfort, may Allah protect my mother and grant her long life! ✨"],
+                ["لو جمعت كلمات الشكر والعرفان ما وفت حق طهر قلبكِ وتعبكِ يا أمي، دمتِ لي فخراً وتاجاً أرفع به رأسي! 👑", "No words of gratitude can ever fulfill the purity of your heart and sacrifices, my mother, you are my pride! 👑"]
+            ],
+            "sad": [
+                ["غبت وغابت معك ضحكة الأيام، وعلمتني كيف يكون الشوق وجعاً صامتاً ينهش بقلبي في كل ثانية ودقيقة ليل نهار! 💔", "You left and the smile of days left with you, teaching me how longing turns into a silent ache in my heart! 💔"],
+                ["لم يكن العتب يوماً كرهاً، بل كان عتباً على قدر المحبة، ولكن خيبة الظن أحياناً تقتل أجمل المشاعر بالقلب الحين! 😔", "Blame was never hatred, it was on the scale of love, but disappointment sometimes kills the most beautiful feelings! 😔"],
+                ["توقعت منك كل خير إلا الجفاء، واكتفيت بالصمت الطويل لعل رسالة الصمت تبلغ قلبك بما عجزت الحروف عن قوله! 🪐", "I expected everything from you except abandonment, so I chose long silence to let it speak what letters couldn't say! 🪐"]
+            ]
+        };
+
+        function regenerateAiQuotes(type) {
+            var select = document.getElementById(type + "-quote-select"); select.innerHTML = "";
+            var pool = aiPools[type]; var shuffled = pool.sort(() => 0.5 - Math.random());
+            shuffled.forEach((pair) => {
+                var option = document.createElement("option");
+                option.value = currentLang === 'ar' ? pair : pair;
+                option.text = currentLang === 'ar' ? textMin(pair, 38) : textMin(pair, 38);
+                select.appendChild(option);
+            });
+            if(type === 'dua') updateDuaPreview(); if(type === 'love') updateLovePreview();
+            if(type === 'mother') updateMotherPreview(); if(type === 'sad') updateSadPreview();
+        }
+        function updateBoxPreview(type) {
+            var select = document.getElementById(type + "-quote-select"); if(!select || select.options.length === 0) return;
+            var val = select.value; document.getElementById(type + "-preview-text").innerText = val;
+            var name = document.getElementById(type + "-name-input").value.trim();
+            var isAr = currentLang === 'ar';
+            var header = isAr ? `👑 *بطاقة إهداء ملوكية من الغالي:* [ ${name || "محب غالي"} ] 👑\n📜 *عبر منصة:* [ عالم الحب KR ]\n\n` : `👑 *Royal Gift Card From:* [ ${name || "Dear Guest"} ] 👑\n📜 *Via Official Platform:* [ World of Love KR ]\n\n`;
+            var msgStr = header + `"${val}"\n\n🌐 *رابط المنصة المباشر للزيارة:* worldoflove-kr.github.io`;
+            document.getElementById(type + "-whatsapp-anchor").href = "whatsapp://send?text=" + encodeURIComponent(msgStr);
+        }
+
+        function updateDuaPreview() { updateBoxPreview('dua'); } function shareDuaToWhatsApp() { updateBoxPreview('dua'); }
+        function updateLovePreview() { updateBoxPreview('love'); } function shareLoveToWhatsApp() { updateBoxPreview('love'); }
+        function updateMotherPreview() { updateBoxPreview('mother'); } function shareMotherToWhatsApp() { updateBoxPreview('mother'); }
+        function updateSadPreview() { updateBoxPreview('sad'); } function shareSadToWhatsApp() { updateBoxPreview('sad'); }
+        function switchLang(l) {
+            currentLang = l; document.getElementById("btn-ar").classList.toggle("active", l === 'ar'); document.getElementById("btn-en").classList.toggle("active", l === 'en');
+            var isAr = l === 'ar'; document.body.style.direction = isAr ? "rtl" : "ltr";
+            document.getElementById("main-title").innerHTML = isAr ? "عالم الحب" : "World of Love";
+            document.getElementById("tick-gold").innerText = isAr ? "أوقية الذهب العالمية:" : "Global Gold Ounce:";
+            document.getElementById("tick-down").innerText = isAr ? "▼ نازل" : "▼ Down";
+            document.getElementById("tick-index").innerText = isAr ? "مؤشر الدولار عالمياً:" : "Global Dollar Index:";
+            document.getElementById("tick-up").innerText = isAr ? "▲ طالع" : "▲ Up";
+            document.getElementById("tick-lbp").innerText = isAr ? "صرف الدولار في لبنان:" : "Dollar Rate in Lebanon:";
+            document.getElementById("tick-stable").innerText = isAr ? "◀ مستقر" : "◀ Stable";
+            document.getElementById("title-search").innerText = isAr ? "🔍 محرك بحث جوجل الذكي" : "🔍 Google Smart Search";
+            document.getElementById("btn-search").innerText = isAr ? "اجمع للبحث عن أي شيء بمتصفح جوجل - اضغط هنا" : "Type to search anything on Google browser - Click Here";
+            document.getElementById("panda-desc-text").innerText = isAr ? "✨ منصة العائلة الملكية المخصصة لأجمل إهداءات الأدعية التفاعلية، وعبارات الحب الصادقة، وتأمين خدمات تشريج الخطوط وشحن الألعاب المعتمدة بأعلى درجات السرية، الأمان الصارم، والمصداقية الكبرى عالمياً الحين. 👑🔒" : "The royal family platform dedicated to beautiful interactive dua gifts, sincere expressions of love, trusted Alfa/Touch line recharge, and gaming shell load with maximum data safety, privacy, and top credibility worldwide.";
+            document.getElementById("title-wellness").innerText = isAr ? "🌿 مستشار الأمل وصندوق الفضفضة النفسية الذكي" : "🌿 AI Mental Hope & Wellness Sanctuary";
+            document.getElementById("wellness-input").placeholder = isAr ? "اكتب تعبك أو فضفض باللي جوات قلبك للمستشار الحين بكل سرية..." : "Type your stress or express your feelings here anonymously...";
+            document.getElementById("wellness-btn-click").innerText = isAr ? "اسحب جرعة الأمل والراحة الحين 🌟" : "Receive Your Hope Dose Now 🌟";
+            document.getElementById("title-tree").innerText = isAr ? "🌳 شجرة الأمنيات الكونية والنبض العاطفي الحي" : "🌳 KR Cosmic Wish Tree & Live Pulse";
+            document.getElementById("wish-input").placeholder = isAr ? "اكتب أمنيتك السرية في الحياة وعلقها على الشجرة الحين..." : "Type your secret wish and hang it on the tree now...";
+            document.getElementById("wish-btn-click").innerText = isAr ? "علّق أمنيتك المضيئة على الشجرة 🌳" : "Hang Your Glowing Wish Now 🌳";
+            document.getElementById("title-dream").innerText = isAr ? "🌌 مستكشف ومفسر الأحلام الفلكي الذكي" : "🌌 AI Dream Oracle & Universe Interpreter";
+            document.getElementById("dream-input").placeholder = isAr ? "اكتب تفاصيل حلمك أو الرموز التي شفتها بمنامك الحين بكل سرية..." : "Type your dream details here confidentially...";
+            document.getElementById("dream-btn-click").innerText = isAr ? "أطلق مستكشف الأحلام الذكي الحين 🪐" : "Launch AI Dream Oracle Now 🪐";
+        function switchLang(l) {
+            currentLang = l; document.getElementById("btn-ar").classList.toggle("active", l === 'ar'); document.getElementById("btn-en").classList.toggle("active", l === 'en');
+            var isAr = l === 'ar'; document.body.style.direction = isAr ? "rtl" : "ltr";
+            document.getElementById("main-title").innerHTML = isAr ? "عالم الحب" : "World of Love";
+            document.getElementById("tick-gold").innerText = isAr ? "أوقية الذهب العالمية:" : "Global Gold Ounce:";
+            document.getElementById("tick-down").innerText = isAr ? "▼ نازل" : "▼ Down";
+            document.getElementById("tick-index").innerText = isAr ? "مؤشر الدولار عالمياً:" : "Global Dollar Index:";
+            document.getElementById("tick-up").innerText = isAr ? "▲ طالع" : "▲ Up";
+            document.getElementById("tick-lbp").innerText = isAr ? "صرف الدولار في لبنان:" : "Dollar Rate in Lebanon:";
+            document.getElementById("tick-stable").innerText = isAr ? "◀ مستقر" : "◀ Stable";
+            document.getElementById("title-search").innerText = isAr ? "🔍 محرك بحث جوجل الذكي" : "🔍 Google Smart Search";
+            document.getElementById("btn-search").innerText = isAr ? "اجمع للبحث عن أي شيء بمتصفح جوجل - اضغط هنا" : "Type to search anything on Google browser - Click Here";
+            document.getElementById("panda-desc-text").innerText = isAr ? "✨ منصة العائلة الملكية المخصصة لأجمل إهداءات الأدعية التفاعلية، وعبارات الحب الصادقة، وتأمين خدمات تشريج الخطوط وشحن الألعاب المعتمدة بأعلى درجات السرية، الأمان الصارم، والمصداقية الكبرى عالمياً الحين. 👑🔒" : "The royal family platform dedicated to beautiful interactive dua gifts, sincere expressions of love, trusted Alfa/Touch line recharge, and gaming shell load with maximum data safety, privacy, and top credibility worldwide.";
+            document.getElementById("title-wellness").innerText = isAr ? "🌿 مستشار الأمل وصندوق الفضفضة النفسية الذكي" : "🌿 AI Mental Hope & Wellness Sanctuary";
+            document.getElementById("wellness-input").placeholder = isAr ? "اكتب تعبك أو فضفض باللي جوات قلبك للمستشار الحين بكل سرية..." : "Type your stress or express your feelings here anonymously...";
+            document.getElementById("wellness-btn-click").innerText = isAr ? "اسحب جرعة الأمل والراحة الحين 🌟" : "Receive Your Hope Dose Now 🌟";
+            document.getElementById("title-tree").innerText = isAr ? "🌳 شجرة الأمنيات الكونية والنبض العاطفي الحي" : "🌳 KR Cosmic Wish Tree & Live Pulse";
+            document.getElementById("wish-input").placeholder = isAr ? "اكتب أمنيتك السرية في الحياة وعلقها على الشجرة الحين..." : "Type your secret wish and hang it on the tree now...";
+            document.getElementById("wish-btn-click").innerText = isAr ? "علّق أمنيتك المضيئة على الشجرة 🌳" : "Hang Your Glowing Wish Now 🌳";
+            document.getElementById("title-dream").innerText = isAr ? "🌌 مستكشف ومفسر الأحلام الفلكي الذكي" : "🌌 AI Dream Oracle & Universe Interpreter";
+            document.getElementById("dream-input").placeholder = isAr ? "اكتب تفاصيل حلمك أو الرموز التي شفتها بمنامك الحين بكل سرية..." : "Type your dream details here confidentially...";
+            document.getElementById("dream-btn-click").innerText = isAr ? "أطلق مستكشف الأحلام الذكي الحين 🪐" : "Launch AI Dream Oracle Now 🪐";
+            document.getElementById("title-shop").innerText = isAr ? "📱 خدمات تشريج الخطوط والإنترنت الموثوقة" : "📱 Reliable Telecom Recharge Services";
+            document.getElementById("shop-desc-lb").innerText = isAr ? "دليلكِ الآمن والكامل لتشريج خطوط Alfa وتاتش MTC برواقة تامة وبأعلى مصداقية في لبنان:" : "Your safe and full terminal to secure Alfa & Touch LBP vouchers under instant validation inside Lebanon:";
+            document.getElementById("btn-alfa-click").innerText = isAr ? "💬 اطلب تشريج خطك الآن (واتساب)" : "💬 Order Line Vouchers Now (WhatsApp)";
+            document.getElementById("title-pubg-box").innerText = isAr ? "🛒 خدمات شحن PUBG ومشتريات SHEIN" : "🛒 PUBG UCs Load & SHEIN Orders Store";
+            document.getElementById("pubg-desc-lb").innerText = isAr ? "اشحني حسابكِ وألعابكِ بثقة تامة! محطتكِ المتكاملة لتأمين شدات لعبة ببجي ومشتريات SHEIN بأسرع خدمة كاش:" : "Reload your gaming profiles with absolute safety! Your complete hub to supply PUBG UC coins and SHEIN packages under speedy handling:";
+            document.getElementById("btn-pubg-click").innerText = isAr ? "🛍️ للطلب وشحن الشدات و SHEIN (واتساب)" : "🛍️ Order Gaming Coins & SHEIN (WhatsApp)";
+            document.getElementById("title-gulf").innerText = isAr ? "🪙 المستشار المالي وحاسبة الزكاة والادخار الخليجي الذكي" : "🪙 AI Wealth Tracker, Gold & Zakat Oracle";
+            document.getElementById("gulf-money").placeholder = isAr ? "اكتب مقدار المال أو المدخرات النقدية الحين..." : "Type your cash assets or savings volume now...";
+            document.getElementById("gulf-gold").placeholder = isAr ? "اكتب وزن الذهب الحالي بالجرام (إن وُجد الحين)..." : "Type your current gold weight in grams (if available)...";
+            document.getElementById("btn-gulf-calc").innerText = isAr ? "احسب مدخراتك الفلكية وزكاة مالك الحين 📊" : "Calculate Assets & Due Zakat Now 📊";
+            document.getElementById("title-tasbih").innerText = isAr ? "📿 صندوق لوحة عداد التسبيح والاستغفار الرقمي" : "📿 Digital Tasbih Counter & Remembrance Box";
+            document.getElementById("tasbih-reset-btn").innerText = isAr ? "إعادة تصفير العداد 🔄" : "Reset Counter Vibe 🔄";
+            document.getElementById("title-secret").innerText = isAr ? "🔐 صندوق الرسائل السرية والمفاجآت المغلقة" : "🔐 Secret Encrypted Board & Mystery Box";
+            document.getElementById("secret-desc-text").innerText = isAr ? "هذا الصندوق تفاعلي ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. اكتب الكود السري (123 أو كود العائلة KR) ثم اضغط على زر الفتح:" : "This interactive lockbox is securely designed to deploy hidden surprises and gifts. Enter the secret code (123 or KR family key) then hit the unlock button below:";
+            document.getElementById("secret-input").placeholder = isAr ? "اكتب الكلمة السرية هنا الحين..." : "Type the secret access pass code here...";
+            document.getElementById("secret-btn-click").innerText = isAr ? "افتح واكشف المفاجأة السرية الحين 🔓" : "Unlock & Reveal Hidden Surprise Now 🔓";
+            
+            document.getElementById("title-dua-box").innerText = isAr ? "✨ صندوق الأدعية والإهداءات التفاعلي" : "✨ AI Blessings & Duas Sanctuary";
+            document.getElementById("dua-name-input").placeholder = isAr ? "اكتب اسم المرسل هنا الحين..." : "Type your name here...";
+            document.getElementById("title-dua-preview").innerText = isAr ? "📖 كلمات الدعاء المختار حالياً:" : "Current AI Dua Text:";
+            document.getElementById("btn-dua-share").innerText = isAr ? "أرسل الإهداء وشارك عبر الواتساب 🟢" : "Broadcast AI Dua via WhatsApp 🟢";
+            
+            document.getElementById("title-love-box").innerText = isAr ? "💝 صندوق عبارات الحب والاشتياق التفاعلي" : "💝 AI Sincere Love & Longing Sanctuary";
+            document.getElementById("love-name-input").placeholder = isAr ? "اكتب اسم المرسل هنا الحين..." : "Type your name here...";
+            document.getElementById("title-love-preview").innerText = isAr ? "📖 كلمات العبارة المختارة حالياً:" : "Current AI Love Expression:";
+            document.getElementById("btn-love-share").innerText = isAr ? "أرسل العبارة وشارك عبر الواتساب 🟢" : "Broadcast AI Love via WhatsApp 🟢";
+            
+            document.getElementById("title-mother-box").innerText = isAr ? "🤱 صندوق بر الوالدين وإهداءات الأم الغالية" : "🤱 AI Mother Devotion & Blessed Vows Store";
+            document.getElementById("mother-name-input").placeholder = isAr ? "اكتب اسم المرسل هنا الحين..." : "Type your name here...";
+            document.getElementById("title-mother-preview").innerText = isAr ? "📖 كلمات الإهداء المختار للأم حالياً:" : "Current AI Mother Vows Text:";
+            document.getElementById("btn-mother-share").innerText = isAr ? "أرسل الإهداء للأم وشارك عبر الواتساب 🟢" : "Broadcast AI Mother Gift via WhatsApp 🟢";
+            
+            document.getElementById("title-sad-box").innerText = isAr ? "🖤 صندوق عبارات العتب والحزن التفاعلي" : "🖤 AI Sad Melancholy & Blame Board";
+            document.getElementById("sad-name-input").placeholder = isAr ? "اكتب اسم المرسل هنا الحين..." : "Type your name here...";
+            document.getElementById("title-sad-preview").innerText = isAr ? "📖 كلمات العبارة المختارة حالياً:" : "Current AI Blame Text:";
+            document.getElementById("btn-sad-share").innerText = isAr ? "أرسل العبارة وشارك عبر الواتساب 🟢" : "Broadcast AI Blame via WhatsApp 🟢";
+
+            ['dua', 'love', 'mother', 'sad'].forEach(regenerateAiQuotes); updateClock();
         }
     </script>
 </body>
 </html>
+
