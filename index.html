@@ -13,15 +13,9 @@
         /* ✨ تأثير الإنارة الذهبية النيونية المكثفة والساطعة والبارزة الطالعة من عنوان [ عالم الحب ] */
         .main-title-ar { color: #ffd700 !important; font-size: 32px; font-weight: 700; margin-top: 8px; display: block; animation: royalGoldIntenseGlow 2s infinite alternate ease-in-out; }
         .main-title-en { color: #ffd700 !important; font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px; margin-top: 2px; margin-bottom: 5px; display: block; animation: royalGoldIntenseGlow 2s infinite alternate ease-in-out; }
-        
-        /* 👑 تأثير النبض الكوني المشع بالذهب لشعار العائلة KR مستقيم وجالس أسفل الصفحة */
         .royal-brand-kr { color: #ffd700 !important; font-family: 'Playfair Display', serif; font-style: normal; font-size: 28px; font-weight: bold; display: inline-block; margin-top: 10px; animation: krStraightPulse 1.8s infinite alternate ease-in-out; filter: drop-shadow(0 0 15px rgba(255,215,0,0.6)); }
         
-        /* 🪐 مصنع دالات الأنيميشن لكشافات الضوء والإنارة والوهج الذهبي الساطع والنبض المتزامن */
-        @keyframes royalGoldIntenseGlow { 
-            0% { text-shadow: 0 0 10px rgba(255,215,0,0.6), 0 0 20px rgba(255,215,0,0.4), 0 0 30px rgba(255,215,0,0.2); transform: scale(0.98); filter: brightness(0.9); } 
-            100% { text-shadow: 0 0 25px rgba(255,215,0,1), 0 0 50px rgba(255,215,0,1), 0 0 80px rgba(255,215,0,1), 0 0 120px rgba(255,215,0,0.8); transform: scale(1.02); filter: brightness(1.3); } 
-        }
+        @keyframes royalGoldIntenseGlow { 0% { text-shadow: 0 0 10px rgba(255,215,0,0.6), 0 0 20px rgba(255,215,0,0.4); transform: scale(0.98); } 100% { text-shadow: 0 0 25px rgba(255,215,0,1), 0 0 50px rgba(255,215,0,1); transform: scale(1.02); } }
         @keyframes krStraightPulse { 0% { transform: scale(0.96); text-shadow: 0 0 12px rgba(255,215,0,0.5); } 100% { transform: scale(1.04); text-shadow: 0 0 35px rgba(255,215,0,1); } }
         
         /* 🪙 تشغيل شريط أسعار البورصة العالمي ليمشي ويتحرك انسيابياً 100% */
@@ -38,14 +32,32 @@
         .visitor-box { background: #020202 !important; border: 1px solid #161616; padding: 8px; border-radius: 25px; font-size: 12px; color: #ffffff !important; display: inline-block; min-width: 170px; margin: 4px auto 10px auto; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         .royal-footer-brand { font-size: 11.5px; font-weight: bold; color: #ffd700 !important; margin: 15px 0 5px 0; text-shadow: 0 0 10px rgba(255,215,0,0.4); }
         
-        /* 🐼 مظهر وتنسيق صندوق الباندا العمودي الرقمي المشع من تأليفنا بالكامل */
+        /* 🐼 مظهر لوحة الباندا العمودية الجديدة المفصولة بالترتيب الملكي */
         .royal-panda-panel { background: rgba(10,10,10,0.9) !important; border: 1px dashed #ffd700 !important; border-radius: 16px; padding: 16px; margin: 15px 0; text-align: center; box-shadow: 0 4px 20px rgba(255,215,0,0.05); }
-        .panda-img-row { width: 140px; height: 140px; margin: 0 auto 12px auto; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 25px rgba(255,215,0,0.45); border: 2px solid #ffd700; background: #050505; animation: pandaNeonFloat 3.5s infinite ease-in-out; font-size: 85px; filter: drop-shadow(0 0 15px rgba(255,215,0,0.3)); }
-        @keyframes pandaNeonFloat { 0%, 100% { transform: translateY(0) scale(0.97); box-shadow: 0 0 20px rgba(255,215,0,0.3); } 50% { transform: translateY(-6px) scale(1.03); box-shadow: 0 0 35px rgba(255,215,0,0.6); } }
+        .panda-img-row { width: 140px; height: 140px; margin: 0 auto 12px auto; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(255,215,0,0.3); border: 2px solid #ffd700; animation: pandaMellowFloat 4s infinite ease-in-out; }
+        .panda-img-row img { width: 100%; height: 100%; object-fit: cover; }
+        @keyframes pandaMellowFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
         .panda-text-block { margin-bottom: 12px; display: flex; flex-direction: column; gap: 2px; align-items: center; justify-content: center; }
         .txt-welcome { color: #ffffff !important; font-size: 28px; font-weight: bold; font-family: 'Playfair Display', serif; font-style: italic; }
         .txt-bibi { color: #ff3333 !important; font-size: 30px; font-weight: bold; font-family: 'Playfair Display', serif; font-style: italic; text-shadow: 0 0 15px rgba(255,51,51,0.6); }
         .panda-desc-msg { font-size: 12.5px; color: #dddddd !important; line-height: 1.7; text-align: justify; direction: rtl; padding-top: 8px; border-top: 1px solid #222; }
+
+        /* 🎨 مظهر وتنسيق الصناديق التفاعلية الأربعة بنقاء ملكي وألوان ساحرة تشرح الصدر */
+        .royal-interactive-card { background: rgba(12,12,12,0.95) !important; border-radius: 16px; padding: 16px; margin: 15px 0; text-align: right; box-shadow: 0 4px 15px rgba(0,0,0,0.7); border-left: 5px solid #ffd700; }
+        .box-duaa { border-left-color: #00ffaa !important; box-shadow: 0 0 15px rgba(0,255,170,0.1); }
+        .box-love { border-left-color: #ff3366 !important; box-shadow: 0 0 15px rgba(255,51,102,0.1); }
+        .box-parents { border-left-color: #00bfff !important; box-shadow: 0 0 15px rgba(0,191,255,0.1); }
+        .box-sad { border-left-color: #9370db !important; box-shadow: 0 0 15px rgba(147,112,219,0.1); }
+        
+        .box-title { font-size: 15px; font-weight: bold; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; color: #ffd700 !important; }
+        .box-title-duaa { color: #00ffaa !important; }
+        .box-title-love { color: #ff3366 !important; }
+        .box-title-parents { color: #00bfff !important; }
+        .box-title-sad { color: #9370db !important; }
+
+        .royal-select { width: 100%; background: #050505 !important; color: #ffffff !important; border: 1px solid #222; padding: 10px; border-radius: 8px; font-size: 13px; margin-bottom: 10px; outline: none; cursor: pointer; }
+        .royal-input { width: 100%; background: #050505 !important; color: #ffffff !important; border: 1px solid #222; padding: 10px; border-radius: 8px; font-size: 13px; margin-bottom: 10px; outline: none; }
+        .royal-share-btn { width: 100%; background: linear-gradient(45deg, #128c7e, #075e54) !important; color: #ffffff !important; border: none; padding: 10px; border-radius: 8px; font-size: 13px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.4); }
     </style>
 </head>
 <body>
@@ -80,19 +92,67 @@
             👥 <span id="lbl-visitors">عدد زوار صفحتنا الحين:</span> <span id="counter-val">2172</span>
         </div>
 
-        <!-- 🐼 صندوق الباندا العمودي الرقمي (الباندا الرقمي 🐼 يتوسط الشاشة كملكة وتحته الترحيب والعبارة) -->
+        <!-- 🐼 صندوق الباندا العمودي الملكي (صورة الباندا لوحدها فوق وتتوسط الشاشة كملكة وتحتها الترحيب والعبارة) -->
         <div class="royal-panda-panel">
-            <!-- الباندا الرقمي النيوني المشع من تأليفنا الخاص ليظهر 100% بنقاء فلكي ساطع وتام -->
-            <div class="panda-img-row">🐼</div>
-            <!-- عبارة الترحيب منفصلة تحت الباندا دغري بخط كبير ومقرب ومضاء -->
+            <div class="panda-img-row">
+                <img src="https://github.io" onerror="this.src='https://unsplash.com'" alt="KR Royal Panda">
+            </div>
             <div class="panda-text-block">
                 <span class="txt-welcome">welcome</span>
                 <span class="txt-bibi">BiBi</span>
             </div>
-            <!-- العبارة الساحرة كاملة ومنسقة بالملي أسفل الصندوق -->
             <div class="panda-desc-msg">
                 "هنا، حيث تلمع النجوم في سمائنا السوداء الفخمة ✨، نلتقي لنصنع من عبارات الحب والأدعية التفاعلية نبضاً أبدياً لا ينتهي.. أهلاً بكم في عهد الأمان والمصداقية الكبرى [ عالم الحب KR ]." 🌌💝
             </div>
+        </div>
+
+        <!-- 🟢 1. صندوق الأدعية والإهداءات التفاعلي (زبرجد مشع) -->
+        <div class="royal-interactive-card box-duaa">
+            <div class="box-title box-title-duaa">🌿 <span id="title-box-1">صندوق الأدعية والإهداءات التفاعلية</span></div>
+            <select class="royal-select" id="select-duaa">
+                <option value="اللهم صبّ علينا من الرزق والبركة ما يشرح الصدور، وافتح لنا أبواب فضلك الواسعة يا رزاق يا كريم!">🤲 دعاء الرزق والبركة الواسعة</option>
+                <option value="اللهم رب الناس، أذهب البأس، اشفِ أنت الشافي، لا شفاء إلا شفاؤك، شفاءً لا يغادر سقماً.">🏥 دعاء الشفاء العاجل للمريض</option>
+                <option value="تحصنت بذي العزة والجبروت، واعتصمت برب الملكوت، وتوكلت على الحي الذي لا يموت من شر العين والحسد.">🛡️ دعاء التحصين من العين والحسد</option>
+                <option value="اللهم احفظ بلادنا وأهلنا، واجعل هذا البلد آمناً مطمئناً، صامداً وشامخاً في وجه كل صعيد.">🇱🇧 دعاء لحفظ البلاد والوطن الغالي</option>
+            </select>
+            <input type="text" class="royal-input" id="name-duaa" placeholder="اكتب اسمك كمرسل الحين الحين...">
+            <button class="royal-share-btn" onclick="shareToWhatsapp('duaa')">🟢 مشاركة الإهداء على الواتساب</button>
+        </div>
+
+        <!-- 🔴 2. صندوق عبارات الحب والاشتياق التفاعلي (ياقوت دافئ) -->
+        <div class="royal-interactive-card box-love">
+            <div class="box-title box-title-love">💝 <span id="title-box-2">صندوق عبارات الحب والاشتياق</span></div>
+            <select class="royal-select" id="select-love">
+                <option value="لو كان الشوق يوزن بالأطنان، لكان شوقي إليك قد تخطى حدود الأرض والكون بأكمله كالألماسة.">🔥 عبارة الاشتياق العارم الفاخرة</option>
+                <option value="أنت لست مجرد شخص في حياتي، أنت النبض الحي الذي يحيي قلبي في كل ثانية تمر بمل وقت بوقته.">💖 إهداء نبض القلوب الحية الصادقة</option>
+                <option value="بين النجوم اللامعة في سمائنا السوداء الفخمة، تظل أنت النور الوحيد الذي ينير عتمة روحي دائماً.">✨ عبارة غرام ملوكية أسطورية</option>
+            </select>
+            <input type="text" class="royal-input" id="name-love" placeholder="اكتب اسمك كمرسل الحين الحين...">
+            <button class="royal-share-btn" onclick="shareToWhatsapp('love')">🟢 مشاركة الإهداء على الواتساب</button>
+        </div>
+
+        <!-- 🔵 3. صندوق بر الوالدين والإهداء للأم الغالية (فيروز فخم) -->
+        <div class="royal-interactive-card box-parents">
+            <div class="box-title box-title-parents">👑 <span id="title-box-3">صندوق بر الوالدين والأم الغالية</span></div>
+            <select class="royal-select" id="select-parents">
+                <option value="أمي يا قطعة من الجنة على الأرض، دمْتِ لي نبضاً، وأماناً، ونوراً يستضاء به في ظلمات الحياة.">🌹 إهداء ملوكي للأم الغالية الحنونة</option>
+                <option value="أبي الغالي، أنت السند الشامخ الذي لا يميل، والدرع الحصين الذي يحميني بعد الله، حفظك الله وعافاك.">🛡️ رسالة بر فخمة للأب الوقور</option>
+                <option value="اللهم اغفر لوالديّ وارحمهما كما ربياني صغيراً، واجعل عافيتهما ورضاهما تاجاً فوق رأسي للأبد.">🤲 دعاء البر بوالدي الأحياء والأموات</option>
+            </select>
+            <input type="text" class="royal-input" id="name-parents" placeholder="اكتب اسمك كمرسل الحين الحين...">
+            <button class="royal-share-btn" onclick="shareToWhatsapp('parents')">🟢 مشاركة الإهداء على الواتساب</button>
+        </div>
+
+        <!-- 🟣 4. صندوق عبارات العتب والحزن التفاعلي (بنفسجي وقور) -->
+        <div class="royal-interactive-card box-sad">
+            <div class="box-title box-title-sad">🔮 <span id="title-box-4">صندوق عبارات العتب والحزن</span></div>
+            <select class="royal-select" id="select-sad">
+                <option value="عاتبتك لأنك كنت تعني لي الكثير، ولكن صمتك المستمر علمني أن بعض العتب يفقد قيمته مع الوقت.">😔 رسالة عتب وقورة شديدة الأثر</option>
+                <option value="ليس كل حزن يترجم بالدموع، فهناك غصة بقلب الروح تفوق طاقة الكلام وصمتها بياخد العقل.">🖤 عبارة كبرياء وحزن هادئة وفخمة</option>
+                <option value="تمنيت لو أن الأيام حفظت الوعود الصادقة التي قطعناها، ولكن الخذلان دائماً يأتي من حيث لا نحتسب.">🥀 عبارة مؤثرة عن وعود الأيام والخذلان</option>
+            </select>
+            <input type="text" class="royal-input" id="name-sad" placeholder="اكتب اسمك كمرسل الحين الحين...">
+            <button class="royal-share-btn" onclick="shareToWhatsapp('sad')">🟢 مشاركة الإهداء على الواتساب</button>
         </div>
 
         <!-- 👑 شعار العائلة KR الجالس والمستقيم بأسفل الصفحة المشع بالذهب وعم ينبض بنقاء تام -->
@@ -124,6 +184,24 @@
             }
         }
 
+        // 🚀 محرك تشغيل وإرسال الرسائل الفورية على الواتساب شاملة اسم المنصة وشعارها ورابطها بدقة 100% كالألماس
+        function shareToWhatsapp(type) {
+            var text = document.getElementById("select-" + type).value;
+            var sender = document.getElementById("name-" + type).value.trim();
+            if (!sender) { sender = "مُرسِل مخلص"; }
+            
+            var msg = `*✨ إهداء ملكي فاخر من: ${sender}* \n\n` +
+                      `"${text}"\n\n` +
+                      `━━━━━━━━━━━━━━━\n` +
+                      `👑 *اسم المنصة:* عالم الحب\n` +
+                      `👑 *شعار العائلة المعتمد:* KR\n` +
+                      `🌐 *رابط منصتنا الملكية المباشر لعيونكم:* \n` +
+                      `https://github.io`;
+            
+            var url = "https://whatsapp.com" + encodeURIComponent(msg);
+            window.open(url, "_blank");
+        }
+
         // 🌐 محرك دالة الترجمة الفورية السحابية من العربي للإنجليزي وبالعكس
         function switchLang(l) {
             currentLang = l;
@@ -139,6 +217,12 @@
             document.getElementById("main-title-ar-txt").innerText = isAr ? "عالم الحب" : "World of Love";
             document.getElementById("lbl-visitors").innerText = isAr ? "عدد زوار صفحتنا الحين:" : "Our Platform Visitors Now:";
             document.getElementById("royal-footer-text").innerText = isAr ? "👑 منصة العائلة الملكية المعتمدة عالمياً 👑" : "👑 The Globally Approved Royal Platform 👑";
+            
+            // ترجمة عناوين الصناديق الأربعة التفاعلية بالملي
+            document.getElementById("title-box-1").innerText = isAr ? "صندوق الأدعية والإهداءات التفاعلية" : "Interactive Prayers & Blessings Box";
+            document.getElementById("title-box-2").innerText = isAr ? "صندوق عبارات الحب والاشتياق" : "Love & Longing Expressions Box";
+            document.getElementById("title-box-3").innerText = isAr ? "صندوق بر الوالدين والأم الغالية" : "Honoring Parents & Mother's Gift Box";
+            document.getElementById("title-box-4").innerText = isAr ? "صندوق عبارات العتب والحزن" : "Reproach & Sadness Expressions Box";
             
             updateClock();
         }
