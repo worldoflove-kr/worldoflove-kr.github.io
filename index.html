@@ -38,11 +38,12 @@
         .visitor-box { background: #020202 !important; border: 1px solid #161616; padding: 8px; border-radius: 25px; font-size: 12px; color: #ffffff !important; display: inline-block; min-width: 170px; margin: 4px auto 10px auto; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         .royal-footer-brand { font-size: 11.5px; font-weight: bold; color: #ffd700 !important; margin: 15px 0 5px 0; text-shadow: 0 0 10px rgba(255,215,0,0.4); }
         
-        /* 🐼 مظهر وتنسيق صندوق الباندا الترحيبي الملكي الفخم والناعم المحبب لقلبكِ */
+        /* 🐼 مظهر وتنسيق صندوق الباندا الترحيبي المطور (إجبار الباندا أولاً على اليمين لوحده) */
         .royal-panda-panel { background: rgba(10,10,10,0.9) !important; border: 1px dashed #ffd700 !important; border-radius: 16px; padding: 16px; margin: 15px 0; text-align: right; box-shadow: 0 4px 20px rgba(255,215,0,0.05); }
-        .panda-top-row { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-bottom: 12px; }
-        .panda-img-frame { width: 100px; height: 110px; border-radius: 12px; border: 1px solid #ffd700; background: url('https://ibb.co') no-repeat center center; background-size: cover; box-shadow: 0 0 15px rgba(255,215,0,0.2); animation: pandaFloat 3s infinite ease-in-out; }
-        @keyframes pandaFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+        .panda-top-row { display: flex; flex-direction: row-reverse !important; align-items: center; justify-content: space-between; gap: 15px; margin-bottom: 12px; }
+        .panda-img-frame { width: 90px; height: 90px; border-radius: 12px; border: 1px solid #ffd700; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(255,215,0,0.2); animation: pandaFloat 3s infinite ease-in-out; }
+        .panda-img-frame img { width: 100%; height: 100%; object-fit: cover; }
+        @keyframes pandaFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
         .panda-welcome-text { flex: 1; text-align: center; display: flex; flex-direction: column; gap: 2px; }
         .txt-welcome { color: #ffffff !important; font-size: 26px; font-weight: bold; font-family: 'Playfair Display', serif; font-style: italic; }
         .txt-bibi { color: #ff3333 !important; font-size: 28px; font-weight: bold; font-family: 'Playfair Display', serif; font-style: italic; text-shadow: 0 0 12px rgba(255,51,51,0.5); }
@@ -81,10 +82,12 @@
             👥 <span id="lbl-visitors">عدد زوار صفحتنا الحين:</span> <span id="counter-val">2172</span>
         </div>
 
-        <!-- 🐼 صندوق الباندا والترحيب العائلي الفخم والعبارة الساحرة مشعة بالكامل -->
+        <!-- 🐼 صندوق الباندا والترحيب العائلي الفخم (الباندا أولاً على اليمين لوحده) والعبارة الساحرة مشعة بالكامل -->
         <div class="royal-panda-panel">
             <div class="panda-top-row">
-                <div class="panda-img-frame"></div>
+                <div class="panda-img-frame">
+                    <img src="https://ibb.co" alt="KR Panda">
+                </div>
                 <div class="panda-welcome-text">
                     <span class="txt-welcome">welcome</span>
                     <span class="txt-bibi">BiBi</span>
