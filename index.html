@@ -38,7 +38,7 @@
         .txt-bibi { color: #ff3333 !important; font-size: 30px; font-weight: bold; font-family: 'Playfair Display', serif; font-style: italic; text-shadow: 0 0 15px rgba(255,51,51,0.6); }
         .panda-desc-msg { font-size: 12.5px; color: #dddddd !important; line-height: 1.7; text-align: justify; direction: rtl; padding-top: 8px; border-top: 1px solid #222; }
 
-        /* 🎨 مظهر وتنسيق الصناديق التفاعلية الأربعة بنقاء ملكي وألوان ساحرة */
+        /* 🎨 مظهر وتنسيق الصناديق التفاعلية الأربعة بنقاء ملكي وألوان ساحرة تشرح الصدر */
         .royal-interactive-card { background: rgba(12,12,12,0.95) !important; border-radius: 16px; padding: 16px; margin: 15px 0; text-align: right; box-shadow: 0 4px 15px rgba(0,0,0,0.7); border-left: 5px solid #ffd700; }
         .box-duaa { border-left-color: #00ffaa !important; box-shadow: 0 0 15px rgba(0,255,170,0.1); }
         .box-love { border-left-color: #ff3366 !important; box-shadow: 0 0 15px rgba(255,51,102,0.1); }
@@ -134,7 +134,7 @@
             <button class="royal-share-btn" onclick="fireRoyalWhatsapp('love')">🟢 مشاركة الإهداء على الواتساب</button>
         </div>
 
-        <!-- 🔵 3. BOX بر الوالدين والإهداء للأم الغالية (فيروز فخم) -->
+        <!-- 🔵 3. صندوق بر الوالدين والإهداء للأم الغالية (فيروز فخم) -->
         <div class="royal-interactive-card box-parents">
             <div class="box-title box-title-parents">👑 <span id="title-box-3">صندوق بر الوالدين والأم الغالية</span></div>
             <select class="royal-select" id="select-parents" onchange="syncLivePreview('parents')">
@@ -198,13 +198,13 @@
             }
         }
 
-        // 🚀 محرك الواتساب الذكي المحقون برابط القلعة الصافي والأصلي 100% لتفتح دغري صفحتنا عالم الحب
+        // 🚀 محرك الواتساب الذكي المحقون برابط القلعة الأزرق التفاعلي والمكتمل بالملي للأبد
         function fireRoyalWhatsapp(type) {
             var text = document.getElementById("select-" + type).value;
             var sender = document.getElementById("name-" + type).value.trim();
             if (!sender) { sender = (currentLang === 'ar') ? "مُرسِل مخلص" : "A Loyal Sender"; }
             
-            // صياغة الرسالة المنسقة وتثبيت الرابط الأصلي الصحيح لصفحتنا عالم الحب KR بالملي
+            // صياغة الرسالة المنسقة وتثبيت الرابط الأزرق التفاعلي الكامل https:// من دون نقصان حرف واحد
             var msg = `*✨ إهداء ملكي فاخر من: ${sender}* \n\n` +
                       `"${text}"\n\n` +
                       `━━━━━━━━━━━━━━━\n` +
