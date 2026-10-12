@@ -155,7 +155,7 @@
         <div class="royal-interactive-card box-sad">
             <div class="box-title box-title-sad">🔮 <span id="title-box-4">صندوق عبارات العتب والحزن</span></div>
             <select class="royal-select" id="select-sad" onchange="syncLivePreview('sad')">
-                <option value="عاتبتك لأنك كنت تعني لي الكثير, ولكن صمتك المستمر علمني أن بعض العتب يفقد قيمته مع الوقت.">😔 رسالة عتب وقورة شديدة الأثر</option>
+                <option value="عاتبتك لأنك كنت تعني لي الكثير، ولكن صمتك المستمر علمني أن بعض العتب يفقد قيمته مع الوقت.">😔 رسالة عتب وقورة شديدة الأثر</option>
                 <option value="ليس كل حزن يترجم بالدموع، فهناك غصة بقلب الروح تفوق طاقة الكلام وصمتها بياخد العقل.">🖤 عبارة كبرياء وحزن هادئة وفخمة</option>
                 <option value="تمنيت لو أن الأيام حفظت الوعود الصادقة التي قطعناها، ولكن الخذلان دائماً يأتي من حيث لا نحتسب.">🥀 عبارة مؤثرة عن وعود الأيام والخذلان</option>
             </select>
@@ -203,12 +203,13 @@
             }
         }
 
-        // 🚀 محرك كسر الحظر وتوجيه الهاتف لفتح تطبيق الواتساب الأصلي دغري بنقاء 100%
+        // 🚀 محرك الواتساب الذكي المحقون برابط القلعة الصافي والأصلي 100% لتفتح دغري صفحتنا عالم الحب
         function fireRoyalWhatsapp(type) {
             var text = document.getElementById("select-" + type).value;
             var sender = document.getElementById("name-" + type).value.trim();
             if (!sender) { sender = (currentLang === 'ar') ? "مُرسِل مخلص" : "A Loyal Sender"; }
             
+            // صياغة الرسالة المنسقة وتثبيت الرابط الأصلي الصحيح والخالي من أي إضافات خاطئة
             var msg = `*✨ إهداء ملكي فاخر من: ${sender}* \n\n` +
                       `"${text}"\n\n` +
                       `━━━━━━━━━━━━━━━\n` +
