@@ -1,43 +1,60 @@
-  <style>
+<style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
-    html, body { background-color: #030303 !important; color: #fff !important; text-align: center; padding: 8px; }
-    .container { max-width: 480px; margin: 0 auto; padding: 5px; }
-    h1 { color: #ffd700 !important; font-size: 28px; margin-bottom: 12px; font-weight: 700; text-shadow: 0 0 15px rgba(255,215,0,0.6); }
-    .ticker-bar { background: rgba(17,17,17,0.95) !important; border: 1px solid #ffd700; padding: 10px; border-radius: 10px; margin-bottom: 15px; font-size: 11px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; box-shadow: 0 0 10px rgba(255,215,0,0.2); }
-    .ticker-item { background: #111 !important; padding: 4px 10px; border-radius: 6px; border: 1px solid #333; text-decoration: none; color: #ffd700 !important; font-weight: bold; font-size: 11px; transition: all 0.2s; }
-    .ticker-item:hover { border-color: #ffd700; box-shadow: 0 0 8px rgba(255,215,0,0.4); }
-    .lang-zone { margin-bottom: 15px; display: flex; justify-content: center; gap: 12px; }
-    .lang-btn { background: #000 !important; border: 1px solid #ffd700; color: #ffd700 !important; padding: 6px 16px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 12px; box-shadow: 0 0 5px rgba(255,215,0,0.1); }
-    .lang-btn.active { background: linear-gradient(45deg, #ffd700, #b8860b) !important; color: #000 !important; border: none; box-shadow: 0 0 10px rgba(255,215,0,0.5); }
-    .section-box { background: #0d0d0d !important; border: 1px solid #ffd700 !important; border-radius: 14px; padding: 16px; margin-bottom: 18px; text-align: right; box-shadow: 0 4px 20px rgba(255,215,0,0.05); position: relative; }
-    .box-title { font-size: 15px; font-weight: bold; color: #ffd700 !important; border-bottom: 1px solid #ffd700; padding-bottom: 6px; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; text-shadow: 0 0 8px rgba(255,215,0,0.3); }
-    .shop-box-desc { font-size: 11.5px; color: #ccc !important; margin-bottom: 12px; line-height: 1.6; }
-    input[type="text"], input[type="number"], select { width: 100%; padding: 11px; margin-bottom: 12px; border-radius: 8px; border: 1px solid #333; background: #000 !important; color: #fff !important; font-size: 13px; text-align: center; transition: border 0.2s; }
-    input:focus, select:focus { border-color: #ffd700 !important; outline: none; box-shadow: 0 0 8px rgba(255,215,0,0.3); }
-    .wish-submit-btn, .counter-btn { width: 100%; padding: 12px; border: none; border-radius: 8px; font-weight: bold; font-size: 13px; cursor: pointer; transition: all 0.2s ease; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
-    .wish-submit-btn:active, .counter-btn:active { transform: scale(0.98); }
-    .preview-box { background: rgba(0,0,0,0.8) !important; border: 1px solid #ffd700; padding: 12px; border-radius: 8px; font-size: 12px; line-height: 1.6; color: #ffd700 !important; min-height: 40px; margin-bottom: 12px; text-align: center; box-shadow: inset 0 0 10px rgba(255,215,0,0.1); }
-    .btn-whatsapp-btn { display: flex; align-items: center; justify-content: center; background: linear-gradient(45deg, #25d366, #075e54) !important; color: #fff !important; padding: 11px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 13px; margin-top: 8px; box-shadow: 0 4px 10px rgba(37,211,102,0.2); }
-    .btn-gold-link { display: block; background: linear-gradient(45deg, #ffd700, #b8860b) !important; color: #000 !important; padding: 11px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 13px; margin-bottom: 10px; text-align: center; box-shadow: 0 4px 10px rgba(255,215,0,0.2); }
-    .wishes-container { max-height: 200px; overflow-y: auto; margin-top: 12px; padding-right: 5px; }
-    .wish-item-card { background: #141414 !important; border: 1px solid #222; padding: 10px; border-radius: 8px; margin-bottom: 8px; font-size: 11.5px; display: flex; justify-content: space-between; align-items: center; }
-    .wish-text-content { color: #eee !important; line-height: 1.5; }
-    .wish-support-btn { background: #000 !important; border: 1px solid #ffd700; color: #ff3366 !important; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: bold; cursor: pointer; transition: all 0.2s; }
-    .wish-support-btn:hover { background: #ff3366 !important; color: #fff !important; border-color: #ff3366; }
-    .counter-display { font-size: 45px; font-weight: bold; margin: 12px 0; font-family: monospace; color: #00ffaa !important; text-shadow: 0 0 15px rgba(0,255,170,0.5); }
+    html, body { background-color: #000000 !important; color: #ffffff !important; text-align: center; padding: 12px; min-height: 100vh; }
+    .container { max-width: 480px; margin: 0 auto; padding: 5px; background-color: #000000 !important; }
+    
+    /* ✨ تأثير النبض الوهجي النيوني لعنوان عالم الحب و World of Love */
+    h1 { color: #ffd700 !important; font-size: 32px; margin-top: 15px; margin-bottom: 2px; font-weight: 700; text-shadow: 0 0 15px rgba(255,215,0,0.6); animation: royalPulse 2s infinite alternate; }
+    
+    /* 🪙 شريط أسعار البورصة العالمي المتحرك والمضاء بالكامل */
+    .ticker-bar { background: #050705 !important; border: 1px solid #161616; padding: 10px; border-radius: 10px; margin-bottom: 18px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.9); }
+    .ticker-item { background: #0c0f0c !important; padding: 4px 10px; border-radius: 6px; border: 1px solid #222; text-decoration: none; color: #ffd700 !important; font-weight: bold; font-size: 11px; }
+    
+    /* 🌐 لوحة أزرار الترجمة واللغات */
+    .lang-zone { margin-bottom: 18px; display: flex; justify-content: center; gap: 15px; }
+    .lang-btn { background: #0a0a0a !important; border: 1px solid #ffd700; color: #ffd700 !important; padding: 6px 18px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 12.5px; }
+    .lang-btn.active { background: linear-gradient(45deg, #ffd700, #b8860b) !important; color: #000000 !important; border: none; box-shadow: 0 0 15px rgba(255,215,0,0.6); }
+    
+    /* 🐼 تأثير الباندا وشعاع الضوء النيوني المشع والنبض التلقائي الأصلي الشغال */
+    .welcome-panda-box { background: #000000 !important; border: none !important; margin: 25px auto; padding: 10px; max-width: 320px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; }
+    .panda-avatar { font-size: 80px; filter: drop-shadow(0 0 25px rgba(255,255,255,0.45)) drop-shadow(0 0 45px rgba(255,51,170,0.3)); animation: pandaPulseRay 2.5s infinite alternate ease-in-out; }
+    @keyframes pandaPulseRay { 0% { transform: scale(0.96) translateY(0); filter: drop-shadow(0 0 20px rgba(255,255,255,0.3)) drop-shadow(0 0 35px rgba(255,51,170,0.2)); } 100% { transform: scale(1.04) translateY(-5px); filter: drop-shadow(0 0 35px rgba(255,255,255,0.65)) drop-shadow(0 0 60px rgba(255,51,170,0.5)); } }
+    .welcome-title-msg { color: #ff33aa !important; font-size: 26px; font-weight: bold; margin-top: 15px; font-family: 'Cairo', sans-serif; text-shadow: 0 0 12px rgba(255,51,170,0.6); animation: textGlowPink 2.5s infinite alternate; }
+    @keyframes textGlowPink { 0% { text-shadow: 0 0 10px rgba(255,51,170,0.4); } 100% { text-shadow: 0 0 22px rgba(255,51,170,0.8); } }
+    
+    /* 👑 شعار KR المشع بالذهب والنبض التلقائي الأسفل */
+    .royal-footer-brand { font-size: 15px; font-weight: bold; color: #ffd700 !important; margin: 35px 0 15px 0; text-shadow: 0 0 15px rgba(255,215,0,0.7); animation: krGoldPulse 2s infinite alternate ease-in-out; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    @keyframes krGoldPulse { 0% { transform: scale(0.97); text-shadow: 0 0 10px rgba(255,215,0,0.5); filter: drop-shadow(0 0 5px rgba(255,215,0,0.3)); } 100% { transform: scale(1.03); text-shadow: 0 0 25px rgba(255,215,0,0.9); filter: drop-shadow(0 0 15px rgba(255,215,0,0.6)); } }
+    
+    /* 📦 الصناديق والأقسام بمظهرها الفخم الأصلي والخطوط الرفيعة الناعمة */
+    .section-box { background: #050505 !important; border: 1px solid #161616 !important; border-radius: 12px; padding: 18px; margin-bottom: 18px; text-align: right; box-shadow: 0 4px 20px rgba(0,0,0,0.7); }
+    .box-title { font-size: 14.5px; font-weight: normal; color: #ffd700 !important; border-bottom: 1px solid #1a1a1a; padding-bottom: 6px; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+    .shop-box-desc { font-size: 11.5px; color: #888888 !important; margin-bottom: 12px; line-height: 1.6; }
+    
+    /* ⌨️ الحقول والأزرار التفاعلية الناعمة الرفيعة */
+    input[type="text"], input[type="number"], select { width: 100%; padding: 11px; margin-bottom: 12px; border-radius: 8px; border: 1px solid #222; background: #020202 !important; color: #ffffff !important; font-size: 13px; text-align: center; }
+    .wish-submit-btn, .counter-btn { width: 100%; padding: 12px; border: none; border-radius: 8px; font-weight: bold; font-size: 13px; cursor: pointer; background: #0c0c0c !important; color: #ffffff !important; border: 1px solid #222; transition: all 0.2s; }
+    #btn-search { background: linear-gradient(45deg, #ffd700, #b8860b) !important; color: #000000 !important; border: none; }
+    #wellness-btn-click, #wish-btn-click { background: linear-gradient(45deg, #00ffaa, #00b377) !important; color: #000000 !important; border: none; }
+    #dream-btn-click { background: linear-gradient(45deg, #ff9800, #f57c00) !important; color: #ffffff !important; border: none; }
+    #btn-radio-gen { background: linear-gradient(45deg, #ff33aa, #c2185b) !important; color: #ffffff !important; border: none; }
+    
+    /* 👁️ عداد زوار المنصة بهالته الدائرية الملوكية التلقائية الناعمة */
+    .preview-box { background: #020202 !important; border: 1px solid #161616; padding: 12px; border-radius: 25px; font-size: 12px; line-height: 1.6; color: #ffffff !important; min-height: 38px; margin-bottom: 12px; text-align: center; display: inline-block; width: auto; min-width: 180px; margin: 5px auto 15px auto; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+    #live-clock { background: #020202 !important; border: 1px solid #161616; padding: 12px; border-radius: 8px; font-size: 12px; color: #ffd700 !important; font-weight: bold; width: 100%; margin-bottom: 12px; }
+    #counter-val { color: #ffd700 !important; font-weight: bold; font-size: 13px; text-shadow: 0 0 5px rgba(255,215,0,0.5); }
+    
+    .btn-whatsapp-btn { display: flex; align-items: center; justify-content: center; background: linear-gradient(45deg, #25d366, #075e54) !important; color: #ffffff !important; padding: 11px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 13px; margin-top: 8px; }
+    .btn-gold-link { display: block; background: linear-gradient(45deg, #ffd700, #b8860b) !important; color: #000000 !important; padding: 11px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 13px; margin-bottom: 10px; text-align: center; }
+    .wishes-container { max-height: 200px; overflow-y: auto; margin-top: 14px; }
+    .wish-item-card { background: #080808 !important; border: 1px solid #181818; padding: 10px; border-radius: 8px; margin-bottom: 8px; font-size: 11.5px; display: flex; justify-content: space-between; align-items: center; }
+    .wish-text-content { color: #cccccc !important; }
+    .wish-support-btn { background: #020202 !important; border: 1px solid #222; color: #ff3366 !important; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: bold; cursor: pointer; }
+    .counter-display { font-size: 45px; font-weight: bold; margin: 12px 0; font-family: monospace; color: #00ffaa !important; text-shadow: 0 0 15px rgba(0,255,170,0.4); }
     .reset-btn { color: #ff3333 !important; font-size: 11px; cursor: pointer; text-decoration: underline; font-weight: bold; background: none; border: none; margin-top: 6px; }
-    .royal-footer-brand { font-size: 11.5px; font-weight: bold; color: #ffd700 !important; margin: 25px 0 12px 0; text-shadow: 0 0 10px rgba(255,215,0,0.4); letter-spacing: 1px; }
-    .noti-banner-box { display: none; background: #00ffaa !important; color: #000 !important; font-weight: bold; padding: 10px; border-radius: 8px; font-size: 11.5px; margin-bottom: 12px; box-shadow: 0 0 10px rgba(0,255,170,0.4); }
+    .noti-banner-box { display: none; background: #00ffaa !important; color: #000000 !important; font-weight: bold; padding: 10px; border-radius: 8px; font-size: 11.5px; margin-bottom: 12px; }
 </style>
 
-  <!-- 🪙 شريط أسعار البورصة العالمية والذهب والدولار المطور بالروابط المباشرة -->
-        <div class="ticker-bar">
-            <a href="https://kitco.com" target="_blank" class="ticker-item" style="text-decoration:none; color:#ffd700;"><span id="tick-gold">أوقية الذهب العالمية:</span> $2,735.40 <span style="color:#ff3333;" id="tick-down">▼ نازل</span></a>
-            <a href="https://marketwatch.com" target="_blank" class="ticker-item" style="text-decoration:none; color:#ffd700;"><span id="tick-index">مؤشر الدولار عالمياً:</span> 104.25 <span style="color:#00ffaa;" id="tick-up">▲ طالع</span></a>
-            <a href="https://liralate.com" target="_blank" class="ticker-item" style="text-decoration:none; color:#ffd700;"><span id="tick-lbp">صرف الدولار في لبنان:</span> 89,500 LBP <span style="color:#00ffaa;" id="tick-stable">◀ مستقر</span></a>
-        </div>
-
-        <!-- 🌐 لوحة أزرار الترجمة الفورية للعربية والإنجليزية -->
         <div class="lang-zone">
             <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية 🇱🇧</button>
             <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English 🇬🇧</button>
