@@ -1,26 +1,35 @@
-      <style>
-    html, body { background-color: #050505 !important; color: #fff !important; text-align: center; }
-    .container { background-color: #050505 !important; max-width: 500px; margin: 0 auto; padding: 10px; }
-    h1 { color: #ffd700 !important; font-size: 26px; text-shadow: 0 0 10px rgba(255,215,0,0.4); }
-    .ticker-bar { background: #111 !important; border: 1px solid #333; padding: 8px; border-radius: 8px; margin-bottom: 12px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
-    .ticker-item { background: #1a1a1a !important; padding: 3px 8px; border-radius: 4px; border: 1px solid #222; text-decoration: none; color: #ffd700 !important; font-size: 11px; }
-    .lang-zone { margin-bottom: 12px; display: flex; justify-content: center; gap: 10px; }
-    .lang-btn { background: #000 !important; border: 1px solid #ffd700; color: #ffd700 !important; padding: 6px 14px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 12px; }
-    .lang-btn.active { background: #ffd700 !important; color: #000 !important; }
-    .section-box { background: #111 !important; border: 2px solid #333; border-radius: 12px; padding: 14px; margin-bottom: 15px; text-align: right; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-    .box-title { font-size: 15px; font-weight: bold; color: #ffd700 !important; border-bottom: 2px solid #ffd700; padding-bottom: 5px; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
-    .shop-box-desc { font-size: 11px; color: #aaa !important; margin-bottom: 10px; line-height: 1.5; }
-    input[type="text"], input[type="number"], select { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 6px; border: 1px solid #444; background: #000 !important; color: #fff !important; font-size: 13px; text-align: center; }
-    .preview-box { background: #000 !important; border: 1px solid #444; padding: 12px; border-radius: 6px; font-size: 12px; line-height: 1.6; color: #fff !important; min-height: 40px; margin-bottom: 10px; text-align: center; }
-    .btn-whatsapp-btn { display: flex; align-items: center; justify-content: center; background: linear-gradient(45deg, #25d366, #075e54) !important; color: #fff !important; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 13px; margin-top: 5px; }
-    .btn-gold-link { display: block; background: linear-gradient(45deg, #ffd700, #b8860b) !important; color: #000 !important; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 13px; margin-bottom: 8px; text-align: center; }
-    .wish-item-card { background: #1a1a1a !important; border: 1px solid #333; padding: 8px; border-radius: 6px; margin-bottom: 6px; font-size: 11px; display: flex; justify-content: space-between; align-items: center; }
-    .wish-text-content { color: #eee !important; }
-    .counter-display { font-size: 40px; font-weight: bold; margin: 10px 0; font-family: monospace; color: #00ffaa !important; }
-    .reset-btn { color: #ff3333 !important; font-size: 11px; cursor: pointer; text-decoration: underline; font-weight: bold; background: none; border: none; }
-    .royal-footer-brand { font-size: 11px; font-weight: bold; color: #ffd700 !important; margin: 20px 0 10px 0; text-shadow: 0 0 8px rgba(255,215,0,0.3); }
-    .noti-banner-box { display: none; background: #00ffaa !important; color: #000 !important; font-weight: bold; padding: 8px; border-radius: 6px; font-size: 11px; margin-bottom: 10px; }
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+    html, body { background-color: #030303 !important; color: #fff !important; text-align: center; padding: 8px; }
+    .container { max-width: 480px; margin: 0 auto; padding: 5px; }
+    h1 { color: #ffd700 !important; font-size: 28px; margin-bottom: 12px; font-weight: 700; text-shadow: 0 0 15px rgba(255,215,0,0.6); }
+    .ticker-bar { background: rgba(17,17,17,0.95) !important; border: 1px solid #ffd700; padding: 10px; border-radius: 10px; margin-bottom: 15px; font-size: 11px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; box-shadow: 0 0 10px rgba(255,215,0,0.2); }
+    .ticker-item { background: #111 !important; padding: 4px 10px; border-radius: 6px; border: 1px solid #333; text-decoration: none; color: #ffd700 !important; font-weight: bold; font-size: 11px; transition: all 0.2s; }
+    .ticker-item:hover { border-color: #ffd700; box-shadow: 0 0 8px rgba(255,215,0,0.4); }
+    .lang-zone { margin-bottom: 15px; display: flex; justify-content: center; gap: 12px; }
+    .lang-btn { background: #000 !important; border: 1px solid #ffd700; color: #ffd700 !important; padding: 6px 16px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 12px; box-shadow: 0 0 5px rgba(255,215,0,0.1); }
+    .lang-btn.active { background: linear-gradient(45deg, #ffd700, #b8860b) !important; color: #000 !important; border: none; box-shadow: 0 0 10px rgba(255,215,0,0.5); }
+    .section-box { background: #0d0d0d !important; border: 1px solid #ffd700 !important; border-radius: 14px; padding: 16px; margin-bottom: 18px; text-align: right; box-shadow: 0 4px 20px rgba(255,215,0,0.05); position: relative; }
+    .box-title { font-size: 15px; font-weight: bold; color: #ffd700 !important; border-bottom: 1px solid #ffd700; padding-bottom: 6px; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; text-shadow: 0 0 8px rgba(255,215,0,0.3); }
+    .shop-box-desc { font-size: 11.5px; color: #ccc !important; margin-bottom: 12px; line-height: 1.6; }
+    input[type="text"], input[type="number"], select { width: 100%; padding: 11px; margin-bottom: 12px; border-radius: 8px; border: 1px solid #333; background: #000 !important; color: #fff !important; font-size: 13px; text-align: center; transition: border 0.2s; }
+    input:focus, select:focus { border-color: #ffd700 !important; outline: none; box-shadow: 0 0 8px rgba(255,215,0,0.3); }
+    .wish-submit-btn, .counter-btn { width: 100%; padding: 12px; border: none; border-radius: 8px; font-weight: bold; font-size: 13px; cursor: pointer; transition: all 0.2s ease; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+    .wish-submit-btn:active, .counter-btn:active { transform: scale(0.98); }
+    .preview-box { background: rgba(0,0,0,0.8) !important; border: 1px solid #ffd700; padding: 12px; border-radius: 8px; font-size: 12px; line-height: 1.6; color: #ffd700 !important; min-height: 40px; margin-bottom: 12px; text-align: center; box-shadow: inset 0 0 10px rgba(255,215,0,0.1); }
+    .btn-whatsapp-btn { display: flex; align-items: center; justify-content: center; background: linear-gradient(45deg, #25d366, #075e54) !important; color: #fff !important; padding: 11px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 13px; margin-top: 8px; box-shadow: 0 4px 10px rgba(37,211,102,0.2); }
+    .btn-gold-link { display: block; background: linear-gradient(45deg, #ffd700, #b8860b) !important; color: #000 !important; padding: 11px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 13px; margin-bottom: 10px; text-align: center; box-shadow: 0 4px 10px rgba(255,215,0,0.2); }
+    .wishes-container { max-height: 200px; overflow-y: auto; margin-top: 12px; padding-right: 5px; }
+    .wish-item-card { background: #141414 !important; border: 1px solid #222; padding: 10px; border-radius: 8px; margin-bottom: 8px; font-size: 11.5px; display: flex; justify-content: space-between; align-items: center; }
+    .wish-text-content { color: #eee !important; line-height: 1.5; }
+    .wish-support-btn { background: #000 !important; border: 1px solid #ffd700; color: #ff3366 !important; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: bold; cursor: pointer; transition: all 0.2s; }
+    .wish-support-btn:hover { background: #ff3366 !important; color: #fff !important; border-color: #ff3366; }
+    .counter-display { font-size: 45px; font-weight: bold; margin: 12px 0; font-family: monospace; color: #00ffaa !important; text-shadow: 0 0 15px rgba(0,255,170,0.5); }
+    .reset-btn { color: #ff3333 !important; font-size: 11px; cursor: pointer; text-decoration: underline; font-weight: bold; background: none; border: none; margin-top: 6px; }
+    .royal-footer-brand { font-size: 11.5px; font-weight: bold; color: #ffd700 !important; margin: 25px 0 12px 0; text-shadow: 0 0 10px rgba(255,215,0,0.4); letter-spacing: 1px; }
+    .noti-banner-box { display: none; background: #00ffaa !important; color: #000 !important; font-weight: bold; padding: 10px; border-radius: 8px; font-size: 11.5px; margin-bottom: 12px; box-shadow: 0 0 10px rgba(0,255,170,0.4); }
 </style>
+
   <!-- 🪙 شريط أسعار البورصة العالمية والذهب والدولار المطور بالروابط المباشرة -->
         <div class="ticker-bar">
             <a href="https://kitco.com" target="_blank" class="ticker-item" style="text-decoration:none; color:#ffd700;"><span id="tick-gold">أوقية الذهب العالمية:</span> $2,735.40 <span style="color:#ff3333;" id="tick-down">▼ نازل</span></a>
