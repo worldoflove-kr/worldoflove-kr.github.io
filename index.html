@@ -32,11 +32,10 @@
         .visitor-box { background: #020202 !important; border: 1px solid #161616; padding: 8px; border-radius: 25px; font-size: 12px; color: #ffffff !important; display: inline-block; min-width: 170px; margin: 4px auto 10px auto; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         .royal-footer-brand { font-size: 11.5px; font-weight: bold; color: #ffd700 !important; margin: 15px 0 5px 0; text-shadow: 0 0 10px rgba(255,215,0,0.4); }
         
-        /* 🐼 مظهر لوحة الباندا العمودية الجديدة المفصولة بالترتيب الملكي */
+        /* 🐼 مظهر لوحة الباندا العمودية الجديدة المفصولة بالتناسب */
         .royal-panda-panel { background: rgba(10,10,10,0.9) !important; border: 1px dashed #ffd700 !important; border-radius: 16px; padding: 16px; margin: 15px 0; text-align: center; box-shadow: 0 4px 20px rgba(255,215,0,0.05); }
-        .panda-img-row { width: 140px; height: 140px; margin: 0 auto 12px auto; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(255,215,0,0.3); border: 2px solid #ffd700; animation: pandaMellowFloat 4s infinite ease-in-out; }
-        .panda-img-row img { width: 100%; height: 100%; object-fit: cover; }
-        @keyframes pandaMellowFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+        .panda-img-row { width: 140px; height: 140px; margin: 0 auto 12px auto; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 25px rgba(255,215,0,0.45); border: 2px solid #ffd700; background: #050505; animation: pandaNeonFloat 3.5s infinite ease-in-out; font-size: 85px; filter: drop-shadow(0 0 15px rgba(255,215,0,0.3)); }
+        @keyframes pandaNeonFloat { 0%, 100% { transform: translateY(0) scale(0.97); box-shadow: 0 0 20px rgba(255,215,0,0.3); } 50% { transform: translateY(-6px) scale(1.03); box-shadow: 0 0 35px rgba(255,215,0,0.6); } }
         .panda-text-block { margin-bottom: 12px; display: flex; flex-direction: column; gap: 2px; align-items: center; justify-content: center; }
         .txt-welcome { color: #ffffff !important; font-size: 28px; font-weight: bold; font-family: 'Playfair Display', serif; font-style: italic; }
         .txt-bibi { color: #ff3333 !important; font-size: 30px; font-weight: bold; font-family: 'Playfair Display', serif; font-style: italic; text-shadow: 0 0 15px rgba(255,51,51,0.6); }
@@ -92,11 +91,9 @@
             👥 <span id="lbl-visitors">عدد زوار صفحتنا الحين:</span> <span id="counter-val">2172</span>
         </div>
 
-        <!-- 🐼 صندوق الباندا العمودي الملكي (صورة الباندا لوحدها فوق وتتوسط الشاشة كملكة وتحتها الترحيب والعبارة) -->
+        <!-- 🐼 صندوق الباندا العمودي الرقمي المشع من تأليفنا الخاص ليظهر 100% بنقاء فلكي ساطع وتام -->
         <div class="royal-panda-panel">
-            <div class="panda-img-row">
-                <img src="https://github.io" onerror="this.src='https://unsplash.com'" alt="KR Royal Panda">
-            </div>
+            <div class="panda-img-row">🐼</div>
             <div class="panda-text-block">
                 <span class="txt-welcome">welcome</span>
                 <span class="txt-bibi">BiBi</span>
@@ -166,7 +163,7 @@
         var currentLang = 'ar';
         document.addEventListener('contextmenu', e => e.preventDefault());
         
-        // ⏰ محرك تشغيل الساعة الرقمية المتزامنة وحالة الطقس والحرارة والرطوبة بمل وقت بوقته من دون غلطة
+        // ⏰ محرك تشغيل الساعة الرقمية وحالة الطقس والحرارة والرطوبة في بيروت بمل وقت بوقته
         function updateClock() {
             var now = new Date();
             var t = now.toLocaleTimeString('ar-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
@@ -218,7 +215,7 @@
             document.getElementById("lbl-visitors").innerText = isAr ? "عدد زوار صفحتنا الحين:" : "Our Platform Visitors Now:";
             document.getElementById("royal-footer-text").innerText = isAr ? "👑 منصة العائلة الملكية المعتمدة عالمياً 👑" : "👑 The Globally Approved Royal Platform 👑";
             
-            // ترجمة عناوين الصناديق الأربعة التفاعلية بالملي
+            // ترجمة عناوين الصناديق التفاعلية الأربعة بالملي
             document.getElementById("title-box-1").innerText = isAr ? "صندوق الأدعية والإهداءات التفاعلية" : "Interactive Prayers & Blessings Box";
             document.getElementById("title-box-2").innerText = isAr ? "صندوق عبارات الحب والاشتياق" : "Love & Longing Expressions Box";
             document.getElementById("title-box-3").innerText = isAr ? "صندوق بر الوالدين والأم الغالية" : "Honoring Parents & Mother's Gift Box";
