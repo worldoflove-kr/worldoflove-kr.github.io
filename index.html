@@ -1,4 +1,27 @@
-        <!-- 🪙 شريط أسعار البورصة العالمية والذهب والدولار المطور بالروابط المباشرة -->
+      <style>
+    html, body { background-color: #050505 !important; color: #fff !important; text-align: center; }
+    .container { background-color: #050505 !important; max-width: 500px; margin: 0 auto; padding: 10px; }
+    h1 { color: #ffd700 !important; font-size: 26px; text-shadow: 0 0 10px rgba(255,215,0,0.4); }
+    .ticker-bar { background: #111 !important; border: 1px solid #333; padding: 8px; border-radius: 8px; margin-bottom: 12px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+    .ticker-item { background: #1a1a1a !important; padding: 3px 8px; border-radius: 4px; border: 1px solid #222; text-decoration: none; color: #ffd700 !important; font-size: 11px; }
+    .lang-zone { margin-bottom: 12px; display: flex; justify-content: center; gap: 10px; }
+    .lang-btn { background: #000 !important; border: 1px solid #ffd700; color: #ffd700 !important; padding: 6px 14px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 12px; }
+    .lang-btn.active { background: #ffd700 !important; color: #000 !important; }
+    .section-box { background: #111 !important; border: 2px solid #333; border-radius: 12px; padding: 14px; margin-bottom: 15px; text-align: right; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+    .box-title { font-size: 15px; font-weight: bold; color: #ffd700 !important; border-bottom: 2px solid #ffd700; padding-bottom: 5px; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .shop-box-desc { font-size: 11px; color: #aaa !important; margin-bottom: 10px; line-height: 1.5; }
+    input[type="text"], input[type="number"], select { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 6px; border: 1px solid #444; background: #000 !important; color: #fff !important; font-size: 13px; text-align: center; }
+    .preview-box { background: #000 !important; border: 1px solid #444; padding: 12px; border-radius: 6px; font-size: 12px; line-height: 1.6; color: #fff !important; min-height: 40px; margin-bottom: 10px; text-align: center; }
+    .btn-whatsapp-btn { display: flex; align-items: center; justify-content: center; background: linear-gradient(45deg, #25d366, #075e54) !important; color: #fff !important; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 13px; margin-top: 5px; }
+    .btn-gold-link { display: block; background: linear-gradient(45deg, #ffd700, #b8860b) !important; color: #000 !important; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 13px; margin-bottom: 8px; text-align: center; }
+    .wish-item-card { background: #1a1a1a !important; border: 1px solid #333; padding: 8px; border-radius: 6px; margin-bottom: 6px; font-size: 11px; display: flex; justify-content: space-between; align-items: center; }
+    .wish-text-content { color: #eee !important; }
+    .counter-display { font-size: 40px; font-weight: bold; margin: 10px 0; font-family: monospace; color: #00ffaa !important; }
+    .reset-btn { color: #ff3333 !important; font-size: 11px; cursor: pointer; text-decoration: underline; font-weight: bold; background: none; border: none; }
+    .royal-footer-brand { font-size: 11px; font-weight: bold; color: #ffd700 !important; margin: 20px 0 10px 0; text-shadow: 0 0 8px rgba(255,215,0,0.3); }
+    .noti-banner-box { display: none; background: #00ffaa !important; color: #000 !important; font-weight: bold; padding: 8px; border-radius: 6px; font-size: 11px; margin-bottom: 10px; }
+</style>
+  <!-- 🪙 شريط أسعار البورصة العالمية والذهب والدولار المطور بالروابط المباشرة -->
         <div class="ticker-bar">
             <a href="https://kitco.com" target="_blank" class="ticker-item" style="text-decoration:none; color:#ffd700;"><span id="tick-gold">أوقية الذهب العالمية:</span> $2,735.40 <span style="color:#ff3333;" id="tick-down">▼ نازل</span></a>
             <a href="https://marketwatch.com" target="_blank" class="ticker-item" style="text-decoration:none; color:#ffd700;"><span id="tick-index">مؤشر الدولار عالمياً:</span> 104.25 <span style="color:#00ffaa;" id="tick-up">▲ طالع</span></a>
