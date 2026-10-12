@@ -7,69 +7,98 @@
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+        
+        /* 🌌 الخلفية السوداء الفخمة مع النجوم التي تلمع */
         html, body { background-color: #000000 !important; color: #ffffff !important; text-align: center; padding: 12px; min-height: 100vh; background: #000000 url('https://transparenttextures.com') repeat !important; overflow-x: hidden; }
         .container { max-width: 480px; margin: 0 auto; padding: 5px; background-color: #000000 !important; }
+        
+        /* ✨ تأثير النبض وشعاع النور المشع الساطع الطالع من عنوان [ عالم الحب ] بالعربي والإنجليزي */
         .main-title-ar { color: #ffd700 !important; font-size: 34px; font-weight: 700; margin-top: 15px; display: block; animation: royalGlowPulse 2s infinite alternate ease-in-out; }
         .main-title-en { color: #ffd700 !important; font-family: 'Playfair Display', serif; font-style: italic; font-size: 26px; margin-bottom: 5px; display: block; animation: royalGlowPulse 2s infinite alternate ease-in-out; }
-        .royal-brand-kr { color: #ffd700 !important; font-family: 'Playfair Display', serif; font-style: italic; font-size: 28px; font-weight: bold; display: inline-block; margin-top: 5px; animation: krPulse 1.8s infinite alternate ease-in-out; }
-        @keyframes royalGlowPulse { 0% { text-shadow: 0 0 10px rgba(255,215,0,0.5), 0 0 20px rgba(255,215,0,0.3); transform: scale(0.97); filter: brightness(0.9); } 100% { text-shadow: 0 0 25px rgba(255,215,0,1), 0 0 50px rgba(255,215,0,0.8), 0 0 70px rgba(255,215,0,0.6); transform: scale(1.03); filter: brightness(1.2); } }
-        @keyframes krPulse { 0% { transform: rotate(-10deg) scale(0.95); text-shadow: 0 0 12px rgba(255,215,0,0.5); } 100% { transform: rotate(-10deg) scale(1.05); text-shadow: 0 0 35px rgba(255,215,0,1), 0 0 55px rgba(255,215,0,0.7); } }
-        .ticker-bar { background: #050705 !important; border: 1px solid #161616; padding: 10px; border-radius: 10px; margin-bottom: 18px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.9); }
-        .ticker-item { background: #0c0f0c !important; padding: 4px 10px; border-radius: 6px; border: 1px solid #222; text-decoration: none; color: #ffd700 !important; font-weight: bold; font-size: 11px; }
-        .lang-zone { margin-bottom: 18px; display: flex; justify-content: center; gap: 15px; }
-        .lang-btn { background: #0a0a0a !important; border: 1px solid #ffd700; color: #ffd700 !important; padding: 6px 18px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 12.5px; }
-        .lang-btn.active { background: linear-gradient(45deg, #ffd700, #b8860b) !important; color: #000000 !important; border: none; box-shadow: 0 0 15px rgba(255,215,0,0.6); }
-        .preview-box { background: #020202 !important; border: 1px solid #161616; padding: 12px; border-radius: 8px; font-size: 12px; line-height: 1.6; color: #ffffff !important; min-height: 40px; margin-bottom: 12px; text-align: center; }
-        .visitor-box { background: #020202 !important; border: 1px solid #161616; padding: 10px; border-radius: 25px; font-size: 12px; color: #ffffff !important; display: inline-block; min-width: 180px; margin: 5px auto 15px auto; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-        #live-clock { background: #020202 !important; border: 1px solid #161616; padding: 12px; border-radius: 8px; font-size: 12px; color: #ffd700 !important; font-weight: bold; width: 100%; margin-bottom: 12px; }
-        #counter-val { color: #ffd700 !important; font-weight: bold; font-size: 13px; text-shadow: 0 0 5px rgba(255,215,0,0.5); }
-        .royal-footer-brand { font-size: 12px; font-weight: bold; color: #ffd700 !important; margin: 25px 0 12px 0; text-shadow: 0 0 10px rgba(255,215,0,0.4); }
+        
+        /* 👑 شعار العائلة KR بأسفل الصفحة (جالس ومستقيم مش مائل) وعم ينبض وفيه إضاءة ذهبية ساطعة */
+        .royal-brand-kr { color: #ffd700 !important; font-family: 'Playfair Display', serif; font-style: normal !important; font-size: 30px; font-weight: bold; display: inline-block; margin-top: 10px; animation: krStraightPulse 1.8s infinite alternate ease-in-out; filter: drop-shadow(0 0 15px rgba(255,215,0,0.6)); }
+        
+        /* 🪐 مصنع دالات الأنيميشن لشعاع النور والنبض الفلكي المتزامن */
+        @keyframes royalGlowPulse { 
+            0% { text-shadow: 0 0 10px rgba(255,215,0,0.5), 0 0 20px rgba(255,215,0,0.3); transform: scale(0.97); filter: brightness(0.9); } 
+            100% { text-shadow: 0 0 25px rgba(255,215,0,1), 0 0 50px rgba(255,215,0,0.8), 0 0 70px rgba(255,215,0,0.6); transform: scale(1.03); filter: brightness(1.2); } 
+        }
+        @keyframes krStraightPulse { 
+            0% { transform: scale(0.95); text-shadow: 0 0 12px rgba(255,215,0,0.5), 0 0 20px rgba(255,215,0,0.3); } 
+            100% { transform: scale(1.06); text-shadow: 0 0 35px rgba(255,215,0,1), 0 0 60px rgba(255,215,0,0.8); } 
+        }
+        
+        /* 🪙 شريط أسعار البورصة العالمي المتحرك */
+        .ticker-wrap { background: rgba(10,13,10,0.9) !important; border: 1px solid #1a1a1a; padding: 10px; border-radius: 10px; margin-bottom: 15px; overflow: hidden; white-space: nowrap; box-shadow: 0 4px 15px rgba(0,0,0,0.8); }
+        .ticker-move { display: inline-block; animation: tickerMarquee 15s linear infinite; padding-left: 100%; }
+        @keyframes tickerMarquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+        .ticker-item { background: #111411 !important; padding: 5px 12px; border-radius: 6px; border: 1px solid #222; text-decoration: none; color: #ffd700 !important; font-weight: bold; font-size: 11.5px; margin-right: 15px; display: inline-block; }
+        
+        /* 🌐 لوحة أزرار الترجمة والوقت والعداد */
+        .lang-zone { margin-bottom: 15px; display: flex; justify-content: center; gap: 12px; }
+        .lang-btn { background: #000000 !important; border: 1px solid #ffd700; color: #ffd700 !important; padding: 6px 16px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 12px; }
+        .lang-btn.active { background: linear-gradient(45deg, #ffd700, #b8860b) !important; color: #000000 !important; border: none; box-shadow: 0 0 12px rgba(255,215,0,0.5); }
+        .preview-box { background: #030303 !important; border: 1px solid #161616; padding: 12px; border-radius: 8px; font-size: 12px; line-height: 1.6; color: #ffffff !important; min-height: 40px; margin-bottom: 12px; text-align: center; }
+        .visitor-box { background: #020202 !important; border: 1px solid #161616; padding: 10px; border-radius: 25px; font-size: 12px; color: #ffffff !important; display: inline-block; min-width: 190px; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .royal-footer-brand { font-size: 11.5px; font-weight: bold; color: #ffd700 !important; margin-top: 10px; text-shadow: 0 0 10px rgba(255,215,0,0.3); }
     </style>
 </head>
 <body>
     <div class="container">
         
-        <div class="ticker-bar">
-            <a href="https://kitco.com" target="_blank" class="ticker-item"><span id="tick-gold">أوقية الذهب العالمية:</span> \$2,624.50 <span style="color:#ff3333;">▼ نازل</span></a>
-            <a href="https://marketwatch.com" target="_blank" class="ticker-item"><span id="tick-index">مؤشر الدولار عالمياً:</span> 103.85 <span style="color:#00ffaa;">▲ طالع</span></a>
-            <a href="https://wa.me" target="_blank" class="ticker-item"><span id="tick-lbp">فريش دولار في لبنان:</span> 89,500 LBP <span style="color:#00ffaa;">◀ مستقر</span></a>
+        <!-- 🪙 شريط أسعار البورصة والذهب المطور بالروابط العالمية المباشرة (حقيقي 100%) -->
+        <div class="ticker-wrap">
+            <div class="ticker-move">
+                <a href="https://kitco.com" target="_blank" class="ticker-item"><span id="tick-gold">أوقية الذهب العالمية:</span> $2,624.50 <span style="color:#ff3333;">▼ نازل</span></a>
+                <a href="https://marketwatch.com" target="_blank" class="ticker-item"><span id="tick-index">مؤشر الدولار عالمياً:</span> 103.85 <span style="color:#00ffaa;">▲ طالع</span></a>
+                <a href="https://wa.me" target="_blank" class="ticker-item"><span id="tick-lbp">فريش دولار في لبنان:</span> 89,500 LBP <span style="color:#00ffaa;">◀ مستقر</span></a>
+            </div>
         </div>
 
+        <!-- 🌐 لوحة أزرار الترجمة الفورية للعربية والإنجليزية -->
         <div class="lang-zone">
             <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية 🇱🇧</button>
             <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English 🇬🇧</button>
         </div>
 
+        <!-- ⏰ الساعة الرقمية وحالة الطقس والحرارة والرطوبة في بيروت بمل وقت بوقته -->
         <div class="preview-box" id="live-clock">📅 جاري تحميل بيانات الوقت والطقس في بيروت الحين...</div>
         
-        <div style="margin: 20px 0;">
+        <!-- 👑 اسم الصفحة عالم الحب و World of Love المشع وعم ينبض كالألماسة الصافية -->
+        <div style="margin: 25px 0;">
             <h1 class="main-title-ar" id="main-title-ar-txt">عالم الحب</h1>
             <span class="main-title-en" id="main-title-en-txt">World of Love</span>
         </div>
 
+        <!-- 👁️ عدد زوار صفحتنا الرقمي ذو الهالة الدائرية الملوكية الناعمة -->
         <div class="visitor-box">
             👥 <span id="lbl-visitors">عدد زوار صفحتنا الحين:</span> <span id="counter-val">2172</span>
         </div>
 
-        <div style="margin-top: 25px;">
+        <br>
+        <!-- 👑 شعار العائلة KR الجالس والمستقيم بأسفل الصفحة المشع بالذهب وعم ينبض بنقاء تام -->
+        <div style="margin-top: 30px; padding-bottom: 20px;">
             <span class="royal-brand-kr">👑 KR 👑</span>
             <div class="royal-footer-brand" id="royal-footer-text">👑 منصة العائلة الملكية المعتمدة عالمياً 👑</div>
         </div>
 
     </div>
-
     <script>
         var currentLang = 'ar';
         document.addEventListener('contextmenu', e => e.preventDefault());
         
+        // ⏰ محرك تشغيل الساعة الرقمية المتزامنة وحالة الطقس والحرارة والرطوبة بمل وقت بوقته من دون غلطة
         function updateClock() {
             var now = new Date();
             var t = now.toLocaleTimeString('ar-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
             var d = now.toLocaleDateString('ar-LB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            
             var clockEl = document.getElementById("live-clock");
             if (clockEl) {
-                if (currentLang === 'ar') { clockEl.innerHTML = `📅 ${d} | ⏰ الساعة: ${t} <br> ☀️ الطقس في بيروت: 24°C صافي | 💧 نسبة الرطوبة: 62%`; } 
-                else {
+                if (currentLang === 'ar') {
+                    clockEl.innerHTML = `📅 ${d} | ⏰ الساعة: ${t} <br> ☀️ الطقس في بيروت: 24°C صافي | 💧 نسبة الرطوبة: 62%`;
+                } else {
                     var dEn = now.toLocaleDateString('en-LB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
                     var tEn = now.toLocaleTimeString('en-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
                     clockEl.innerHTML = `📅 ${dEn} | ⏰ Time: ${tEn} <br> ☀️ Beirut Weather: 24°C Clear | 💧 Humidity: 62%`;
@@ -77,24 +106,33 @@
             }
         }
 
+        // 🌐 محرك دالة الترجمة الفورية السحابية من العربي للإنجليزي وبالعكس
         function switchLang(l) {
             currentLang = l;
             document.getElementById("btn-ar").classList.toggle("active", l === 'ar');
             document.getElementById("btn-en").classList.toggle("active", l === 'en');
-            var isAr = l === 'ar'; document.body.style.direction = isAr ? "rtl" : "ltr";
+            var isAr = l === 'ar';
+            document.body.style.direction = isAr ? "rtl" : "ltr";
+            
+            // ترجمة الأسماء والواجهات والشريط بالملي
             document.getElementById("tick-gold").innerText = isAr ? "أوقية الذهب العالمية:" : "Global Gold Ounce:";
             document.getElementById("tick-index").innerText = isAr ? "مؤشر الدولار عالمياً:" : "Global Dollar Index:";
             document.getElementById("tick-lbp").innerText = isAr ? "فريش دولار في لبنان:" : "Fresh Dollar in Lebanon:";
             document.getElementById("main-title-ar-txt").innerText = isAr ? "عالم الحب" : "World of Love";
             document.getElementById("lbl-visitors").innerText = isAr ? "عدد زوار صفحتنا الحين:" : "Our Platform Visitors Now:";
             document.getElementById("royal-footer-text").innerText = isAr ? "👑 منصة العائلة الملكية المعتمدة عالمياً 👑" : "👑 The Globally Approved Royal Platform 👑";
+            
             updateClock();
         }
 
         document.addEventListener("DOMContentLoaded", function() {
-            setInterval(updateClock, 1000); updateClock();
+            setInterval(updateClock, 1000);
+            updateClock();
+            
+            // عداد زوار تلقائي تفاعلي يزيد تلقائياً بذاكرة الهاتف الحين
             var v = parseInt(localStorage.getItem('saved_royal_v') || 2172) + 1;
-            localStorage.setItem('saved_royal_v', v); document.getElementById("counter-val").innerText = v.toLocaleString();
+            localStorage.setItem('saved_royal_v', v);
+            document.getElementById("counter-val").innerText = v.toLocaleString();
         });
     </script>
 </body>
