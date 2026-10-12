@@ -54,6 +54,7 @@
         .royal-select { width: 100%; background: #050505 !important; color: #ffffff !important; border: 1px solid #222; padding: 10px; border-radius: 8px; font-size: 13px; margin-bottom: 10px; outline: none; cursor: pointer; }
         .royal-input { width: 100%; background: #050505 !important; color: #ffffff !important; border: 1px solid #222; padding: 10px; border-radius: 8px; font-size: 13px; margin-bottom: 10px; outline: none; }
         
+        /* ✨ صندوق المعاينة الفوري الحي المطور والشفاف المحقون بوهج الـ CSS */
         .live-preview-message-box { background: rgba(5,5,5,0.85) !important; border: 1px dashed #333; padding: 10px; border-radius: 8px; font-size: 12px; color: #e0e0e0 !important; line-height: 1.6; margin-bottom: 10px; text-align: justify; direction: rtl; min-height: 40px; transition: 0.3s ease-in-out; }
         .preview-glow-duaa { border-color: #00ffaa !important; box-shadow: inset 0 0 8px rgba(0,255,170,0.15); }
         .preview-glow-love { border-color: #ff3366 !important; box-shadow: inset 0 0 8px rgba(255,51,102,0.15); }
@@ -106,7 +107,6 @@
                 "هنا، حيث تلمع النجوم في سمائنا السوداء الفخمة ✨، نلتقي لنصنع من عبارات الحب والأدعية التفاعلية نبضاً أبدياً لا ينتهي.. أهلاً بكم في عهد الأمان والمصداقية الكبرى [ عالم الحب KR ]." 🌌💝
             </div>
         </div>
-
         <!-- 🟢 1. صندوق الأدعية والإهداءات التفاعلي (زبرجد مشع) -->
         <div class="royal-interactive-card box-duaa">
             <div class="box-title box-title-duaa">🌿 <span id="title-box-1">صندوق الأدعية والإهداءات التفاعلية</span></div>
@@ -127,7 +127,7 @@
             <select class="royal-select" id="select-love" onchange="syncLivePreview('love')">
                 <option value="لو كان الشوق يوزن بالأطنان، لكان شوقي إليك قد تخطى حدود الأرض والكون بأكمله كالألماسة.">🔥 عبارة الاشتياق العارم الفاخرة</option>
                 <option value="أنت لست مجرد شخص في حياتي، أنت النبض الحي الذي يحيي قلبي في كل ثانية تمر بمل وقت بوقته.">💖 إهداء نبض القلوب الحية الصادقة</option>
-                <option value="بين النجوم اللامعة في سمائنا السوداء الفخمة، تظل أنت النور الوحيد الذي ينير عتمة روحي دائماً.">✨ عبارة غرام ملوكية أسطورية</option>
+                <option value="بين النجوم اللامعة in سمائنا السوداء الفخمة، تظل أنت النور الوحيد الذي ينير عتمة روحي دائماً.">✨ عبارة غرام ملوكية أسطورية</option>
             </select>
             <div class="live-preview-message-box preview-glow-love" id="preview-box-love"></div>
             <input type="text" class="royal-input" id="name-love" placeholder="اكتب اسمك كمرسل الحين الحين...">
@@ -180,7 +180,7 @@
             var clockEl = document.getElementById("live-clock");
             if (clockEl) {
                 if (currentLang === 'ar') {
-                    clockEl.innerHTML = `📅 ${d} | ⏰ الساعة: ${t} <br> ☀️ الطقس في بيروت: 24°C صافي | 💧 نسبة الرطوبة: 62%`;
+                    clockEl.innerHTML = `📅 ${d} | ⏰ الساعة: ${t} <br> ☀️ الطقس in بيروت: 24°C صافي | 💧 نسبة الرطوبة: 62%`;
                 } else {
                     var dEn = now.toLocaleDateString('en-LB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
                     var tEn = now.toLocaleTimeString('en-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
@@ -198,13 +198,13 @@
             }
         }
 
-        // 🚀 محرك الواتساب الذكي المحقون برابط القلعة الأزرق التفاعلي والمكتمل بالملي للأبد
+        // 🚀 محرك الواتساب الذكي المطور والمحقون برابط القلعة المكرر والمظبوط بالمسطرة 100% لتفتح دغري صفحتنا عالم الحب
         function fireRoyalWhatsapp(type) {
             var text = document.getElementById("select-" + type).value;
             var sender = document.getElementById("name-" + type).value.trim();
             if (!sender) { sender = (currentLang === 'ar') ? "مُرسِل مخلص" : "A Loyal Sender"; }
             
-            // صياغة الرسالة المنسقة وتثبيت الرابط الأزرق التفاعلي الكامل https:// من دون نقصان حرف واحد
+            // صياغة الرسالة المنسقة وتثبيت الرابط الكامل والمزدوج لمنصتنا الملكية لعيونكم مع قفل المجلد
             var msg = `*✨ إهداء ملكي فاخر من: ${sender}* \n\n` +
                       `"${text}"\n\n` +
                       `━━━━━━━━━━━━━━━\n` +
