@@ -37,29 +37,34 @@
 <body>
     <div class="container">
         <h1 id="main-title">عالم الحب</h1>
-        
+        <!-- 🪙 شريط أسعار البورصة العالمية والذهب والدولار وصرف لبنان -->
         <div class="ticker-bar">
             <div class="ticker-item"><span id="tick-gold">أوقية الذهب العالمية:</span> $2,735.40 <span style="color:#ff3333;" id="tick-down">▼ نازل</span></div>
             <div class="ticker-item"><span id="tick-index">مؤشر الدولار عالمياً:</span> 104.25 <span style="color:#00ffaa;" id="tick-up">▲ طالع</span></div>
             <div class="ticker-item"><span id="tick-lbp">صرف الدولار في لبنان:</span> 89,500 LBP <span style="color:#00ffaa;" id="tick-stable">◀ مستقر</span></div>
         </div>
 
+        <!-- 🌐 لوحة أزرار الترجمة الفورية للعربية والإنجليزية -->
         <div class="lang-zone">
             <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية 🇱🇧</button>
             <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English 🇬🇧</button>
         </div>
 
+        <!-- ⏰ الساعة الرقمية وحالة الطقس والحرارة والرطوبة في بيروت -->
         <div class="preview-box" id="live-clock" style="background:#111; border-color:#333; font-size:11px; min-height:auto; font-weight:bold;"></div>
-        <div class="preview-box" style="background:#111; border-color:#333; font-size:11px; min-height:auto; margin-bottom:12px;">👁️ عدد زوار المنصة المعتمدين الحين: <span id="counter-val" style="color:#ffd700; font-weight:bold;">1570</span></div>
-        <!-- 🔍 صندوق محرك بحث جوجل الذكي المدمج -->
+        
+        <!-- 👁️ عداد زوار المنصة المعتمدين الرقمي -->
+        <div class="preview-box" style="background:#111; border-color:#333; font-size:11px; min-height:auto; margin-bottom:12px;">👁️ عدد زوار المنصة المعتمدين الحين: <span id="counter-val" style="color:#ffd700; font-weight:bold;">1,570</span></div>
+
+        <!-- 🔍 محرك بحث جوجل الذكي المدمج -->
         <div class="section-box" style="border-color: #ffd700;">
             <div class="box-title" id="title-search">🔍 محرك بحث جوجل الذكي</div>
             <input type="text" id="g-search-input" placeholder="اكتب أي شيء الحين للبحث في جوجل الحين...">
             <button class="wish-submit-btn" id="btn-search" style="background: linear-gradient(45deg, #ffd700, #b8860b); color: #000;" onclick="var q=document.getElementById('g-search-input').value.trim(); if(q!==''){window.open('https://google.com');}else{alert(currentLang==='ar'?'⚠️ اكتب كلمة البحث أولاً!':'⚠️ Type search keyword first!');}">اجمع للبحث عن أي شيء بمتصفح جوجل - اضغط هنا</button>
         </div>
 
+        <!-- 🐼 الباندا والترحيب العائلي الملكي المكتوب عن صفحتنا -->
         <p class="shop-box-desc" id="panda-desc-text" style="text-align: center; margin-bottom: 15px; font-size:11px; padding:0 5px;">✨ منصة العائلة الملكية المخصصة لأجمل إهداءات الأدعية التفاعلية، وعبارات الحب الصادقة، وتأمين خدمات تشريج الخطوط وشحن الألعاب المعتمدة بأعلى درجات السرية، الأمان الصارم، والمصداقية الكبرى عالمياً الحين. 👑🔒</p>
-
         <!-- 🌿 مستشار الأمل وصندوق الفضفضة النفسية الذكي -->
         <div class="section-box" style="border-color: #00ffaa;">
             <div class="box-title" id="title-wellness">🌿 مستشار الأمل وصندوق الفضفضة النفسية الذكي</div>
@@ -96,7 +101,7 @@
         <div class="section-box" style="border-color: #00ccff;">
             <div class="box-title" id="title-pubg-box">🛒 خدمات شحن PUBG ومشتريات SHEIN</div>
             <p class="shop-box-desc" id="pubg-desc-lb">اشحني حسابكِ وألعابكِ بثقة تامة! محطتكِ المتكاملة لتأمين شدات لعبة ببجي ومشتريات SHEIN بأسرع خدمة كاش:</p>
-            <a href="whatsapp://send?text=%F0%9F%9B%8D%EF%B8%8F%20*%D9%85%D8%B1%D8%A5%D8%A8%D8%A7%D9%80%20%D9%85%D9%86%D8%B5%D9%80%D8%A9%20%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%AD%D8%A8%20KR%20%D8%A3%D9%85%D8%B1%20%D8%B4%D8%AD%D9%86%20%D8%B4%D8%AF%D8%A7%D8%AA%20%D8%A3%D9%88%20%D8%B7%D9%84%D8%A8%20%D8%B4%D9%8Sample...*" class="btn-whatsapp-btn" id="btn-pubg-click" style="background: linear-gradient(45deg, #00ccff, #0088cc);">🛍️ للطلب وشحن الشدات و SHEIN (واتساب)</a>
+            <a href="whatsapp://send?text=%F0%9F%9B%8D%EF%B8%8F%20*%D9%85%D8%B1%D8%A5%D8%A8%D8%A7%D9%80%20%D9%85%D9%86%D8%B5%D9%80%D8%A9%20%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%AD%D8%A8%20KR%20%D8%A3%D9%85%D8%B1%20%D8%B4%D8%AD%D9%86%20%D8%B4%D8%AF%D8%A7%D8%AA%20%D8%A3%D9%88%20%D8%B7%D9%84%D8%A8%20%D8%B4%D9%8A%20%D8%A5%D9%86%20%D8%A7%D9%84%D8%AD%D9%8A%D9%86...*" class="btn-whatsapp-btn" id="btn-pubg-click" style="background: linear-gradient(45deg, #00ccff, #0088cc);">🛍️ للطلب وشحن الشدات و SHEIN (واتساب)</a>
         </div>
 
         <!-- 🎙️ استوديو راديو ومذيع الذكاء الاصطناعي لبطاقات الإهداء الصوتي الحي المطور الصافي -->
@@ -265,7 +270,7 @@
         function updateClock() {
             var now = new Date(); var t = now.toLocaleTimeString('ar-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
             var d = now.toLocaleDateString('ar-LB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-            var clockEl = document.getElementById("live-clock"); if(clockEl) clockEl.innerHTML = `📅 ${d} | ⏰ الساعة: ${t} <br> ☀️ بيروت: 24°C | 👑 KR`;
+            var clockEl = document.getElementById("live-clock"); if(clockEl) clockEl.innerHTML = `📅 ${d} | ⏰ الساعة: ${t} <br> ☀️ بيروت: 24°C | 💧 الرطوبة: 62%`;
         }
         function generateDreamInterpretation() {
             var input = document.getElementById("dream-input").value.trim(); var output = document.getElementById("dream-box-output");
@@ -286,8 +291,8 @@
             var grandTotal = money + (gold * goldPriceInCurr); var nisabInCurr = 85 * goldPriceInCurr;
             if (grandTotal === 0) { output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = currentLang === 'ar' ? "⚠️ يرجى إدخال مبالغ نقدية أو جرامات الذهب أولاً لحساب التقرير الحين!" : "⚠️ Please enter values first!"; return; }
             var msg = currentLang === 'ar' ? `📜 <b>التقرير المالي الفلكي لـ [ عالم الحب KR ] :</b><br>💸 إجمالي ثروتك الحالية المكتشفة: <b>${grandTotal.toLocaleString()} ${curr}</b><br>` : `📜 <b>Financial Report for [ World of Love KR ] :</b><br>💸 Total Wealth: <b>${grandTotal.toLocaleString()} ${curr}</b><br>`;
-            if (grandTotal >= nisabInCurr) { var zakat = grandTotal * 0.025; msg += currentLang === 'ar' ? `✨ مبروك! أموالك بلغت النصاب الشرعي والادخاري المعتمد كلياً الحين.<br>🕋 مقدار الزكاة الواجبة إخراجها برواقة: <b>${zakat.toLocaleString()} ${curr}</b>` : `✨ Nisab reached.`; }
-            else { msg += currentLang === 'ar' ? `📉 أموالك الحالية لم تبلغ النصاب الشرعي والمالي الدقيق للحساب الحين.` : `📉 Below Nisab threshold.`; }
+            if (grandTotal >= nisabInCurr) { var zakat = grandTotal * 0.025; msg += currentLang === 'ar' ? `✨ مبروك! أموالك بلغت النصاب الشرعي والادخاري المعتمد كلياً الحين.<br>🕋 مقدار الزكاة الواجبة إخراجها برواقة: <b>${zakat.toLocaleString()} ${curr}</b><br>💡 <b>نصيحة المستشار المالي:</b> هالتوليفة ممتازة لحفظ القوة الشرائية، استمر في تنمية ثروتك والصدقة!` : `✨ Congratulation! Your wealth has reached the Nisab threshold.<br>🕋 Due Zakat Value: <b>${zakat.toLocaleString()} ${curr}</b><br>💡 <b>AI Financial Advice:</b> Excellent asset backup! Keep investing and donating.`; }
+            else { msg += currentLang === 'ar' ? `📉 أموالك الحالية لم تبلغ النصاب الشرعي والمالي الدقيق للحساب الحين (النصاب المقدر هو: ${Math.round(nisabInCurr).toLocaleString()} ${curr}).<br>🕋 لا زكاة واجبة عليك الحين برواقة وطمأنينة.<br>💡 <b>نصيحة المستشار المالي:</b> ركز على ادخار سبائك الذهب الصغيرة لتنمية محفظتك بأمان!` : `📉 Your wealth is below the Nisab threshold (Estimated Nisab: ${Math.round(nisabInCurr).toLocaleString()} ${curr}).<br>🕋 No Zakat is due on you now.<br>💡 <b>AI Financial Advice:</b> Focus on saving physical gold bars to safely build your wealth stack!`; }
             output.innerHTML = msg; if (navigator.vibrate) navigator.vibrate(30);
         }
         var aiPools = {
@@ -312,76 +317,6 @@
                 ["توقعت منك كل خير إلا الجفاء، واكتفيت بالصمت الطويل لعل رسالة الصمت تبلغ قلبك بما عجزت الحروف عن قوله! 🪐", "I expected everything from you except abandonment, so I chose long silence to let it speak what letters couldn't say! 🪐"]
             ]
         };
-        function regenerateAiQuotes(type) {
-            var select = document.getElementById(type + "-quote-select"); if(!select) return; select.innerHTML = "";
-            var pool = aiPools[type]; var shuffled = pool.sort(() => 0.5 - Math.random());
-            shuffled.forEach((pair) => {
-                var option = document.createElement("option"); option.value = pair; option.text = textMin(pair, 38); select.appendChild(option);
-            });
-            if(type === 'dua') updateDuaPreview(); if(type === 'love') updateLovePreview();
-            if(type === 'mother') updateMotherPreview(); if(type === 'sad') updateSadPreview();
-        }
-        function updateBoxPreview(type) {
-            var select = document.getElementById(type + "-quote-select"); if(!select || select.options.length === 0) return;
-            var val = select.value; var preview = document.getElementById(type + "-preview-text"); if(preview) preview.innerText = val;
-            var nameEl = document.getElementById(type + "-name-input"); var name = nameEl ? nameEl.value.trim() : "";
-            var isAr = currentLang === 'ar';
-            var header = isAr ? `👑 *بطاقة إهداء ملوكية من الغالي:* [ ${name || "محب غالي"} ] 👑\n📜 *عبر منصة:* [ عالم الحب KR ]\n\n` : `👑 *Royal Gift Card From:* [ ${name || "Dear Guest"} ] 👑\n📜 *Via Official Platform:* [ World of Love KR ]\n\n`;
-            var msgStr = header + `"${val}"\n\n🌐 *رابط المنصة المباشر للزيارة:* worldoflove-kr.github.io`;
-            var anchor = document.getElementById(type + "-whatsapp-anchor"); if(anchor) anchor.href = "whatsapp://send?text=" + encodeURIComponent(msgStr);
-        }
-        function generateAiRadioBroadcast() {
-            var from = document.getElementById("radio-from-input").value.trim();
-            var to = document.getElementById("radio-to-input").value.trim();
-            var wave = document.getElementById("radio-wave-select").value;
-            var zone = document.getElementById("radio-player-zone");
-            var prev = document.getElementById("radio-preview-text");
-            var audio = document.getElementById("global-radio-player");
-            var dl = document.getElementById("radio-download-anchor");
-            if (from === "" || to === "") { alert(currentLang === 'ar' ? "⚠️ من فضلكِ اكتب اسمك واسم المهدى إليه أولاً لتشغيل بث راديو الـ AI الحين!" : "⚠️ Please enter From and To names first!"); return; }
-            zone.style.display = "block"; var isAr = currentLang === 'ar';
-            var audioUrls = {
-                "love": "https://soundhelix.com",
-                "dua": "https://soundhelix.com",
-                "mother": "https://soundhelix.com",
-                "sad": "https://soundhelix.com"
-            };
-            var selectedSrc = audioUrls[wave]; audio.src = selectedSrc; audio.crossOrigin = "anonymous"; audio.load();
-            var playPromise = audio.play(); if (playPromise !== undefined) { playPromise.then(function() {}).catch(function(e) {}); }
-            dl.href = selectedSrc; dl.setAttribute("download", "AI-Radio-Broadcast.mp3");
-            var textPool = {
-                "love": isAr ? `📻 بث حي من موجة الحب والاشتياق: "نهدي الغالي [ ${to} ] أرقى معزوفة عاطفية تولدت بالـ AI من شريك العمر [ ${from} ] لتعبر عن ود واشتياق أبدي لا ينتهي كلياً الحين!" ❤️` : `📻 Live from AI Love Wave: "Dedicated to dearest [ ${to} ] from [ ${from} ] under customized symphony." ❤️`,
-                "dua": isAr ? `📻 بث حي من موجة البركة: "إهداء صوتي مبارك ودعاء تفاعلي تولد بالذكاء الاصطناعي لـ [ ${to} ] بناءً على طلب المخلص [ ${from} ] لحفظ القلوب والخطوات السعيدة!" 🌿` : `📻 Live from AI Dua Wave: "Blessed vows for [ ${to} ] generated by request of [ ${from} ]." 🌿`,
-                "mother": isAr ? `📻 بث حي من موجة بر الوالدين: "رسالة إذاعية تفيض بالحب تخرج من قلب البار [ ${from} ] إلى جنته وتاج رأسه الأم الغالية [ ${to} ] بأرق عهد شكر وعرفان بالكون الحين!" 🤱❤️` : `📻 Live from AI Mother Wave: "Sincere devotion voice block for the beloved mother [ ${to} ] from [ ${from} ]." 🤱❤️`,
-                "sad": isAr ? `📻 بث حي من موجة شريط الذكريات: "عبر أوتار العتب الصامت والوجع الصادق، يطلق المذيع الافتراضي كلمات صيغت بالـ AI من [ ${from} ] إلى [ ${to} ] لعل رسالة الصمت تبلغ قلبك الحين!" 🖤` : `📻 Live from AI Sad Wave: "A silent blame whisper broadcast for [ ${to} ] from [ ${from} ]." 🖤`
-            };
-            prev.innerHTML = textPool[wave]; if (navigator.vibrate) navigator.vibrate(40);
-        }
-        function shareRadioToWhatsApp() {
-            var from = document.getElementById("radio-from-input").value.trim();
-            var to = document.getElementById("radio-to-input").value.trim();
-            var select = document.getElementById("radio-wave-select"); var waveName = select.options[select.selectedIndex].text;
-            var prevText = document.getElementById("radio-preview-text").innerText;
-            var isAr = currentLang === 'ar';
-            var header = isAr ? `🎙️ *إهداء وبث إذاعي تفاعلي من راديو: [ عالم الحب KR ]* 🎙️\n\n📻 *الموجة الإذاعية:* ${waveName}\n💝 *مـن الغالي:* [ ${from} ]\n🌹 *إلـى الغالي:* [ ${to} ]\n\n📜 *نص منطوق المذيع الصوتي:*\n"${prevText}"\n\n🌐 *رابط السيرفر للاستماع والتحميل المباشر للبرنامج الصوتي MP3 بجهازكِ:* worldoflove-kr.github.io` : `🎙️ *Royal Voice Radio Broadcast from [ World of Love KR ]* 🎙️\n\n📻 *Wave Type:* ${waveName}\n💝 *From:* [ ${from} ]\n🌹 *To:* [ ${to} ]\n\n📜 *AI Voice Text:*\n"${prevText}"\n\n🌐 *Official Radio Hub Link:* worldoflove-kr.github.io`;
-            document.getElementById("radio-whatsapp-anchor").href = "whatsapp://send?text=" + encodeURIComponent(header);
-        }
-            document.getElementById("title-shop").innerText = isAr ? "📱 خدمات تشريج الخطوط والإنترنت الموثوقة" : "📱 Reliable Telecom Recharge Services";
-            document.getElementById("shop-desc-lb").innerText = isAr ? "دليلكِ الآمن والكامل لتشريج خطوط Alfa وتاتش MTC برواقة تامة وبأعلى مصداقية في لبنان:" : "Your safe and full terminal to secure Alfa & Touch LBP vouchers under instant validation inside Lebanon:";
-            document.getElementById("btn-alfa-click").innerText = isAr ? "💬 اطلب تشريج خطك الآن (واتساب)" : "💬 Order Line Vouchers Now (WhatsApp)";
-            document.getElementById("title-pubg-box").innerText = isAr ? "🛒 خدمات شحن PUBG ومشتريات SHEIN" : "🛒 PUBG UCs Load & SHEIN Orders Store";
-            document.getElementById("pubg-desc-lb").innerText = isAr ? "اشحني حسابكِ وألعابكِ بثقة تامة! محطتكِ المتكاملة لتأمين شدات لعبة ببجي ومشتريات SHEIN بأسرع خدمة كاش:" : "Reload your gaming profiles with absolute safety! Your complete hub to supply PUBG UC coins and SHEIN packages under speedy handling:";
-            document.getElementById("btn-pubg-click").innerText = isAr ? "🛍️ للطلب وشحن الشدات و SHEIN (واتساب)" : "🛍️ Order Gaming Coins & SHEIN (WhatsApp)";
-            document.getElementById("title-gulf").innerText = isAr ? "🪙 المستشار المالي وحاسبة الزكاة والادخار الخليجي الذكي" : "🪙 AI Wealth Tracker, Gold & Zakat Oracle";
-            document.getElementById("gulf-money").placeholder = isAr ? "اكتب مقدار المال أو المدخرات النقدية الحين..." : "Type your cash assets or savings volume now...";
-            document.getElementById("gulf-gold").placeholder = isAr ? "اكتب وزن الذهب الحالي بالجرام (إن وُجد الحين)..." : "Type your current gold weight in grams (if available)...";
-            document.getElementById("btn-gulf-calc").innerText = isAr ? "احسب مدخراتك الفلكية وزكاة مالك الحين 📊" : "Calculate Assets & Due Zakat Now 📊";
-            document.getElementById("title-tasbih").innerText = isAr ? "📿 صندوق لوحة عداد التسبيح والاستغفار الرقمي" : "📿 Digital Tasbih Counter & Remembrance Box";
-            document.getElementById("tasbih-reset-btn").innerText = isAr ? "إعادة تصفير العداد 🔄" : "Reset Counter Vibe 🔄";
-            document.getElementById("title-secret").innerText = isAr ? "🔐 صندوق الرسائل السرية والمفاجآت المغلقة" : "🔐 Secret Encrypted Board & Mystery Box";
-            document.getElementById("secret-desc-text").innerText = isAr ? "هذا الصندوق تفاعلي ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. اكتب الكود السري (123 أو كود العائلة KR) ثم اضغط على زر الفتح:" : "This interactive lockbox is securely designed to deploy hidden surprises and gifts. Enter the secret code (123 or KR family key) then hit the unlock button below:";
-            document.getElementById("secret-input").placeholder = isAr ? "اكتب الكلمة السرية هنا الحين..." : "Type the secret access pass code here...";
-            document.getElementById("secret-btn-click").innerText = isAr ? "افتح واكشف المفاجأة السرية الحين 🔓" : "Unlock & Reveal Hidden Surprise Now 🔓";
             document.getElementById("title-dua-box").innerText = isAr ? "✨ صندوق الأدعية والإهداءات التفاعلي" : "✨ AI Blessings & Duas Sanctuary";
             document.getElementById("dua-name-input").placeholder = isAr ? "اكتب اسم المرسل هنا الحين..." : "Type your name here...";
             document.getElementById("title-dua-preview").innerText = isAr ? "📖 كلمات الدعاء المختار حالياً:" : "Current AI Dua Text:";
@@ -401,7 +336,6 @@
             document.getElementById("sad-name-input").placeholder = isAr ? "اكتب اسم المرسل هنا الحين..." : "Type your name here...";
             document.getElementById("title-sad-preview").innerText = isAr ? "📖 كلمات العبارة المختارة حالياً:" : "Current AI Blame Text:";
             document.getElementById("btn-sad-share").innerText = isAr ? "أرسل العبارة وشارك عبر الواتساب 🟢" : "Broadcast AI Blame via WhatsApp 🟢";
-
             document.getElementById("title-radio-box").innerText = isAr ? "📻 استوديو راديو ومذيع الذكاء الاصطناعي الصوتي التفاعلي" : "📻 AI Royal Voice Radio Broadcast Studio";
             document.getElementById("radio-from-input").placeholder = isAr ? "اكتب اسمك (المرسل) هنا الحين..." : "Type your name here...";
             document.getElementById("radio-to-input").placeholder = isAr ? "اكتب اسم الشخص (المهدى إليه) الحين..." : "Type the recipient's name here...";
