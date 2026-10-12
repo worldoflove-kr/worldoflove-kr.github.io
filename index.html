@@ -470,7 +470,7 @@
             updateClock();
         }
 
-          function generateAiRadioBroadcast() {
+        function generateAiRadioBroadcast() {
             var from = document.getElementById("radio-from-input").value.trim();
             var to = document.getElementById("radio-to-input").value.trim();
             var wave = document.getElementById("radio-wave-select").value;
@@ -487,32 +487,31 @@
             zone.style.display = "block";
             var isAr = currentLang === 'ar';
             
-            // روابط ملفات صوتية وموسيقية MP3 حقيقية وأصلية 100% مفتوحة ومكشوفة لكل الموبايلات عالمياً لكسر الحظر
             var audioUrls = {
-                "love": "https://soundhelix.com",
-                "dua": "https://soundhelix.com",
-                "mother": "https://soundhelix.com",
-                "sad": "https://soundhelix.com"
+                "love": "https://google.com",
+                "dua": "https://google.com",
+                "mother": "https://google.com",
+                "sad": "https://google.com"
             };
 
             var selectedSrc = audioUrls[wave];
             audio.src = selectedSrc;
             audio.crossOrigin = "anonymous";
             audio.load();
-            
-            // تشغيل النغمة الموسيقية فوراً بكسر الحظر الصارم للمتصفحات
-            var playPromise = audio.play();
-            if (playPromise !== undefined) {
-                playPromise.then(function() {
-                    console.log("Audio playing fine!");
-                }).catch(function(error) {
-                    console.log("Gesture needed");
-                });
-            }
+            audio.play();
 
-            // إجبار الهاتف والمواصفات على صب وتحميل ملف المقطع الصوتي MP3 فوراً بالاستوديو
+            // تحديث زر التحميل العلوي ديناميكياً لإجبار الهاتف على التنزيل دغري بصيغة MP3 صوتية
             dl.href = selectedSrc;
             dl.setAttribute("download", "AI-Radio-Broadcast.mp3");
+            dl.onclick = function(e) {
+                e.preventDefault();
+                var link = document.createElement('a');
+                link.href = selectedSrc;
+                link.download = 'AI-Radio-Broadcast.mp3';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            };
 
             var textPool = {
                 "love": isAr ? `📻 بث حي من موجة الحب والاشتياق: "بصوت مذيعنا الدافئ، نهدي الغالي [ ${to} ] أرقى معزوفة عاطفية تولدت خصيصاً بنبض الذكاء الاصطناعي من شريك العمر [ ${from} ] لتعبر عن ودّ واشتياق أبدي لا ينتهي كلياً الحين الحين الحين!" ❤️` : `📻 Live from AI Love Wave: "Dedicated to dearest [ ${to} ] from [ ${from} ] under customized symphony." ❤️`,
@@ -535,3 +534,6 @@
             document.getElementById("radio-whatsapp-anchor").href = "whatsapp://send?text=" + encodeURIComponent(header);
         }
     </script>
+</body>
+</html>
+ 
