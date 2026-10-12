@@ -161,8 +161,7 @@
             <div id="radio-player-zone" style="display:none; text-align:center; margin-bottom:12px;">
                 <div class="preview-box" id="radio-preview-text" style="color:#ff33aa; border-color:#ff33aa; font-weight:bold; margin-bottom:8px; line-height:1.5;"></div>
                 <audio id="global-radio-player" controls style="width:100%; filter: hue-rotate(280deg); margin-bottom:8px;"></audio>
-                           <a href="https://soundhelix.com" id="radio-download-anchor" class="btn-gold-link" style="background:linear-gradient(45deg,#ffd700,#b8860b); color:#000; text-decoration:none; margin-bottom:8px;" download="AI-Radio-Broadcast.mp3">📥 تحميل المقطع الإذاعي MP3 داخل جهازكِ دغري 🎵</a>
-
+                <a href="#" id="radio-download-anchor" class="btn-gold-link" style="background:linear-gradient(45deg,#ffd700,#b8860b); color:#000; text-decoration:none; margin-bottom:8px;" target="_blank" download="AI-Radio-Broadcast.mp3">📥 تحميل المقطع الإذاعي MP3 داخل جهازكِ دغري 🎵</a>
                 <a href="#" id="radio-whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none;" onclick="shareRadioToWhatsApp()">🟢 أرسل الإهداء الصوتي ورابط الراديو عبر الواتساب دغري</a>
             </div>
         </div>
@@ -170,84 +169,67 @@
         <!-- 🌿 صندوق الأدعية والإهداءات التفاعلي المنفصل -->
         <div class="section-box" style="border-color: #ffd700;">
             <div class="box-title" id="title-dua-box" style="color: #ffd700; border-bottom-color: #ffd700;">✨ صندوق الأدعية والإهداءات التفاعلي</div>
-            <input type="text" id="dua-name-input" placeholder="اكتب اسم المرسل هنا الحين..." oninput="updateDuaPreview()">
-            <select id="dua-quote-select" onchange="updateDuaPreview()">
-                <option value="اللهم احفظ لي أحبتي وأهلي ولا تريني فيهم بأساً يبكيني، فاحفظهم بحفظك يا كريم! 🤲">🤲 دعاء حفظ الأهل والأحبة والقلوب الغالية</option>
-                <option value="أسأل الله العظيم أن يزيل عنكم كل ضيق، وأن يشفي مرضاكم، ويرحم موتاكم، ويجعل أيامكم القادمة مليئة بالفرح! 🌹">🤲 إهداء تفريج الهم والشفاء والرحمة العميقة</option>
-                <option value="ربِّ اجعل هذا البلد آمناً مطمئناً، واحفظ أهلنا في لبنان واشفِ جرحاهم وعمّ بالسلام أراضينا! 🇱🇧">🤲 دعاء حفظ لبنان والسلام الشامل لأراضينا</option>
-            </select>
-            <button class="tasbih-reset" style="margin-bottom:12px; width:100%;" onclick="regenerateAiQuotes('dua')">🔄 توليد وتجديد أدعية جديدة بالذكاء الاصطناعي الحين</button>
-            <div class="shop-box-desc" id="title-dua-preview" style="color:#ffd700; font-weight:bold; margin-top:5px;">📖 كلمات الدعاء المختار حالياً:</div>
-            <div class="preview-box" id="dua-preview-text">اللهم احفظ لي أحبتي وأهلي...</div>
-            <a href="#" id="dua-whatsapp-anchor" class="btn-whatsapp-btn" style="text-decoration:none;" onclick="shareDuaToWhatsApp()"><span id="btn-dua-share">أرسل الإهداء وشارك عبر الواتساب 🟢</span></a>
+            <input type="text" id="dua-name-input" placeholder="اكتب اسم المرسل هنا الحين...">
+            <select id="dua-quote-select" onchange="updateDuaPreview()"></select>
+            <div class="box-title" id="title-dua-preview" style="font-size:14px; margin-top:10px; border-bottom:none; color:#bbb;">📖 كلمات الدعاء المختار حالياً:</div>
+            <div class="preview-box" id="dua-preview-text"></div>
+            <a href="#" id="dua-whatsapp-anchor" class="btn-whatsapp-btn" onclick="shareDuaToWhatsApp()" id="btn-dua-share">أرسل الإهداء وشارك عبر الواتساب 🟢</a>
         </div>
 
-        <!-- ❤️ صندوق عبارات الحب والاشتياق التفاعلي المنفصل -->
+        <!-- 💝 صندوق عبارات الحب والاشتياق التفاعلي المنفصل -->
         <div class="section-box" style="border-color: #ff3366;">
             <div class="box-title" id="title-love-box" style="color: #ff3366; border-bottom-color: #ff3366;">💝 صندوق عبارات الحب والاشتياق التفاعلي</div>
-            <input type="text" id="love-name-input" placeholder="اكتب اسم المرسل هنا الحين..." oninput="updateLovePreview()">
-            <select id="love-quote-select" onchange="updateLovePreview()">
-                <option value="استودعت الله قلبك وخطواتك، وجعل التوفيق والراحة والسعادة الأبدية حليفك ليل نهار برواقة تامة! ❤️">❤️ عبارة استودعت الله قلبك وخطواتك السعيدة</option>
-                <option value="أشتاق إليك شوقاً يملأ الكون صخباً، وأحبك حباً يجعل من دقات قلبي عزفاً لاسمك الدافيء دائماً! ✨">❤️ عبارة اشتياق وحنين جارف بالكون</option>
-                <option value="أنت لست مجرد شخص عابر في حياتي، أنت عمري، وأجمل أقداري، ونبض قلبي الذي لا أعيش بدونه! 💍">❤️ عبارة أنت لست شخص عابر أنت عمري ونبضي</option>
-            </select>
-            <button class="tasbih-reset" style="margin-bottom:12px; width:100%; border-color:#ff3366; color:#ff3366;" onclick="regenerateAiQuotes('love')">🔄 توليد وتجديد عبارات حب بالذكاء الاصطناعي الحين</button>
-            <div class="shop-box-desc" id="title-love-preview" style="color:#ff3366; font-weight:bold; margin-top:5px;">📖 كلمات العبارة المختارة حالياً:</div>
-            <div class="preview-box" id="love-preview-text" style="color:#ff3366; border-color:#ff3366;">استودعت الله قلبك وخطواتك...</div>
-            <a href="#" id="love-whatsapp-anchor" class="btn-whatsapp-btn" style="background:linear-gradient(45deg,#ff3366,#c2185b); text-decoration:none;" onclick="shareLoveToWhatsApp()"><span id="btn-love-share">أرسل العبارة وشارك عبر الواتساب 🟢</span></a>
+            <input type="text" id="love-name-input" placeholder="اكتب اسم المرسل هنا الحين..." style="border-color: #ff3366;">
+            <select id="love-quote-select" onchange="updateLovePreview()" style="border-color: #ff3366;"></select>
+            <div class="box-title" id="title-love-preview" style="font-size:14px; margin-top:10px; border-bottom:none; color:#bbb;">📖 كلمات العبارة المختارة حالياً:</div>
+            <div class="preview-box" id="love-preview-text" style="border-color: #ff3366;"></div>
+            <a href="#" id="love-whatsapp-anchor" class="btn-whatsapp-btn" onclick="shareLoveToWhatsApp()" id="btn-love-share" style="background: linear-gradient(45deg, #ff3366, #ff0044);">أرسل العبارة وشارك عبر الواتساب 🟢</a>
         </div>
-
         <!-- 🤱 صندوق بر الوالدين وإهداءات الأم الغالية المنفصل -->
-        <div class="section-box" style="border-color: #00ffaa;">
-            <div class="box-title" id="title-mother-box" style="color: #00ffaa; border-bottom-color: #00ffaa;">🤱 صندوق بر الوالدين وإهداءات الأم الغالية</div>
-            <input type="text" id="mother-name-input" placeholder="اكتب اسم المرسل هنا الحين..." oninput="updateMotherPreview()">
-            <select id="mother-quote-select" onchange="updateMotherPreview()">
-                <option value="أمي يا نبض قلبي وأجمل عطايا الرحمن، استودعت الله عمرك وصحتك وابتسامتك، وجعل السعادة حليفك! 🤱❤️">🤱 أمي يا نبض قلبي وأجمل عطايا الرحمن</option>
-                <option value="إلى جنّتي على الأرض، رضاكِ هو طمأنينتي وصوتكِ هو سلامي الداخلي، اللهم احفظ أمي وأطل في عمرها! ✨">🤱 إلى جنّتي على الأرض رضاكِ هو طمأنينتي</option>
-                <option value="لو جمعت كلمات الشكر والعرفان ما وفت حق طهر قلبكِ وتعبكِ يا أمي، دمتِ لي فخراً وتاجاً أرفع به رأسي! 👑">🤱 كلمات الشكر ما وفت حق طهر قلبكِ يا أمي</option>
+        <div class="section-box" style="border-color: #00ccff;">
+            <div class="box-title" id="title-mother-box" style="color: #00ccff; border-bottom-color: #00ccff;">🤱 صندوق بر الوالدين وإهداءات الأم الغالية</div>
+            <input type="text" id="mother-name-input" placeholder="اكتب اسم المرسل هنا الحين..." style="border-color: #00ccff;">
+            <select id="mother-quote-select" onchange="updateMotherPreview()" style="border-color: #00ccff;">
+                <option value=""></option>
             </select>
-            <button class="tasbih-reset" style="margin-bottom:12px; width:100%; border-color:#00ffaa; color:#00ffaa;" onclick="regenerateAiQuotes('mother')">🔄 توليد وتجديد عبارات للأم بالذكاء الاصطناعي الحين</button>
-            <div class="shop-box-desc" id="title-mother-preview" style="color:#00ffaa; font-weight:bold; margin-top:5px;">📖 كلمات الإهداء المختار للأم حالياً:</div>
-            <div class="preview-box" id="mother-preview-text" style="color:#00ffaa; border-color:#00ffaa;">أمي يا نبض قلبي وأجمل عطايا الرحمن...</div>
-            <a href="#" id="mother-whatsapp-anchor" class="btn-whatsapp-btn" style="background:linear-gradient(45deg,#00ffaa,#006644); text-decoration:none;" onclick="shareMotherToWhatsApp()"><span id="btn-mother-share">أرسل الإهداء للأم وشارك عبر الواتساب 🟢</span></a>
+            <div class="box-title" id="title-mother-preview" style="font-size:14px; margin-top:10px; border-bottom:none; color:#bbb;">📖 كلمات الإهداء المختار للأم حالياً:</div>
+            <div class="preview-box" id="mother-preview-text" style="border-color: #00ccff;"></div>
+            <a href="#" id="mother-whatsapp-anchor" class="btn-whatsapp-btn" onclick="shareMotherToWhatsApp()" id="btn-mother-share" style="background: linear-gradient(45deg, #00ccff, #0088cc);">أرسل الإهداء للأم وشارك عبر الواتساب 🟢</a>
         </div>
 
         <!-- 🖤 صندوق عبارات العتب والحزن التفاعلي المنفصل -->
-        <div class="section-box" style="border-color: #555555;">
-            <div class="box-title" id="title-sad-box" style="color: #aaaaaa; border-bottom-color: #555555;">🖤 صندوق عبارات العتب والحزن التفاعلي</div>
-            <input type="text" id="sad-name-input" placeholder="اكتب اسم المرسل هنا الحين..." oninput="updateSadPreview()">
-            <select id="sad-quote-select" onchange="updateSadPreview()">
-                <option value="غبت وغابت معك ضحكة الأيام، وعلمتني كيف يكون الشوق وجعاً صامتاً ينهش بقلبي في كل ثانية ودقيقة! 💔">🖤 غبت وغابت معك ضحكة الأيام شوقاً</option>
-                <option value="لم يكن العتب يوماً كرهاً، بل كان عتباً على قدر المحبة، ولكن خيبة الظن أحياناً تقتل أجمل المشاعر! 😔">🖤 لم يكن العتب كرهاً بل على قدر المحبة</option>
-                <option value="توقعت منك كل خير إلا الجفاء، واكتفيت بالصمت الطويل لعل رسالة الصمت تبلغ قلبك بما عجزت الحروف عنه! 🪐">🖤 توقعت منك كل خير واكتفيت بالصمت</option>
+        <div class="section-box" style="border-color: #777777;">
+            <div class="box-title" id="title-sad-box" style="color: #b0b0b0; border-bottom-color: #555555;">🖤 صندوق عبارات العتب والحزن التفاعلي</div>
+            <input type="text" id="sad-name-input" placeholder="اكتب اسم المرسل هنا الحين..." style="border-color: #555;">
+            <select id="sad-quote-select" onchange="updateSadPreview()" style="border-color: #555;">
+                <option value=""></option>
             </select>
-            <button class="tasbih-reset" style="margin-bottom:12px; width:100%; border-color:#aaaaaa; color:#aaaaaa;" onclick="regenerateAiQuotes('sad')">🔄 توليد وتجديد عبارات حزن وعتب بالذكاء الاصطناعي</button>
-            <div class="shop-box-desc" id="title-sad-preview" style="color:#aaaaaa; font-weight:bold; margin-top:5px;">📖 كلمات العبارة المختارة حالياً:</div>
-            <div class="preview-box" id="sad-preview-text" style="color:#aaaaaa; border-color:#aaaaaa;">غبت وغابت معك ضحكة الأيام...</div>
-            <a href="#" id="sad-whatsapp-anchor" class="btn-whatsapp-btn" style="background:linear-gradient(45deg,#444,#222); text-decoration:none;" onclick="shareSadToWhatsApp()"><span id="btn-sad-share">أرسل العبارة وشارك عبر الواتساب 🟢</span></a>
+            <div class="box-title" id="title-sad-preview" style="font-size:14px; margin-top:10px; border-bottom:none; color:#bbb;">📖 كلمات العبارة المختارة حالياً:</div>
+            <div class="preview-box" id="sad-preview-text" style="border-color: #555;"></div>
+            <a href="#" id="sad-whatsapp-anchor" class="btn-whatsapp-btn" onclick="shareSadToWhatsApp()" id="btn-sad-share" style="background: linear-gradient(45deg, #555, #222);">أرسل العبارة وشارك عبر الواتساب 🟢</a>
         </div>
 
-        <div class="section-box">
-            <div class="box-title" id="title-tasbih">📿 صندوق لوحة عداد التسبيح والاستغفار الرقمي</div>
-            <div class="tasbih-display" id="tasbih-display-box"><span id="tasbih-val">0</span></div>
-            <button class="tasbih-btn" onclick="countTasbih()">اضغط هنا 📿</button>
-            <div style="text-align: center; margin-top: 5px;"><button class="tasbih-reset" id="tasbih-reset-btn" onclick="resetTasbih()">إعادة تصفير العداد 🔄</button></div>
+        <!-- 📿 لوحة عداد التسبيح والاستغفار الرقمي ذو الاهتزاز التفاعلي المدعوم -->
+        <div class="section-box" style="border-color: #00ffaa;">
+            <div class="box-title" id="title-tasbih" style="color: #00ffaa; border-bottom-color: #00ffaa;">📿 صندوق لوحة عداد التسبيح والاستغفار الرقمي</div>
+            <div class="counter-display" id="tasbih-val" style="color: #00ffaa; text-shadow: 0 0 15px rgba(0,255,170,0.5);">0</div>
+            <button class="counter-btn" style="background: linear-gradient(45deg, #00ffaa, #00b377); color: #000;" onclick="countTasbih()">اضغطي للتسبيح والاستغفار الحين 📿</button>
+            <button class="reset-btn" id="tasbih-reset-btn" onclick="resetTasbih()">إعادة تصفير العداد 🔄</button>
         </div>
 
-        <div class="section-box">
-            <div class="box-title" id="title-secret">🔐 صندوق الرسائل السرية والمفاجآت المغلقة</div>
-            <p id="secret-desc-text" style="color:#e0e0e0; font-size:13px; margin:0 0 15px 0; line-height:1.5; text-align:right;">هذا الصندوق تفاعلي ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. اكتب الكود السري (123 أو كود العائلة KR) ثم اضغط على زر الفتح:</p>
-            <input type="text" id="secret-input" placeholder="اكتب الكلمة السرية هنا الحين...">
-            <button class="secret-btn" id="secret-btn-click" onclick="unlockSecret()">افتح واكشف المفاجأة السرية الحين 🔓</button>
-            <div class="secret-output" id="secret-box-output"></div>
+        <!-- 🔐 صندوق الرسائل السرية والمفاجآت المغلقة للأمان الصارم للجمهور -->
+        <div class="section-box" style="border-color: #ff3333;">
+            <div class="box-title" id="title-secret" style="color: #ff3333; border-bottom-color: #ff3333;">🔐 صندوق الرسائل السرية والمفاجآت المغلقة</div>
+            <p class="shop-box-desc" id="secret-desc-text">هذا الصندوق تفاعلي ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. اكتب الكود السري (123 أو كود العائلة KR) ثم اضغط على زر الفتح:</p>
+            <input type="text" id="secret-input" placeholder="اكتب الكلمة السرية هنا الحين..." style="border-color: #ff3333;">
+            <button class="wish-submit-btn" id="secret-btn-click" style="background: linear-gradient(45deg, #ff3333, #cc0000); color: #fff;" onclick="unlockSecret()">افتح واكشف المفاجأة السرية الحين 🔓</button>
+            <div class="preview-box" id="secret-box-output" style="display:none; margin-top:12px; border-style:dashed;"></div>
         </div>
-        
-        <div class="panda-footer-new-box"><span style="font-size: 75px; display: inline-block; filter: drop-shadow(0 0 15px rgba(255,255,255,0.45)); animation: panda-float 2s ease-in-out infinite;">🐼</span></div>
-        <div class="visitor-counter" id="visitor-box">👥 عدد زوار صفحتنا الحين: <span style="color:#fff;" id="counter-val">1573</span> زائر</div>
-        <br>
-        <div class="family-logo-wrapper"><div class="family-logo pulse-fast">👑 KR 👑</div></div>
+
+        <!-- 👑 شعار منصة العائلة الملكية المخلصة KR الختامي اللامع -->
+        <div class="royal-footer-brand">👑 منصة العائلة الملكية المعتمدة عالمياً [ عالم الحب KR ] 👑</div>
     </div>
-    <script>
+     <script>
         var currentLang = 'ar';
         document.addEventListener('contextmenu', e => e.preventDefault());
         function unlockSecret() {
@@ -269,9 +251,9 @@
             if (input === "") { output.style.display = "block"; output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = currentLang === 'ar' ? "⚠️ من فضلكِ اكتب ما يلوج في خاطركِ أولاً لكي يسندك الحين!" : "⚠️ Please type your thoughts first!"; return; }
             output.style.display = "block"; output.style.borderColor = "#00ffaa"; output.style.color = "#00ffaa";
             var hopes = [
-                "✨ جرعة الأمل لك الحين: لا تضيق وتيأس، فكل مرّ سيمر، والضغط الذي تعيشه اليوم هو مجرد بداية لولادة فجر جديد مليء بالرزق والفرح والراحة. رب العالمين معك ولن يتركك أبداً الحين! 🌿",
+                "✨ جرعة الأمل لك الحين: لا تضيق وتيأس، فكل مر سيمر، والضغط الذي تعيشه اليوم هو مجرد بداية لولادة فجر جديد مليء بالرزق والفرح والراحة. رب العالمين معك ولن يتركك أبداً الحين! 🌿",
                 "🌿 رسالة طمأنينة لقلبك: الفرج قريب جداً وفوق ما تتخيل، خذ نفساً عميقاً واعلم أن عسر اليوم يتبعه يسرين غداً بالملي. اترك قلق المستقبل للأقدار وعش اللحظة برضا وسلام داخلي! 🤍",
-                "🤍 سند روحي دافئ: أنت شخص قوي وصبرت على الكثير، وما يحدث الحين هو مجرد ترتيب إلهي ليعوضك ببركة وخير ينسيك كل دموع وتعب الساعات الماضية. استبشر خيراً فالقادم مذهل! ✨"
+                "🌿 سند روحي دافئ: أنت شخص قوي وصبرت على الكثير، وما يحدث الحين هو مجرد ترتيب إلهي ليعوضك ببركة وخير ينسيك كل دموع وتعب الساعات الماضية. استبشر خيراً فالقادم مذهل! ✨"
             ];
             output.innerHTML = hopes[Math.floor(Math.random() * hopes.length)];
         }
@@ -286,13 +268,9 @@
         }
         function boostWishHeart(id) {
             var el = document.getElementById("pulse-count-" + id); var current = parseInt(el.innerText) + 1; el.innerText = current;
-            localStorage.setItem('saved_wish_heart_' + id, current);
-            var myOwnId = localStorage.getItem('my_own_active_wish');
-            if (myOwnId && String(myOwnId) === String(id)) {
-                var banner = document.getElementById("wish-noti-banner"); if(banner) banner.style.display = "block"; if (navigator.vibrate) navigator.vibrate();
-                setTimeout(function() { if(banner) banner.style.display = "none"; }, 6000);
-            } else { if (navigator.vibrate) navigator.vibrate(30); }
-            var btn = el.parentElement; btn.style.borderColor = "#00ffaa"; btn.style.color = "#00ffaa";
+            localStorage.setItem('saved_wish_heart_' + id, current); var myOwnId = localStorage.getItem('my_own_active_wish');
+            if (myOwnId && String(myOwnId) === String(id)) { var banner = document.getElementById("wish-noti-banner"); if(banner) banner.style.display = "block"; if (navigator.vibrate) navigator.vibrate(); setTimeout(function() { if(banner) banner.style.display = "none"; }, 6000); }
+            else { if (navigator.vibrate) navigator.vibrate(30); } var btn = el.parentElement; btn.style.borderColor = "#00ffaa"; btn.style.color = "#00ffaa";
         }
         document.addEventListener("DOMContentLoaded", function() {
             setInterval(updateClock, 1000); updateClock();
@@ -310,20 +288,21 @@
                     }
                 }
             }
+            regenerateAiQuotes('dua'); regenerateAiQuotes('love'); regenerateAiQuotes('mother'); regenerateAiQuotes('sad');
         });
         function updateClock() {
             var now = new Date(); var t = now.toLocaleTimeString('ar-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
             var d = now.toLocaleDateString('ar-LB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-            var clockEl = document.getElementById("live-clock"); if(clockEl) clockEl.innerHTML = `📅 ${d} | ⏰ الساعة: ${t} <br> ☀️ بيروت: 24°C | 💧 الرطوبة: 62%`;
+            var clockEl = document.getElementById("live-clock"); if(clockEl) clockEl.innerHTML = `📅 ${d} | ⏰ الساعة: ${t} <br> ☀️ بيروت: 24°C | 👑 KR`;
         }
         function generateDreamInterpretation() {
             var input = document.getElementById("dream-input").value.trim(); var output = document.getElementById("dream-box-output");
-            if (input === "") { output.style.display = "block"; output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = currentLang === 'ar' ? "⚠️ من فضلكِ اكتب تفاصيل حلمكِ أولاً لكي يفك المستشار شفرته الحين!" : "⚠️ Please type your dream details first!"; return; }
+            if (input === "") { output.style.display = "block"; output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = currentLang === 'ar' ? "⚠️ من فضلكِ اكتب تفاصيل حلمكِ أولاً!" : "⚠️ Please type your dream details first!"; return; }
             output.style.display = "block"; output.style.borderColor = "#ff9800"; output.style.color = "#ff9800";
             var interpretations = [
                 "✨ فك تشفير حلمك الحين: رؤيتك تدل على طاقة فرج قريبة جداً وخروج من ضيق أو حيرة كنت تعيشها بالساعات الماضية. الرموز المضيئة بمنامك هي بشارة برزق نظيف عالي قادم لقلبك الطيب! 🪐",
                 "🪐 التفسير الفلكي السري: حلمك يعكس رغبة روحك بالتحرر والراحة. واعلم أن الرموز التي ظهرت لك هي إشارة إلهية لترتيب أمورك وتيسير عسر قادم، استبشر خيراً فمستقبلك محمي ومليء بالبركة! 🌌",
-                "🌌 رسالة مرآة الأحلام: لا تقلق من الغموض، رؤيتك ترمز لانتهاء مرحلة تعب وبداية عهد جديد يحمل لك نجاحاً باهراً وراحة بال طال انتظارها. نم قرير العين فالعوض القادم مذهل! ✨"
+                "🌌 رسالة مرآة الأحلام: لا تقلق من الغموض، رؤيتك ترمز لانتهاء مرحلة تعب وبداية عهد جديد يحمل لك نجاحاً باهراً وراحة بال طال انتظارها. عوضك القادم مذهل! ✨"
             ];
             output.innerHTML = interpretations[Math.floor(Math.random() * interpretations.length)];
         }
@@ -333,13 +312,12 @@
             output.style.display = "block"; output.style.borderColor = "#00ffaa"; output.style.color = "#00ffaa";
             var goldPriceInCurr = curr === "KWD" ? 26 : curr === "OMR" ? 32 : curr === "BHD" ? 31 : curr === "SAR" ? 316 : curr === "AED" ? 309 : curr === "QAR" ? 307 : 84;
             var grandTotal = money + (gold * goldPriceInCurr); var nisabInCurr = 85 * goldPriceInCurr;
-            if (grandTotal === 0) { output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = currentLang === 'ar' ? "⚠️ يرجى إدخال مبالغ نقدية أو جرامات الذهب أولاً لحساب التقرير الحين!" : "⚠️ Please enter values first!"; return; }
+            if (grandTotal === 0) { output.style.borderColor = "#ff3333"; output.style.color = "#ff3333"; output.innerHTML = currentLang === 'ar' ? "⚠️ يرجى إدخال قيم صحيحة للحساب الحين!" : "⚠️ Please enter values first!"; return; }
             var msg = currentLang === 'ar' ? `📜 <b>التقرير المالي الفلكي لـ [ عالم الحب KR ] :</b><br>💸 إجمالي ثروتك الحالية المكتشفة: <b>${grandTotal.toLocaleString()} ${curr}</b><br>` : `📜 <b>Financial Report for [ World of Love KR ] :</b><br>💸 Total Wealth: <b>${grandTotal.toLocaleString()} ${curr}</b><br>`;
-            if (grandTotal >= nisabInCurr) { var zakat = grandTotal * 0.025; msg += currentLang === 'ar' ? `✨ مبروك! أموالك بلغت النصاب الشرعي والادخاري المعتمد كلياً الحين.<br>🕋 مقدار الزكاة الواجبة إخراجها برواقة: <b>${zakat.toLocaleString()} ${curr}</b><br>💡 <b>نصيحة المستشار المالي:</b> هالتوليفة ممتازة لحفظ القوة الشرائية، استمر في تنمية ثروتك والصدقة!` : `✨ Congratulation! Your wealth has reached the Nisab threshold.<br>🕋 Due Zakat Value: <b>${zakat.toLocaleString()} ${curr}</b><br>💡 <b>AI Financial Advice:</b> Excellent asset backup! Keep investing and donating.`; }
-            else { msg += currentLang === 'ar' ? `📉 أموالك الحالية لم تبلغ النصاب الشرعي والمالي الدقيق للحساب الحين (النصاب المقدر هو: ${Math.round(nisabInCurr).toLocaleString()} ${curr}).<br>🕋 لا زكاة واجبة عليك الحين برواقة وطمأنينة.<br>💡 <b>نصيحة المستشار المالي:</b> ركز على ادخار سبائك الذهب الصغيرة لتنمية محفظتك بأمان!` : `📉 Your wealth is below the Nisab threshold (Estimated Nisab: ${Math.round(nisabInCurr).toLocaleString()} ${curr}).<br>🕋 No Zakat is due on you now.<br>💡 <b>AI Financial Advice:</b> Focus on saving physical gold bars to safely build your wealth stack!`; }
+            if (grandTotal >= nisabInCurr) { var zakat = grandTotal * 0.025; msg += currentLang === 'ar' ? `✨ مبروك! أموالك بلغت النصاب الشرعي والادخاري المعتمد كلياً الحين.<br>🕋 مقدار الزكاة الواجبة إخراجها برواقة: <b>${zakat.toLocaleString()} ${curr}</b>` : `✨ Nisab reached.<br>🕋 Due Zakat Value: <b>${zakat.toLocaleString()} ${curr}</b>`; }
+            else { msg += currentLang === 'ar' ? `📉 أموالك الحالية لم تبلغ النصاب الشرعي والمالي الدقيق للحساب الحين (النصاب المقدر هو: ${Math.round(nisabInCurr).toLocaleString()} ${curr}).` : `📉 Below Nisab threshold.`; }
             output.innerHTML = msg; if (navigator.vibrate) navigator.vibrate(30);
         }
-
         var aiPools = {
             "dua": [
                 ["اللهم احفظ لي أحبتي وأهلي ولا تريني فيهم بأساً يبكيني، واستودعتك قلوبهم وحياتهم وصحتهم فاحفظهم بحفظك يا كريم! 🤲", "O Allah, protect my family and loved ones, and keep them safe under Your divine care! 🤲"],
@@ -349,7 +327,7 @@
             "love": [
                 ["استودعت الله قلبك وخطواتك، وجعل التوفيق والراحة والسعادة الأبدية حليفك ليل نهار برواقة تامة الحين! ❤️", "I entrust your heart and steps to Allah, wishing you eternal comfort, happiness, and peace day and night! ❤️"],
                 ["أشتاق إليك شوقاً يملأ الكون صخباً، وأحبك حباً يجعل من دقات قلبي عزفاً لاسمك الدافيء دائماً وأبداً! ✨", "I miss you with a longing that fills the universe, and I love you with a bond that makes my heart beat only for you! ✨"],
-                ["أنت لست مجرد شخص عابر في حياتي، أنت عمري، وأجمل أقداري، ونبض قلبي الذي لا أعيش بدونه يوماً واحداً! 💍", "You are not just a passing face in my life, you are my age, my beautiful destiny, and the beat of my heart! 💍"]
+                ["أنت لست مجرد شخص عابر في حياتي, أنت عمري، وأجمل أقداري، ونبض قلبي الذي لا أعيش بدونه يوماً واحداً! 💍", "You are not just a passing face in my life, you are my age, my beautiful destiny, and the beat of my heart! 💍"]
             ],
             "mother": [
                 ["أمي يا نبض قلبي وأجمل عطايا الرحمن، استودعت الله عمرك وصحتك وابتسامتك، وجعل التوفيق والسعادة حليفك الحين! 🤱❤️", "My mother, the beat of my heart and Allah's most beautiful gift, may Allah protect your health and sweet smile! 🤱❤️"],
@@ -362,33 +340,71 @@
                 ["توقعت منك كل خير إلا الجفاء، واكتفيت بالصمت الطويل لعل رسالة الصمت تبلغ قلبك بما عجزت الحروف عن قوله! 🪐", "I expected everything from you except abandonment, so I chose long silence to let it speak what letters couldn't say! 🪐"]
             ]
         };
-
         function regenerateAiQuotes(type) {
-            var select = document.getElementById(type + "-quote-select"); select.innerHTML = "";
+            var select = document.getElementById(type + "-quote-select"); if(!select) return; select.innerHTML = "";
             var pool = aiPools[type]; var shuffled = pool.sort(() => 0.5 - Math.random());
             shuffled.forEach((pair) => {
-                var option = document.createElement("option");
-                option.value = currentLang === 'ar' ? pair : pair;
-                option.text = currentLang === 'ar' ? textMin(pair, 38) : textMin(pair, 38);
-                select.appendChild(option);
+                var option = document.createElement("option"); option.value = pair; option.text = textMin(pair, 38); select.appendChild(option);
             });
             if(type === 'dua') updateDuaPreview(); if(type === 'love') updateLovePreview();
             if(type === 'mother') updateMotherPreview(); if(type === 'sad') updateSadPreview();
         }
         function updateBoxPreview(type) {
             var select = document.getElementById(type + "-quote-select"); if(!select || select.options.length === 0) return;
-            var val = select.value; document.getElementById(type + "-preview-text").innerText = val;
-            var name = document.getElementById(type + "-name-input").value.trim();
+            var val = select.value; var preview = document.getElementById(type + "-preview-text"); if(preview) preview.innerText = val;
+            var nameEl = document.getElementById(type + "-name-input"); var name = nameEl ? nameEl.value.trim() : "";
             var isAr = currentLang === 'ar';
             var header = isAr ? `👑 *بطاقة إهداء ملوكية من الغالي:* [ ${name || "محب غالي"} ] 👑\n📜 *عبر منصة:* [ عالم الحب KR ]\n\n` : `👑 *Royal Gift Card From:* [ ${name || "Dear Guest"} ] 👑\n📜 *Via Official Platform:* [ World of Love KR ]\n\n`;
             var msgStr = header + `"${val}"\n\n🌐 *رابط المنصة المباشر للزيارة:* worldoflove-kr.github.io`;
-            document.getElementById(type + "-whatsapp-anchor").href = "whatsapp://send?text=" + encodeURIComponent(msgStr);
+            var anchor = document.getElementById(type + "-whatsapp-anchor"); if(anchor) anchor.href = "whatsapp://send?text=" + encodeURIComponent(msgStr);
+        }
+        function generateAiRadioBroadcast() {
+            var from = document.getElementById("radio-from-input").value.trim();
+            var to = document.getElementById("radio-to-input").value.trim();
+            var wave = document.getElementById("radio-wave-select").value;
+            var zone = document.getElementById("radio-player-zone");
+            var prev = document.getElementById("radio-preview-text");
+            var audio = document.getElementById("global-radio-player");
+            var dl = document.getElementById("radio-download-anchor");
+            if (from === "" || to === "") { alert(currentLang === 'ar' ? "⚠️ من فضلكِ اكتب اسمك واسم المهدى إليه أولاً لتشغيل بث راديو الـ AI الحين!" : "⚠️ Please enter From and To names first!"); return; }
+            zone.style.display = "block"; var isAr = currentLang === 'ar';
+            
+            var audioUrls = {
+                "love": "https://soundhelix.com",
+                "dua": "https://soundhelix.com",
+                "mother": "https://soundhelix.com",
+                "sad": "https://soundhelix.com"
+            };
+            var selectedSrc = audioUrls[wave]; audio.src = selectedSrc; audio.crossOrigin = "anonymous"; audio.load();
+            var playPromise = audio.play(); if (playPromise !== undefined) { playPromise.then(function() {}).catch(function(e) {}); }
+            dl.href = selectedSrc; dl.setAttribute("download", "AI-Radio-Broadcast.mp3");
+            var textPool = {
+                "love": isAr ? `📻 بث حي من موجة الحب والاشتياق: "نهدي الغالي [ ${to} ] أرقى معزوفة عاطفية تولدت بالـ AI من شريك العمر [ ${from} ] لتعبر عن ود واشتياق أبدي لا ينتهي كلياً الحين!" ❤️` : `📻 Live from AI Love Wave: "Dedicated to dearest [ ${to} ] from [ ${from} ] under customized symphony." ❤️`,
+                "dua": isAr ? `📻 بث حي من موجة البركة: "إهداء صوتي مبارك ودعاء تفاعلي تولد بالذكاء الاصطناعي لـ [ ${to} ] بناءً على طلب المخلص [ ${from} ] لحفظ القلوب والخطوات السعيدة!" 🌿` : `📻 Live from AI Dua Wave: "Blessed vows for [ ${to} ] generated by request of [ ${from} ]." 🌿`,
+                "mother": isAr ? `📻 بث حي من موجة بر الوالدين: "رسالة إذاعية تفيض بالحب تخرج من قلب البار [ ${from} ] إلى جنته وتاج رأسه الأم الغالية [ ${to} ] بأرق عهد شكر وعرفان بالكون الحين!" 🤱❤️` : `📻 Live from AI Mother Wave: "Sincere devotion voice block for the beloved mother [ ${to} ] from [ ${from} ]." 🤱❤️`,
+                "sad": isAr ? `📻 بث حي من موجة شريط الذكريات: "عبر أوتار العتب الصامت والوجع الصادق، يطلق المذيع الافتراضي كلمات صيغت بالـ AI من [ ${from} ] إلى [ ${to} ] لعل رسالة الصمت تبلغ قلبك الحين!" 🖤` : `📻 Live from AI Sad Wave: "A silent blame whisper broadcast for [ ${to} ] from [ ${from} ]." 🖤`
+            };
+            prev.innerHTML = textPool[wave]; if (navigator.vibrate) navigator.vibrate(40);
+        }
+        function shareRadioToWhatsApp() {
+            var from = document.getElementById("radio-from-input").value.trim();
+            var to = document.getElementById("radio-to-input").value.trim();
+            var select = document.getElementById("radio-wave-select"); var waveName = select.options[select.selectedIndex].text;
+            var prevText = document.getElementById("radio-preview-text").innerText;
+            var isAr = currentLang === 'ar';
+            var header = isAr ? `🎙️ *إهداء وبث إذاعي تفاعلي من راديو: [ عالم الحب KR ]* 🎙️\n\n📻 *الموجة الإذاعية:* ${waveName}\n💝 *مـن الغالي:* [ ${from} ]\n🌹 *إلـى الغالي:* [ ${to} ]\n\n📜 *نص منطوق المذيع الصوتي:*\n"${prevText}"\n\n🌐 *رابط السيرفر للاستماع والتحميل المباشر للبرنامج الصوتي MP3 بجهازكِ:* worldoflove-kr.github.io` : `🎙️ *Royal Voice Radio Broadcast from [ World of Love KR ]* 🎙️\n\n📻 *Wave Type:* ${waveName}\n💝 *From:* [ ${from} ]\n🌹 *To:* [ ${to} ]\n\n📜 *AI Voice Text:*\n"${prevText}"\n\n🌐 *Official Radio Hub Link:* worldoflove-kr.github.io`;
+            document.getElementById("radio-whatsapp-anchor").href = "whatsapp://send?text=" + encodeURIComponent(header);
+        }
+        function shareRadioToWhatsApp() {
+            var from = document.getElementById("radio-from-input").value.trim();
+            var to = document.getElementById("radio-to-input").value.trim();
+            var select = document.getElementById("radio-wave-select"); var waveName = select.options[select.selectedIndex].text;
+            var prevText = document.getElementById("radio-preview-text").innerText;
+            var isAr = currentLang === 'ar';
+            var header = isAr ? `🎙️ *إهداء وبث إذاعي تفاعلي من راديو: [ عالم الحب KR ]* 🎙️\n\n📻 *الموجة الإذاعية:* ${waveName}\n💝 *مـن الغالي:* [ ${from} ]\n🌹 *إلـى الغالي:* [ ${to} ]\n\n📜 *نص منطوق المذيع الصوتي:*\n"${prevText}"\n\n🌐 *رابط السيرفر للاستماع والتحميل المباشر للبرنامج الصوتي MP3 بجهازكِ:* worldoflove-kr.github.io` : `🎙️ *Royal Voice Radio Broadcast from [ World of Love KR ]* 🎙️\n\n📻 *Wave Type:* ${waveName}\n💝 *From:* [ ${from} ]\n🌹 *To:* [ ${to} ]\n\n📜 *AI Voice Text:*\n"${prevText}"\n\n🌐 *Official Radio Hub Link:* worldoflove-kr.github.io`;
+            document.getElementById("radio-whatsapp-anchor").href = "whatsapp://send?text=" + encodeURIComponent(header);
         }
 
-        function updateDuaPreview() { updateBoxPreview('dua'); } function shareDuaToWhatsApp() { updateBoxPreview('dua'); }
-        function updateLovePreview() { updateBoxPreview('love'); } function shareLoveToWhatsApp() { updateBoxPreview('love'); }
-        function updateMotherPreview() { updateBoxPreview('mother'); } function shareMotherToWhatsApp() { updateBoxPreview('mother'); }
-        function updateSadPreview() { updateBoxPreview('sad'); } function shareSadToWhatsApp() { updateBoxPreview('sad'); }
         function switchLang(l) {
             currentLang = l; document.getElementById("btn-ar").classList.toggle("active", l === 'ar'); document.getElementById("btn-en").classList.toggle("active", l === 'en');
             var isAr = l === 'ar'; document.body.style.direction = isAr ? "rtl" : "ltr";
@@ -417,17 +433,21 @@
             document.getElementById("title-pubg-box").innerText = isAr ? "🛒 خدمات شحن PUBG ومشتريات SHEIN" : "🛒 PUBG UCs Load & SHEIN Orders Store";
             document.getElementById("pubg-desc-lb").innerText = isAr ? "اشحني حسابكِ وألعابكِ بثقة تامة! محطتكِ المتكاملة لتأمين شدات لعبة ببجي ومشتريات SHEIN بأسرع خدمة كاش:" : "Reload your gaming profiles with absolute safety! Your complete hub to supply PUBG UC coins and SHEIN packages under speedy handling:";
             document.getElementById("btn-pubg-click").innerText = isAr ? "🛍️ للطلب وشحن الشدات و SHEIN (واتساب)" : "🛍️ Order Gaming Coins & SHEIN (WhatsApp)";
+            document.getElementById("title-gulf").innerText = isAr ? "🪙 المستشار المالي وحاسبة الزكاة والادخار الخليجي الذكي" : "🪙 AI Wealth Tracker, Gold & Zakat Oracle";
+            document.getElementById("gulf-money").placeholder = isAr ? "اكتب مقدار المال أو المدخرات النقدية الحين..." : "Type your cash assets or savings volume now...";
+            document.getElementById("gulf-gold").placeholder = isAr ? "اكتب وزن الذهب الحالي بالجرام (إن وُجد الحين)..." : "Type your current gold weight in grams (if available)...";
+            document.getElementById("btn-gulf-calc").innerText = isAr ? "احسب مدخراتك الفلكية وزكاة مالك الحين 📊" : "Calculate Assets & Due Zakat Now 📊";
             document.getElementById("title-tasbih").innerText = isAr ? "📿 صندوق لوحة عداد التسبيح والاستغفار الرقمي" : "📿 Digital Tasbih Counter & Remembrance Box";
             document.getElementById("tasbih-reset-btn").innerText = isAr ? "إعادة تصفير العداد 🔄" : "Reset Counter Vibe 🔄";
             document.getElementById("title-secret").innerText = isAr ? "🔐 صندوق الرسائل السرية والمفاجآت المغلقة" : "🔐 Secret Encrypted Board & Mystery Box";
             document.getElementById("secret-desc-text").innerText = isAr ? "هذا الصندوق تفاعلي ومخصص لإرسال المفاجآت والجوائز المشفرة للجمهور. اكتب الكود السري (123 أو كود العائلة KR) ثم اضغط على زر الفتح:" : "This interactive lockbox is securely designed to deploy hidden surprises and gifts. Enter the secret code (123 or KR family key) then hit the unlock button below:";
             document.getElementById("secret-input").placeholder = isAr ? "اكتب الكلمة السرية هنا الحين..." : "Type the secret access pass code here...";
             document.getElementById("secret-btn-click").innerText = isAr ? "افتح واكشف المفاجأة السرية الحين 🔓" : "Unlock & Reveal Hidden Surprise Now 🔓";
-            
             document.getElementById("title-dua-box").innerText = isAr ? "✨ صندوق الأدعية والإهداءات التفاعلي" : "✨ AI Blessings & Duas Sanctuary";
             document.getElementById("dua-name-input").placeholder = isAr ? "اكتب اسم المرسل هنا الحين..." : "Type your name here...";
             document.getElementById("title-dua-preview").innerText = isAr ? "📖 كلمات الدعاء المختار حالياً:" : "Current AI Dua Text:";
             document.getElementById("btn-dua-share").innerText = isAr ? "أرسل الإهداء وشارك عبر الواتساب 🟢" : "Broadcast AI Dua via WhatsApp 🟢";
+            
             document.getElementById("title-love-box").innerText = isAr ? "💝 صندوق عبارات الحب والاشتياق التفاعلي" : "💝 AI Sincere Love & Longing Sanctuary";
             document.getElementById("love-name-input").placeholder = isAr ? "اكتب اسم المرسل هنا الحين..." : "Type your name here...";
             document.getElementById("title-love-preview").innerText = isAr ? "📖 كلمات العبارة المختارة حالياً:" : "Current AI Love Expression:";
@@ -449,6 +469,7 @@
             document.getElementById("btn-radio-gen").innerText = isAr ? "✨ أطلق بث الراديو والمذيع التوليدي بالذكاء الاصطناعي 🪐" : "✨ Launch AI Voice Broadcast & Live Radio Now 🪐";
             document.getElementById("radio-download-anchor").innerText = isAr ? "📥 تحميل المقطع الإذاعي MP3 داخل جهازكِ دغري 🎵" : "📥 Download Radio MP3 Segment to Device 🎵";
             document.getElementById("radio-whatsapp-anchor").innerText = isAr ? "🟢 أرسل الإهداء الصوتي ورابط الراديو عبر الواتساب دغري" : "🟢 Broadcast Audio Vows via WhatsApp Straight";
+
             var selW = document.getElementById("radio-wave-select");
             if(selW && selW.options.length >= 4) {
                 selW.options[0].text = isAr ? "❤️ موجة الحب والاشتياق العاطفية الحية" : "❤️ AI Love & Sincere Longing Radio Wave";
@@ -456,84 +477,8 @@
                 selW.options[2].text = isAr ? "🤱 موجة تاج رأسنا ونبض الحياة للأم الغالية" : "🤱 AI Mother Devotion & Blessed Vows Wave";
                 selW.options[3].text = isAr ? "🖤 موجة عتب شريط الذكريات والوجع الصامت" : "🖤 AI Sad Melancholy & Silent Blame Wave";
             }
-
-            var selD = document.getElementById("dua-quote-select");
-            var selL = document.getElementById("love-quote-select");
-            var selM = document.getElementById("mother-quote-select");
-            var selS = document.getElementById("sad-quote-select");
-
-            if(selD && selD.options.length > 0) { aiPools.dua.forEach((p, idx) => { if(selD.options[idx]) selD.options[idx].text = textMin(p, 38); }); }
-            if(selL && selL.options.length > 0) { aiPools.love.forEach((p, idx) => { if(selL.options[idx]) selL.options[idx].text = textMin(p, 38); }); }
-            if(selM && selM.options.length > 0) { aiPools.mother.forEach((p, idx) => { if(selM.options[idx]) selM.options[idx].text = textMin(p, 38); }); }
-            if(selS && selS.options.length > 0) { aiPools.sad.forEach((p, idx) => { if(selS.options[idx]) selS.options[idx].text = textMin(p, 38); }); }
-
-            updateClock();
-        }
-
-        function generateAiRadioBroadcast() {
-            var from = document.getElementById("radio-from-input").value.trim();
-            var to = document.getElementById("radio-to-input").value.trim();
-            var wave = document.getElementById("radio-wave-select").value;
-            var zone = document.getElementById("radio-player-zone");
-            var prev = document.getElementById("radio-preview-text");
-            var audio = document.getElementById("global-radio-player");
-            var dl = document.getElementById("radio-download-anchor");
-
-            if (from === "" || to === "") {
-                alert(currentLang === 'ar' ? "⚠️ من فضلكِ اكتب اسمك واسم المهدى إليه أولاً لتشغيل بث راديو الـ AI الحين!" : "⚠️ Please enter From and To names first!");
-                return;
-            }
-
-            zone.style.display = "block";
-            var isAr = currentLang === 'ar';
-            
-            var audioUrls = {
-                "love": "https://google.com",
-                "dua": "https://google.com",
-                "mother": "https://google.com",
-                "sad": "https://google.com"
-            };
-
-            var selectedSrc = audioUrls[wave];
-            audio.src = selectedSrc;
-            audio.crossOrigin = "anonymous";
-            audio.load();
-            audio.play();
-
-            // تحديث زر التحميل العلوي ديناميكياً لإجبار الهاتف على التنزيل دغري بصيغة MP3 صوتية
-            dl.href = selectedSrc;
-            dl.setAttribute("download", "AI-Radio-Broadcast.mp3");
-            dl.onclick = function(e) {
-                e.preventDefault();
-                var link = document.createElement('a');
-                link.href = selectedSrc;
-                link.download = 'AI-Radio-Broadcast.mp3';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            };
-
-            var textPool = {
-                "love": isAr ? `📻 بث حي من موجة الحب والاشتياق: "بصوت مذيعنا الدافئ، نهدي الغالي [ ${to} ] أرقى معزوفة عاطفية تولدت خصيصاً بنبض الذكاء الاصطناعي من شريك العمر [ ${from} ] لتعبر عن ودّ واشتياق أبدي لا ينتهي كلياً الحين الحين الحين!" ❤️` : `📻 Live from AI Love Wave: "Dedicated to dearest [ ${to} ] from [ ${from} ] under customized symphony." ❤️`,
-                "dua": isAr ? `📻 بث حي من موجة النفحات والبركة: "يخرج الحين إهداء صوتي مبارك ودعاء تفاعلي تولد بالذكاء الاصطناعي لـ [ ${to} ] بصوت راديو المنصة بناءً على طلب المخلص [ ${from} ] لحفظ القلوب والخطوات السعيدة!" 🌿` : `📻 Live from AI Dua Wave: "Blessed vows for [ ${to} ] generated by request of [ ${from} ]." 🌿`,
-                "mother": isAr ? `📻 بث حي من موجة بر الوالدين: "رسالة إذاعية مقدسة تفيض بالحب والطهر تخرج من قلب البار [ ${from} ] إلى جنته على الأرض وتاج رأسه الأم الغالية [ ${to} ] بأرق عهد شكر وعرفان بالكون الحين!" 🤱❤️` : `📻 Live from AI Mother Wave: "Sincere devotion voice block for the beloved mother [ ${to} ] from [ ${from} ]." 🤱❤️`,
-                "sad": isAr ? `📻 بث حي من موجة شريط الذكريات: "عبر أوتار العتب الصامت والوجع الصادق، يطلق المذيع الافتراضي كلمات صيغت بالـ AI من [ ${from} ] إلى [ ${to} ] لعل رسالة الصمت تبلغ قلبك بما عجزت عنه الحروف الحين!" 🖤` : `📻 Live from AI Sad Wave: "A silent blame whisper broadcast for [ ${to} ] from [ ${from} ]." 🖤`
-            };
-
-            prev.innerHTML = textPool[wave];
-            if (navigator.vibrate) navigator.vibrate(40);
-        }
-
-        function shareRadioToWhatsApp() {
-            var from = document.getElementById("radio-from-input").value.trim();
-            var to = document.getElementById("radio-to-input").value.trim();
-            var select = document.getElementById("radio-wave-select"); var waveName = select.options[select.selectedIndex].text;
-            var prevText = document.getElementById("radio-preview-text").innerText;
-            var isAr = currentLang === 'ar';
-            var header = isAr ? `🎙️ *إهداء وبث إذاعي تفاعلي من راديو: [ عالم الحب KR ]* 🎙️\n\n📻 *الموجة الإذاعية:* ${waveName}\n💝 *مـن الغالي:* [ ${from} ]\n🌹 *إلـى الغالي:* [ ${to} ]\n\n📜 *نص منطوق المذيع الصوتي:*\n"${prevText}"\n\n🌐 *رابط السيرفر للاستماع والتحميل المباشر للبرنامج الصوتي MP3 بجهازكِ:* worldoflove-kr.github.io` : `🎙️ *Royal Voice Radio Broadcast from [ World of Love KR ]* 🎙️\n\n📻 *Wave Type:* ${waveName}\n💝 *From:* [ ${from} ]\n🌹 *To:* [ ${to} ]\n\n📜 *AI Voice Text:*\n"${prevText}"\n\n🌐 *Official Radio Hub Link:* worldoflove-kr.github.io`;
-            document.getElementById("radio-whatsapp-anchor").href = "whatsapp://send?text=" + encodeURIComponent(header);
+            ['dua', 'love', 'mother', 'sad'].forEach(updateBoxPreview); updateClock();
         }
     </script>
 </body>
 </html>
- 
