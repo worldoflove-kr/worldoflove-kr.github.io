@@ -10,7 +10,7 @@
         html, body { background-color: #000000 !important; color: #ffffff !important; text-align: center; padding: 5px; min-height: 100vh; background: #000000 url('https://transparenttextures.com') repeat !important; overflow-x: hidden; }
         .container { max-width: 450px; margin: 0 auto; padding: 2px; background-color: #000000 !important; }
         
-        /* ✨ تأثير الإنارة الذهبية النيونية المكثفة والساطعة والبارزة الطالعة من عنوان [ عالم الحب ] */
+        /* ✨ تأثير الإنارة الذهبية النيونية المكثفة والساطعة والبارزة لـ [ عالم الحب ] */
         .main-title-ar { color: #ffd700 !important; font-size: 32px; font-weight: 700; margin-top: 8px; display: block; animation: royalGoldIntenseGlow 2s infinite alternate ease-in-out; }
         .main-title-en { color: #ffd700 !important; font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px; margin-top: 2px; margin-bottom: 5px; display: block; animation: royalGoldIntenseGlow 2s infinite alternate ease-in-out; }
         .royal-brand-kr { color: #ffd700 !important; font-family: 'Playfair Display', serif; font-style: normal; font-size: 28px; font-weight: bold; display: inline-block; margin-top: 10px; animation: krStraightPulse 1.8s infinite alternate ease-in-out; filter: drop-shadow(0 0 15px rgba(255,215,0,0.6)); }
@@ -18,13 +18,11 @@
         @keyframes royalGoldIntenseGlow { 0% { text-shadow: 0 0 10px rgba(255,215,0,0.6), 0 0 20px rgba(255,215,0,0.4); transform: scale(0.98); } 100% { text-shadow: 0 0 25px rgba(255,215,0,1), 0 0 50px rgba(255,215,0,1); transform: scale(1.02); } }
         @keyframes krStraightPulse { 0% { transform: scale(0.96); text-shadow: 0 0 12px rgba(255,215,0,0.5); } 100% { transform: scale(1.04); text-shadow: 0 0 35px rgba(255,215,0,1); } }
         
-        /* 🪙 تشغيل شريط أسعار البورصة العالمي ليمشي ويتحرك انسيابياً 100% */
         .ticker-bar { background: rgba(5,7,5,0.95) !important; border: 1px solid #161616; padding: 8px; border-radius: 8px; margin-top: 5px; margin-bottom: 10px; overflow: hidden; white-space: nowrap; box-shadow: 0 4px 15px rgba(0,0,0,0.9); width: 100%; display: block !important; }
         .ticker-move { display: inline-block; white-space: nowrap; padding-left: 100%; animation: royalMarqueeAnimation 14s linear infinite; }
         @keyframes royalMarqueeAnimation { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
         .ticker-item { background: #0c0f0c !important; padding: 5px 10px; border-radius: 6px; border: 1px solid #222; text-decoration: none; color: #ffd700 !important; font-weight: bold; font-size: 11px; margin-right: 12px; display: inline-block !important; }
         
-        /* 🌐 لوحة أزرار الترجمة والوقت والعداد الملمومة من دون مسافات واسعة */
         .lang-zone { margin-bottom: 10px; display: flex; justify-content: center; gap: 12px; }
         .lang-btn { background: #0a0a0a !important; border: 1px solid #ffd700; color: #ffd700 !important; padding: 5px 15px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 12px; }
         .lang-btn.active { background: linear-gradient(45deg, #ffd700, #b8860b) !important; color: #000000 !important; border: none; box-shadow: 0 0 12px rgba(255,215,0,0.5); }
@@ -32,7 +30,6 @@
         .visitor-box { background: #020202 !important; border: 1px solid #161616; padding: 8px; border-radius: 25px; font-size: 12px; color: #ffffff !important; display: inline-block; min-width: 170px; margin: 4px auto 10px auto; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         .royal-footer-brand { font-size: 11.5px; font-weight: bold; color: #ffd700 !important; margin: 15px 0 5px 0; text-shadow: 0 0 10px rgba(255,215,0,0.4); }
         
-        /* 🐼 مظهر لوحة الباندا العمودية الجديدة المفصولة بالتناسب */
         .royal-panda-panel { background: rgba(10,10,10,0.9) !important; border: 1px dashed #ffd700 !important; border-radius: 16px; padding: 16px; margin: 15px 0; text-align: center; box-shadow: 0 4px 20px rgba(255,215,0,0.05); }
         .panda-img-row { width: 140px; height: 140px; margin: 0 auto 12px auto; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 25px rgba(255,215,0,0.45); border: 2px solid #ffd700; background: #050505; animation: pandaNeonFloat 3.5s infinite ease-in-out; font-size: 85px; filter: drop-shadow(0 0 15px rgba(255,215,0,0.3)); }
         @keyframes pandaNeonFloat { 0%, 100% { transform: translateY(0) scale(0.97); } 50% { transform: translateY(-6px) scale(1.03); } }
@@ -141,7 +138,7 @@
         <div class="royal-interactive-card box-parents">
             <div class="box-title box-title-parents">👑 <span id="title-box-3">صندوق بر الوالدين والأم الغالية</span></div>
             <select class="royal-select" id="select-parents" onchange="syncLivePreview('parents')">
-                <option value="أمي يا قطعة من الجنة على الأرض، دمْتِ لي نبضاً، وأماناً، ونوراً يستضاء به في ظلمات الحياة.">🌹 إهداء ملوكي للأم الغالية الحنونة</option>
+                <option value="أمي يا قطعة من الجنة على الأرض، دمْتِ لي نبضاً، وأماناً، ونوراً يستضاء به in ظلمات الحياة.">🌹 إهداء ملوكي للأم الغالية الحنونة</option>
                 <option value="أبي الغالي، أنت السند الشامخ الذي لا يميل، والدرع الحصين الذي يحميني بعد الله، حفظك الله وعافاك.">🛡️ رسالة بر فخمة للأب الوقور</option>
                 <option value="اللهم اغفر لوالديّ وارحمهما كما ربياني صغيراً، واجعل عافيتهما ورضاهما تاجاً فوق رأسي للأبد.">🤲 دعاء البر بوالدي الأحياء والأموات</option>
             </select>
@@ -201,20 +198,20 @@
             }
         }
 
-        // 🚀 محرك الواتساب الذكي المحقون برابط القلعة الأزرق الكامل والتفاعلي بأسفل الرسالة دغري 100%
+        // 🚀 محرك الواتساب الذكي المحقون برابط القلعة http التفاعلي المباشر بأسفل الرسالة دغري 100%
         function fireRoyalWhatsapp(type) {
             var text = document.getElementById("select-" + type).value;
             var sender = document.getElementById("name-" + type).value.trim();
             if (!sender) { sender = (currentLang === 'ar') ? "مُرسِل مخلص" : "A Loyal Sender"; }
             
-            // صياغة الرسالة المنسقة وتثبيت الرابط الأزرق التفاعلي الكامل https:// بأسفل الرسالة من تحت دغري ليكون ظاهراً ومقروءاً ومفعلاً للفس
+            // صياغة الرسالة المنسقة وتثبيت الرابط التفاعلي بصيغة http المفتوحة بأسفل الرسالة من تحت دغري ليفك تجميد المتصفحات والواتساب
             var msg = `*✨ إهداء ملكي فاخر من: ${sender}* \n\n` +
                       `"${text}"\n\n` +
                       `━━━━━━━━━━━━━━━\n` +
                       `👑 *اسم المنصة:* عالم الحب\n` +
                       `👑 *شعار العائلة المعتمد:* KR\n` +
                       `🌐 *رابط منصتنا الملكية المباشر لعيونكم:* \n` +
-                      `https://github.io`;
+                      `http://github.io`;
             
             var targetUrl = "whatsapp://send?text=" + encodeURIComponent(msg);
             var backupUrl = "https://whatsapp.com" + encodeURIComponent(msg);
