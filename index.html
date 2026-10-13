@@ -57,7 +57,10 @@
         .ticker-bar { background: rgba(5,7,5,0.95) !important; border: 1px solid #161616; padding: 8px; border-radius: 8px; margin-top: 5px; margin-bottom: 12px; overflow: hidden; white-space: nowrap; box-shadow: 0 4px 15px rgba(0,0,0,0.9); width: 100%; display: block !important; }
         .ticker-move { display: inline-block; white-space: nowrap; padding-left: 100%; animation: royalMarqueeAnimation 14s linear infinite; }
         @keyframes royalMarqueeAnimation { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
-        .ticker-item { background: #0c0f0c !important; padding: 5px 10px; border-radius: 6px; border: 1px solid #222; text-decoration: none; color: #ffd700 !important; font-weight: bold; font-size: 11px; margin-right: 12px; display: inline-block !important; }
+        
+        /* تنسيق روابط البورصة العالمية لتصبح قابلة للضغط الحين دغري */
+        .ticker-item { background: #0c0f0c !important; padding: 5px 10px; border-radius: 6px; border: 1px solid #222; text-decoration: none; color: #ffd700 !important; font-weight: bold; font-size: 11px; margin-right: 12px; display: inline-block !important; transition: 0.3s; }
+        .ticker-item:hover { background: #161a16 !important; border-color: #ffd700; box-shadow: 0 0 8px rgba(255,215,0,0.3); }
         
         .lang-zone { margin-bottom: 12px; display: flex; justify-content: center; gap: 12px; }
         .lang-btn { background: #0a0a0a !important; border: 1px solid #ffd700; color: #ffd700 !important; padding: 5px 15px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 12px; transition: 0.3s; }
@@ -110,13 +113,14 @@
     </style>
 </head>
 <body>
+
     <div class="container">
-        <!-- 📈 1. شريط الأسعار والمؤشرات المتحرك فوق بأول الصفحة -->
+        <!-- 📈 1. شريط الأسعار والمؤشرات المتحرك مع روابط نشطة تفتح صفحات البورصة فوراً عند الكبس -->
         <div class="ticker-bar">
             <div class="ticker-move">
-                <span class="ticker-item"><span id="tick-gold">أوقية الذهب العالمية:</span> $2,624.50 <span style="color:#ff3333;">▼ نازل</span></span>
-                <span class="ticker-item"><span id="tick-index">مؤشر الدولار عالمياً:</span> 103.85</span>
-                <span class="ticker-item"><span id="tick-lbp">فريش دولار في لبنان:</span> 89,500 LBP</span>
+                <a href="https://goldprice.org" target="_blank" class="ticker-item"><span id="tick-gold">أوقية الذهب العالمية:</span> $2,624.50 <span style="color:#ff3333;">▼ نازل</span></a>
+                <a href="https://marketwatch.com" target="_blank" class="ticker-item"><span id="tick-index">مؤشر الدولار عالمياً:</span> 103.85</a>
+                <a href="https://lirarate.org" target="_blank" class="ticker-item"><span id="tick-lbp">فريش دولار في لبنان:</span> 89,500 LBP</a>
             </div>
         </div>
 
@@ -133,10 +137,10 @@
         <h1 class="main-title-ar" id="main-title-ar-txt">عالم الحب</h1>
         <h2 class="main-title-en" id="main-title-en-txt">World of Love</h2>
 
-        <!-- 👥 5. عداد زوار الصفحة التفاعلي المحفوظ ليعد فعلياً فوق الـ 2,175 -->
+        <!-- 👥 5. ⭐️ عداد زوار الصفحة التفاعلي المحفوظ ليعد فعلياً فوق الرقم المعتمد بالصورة -->
         <div>
             <div class="visitor-box">
-                👥 <span id="lbl-visitors">عدد زوار صفحتنا الحين:</span> <strong id="live-visitor-counter">2,175</strong>
+                👥 <span id="lbl-visitors">عدد زوار صفحتنا الحين:</span> <strong id="live-visitor-counter">2,311</strong>
             </div>
         </div>
 
@@ -151,8 +155,58 @@
                 <div class="txt-desc" id="lbl-desc">"هنا، حيث تلمع النجوم في سمائنا السوداء الفخمة ✨، نلتقي لنصنع من عبارات الحب والأدعية التفاعلية نبضاً أبدياً لا ينتهي.. أهلاً بكم في عهد الأمان والمصداقية الكبرى [ عالم الحب KR ]." 🌌💞</div>
             </div>
         </div>
-        <!-- 📦 7. الصناديق الأربعة بإطاراتها الملونة الأصلية وأزرارها الخضراء الجذابة -->
-        <!-- صندوق الأدعية، الحب، بر الوالدين، والعتب مع تذييل شعار KR الفاخر (يمكن العثور على الكود البرمجي الكامل للصناديق والعناصر في المستندات المرفقة) -->
+
+        <!-- 📦 7. الصناديق الأربعة الفاخرة بإطاراتها الملونة الأصلية كاملة 100% وبدون أي نقص -->
+        
+        <!-- صندوق 1: الإطار الأخضر النيوني المضيء -->
+        <div class="royal-box box-green">
+            <div class="royal-box-title" id="title-box-1">🌿 صندوق الأدعية والإهداءات التفاعلية</div>
+            <select class="royal-select" id="select-box1" onchange="syncLivePreview('box1')">
+                <option value="اللهم صب علينا من الرزق والبركة ما يشرح الصدور، وافتح لنا أبواب فضلك الواسعة يا رزاق يا كريم!">🤲 دعاء الرزق والبركة الواسعة</option>
+                <option value="الله يحميك ويحفظك لقلبي ويجعل أيامك كلها سعادة وراحة بال وينور دربك ويحميك من كل شر.">✨ دعاء الحفظ والتحصين الملكي</option>
+            </select>
+            <div class="preview-box" id="preview-box-box1">اللهم صب علينا من الرزق والبركة ما يشرح الصدور، وافتح لنا أبواب فضلك الواسعة يا رزاق يا كريم!</div>
+            <input type="text" class="royal-input" id="name-box1" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box1')">
+            <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box1')">🟢 مشاركة الإهداء على الواتساب</button>
+        </div>
+
+        <!-- صندوق 2: الإطار الوردي النيوني المضيء -->
+        <div class="royal-box box-pink">
+            <div class="royal-box-title" id="title-box-2">💝 صندوق عبارات الحب والاشتياق</div>
+            <select class="royal-select" id="select-box2" onchange="syncLivePreview('box2')">
+                <option value="لو كان الشوق يوزن بالأطنان، لكان شوقي إليك قد تخطى حدود الأرض والكون بأكمله كالألماسة.">🔥 عبارة الاشتياق العارم الفاخرة</option>
+                <option value="أنت عالمي بأكمله، ونبض قلبي الذي لا أعيش بدونه، حفظك الله لي يا كل دنيتي وروحي.">💞 عبارة الغرام والنبض الأبدي</option>
+            </select>
+            <div class="preview-box" id="preview-box-box2">لو كان الشوق يوزن بالأطنان، لكان شوقي إليك قد تخطى حدود الأرض والكون بأكمله كالألماسة.</div>
+            <input type="text" class="royal-input" id="name-box2" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box2')">
+            <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box2')">🟢 مشاركة الإهداء على الواتساب</button>
+        </div>
+
+        <!-- صندوق 3: الإطار الأزرق النيوني المضيء -->
+        <div class="royal-box box-blue">
+            <div class="royal-box-title" id="title-box-3">👑 صندوق بر الوالدين والأم الغالية</div>
+            <select class="royal-select" id="select-box3" onchange="syncLivePreview('box3')">
+                <option value="أمي يا قطعة من الجنة على الأرض، دمتِ لي نبضاً، وأماناً، ونوراً يستضاء به في ظلمات الحياة.">🌹 إهداء ملكي للأم الغالية الحنونة</option>
+                <option value="ربي اغفر لي ولوالدي وارحمهما كما ربياني صغيراً واحفظهما من كل سوء وأطل في عمرهما.">✨ دعاء البر والوفاء للوالدين</option>
+            </select>
+            <div class="preview-box" id="preview-box-box3">أمي يا قطعة من الجنة على الأرض، دمتِ لي نبضاً، وأماناً، ونوراً يستضاء به في ظلمات الحياة.</div>
+            <input type="text" class="royal-input" id="name-box3" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box3')">
+            <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box3')">🟢 مشاركة الإهداء على الواتساب</button>
+        </div>
+
+        <!-- صندوق 4: الإطار البنفسجي النيوني المضيء -->
+        <div class="royal-box box-purple">
+            <div class="royal-box-title" id="title-box-4">🔮 صندوق عبارات العتب والحزن</div>
+            <select class="royal-select" id="select-box4" onchange="syncLivePreview('box4')">
+                <option value="عاتبتك لأنك كنت تعني لي الكثير، ولكن صمتك المستمر علمني أن بعض العتب يفقد قيمته مع الوقت.">😔 رسالة عتب وقورة شديدة الأثر</option>
+                <option value="لم أكن أتوقع أن يطول صمتك وجفاؤك، فالقلب الصادق لم يعد يتحمل هذا البعد الطويل الحزين.">💔 رسالة لوعة الجفاء والصمت</option>
+            </select>
+            <div class="preview-box" id="preview-box-box4">عاتبتك لأنك كنت تعني لي الكثير، ولكن صمتك المستمر علمني أن بعض العتب يفقد قيمته مع الوقت.</div>
+            <input type="text" class="royal-input" id="name-box4" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box4')">
+            <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box4')">🟢 مشاركة الإهداء على الواتساب</button>
+        </div>
+
+        <!-- 👑 8. نهاية الصفحة المعتمدة بشعار KR الفاخر والتيجان الذهبية البارزة جداً بالأسفل تماماً -->
         <div class="royal-footer-brand">
             <div class="royal-brand-kr">👑 KR 👑</div>
             <br>
@@ -163,9 +217,9 @@
         var currentLang = 'ar';
         document.addEventListener('contextmenu', e => e.preventDefault());
         
-        // 👥 محرك تشغيل وتفعيل عداد الزوار الفعلي والحي فوق الـ 2175 بمل وقت بوقته
+        // 👥 محرك تشغيل وتفعيل عداد الزوار الفعلي والحي فوق الـ 2311 بمل وقت بوقته
         function initVisitorCounter() {
-            var baseCount = 2175;
+            var baseCount = 2311;
             var savedCount = localStorage.getItem('worldOfLove_visitors');
             
             if (!savedCount) {
