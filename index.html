@@ -65,7 +65,6 @@
     </style>
 </head>
 <body>
-
     <div class="container">
         <!-- 📈 1. شريط الأسعار والمؤشرات المتحرك مع روابط نشطة تفتح صفحات البورصة فوراً عند الكبس -->
         <div class="ticker-bar">
@@ -89,7 +88,7 @@
         <h1 class="main-title-ar" id="main-title-ar-txt">عالم الحب</h1>
         <h2 class="main-title-en" id="main-title-en-txt">World of Love</h2>
 
-        <!-- 👥 5. عداد زوار الصفحة التفاعلي الحي فوق الرقم المعتمد -->
+        <!-- 👥 5. عداد زوار الصفحة التفاعلي الحي فوق الرقم المعتمد بالصورة -->
         <div>
             <div class="visitor-box">
                 👥 <span id="lbl-visitors">عدد زوار صفحتنا الحين:</span> <strong id="live-visitor-counter">2,311</strong>
@@ -138,6 +137,7 @@
             <input type="text" class="royal-input" id="name-box2" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box2')">
             <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box2')">🟢 مشاركة الإهداء على الواتساب</button>
         </div>
+
         <!-- صندوق 3: الإطار الأزرق النيوني المضيء (بر الوالدين والأم الغالية) -->
         <div class="royal-box box-blue">
             <div class="royal-box-title" id="title-box-3">👑 صندوق بر الوالدين والأم الغالية</div>
@@ -146,7 +146,7 @@
                 <option value="ربي اغفر لي ولوالدي وارحمهما كما ربياني صغيراً واحفظهما من كل سوء وأطل في عمرهما.">✨ دعاء البر والوفاء للوالدين</option>
                 <option value="أمي الغالية، لو جمعت كلمات الشكر من الأرض والسماء فلن توفي حقكِ يا نبع الحنان والبركة والرضا.">❤️ نبع الحنان والبركة الدائمة</option>
                 <option value="اللهم أطل في عمر والديّ بالصحة والعافية، واجعلني باراً بهما، وارزقهما سعادة الدارين يا رب العالمين.">🤲 دعاء طول العمر بالصحة والعافية</option>
-                <option value="أبي الغالي، دمت تاجاً فوق رأسي، وسنداً أستند عليه in كل خطوة، ربي يحفظك لي ويمد في عمرك.">👴 إهداء وتكريم للأب الغالي الحبيب</option>
+                <option value="أبي الغالي، دمت تاجاً فوق رأسي، وسنداً أستند عليه في كل خطوة، ربي يحفظك لي ويمد في عمرك.">👴 إهداء وتكريم للأب الغالي الحبيب</option>
             </select>
             <div class="preview-box" id="preview-box-box3">أمي يا قطعة من الجنة على الأرض، دمتِ لي نبضاً، وأماناً، ونوراً يستضاء به في ظلمات الحياة.</div>
             <input type="text" class="royal-input" id="name-box3" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box3')">
@@ -178,6 +178,7 @@
                 💬 اطلب تشريج خطك الآن (واتساب)
             </button>
         </div>
+
         <!-- 🛒 2. صندوق خدمات شحن PUBG ومشتريات SHEIN (التاجر الثاني) -->
         <div class="merchant-box">
             <div class="merchant-header">🛒 خدمات شحن PUBG ومشتريات SHEIN</div>
@@ -207,11 +208,9 @@
         var currentLang = 'ar';
         document.addEventListener('contextmenu', e => e.preventDefault());
         
-        // 🔐 نظام تشفير وحماية أرقام التجار المحترمين لحمايتها من السحب أو الاختراق أو الإزعاج
-        // رقم تاجر التشريج المعتمد: 79320900
-        var _0xAlphaMtc =; 
-        // رقم تاجر الجيمنج وشي إن: 71689517
-        var _0xGamingShein =;
+        // 🔐 نظام تشفير وحماية أرقام التجار المحترمين لحمايتها من السحب أو الاختراق
+        var _0xAlphaMtc =; // 79320900
+        var _0xGamingShein =; // 71689517
 
         function getMerchantNumber(type) {
             var arr = (type === 'alpha') ? _0xAlphaMtc : _0xGamingShein;
@@ -226,33 +225,29 @@
         function connectMerchant(type) {
             var phone = getMerchantNumber(type);
             var text = (type === 'alpha') ? "مرحباً، أود طلب تشريج خط من صفحة عالم الحب KR" : "مرحباً، أود الاستفسار عن خدمات شحن ببجي / مشتريات شي إن من صفحة عالم الحب KR";
-            
-            var targetUrl = "https://whatsapp.com" + phone + "&text=" + encodeURIComponent(text);
-            window.open(targetUrl, '_blank');
+            window.open("https://whatsapp.com" + phone + "&text=" + encodeURIComponent(text), '_blank');
         }
 
         // 👥 محرك تشغيل وتفعيل عداد الزوار الفعلي والحي فوق الـ 2311 بمل وقت بوقته
         function initVisitorCounter() {
             var baseCount = 2311;
             var savedCount = localStorage.getItem('worldOfLove_visitors');
-            
             if (!savedCount) {
                 var newCount = baseCount + 1;
                 localStorage.setItem('worldOfLove_visitors', newCount);
                 document.getElementById("live-visitor-counter").innerText = newCount.toLocaleString();
             } else {
-                var currentCount = parseInt(savedCount);
-                currentCount += Math.floor(Math.random() * 3) + 1;
+                var currentCount = parseInt(savedCount) + Math.floor(Math.random() * 3) + 1;
                 localStorage.setItem('worldOfLove_visitors', currentCount);
                 document.getElementById("live-visitor-counter").innerText = currentCount.toLocaleString();
             }
         }
+
         // ⏰ محرك تشغيل الساعة الرقمية المتزامنة وحالة الطقس والحرارة والرطوبة
         function updateClock() {
             var now = new Date();
             var t = now.toLocaleTimeString('ar-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
             var d = now.toLocaleDateString('ar-LB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-            
             var clockEl = document.getElementById("live-clock");
             if (clockEl) {
                 if (currentLang === 'ar') {
@@ -269,9 +264,7 @@
         function syncLivePreview(type) {
             var selectedText = document.getElementById("select-" + type).value;
             var previewBox = document.getElementById("preview-box-" + type);
-            if (previewBox) {
-                previewBox.innerText = selectedText;
-            }
+            if (previewBox) { previewBox.innerText = selectedText; }
         }
 
         // 🚀 محرك الواتساب الذكي للعبارات والإهداءات - بدون روابط بقلب المسج
@@ -279,31 +272,14 @@
             var text = document.getElementById("select-" + type).value;
             var sender = document.getElementById("name-" + type).value.trim();
             if (!sender) { sender = (currentLang === 'ar') ? "مُرسِل مخلص" : "A Loyal Sender"; }
-            
             var titleHeader = "الإهداء";
             if (type === 'box1') titleHeader = "الدعاء";
             if (type === 'box2') titleHeader = "العبارة";
             if (type === 'box3') titleHeader = "إهداء غالي";
             if (type === 'box4') titleHeader = "رسالة عتب";
-
-            var msg = `🎁 *إهداء خاص من: [ ${sender} ]* \n\n` +
-                      `✨ *${titleHeader}:* \n` +
-                      `" ${text} "\n\n` +
-                      `━━━━━━━━━━━━━━━\n` +
-                      `🌹 *تمت المشاركة من صفحة:* \n` +
-                      `عالم الحب ❤️ World of Love \n` +
-                      `👑 *الشعار المعتمد:* KR 👑`;
-            
-            var targetUrl = "whatsapp://send?text=" + encodeURIComponent(msg);
-            var backupUrl = "https://whatsapp.com" + encodeURIComponent(msg);
-            
-            window.location.href = targetUrl;
-            
-            setTimeout(function() {
-                if (document.hasFocus()) {
-                    window.open(backupUrl, '_blank');
-                }
-            }, 500);
+            var msg = `🎁 *إهداء خاص من: [ ${sender} ]* \n\n✨ *${titleHeader}:* \n" ${text} "\n\n━━━━━━━━━━━━━━━\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n👑 *الشعار المعتمد:* KR 👑`;
+            window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
+            setTimeout(function() { if (document.hasFocus()) { window.open("https://whatsapp.com" + encodeURIComponent(msg), '_blank'); } }, 500);
         }
 
         // 🌐 الترجمة الفورية السحابية المصلحة مية بالمية للعناوين والأزرار والصناديق التجارية
@@ -314,38 +290,26 @@
             var isAr = l === 'ar';
             document.body.style.direction = isAr ? "rtl" : "ltr";
             if(isAr) { document.body.classList.remove("ltr"); } else { document.body.classList.add("ltr"); }
-            
             document.getElementById("tick-gold").innerText = isAr ? "أوقية الذهب العالمية:" : "Global Gold Ounce:";
             document.getElementById("tick-index").innerText = isAr ? "مؤشر الدولار عالمياً:" : "Global Dollar Index:";
             document.getElementById("tick-lbp").innerText = isAr ? "فريش دولار في لبنان:" : "Fresh Dollar in Lebanon:";
-            
             document.getElementById("main-title-ar-txt").innerText = isAr ? "عالم الحب" : "World of Love";
             document.getElementById("main-title-en-txt").innerText = isAr ? "World of Love" : "عالم الحب";
             document.getElementById("lbl-visitors").innerText = isAr ? "عدد زوار صفحتنا الحين:" : "Our Platform Visitors Now:";
             document.getElementById("royal-footer-text").innerText = isAr ? "👑 منصة العائلة الملكية المعتمدة عالمياً 👑" : "👑 The Globally Approved Royal Platform 👑";
-            
             document.getElementById("title-box-1").innerText = isAr ? "🌿 صندوق الأدعية والإهداءات التفاعلية" : "🌿 Interactive Prayers & Blessings Box";
             document.getElementById("title-box-2").innerText = isAr ? "💝 صندوق عبارات الحب والاشتياق" : "💝 Love & Longing Expressions Box";
             document.getElementById("title-box-3").innerText = isAr ? "👑 صندوق بر الوالدين والأم الغالية" : "👑 Honoring Parents & Mother's Gift Box";
             document.getElementById("title-box-4").innerText = isAr ? "🔮 صندوق عبارات العتب والحزن" : "🔮 Reproach & Sadness Expressions Box";
-            
-            for(var i=1; i<=4; i++) {
-                document.getElementById("name-box" + i).placeholder = isAr ? "اكتب اسمك كمرسل الحين الحين..." : "Type your name here...";
-            }
-
+            for(var i=1; i<=4; i++) { document.getElementById("name-box" + i).placeholder = isAr ? "اكتب اسمك كمرسل الحين الحين..." : "Type your name here..."; }
             var shareBtns = document.getElementsByClassName("royal-share-btn");
-            for (var i = 0; i < shareBtns.length; i++) {
-                shareBtns[i].innerText = isAr ? "🟢 مشاركة الإهداء على الواتساب" : "🟢 Share Blessing via WhatsApp";
-            }
+            for (var i = 0; i < shareBtns.length; i++) { shareBtns[i].innerText = isAr ? "🟢 مشاركة الإهداء على الواتساب" : "🟢 Share Blessing via WhatsApp"; }
             updateClock();
         }
 
-        // تشغيل كافة المحركات السحابية فور فتح الصفحة دغري
         initVisitorCounter();
         updateClock();
         setInterval(updateClock, 1000);
-        
-        // تحديث تراكمي دوري لعداد الزوار لمحاكاة الحركة الفعلية حياً
         setInterval(function() {
             var savedCount = localStorage.getItem('worldOfLove_visitors');
             if (savedCount) {
