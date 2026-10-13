@@ -58,7 +58,7 @@
         .ticker-move { display: inline-block; white-space: nowrap; padding-left: 100%; animation: royalMarqueeAnimation 14s linear infinite; }
         @keyframes royalMarqueeAnimation { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
         
-        /* تنسيق روابط البورصة العالمية لتصبح قابلة للضغط الحين دغري */
+        /* تنسيق روابط البورصة العالمية لتصبح قابلة للضغط الفوري */
         .ticker-item { background: #0c0f0c !important; padding: 5px 10px; border-radius: 6px; border: 1px solid #222; text-decoration: none; color: #ffd700 !important; font-weight: bold; font-size: 11px; margin-right: 12px; display: inline-block !important; transition: 0.3s; }
         .ticker-item:hover { background: #161a16 !important; border-color: #ffd700; box-shadow: 0 0 8px rgba(255,215,0,0.3); }
         
@@ -114,10 +114,14 @@
 </head>
 <body>
     <div class="container">
-        <!-- شريط الأسعار، منطقة اللغات، الساعة، العناوين، العداد، ولوحة الباندا -->
-        <!-- الصناديق الأربعة التفاعلية (الأدعية، الحب، بر الوالدين، العتب) -->
-        <!-- تتوفر التفاصيل الكاملة لشفرة الهيكل البرمجي داخل المستند المرجعي -->
-    </div>
+        <!-- شريط الأسعار، أزرار اللغة، الساعة، العنوان، عداد الزوار، ولوحة الباندا -->
+        <div class="ticker-bar">...</div>
+        <div class="lang-zone">...</div>
+        <div class="clock-box" id="live-clock">جاري مزامنة التوقيت...</div>
+        <h1 class="main-title-ar">عالم الحب</h1>
+        <h2 class="main-title-en">World of Love</h2>
+        <div class="visitor-box">...</div>
+        <div class="royal-panda-panel">...</div>
     <script>
         var currentLang = 'ar';
         document.addEventListener('contextmenu', e => e.preventDefault());
@@ -199,7 +203,7 @@
             }, 500);
         }
 
-        // 🌐 الترجمة الفورية السحابية المصلحة والمفعلة مية بالمية للعناوين والأزرار والصناديق
+        // 🌐 ⁩الترجمة الفورية السحابية المصلحة والمفعلة مية بالمية للعناوين والأزرار والصناديق
         function switchLang(l) {
             currentLang = l;
             document.getElementById("btn-ar").classList.toggle("active", l === 'ar');
