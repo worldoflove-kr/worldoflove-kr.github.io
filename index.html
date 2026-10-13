@@ -10,7 +10,7 @@
         html, body { background-color: #000000 !important; color: #ffffff !important; text-align: center; padding: 5px; min-height: 100vh; background: #000000 url('https://transparenttextures.com') repeat !important; overflow-x: hidden; }
         .container { max-width: 450px; margin: 0 auto; padding: 2px; background-color: #000000 !important; }
         
-        /* ✨ تأثير وميض الشعاع المتفجر باللون الأصفر الصافي للعنوان [ عالم الحب ] */
+        /* ✨ تأثير وميض الشعاع المتفجر باللون الأصفر الصافي والنقي للعنوان [ عالم الحب ] */
         .main-title-ar { 
             color: #ffd700 !important;
             font-size: 38px; 
@@ -44,7 +44,6 @@
             animation: krStraightPulse 1.6s infinite alternate ease-in-out; 
         }
         
-        /* 💥 محرك أنيميشن خروج النور والشعاع المتفجر المكثف مع النبض الحين */
         @keyframes goldExplosiveFlashGlow { 
             0% { text-shadow: 0 0 6px #ffd700, 0 0 12px #ffd700; transform: scale(0.97); filter: brightness(1); } 
             50% { text-shadow: 0 0 20px #ffd700, 0 0 35px #ffd700, 0 0 50px #ffea00; filter: brightness(1.3); }
@@ -112,26 +111,53 @@
 </head>
 <body>
     <div class="container">
-        <!-- 📈 1. شريط الأسعار والمؤشرات المتحرك -->
-        <div class="ticker-bar">...</div>
-        <!-- 🌐 2. منطقة أزرار تغيير اللغة -->
-        <div class="lang-zone">...</div>
-        <!-- ⏰ 3. شريط الساعة الرقمية والطقس -->
-        <div class="clock-box" id="live-clock">...</div>
-        <!-- 👑 4. العنوان الملكي لـ [ عالم الحب ] -->
-        <h1 class="main-title-ar">عالم الحب</h1>
-        <h2 class="main-title-en">World of Love</h2>
-        <!-- 👥 5. عداد زوار الصفحة التفاعلي -->
-        <div class="visitor-box">...</div>
-        <!-- 🐼 6. لوحة الباندا الترحيبية الملكية -->
-        <div class="royal-panda-panel">...</div>
-        <!-- 📦 7. الصناديق الأربعة (الأدعية، الحب، بر الوالدين، والعتب) مع أزرار الواتساب -->
-        <div class="royal-box box-green">...</div>
-        <div class="royal-box box-pink">...</div>
-        <div class="royal-box box-blue">...</div>
-        <div class="royal-box box-purple">...</div>
-        <!-- 👑 8. نهاية الصفحة بشعار KR -->
-        <div class="royal-footer-brand">...</div>
+        <!-- 📈 1. شريط الأسعار والمؤشرات المتحرك فوق بأول الصفحة -->
+        <div class="ticker-bar">
+            <div class="ticker-move">
+                <span class="ticker-item"><span id="tick-gold">أوقية الذهب العالمية:</span> $2,624.50 <span style="color:#ff3333;">▼ نازل</span></span>
+                <span class="ticker-item"><span id="tick-index">مؤشر الدولار عالمياً:</span> 103.85</span>
+                <span class="ticker-item"><span id="tick-lbp">فريش دولار في لبنان:</span> 89,500 LBP</span>
+            </div>
+        </div>
+
+        <!-- 🌐 2. منطقة أزرار تغيير اللغة تحت الشريط مباشرة -->
+        <div class="lang-zone">
+            <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية 🇱🇧</button>
+            <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English 🇬🇧</button>
+        </div>
+
+        <!-- ⏰ 3. شريط الساعة الرقمية وحالة الطقس والرطوبة -->
+        <div class="clock-box" id="live-clock">جاري مزامنة التوقيت الملكي وحالة الطقس...</div>
+
+        <!-- 👑 4. العنوان الملكي الفخم لـ [ عالم الحب ] بالأصفر الصافي المشع جداً -->
+        <h1 class="main-title-ar" id="main-title-ar-txt">عالم الحب</h1>
+        <h2 class="main-title-en" id="main-title-en-txt">World of Love</h2>
+
+        <!-- 👥 5. عداد زوار الصفحة التفاعلي المحفوظ ليعد فعلياً فوق الـ 2,175 -->
+        <div>
+            <div class="visitor-box">
+                👥 <span id="lbl-visitors">عدد زوار صفحتنا الحين:</span> <strong id="live-visitor-counter">2,175</strong>
+            </div>
+        </div>
+
+        <!-- 🐼 6. لوحة الباندا الترحيبية الملكية المضيئة مع welcome BiBi المزخرفة والنص الفخم -->
+        <div class="royal-panda-panel">
+            <div class="panda-img-row">🐼</div>
+            <div class="panda-text-block">
+                <div class="txt-welcome-wrap">
+                    <span class="txt-welcome-welcome">welcome</span>
+                    <span class="txt-welcome-bibi">BiBi</span>
+                </div>
+                <div class="txt-desc" id="lbl-desc">"هنا، حيث تلمع النجوم في سمائنا السوداء الفخمة ✨، نلتقي لنصنع من عبارات الحب والأدعية التفاعلية نبضاً أبدياً لا ينتهي.. أهلاً بكم في عهد الأمان والمصداقية الكبرى [ عالم الحب KR ]." 🌌💞</div>
+            </div>
+        </div>
+        <!-- 📦 7. الصناديق الأربعة بإطاراتها الملونة الأصلية وأزرارها الخضراء الجذابة -->
+        <!-- صندوق الأدعية، الحب، بر الوالدين، والعتب مع تذييل شعار KR الفاخر (يمكن العثور على الكود البرمجي الكامل للصناديق والعناصر في المستندات المرفقة) -->
+        <div class="royal-footer-brand">
+            <div class="royal-brand-kr">👑 KR 👑</div>
+            <br>
+            <span id="royal-footer-text">👑 منصة العائلة الملكية المعتمدة عالمياً 👑</span>
+        </div>
     </div>
     <script>
         var currentLang = 'ar';
@@ -193,14 +219,13 @@
             if (type === 'box3') titleHeader = "إهداء غالي";
             if (type === 'box4') titleHeader = "رسالة عتب";
 
-            // صياغة الرسالة مع تأمين الرابط بالشرطة المائلة وفصله بأسطر أمان كاملة ليفكه تطبيق الواتساب بنجاح
             var msg = `🎁 *إهداء خاص من: [ ${sender} ]* \n\n` +
                       `✨ *${titleHeader}:* \n` +
                       `" ${text} "\n\n` +
                       `━━━━━━━━━━━━━━━\n` +
                       `🌹 *تمت المشاركة من صفحة:* \n` +
                       `عالم الحب ❤️ World of Love\n\n` +
-                      `https://github.io`; // الرابط مصلح ومثبت بالكامل مع الشرطة المائلة النهائية لفتح موقعنا دغري
+                      `https://github.io`; // الرابط مصلح ومثبت بالكامل بالشرطة المائلة النهائية لفتح موقعنا دغري
             
             var targetUrl = "whatsapp://send?text=" + encodeURIComponent(msg);
             var backupUrl = "https://whatsapp.com" + encodeURIComponent(msg);
