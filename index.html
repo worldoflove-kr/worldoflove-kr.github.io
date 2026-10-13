@@ -24,148 +24,118 @@
         .ticker-item { background: #0c0f0c !important; padding: 5px 10px; border-radius: 6px; border: 1px solid #222; text-decoration: none; color: #ffd700 !important; font-weight: bold; font-size: 11px; margin-right: 12px; display: inline-block !important; }
         
         .lang-zone { margin-bottom: 10px; display: flex; justify-content: center; gap: 12px; }
-        .lang-btn { background: #0a0a0a !important; border: 1px solid #ffd700; color: #ffd700 !important; padding: 5px 15px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 12px; }
+        .lang-btn { background: #0a0a0a !important; border: 1px solid #ffd700; color: #ffd700 !important; padding: 5px 15px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 12px; transition: 0.3s; }
         .lang-btn.active { background: linear-gradient(45deg, #ffd700, #b8860b) !important; color: #000000 !important; border: none; box-shadow: 0 0 12px rgba(255,215,0,0.5); }
-        .preview-box { background: #020202 !important; border: 1px solid #161616; padding: 10px; border-radius: 8px; font-size: 12px; line-height: 1.5; color: #ffffff !important; margin-bottom: 10px; text-align: center; }
+        
+        .clock-box { background: #050505 !important; border: 1px solid #1a1a1a; padding: 10px; border-radius: 8px; font-size: 12px; line-height: 1.6; color: #ffffff !important; margin-bottom: 12px; text-align: center; box-shadow: inset 0 0 10px rgba(255,215,0,0.05); }
+        .preview-box { background: #020202 !important; border: 1px solid #161616; padding: 10px; border-radius: 8px; font-size: 13px; line-height: 1.5; color: #ffd700 !important; margin-top: 8px; margin-bottom: 8px; text-align: center; min-height: 40px; word-wrap: break-word; }
         .visitor-box { background: #020202 !important; border: 1px solid #161616; padding: 8px; border-radius: 25px; font-size: 12px; color: #ffffff !important; display: inline-block; min-width: 170px; margin: 4px auto 10px auto; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         .royal-footer-brand { font-size: 11.5px; font-weight: bold; color: #ffd700 !important; margin: 15px 0 5px 0; text-shadow: 0 0 10px rgba(255,215,0,0.4); }
         
         .royal-panda-panel { background: rgba(10,10,10,0.9) !important; border: 1px dashed #ffd700 !important; border-radius: 16px; padding: 16px; margin: 15px 0; text-align: center; box-shadow: 0 4px 20px rgba(255,215,0,0.05); }
-        .panda-img-row { width: 140px; height: 140px; margin: 0 auto 12px auto; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 25px rgba(255,215,0,0.45); border: 2px solid #ffd700; background: #050505; animation: pandaNeonFloat 3.5s infinite ease-in-out; font-size: 85px; filter: drop-shadow(0 0 15px rgba(255,215,0,0.3)); }
+        .panda-img-row { width: 140px; height: 140px; margin: 0 auto 12px auto; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 25px rgba(255,215,0,0.45); border: 2px solid #ffd700; background: #050505; animation: pandaNeonFloat 3.5s infinite ease-in-out; filter: drop-shadow(0 0 15px rgba(255,215,0,0.3)); }
         @keyframes pandaNeonFloat { 0%, 100% { transform: translateY(0) scale(0.97); } 50% { transform: translateY(-6px) scale(1.03); } }
         .panda-text-block { margin-bottom: 12px; display: flex; flex-direction: column; gap: 2px; align-items: center; justify-content: center; }
-        .txt-welcome { color: #ffffff !important; font-size: 28px; font-weight: bold; font-family: 'Playfair Display', serif; font-style: italic; }
-        .txt-bibi { color: #ff3333 !important; font-size: 30px; font-weight: bold; font-family: 'Playfair Display', serif; font-style: italic; text-shadow: 0 0 15px rgba(255,51,51,0.6); }
-        .panda-desc-msg { font-size: 12.5px; color: #dddddd !important; line-height: 1.7; text-align: justify; direction: rtl; padding-top: 8px; border-top: 1px solid #222; }
+        .txt-welcome { color: #ffffff !important; font-size: 24px; font-weight: bold; }
 
-        /* 🎨 مظهر وتنسيق الصناديق التفاعلية الأربعة بنقاء ملكي وألوان ساحرة تشرح الصدر */
-        .royal-interactive-card { background: rgba(12,12,12,0.95) !important; border-radius: 16px; padding: 16px; margin: 15px 0; text-align: right; box-shadow: 0 4px 15px rgba(0,0,0,0.7); border-left: 5px solid #ffd700; }
-        .box-duaa { border-left-color: #00ffaa !important; box-shadow: 0 0 15px rgba(0,255,170,0.1); }
-        .box-love { border-left-color: #ff3366 !important; box-shadow: 0 0 15px rgba(255,51,102,0.1); }
-        .box-parents { border-left-color: #00bfff !important; box-shadow: 0 0 15px rgba(0,191,255,0.1); }
-        .box-sad { border-left-color: #9370db !important; box-shadow: 0 0 15px rgba(147,112,219,0.1); }
-        
-        .box-title { font-size: 15px; font-weight: bold; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; color: #ffd700 !important; }
-        .box-title-duaa { color: #00ffaa !important; }
-        .box-title-love { color: #ff3366 !important; }
-        .box-title-parents { color: #00bfff !important; }
-        .box-title-sad { color: #9370db !important; }
-
-        .royal-select { width: 100%; background: #050505 !important; color: #ffffff !important; border: 1px solid #222; padding: 10px; border-radius: 8px; font-size: 13px; margin-bottom: 10px; outline: none; cursor: pointer; }
-        .royal-input { width: 100%; background: #050505 !important; color: #ffffff !important; border: 1px solid #222; padding: 10px; border-radius: 8px; font-size: 13px; margin-bottom: 10px; outline: none; }
-        
-        .live-preview-message-box { background: rgba(5,5,5,0.85) !important; border: 1px dashed #333; padding: 10px; border-radius: 8px; font-size: 12px; color: #e0e0e0 !important; line-height: 1.6; margin-bottom: 10px; text-align: justify; direction: rtl; min-height: 40px; transition: 0.3s ease-in-out; }
-        .preview-glow-duaa { border-color: #00ffaa !important; box-shadow: inset 0 0 8px rgba(0,255,170,0.15); }
-        .preview-glow-love { border-color: #ff3366 !important; box-shadow: inset 0 0 8px rgba(255,51,102,0.15); }
-        .preview-glow-parents { border-color: #00bfff !important; box-shadow: inset 0 0 8px rgba(0,191,255,0.15); }
-        .preview-glow-sad { border-color: #9370db !important; box-shadow: inset 0 0 8px rgba(147,112,219,0.15); }
-
-        .royal-share-btn { width: 100%; background: linear-gradient(45deg, #128c7e, #075e54) !important; color: #ffffff !important; border: none; padding: 10px; border-radius: 8px; font-size: 13px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.4); }
+        /* 📦 ستايل صناديق العبارات الفاخرة */
+        .royal-box { background: rgba(8, 8, 8, 0.95); border: 1px solid #1c1c1c; border-radius: 12px; padding: 15px; margin-bottom: 15px; text-align: right; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        body.ltr .royal-box { text-align: left; }
+        .royal-box-title { color: #ffd700; font-size: 15px; font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #222; padding-bottom: 5px; }
+        .royal-input { width: 100%; background: #020202; border: 1px solid #333; color: #fff; padding: 8px; border-radius: 6px; font-size: 13px; margin-bottom: 8px; }
+        .royal-input:focus { border-color: #ffd700; outline: none; }
+        .royal-select { width: 100%; background: #020202; border: 1px solid #333; color: #fff; padding: 8px; border-radius: 6px; font-size: 13px; cursor: pointer; }
+        .royal-select:focus { border-color: #ffd700; outline: none; }
+        .royal-share-btn { background: linear-gradient(45deg, #25d366, #128c7e) !important; color: #fff !important; border: none; width: 100%; padding: 10px; border-radius: 6px; font-weight: bold; font-size: 13px; cursor: pointer; margin-top: 5px; transition: 0.3s; }
+        .royal-share-btn:hover { filter: brightness(1.1); box-shadow: 0 0 10px rgba(37,211,102,0.4); }
     </style>
 </head>
 <body>
+
     <div class="container">
-        
-        <!-- 🪙 شريط أسعار البورصة والذهب العالمي المطور المتحرك بالروابط العالمية الحقيقية -->
+        <!-- 👑 الشعار والهوية الملكية -->
+        <div class="royal-brand-kr">KR</div>
+        <h1 class="main-title-ar" id="main-title-ar-txt">عالم الحب</h1>
+        <h2 class="main-title-en">World of Love</h2>
+
+        <!-- 🌐 منطقة تغيير اللغة -->
+        <div class="lang-zone">
+            <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية</button>
+            <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English</button>
+        </div>
+
+        <!-- ⏰ شريط الساعة الحية والطقس -->
+        <div class="clock-box" id="live-clock">جاري تحميل البيانات الحية...</div>
+
+        <!-- 📈 شريط الأسعار والمؤشرات المتحرك -->
         <div class="ticker-bar">
             <div class="ticker-move">
-                <a href="https://kitco.com" target="_blank" class="ticker-item"><span id="tick-gold">أوقية الذهب العالمية:</span> $2,624.50 <span style="color:#ff3333;">▼ نازل</span></a>
-                <a href="https://marketwatch.com" target="_blank" class="ticker-item"><span id="tick-index">مؤشر الدولار عالمياً:</span> 103.85 <span style="color:#00ffaa;">▲ طالع</span></a>
-                <a href="https://wa.me" target="_blank" class="ticker-item"><span id="tick-lbp">فريش دولار في لبنان:</span> 89,500 LBP <span style="color:#00ffaa;">◀ مستقر</span></a>
+                <span class="ticker-item"><span id="tick-gold">أوقية الذهب العالمية:</span> $2,650</span>
+                <span class="ticker-item"><span id="tick-index">مؤشر الدولار عالمياً:</span> 104.2</span>
+                <span class="ticker-item"><span id="tick-lbp">فريش دولار في لبنان:</span> 89,500 LBP</span>
             </div>
         </div>
 
-        <!-- 🌐 لوحة أزرار الترجمة الفورية للعربية والإنجليزية -->
-        <div class="lang-zone">
-            <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية 🇱🇧</button>
-            <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English 🇬🇧</button>
-        </div>
-
-        <!-- ⏰ الساعة الفلكية والطقس والرطوبة بمل وقت بوقته من دون غلطة -->
-        <div class="preview-box" id="live-clock">📅 جاري تحميل بيانات الوقت والطقس في بيروت الحين...</div>
-        
-        <!-- 👑 اسم الصفحة عالم الحب و World of Love المشع بالذهب والنبض الشغال -->
-        <div style="margin: 15px 0;">
-            <h1 class="main-title-ar" id="main-title-ar-txt">عالم الحب</h1>
-            <span class="main-title-en" id="main-title-en-txt">World of Love</span>
-        </div>
-
-        <!-- 👁️ عدد زوار صفحتنا الرقمي ذو الهالة الدائرية الملوكية الناعمة -->
-        <div class="visitor-box">
-            👥 <span id="lbl-visitors">عدد زوار صفحتنا الحين:</span> <span id="counter-val">2172</span>
-        </div>
-
-        <!-- 🐼 صندوق الباندا العمودي الرقمي المشع من تأليفنا الخاص ليظهر 100% بنقاء فلكي ساطع وتام -->
+        <!-- 🐼 لوحة الباندا الترحيبية الملكية -->
         <div class="royal-panda-panel">
             <div class="panda-img-row">🐼</div>
             <div class="panda-text-block">
-                <span class="txt-welcome">welcome</span>
-                <span class="txt-bibi">BiBi</span>
+                <div class="txt-welcome" id="lbl-welcome">welcome BiBi</div>
             </div>
-            <div class="panda-desc-msg">
-                "هنا، حيث تلمع النجوم في سمائنا السوداء الفخمة ✨، نلتقي لنصنع من عبارات الحب والأدعية التفاعلية نبضاً أبدياً لا ينتهي.. أهلاً بكم في عهد الأمان والمصداقية الكبرى [ عالم الحب KR ]." 🌌💝
+            <div class="visitor-box">
+                <span id="lbl-visitors">عدد زوار صفحتنا الحين:</span> <strong>2,557</strong>
             </div>
         </div>
 
-        <!-- 🟢 1. صندوق الأدعية والإهداءات التفاعلي (زبرجد مشع) -->
-        <div class="royal-interactive-card box-duaa">
-            <div class="box-title box-title-duaa">🌿 <span id="title-box-1">صندوق الأدعية والإهداءات التفاعلية</span></div>
-            <select class="royal-select" id="select-duaa" onchange="syncLivePreview('duaa')">
-                <option value="اللهم صبّ علينا من الرزق والبركة ما يشرح الصدور، وافتح لنا أبواب فضلك الواسعة يا رزاق يا كريم!">🤲 دعاء الرزق والبركة الواسعة</option>
-                <option value="اللهم رب الناس، أذهب البأس، اشفِ أنت الشافي، لا شفاء إلا شفاؤك، شفاءً لا يغادر سقماً.">🏥 دعاء الشفاء العاجل للمريض</option>
-                <option value="تحصنت بذي العزة والجبروت، واعتصمت برب الملكوت، وتوكلت على الحي الذي لا يموت من شر العين والحسد.">🛡️ دعاء التحصين من العين والحسد</option>
-                <option value="اللهم احفظ بلادنا وأهلنا، واجعل هذا البلد آمناً مطمئناً، صامداً وشامخاً في وجه كل صعيد.">🇱🇧 دعاء لحفظ البلاد والوطن الغالي</option>
+        <!-- 📦 صندوق 1: الأدعية والإهداءات التفاعلية -->
+        <div class="royal-box">
+            <div class="royal-box-title" id="title-box-1">صندوق الأدعية والإهداءات التفاعلية</div>
+            <input type="text" class="royal-input" id="name-box1" placeholder="اكتب اسمك هنا..." oninput="syncLivePreview('box1')">
+            <select class="royal-select" id="select-box1" onchange="syncLivePreview('box1')">
+                <option value="اللهم صب علينا من الرزق والبركة ما يشرح الصدور، وافتح لنا أبواب فضلك الواسعة يا رزاق يا كريم!">اللهم صب علينا من الرزق والبركة ما يشرح الصدور، وافتح لنا أبواب فضلك الواسعة يا رزاق يا كريم!</option>
+                <option value="الله يحميك ويحفظك لقلبي ويجعل أيامك كلها سعادة وراحة بال وينور دربك.">الله يحميك ويحفظك لقلبي ويبعد عنك كل شر.</option>
             </select>
-            <div class="live-preview-message-box preview-glow-duaa" id="preview-box-duaa"></div>
-            <input type="text" class="royal-input" id="name-duaa" placeholder="اكتب اسمك كمرسل الحين الحين...">
-            <button class="royal-share-btn" onclick="fireRoyalWhatsapp('duaa')">🟢 مشاركة الإهداء على الواتساب</button>
+            <div class="preview-box" id="preview-box-box1">اللهم صب علينا من الرزق والبركة ما يشرح الصدور، وافتح لنا أبواب فضلك الواسعة يا رزاق يا كريم!</div>
+            <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box1')">إرسال عبر الواتساب</button>
         </div>
 
-        <!-- 🔴 2. صندوق عبارات الحب والاشتياق التفاعلي (ياقوت دافئ) -->
-        <div class="royal-interactive-card box-love">
-            <div class="box-title box-title-love">💝 <span id="title-box-2">صندوق عبارات الحب والاشتياق</span></div>
-            <select class="royal-select" id="select-love" onchange="syncLivePreview('love')">
-                <option value="لو كان الشوق يوزن بالأطنان، لكان شوقي إليك قد تخطى حدود الأرض والكون بأكمله كالألماسة.">🔥 عبارة الاشتياق العارم الفاخرة</option>
-                <option value="أنت لست مجرد شخص في حياتي، أنت النبض الحي الذي يحيي قلبي في كل ثانية تمر بمل وقت بوقته.">💖 إهداء نبض القلوب الحية الصادقة</option>
-                <option value="بين النجوم اللامعة في سمائنا السوداء الفخمة، تظل أنت النور الوحيد الذي ينير عتمة روحي دائماً.">✨ عبارة غرام ملوكية أسطورية</option>
+        <!-- 📦 صندوق 2: عبارات الحب والاشتياق -->
+        <div class="royal-box">
+            <div class="royal-box-title" id="title-box-2">صندوق عبارات الحب والاشتياق</div>
+            <input type="text" class="royal-input" id="name-box2" placeholder="اكتب اسمك هنا..." oninput="syncLivePreview('box2')">
+            <select class="royal-select" id="select-box2" onchange="syncLivePreview('box2')">
+                <option value="لو كان الشوق يوزن بالأطنان، لكان شوقي إليك قد تخطى حدود الأرض والكون بأكمله كالألماسة.">لو كان الشوق يوزن بالأطنان، لكان شوقي إليك قد تخطى حدود الأرض والكون بأكمله كالألماسة.</option>
+                <option value="كل دقيقة تمر بدونك تبدو وكأنها دهراً، اشتقت لك بجنون يا كل دنيتي.">كل دقيقة تمر بدونك تبدو وكأنها دهراً، اشتقت لك بجنون.</option>
             </select>
-            <div class="live-preview-message-box preview-glow-love" id="preview-box-love"></div>
-            <input type="text" class="royal-input" id="name-love" placeholder="اكتب اسمك كمرسل الحين الحين...">
-            <button class="royal-share-btn" onclick="fireRoyalWhatsapp('love')">🟢 مشاركة الإهداء على الواتساب</button>
+            <div class="preview-box" id="preview-box-box2">لو كان الشوق يوزن بالأطنان، لكان شوقي إليك قد تخطى حدود الأرض والكون بأكمله كالألماسة.</div>
+            <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box2')">إرسال عبر الواتساب</button>
         </div>
 
-        <!-- 🔵 3. صندوق بر الوالدين والإهداء للأم الغالية (فيروز فخم) -->
-        <div class="royal-interactive-card box-parents">
-            <div class="box-title box-title-parents">👑 <span id="title-box-3">صندوق بر الوالدين والأم الغالية</span></div>
-            <select class="royal-select" id="select-parents" onchange="syncLivePreview('parents')">
-                <option value="أمي يا قطعة من الجنة على الأرض، دمْتِ لي نبضاً، وأماناً، ونوراً يستضاء به في ظلمات الحياة.">🌹 إهداء ملوكي للأم الغالية الحنونة</option>
-                <option value="أبي الغالي، أنت السند الشامخ الذي لا يميل، والدرع الحصين الذي يحميني بعد الله، حفظك الله وعافاك.">🛡️ رسالة بر فخمة للأب الوقور</option>
-                <option value="اللهم اغفر لوالديّ وارحمهما كما ربياني صغيراً، واجعل عافيتهما ورضاهما تاجاً فوق رأسي للأبد.">🤲 دعاء البر بوالدي الأحياء والأموات</option>
+        <!-- 📦 صندوق 3: بر الوالدين والأم الغالية -->
+        <div class="royal-box">
+            <div class="royal-box-title" id="title-box-3">صندوق بر الوالدين والأم الغالية</div>
+            <input type="text" class="royal-input" id="name-box3" placeholder="اكتب اسمك هنا..." oninput="syncLivePreview('box3')">
+            <select class="royal-select" id="select-box3" onchange="syncLivePreview('box3')">
+                <option value="أمي يا قطعة من الجنة على الأرض، دمتِ لي نبضاً، وأماناً، ونوراً يستضاء به في ظلمات الحياة.">أمي يا قطعة من الجنة على الأرض، دمتِ لي نبضاً، وأماناً، ونوراً يستضاء به في ظلمات الحياة.</option>
+                <option value="ربي اغفر لي ولوالدي وارحمهما كما ربياني صغيراً واحفظهما من كل سوء.">ربي اغفر لي ولوالدي وارحمهما كما ربياني صغيراً.</option>
             </select>
-            <div class="live-preview-message-box preview-glow-parents" id="preview-box-parents"></div>
-            <input type="text" class="royal-input" id="name-parents" placeholder="اكتب اسمك كمرسل الحين الحين...">
-            <button class="royal-share-btn" onclick="fireRoyalWhatsapp('parents')">🟢 مشاركة الإهداء على الواتساب</button>
+            <div class="preview-box" id="preview-box-box3">أمي يا قطعة من الجنة على الأرض، دمتِ لي نبضاً، وأماناً، ونوراً يستضاء به في ظلمات الحياة.</div>
+            <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box3')">إرسال عبر الواتساب</button>
         </div>
 
-        <!-- 🟣 4. صندوق عبارات العتب والحزن التفاعلي (بنفسجي وقور) -->
-        <div class="royal-interactive-card box-sad">
-            <div class="box-title box-title-sad">🔮 <span id="title-box-4">صندوق عبارات العتب والحزن</span></div>
-            <select class="royal-select" id="select-sad" onchange="syncLivePreview('sad')">
-                <option value="عاتبتك لأنك كنت تعني لي الكثير، ولكن صمتك المستمر علمني أن بعض العتب يفقد قيمته مع الوقت.">😔 رسالة عتب وقورة شديدة الأثر</option>
-                <option value="ليس كل حزن يترجم بالدموع، فهناك غصة بقلب الروح تفوق طاقة الكلام وصمتها بياخد العقل.">🖤 عبارة كبرياء وحزن هادئة وفخمة</option>
-                <option value="تمنيت لو أن الأيام حفظت الوعود الصادقة التي قطعناها، ولكن الخذلان دائماً يأتي من حيث لا نحتسب.">🥀 عبارة مؤثرة عن وعود الأيام والخذلان</option>
+        <!-- 📦 صندوق 4: عبارات العتب والحزن -->
+        <div class="royal-box">
+            <div class="royal-box-title" id="title-box-4">صندوق عبارات العتب والحزن</div>
+            <input type="text" class="royal-input" id="name-box4" placeholder="اكتب اسمك هنا..." oninput="syncLivePreview('box4')">
+            <select class="royal-select" id="select-box4" onchange="syncLivePreview('box4')">
+                <option value="عاتبتك لأنك كنت تعني لي الكثير، ولكن صمتك المستمر علمني أن بعض العتب يفقد قيمته مع الوقت.">عاتبتك لأنك كنت تعني لي الكثير، ولكن صمتك المستمر علمني أن بعض العتب يفقد قيمته مع الوقت.</option>
+                <option value="لم أكن أتوقع أن يطول صمتك، فالقلب لم يعد يتحمل هذا الجفاء الطويل.">لم أكن أتوقع أن يطول صمتك، فالقلب لم يعد يتحمل.</option>
             </select>
-            <div class="live-preview-message-box preview-glow-sad" id="preview-box-sad"></div>
-            <input type="text" class="royal-input" id="name-sad" placeholder="اكتب اسمك كمرسل الحين الحين...">
-            <button class="royal-share-btn" onclick="fireRoyalWhatsapp('sad')">🟢 مشاركة الإهداء على الواتساب</button>
+            <div class="preview-box" id="preview-box-box4">عاتبتك لأنك كنت تعني لي الكثير، ولكن صمتك المستمر علمني أن بعض العتب يفقد قيمته مع الوقت.</div>
+            <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box4')">إرسال عبر الواتساب</button>
         </div>
 
-        <!-- 👑 شعار العائلة KR الجالس والمستقيم بأسفل الصفحة المشع بالذهب وعم ينبض بنقاء تام -->
-        <div style="margin-top: 20px; padding-bottom: 10px;">
-            <span class="royal-brand-kr">👑 KR 👑</span>
-            <div class="royal-footer-brand" id="royal-footer-text">👑 منصة العائلة الملكية المعتمدة عالمياً 👑</div>
-        </div>
-
+        <div class="royal-footer-brand" id="royal-footer-text">👑 منصة العائلة الملكية المعتمدة عالمياً 👑</div>
     </div>
     <script>
         var currentLang = 'ar';
@@ -180,11 +150,11 @@
             var clockEl = document.getElementById("live-clock");
             if (clockEl) {
                 if (currentLang === 'ar') {
-                    clockEl.innerHTML = `📅 ${d} | ⏰ الساعة: ${t} <br> ☀️ الطقس في بيروت: 24°C صافي | 💧 نسبة الرطوبة: 62%`;
+                    clockEl.innerHTML = `📅 ${d} <br> ⏰ الساعة: ${t} <br> ☀️ الطقس في بيروت: 24°C صافي | 💧 نسبة الرطوبة: 62%`;
                 } else {
                     var dEn = now.toLocaleDateString('en-LB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
                     var tEn = now.toLocaleTimeString('en-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
-                    clockEl.innerHTML = `📅 ${dEn} | ⏰ Time: ${tEn} <br> ☀️ Beirut Weather: 24°C Clear | 💧 Humidity: 62%`;
+                    clockEl.innerHTML = `📅 ${dEn} <br> ⏰ Time: ${tEn} <br> ☀️ Beirut Weather: 24°C Clear | 💧 Humidity: 62%`;
                 }
             }
         }
@@ -198,47 +168,56 @@
             }
         }
 
-        // 🚀 محرك الواتساب الذكي المحقون برابط القلعة التفاعلي المباشر بأسفل الرسالة دغري 100%
+        // 🚀 محرك الواتساب الذكي المعدل والمصلح 100% ليظهر الرابط بالأسفل مثل الصورة تماماً
         function fireRoyalWhatsapp(type) {
             var text = document.getElementById("select-" + type).value;
             var sender = document.getElementById("name-" + type).value.trim();
             if (!sender) { sender = (currentLang === 'ar') ? "مُرسِل مخلص" : "A Loyal Sender"; }
             
-            // صياغة الرسالة المنسقة وتثبيت الرابط التفاعلي بصيغة النطاق الكامل بأسفل الرسالة من تحت دغري ليفك تجميد المتصفحات والواتساب
-            var msg = `*✨ إهداء ملكي فاخر من: ${sender}* \n\n` +
-                      `"${text}"\n\n` +
+            // تحديد نوع الصندوق لعنوان الرسالة
+            var titleHeader = "إهداء خاص";
+            if (type === 'box1') titleHeader = "الدعاء";
+            if (type === 'box2') titleHeader = "العبارة";
+            if (type === 'box3') titleHeader = "إهداء غالي";
+            if (type === 'box4') titleHeader = "رسالة عتب";
+
+            // صياغة الرسالة الملكية بالملي مثل الصورة الصحيحة المعتمدة تحت (توقيع بالأسفل مع الرابط التفاعلي الأزرق)
+            var msg = `🎁 *إهداء خاص من: [ ${sender} ]* \n\n` +
+                      `✨ *${titleHeader}:* \n` +
+                      `" ${text} "\n\n` +
                       `━━━━━━━━━━━━━━━\n` +
-                      `👑 *اسم المنصة:* عالم الحب\n` +
-                      `👑 *شعار العائلة المعتمد:* KR\n` +
-                      `🌐 *رابط منصتنا الملكية المباشر لعيونكم:* \n` +
-                      `https://github.io`;
+                      `🌹 *تمت المشاركة من صفحة:* \n` +
+                      `عالم الحب ❤️ World of Love\n\n` +
+                      `https://github.io`; // الرابط الكامل والصحيح ليظهر باللون الأزرق القابل للضغط
             
             var targetUrl = "whatsapp://send?text=" + encodeURIComponent(msg);
             var backupUrl = "https://whatsapp.com" + encodeURIComponent(msg);
             
-            // كسر الحظر والقفز لداخل التطبيق مباشرة بالأولوية المطلقة للسيستم
+            // كسر الحظر والتحويل الفوري داخل التطبيق
             window.location.href = targetUrl;
             
-            // فحص أمان احتياطي للمتصفحات القديمة
+            // حماية احتياطية للمتصفحات لضمان فتح الواتساب بكل الأحوال
             setTimeout(function() {
                 if (document.hasFocus()) {
-                    window.location.href = backupUrl;
+                    window.open(backupUrl, '_blank');
                 }
             }, 500);
         }
 
-        // 🌐 map الترجمة الفورية السحابية من العربي للإنجليزي وبالعكس
+        // 🌐 الترجمة الفورية السحابية من العربي للإنجليزي وبالعكس
         function switchLang(l) {
             currentLang = l;
             document.getElementById("btn-ar").classList.toggle("active", l === 'ar');
             document.getElementById("btn-en").classList.toggle("active", l === 'en');
             var isAr = l === 'ar';
             document.body.style.direction = isAr ? "rtl" : "ltr";
+            if(isAr) { document.body.classList.remove("ltr"); } else { document.body.classList.add("ltr"); }
             
             document.getElementById("tick-gold").innerText = isAr ? "أوقية الذهب العالمية:" : "Global Gold Ounce:";
             document.getElementById("tick-index").innerText = isAr ? "مؤشر الدولار عالمياً:" : "Global Dollar Index:";
             document.getElementById("tick-lbp").innerText = isAr ? "فريش دولار في لبنان:" : "Fresh Dollar in Lebanon:";
             document.getElementById("main-title-ar-txt").innerText = isAr ? "عالم الحب" : "World of Love";
+            document.getElementById("lbl-welcome").innerText = isAr ? "welcome BiBi" : "welcome BiBi";
             document.getElementById("lbl-visitors").innerText = isAr ? "عدد زوار صفحتنا الحين:" : "Our Platform Visitors Now:";
             document.getElementById("royal-footer-text").innerText = isAr ? "👑 منصة العائلة الملكية المعتمدة عالمياً 👑" : "👑 The Globally Approved Royal Platform 👑";
             
@@ -247,27 +226,20 @@
             document.getElementById("title-box-3").innerText = isAr ? "صندوق بر الوالدين والأم الغالية" : "Honoring Parents & Mother's Gift Box";
             document.getElementById("title-box-4").innerText = isAr ? "صندوق عبارات العتب والحزن" : "Reproach & Sadness Expressions Box";
             
+            for(var i=1; i<=4; i++) {
+                document.getElementById("name-box" + i).placeholder = isAr ? "اكتب اسمك هنا..." : "Type your name here...";
+            }
+
             var shareBtns = document.getElementsByClassName("royal-share-btn");
             for (var i = 0; i < shareBtns.length; i++) {
-                shareBtns[i].innerText = isAr ? "🟢 مشاركة الإهداء على الواتساب" : "🟢 Share Dedication on WhatsApp";
+                shareBtns[i].innerText = isAr ? "إرسال عبر الواتساب" : "Send via WhatsApp";
             }
             updateClock();
         }
 
-        document.addEventListener("DOMContentLoaded", function() {
-            setInterval(updateClock, 1000);
-            updateClock();
-            
-            // تشغيل التغذية المبدئية لصناديق المعاينة الحية الأربعة فوراً الحين
-            syncLivePreview('duaa');
-            syncLivePreview('love');
-            syncLivePreview('parents');
-            syncLivePreview('sad');
-            
-            var v = parseInt(localStorage.getItem('saved_royal_v') || 2172) + 1;
-            localStorage.setItem('saved_royal_v', v);
-            document.getElementById("counter-val").innerText = v.toLocaleString();
-        });
+        // تشغيل المحرك تلقائياً
+        updateClock();
+        setInterval(updateClock, 1000);
     </script>
 </body>
 </html>
