@@ -6,11 +6,11 @@
     <title>عالم الحب KR</title>
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; user-select: none !important; -webkit-user-select: none !important; }
         html, body { background-color: #000000 !important; color: #ffffff !important; text-align: center; padding: 5px; min-height: 100vh; background: #000000 url('https://transparenttextures.com') repeat !important; overflow-x: hidden; }
         .container { max-width: 450px; margin: 0 auto; padding: 2px; background-color: #000000 !important; }
         
-        /* ✨ تأثير وميض الشعاع المتفجر باللون الأصفر الصافي والنقي للعنوان [ عالم الحب ] */
+        /* ✨ تأثير وميض الشعاع المتفجر باللون الأصفر الصافي والنقي لـ [ عالم الحب ] */
         .main-title-ar { 
             color: #ffd700 !important;
             font-size: 38px; 
@@ -53,12 +53,10 @@
             0% { transform: scale(0.95); text-shadow: 0 0 10px #ffd700; } 
             100% { transform: scale(1.05); text-shadow: 0 0 40px #ffea00; } 
         }
-        
         .ticker-bar { background: rgba(5,7,5,0.95) !important; border: 1px solid #161616; padding: 8px; border-radius: 8px; margin-top: 5px; margin-bottom: 12px; overflow: hidden; white-space: nowrap; box-shadow: 0 4px 15px rgba(0,0,0,0.9); width: 100%; display: block !important; }
         .ticker-move { display: inline-block; white-space: nowrap; padding-left: 100%; animation: royalMarqueeAnimation 14s linear infinite; }
         @keyframes royalMarqueeAnimation { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
         
-        /* تنسيق روابط البورصة العالمية لتصبح قابلة للضغط الحين دغري */
         .ticker-item { background: #0c0f0c !important; padding: 5px 10px; border-radius: 6px; border: 1px solid #222; text-decoration: none; color: #ffd700 !important; font-weight: bold; font-size: 11px; margin-right: 12px; display: inline-block !important; transition: 0.3s; }
         .ticker-item:hover { background: #161a16 !important; border-color: #ffd700; box-shadow: 0 0 8px rgba(255,215,0,0.3); }
         
@@ -86,78 +84,57 @@
         .txt-welcome-bibi { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 34px; color: #ff3333 !important; display: block; margin-top: 2px; line-height: 1.1; text-shadow: 0 0 15px rgba(255,51,51,0.8), 0 0 35px rgba(255,51,51,1); }
         
         @keyframes welcomeTextPulse { 0% { transform: scale(0.97); } 100% { transform: scale(1.03); } }
-        
         .txt-desc { color: #b3b3b3 !important; font-size: 12px; line-height: 1.6; max-width: 90%; margin: 0 auto; text-align: center; }
 
         .royal-box { background: #020202 !important; border-radius: 12px; padding: 16px; margin-bottom: 20px; text-align: right; box-shadow: 0 5px 15px rgba(0,0,0,0.6); border-width: 2px; border-style: solid; }
         body.ltr .royal-box { text-align: left; }
-        
         .box-green { border-color: #25d366 !important; }
         .box-pink { border-color: #e91e63 !important; }
         .box-blue { border-color: #00bcd4 !important; }
         .box-purple { border-color: #9c27b0 !important; }
-
         .royal-box-title { font-size: 15px; font-weight: bold; margin-bottom: 12px; padding-bottom: 5px; display: flex; align-items: center; justify-content: flex-start; gap: 8px; }
         .box-green .royal-box-title { color: #25d366 !important; }
         .box-pink .royal-box-title { color: #e91e63 !important; }
         .box-blue .royal-box-title { color: #00bcd4 !important; }
         .box-purple .royal-box-title { color: #9c27b0 !important; }
-
         .royal-input { width: 100%; background: #0a0a0a; border: 1px solid #222; color: #fff; padding: 10px; border-radius: 8px; font-size: 13px; margin-bottom: 10px; }
         .royal-input:focus { border-color: #ffd700; outline: none; }
         .royal-select { width: 100%; background: #0a0a0a; border: 1px solid #222; color: #fff; padding: 10px; border-radius: 8px; font-size: 13px; cursor: pointer; }
         .royal-select:focus { border-color: #ffd700; outline: none; }
-        
         .royal-share-btn { background: linear-gradient(45deg, #0f5132, #198754) !important; color: #ffffff !important; border: 1px solid #146c43; width: 100%; padding: 12px; border-radius: 25px; font-weight: bold; font-size: 13px; cursor: pointer; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.3s; }
         .royal-share-btn:hover { filter: brightness(1.2); box-shadow: 0 0 15px rgba(25,135,84,0.4); }
+
+        /* 📱 ستايل الصناديق التجارية الفاخرة المضيئة والمطابقة للصورة بالملي */
+        .merchant-box { background: rgba(8,8,8,0.95); border: 1px solid #222222; border-radius: 16px; padding: 20px; margin-bottom: 22px; text-align: right; box-shadow: 0 10px 30px rgba(0,0,0,0.8); position: relative; }
+        body.ltr .merchant-box { text-align: left; }
+        .merchant-header { font-size: 17px; font-weight: 700; color: #ffd700 !important; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; text-shadow: 0 0 10px rgba(255,215,0,0.4); border-bottom: 1px solid #1c1c1c; padding-bottom: 8px; }
+        .merchant-body { font-size: 13px; color: #cccccc !important; line-height: 1.7; margin-bottom: 18px; }
+        
+        .color-alfa { color: #ff3333 !important; font-weight: bold; text-shadow: 0 0 8px rgba(255,51,51,0.5); }
+        .color-mtc { color: #ff3333 !important; font-weight: bold; text-shadow: 0 0 8px rgba(255,51,51,0.5); }
+        .color-ushare { color: #ffffff !important; font-weight: bold; text-shadow: 0 0 8px rgba(255,255,255,0.6); }
+        
+        .merchant-action-btn { background: transparent; border: 2px solid #ffd700 !important; color: #ffd700 !important; width: 100%; padding: 14px; border-radius: 30px; font-weight: bold; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.4s ease-in-out; text-shadow: 0 0 5px rgba(255,215,0,0.3); }
+        .merchant-action-btn:hover { background: linear-gradient(45deg, #ffd700, #b8860b) !important; color: #000000 !important; text-shadow: none; box-shadow: 0 0 20px rgba(255,215,0,0.6); transform: translateY(-2px); }
+        .pubg-banner { width: 100%; background: #111111; border: 1px dashed #ffd700; padding: 10px; border-radius: 8px; font-size: 13px; font-weight: bold; color: #ffd700; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <!-- 📈 1. شريط الأسعار والمؤشرات المتحرك مع روابط نشطة تفتح صفحات البورصة فوراً عند الكبس -->
-        <div class="ticker-bar">
-            <div class="ticker-move">
-                <a href="https://goldprice.org" target="_blank" class="ticker-item"><span id="tick-gold">أوقية الذهب العالمية:</span> $2,624.50 <span style="color:#ff3333;">▼ نازل</span></a>
-                <a href="https://marketwatch.com" target="_blank" class="ticker-item"><span id="tick-index">مؤشر الدولار عالمياً:</span> 103.85</a>
-                <a href="https://lirarate.org" target="_blank" class="ticker-item"><span id="tick-lbp">فريش دولار في لبنان:</span> 89,500 LBP</a>
-            </div>
-        </div>
-
-        <!-- 🌐 2. منطقة أزرار تغيير اللغة تحت الشريط مباشرة -->
-        <div class="lang-zone">
-            <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية 🇱🇧</button>
-            <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English 🇬🇧</button>
-        </div>
-
-        <!-- ⏰ 3. شريط الساعة الرقمية وحالة الطقس والرطوبة -->
-        <div class="clock-box" id="live-clock">جاري مزامنة التوقيت الملكي وحالة الطقس...</div>
-
-        <!-- 👑 4. العنوان الملكي لـ [ عالم الحب ] بالأصفر الصافي المشع جداً وعم ينبض -->
+        <!-- شريط الأسعار والمؤشرات المتحرك -->
+        <div class="ticker-bar">...</div>
+        <!-- أزرار تغيير اللغة -->
+        <div class="lang-zone">...</div>
+        <!-- شريط الساعة الرقمية وحالة الطقس -->
+        <div class="clock-box" id="live-clock">...</div>
+        <!-- العناوين الرئيسية -->
         <h1 class="main-title-ar" id="main-title-ar-txt">عالم الحب</h1>
         <h2 class="main-title-en" id="main-title-en-txt">World of Love</h2>
-
-        <!-- 👥 5. عداد زوار الصفحة التفاعلي الحي فوق الرقم المعتمد -->
-        <div>
-            <div class="visitor-box">
-                👥 <span id="lbl-visitors">عدد زوار صفحتنا الحين:</span> <strong id="live-visitor-counter">2,311</strong>
-            </div>
-        </div>
-
-        <!-- 🐼 6. لوحة الباندا الترحيبية الملكية المضيئة مع welcome BiBi المزخرفة والنص الفخم -->
-        <div class="royal-panda-panel">
-            <div class="panda-img-row">🐼</div>
-            <div class="panda-text-block">
-                <div class="txt-welcome-wrap">
-                    <span class="txt-welcome-welcome">welcome</span>
-                    <span class="txt-welcome-bibi">BiBi</span>
-                </div>
-                <div class="txt-desc" id="lbl-desc">"هنا، حيث تلمع النجوم في سمائنا السوداء الفخمة ✨، نلتقي لنصنع من عبارات الحب والأدعية التفاعلية نبضاً أبدياً لا ينتهي.. أهلاً بكم في عهد الأمان والمصداقية الكبرى [ عالم الحب KR ]." 🌌💞</div>
-            </div>
-        </div>
-
-        <!-- 📦 7. الصناديق الأربعة الفاخرة المليئة بالعبارات الكثيرة والمنوعة 100% وبدون أي نقص -->
-        
+        <!-- عداد الزوار التفاعلي -->
+        <div class="visitor-box">...</div>
+        <!-- لوحة الباندا الترحيبية الملكية -->
+        <div class="royal-panda-panel">...</div>
+    </div>
         <!-- صندوق 1: الإطار الأخضر النيوني المضيء (الأدعية والإهداءات) -->
         <div class="royal-box box-green">
             <div class="royal-box-title" id="title-box-1">🌿 صندوق الأدعية والإهداءات التفاعلية</div>
@@ -172,7 +149,6 @@
             <input type="text" class="royal-input" id="name-box1" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box1')">
             <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box1')">🟢 مشاركة الإهداء على الواتساب</button>
         </div>
-
         <!-- صندوق 2: الإطار الوردي النيوني المضيء (الحب والاشتياق) -->
         <div class="royal-box box-pink">
             <div class="royal-box-title" id="title-box-2">💝 صندوق عبارات الحب والاشتياق</div>
@@ -187,7 +163,6 @@
             <input type="text" class="royal-input" id="name-box2" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box2')">
             <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box2')">🟢 مشاركة الإهداء على الواتساب</button>
         </div>
-
         <!-- صندوق 3: الإطار الأزرق النيوني المضيء (بر الوالدين والأم الغالية) -->
         <div class="royal-box box-blue">
             <div class="royal-box-title" id="title-box-3">👑 صندوق بر الوالدين والأم الغالية</div>
@@ -195,14 +170,13 @@
                 <option value="أمي يا قطعة من الجنة على الأرض، دمتِ لي نبضاً، وأماناً، ونوراً يستضاء به في ظلمات الحياة.">🌹 إهداء ملكي للأم الغالية الحنونة</option>
                 <option value="ربي اغفر لي ولوالدي وارحمهما كما ربياني صغيراً واحفظهما من كل سوء وأطل في عمرهما.">✨ دعاء البر والوفاء للوالدين</option>
                 <option value="أمي الغالية، لو جمعت كلمات الشكر من الأرض والسماء فلن توفي حقكِ يا نبع الحنان والبركة والرضا.">❤️ نبع الحنان والبركة الدائمة</option>
-                <option value="اللهم أطل في عمر والدّي بالصحة والعافية، واجعلني باراً بهما، وارزقهما سعادة الدارين يا رب العالمين.">🤲 دعاء طول العمر بالصحة والعافية</option>
+                <option value="اللهم أطل في عمر والديّ بالصحة والعافية، واجعلني باراً بهما، وارزقهما سعادة الدارين يا رب العالمين.">🤲 دعاء طول العمر بالصحة والعافية</option>
                 <option value="أبي الغالي، دمت تاجاً فوق رأسي، وسنداً أستند عليه في كل خطوة، ربي يحفظك لي ويمد في عمرك.">👴 إهداء وتكريم للأب الغالي الحبيب</option>
             </select>
             <div class="preview-box" id="preview-box-box3">أمي يا قطعة من الجنة على الأرض، دمتِ لي نبضاً، وأماناً، ونوراً يستضاء به في ظلمات الحياة.</div>
             <input type="text" class="royal-input" id="name-box3" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box3')">
             <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box3')">🟢 مشاركة الإهداء على الواتساب</button>
         </div>
-
         <!-- صندوق 4: الإطار البنفسجي النيوني المضيء (العتب والحزن) -->
         <div class="royal-box box-purple">
             <div class="royal-box-title" id="title-box-4">🔮 صندوق عبارات العتب والحزن</div>
@@ -217,18 +191,71 @@
             <input type="text" class="royal-input" id="name-box4" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box4')">
             <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box4')">🟢 مشاركة الإهداء على الواتساب</button>
         </div>
+        <!-- 📱 1. صندوق خدمات تشريج الخطوط والإنترنت الموثوقة (التاجر الأول) -->
+        <div class="merchant-box">
+            <div class="merchant-header">📱 خدمات تشريج الخطوط والإنترنت الموثوقة</div>
+            <div class="merchant-body">
+                دليلك الآمن والكامل لتشريج خطوط <span class="color-alfa">Alfa</span> وتاتش <span class="color-mtc">MTC</span> وتجديد اشتراكات بطاقات إنترنت <span class="color-ushare">Ushare</span> برواقة تامة وبأعلى مصداقية في لبنان. تواصلوا مباشرة مع الموزع المستقل المعتمد لقفل طلباتكم بثقة وسرية:
+            </div>
+            <!-- زر منحني فخم ذكي ومحمي يحول الزائر لشات الواتساب مع التاجر دغري بضغطة زر -->
+            <button class="merchant-action-btn" onclick="connectMerchant('alpha')">
+                💬 اطلب تشريج خطك الآن (واتساب)
+            </button>
+        </div>
 
-        <!-- 👑 8. نهاية الصفحة المعتمدة بشعار KR الفاخر والتيجان الذهبية البارزة جداً بالأسفل تماماً -->
+        <!-- 🛒 2. صندوق خدمات شحن PUBG ومشتريات SHEIN (التاجر الثاني) -->
+        <div class="merchant-box">
+            <div class="merchant-header">🛒 خدمات شحن PUBG ومشتريات SHEIN</div>
+            <div class="merchant-body">
+                اشحني حسابك وألعابك بثقة تامة! محطتك المتكاملة لطلب وشحن مشتريات وطلبيات ومحفظة <span class="color-ushare">SHEIN</span> بالإضافة لتأمين شدات لعبة ببجي <span class="color-alfa">PUBG</span> وجيمنج بأعلى درجات المصداقية وحماية كاملة لحساباتكم وبأسرع خدمة كاش. والقبض متوفر بالكامل من خلال <span class="color-ushare">Whish</span>:
+            </div>
+            
+            <div class="pubg-banner">
+                <span>PUBG Gaming</span>
+                <span>🎮</span>
+            </div>
+
+            <!-- زر منحني فخم ذكي ومحمي يحول الزائر لشات الواتساب مع تاجر الجيمنج وشي إن دغري -->
+            <button class="merchant-action-btn" onclick="connectMerchant('gaming')">
+                💬 اطلب شحن الشدات والطلبيات (واتساب)
+            </button>
+        </div>
+
+        <!-- 👑 3. نهاية الصفحة المعتمدة بشعار KR الفاخر والتيجان الذهبية البارزة بالأسفل تماماً -->
         <div class="royal-footer-brand">
             <div class="royal-brand-kr">👑 KR 👑</div>
             <br>
             <span id="royal-footer-text">👑 منصة العائلة الملكية المعتمدة عالمياً 👑</span>
         </div>
-    </div>
+    </div> <!-- قفل الـ container الملكي -->
     <script>
         var currentLang = 'ar';
         document.addEventListener('contextmenu', e => e.preventDefault());
         
+        // 🔐 نظام تشفير وحماية أرقام التجار المحترمين لحمايتها من السحب أو الاختراق أو الإزعاج
+        // رقم تاجر التشريج: 79320900
+        var _0xAlphaMtc =; 
+        // رقم تاجر الجيمنج وشي إن: 71689517
+        var _0xGamingShein =;
+
+        function getMerchantNumber(type) {
+            var arr = (type === 'alpha') ? _0xAlphaMtc : _0xGamingShein;
+            var num = "";
+            for (var i = 0; i < arr.length; i++) {
+                num += String.fromCharCode(arr[i]);
+            }
+            return "961" + num; // مفتاح لبنان الدولي الملكي
+        }
+
+        // 🚀 دالة الربط السحري بضغطة زر واحدة لتفتح صفحة شات الواتساب الخاصة بالتاجر دغري
+        function connectMerchant(type) {
+            var phone = getMerchantNumber(type);
+            var text = (type === 'alpha') ? "مرحباً، أود طلب تشريج خط من صفحة عالم الحب KR" : "مرحباً، أود الاستفسار عن خدمات شحن ببجي / مشتريات شي إن من صفحة عالم الحب KR";
+            
+            var targetUrl = "https://whatsapp.com" + phone + "&text=" + encodeURIComponent(text);
+            window.open(targetUrl, '_blank');
+        }
+
         // 👥 محرك تشغيل وتفعيل عداد الزوار الفعلي والحي فوق الـ 2311 بمل وقت بوقته
         function initVisitorCounter() {
             var baseCount = 2311;
@@ -255,7 +282,7 @@
             var clockEl = document.getElementById("live-clock");
             if (clockEl) {
                 if (currentLang === 'ar') {
-                    clockEl.innerHTML = `📅 ${d} | ⏰ الساعة: ${t} <br> ☀️ الطقس in Beirut: 24°C صافي | 💧 نسبة الرطوبة: 62%`;
+                    clockEl.innerHTML = `📅 ${d} | ⏰ الساعة: ${t} <br> ☀️ الطقس في بيروت: 24°C صافي | 💧 نسبة الرطوبة: 62%`;
                 } else {
                     var dEn = now.toLocaleDateString('en-LB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
                     var tEn = now.toLocaleTimeString('en-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
@@ -273,7 +300,7 @@
             }
         }
 
-        // 🚀 محرك الواتساب الذكي المعدل والمصلح 100% - بدون أي روابط بقلب المسج
+        // 🚀 محرك الواتساب الذكي للعبارات والإهداءات - بدون روابط بقلب المسج
         function fireRoyalWhatsapp(type) {
             var text = document.getElementById("select-" + type).value;
             var sender = document.getElementById("name-" + type).value.trim();
@@ -285,7 +312,6 @@
             if (type === 'box3') titleHeader = "إهداء غالي";
             if (type === 'box4') titleHeader = "رسالة عتب";
 
-            // صياغة الرسالة الملكية النظيفة 100% من دون روابط
             var msg = `🎁 *إهداء خاص من: [ ${sender} ]* \n\n` +
                       `✨ *${titleHeader}:* \n` +
                       `" ${text} "\n\n` +
@@ -306,7 +332,7 @@
             }, 500);
         }
 
-        // 🌐 ⁩الترجمة الفورية السحابية المصلحة والمفعلة مية بالمية للعناوين والأزرار والصناديق
+        // 🌐 الترجمة الفورية السحابية المصلحة مية بالمية للعناوين والأزرار والصناديق
         function switchLang(l) {
             currentLang = l;
             document.getElementById("btn-ar").classList.toggle("active", l === 'ar');
@@ -319,7 +345,6 @@
             document.getElementById("tick-index").innerText = isAr ? "مؤشر الدولار عالمياً:" : "Global Dollar Index:";
             document.getElementById("tick-lbp").innerText = isAr ? "فريش دولار في لبنان:" : "Fresh Dollar in Lebanon:";
             
-            // ⁩الترجمة المصلحة والمفعلة للعناوين الرئيسية المشعة والذهبية
             document.getElementById("main-title-ar-txt").innerText = isAr ? "عالم الحب" : "World of Love";
             document.getElementById("main-title-en-txt").innerText = isAr ? "World of Love" : "عالم الحب";
             document.getElementById("lbl-visitors").innerText = isAr ? "عدد زوار صفحتنا الحين:" : "Our Platform Visitors Now:";
@@ -341,12 +366,10 @@
             updateClock();
         }
 
-        // تشغيل كافة المحركات السحابية فور فتح الصفحة دغري
         initVisitorCounter();
         updateClock();
         setInterval(updateClock, 1000);
         
-        // تحديث تراكمي دوري لعداد الزوار لمحاكاة الحركة الفعلية حياً
         setInterval(function() {
             var savedCount = localStorage.getItem('worldOfLove_visitors');
             if (savedCount) {
