@@ -198,20 +198,20 @@
             }
         }
 
-        // 🚀 محرك الواتساب الذكي المحقون برابط القلعة http التفاعلي المباشر بأسفل الرسالة دغري 100%
+        // 🚀 محرك الواتساب الذكي المحقون برابط القلعة التفاعلي المباشر بأسفل الرسالة دغري 100%
         function fireRoyalWhatsapp(type) {
             var text = document.getElementById("select-" + type).value;
             var sender = document.getElementById("name-" + type).value.trim();
             if (!sender) { sender = (currentLang === 'ar') ? "مُرسِل مخلص" : "A Loyal Sender"; }
             
-            // صياغة الرسالة المنسقة وتثبيت الرابط التفاعلي بصيغة http المفتوحة بأسفل الرسالة من تحت دغري ليفك تجميد المتصفحات والواتساب
+            // صياغة الرسالة المنسقة وتثبيت الرابط التفاعلي بصيغة النطاق الكامل بأسفل الرسالة من تحت دغري ليفك تجميد المتصفحات والواتساب
             var msg = `*✨ إهداء ملكي فاخر من: ${sender}* \n\n` +
                       `"${text}"\n\n` +
                       `━━━━━━━━━━━━━━━\n` +
                       `👑 *اسم المنصة:* عالم الحب\n` +
                       `👑 *شعار العائلة المعتمد:* KR\n` +
                       `🌐 *رابط منصتنا الملكية المباشر لعيونكم:* \n` +
-                      `http://github.io`;
+                      `https://github.io`;
             
             var targetUrl = "whatsapp://send?text=" + encodeURIComponent(msg);
             var backupUrl = "https://whatsapp.com" + encodeURIComponent(msg);
