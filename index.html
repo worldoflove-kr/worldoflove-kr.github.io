@@ -60,13 +60,8 @@
         .color-mtc { color: #ff3333 !important; font-weight: bold; text-shadow: 0 0 8px rgba(255,51,51,0.5); }
         .color-ushare { color: #ffffff !important; font-weight: bold; text-shadow: 0 0 8px rgba(255,255,255,0.6); }
         .merchant-action-btn { background: transparent; border: 2px solid #ffd700 !important; color: #ffd700 !important; width: 100%; padding: 14px; border-radius: 30px; font-weight: bold; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.4s ease-in-out; text-shadow: 0 0 5px rgba(255,215,0,0.3); }
-        .merchant-action-btn:hover { background: linear-gradient(45deg, #ffd700, #b8860b) !important; color: #000000 !important; text-shadow: none; box-shadow: 0 0 20px rgba(255,215,0,0.6); transform: translateY(-2px); }
-        .pubg-banner { width: 100%; background: #111111; border: 1px dashed #ffd700; padding: 10px; border-radius: 8px; font-size: 13px; font-weight: bold; color: #ffd700; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
-    </style>
-</head>
 <body>
     <div class="container">
-        <!-- 📈 1. شريط الأسعار والمؤشرات المتحرك مع روابط نشطة تفتح صفحات البورصة فوراً عند الكبس -->
         <div class="ticker-bar">
             <div class="ticker-move">
                 <a href="https://goldprice.org" target="_blank" class="ticker-item"><span id="tick-gold">أوقية الذهب العالمية:</span> $2,624.50 <span style="color:#ff3333;">▼ نازل</span></a>
@@ -74,41 +69,21 @@
                 <a href="https://lirarate.org" target="_blank" class="ticker-item"><span id="tick-lbp">فريش دولار في لبنان:</span> 89,500 LBP</a>
             </div>
         </div>
-
-        <!-- 🌐 2. منطقة أزرار تغيير اللغة تحت الشريط مباشرة -->
         <div class="lang-zone">
             <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية 🇱🇧</button>
             <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English 🇬🇧</button>
         </div>
-
-        <!-- ⏰ 3. شريط الساعة الرقمية وحالة الطقس والرطوبة -->
         <div class="clock-box" id="live-clock">جاري مزامنة التوقيت الملكي وحالة الطقس...</div>
-
-        <!-- 👑 4. العنوان الملكي لـ [ عالم الحب ] بالأصفر الصافي المشع جداً وعم ينبض -->
         <h1 class="main-title-ar" id="main-title-ar-txt">عالم الحب</h1>
         <h2 class="main-title-en" id="main-title-en-txt">World of Love</h2>
-
-        <!-- 👥 5. عداد زوار الصفحة التفاعلي الحي فوق الرقم المعتمد بالصورة -->
-        <div>
-            <div class="visitor-box">
-                👥 <span id="lbl-visitors">عدد زوار صفحتنا الحين:</span> <strong id="live-visitor-counter">2,311</strong>
-            </div>
-        </div>
-
-        <!-- 🐼 6. لوحة الباندا الترحيبية الملكية المضيئة مع welcome BiBi المزخرفة والنص الفخم -->
+        <div><div class="visitor-box">👥 <span id="lbl-visitors">عدد زوار صفحتنا الحين:</span> <strong id="live-visitor-counter">2,311</strong></div></div>
         <div class="royal-panda-panel">
             <div class="panda-img-row">🐼</div>
             <div class="panda-text-block">
-                <div class="txt-welcome-wrap">
-                    <span class="txt-welcome-welcome">welcome</span>
-                    <span class="txt-welcome-bibi">BiBi</span>
-                </div>
+                <div class="txt-welcome-wrap"><span class="txt-welcome-welcome">welcome</span><span class="txt-welcome-bibi">BiBi</span></div>
                 <div class="txt-desc" id="lbl-desc">"هنا، حيث تلمع النجوم في سمائنا السوداء الفخمة ✨، نلتقي لنصنع من عبارات الحب والأدعية التفاعلية نبضاً أبدياً لا ينتهي.. أهلاً بكم في عهد الأمان والمصداقية الكبرى [ عالم الحب KR ]." 🌌💞</div>
             </div>
         </div>
-        <!-- 📦 7. الصناديق الفاخرة المليئة بالعبارات الكثيرة والمنوعة 100% وبدون أي نقص -->
-        
-        <!-- صندوق 1: الإطار الأخضر النيوني المضيء (الأدعية والإهداءات) -->
         <div class="royal-box box-green">
             <div class="royal-box-title" id="title-box-1">🌿 صندوق الأدعية والإهداءات التفاعلية</div>
             <select class="royal-select" id="select-box1" onchange="syncLivePreview('box1')">
@@ -122,8 +97,6 @@
             <input type="text" class="royal-input" id="name-box1" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box1')">
             <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box1')">🟢 مشاركة الإهداء على الواتساب</button>
         </div>
-
-        <!-- صندوق 2: الإطار الوردي النيوني المضيء (الحب والاشتياق) -->
         <div class="royal-box box-pink">
             <div class="royal-box-title" id="title-box-2">💝 صندوق عبارات الحب والاشتياق</div>
             <select class="royal-select" id="select-box2" onchange="syncLivePreview('box2')">
@@ -137,8 +110,6 @@
             <input type="text" class="royal-input" id="name-box2" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box2')">
             <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box2')">🟢 مشاركة الإهداء على الواتساب</button>
         </div>
-
-        <!-- صندوق 3: الإطار الأزرق النيوني المضيء (بر الوالدين والأم الغالية) -->
         <div class="royal-box box-blue">
             <div class="royal-box-title" id="title-box-3">👑 صندوق بر الوالدين والأم الغالية</div>
             <select class="royal-select" id="select-box3" onchange="syncLivePreview('box3')">
@@ -152,8 +123,6 @@
             <input type="text" class="royal-input" id="name-box3" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box3')">
             <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box3')">🟢 مشاركة الإهداء على الواتساب</button>
         </div>
-
-        <!-- صندوق 4: الإطار البنفسجي النيوني المضيء (العتب والحزن) -->
         <div class="royal-box box-purple">
             <div class="royal-box-title" id="title-box-4">🔮 صندوق عبارات العتب والحزن</div>
             <select class="royal-select" id="select-box4" onchange="syncLivePreview('box4')">
@@ -167,43 +136,19 @@
             <input type="text" class="royal-input" id="name-box4" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box4')">
             <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box4')">🟢 مشاركة الإهداء على الواتساب</button>
         </div>
-        <!-- 📱 1. صندوق خدمات تشريج الخطوط والإنترنت الموثوقة (التاجر الأول) -->
         <div class="merchant-box">
             <div class="merchant-header">📱 خدمات تشريج الخطوط والإنترنت الموثوقة</div>
-            <div class="merchant-body">
-                دليلك الآمن والكامل لتشريج خطوط <span class="color-alfa">Alfa</span> وتاتش <span class="color-mtc">MTC</span> وتجديد اشتراكات بطاقات إنترنت <span class="color-ushare">Ushare</span> برواقة تامة وبأعلى مصداقية في لبنان. تواصلوا مباشرة مع الموزع المستقل المعتمد لقفل طلباتكم بثقة وسرية:
-            </div>
-            <!-- زر منحني فخم ذكي ومحمي يحول الزائر لشات الواتساب مع التاجر دغري بضغطة زر واحدة -->
-            <button class="merchant-action-btn" onclick="connectMerchant('alpha')">
-                💬 اطلب تشريج خطك الآن (واتساب)
-            </button>
+            <div class="merchant-body">دليلك الآمن والكامل لتشريج خطوط <span class="color-alfa">Alfa</span> وتاتش <span class="color-mtc">MTC</span> وتجديد اشتراكات بطاقات إنترنت <span class="color-ushare">Ushare</span> برواقة تامة وبأعلى مصداقية في لبنان. تواصلوا مباشرة مع الموزع المستقل المعتمد لقفل طلباتكم بثقة وسرية:</div>
+            <button class="merchant-action-btn" onclick="connectMerchant('alpha')">💬 اطلب تشريج خطك الآن (واتساب)</button>
         </div>
-
-        <!-- 🛒 2. صندوق خدمات شحن PUBG ومشتريات SHEIN (التاجر الثاني) -->
         <div class="merchant-box">
             <div class="merchant-header">🛒 خدمات شحن PUBG ومشتريات SHEIN</div>
-            <div class="merchant-body">
-                اشحني حسابك وألعابك بثقة تامة! محطتك المتكاملة لطلب وشحن مشتريات وطلبيات ومحفظة <span class="color-ushare">SHEIN</span> بالإضافة لتأمين شدات لعبة ببجي <span class="color-alfa">PUBG</span> وجيمنج بأعلى درجات المصداقية وحماية كاملة لحساباتكم وبأسرع خدمة كاش. والقبض متوفر بالكامل من خلال <span class="color-ushare">Whish</span>:
-            </div>
-            
-            <div class="pubg-banner">
-                <span>PUBG Gaming</span>
-                <span>🎮</span>
-            </div>
-
-            <!-- زر منحني فخم ذكي ومحمي يحول الزائر لشات الواتساب مع تاجر الجيمنج وشي إن دغري -->
-            <button class="merchant-action-btn" onclick="connectMerchant('gaming')">
-                💬 اطلب شحن الشدات والطلبيات (واتساب)
-            </button>
+            <div class="merchant-body">اشحني حسابك وألعابك بثقة تامة! محطتك المتكاملة لطلب وشحن مشتريات وطلبيات ومحفظة <span class="color-ushare">SHEIN</span> بالإضافة لتأمين شدات لعبة ببجي <span class="color-alfa">PUBG</span> وجيمنج بأعلى درجات المصداقية وحماية كاملة لحساباتكم وبأسرع خدمة كاش. والقبض متوفر بالكامل من خلال <span class="color-ushare">Whish</span>:</div>
+            <div class="pubg-banner"><span>PUBG Gaming</span><span>🎮</span></div>
+            <button class="merchant-action-btn" onclick="connectMerchant('gaming')">💬 اطلب شحن الشدات والطلبيات (واتساب)</button>
         </div>
-
-        <!-- 👑 3. نهاية الصفحة المعتمدة بشعار KR الفاخر والتيجان الذهبية البارزة بالأسفل تماماً -->
-        <div class="royal-footer-brand">
-            <div class="royal-brand-kr">👑 KR 👑</div>
-            <br>
-            <span id="royal-footer-text">👑 منصة العائلة الملكية المعتمدة عالمياً 👑</span>
-        </div>
-    </div> <!-- قفل الـ container الملكي -->
+        <div class="royal-footer-brand"><div class="royal-brand-kr">👑 KR 👑</div><br><span id="royal-footer-text">👑 منصة العائلة الملكية المعتمدة عالمياً 👑</span></div>
+    </div>
     <script>
         var currentLang = 'ar';
         document.addEventListener('contextmenu', e => e.preventDefault());
@@ -215,20 +160,16 @@
         function getMerchantNumber(type) {
             var arr = (type === 'alpha') ? _0xAlphaMtc : _0xGamingShein;
             var num = "";
-            for (var i = 0; i < arr.length; i++) {
-                num += String.fromCharCode(arr[i]);
-            }
-            return "961" + num; // مفتاح لبنان الدولي الملكي
+            for (var i = 0; i < arr.length; i++) { num += String.fromCharCode(arr[i]); }
+            return "961" + num;
         }
 
-        // 🚀 دالة الربط السحري بضغطة زر واحدة لتفتح صفحة شات الواتساب الخاصة بالتاجر دغري
         function connectMerchant(type) {
             var phone = getMerchantNumber(type);
             var text = (type === 'alpha') ? "مرحباً، أود طلب تشريج خط من صفحة عالم الحب KR" : "مرحباً، أود الاستفسار عن خدمات شحن ببجي / مشتريات شي إن من صفحة عالم الحب KR";
             window.open("https://whatsapp.com" + phone + "&text=" + encodeURIComponent(text), '_blank');
         }
 
-        // 👥 محرك تشغيل وتفعيل عداد الزوار الفعلي والحي فوق الـ 2311 بمل وقت بوقته
         function initVisitorCounter() {
             var baseCount = 2311;
             var savedCount = localStorage.getItem('worldOfLove_visitors');
@@ -243,7 +184,6 @@
             }
         }
 
-        // ⏰ محرك تشغيل الساعة الرقمية المتزامنة وحالة الطقس والحرارة والرطوبة
         function updateClock() {
             var now = new Date();
             var t = now.toLocaleTimeString('ar-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
@@ -260,14 +200,12 @@
             }
         }
 
-        // ✨ محرك تغذية وتجديد العبارة حياً وتلقائياً أمام المرسل بمل وقت بوقته
         function syncLivePreview(type) {
             var selectedText = document.getElementById("select-" + type).value;
             var previewBox = document.getElementById("preview-box-" + type);
             if (previewBox) { previewBox.innerText = selectedText; }
         }
 
-        // 🚀 محرك الواتساب الذكي للعبارات والإهداءات - بدون روابط بقلب المسج
         function fireRoyalWhatsapp(type) {
             var text = document.getElementById("select-" + type).value;
             var sender = document.getElementById("name-" + type).value.trim();
@@ -278,11 +216,9 @@
             if (type === 'box3') titleHeader = "إهداء غالي";
             if (type === 'box4') titleHeader = "رسالة عتب";
             var msg = `🎁 *إهداء خاص من: [ ${sender} ]* \n\n✨ *${titleHeader}:* \n" ${text} "\n\n━━━━━━━━━━━━━━━\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n👑 *الشعار المعتمد:* KR 👑`;
-            window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
-            setTimeout(function() { if (document.hasFocus()) { window.open("https://whatsapp.com" + encodeURIComponent(msg), '_blank'); } }, 500);
+            window.open("https://whatsapp.com" + encodeURIComponent(msg), '_blank');
         }
 
-        // 🌐 الترجمة الفورية السحابية المصلحة مية بالمية للعناوين والأزرار والصناديق التجارية
         function switchLang(l) {
             currentLang = l;
             document.getElementById("btn-ar").classList.toggle("active", l === 'ar');
