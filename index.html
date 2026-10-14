@@ -243,7 +243,7 @@
             <span id="royal-footer-text">👑 منصة العائلة الملكية المعتمدة عالمياً 👑</span>
         </div>
     </div> <!-- قفل الـ container الملكي -->
-     <script>
+      <script>
         var currentLang = 'ar';
         document.addEventListener('contextmenu', e => e.preventDefault());
         
@@ -251,7 +251,7 @@
         function connectMerchant(type) {
             var phone = (type === 'alpha') ? "96179320900" : "96171689517";
             var text = (type === 'alpha') ? "مرحباً، أود طلب تشريج خط من صفحة عالم الحب KR" : "مرحباً، أود الاستفسار عن خدمات شحن ببجي / مشتريات شي إن من صفحة عالم الحب KR";
-            window.location.href = "https://whatsapp.com" + phone + "&text=" + encodeURIComponent(text);
+            window.location.href = "https://wa.me" + phone + "?text=" + encodeURIComponent(text);
         }
 
         // 👥 محرك تشغيل وتفعيل عداد الزوار الحي فوق الـ 2311
@@ -311,7 +311,7 @@
                       `عالم الحب ❤️ World of Love \n` +
                       `👑 *الشعار المعتمد:* KR 👑`;
             
-            window.location.href = "https://whatsapp.com" + encodeURIComponent(msg);
+            window.location.href = "https://wa.me?text=" + encodeURIComponent(msg);
         }
 
         // 🌐 الترجمة الفورية السحابية المصلحة 100% للعناوين والأزرار والصناديق التجارية
@@ -330,7 +330,7 @@
             document.getElementById("lbl-visitors").innerText = isAr ? "عدد زوار صفحتنا الحين:" : "Our Platform Visitors Now:";
             document.getElementById("royal-footer-text").innerText = isAr ? "👑 منصة العائلة الملكية المعتمدة عالمياً 👑" : "👑 The Globally Approved Royal Platform 👑";
             document.getElementById("title-box-1").innerText = isAr ? "🌿 صندوق الأدعية والإهداءات التفاعلية" : "🌿 Interactive Prayers & Blessings Box";
-            document.getElementById("title-box-2").innerText = isAr ? "💝... صندوق عبارات الحب والاشتياق" : "💝 Love & Longing Expressions Box";
+            document.getElementById("title-box-2").innerText = isAr ? "💝 صندوق عبارات الحب والاشتياق" : "💝 Love & Longing Expressions Box";
             document.getElementById("title-box-3").innerText = isAr ? "👑 صندوق بر الوالدين والأم الغالية" : "👑 Honoring Parents & Mother's Gift Box";
             document.getElementById("title-box-4").innerText = isAr ? "🔮 صندوق عبارات العتب والحزن" : "🔮 Reproach & Sadness Expressions Box";
             for(var i=1; i<=4; i++) { document.getElementById("name-box" + i).placeholder = isAr ? "اكتب اسمك كمرسل الحين الحين..." : "Type your name here..."; }
