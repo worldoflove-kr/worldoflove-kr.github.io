@@ -14,54 +14,6 @@ html, body { background-color: #000000 !important; color: #ffffff !important; te
 .royal-brand-kr { color: #ffd700 !important; font-family: 'Playfair Display', serif; font-style: normal; font-size: 32px; font-weight: bold; display: inline-block; margin-top: 15px; margin-bottom: 5px; text-shadow: 0 0 15px #ffd700, 0 0 35px #ffd700; animation: krStraightPulse 1.6s infinite alternate ease-in-out; }
 @keyframes goldExplosiveFlashGlow { 0% { text-shadow: 0 0 6px #ffd700, 0 0 12px #ffd700; transform: scale(0.97); filter: brightness(1); } 50% { text-shadow: 0 0 20px #ffd700, 0 0 35px #ffd700, 0 0 50px #ffea00; filter: brightness(1.3); } 100% { text-shadow: 0 0 30px #ffd700, 0 0 55px #ffea00, 0 0 80px #ffffff; transform: scale(1.03); filter: brightness(1.5); } }
 @keyframes krStraightPulse { 0% { transform: scale(0.95); text-shadow: 0 0 10px #ffd700; } 100% { transform: scale(1.05); text-shadow: 0 0 40px #ffea00; } }
-.ticker-bar { background: rgba(5,7,5,0.95) !important; border: 1px solid #161616; padding: 8px; border-radius: 8px; margin-top: 5px; margin-bottom: 12px; overflow: hidden; white-space: nowrap; box-shadow: 0 4px 15px rgba(0,0,0,0.9); width: 100%; display: block !important; }
-.ticker-move { display: inline-block; white-space: nowrap; padding-left: 100%; animation: royalMarqueeAnimation 14s linear infinite; }
-@keyframes royalMarqueeAnimation { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
-.ticker-item { background: #0c0f0c !important; padding: 5px 10px; border-radius: 6px; border: 1px solid #222; text-decoration: none; color: #ffd700 !important; font-weight: bold; font-size: 11px; margin-right: 12px; display: inline-block !important; transition: 0.3s; }
-.ticker-item:hover { background: #161a16 !important; border-color: #ffd700; box-shadow: 0 0 8px rgba(255,215,0,0.3); }
-.lang-zone { margin-bottom: 12px; display: flex; justify-content: center; gap: 12px; }
-.lang-btn { background: #0a0a0a !important; border: 1px solid #ffd700; color: #ffd700 !important; padding: 5px 15px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 12px; transition: 0.3s; }
-.lang-btn.active { background: linear-gradient(45deg, #ffd700, #b8860b) !important; color: #000000 !important; border: none; box-shadow: 0 0 12px rgba(255,215,0,0.5); }
-.clock-box { background: #020202 !important; border: 1px solid #161616; padding: 12px; border-radius: 8px; font-size: 12px; line-height: 1.6; color: #ffffff !important; margin-bottom: 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-.preview-box { background: #020202 !important; border: 1px solid #161616; padding: 10px; border-radius: 8px; font-size: 13px; line-height: 1.5; color: #ffffff !important; margin-top: 8px; margin-bottom: 8px; text-align: center; min-height: 40px; word-wrap: break-word; border-style: dashed; }
-.visitor-box { background: #020202 !important; border: 1px solid #161616; padding: 8px; border-radius: 25px; font-size: 12px; color: #ffffff !important; display: inline-block; min-width: 170px; margin: 8px auto; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-.royal-footer-brand { font-size: 12px; font-weight: bold; color: #ffd700 !important; margin: 25px 0 10px 0; text-shadow: 0 0 15px rgba(255,215,0,0.6); }
-.royal-panda-panel { background: rgba(5,5,5,0.9) !important; border: 1px dashed #ffd700 !important; border-radius: 16px; padding: 20px; margin: 15px 0 20px 0; text-align: center; box-shadow: 0 0 30px rgba(255,215,0,0.25); }
-.panda-img-row { width: 140px; height: 140px; margin: 0 auto 15px auto; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 3px solid #ffd700; background: #050505; animation: pandaNeonGlowAndFloat 3.5s infinite ease-in-out; font-size: 85px; }
-@keyframes pandaNeonGlowAndFloat { 0%, 100% { transform: translateY(0) scale(0.97); box-shadow: 0 0 20px rgba(255,215,0,0.5); } 50% { transform: translateY(-8px) scale(1.03); box-shadow: 0 0 45px #ffd700; } }
-.panda-text-block { margin-top: 10px; margin-bottom: 12px; display: flex; flex-direction: column; gap: 4px; align-items: center; justify-content: center; }
-.txt-welcome-wrap { display: block; margin-bottom: 10px; animation: welcomeTextPulse 2s infinite alternate ease-in-out; }
-.txt-welcome-welcome { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; font-size: 38px; color: #ffffff !important; display: block; line-height: 1.1; text-shadow: 0 0 10px rgba(255,255,255,0.6), 0 0 25px rgba(255,255,255,0.4); }
-.txt-welcome-bibi { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 34px; color: #ff3333 !important; display: block; margin-top: 2px; line-height: 1.1; text-shadow: 0 0 15px rgba(255,51,51,0.8), 0 0 35px rgba(255,51,51,1); }
-@keyframes welcomeTextPulse { 0% { transform: scale(0.97); } 100% { transform: scale(1.03); } }
-.txt-desc { color: #b3b3b3 !important; font-size: 12px; line-height: 1.6; max-width: 90%; margin: 0 auto; text-align: center; }
-.royal-box { background: #020202 !important; border-radius: 12px; padding: 16px; margin-bottom: 20px; text-align: right; box-shadow: 0 5px 15px rgba(0,0,0,0.6); border-width: 2px; border-style: solid; }
-body.ltr .royal-box { text-align: left; }
-.box-green { border-color: #25d366 !important; }
-.box-pink { border-color: #e91e63 !important; }
-.box-blue { border-color: #00bcd4 !important; }
-.box-purple { border-color: #9c27b0 !important; }
-.royal-box-title { font-size: 15px; font-weight: bold; margin-bottom: 12px; padding-bottom: 5px; display: flex; align-items: center; justify-content: flex-start; gap: 8px; }
-.box-green .royal-box-title { color: #25d366 !important; }
-.box-pink .royal-box-title { color: #e91e63 !important; }
-.box-blue .royal-box-title { color: #00bcd4 !important; }
-.box-purple .royal-box-title { color: #9c27b0 !important; }
-.royal-input { width: 100%; background: #0a0a0a; border: 1px solid #222; color: #fff; padding: 10px; border-radius: 8px; font-size: 13px; margin-bottom: 10px; }
-.royal-input:focus { border-color: #ffd700; outline: none; }
-.royal-select { width: 100%; background: #0a0a0a; border: 1px solid #222; color: #fff; padding: 10px; border-radius: 8px; font-size: 13px; cursor: pointer; }
-.royal-select:focus { border-color: #ffd700; outline: none; }
-.royal-share-btn { background: linear-gradient(45deg, #0f5132, #198754) !important; color: #ffffff !important; border: 1px solid #146c43; width: 100%; padding: 12px; border-radius: 25px; font-weight: bold; font-size: 13px; cursor: pointer; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.3s; }
-.royal-share-btn:hover { filter: brightness(1.2); box-shadow: 0 0 15px rgba(25,135,84,0.4); }
-.merchant-box { background: rgba(8,8,8,0.95); border: 1px solid #222222; border-radius: 16px; padding: 20px; margin-bottom: 22px; text-align: right; box-shadow: 0 10px 30px rgba(0,0,0,0.8); position: relative; }
-body.ltr .merchant-box { text-align: left; }
-.merchant-header { font-size: 17px; font-weight: 700; color: #ffd700 !important; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; text-shadow: 0 0 10px rgba(255,215,0,0.4); border-bottom: 1px solid #1c1c1c; padding-bottom: 8px; }
-.merchant-body { font-size: 13px; color: #cccccc !important; line-height: 1.7; margin-bottom: 18px; }
-.color-alfa { color: #ff3333 !important; font-weight: bold; text-shadow: 0 0 8px rgba(255,51,51,0.5); }
-.color-mtc { color: #ff3333 !important; font-weight: bold; text-shadow: 0 0 8px rgba(255,51,51,0.5); }
-.color-ushare { color: #ffffff !important; font-weight: bold; text-shadow: 0 0 8px rgba(255,255,255,0.6); }
-.merchant-action-btn { background: transparent; border: 2px solid #ffd700 !important; color: #ffd700 !important; width: 100%; padding: 14px; border-radius: 30px; font-weight: bold; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.4s ease-in-out; text-shadow: 0 0 5px rgba(255,215,0,0.3); }
-.merchant-action-btn:hover { background: linear-gradient(45deg, #ffd700, #b8860b) !important; color: #000000 !important; text-shadow: none; box-shadow: 0 0 20px rgba(255,215,0,0.6); transform: translateY(-2px); }
-.pubg-banner { width: 100%; background: #111111; border: 1px dashed #ffd700; padding: 10px; border-radius: 8px; font-size: 13px; font-weight: bold; color: #ffd700; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
 </style>
 </head>
 <body>
@@ -142,7 +94,7 @@ body.ltr .merchant-box { text-align: left; }
 </div>
 <div class="merchant-box">
 <div class="merchant-header">📱 خدمات تشريج الخطوط والإنترنت الموثوقة</div>
-<div class="merchant-body">دليلك الآمن والكامل لتشريج خطوط <span class="color-alfa">Alfa</span> وتاتش <span class="color-mtc">MTC</span> وتجديد اشتراكات بطاقات إنترنت <span class="color-ushare">Ushare</span> برواقة تامة وبأعلى مصداقية في لبنان. تواصلوا مباشرة مع الموزع المستقل المعتمد لقفل طلباتكم بثقة وسرية:</div>
+<div class="merchant-body">دليلك الآمن والكامل لتشريج خطوط <span class="color-alfa">Alfa</span> وتاتش <span class="color-mtc">MTC</span> وتجديد اشتраكات بطاقات إنترنت <span class="color-ushare">Ushare</span> برواقة تامة وبأعلى مصداقية في لبنان. تواصلوا مباشرة مع الموزع المستقل المعتمد لقفل طلباتكم بثقة وسرية:</div>
 <button class="merchant-action-btn" onclick="connectMerchant('alpha')">💬 اطلب تشريج خطك الآن (واتساب)</button>
 </div>
 <div class="merchant-box">
