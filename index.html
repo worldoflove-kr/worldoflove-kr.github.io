@@ -243,25 +243,15 @@
             <span id="royal-footer-text">👑 منصة العائلة الملكية المعتمدة عالمياً 👑</span>
         </div>
     </div> <!-- قفل الـ container الملكي -->
-     <script>
+      <script>
         var currentLang = 'ar';
         document.addEventListener('contextmenu', e => e.preventDefault());
         
-        // 🔐 دالة تجميع الأرقام برمجياً بشكل آمن لتخطي حظر السيستم وحمايتها
-        function getCleanNumber(type) {
-            var p1 = "961";
-            var p2 = (type === 'alpha') ? "79" : "71";
-            var p3 = (type === 'alpha') ? "32" : "68";
-            var p4 = (type === 'alpha') ? "09" : "95";
-            var p5 = (type === 'alpha') ? "00" : "17";
-            return p1 + p2 + p3 + p4 + p5;
-        }
-
-        // 🚀 دالة الربط المباشر الفوري بقلب تطبيق الواتساب من دون حظر المتصفحات
+        // 🚀 دالة التشريج والشحن الفورية - بتفتح تطبيق الواتساب دغري برابط wa.me المضمن بدون حظر
         function connectMerchant(type) {
-            var phone = getCleanNumber(type);
+            var phone = (type === 'alpha') ? "96179320900" : "96171689517";
             var text = (type === 'alpha') ? "مرحباً، أود طلب تشريج خط من صفحة عالم الحب KR" : "مرحباً، أود الاستفسار عن خدمات شحن ببجي / مشتريات شي إن من صفحة عالم الحب KR";
-            window.location.href = "https://whatsapp.com" + phone + "&text=" + encodeURIComponent(text);
+            window.location.href = "https://wa.me" + phone + "?text=" + encodeURIComponent(text);
         }
 
         // 👥 محرك تشغيل وتفعيل عداد الزوار الحي فوق الـ 2311
@@ -302,7 +292,7 @@
             if (previewBox) { previewBox.innerText = selectedText; }
         }
 
-        // 🚀 محرك مشاركة الإهداءات والعبارات - فتح فوري داخل الواتساب
+        // 🚀 دالة مشاركة الإهداءات والعبارات الموحدة - بتفتح التطبيق فوراً وبدون أي حظر
         function fireRoyalWhatsapp(type) {
             var text = document.getElementById("select-" + type).value;
             var sender = document.getElementById("name-" + type).value.trim();
@@ -313,7 +303,7 @@
             if (type === 'box3') titleHeader = "إهداء غالي";
             if (type === 'box4') titleHeader = "رسالة عتب";
             var msg = `🎁 *إهداء خاص من: [ ${sender} ]* \n\n✨ *${titleHeader}:* \n" ${text} "\n\n━━━━━━━━━━━━━━━\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n👑 *الشعار المعتمد:* KR 👑`;
-            window.location.href = "https://whatsapp.com" + encodeURIComponent(msg);
+            window.location.href = "https://wa.me?text=" + encodeURIComponent(msg);
         }
 
         // 🌐 الترجمة الفورية السحابية المصلحة 100% للعناوين والأزرار والصناديق التجارية
