@@ -247,11 +247,11 @@
         var currentLang = 'ar';
         document.addEventListener('contextmenu', e => e.preventDefault());
         
-        // 🚀 دالة الربط المباشر والآمن بضغطة زر واحدة لتفتح شات الواتساب مع التجار دغري
+        // 🚀 دالة الربط المباشر الفوري بقلب تطبيق الواتساب من دون حظر المتصفحات
         function connectMerchant(type) {
             var phone = (type === 'alpha') ? "96179320900" : "96171689517";
             var text = (type === 'alpha') ? "مرحباً، أود طلب تشريج خط من صفحة عالم الحب KR" : "مرحباً، أود الاستفسار عن خدمات شحن ببجي / مشتريات شي إن من صفحة عالم الحب KR";
-            window.open("https://whatsapp.com" + phone + "&text=" + encodeURIComponent(text), '_blank');
+            window.location.href = "https://whatsapp.com" + phone + "&text=" + encodeURIComponent(text);
         }
 
         // 👥 محرك تشغيل وتفعيل عداد الزوار الحي فوق الـ 2311
@@ -292,7 +292,7 @@
             if (previewBox) { previewBox.innerText = selectedText; }
         }
 
-        // 🚀 محرك الواتساب الذكي للعبارات والإهداءات - بدون روابط بقلب المسج
+        // 🚀 محرك مشاركة الإهداءات والعبارات - فتح فوري داخل الواتساب
         function fireRoyalWhatsapp(type) {
             var text = document.getElementById("select-" + type).value;
             var sender = document.getElementById("name-" + type).value.trim();
@@ -303,10 +303,10 @@
             if (type === 'box3') titleHeader = "إهداء غالي";
             if (type === 'box4') titleHeader = "رسالة عتب";
             var msg = `🎁 *إهداء خاص من: [ ${sender} ]* \n\n✨ *${titleHeader}:* \n" ${text} "\n\n━━━━━━━━━━━━━━━\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n👑 *الشعار المعتمد:* KR 👑`;
-            window.open("https://whatsapp.com" + encodeURIComponent(msg), '_blank');
+            window.location.href = "https://whatsapp.com" + encodeURIComponent(msg);
         }
 
-        // 🌐 الترجمة الفورية السحابية المصلحة مية بالمية للعناوين والأزرار والصناديق التجارية
+        // 🌐 الترجمة الفورية السحابية المصلحة 100% للعناوين والأزرار والصناديق التجارية
         function switchLang(l) {
             currentLang = l;
             document.getElementById("btn-ar").classList.toggle("active", l === 'ar');
