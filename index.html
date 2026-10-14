@@ -230,7 +230,6 @@ function initVisitorCounter() {
         document.getElementById("live-visitor-counter").innerText = c.toLocaleString();
     }
 }
-
 function updateClock() {
     var now = new Date();
     var t = now.toLocaleTimeString('ar-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
@@ -253,7 +252,6 @@ function syncLivePreview(t) {
     if (pBox) { pBox.innerText = sText; }
 }
 
-// 👑 دالة مشاركة الإهداءات العميقة - تم حقن الرابط بشكل خام وصريح بالكامل لحل مشكلة القص نهائياً
 function fireRoyalWhatsapp(t) {
     var txt = document.getElementById("select-" + t).value;
     var s = document.getElementById("name-" + t).value.trim();
@@ -264,12 +262,10 @@ function fireRoyalWhatsapp(t) {
     if (t === 'box3') h = "إهداء غالي";
     if (t === 'box4') h = "رسالة عتب";
     
-    // 🌐 كتابة نص المسج والرابط كاملاً بشكل خام ومباشر مية بالمية لكسر عناد تطبيق الواتساب
-    var msg = `🎁 *إهداء خاص من: [ ${s} ]* \n\n✨ *${h}:* \n" ${txt} "\n\n━━━━━━━━━━━━━━━\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n👑 *الشعار المعتمد:* KR 👑\n🔗 *رابط المنصة:* https://worldoflove-kr.github.io/`;
+    var msg = `🎁 *إهداء خاص من: [ ${s} ]* \n\n✨ *${h}:* \n" ${txt} "\n\n━━━━━━━━━━━━━━━\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n👑 *الشعار المعتمد:* KR 👑\n🔗 *رابط المنصة:* https://github.io`;
     
     window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
 }
-
 function switchLang(l) {
     currentLang = l;
     document.getElementById("btn-ar").classList.toggle("active", l === 'ar');
@@ -293,7 +289,6 @@ function switchLang(l) {
     for (var i = 0; i < sBtns.length; i++) { sBtns[i].innerText = isAr ? "🟢 مشاركة الإهداء على الواتساب" : "🟢 Share Blessing via WhatsApp"; }
     updateClock();
 }
-
 initVisitorCounter();
 updateClock();
 setInterval(updateClock, 1000);
