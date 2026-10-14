@@ -66,87 +66,93 @@ body.ltr .merchant-box { text-align: left; }
 </head>
 <body>
 <div class="container">
-    <div class="ticker-bar">
-        <div class="ticker-move">
-            <a href="https://goldprice.org" target="_blank" class="ticker-item"><span id="tick-gold">أوقية الذهب العالمية:</span> $2,624.50 <span style="color:#ff3333;">▼ نازل</span></a>
-            <a href="https://marketwatch.com" target="_blank" class="ticker-item"><span id="tick-index">مؤشر الدولار عالمياً:</span> 103.85</a>
-            <a href="https://lirarate.org" target="_blank" class="ticker-item"><span id="tick-lbp">فريش دولار في لبنان:</span> 89,500 LBP</a>
-        </div>
-    </div>
-    <div class="lang-zone">
-        <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية 🇱🇧</button>
-        <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English 🇬🇧</button>
-    </div>
-    <div class="clock-box" id="live-clock">جاري مزامنة التوقيت الملكي وحالة الطقس...</div>
-    <h1 class="main-title-ar" id="main-title-ar-txt">عالم الحب</h1>
-    <h2 class="main-title-en" id="main-title-en-txt">World of Love</h2>
-    <div>
-        <div class="visitor-box">
-            👥 <span id="lbl-visitors">عدد زوار صفحتنا الحين:</span> <strong id="live-visitor-counter">2,311</strong>
-        </div>
-    </div>
-    <div class="royal-panda-panel">
-        <div class="panda-img-row">🐼</div>
-        <div class="panda-text-block">
-            <div class="txt-welcome-wrap">
-                <span class="txt-welcome-welcome">welcome</span>
-                <span class="txt-welcome-bibi">BiBi</span>
-            </div>
-            <div class="txt-desc" id="lbl-desc">"هنا، حيث تلمع النجوم في سمائنا السوداء الفخمة ✨، نلتقي لنصنع من عبارات الحب والأدعية التفاعلية نبضاً أبدياً لا ينتهي.. أهلاً بكم في عهد الأمان والمصداقية الكبرى [ عالم الحب KR ]." 🌌💞</div>
-        </div>
-    </div>
-    <div class="royal-box box-green">
-        <div class="royal-box-title" id="title-box-1">🌿 صندوق الأدعية والإهداءات التفاعلية</div>
-        <select class="royal-select" id="select-box1" onchange="syncLivePreview('box1')">
-            <option value="اللهم صب علينا من الرزق والبركة ما يشرح الصدور، وافتح لنا أبواب فضلك الواسعة يا رزاق يا كريم!">🤲 دعاء الرزق والبركة الواسعة</option>
-            <option value="الله يحميك ويحفظك لقلبي ويجعل أيامك كلها سعادة وراحة بال وينور دربك ويحميك من كل شر.">✨ دعاء الحفظ والتحصين الملكي</option>
-            <option value="اللهم ارزقنا طمأنينة النفس، وراحة البال، والرضا بما قسمته لنا، واجعل دربنا مكللاً بالتوفيق والنجاح الحليف.">🌸 دعاء راحة البال والتوفيق</option>
-            <option value="ربي افتح لنا فتحاً مبيناً، ويسر لنا كل عسير، واجعل قلوبنا عامرة بالإيمان والسكينة في كل وقت وحين.">💎 دعاء تيسير الأمور والفتح</option>
-            <option value="اللهم احفظ لي عائلتي ومن أحب، وابعد عنهم كل سوء وأذى، واجمعنا دائماً على الخير والود والمسرات.">🤲 الحفظ لمن تحب والجمع على الخير</option>
-        </select>
-        <div class="preview-box" id="preview-box-box1">اللهم صب علينا من الرزق والبركة ما يشرح الصدور، وافتح لنا أبواب فضلك الواسعة يا رزاق يا كريم!</div>
-        <input type="text" class="royal-input" id="name-box1" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box1')">
-        <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box1')">🟢 مشاركة الإهداء على الواتساب</button>
-    </div>
-    <div class="royal-box box-pink">
-        <div class="royal-box-title" id="title-box-2">💝 صندوق عبارات الحب والاشتياق</div>
-        <select class="royal-select" id="select-box2" onchange="syncLivePreview('box2')">
-            <option value="لو كان الشوق يوزن بالأطنان، لكان شوقي إليك قد تخطى حدود الأرض والكون بأكمله كالألماسة.">🔥 عبارة الاشتياق العارم الفاخرة</option>
-            <option value="أنت عالمي بأكمله، ونبض قلبي الذي لا أعيش بدونه، حفظك الله لي يا كل دنيتي وروحي.">💞 عبارة الغرام والنبض الأبدي</option>
-            <option value="في سماء قلبي تظل أنت النجم الأوحد والأكثر لمعاناً، حبك عهد محفور في الوجدان ولا يمحوه الزمان.">✨ عبارة النجم الأوحد والعهد الأبدي</option>
-            <option value="كل دقيقة تمر بدونك تبدو وكأنها دهراً كاملاً، اشتقت لملامحك، لضحكتك، ولكل تفصيلة تجمعني بك يا عمري.">⏳ دهر الشوق والاشتياق المجنون</option>
-            <option value="وجودك في حياتي هو الأمان الذي أبحث عنه دائماً، دمت لي سنداً وحبيباً ورفيقاً لروحي ونبضاً لقلبي.">🔒 عبارة الأمان ورفيق الروح</option>
-        </select>
-        <div class="preview-box" id="preview-box-box2">لو كان الشوق يوزن بالأطنان، لكان شوقي إليك قد تخطى حدود الأرض والكون بأكمله كالألماسة.</div>
-        <input type="text" class="royal-input" id="name-box2" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box2')">
-        <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box2')">🟢 مشاركة الإهداء على الواتساب</button>
-    </div>
-    <div class="royal-box box-blue">
-        <div class="royal-box-title" id="title-box-3">👑 صندوق بر الوالدين والأم الغالية</div>
-        <select class="royal-select" id="select-box3" onchange="syncLivePreview('box3')">
-            <option value="أمي يا قطعة من الجنة على الأرض، دمتِ لي نبضاً، وأماناً، ونوراً يستضاء به في ظلمات الحياة.">🌹 إهداء ملكي للأم الغالية الحنونة</option>
-            <option value="ربي اغفر لي ولوالدي وارحمهما كما ربياني صغيراً واحفظهما من كل سوء وأطل في عمرهما.">✨ دعاء البر والوفاء للوالدين</option>
-            <option value="أمي الغالية، لو جمعت كلمات الشكر من الأرض والسماء فلن توفي حقكِ يا نبع الحنان والبركة والرضا.">❤️ نبع الحنان والبركة الدائمة</option>
-            <option value="اللهم أطل في عمر والديّ بالصحة والعافية، واجعلني باراً بهما، وارزقهما سعادة الدارين يا رب العالمين.">🤲 دعاء طول العمر بالصحة والعافية</option>
-            <option value="أبي الغالي، دمت تاجاً فوق رأسي، وسنداً أستند عليه في كل خطوة، ربي يحفظك لي ويمد في عمرك.">👴 إهداء وتكريم للأب الغالي الحبيب</option>
-        </select>
-        <div class="preview-box" id="preview-box-box3">أمي يا قطعة من الجنة على الأرض، دمتِ لي نبضاً، وأماناً، ونوراً يستضاء به في ظلمات الحياة.</div>
-        <input type="text" class="royal-input" id="name-box3" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box3')">
-        <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box3')">🟢 مشاركة الإهداء على الواتساب</button>
-    </div>
-    <div class="royal-box box-purple">
-        <div class="royal-box-title" id="title-box-4">🔮 صندوق عبارات العتب والحزن</div>
-        <select class="royal-select" id="select-box4" onchange="syncLivePreview('box4')">
-            <option value="عاتبتك لأنك كنت تعني لي الكثير، ولكن صمتك المستمر علمني أن بعض العتب يفقد قيمته مع الوقت.">😔 رسالة عتب وقورة شديدة الأثر</option>
-            <option value="لم أكن أتوقع أن يطول صمتك وجفاؤك، فالقلب الصادق لم يعد يتحمل هذا البعد الطويل الحزين.">💔 رسالة لوعة الجفاء والصمت</option>
-            <option value="العتب يكون دائماً على قدر المحبة، ولكن عندما يتكرر التجاهل، يصبح الصمت هو الحل الأرقى والأفخم للقلب.">🕯️ العتب على قدر المحبة والكرامة</option>
-            <option value="لم يتعبني البعد، بقدر ما أتعبني أنني وثقت بمكانة لم تكن لي يوماً، عتب الخذلان من أقرب القلوب.">🍂 رسالة لوعة الخذلان والبعد</option>
-            <option value="كنت أظن أن غيابي سيصنع فرقاً لديك، ولكنني اكتشفت بمرور الأيام أنني كنت وهمماً جميلاً في حياتك فقط.">🥀 عبارة أثر الغياب والنسيان الحزين</option>
-        </select>
-        <div class="preview-box" id="preview-box-box4">عاتبتك لأنك كنت تعني لي الكثير، ولكن صمتك المستمر علمني أن بعض العتب يفقد قيمته مع الوقت.</div>
-        <input type="text" class="royal-input" id="name-box4" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box4')">
-        <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box4')">🟢 مشاركة الإهداء على الواتساب</button>
-    </div>
+<div class="ticker-bar">
+<div class="ticker-move">
+<a href="https://goldprice.org" target="_blank" class="ticker-item"><span id="tick-gold">أوقية الذهب العالمية:</span> $2,624.50 <span style="color:#ff3333;">▼ نازل</span></a>
+<a href="https://marketwatch.com" target="_blank" class="ticker-item"><span id="tick-index">مؤشر الدولار عالمياً:</span> 103.85</a>
+<a href="https://lirarate.org" target="_blank" class="ticker-item"><span id="tick-lbp">فريش دولار في لبنان:</span> 89,500 LBP</a>
+</div>
+</div>
+<div class="lang-zone">
+<button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية 🇱🇧</button>
+<button class="lang-btn" id="btn-en" onclick="switchLang('en')">English 🇬🇧</button>
+</div>
+<div class="clock-box" id="live-clock">جاري مزامنة التوقيت الملكي وحالة الطقس...</div>
+<h1 class="main-title-ar" id="main-title-ar-txt">عالم الحب</h1>
+<h2 class="main-title-en" id="main-title-en-txt">World of Love</h2>
+<div><div class="visitor-box">👥 <span id="lbl-visitors">عدد زوار صفحتنا الحين:</span> <strong id="live-visitor-counter">2,311</strong></div></div>
+<div class="royal-panda-panel">
+<div class="panda-img-row">🐼</div>
+<div class="panda-text-block">
+<div class="txt-welcome-wrap"><span class="txt-welcome-welcome">welcome</span><span class="txt-welcome-bibi">BiBi</span></div>
+<div class="txt-desc" id="lbl-desc">"هنا، حيث تلمع النجوم في سمائنا السوداء الفخمة ✨، نلتقي لنصنع من عبارات الحب والأدعية التفاعلية نبضاً أبدياً لا ينتهي.. أهلاً بكم في عهد الأمان والمصداقية الكبرى [ عالم الحب KR ]." 🌌💞</div>
+</div>
+</div>
+<div class="royal-box box-green">
+<div class="royal-box-title" id="title-box-1">🌿 صندوق الأدعية والإهداءات التفاعلية</div>
+<select class="royal-select" id="select-box1" onchange="syncLivePreview('box1')">
+<option value="اللهم صب علينا من الرزق والبركة ما يشرح الصدور، وافتح لنا أبواب فضلك الواسعة يا رزاق يا كريم!">🤲 دعاء الرزق والبركة الواسعة</option>
+<option value="الله يحميك ويحفظك لقلبي ويجعل أيامك كلها سعادة وراحة بال وينور دربك ويحميك من كل شر.">✨ دعاء الحفظ والتحصين الملكي</option>
+<option value="اللهم ارزقنا طمأنينة النفس، وراحة البال، والرضا بما قسمته لنا، واجعل دربنا مكللاً بالتوفيق والنجاح الحليف.">🌸 دعاء راحة البال والتوفيق</option>
+<option value="ربي افتح لنا فتحاً مبيناً، ويسر لنا كل عسير، واجعل قلوبنا عامرة بالإيمان والسكينة في كل وقت وحين.">💎 دعاء تيسير الأمور والفتح</option>
+<option value="اللهم احفظ لي عائلتي ومن أحب، وابعد عنهم كل سوء وأذى، واجمعنا دائماً على الخير والود والمسرات.">🤲 الحفظ لمن تحب والجمع على الخير</option>
+</select>
+<div class="preview-box" id="preview-box-box1">اللهم صب علينا من الرزق والبركة ما يشرح الصدور، وافتح لنا أبواب فضلك الواسعة يا رزاق يا كريم!</div>
+<input type="text" class="royal-input" id="name-box1" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box1')">
+<button class="royal-share-btn" onclick="fireRoyalWhatsapp('box1')">🟢 مشاركة الإهداء على الواتساب</button>
+</div>
+<div class="royal-box box-pink">
+<div class="royal-box-title" id="title-box-2">💝 صندوق عبارات الحب والاشتياق</div>
+<select class="royal-select" id="select-box2" onchange="syncLivePreview('box2')">
+<option value="لو كان الشوق يوزن بالأطنان، لكان شوقي إليك قد تخطى حدود الأرض والكون بأكمله كالألماسة.">🔥 عبارة الاشتياق العارم الفاخرة</option>
+<option value="أنت عالمي بأكمله، ونبض قلبي الذي لا أعيش بدونه، حفظك الله لي يا كل دنيتي وروحي.">💞 عبارة الغرام والنبض الأبدي</option>
+<option value="في سماء قلبي تظل أنت النجم الأوحد والأكثر لمعاناً، حبك عهد محفور في الوجدان ولا يمحوه الزمان.">✨ عبارة النجم الأوحد والعهد الأبدي</option>
+<option value="كل دقيقة تمر بدونك تبدو وكأنها دهراً كاملاً، اشتقت لملامحك، لضحكتك، ولكل تفصيلة تجمعني بك يا عمري.">⏳ دهر الشوق والاشتياق المجنون</option>
+<option value="وجودك في حياتي هو الأمان الذي أبحث عنه دائماً، دمت لي سنداً وحبيباً ورفيقاً لروحي ونبضاً لقلبي.">🔒 عبارة الأمان ورفيق الروح</option>
+</select>
+<div class="preview-box" id="preview-box-box2">لو كان الشوق يوزن بالأطنان، لكان شوقي إليك قد تخطى حدود الأرض والكون بأكمله كالألماسة.</div>
+<input type="text" class="royal-input" id="name-box2" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box2')">
+<button class="royal-share-btn" onclick="fireRoyalWhatsapp('box2')">🟢 مشاركة الإهداء على الواتساب</button>
+</div>
+<div class="royal-box box-blue">
+<div class="royal-box-title" id="title-box-3">👑 صندوق بر الوالدين والأم الغالية</div>
+<select class="royal-select" id="select-box3" onchange="syncLivePreview('box3')">
+<option value="أمي يا قطعة من الجنة على الأرض، دمتِ لي نبضاً، وأماناً، ونوراً يستضاء به in ظلمات الحياة.">🌹 إهداء ملكي للأم الغالية الحنونة</option>
+<option value="ربي اغفر لي ولوالدي وارحمهما كما ربياني صغيراً واحفظهما من كل سوء وأطل في عمرهما.">✨ دعاء البر والوفاء للوالدين</option>
+<option value="أمي الغالية، لو جمعت كلمات الشكر من الأرض والسماء فلن توفي حقكِ يا نبع الحنان والبركة والرضا.">❤️ نبع الحنان والبركة الدائمة</option>
+<option value="اللهم أطل في عمر والديّ بالصحة والعافية، واجعلني باراً بهما، وارزقهما سعادة الدارين يا رب العالمين.">🤲 دعاء طول العمر بالصحة والعافية</option>
+<option value="أبي الغالي، دمت تاجاً فوق رأسي، وسنداً أستند عليه في كل خطوة، ربي يحفظك لي ويمد في عمرك.">👴 إهداء وتكريم للأب الغالي الحبيب</option>
+</select>
+<div class="preview-box" id="preview-box-box3">أمي يا قطعة من الجنة على الأرض، دمتِ لي نبضاً، وأماناً، ونوراً يستضاء به في ظلمات الحياة.</div>
+<input type="text" class="royal-input" id="name-box3" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box3')">
+<button class="royal-share-btn" onclick="fireRoyalWhatsapp('box3')">🟢 مشاركة الإهداء على الواتساب</button>
+</div>
+<div class="royal-box box-purple">
+<div class="royal-box-title" id="title-box-4">🔮 صندوق عبارات العتب والحزن</div>
+<select class="royal-select" id="select-box4" onchange="syncLivePreview('box4')">
+<option value="عاتبتك لأنك كنت تعني لي الكثير، ولكن صمتك المستمر علمني أن بعض العتب يفقد قيمته مع الوقت.">😔 رسالة عتب وقورة شديدة الأثر</option>
+<option value="لم أكن أتوقع أن يطول صمتك وجفاؤك، فالقلب الصادق لم يعد يتحمل هذا البعد الطويل الحزين.">💔 رسالة لوعة الجفاء والصمت</option>
+<option value="العتب يكون دائماً على قدر المحبة، ولكن عندما يتكرر التجاهل، يصبح الصمت هو الحل الأرقى والأفخم للقلب.">🕯️ العتب على قدر المحبة والكرامة</option>
+<option value="لم يتعبني البعد، بقدر ما أتعبني أنني وثقت بمكانة لم تكن لي يوماً، عتب الخذلان من أقرب القلوب.">🍂 رسالة لوعة الخذلان والبعد</option>
+<option value="كنت أظن أن غيابي سيصنع فرقاً لديك، ولكنني اكتشفت بمرور الأيام أنني كنت وهماً جميلاً في حياتك فقط.">🥀 عبارة أثر الغياب والنسيان الحزين</option>
+</select>
+<div class="preview-box" id="preview-box-box4">عاتبتك لأنك كنت تعني لي الكثير، ولكن صمتك المستمر علمني أن بعض العتب يفقد قيمته مع الوقت.</div>
+<input type="text" class="royal-input" id="name-box4" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box4')">
+<button class="royal-share-btn" onclick="fireRoyalWhatsapp('box4')">🟢 مشاركة الإهداء على الواتساب</button>
+</div>
+<div class="merchant-box">
+<div class="merchant-header">📱 خدمات تشريج الخطوط والإنترنت الموثوقة</div>
+<div class="merchant-body">دليلك الآمن والكامل لتشريج خطوط <span class="color-alfa">Alfa</span> وتاتش <span class="color-mtc">MTC</span> وتجديد اشتراكات بطاقات إنترنت <span class="color-ushare">Ushare</span> برواقة تامة وبأعلى مصداقية في لبنان. تواصلوا مباشرة مع الموزع المستقل المعتمد لقفل طلباتكم بثقة وسرية:</div>
+<button class="merchant-action-btn" onclick="connectMerchant('alpha')">💬 اطلب تشريج خطك الآن (واتساب)</button>
+</div>
+<div class="merchant-box">
+<div class="merchant-header">🛒 خدمات شحن PUBG ومشتريات SHEIN</div>
+<div class="merchant-body">اشحني حسابك وألعابك بثقة تامة! محطتك المتكاملة لطلب وشحن مشتريات وطلبيات ومحفظة <span class="color-ushare">SHEIN</span> بالإضافة لتأمين شدات لعبة ببجي <span class="color-alfa">PUBG</span> وجيمنج بأعلى درجات المصداقية وحماية كاملة لحساباتكم وبأسرع خدمة كاش. والقبض متوفر بالكامل من خلال <span class="color-ushare">Whish</span>:</div>
+<div class="pubg-banner"><span>PUBG Gaming</span><span>🎮</span></div>
+<button class="merchant-action-btn" onclick="connectMerchant('gaming')">💬 اطلب شحن الشدات والطلبيات (واتساب)</button>
+</div>
+<div class="royal-footer-brand"><div class="royal-brand-kr">👑 KR 👑</div><br><span id="royal-footer-text">👑 منصة العائلة الملكية المعتمدة عالمياً 👑</span></div>
+</div>
 <script>
 var currentLang = 'ar';
 document.addEventListener('contextmenu', e => e.preventDefault());
