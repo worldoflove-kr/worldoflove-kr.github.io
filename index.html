@@ -207,38 +207,117 @@ var msg = `🎁 *إهداء خاص من: [ ${s} ]* \n\n✨ *${h}:* \n" ${txt} "\
 window.location.href = "https://wa.me?text=" + encodeURIComponent(msg);
 }
 function switchLang(l) {
-currentLang = l;
-document.getElementById("btn-ar").classList.toggle("active", l === 'ar');
-document.getElementById("btn-en").classList.toggle("active", l === 'en');
-var isAr = l === 'ar';
-document.body.style.direction = isAr ? "rtl" : "ltr";
-if(isAr) { document.body.classList.remove("ltr"); } else { document.body.classList.add("ltr"); }
-document.getElementById("tick-gold").innerText = isAr ? "أوقية الذهب العالمية:" : "Global Gold Ounce:";
-document.getElementById("tick-index").innerText = isAr ? "مؤشر الدولار عالمياً:" : "Global Dollar Index:";
-document.getElementById("tick-lbp").innerText = isAr ? "فريش دولار في لبنان:" : "Fresh Dollar in Lebanon:";
-document.getElementById("main-title-ar-txt").innerText = isAr ? "عالم الحب" : "World of Love";
-document.getElementById("main-title-en-txt").innerText = isAr ? "World of Love" : "عالم الحب";
-document.getElementById("lbl-visitors").innerText = isAr ? "عدد زوار صفحتنا الحين:" : "Our Platform Visitors Now:";
-document.getElementById("royal-footer-text").innerText = isAr ? "👑 منصة العائلة الملكية المعتمدة عالمياً 👑" : "👑 The Globally Approved Royal Platform 👑";
-document.getElementById("title-box-1").innerText = isAr ? "🌿 صندوق الأدعية والإهداءات التفاعلية" : "🌿 Interactive Prayers & Blessings Box";
-document.getElementById("title-box-2").innerText = isAr ? "💝 صندوق عبارات الحب والاشتياق" : "💝 Love & Longing Expressions Box";
-document.getElementById("title-box-3").innerText = isAr ? "👑 صندوق بر الوالدين والأم الغالية" : "👑 Honoring Parents & Mother's Gift Box";
-document.getElementById("title-box-4").innerText = isAr ? "🔮 صندوق عبارات العتب والحزن" : "🔮 Reproach & Sadness Expressions Box";
-for(var i=1; i<=4; i++) { document.getElementById("name-box" + i).placeholder = isAr ? "اكتب اسمك كمرسل الحين الحين..." : "Type your name here..."; }
-var sBtns = document.getElementsByClassName("royal-share-btn");
-for (var i = 0; i < sBtns.length; i++) { sBtns[i].innerText = isAr ? "🟢 مشاركة الإهداء على الواتساب" : "🟢 Share Blessing via WhatsApp"; }
-updateClock();
+<script>
+var currentLang = 'ar';
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// 🚀 دالة التشريج والشحن الفورية - تفتح تطبيق الواتساب الأخضر مباشرة وتتخطى حظر المتصفحات
+function connectMerchant(t) {
+    var p = (t === 'alpha') ? "96179320900" : "96171689517";
+    var txt = (t === 'alpha') ? "مرحباً، أود طلب تشريج خط من صفحة عالم الحب KR" : "مرحباً، أود الاستفسار عن خدمات شحن ببجي / مشتريات شي إن من صفحة عالم الحب KR";
+    window.location.href = "whatsapp://send?phone=" + p + "&text=" + encodeURIComponent(txt);
+    
+    // 🔗 رابط احتياطي فوري إذا لم يستجب نظام الهاتف دغري
+    setTimeout(function() {
+        if (document.hasFocus()) {
+            window.open("https://whatsapp.com" + p + "&text=" + encodeURIComponent(txt), '_blank');
+        }
+    }, 400);
 }
+
+function initVisitorCounter() {
+    var b = 2311;
+    var s = localStorage.getItem('worldOfLove_visitors');
+    if (!s) {
+        var n = b + 1;
+        localStorage.setItem('worldOfLove_visitors', n);
+        document.getElementById("live-visitor-counter").innerText = n.toLocaleString();
+    } else {
+        var c = parseInt(s) + Math.floor(Math.random() * 3) + 1;
+        localStorage.setItem('worldOfLove_visitors', c);
+        document.getElementById("live-visitor-counter").innerText = c.toLocaleString();
+    }
+}
+
+function updateClock() {
+    var now = new Date();
+    var t = now.toLocaleTimeString('ar-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+    var d = now.toLocaleDateString('ar-LB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    var cEl = document.getElementById("live-clock");
+    if (cEl) {
+        if (currentLang === 'ar') {
+            cEl.innerHTML = `📅 ${d} | ⏰ الساعة: ${t} <br> ☀️ الطقس في بيروت: 24°C صافي | 💧 نسبة الرطوبة: 62%`;
+        } else {
+            var dE = now.toLocaleDateString('en-LB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            var tE = now.toLocaleTimeString('en-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+            cEl.innerHTML = `📅 ${dE} | ⏰ Time: ${tE} <br> ☀️ Beirut Weather: 24°C Clear | 💧 Humidity: 62%`;
+        }
+    }
+}
+
+function syncLivePreview(t) {
+    var sText = document.getElementById("select-" + t).value;
+    var pBox = document.getElementById("preview-box-" + t);
+    if (pBox) { pBox.innerText = sText; }
+}
+
+// 🚀 دالة مشاركة الإهداءات العميقة - المشفرة بالكامل لمنع ظهور علامات الاستفهام وضمان لمعان الرموز
+function fireRoyalWhatsapp(t) {
+    var txt = document.getElementById("select-" + t).value;
+    var s = document.getElementById("name-" + t).value.trim();
+    if (!s) { s = (currentLang === 'ar') ? "مُرسِل مخلص" : "A Loyal Sender"; }
+    var h = "الإهداء";
+    if (t === 'box1') h = "الدعاء";
+    if (t === 'box2') h = "العبارة";
+    if (t === 'box3') h = "إهداء غالي";
+    if (t === 'box4') h = "رسالة عتب";
+    
+    var msg = `🎁 *إهداء خاص من: [ ${s} ]* \n\n✨ *${h}:* \n" ${txt} "\n\n━━━━━━━━━━━━━━━\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n👑 *الشعار المعتمد:* KR 👑`;
+    
+    window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
+    
+    // 🔗 رابط احتياطي فوري للنظام المنفصل لضمان الإرسال في كل الحالات
+    setTimeout(function() {
+        if (document.hasFocus()) {
+            window.open("https://whatsapp.com" + encodeURIComponent(msg), '_blank');
+        }
+    }, 400);
+}
+
+function switchLang(l) {
+    currentLang = l;
+    document.getElementById("btn-ar").classList.toggle("active", l === 'ar');
+    document.getElementById("btn-en").classList.toggle("active", l === 'en');
+    var isAr = l === 'ar';
+    document.body.style.direction = isAr ? "rtl" : "ltr";
+    if(isAr) { document.body.classList.remove("ltr"); } else { document.body.classList.add("ltr"); }
+    document.getElementById("tick-gold").innerText = isAr ? "أوقية الذهب العالمية:" : "Global Gold Ounce:";
+    document.getElementById("tick-index").innerText = isAr ? "مؤشر الدولار عالمياً:" : "Global Dollar Index:";
+    document.getElementById("tick-lbp").innerText = isAr ? "فريش دولار في لبنان:" : "Fresh Dollar in Lebanon:";
+    document.getElementById("main-title-ar-txt").innerText = isAr ? "عالم الحب" : "World of Love";
+    document.getElementById("main-title-en-txt").innerText = isAr ? "World of Love" : "عالم الحب";
+    document.getElementById("lbl-visitors").innerText = isAr ? "عدد زوار صفحتنا الحين:" : "Our Platform Visitors Now:";
+    document.getElementById("royal-footer-text").innerText = isAr ? "👑 منصة العائلة الملكية المعتمدة عالمياً 👑" : "👑 The Globally Approved Royal Platform 👑";
+    document.getElementById("title-box-1").innerText = isAr ? "🌿 صندوق الأدعية والإهداءات التفاعلية" : "🌿 Interactive Prayers & Blessings Box";
+    document.getElementById("title-box-2").innerText = isAr ? "💝 صندوق عبارات الحب والاشتياق" : "💝 Love & Longing Expressions Box";
+    document.getElementById("title-box-3").innerText = isAr ? "👑 صندوق بر الوالدين والأم الغالية" : "👑 Honoring Parents & Mother's Gift Box";
+    document.getElementById("title-box-4").innerText = isAr ? "🔮 صندوق عبارات العتب والحزن" : "🔮 Reproach & Sadness Expressions Box";
+    for(var i=1; i<=4; i++) { document.getElementById("name-box" + i).placeholder = isAr ? "اكتب اسمك كمرسل الحين الحين..." : "Type your name here..."; }
+    var sBtns = document.getElementsByClassName("royal-share-btn");
+    for (var i = 0; i < sBtns.length; i++) { sBtns[i].innerText = isAr ? "🟢 مشاركة الإهداء على الواتساب" : "🟢 Share Blessing via WhatsApp"; }
+    updateClock();
+}
+
 initVisitorCounter();
 updateClock();
 setInterval(updateClock, 1000);
 setInterval(function() {
-var s = localStorage.getItem('worldOfLove_visitors');
-if (s) {
-var c = parseInt(s) + Math.floor(Math.random() * 2);
-localStorage.setItem('worldOfLove_visitors', c);
-document.getElementById("live-visitor-counter").innerText = c.toLocaleString();
-}
+    var s = localStorage.getItem('worldOfLove_visitors');
+    if (s) {
+        var c = parseInt(s) + Math.floor(Math.random() * 2);
+        localStorage.setItem('worldOfLove_visitors', c);
+        document.getElementById("live-visitor-counter").innerText = c.toLocaleString();
+    }
 }, 15000);
 </script>
 </body>
