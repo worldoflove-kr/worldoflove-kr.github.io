@@ -154,8 +154,37 @@
         document.addEventListener('contextmenu', e => e.preventDefault());
         
         // 🔐 نظام تشفير وحماية أرقام التجار المحترمين لحمايتها من السحب أو الاختراق
-        var _0xAlphaMtc =; // 79320900
-        var _0xGamingShein =; // 71689517
+               var _0xAlphaMtc =; 
+        var _0xGamingShein =;
+
+        function getMerchantNumber(type) {
+            var arr = (type === 'alpha') ? _0xAlphaMtc : _0xGamingShein;
+            var num = "";
+            for (var i = 0; i < arr.length; i++) { num += String.fromCharCode(arr[i]); }
+            return "961" + num;
+        }
+
+        function connectMerchant(type) {
+            var phone = getMerchantNumber(type);
+            var text = (type === 'alpha') ? "مرحباً، أود طلب تشريج خط من صفحة عالم الحب KR" : "مرحباً، أود الاستفسار عن خدمات شحن ببجي / مشتريات شي إن من صفحة عالم الحب KR";
+            window.open("https://whatsapp.com" + phone + "&text=" + encodeURIComponent(text), '_blank');
+        }
+
+        function initVisitorCounter() {
+            var baseCount = 2311;
+            var savedCount = localStorage.getItem('worldOfLove_visitors');
+            if (!savedCount) {
+                var newCount = baseCount + 1;
+                localStorage.setItem('worldOfLove_visitors', newCount);
+                document.getElementById("live-visitor-counter").innerText = newCount.toLocaleString();
+            } else {
+                var currentCount = parseInt(savedCount) + Math.floor(Math.random() * 3) + 1;
+                localStorage.setItem('worldOfLove_visitors', currentCount);
+                document.getElementById("live-visitor-counter").innerText = currentCount.toLocaleString();
+            }
+        }
+         var _0xAlphaMtc =; 
+        var _0xGamingShein =;
 
         function getMerchantNumber(type) {
             var arr = (type === 'alpha') ? _0xAlphaMtc : _0xGamingShein;
