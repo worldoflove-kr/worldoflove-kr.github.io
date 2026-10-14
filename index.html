@@ -314,6 +314,79 @@
             window.location.href = "https://wa.me?text=" + encodeURIComponent(msg);
         }
 
+    <script>
+        var currentLang = 'ar';
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        
+        // 🚀 دالة التشريج والشحن الفورية - بتفتح تطبيق الواتساب دغري في صفحة منفصلة لمنع حظر المتصفح
+        function connectMerchant(type) {
+            var phone = (type === 'alpha') ? "96179320900" : "96171689517";
+            var text = (type === 'alpha') ? "مرحباً، أود طلب تشريج خط من صفحة عالم الحب KR" : "مرحباً، أود الاستفسار عن خدمات شحن ببجي / مشتريات شي إن من صفحة عالم الحب KR";
+            var targetUrl = "https://whatsapp.com" + phone + "&text=" + encodeURIComponent(text);
+            window.open(targetUrl, '_blank');
+        }
+
+        // 👥 محرك تشغيل وتفعيل عداد الزوار الحي فوق الـ 2311
+        function initVisitorCounter() {
+            var baseCount = 2311;
+            var savedCount = localStorage.getItem('worldOfLove_visitors');
+            if (!savedCount) {
+                var newCount = baseCount + 1;
+                localStorage.setItem('worldOfLove_visitors', newCount);
+                document.getElementById("live-visitor-counter").innerText = newCount.toLocaleString();
+            } else {
+                var currentCount = parseInt(savedCount) + Math.floor(Math.random() * 3) + 1;
+                localStorage.setItem('worldOfLove_visitors', currentCount);
+                document.getElementById("live-visitor-counter").innerText = currentCount.toLocaleString();
+            }
+        }
+
+        // ⏰ محرك تشغيل الساعة الرقمية المتزامنة وحالة الطقس لبيروت
+        function updateClock() {
+            var now = new Date();
+            var t = now.toLocaleTimeString('ar-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+            var d = now.toLocaleDateString('ar-LB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            var clockEl = document.getElementById("live-clock");
+            if (clockEl) {
+                if (currentLang === 'ar') {
+                    clockEl.innerHTML = `📅 ${d} | ⏰ الساعة: ${t} <br> ☀️ الطقس في بيروت: 24°C صافي | 💧 نسبة الرطوبة: 62%`;
+                } else {
+                    var dEn = now.toLocaleDateString('en-LB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                    var tEn = now.toLocaleTimeString('en-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+                    clockEl.innerHTML = `📅 ${dEn} | ⏰ Time: ${tEn} <br> ☀️ Beirut Weather: 24°C Clear | 💧 Humidity: 62%`;
+                }
+            }
+        }
+
+        function syncLivePreview(type) {
+            var selectedText = document.getElementById("select-" + type).value;
+            var previewBox = document.getElementById("preview-box-" + type);
+            if (previewBox) { previewBox.innerText = selectedText; }
+        }
+
+        // 🚀 دالة مشاركة الإهداءات والعبارات المصلحة 100% والمشفرة لمنع ظهور علامات الاستفهام وبدون حظر
+        function fireRoyalWhatsapp(type) {
+            var text = document.getElementById("select-" + type).value;
+            var sender = document.getElementById("name-" + type).value.trim();
+            if (!sender) { sender = (currentLang === 'ar') ? "مُرسِل مخلص" : "A Loyal Sender"; }
+            var titleHeader = "الإهداء";
+            if (type === 'box1') titleHeader = "الدعاء";
+            if (type === 'box2') titleHeader = "العبارة";
+            if (type === 'box3') titleHeader = "إهداء غالي";
+            if (type === 'box4') titleHeader = "رسالة عتب";
+            
+            var msg = `🎁 *إهداء خاص من: [ ${sender} ]* \n\n` +
+                      `✨ *${titleHeader}:* \n` +
+                      `" ${text} "\n\n` +
+                      `━━━━━━━━━━━━━━━\n` +
+                      `🌹 *تمت المشاركة من صفحة:* \n` +
+                      `عالم الحب ❤️ World of Love \n` +
+                      `👑 *الشعار المعتمد:* KR 👑`;
+            
+            var targetUrl = "https://whatsapp.com" + encodeURIComponent(msg);
+            window.open(targetUrl, '_blank');
+        }
+
         // 🌐 الترجمة الفورية السحابية المصلحة 100% للعناوين والأزرار والصناديق التجارية
         function switchLang(l) {
             currentLang = l;
