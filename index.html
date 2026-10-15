@@ -152,7 +152,24 @@ body.ltr .merchant-box { text-align: left; }
 <button class="merchant-action-btn" onclick="connectMerchant('gaming')">💬 اطلب شحن الشدات والطلبيات (واتساب)</button>
 </div>
 <div class="royal-footer-brand"><div class="royal-brand-kr">👑 KR 👑</div><br><span id="royal-footer-text">👑 منصة العائلة الملكية المعتمدة عالمياً 👑</span></div>
-</div>
+</div>    <div class="royal-box box-blue" style="border-color: #ffd700 !important;">
+        <div class="royal-box-title" id="title-box-5" style="color: #ffd700 !important;">🎉 صندوق الأعياد والمناسبات الشامل</div>
+        <select class="royal-select" id="select-box5" onchange="syncLivePreview('box5')">
+            <option value="رمضان كريم! أعاده الله عليكم بالخير والبركة والقبول، وجعلكم من عتقائه من النار.">🌙 رمضان: تهنئة البركة والقبول</option>
+            <option value="تقبل الله طاعتكم وعساكم من عواده! عيد فطر سعيد ومبارك مليء بالفرحة والمسرات.">✨ عيد الفطر: تهنئة الفرحة والسعادة</option>
+            <option value="عيد أضحى مبارك! لبى الله دعواتكم، وأدام بهجتكم، وكل عام وأنتم بمليون خير وعافية.">🐑 عيد الأضحى: تهنئة البهجة والخير</option>
+            <option value="عام جديد سعيد! عسى أن يحمل لكم تحقيق الأمنيات، وراحة البال، والنجاح والتوفيق الدائم.">🌟 رأس السنة: عام الأمنيات والتوفيق</option>
+            <option value="كل عام وأنت حب قلبي، ونبض روحي، والأمان الذي أستند عليه في كل لحظة من عمري.">❤️ عيد الحب: نبض الروح والغرام الأبدي</option>
+            <option value="أمي الغالية، كل عام وأنتِ جنة الأرض، ونور عيوني، وبركة حياتي الرائعة. حفظكِ الله لنا.">🌹 عيد الأم: جنة الأرض ونور العيون</option>
+            <option value="أبي الحبيب، دمت تاجاً فوق رأسي، وسنداً في حياتي، وكل عام وأنت بألف خير وعافية يا تاجي.">👑 عيد الأب: سند الحياة وتاج الرأس</option>
+            <option value="إلى صانع الأجيال ومنير العقول، كل عام وأنت قدوتنا وفخرنا، شكراً لعطائك الدائم يا معلمي.">📚 عيد المعلم: منير العقول وفخر الأجيال</option>
+            <option value="عيد ميلاد سعيد يا أغلى صديقة وأخت لروحي! أتمنى لكِ عاماً يبهج قلبكِ الأبيض النقي.">🎂 ميلاد صديقتي: أخت روحي وقلبها النقي</option>
+        </select>
+        <div class="preview-box" id="preview-box-box5" style="border-color: #ffd700;">رمضان كريم! أعاده الله عليكم بالخير والبركة والقبول، وجعلكم من عتقائه من النار.</div>
+        <input type="text" class="royal-input" id="name-box5" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box5')">
+        <button class="royal-share-btn" style="background: linear-gradient(45deg, #b8860b, #ffd700) !important; color: #000 !important; border: 1px solid #ffd700;" onclick="fireRoyalWhatsapp('box5')">🟢 مشاركة التهنئة الاحتفالية عبر واتساب</button>
+    </div>
+
 <script>
 var currentLang = 'ar';
 document.addEventListener('contextmenu', e => e.preventDefault());
@@ -224,6 +241,9 @@ document.getElementById("title-box-1").innerText = isAr ? "🌿 صندوق ال�
 document.getElementById("title-box-2").innerText = isAr ? "💝 صندوق عبارات الحب والاشتياق" : "💝 Love & Longing Expressions Box";
 document.getElementById("title-box-3").innerText = isAr ? "👑 صندوق بر الوالدين والأم الغالية" : "👑 Honoring Parents & Mother's Gift Box";
 document.getElementById("title-box-4").innerText = isAr ? "🔮 صندوق عبارات العتب والحزن" : "🔮 Reproach & Sadness Expressions Box";
+    document.getElementById("title-box-5").innerText = isAr ? "🎉 صندوق الأعياد والمناسبات الشامل" : "🎉 Comprehensive Holidays & Occasions Box";
+    document.getElementById("name-box5").placeholder = isAr ? "اكتب اسمك كمرسل الحين الحين..." : "Type your name here...";
+  
 for(var i=1; i<=4; i++) { document.getElementById("name-box" + i).placeholder = isAr ? "اكتب اسمك كمرسل الحين الحين..." : "Type your name here..."; }
 var sBtns = document.getElementsByClassName("royal-share-btn");
 for (var i = 0; i < sBtns.length; i++) { sBtns[i].innerText = isAr ? "🟢 مشاركة الإهداء على الواتساب" : "🟢 Share Blessing via WhatsApp"; }
