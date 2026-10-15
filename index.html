@@ -92,32 +92,31 @@
     <div class="space-3d-deep"></div>
     <div class="space-3d-stars1"></div>
     <div class="space-3d-stars2"></div>
-    <!-- 📊 شريط البورصة والذهب والدولار الذكي المتحرك في رأس الصفحة -->
-    <div class="ticker-bar">
+      <!-- 📊 1. شريط البورصة والذهب والدولار الذكي المتحرك المضيء -->
+    <div class="ticker-bar" style="box-shadow: 0 4px 25px rgba(255, 215, 0, 0.3) !important;">
         <div class="ticker-move">
-            <a href="https://goldprice.org" target="_blank" class="ticker-item"><span id="tick-gold">أوقية الذهب العالمية:</span> $2,624.50 <span style="color:#ff3333;">▼ نازل</span></a>
-            <a href="https://marketwatch.com" target="_blank" class="ticker-item"><span id="tick-index">مؤشر الدولار عالمياً:</span> 103.85</a>
-            <a href="https://lirarate.org" target="_blank" class="ticker-item"><span id="tick-lbp">فريش دولار في لبنان:</span> 89,500 LBP</a>
+            <a href="https://goldprice.org" target="_blank" class="ticker-item" style="box-shadow: 0 0 15px rgba(255,215,0,0.2) !important;"><span id="tick-gold">أوقية الذهب العالمية:</span> $2,624.50 <span style="color:#ff3333;">▼ نازل</span></a>
+            <a href="https://marketwatch.com" target="_blank" class="ticker-item" style="box-shadow: 0 0 15px rgba(255,215,0,0.2) !important;"><span id="tick-index">مؤشر الدولار عالمياً:</span> 103.85</a>
+            <a href="https://lirarate.org" target="_blank" class="ticker-item" style="box-shadow: 0 0 15px rgba(255,215,0,0.2) !important;"><span id="tick-lbp">فريش دولار في لبنان:</span> 89,500 LBP</a>
         </div>
     </div>
 
     <div class="royal-container">
-        <!-- 👑 واجهة عناوين المنصة الملكية بالذهب المضيء المشع والنبّاض (العربي والإنجليزي سوا) -->
-        <h1 class="main-title-ar" id="main-title-ar-txt">عالم الحب</h1>
-        <h2 class="main-title-en" id="main-title-en-txt">World of Love</h2>
-
-        <!-- 🌐 أزرار ترجمة الصفحة من العربي للانجليزي المصلحة -->
-        <div class="lang-zone">
-            <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية 🇱🇧</button>
-            <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English 🇬🇧</button>
-        </div>
-        <!-- ⏰ لوحة التوقيت الفلكي والتاريخ والطقس ببيروت المشعة -->
-        <div class="royal-box box-purple" style="border-color:#ba55d3 !important;">
+        <!-- ⏰ 2. لوحة التوقيت الفلكي والتاريخ والطقس بخلفية بنفسجية متوهجة مشعة -->
+        <div class="royal-box box-purple" style="border-color:#ba55d3 !important; margin-bottom: 5px; box-shadow: 0 0 30px rgba(186, 85, 211, 0.45) !important; background: rgba(30, 15, 50, 0.85) !important;">
             <div class="royal-clock" id="live-clock">00:00:00 م</div>
             <div class="royal-date" id="live-date">جاري مزامنة التوقيت الملكي...</div>
         </div>
 
-        <!-- 🔍 محرك البحث الذكي الملوكي السريع دغري تحت الترجمة والوقت -->
+        <!-- 🌐 3. أزرار ترجمة الصفحة بخلفية ذهبية مشعة ونابضة -->
+        <div class="lang-zone" style="margin-bottom: 20px; filter: drop-shadow(0 0 12px rgba(255,215,0,0.35));">
+            <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية 🇱🇧</button>
+            <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English 🇬🇧</button>
+        </div>
+                <!-- 👑 4. عناوين المنصة الملكية بالذهب المضيء المشع والنبّاض ثلاثي الأبعاد (العربي والانجليزي) -->
+        <h1 class="main-title-ar" id="main-title-ar-txt" style="color: #ffffff !important; font-size: 48px; font-weight: 700; text-align: center; margin: 15px 0; font-family: 'Cairo', sans-serif; letter-spacing: 1px; animation: goldenGlowBeat3D 2.5s infinite ease-in-out;">عالم الحب</h1>
+        <h2 class="main-title-en" id="main-title-en-txt" style="color: #ffffff !important; font-size: 36px; margin-top: 5px; margin-bottom: 15px; font-weight: bold; text-align: center; font-family: 'Cairo', sans-serif; letter-spacing: 2px; animation: goldenGlowBeat3D 2.5s infinite ease-in-out;">World of Love</h2>
+
         <div class="royal-box box-gold">
             <div class="royal-box-title">🔍 محرك البحث الذكي الملوكي السريع</div>
             <input type="text" id="royal-search-query" class="royal-input" placeholder="اكتب ما تبحث عنه بقلب جوجل الحين...">
