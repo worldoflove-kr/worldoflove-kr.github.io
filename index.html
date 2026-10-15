@@ -191,7 +191,26 @@ body.ltr .merchant-box { text-align: left; }
         <div class="preview-box" id="preview-box-box5" style="border-color: #ffd700;">رمضان كريم! أعاده الله عليكم بالخير والبركة والقبول، وجعلكم من عتقائه من النار.</div>
         <input type="text" class="royal-input" id="name-box5" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box5')">
         <button class="royal-share-btn" style="background: linear-gradient(45deg, #b8860b, #ffd700) !important; color: #000 !important; border: 1px solid #ffd700;" onclick="fireRoyalWhatsapp('box5')">🟢 مشاركة التهنئة الاحتفالية عبر واتساب</button>
+    </div> 
+        <!-- 💰 صندوق المستشار المالي وحاسبة الزكاة والادخار الخليجي -->
+    <div class="royal-box box-blue" style="border-color: #ffd700 !important; background: #0a0a0a !important;">
+        <div class="royal-box-title" id="title-box-7" style="color: #ffd700 !important;">💰 المستشار المالي وحاسبة الزكاة والادخار</div>
+        <div style="display: flex; gap: 6px; margin-bottom: 10px;">
+            <input type="number" id="financial-amount" class="royal-input" placeholder="اكتب المبلغ المتوفر لديك الحين..." style="margin-bottom: 0 !important; border-color: #ffd700 !important; flex: 2;" oninput="calculateFinancialMetrics()">
+            <select class="royal-select" id="currency-select" style="flex: 1; margin-bottom: 0 !important;" onchange="calculateFinancialMetrics()">
+                <option value="ريال سعودي">SAR 🇸🇦</option>
+                <option value="درهم إماراتي">AED 🇦🇪</option>
+                <option value="ريال قطري">QAR 🇶🇦</option>
+                <option value="دينار كويتي">KWD 🇰🇼</option>
+                <option value="ريال عماني">OMR 🇴🇲</option>
+            </select>
+        </div>
+        <div class="preview-box" id="financial-report" style="border-color: #ffd700; text-align: right; font-size: 13px; line-height: 1.6; color: #fff;">
+            قم بكتابة المبلغ المالي الحين لتلقي تقرير الاستشارة والزكاة فوراً...
+        </div>
+        <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #b8860b, #ffd700) !important; color: #000 !important; border: 1px solid #ffd700;" onclick="shareFinancialReport()">🟢 مشاركة التقرير المالي عبر واتساب</button>
     </div>
+
      <div class="royal-footer-brand"><div class="royal-brand-kr">👑 KR 👑</div><br><span id="royal-footer-text">👑 منصة العائلة الملكية المعتمدة عالمياً 👑</span></div>
    
 
@@ -200,7 +219,27 @@ function executeRoyalSearch() {
     var query = document.getElementById("royal-search-input").value;
     window.open("https://google.com" + encodeURIComponent(query), "_blank");
 }
-    
+  function calculateFinancialMetrics() {
+    var amt = parseFloat(document.getElementById("financial-amount").value);
+    var cur = document.getElementById("currency-select").value;
+    var repBox = document.getElementById("financial-report");
+    if (isNaN(amt) || amt <= 0) {
+        repBox.innerHTML = "قم بكتابة المبلغ المالي الحين لتلقي تقرير الاستشارة والزكاة فوراً...";
+        return;
+    }
+    var zakat = amt * 0.025;
+    var save = amt * 0.20;
+    var invest = amt * 0.10;
+    repBox.innerHTML = `📊 <b>التقرير المالي الذكي وحسابات الخليج:</b><br>🔹 العملة المعتمدة: ${cur}<br>💸 مقدار الزكاة الشرعية (2.5%): ${zakat.toFixed(2)} ${cur}<br>📈 نصيحة الادخار الشهري الموصى به (20%): ${save.toFixed(2)} ${cur}<br>💎 محفظة الاستثمار الآمن المقترحة (10%): ${invest.toFixed(2)} ${cur}<br>💡 <i>مستشارك المالي يقول لك: نظّم ميزانيتك الحين، واجعل الـ 70% المتبقية للمصاريف الأساسية لتأمين أعلى استقرار مالي لأولادك الغاليين.</i>`;
+}
+function shareFinancialReport() {
+    var amt = document.getElementById("financial-amount").value;
+    var cur = document.getElementById("currency-select").value;
+    if(!amt) { alert("الرجاء كتابة المبلغ أولاً"); return; }
+    var msg = `💰 *تقرير المستشار المالي وحاسبة الخليج المعتمدة* 💰\n\n💵 *المبلغ الإجمالي:* ${amt} ${cur}\n📿 *الزكاة الشرعية المستحقة:* ${(amt*0.025).toFixed(2)} ${cur}\n📉 *خطة الادخار المقترحة:* ${(amt*0.20).toFixed(2)} ${cur}\n━━━━━━━━━━━━━━━\n👑 *عالم الحب KR* 👑`;
+    window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
+}
+  
 var royalCounterValue = 0;
 function incrementRoyalCounter() {
     royalCounterValue++;
