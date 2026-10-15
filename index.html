@@ -263,6 +263,22 @@ body.ltr .merchant-box { text-align: left; }
         </div>
         <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #ba55d3, #ff007f) !important; color: #fff !important; border: 1px solid #ba55d3;" onclick="shareCosmicWishPlan()">🟢 إطلاق الأمنية ومشاركتها عبر واتساب</button>
     </div>
+    <!-- 🌙 صندوق مستكشف ومفسر الأحلام الفلكي الذكي -->
+    <div class="royal-box box-blue" style="border-color: #ffd700 !important; background: #09070f !important;">
+        <div class="royal-box-title" id="title-box-11" style="color: #ffd700 !important;">🌙 مفسر الأحلام ومستكشف الفلك الذكي</div>
+        <div style="display: flex; gap: 6px; margin-bottom: 10px;">
+            <input type="text" id="dream-input" class="royal-input" placeholder="اكتب رمزاً أو حُلماً لمحتَه in منامك هنا..." style="margin-bottom: 0 !important; border-color: #ffd700 !important; flex: 2;" oninput="generateDreamInterpretation()">
+            <select class="royal-select" id="dream-time" style="flex: 1; margin-bottom: 0 !important;" onchange="generateDreamInterpretation()">
+                <option value="قبل الفجر">قبل الفجر 🌌</option>
+                <option value="بعد الفجر">بعد الفجر 🌅</option>
+                <option value="قيلولة النهار">قيلولة النهار ☀️</option>
+            </select>
+        </div>
+        <div class="preview-box" id="dream-report" style="border-color: #ffd700; text-align: right; font-size: 13px; line-height: 1.6; color: #fff; max-height: 280px; overflow-y: auto;">
+            اكتب حلمك أو رمزاً منه الحين، ليتولى المستشار الفلكي تفكيك طاقة الرؤية وتوليد التفسير الفوري...
+        </div>
+        <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #b8860b, #ffd700) !important; color: #000 !important; border: 1px solid #ffd700; font-weight: bold;" onclick="shareDreamReport()">🟢 مشاركة بشارة التفسير عبر واتساب</button>
+    </div>
 
      <div class="royal-footer-brand"><div class="royal-brand-kr">👑 KR 👑</div><br><span id="royal-footer-text">👑 منصة العائلة الملكية المعتمدة عالمياً 👑</span></div>
    
@@ -347,6 +363,24 @@ function shareCosmicWishPlan() {
     var color = document.getElementById("wish-pulse-color").value;
     if(!wish) { alert("الرجاء كتابة أمنيتك أولاً"); return; }
     var msg = `🔮 *تقرير شجرة الأمنيات الكونية والنبض العاطفي* 🔮\n\n📝 *الأمنية السرية:* ${wish}\n💗 *هالة النبض:* ${color}\n🌌 *تم إطلاق الأمنية وتوليد طاقة الاستجابة بنجاح!*\n━━━━━━━━━━━━━━━\n👑 *عالم الحب KR* 👑`;
+    window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
+}
+function generateDreamInterpretation() {
+    var dream = document.getElementById("dream-input").value.trim();
+    var dTime = document.getElementById("dream-time").value;
+    var repBox = document.getElementById("dream-report");
+    if (!dream) {
+        repBox.innerHTML = "اكتب حلمك أو رمزاً منه الحين... ليتولى المستشار الفلكي تفكيك طاقة الرؤية وتوليد التفسير الفوري...";
+        return;
+    }
+    var energy = dTime === "قبل الفجر" ? "✨ رؤية صادقة ذات طاقة روحانية مرتفعة جداً وتأثيرها ممتد" : dTime === "بعد الفجر" ? "✨ بشارة خير وبركة قادمة مع خيوط النور الأولى وتيسير سريع" : "✨ انعكاس لطاقة اليوم وسكينة الروح وتحمل رسالة إرشادية وتنبيهية";
+    repBox.innerHTML = `🌙 <b>التحليل الفلكي ومستكشف الأحلام الذكي:</b><br>🔍 الرمز المكتشف: [ ${dream} ]<br>⏰ توقيت الرؤية المعتمد: ${dTime}<br>🔮 <b>تفكيك طاقة المنام والتفسير الفلكي:</b><br>${energy}<br>💡 <i>مستشار الأحلام يبشرك: هذا الرمز يحمل في طياته دلالات الفرج واليسر والرزق القادم، فاستبشري خيراً واحصلي على طاقة التفاؤل لأولادك الغاليين.</i>`;
+}
+function shareDreamReport() {
+    var dream = document.getElementById("dream-input").value.trim();
+    var dTime = document.getElementById("dream-time").value;
+    if(!dream) { alert("الرجاء كتابة رمز أو حلم أولاً"); return; }
+    var msg = `🌙 *تقرير مفسر الأحلام ومستكشف الفلك الذكي* 🌙\n\n🔍 *الرمز المكتشف:* ${dream}\n⏰ *توقيت الرؤية:* ${dTime}\n🔮 *تم تفكيك طاقة المنام وتوليد التفسير والبشارة بنجاح!*\n━━━━━━━━━━━━━━━\n👑 *عالم الحب KR* 👑`;
     window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
 }
 
