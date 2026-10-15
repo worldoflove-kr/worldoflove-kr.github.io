@@ -230,6 +230,22 @@ body.ltr .merchant-box { text-align: left; }
         </div>
         <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #1d9bf0, #00ba7c) !important; color: #fff !important; border: 1px solid #ffd700;" onclick="shareSuccessPlan()">🟢 مشاركة خطة النجاح عبر واتساب</button>
     </div>
+    <!-- 🤖 صندوق محاكي الذكاء الاصطناعي لتوليد المشاريع وكتابة الإعلانات المربحة -->
+    <div class="royal-box box-blue" style="border-color: #00ba7c !important; background: #060606 !important;">
+        <div class="royal-box-title" id="title-box-9" style="color: #00ba7c !important;">🤖 مستشار الذكاء الاصطناعي للمشاريع والإعلانات</div>
+        <div style="display: flex; gap: 6px; margin-bottom: 10px;">
+            <input type="text" id="ai-project-keywords" class="royal-input" placeholder="اكتب مهارة تحبها أو كلمة مفتاحية هنا..." style="margin-bottom: 0 !important; border-color: #00ba7c !important; flex: 2;" oninput="generateAiProjectPlan()">
+            <select class="royal-select" id="ai-budget-select" style="flex: 1; margin-bottom: 0 !important;" onchange="generateAiProjectPlan()">
+                <option value="ميزانية صغيرة">💵 رأس مال بسيط</option>
+                <option value="ميزانية متوسطة">💰 رأس مال متوسط</option>
+                <option value="ميزانية متطورة">💳 رأس مال متطور</option>
+            </select>
+        </div>
+        <div class="preview-box" id="ai-project-report" style="border-color: #00ba7c; text-align: right; font-size: 13px; line-height: 1.6; color: #fff; max-height: 280px; overflow-y: auto;">
+            اكتب مهارة أو فكرة بسيطة الحين، ليتولى الذكاء الاصطناعي بناء خطة المشروع المربحة ونص الإعلان الاحترافي فوراً...
+        </div>
+        <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #00ba7c, #00beff) !important; color: #fff !important; border: 1px solid #00ba7c;" onclick="shareAiProjectPlan()">🟢 مشاركة خطة المشروع والإعلان عبر واتساب</button>
+    </div>
 
      <div class="royal-footer-brand"><div class="royal-brand-kr">👑 KR 👑</div><br><span id="royal-footer-text">👑 منصة العائلة الملكية المعتمدة عالمياً 👑</span></div>
    
@@ -276,6 +292,25 @@ function shareSuccessPlan() {
     var cat = document.getElementById("goal-category").value;
     if(!goal) { alert("الرجاء كتابة هدفك أولاً"); return; }
     var msg = `🌟 *خطة النجاح وصناعة الأهداف المعتمدة* 🌟\n\n🎯 *الهدف الرئيسي:* ${goal}\n📂 *المجال التابع له:* ${cat}\n🚀 *ابدأ خطة عملك الحين وحقق أحلامك!*\n━━━━━━━━━━━━━━━\n👑 *عالم الحب KR* 👑`;
+    window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
+}
+function generateAiProjectPlan() {
+    var kw = document.getElementById("ai-project-keywords").value.trim();
+    var bud = document.getElementById("ai-budget-select").value;
+    var repBox = document.getElementById("ai-project-report");
+    if (!kw) {
+        repBox.innerHTML = "اكتب مهارة أو فكرة بسيطة الحين، ليتولى الذكاء الاصطناعي بناء خطة المشروع المربحة ونص الإعلان الاحترافي فوراً...";
+        return;
+    }
+    var pName = kw + " الذكي أونلاين";
+    var strategy = bud === "ميزانية صغيرة" ? "إنشاء صفحة تجارية مجانية على تيك توك وإنتاج فيديوهات قصيرة بدون تكلفة" : bud === "ميزانية متوسطة" ? "إطلاق حملة إعلانية ممولة مصغرة بقيمة 50\$ مستهدفة المهتمين دغري" : "بناء متجر إلكتروني احترافي وتفعيل إعلانات المشاهير للوصول السريع";
+    repBox.innerHTML = `🤖 <b>تحليل الذكاء الاصطناعي للمشروع المربح:</b><br>💡 اسم المشروع المقترح: ${pName}<br>💰 مستوى الاستثمار: ${bud}<br>📈 خطة الترويج الذكية: ${strategy}<br><br>📝 <b>نص الإعلان الاحترافي المولد (جاهز للنسخ):</b><br>"🔥 هل تبحث عن أفضل خدمات [ ${kw} ]؟ وصلنا الحين لخدمتك بأعلى جودة وأفضل سعر! تواصل معنا دغري عبر الرسائل ولا تضيع الفرصة! 🚀"`;
+}
+function shareAiProjectPlan() {
+    var kw = document.getElementById("ai-project-keywords").value.trim();
+    var bud = document.getElementById("ai-budget-select").value;
+    if(!kw) { alert("الرجاء كتابة الفكرة أو المهارة أولاً"); return; }
+    var msg = `🤖 *مشروع ممول ومولد بنظام الذكاء الاصطناعي* 🤖\n\n💡 *فكرة المشروع:* ${kw}\n💵 *خطة الميزانية:* ${bud}\n📈 *تم توليد خطة العمل والنص التسويقي بنجاح!*\n━━━━━━━━━━━━━━━\n👑 *عالم الحب KR* 👑`;
     window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
 }
 
