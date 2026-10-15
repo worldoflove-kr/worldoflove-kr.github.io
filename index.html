@@ -4,46 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عالم الحب KR</title>
-    <link href="https://googleapis.com" rel="stylesheet">
+    <link href="https://googleapis.com family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; user-select: none !important; -webkit-user-select: none !important; }
-        html, body { background-color: #000000 !important; color: #ffffff !important; text-align: center; padding: 5px; min-height: 100vh; overflow-x: hidden; }
+        html, body { background-color: #0b0713 !important; color: #ffffff !important; text-align: center; padding: 5px; min-height: 100vh; overflow-x: hidden; }
         .ticker-bar { width: 100%; background: rgba(5,7,5,0.95) !important; border-bottom: 2px solid #ffd700; padding: 10px 0; overflow: hidden; white-space: nowrap; box-shadow: 0 4px 15px rgba(0,0,0,0.9); width: 100%; position: fixed; top: 0; left: 0; z-index: 9999; display: block !important; }
         .ticker-move { display: inline-block; white-space: nowrap; padding-left: 100%; animation: royalMarqueeAnimation 18s linear infinite; }
         @keyframes royalMarqueeAnimation { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
         .ticker-item { background: #0c0f0c !important; padding: 5px 12px; border-radius: 6px; border: 1px solid #ffd700; text-decoration: none; color: #ffd700 !important; font-weight: bold; font-size: 12px; margin-right: 15px; display: inline-block !important; }
-        .container { max-width: 450px; margin: 65px auto 20px auto; padding: 10px 5px; background-color: #000000 !important; width: 100%; } 
-        .main-title-ar { color: #ffd700 !important; font-size: 38px; font-weight: 700; margin-top: 15px; display: block; text-shadow: 0 0 12px #ffd700, 0 0 25px #ffd700; }
-        .main-title-en { color: #ffd700 !important; font-size: 30px; margin-top: 2px; margin-bottom: 12px; display: block; text-shadow: 0 0 12px #ffd700, 0 0 25px #ffd700; }
+        .container { max-width: 450px; margin: 65px auto 20px auto; padding: 10px 5px; background: transparent !important; width: 100%; } 
+        .main-title-ar { color: #ffd700 !important; font-size: 38px; font-weight: 700; margin-top: 15px; display: block; text-shadow: 0 0 12px #ffd700, 0 0 25px #ff007f; animation: krBrandBeat 2.5s infinite ease-in-out; }
+        .main-title-en { color: #ffd700 !important; font-size: 30px; margin-top: 2px; margin-bottom: 12px; display: block; text-shadow: 0 0 12px #ffd700, 0 0 25px #ff007f; animation: krBrandBeat 2.5s infinite ease-in-out; }
         .lang-zone { margin-bottom: 15px; display: flex; justify-content: center; gap: 12px; }
         .lang-btn { background: #0a0a0a !important; border: 1px solid #ffd700; color: #ffd700 !important; padding: 6px 18px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 13px; }
         .lang-btn.active { background: linear-gradient(45deg, #ffd700, #b8860b) !important; color: #000000 !important; border: none; box-shadow: 0 0 12px rgba(255,215,0,0.5); }
-        .clock-box { background: #020202 !important; border: 2px solid #ffd700 !important; padding: 12px; border-radius: 12px; font-size: 13px; color: #ffffff !important; margin-bottom: 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.5); line-height: 1.6; }
-        .preview-box { background: #020202 !important; border: 1px dashed #ffd700; padding: 12px; border-radius: 8px; font-size: 13px; line-height: 1.5; color: #ffd700 !important; margin-top: 8px; margin-bottom: 10px; text-align: center; min-height: 45px; word-wrap: break-word; }
-        .visitor-box { background: #020202 !important; border: 1px solid #161616; padding: 8px; border-radius: 25px; font-size: 12px; color: #ffffff !important; display: inline-block; min-width: 170px; margin: 8px auto 15px auto; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-        .royal-box { background: #000000 !important; border: 2px solid #ffd700 !important; border-radius: 20px; padding: 20px; margin-bottom: 20px; text-align: right; }
-        .box-green { border-color: #00fa9a !important; }
-        .box-pink { border-color: #ff007f !important; }
-        .box-blue { border-color: #00bfff !important; }
-        .box-purple { border-color: #ba55d3 !important; }
-        .royal-box-title { color: #ffd700 !important; font-size: 16px; font-weight: bold; margin-bottom: 12px; border-bottom: 1px solid #222; padding-bottom: 6px; text-align: right; }
+        .clock-box { background: rgba(20, 12, 35, 0.85) !important; border: 2px solid #ba55d3 !important; padding: 12px; border-radius: 20px; font-size: 13px; color: #ffffff !important; margin-bottom: 15px; text-align: center; box-shadow: 0 0 15px rgba(186, 85, 211, 0.2); line-height: 1.6; }
+        .preview-box { background: rgba(0,0,0,0.4) !important; border: 1px dashed #ffd700; padding: 12px; border-radius: 8px; font-size: 13px; line-height: 1.5; color: #ffd700 !important; margin-top: 8px; margin-bottom: 10px; text-align: center; min-height: 45px; word-wrap: break-word; }
+        .visitor-box { background: #020202 !important; border: 1px solid #161616; padding: 8px; border-radius: 25px; font-size: 12px; color: #ffffff !important; display: inline-block; min-width: 170px; margin: 8px auto; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .royal-box { background: rgba(20, 12, 35, 0.85) !important; border-radius: 20px; padding: 20px; margin-bottom: 20px; text-align: right; }
+        .box-green { border: 2px solid #00fa9a !important; box-shadow: 0 0 15px rgba(0, 250, 154, 0.25); }
+        .box-pink { border: 2px solid #ff007f !important; box-shadow: 0 0 15px rgba(255, 0, 127, 0.25); }
+        .box-blue { border: 2px solid #00bfff !important; box-shadow: 0 0 15px rgba(0, 191, 255, 0.25); }
+        .box-purple { border: 2px solid #ba55d3 !important; box-shadow: 0 0 15px rgba(186, 85, 211, 0.25); }
+        .royal-box-title { font-size: 17px; font-weight: bold; margin-bottom: 12px; border-bottom: 1px solid #222; padding-bottom: 6px; text-align: right; }
+        .box-green .royal-box-title { color: #00fa9a !important; }
+        .box-pink .royal-box-title { color: #ff007f !important; }
+        .box-blue .royal-box-title { color: #00bfff !important; }
+        .box-purple .royal-box-title { color: #ba55d3 !important; }
         .royal-input, .royal-select { width: 100%; padding: 11px; background: #000 !important; border: 1px solid #333; color: #fff; border-radius: 6px; font-size: 13px; margin-bottom: 10px; outline: none; text-align: right; }
-        .royal-share-btn { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #ffd700; background: linear-gradient(45deg, #000, #1a1a1a); color: #ffd700; font-size: 15px; font-weight: bold; cursor: pointer; transition: 0.2s; margin-top: 5px; box-shadow: 0 4px 10px rgba(255,215,0,0.2); }
-        .royal-panda-panel { background: rgba(5,5,5,0.95) !important; border: 2px dashed #ffd700 !important; border-radius: 20px; padding: 20px; margin: 15px 0 20px 0; text-align: center; display: flex; flex-direction: column; align-items: center; }
-        .panda-img-row { font-size: 80px; margin-bottom: 10px; }
+        .box-green .royal-input, .box-green .royal-select { border-color: #00fa9a; }
+        .box-pink .royal-input, .box-pink .royal-select { border-color: #ff007f; }
+        .box-blue .royal-input, .box-blue .royal-select { border-color: #00bfff; }
+        .box-purple .royal-input, .box-purple .royal-select { border-color: #ba55d3; }
+        .royal-share-btn { width: 100%; padding: 14px; border-radius: 12px; border: none; background: linear-gradient(45deg, #ba55d3, #ff007f); color: #fff; font-size: 15px; font-weight: bold; cursor: pointer; transition: 0.2s; margin-top: 5px; box-shadow: 0 4px 10px rgba(255,0,127,0.3); }
+        .royal-share-btn:active { transform: scale(0.98); }
+        .royal-panda-panel { background: rgba(5,5,5,0.95) !important; border: 2px dashed #ffd700 !important; border-radius: 20px; padding: 20px; margin: 15px 0 20px 0; text-align: center; box-shadow: 0 0 20px rgba(255,215,0,0.15); display: flex; flex-direction: column; align-items: center; }
+        .panda-img-row { font-size: 80px; margin-bottom: 10px; animation: pandaSmoothBeat 2.8s infinite ease-in-out; }
         .txt-welcome-wrap { margin-bottom: 8px; display: flex; justify-content: center; gap: 8px; font-size: 24px; font-weight: bold; }
         .txt-welcome-welcome { color: #ffffff; }
         .txt-welcome-bibi { color: #ffd700; }
         .txt-desc { font-size: 13px; color: #ddd; line-height: 1.6; }
-        .merchant-box { background: #050505 !important; border: 2px solid #ffd700 !important; border-radius: 16px; padding: 15px; margin-bottom: 18px; text-align: right; }
+        .merchant-box { background: rgba(20, 12, 35, 0.85) !important; border: 2px solid #ffd700 !important; border-radius: 16px; padding: 15px; margin-bottom: 18px; text-align: right; box-shadow: 0 0 15px rgba(255, 215, 0, 0.15); }
         .merchant-header { color: #ffd700 !important; font-size: 16px; font-weight: bold; margin-bottom: 12px; border-bottom: 1px solid #222; padding-bottom: 6px; }
         .merchant-body { font-size: 13px; color: #ccc; line-height: 1.6; margin-bottom: 12px; }
         .merchant-action-btn { width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #ffd700; background: #000; color: #ffd700; font-size: 14px; font-weight: bold; cursor: pointer; }
         .pubg-banner { width: 100%; background: #111; border: 1px dashed #ffd700; padding: 8px; border-radius: 8px; font-size: 13px; font-weight: bold; color: #ffd700; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+        .color-alfa { color: #00fa9a !important; font-weight: bold; text-shadow: 0 0 5px rgba(0,250,154,0.4); }
+        .color-mtc { color: #ff007f !important; font-weight: bold; text-shadow: 0 0 5px rgba(255,0,127,0.4); }
+        .color-ushare { color: #00bfff !important; font-weight: bold; text-shadow: 0 0 5px rgba(0,191,255,0.4); }
         .royal-footer-brand { margin: 25px 0 10px 0; text-align: center; }
-        .royal-brand-kr { color: #ffd700 !important; font-size: 24px; font-weight: bold; letter-spacing: 2px; display: inline-block; }
+        .royal-brand-kr { color: #ffd700 !important; font-size: 28px; font-weight: bold; letter-spacing: 2px; display: inline-block; text-shadow: 0 0 12px #ffd700, 0 0 25px #ff007f; animation: krBrandBeat 2.2s infinite ease-in-out; }
+        #royal-footer-text { color: #ffd700 !important; font-size: 13px; font-weight: bold; text-shadow: 0 0 5px rgba(255,215,0,0.4); }
         .wheel-container { display: flex; justify-content: center; margin: 15px 0; position: relative; }
         .wheel-canvas { width: 160px; height: 160px; border-radius: 50%; border: 6px solid #ffd700; background: conic-gradient(#ff007f 0deg 90deg, #ba55d3 90deg 180deg, #00fa9a 180deg 270deg, #00bfff 270deg 360deg); transition: transform 4s cubic-bezier(0.1, 0.8, 0.3, 1); }
+        .counter-num { font-size: 34px; font-weight: bold; color: #00fa9a; text-shadow: 0 0 12px #00fa9a; margin: 10px 0; text-align: center; }
+        @keyframes krBrandBeat { 0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255,215,0,0.4)); } 50% { transform: scale(1.08); filter: drop-shadow(0 0 20px #ffd700) brightness(1.2); } 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255,215,0,0.4)); } }
+        @keyframes pandaSmoothBeat { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
     </style>
 </head>
 <body>
@@ -56,93 +72,6 @@
             <a href="https://lirarate.org" target="_blank" class="ticker-item"><span id="tick-lbp">فريش دولار في لبنان:</span> 89,500 LBP</a>
         </div>
     </div>
-    <div class="container">
-        <!-- 👑 واجهة الترحيب ومفاتيح اللغة الملوكية -->
-        <h1 class="main-title-ar" id="main-title-ar-txt">عالم الحب</h1>
-        <h2 class="main-title-en" id="main-title-en-txt" style="display:none;">World of Love</h2>
-
-        <div class="lang-zone">
-            <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية 🇱🇧</button>
-            <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English 🇬🇧</button>
-        </div>
-
-        <div class="clock-box" id="live-clock">جاري مزامنة التوقيت الملكي وحالة الطقس...</div>
-
-        <div class="visitor-box">
-            👥 <span id="lbl-visitors">عدد زوار صفحتنا الحين:</span> <strong id="live-visitor-counter">2,311</strong>
-        </div>
-
-        <!-- 🐼 صندوق الباندا الملكي الترحيبي الأصلي الفخم -->
-        <div class="royal-panda-panel">
-            <div class="panda-img-row">🐼</div>
-            <div class="panda-text-block">
-                <div class="txt-welcome-wrap">
-                    <span class="txt-welcome-welcome">welcome</span>
-                    <span class="txt-welcome-bibi">BiBi</span>
-                </div>
-                <div class="txt-desc" id="lbl-desc">"هنا، حيث تلمع النجوم في سمائنا السوداء الفخمة ✨، نلتقي لنصنع من عبارات الحب والأدعية التفاعلية نبضاً أبدياً لا ينتهي.. أهلاً بكم في عهد الأمان والمصداقية الكبرى [ عالم الحب KR ]." 🌌💞</div>
-            </div>
-        </div>
-
-        <!-- 🤲 صندوق الأدعية والإهداءات التفاعلية الملون الأصلي -->
-        <div class="royal-box box-green">
-            <div class="royal-box-title" id="title-box-1">🌿 صندوق الأدعية والإهداءات التفاعلية</div>
-            <select class="royal-select" id="select-box1" onchange="syncLivePreview('box1')">
-                <option value="اللهم صب علينا من الرزق والبركة ما يشرح الصدور، وافتح لنا أبواب فضلك الواسعة يا رزاق يا كريم!">🤲 دعاء الرزق والبركة الواسعة</option>
-                <option value="الله يحميك ويحفظك لقلبي ويجعل أيامك كلها سعادة وراحة بال وينور دربك ويحميك من كل شر.">✨ دعاء الحفظ والتحصين الملكي</option>
-                <option value="اللهم ارزقنا طمأنينة النفس، وراحة البال، والرضا بما قسمته لنا، واجعل دربنا مكللاً بالتوفيق والنجاح الحليف.">🌸 دعاء راحة البال والتوفيق</option>
-                <option value="ربي افتح لنا فتحاً مبيناً، ويسر لنا كل عسير، واجعل قلوبنا عامرة بالإيمان والسكينة في كل وقت وحين.">💎 دعاء تيسير الأمور والفتح</option>
-                <option value="اللهم احفظ لي عائلتي ومن أحب، وابعد عنهم كل سوء وأذى، واجمعنا دائماً على الخير والود والمسرات.">🤲 الحفظ لمن تحب والجمع على الخير</option>
-            </select>
-            <div class="preview-box" id="preview-box-box1">اللهم صب علينا من الرزق والبركة ما يشرح الصدور، وافتح لنا أبواب فضلك الواسعة يا رزاق يا كريم!</div>
-            <input type="text" class="royal-input" id="name-box1" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box1')">
-            <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box1')">🟢 مشاركة الإهداء على الواتساب</button>
-        </div>
-
-        <!-- 💝 صندوق عبارات الحب والاشتياق الملون الأصلي -->
-        <div class="royal-box box-pink">
-            <div class="royal-box-title" id="title-box-2">💝 صندوق عبارات الحب والاشتياق</div>
-            <select class="royal-select" id="select-box2" onchange="syncLivePreview('box2')">
-                <option value="لو كان الشوق يوزن بالأطنان، لكان شوقي إليك قد تخطى حدود الأرض والكون بأكمله كالألماسة.">🔥 عبارة الاشتياق العارم الفاخرة</option>
-                <option value="أنت عالمي بأكمله، ونبض قلبي الذي لا أعيش بدونه، حفظك الله لي يا كل دنيتي وروحي.">💞 عبارة الغرام والنبض الأبدي</option>
-                <option value="في سماء قلبي تظل أنت النجم الأوحد والأكثر لمعاناً، حبك عهد محفور في الوجدان ولا يمحوه الزمان.">✨ عبارة النجم الأوحد والعهد الأبدي</option>
-                <option value="كل دقيقة تمر بدونك تبدو وكأنها دهراً كاملًا، اشتقت لملامحك، لضحكتك، ولكل تفصيلة تجمعني بك يا عمري.">⏳ دهر الشوق والاشتياق المجنون</option>
-                <option value="وجودك في حياتي هو الأمان الذي أبحث عنه دائماً، دمت لي سنداً وحبيباً ورفيقاً لروحي ونبضاً لقلبي.">🔒 عبارة الأمان ورفيق الروح</option>
-            </select>
-            <div class="preview-box" id="preview-box-box2">لو كان الشوق يوزن بالأطنان، لكان شوقي إليك قد تخطى حدود الأرض والكون بأكمله كالألماسة.</div>
-            <input type="text" class="royal-input" id="name-box2" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box2')">
-            <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box2')">🟢 مشاركة الإهداء على الواتساب</button>
-        </div>
-
-        <!-- 👑 صندوق بر الوالدين والأم الغالية الملون الأصلي -->
-        <div class="royal-box box-blue">
-            <div class="royal-box-title" id="title-box-3">👑 صندوق بر الوالدين والأم الغالية</div>
-            <select class="royal-select" id="select-box3" onchange="syncLivePreview('box3')">
-                <option value="أمي يا قطعة من الجنة على الأرض، دمتِ لي نبضاً، وأماناً، ونوراً يستضاء به في ظلمات الحياة.">🌹 إهداء ملكي للأم الغالية الحنونة</option>
-                <option value="ربي اغفر لي ولوالدي وارحمهما كما ربياني صغيراً واحفظهما من كل سوء وأطله في عمرهما.">✨ دعاء البر والوفاء للوالدين</option>
-                <option value="أمي الغالية، لو جمعت كلمات الشكر من الأرض والسماء فلن توفي حقكِ يا نبع الحنان والبركة والرضا.">❤️ نبع الحنان والبركة الدائمة</option>
-                <option value="اللهم أطل في عمر والديّ بالصحة والعافية، واجعلني باراً بهما، وارزقهما سعادة الدارين يا رب العالمين.">🤲 دعاء طول العمر بالصحة والعافية</option>
-                <option value="أبي الغالي، دمت تاجاً فوق رأسي، وسنداً أستند عليه في كل خطوة، ربي يحفظك لي ويمد في عمرك.">👴 إهداء وتكريم للأب الغالي الحبيب</option>
-            </select>
-            <div class="preview-box" id="preview-box-box3">أمي يا قطعة من الجنة على الأرض، دمتِ لي نبضاً، وأماناً، ونوراً يستضاء به في ظلمات الحياة.</div>
-            <input type="text" class="royal-input" id="name-box3" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box3')">
-            <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box3')">🟢 مشاركة الإهداء على الواتساب</button>
-        </div>
-
-        <!-- 🔮 صندوق عبارات العتب والحزن الملون الأصلي -->
-        <div class="royal-box box-purple">
-            <div class="royal-box-title" id="title-box-4">🔮 صندوق عبارات العتب والحزن</div>
-            <select class="royal-select" id="select-box4" onchange="syncLivePreview('box4')">
-                <option value="عاتبتك لأنك كنت تعني لي الكثير، ولكن صمتك المستمر علمني أن بعض العتب يفقد قيمته مع الوقت.">😔 رسالة عتب وقورة شديدة الأثر</option>
-                <option value="لم أكن أتوقع أن يطول صمتك وجفاؤك، فالقلب الصادق لم يعد يتحمل هذا البعد الطويل الحزين.">💔 رسالة لوعة الجفاء والصمت</option>
-                <option value="العتب يكون دائماً على قدر المحبة، ولكن عندما يتكرر التجاهل، يصبح الصمت هو الحل الأرقى والأفخم للقلب.">🕯️ العتب على قدر المحبة والكرامة</option>
-                <option value="لم يتعبني البعد، بقدر ما أتعبني أنني وثقت بمكانة لم تكن لي يوماً، عتب الخذلان من أقرب القلوب.">🍂 رسالة لوعة الخذلان والبعد</option>
-                <option value="كنت أظن أن غيابي سيصنع فرقاً لديك، ولكنني اكتشفت بمرور الأيام أنني كنت وهماً جميلاً في حياتك فقط.">🥀 عبارة أثر الغياب والنسيان الحزين</option>
-            </select>
-            <div class="preview-box" id="preview-box-box4">عاتبتك لأنك كنت تعني لي الكثير، ولكن صمتك المستمر علمني أن بعض العتب يفقد قيمته مع الوقت.</div>
-            <input type="text" class="royal-input" id="name-box4" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box4')">
-            <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box4')">🟢 مشاركة الإهداء على الواتساب</button>
-        </div>
         <!-- 💰 مستشار المال وحاسبة الزكاة والادخار -->
         <div class="royal-box box-purple" style="border-color: #ffd700 !important;">
             <div class="royal-box-title" style="color: #ffd700 !important;">💰 المستشار المالي وحاسبة الزكاة والادخار</div>
@@ -182,7 +111,6 @@
             <div class="preview-box" id="project-report" style="text-align: right;">اكتب مهارة أو فكرة بسيطة الحين، ليتولى الذكاء الاصطناعي بناء خطة المشروع المربحة ونص الإعلان الاحترافي فوراً...</div>
             <button class="royal-share-btn" onclick="shareProjectPlan()">مشاركة خطة المشروع والإعلان عبر واتساب</button>
         </div>
-
         <!-- 🎰 صندوق عجلة الحظ والفرص اليومية المضيئة القديمة بالكامل -->
         <div class="royal-box box-purple" style="border-color: #ffd700 !important; background: #08050c !important;">
             <div class="royal-box-title" style="color: #ffd700 !important;">🎰 عجلة الحظ والفرص اليومية المضيئة</div>
@@ -198,10 +126,27 @@
             <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #25d366, #075e54) !important; border: 1px solid #ffd700;" onclick="shareWheelReport()">🟢 مشاركة هديتك وفرصتك اليومية عبر واتساب</button>
         </div>
 
+        <!-- 📿 صندوق لوحة عدد الاستغفار والتسبيح الرقمي المضيء -->
+        <div class="royal-box box-green">
+            <div class="royal-box-title" style="color: #00fa9a !important;">📿 صندوق لوحة عدد الاستغفار والتسبيح الرقمي</div>
+            <div class="counter-num" id="royal-counter-view">0</div>
+            <div style="display: flex; gap: 10px;">
+                <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #00fa9a, #00bfff) !important; color: #000;" onclick="incrementRoyalCounter()">📿 سبّح الحين</button>
+                <button type="button" class="royal-share-btn" style="background: #333 !important;" onclick="resetRoyalCounter()">🔄 تصغير</button>
+            </div>
+        </div>
+
+        <!-- 🔍 محرك بحث جوجل الذكي الفوري السريع -->
+        <div class="royal-box box-purple" style="border-color: #ffd700 !important;">
+            <div class="royal-box-title" style="color: #ffd700 !important;">🔍 محرك البحث الذكي الملوكي السريع</div>
+            <input type="text" id="royal-search-query" class="royal-input" placeholder="اكتب ما تبحث عنه بقلب جوجل الحين..." style="border-color: #ffd700 !important; text-align: center;">
+            <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #ffd700, #ba55d3) !important; color: #000 !important; font-weight: bold; border: 1px solid #ffd700;" onclick="executeRoyalSearch()">🔍 ابحث الحين كالملك</button>
+        </div>
+
         <!-- 📱 خدمات تشريج الخطوط والإنترنت الموثوقة -->
         <div class="merchant-box">
             <div class="merchant-header">📱 خدمات تشريج الخطوط والإنترنت الموثوقة</div>
-            <div class="merchant-body">دليلك الآمن والكامل لتشريج خطوط <span class="color-alfa">Alfa</span> وتاتش <span class="color-mtc">MTC</span> وتجديد اشتراكات بطاقات إنترنت <span class="color-ushare">Ushare</span> برواقة تامة وبأعلى مصداقية في لبنان. تواصلوا مباشرة مع الموزع المستقل المعتمد لقفل طلباتكم بثقة وسرية:</div>
+            <div class="merchant-body">دليلك الآمن والكامل لتشريج خطوط <span class="color-alfa">Alfa</span> وتاتش <span class="color-mtc">MTC</span> وتجديد اشتراكات بطاقات إنترنت <span class="color-ushare">Ushare</span> برواقة تامة وبأعلى مصداقية في لبنان. تواصلوا مباشرة مع الموزع مستقل المعتمد لقفل طلباتكم بثقة وسرية:</div>
             <button class="merchant-action-btn" onclick="connectMerchant('alpha')">💬 اطلب تشريج خطك الآن (واتساب)</button>
         </div>
 
@@ -213,7 +158,7 @@
             <button class="merchant-action-btn" onclick="connectMerchant('gaming')">💬 اطلب شحن الشدات والطلبيات (واتساب)</button>
         </div>
 
-        <!-- 👑 التذييل الملكي المعتمد الأصلي القديم -->
+        <!-- 👑 التذييل الملكي المعتمد مع شعار KR المزخرف النابض -->
         <div class="royal-footer-brand">
             <div class="royal-brand-kr">👑 KR 👑</div>
             <br>
@@ -237,13 +182,11 @@
             if (!s) {
                 var n = b + 1;
                 localStorage.setItem('worldOfLove_visitors', n);
-                var counterEl = document.getElementById("live-visitor-counter");
-                if(counterEl) counterEl.innerText = n.toLocaleString();
+                document.getElementById("live-visitor-counter").innerText = n.toLocaleString();
             } else {
                 var c = parseInt(s) + Math.floor(Math.random() * 3) + 1;
                 localStorage.setItem('worldOfLove_visitors', c);
-                var counterEl = document.getElementById("live-visitor-counter");
-                if(counterEl) counterEl.innerText = c.toLocaleString();
+                document.getElementById("live-visitor-counter").innerText = c.toLocaleString();
             }
         }
 
@@ -268,7 +211,6 @@
             var pBox = document.getElementById("preview-box-" + t);
             if (select && pBox) { pBox.innerText = select.value; }
         }
-
         function fireRoyalWhatsapp(t) {
             var txt = document.getElementById("select-" + t).value;
             var s = document.getElementById("name-" + t).value.trim();
@@ -278,6 +220,8 @@
             if (t === 'box2') h = "العبارة";
             if (t === 'box3') h = "إهداء غالي";
             if (t === 'box4') h = "رسالة عتب";
+            if (t === 'secret') h = "المفاجأة السرية";
+            if (t === 'holiday') h = "بطاقة المعايدة الملكية";
             var msg = `🎁 *إهداء خاص من: [ ${s} ]* \n\n✨ *${h}:* \n" ${txt} "\n\n━━━━━━━━━━━━━━━\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n👑 *الشعار المعتمد:* KR 👑`;
             window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
         }
@@ -300,6 +244,7 @@
                 repBox.innerHTML = `📊 <b>Smart Financial Report & Gulf Calculations:</b><br>🔹 Selected Currency: ${cur}<br>🪙 Islamic Zakat Amount (2.5%): <b>${zakat.toFixed(2)} ${cur}</b><br>📈 Recommended Safe Savings (20%): <b>${save.toFixed(2)} ${cur}</b><br>🛡️ Advised Investment Wallet (10%): <b>${invest.toFixed(2)} ${cur}</b>`;
             }
         }
+
         function shareFinancials() {
             var amt = document.getElementById("financial-amount").value;
             if (!amt) { alert(currentLang === 'ar' ? "الرجاء إدخال المبلغ أولاً" : "Please enter the amount first"); return; }
@@ -352,7 +297,6 @@
             var text = document.getElementById("project-report").innerText;
             window.location.href = "whatsapp://send?text=" + encodeURIComponent(text + "\n\n👑 عالم الحب KR 👑");
         }
-
         var currentWheelRotation = 0;
         function spinRoyalWheel() {
             var name = document.getElementById("wheel-username").value.trim();
@@ -382,12 +326,29 @@
             window.location.href = "whatsapp://send?text=" + encodeURIComponent(text + "\n\n👑 عالم الحب KR 👑");
         }
 
+        var royalCounterValue = 0;
+        function incrementRoyalCounter() {
+            royalCounterValue++;
+            document.getElementById("royal-counter-view").innerText = royalCounterValue;
+        }
+        function resetRoyalCounter() {
+            royalCounterValue = 0;
+            document.getElementById("royal-counter-view").innerText = royalCounterValue;
+        }
+
+        function executeRoyalSearch() {
+            var query = document.getElementById("royal-search-query").value.trim();
+            if(!query) { alert(currentLang === 'ar' ? "الرجاء كتابة كلمات البحث أولاً كالملك" : "Please enter search text first"); return; }
+            window.open("https://google.com" + encodeURIComponent(query), "_blank");
+        }
+
         function switchLang(l) {
             currentLang = l;
             document.getElementById("btn-ar").classList.toggle("active", l === 'ar');
             document.getElementById("btn-en").classList.toggle("active", l === 'en');
             var isAr = l === 'ar';
             document.body.style.direction = isAr ? "rtl" : "ltr";
+            if(isAr) { document.body.classList.remove("ltr"); } else { document.body.classList.add("ltr"); }
             
             document.getElementById("tick-gold").innerText = isAr ? "أوقية الذهب العالمية:" : "Global Gold Ounce:";
             document.getElementById("tick-index").innerText = isAr ? "مؤشر الدولار عالمياً:" : "Global Dollar Index:";
@@ -400,15 +361,23 @@
             document.getElementById("title-box-2").innerText = isAr ? "💝 صندوق عبارات الحب والاشتياق" : "💝 Love & Longing Expressions Box";
             document.getElementById("title-box-3").innerText = isAr ? "👑 صندوق بر الوالدين والأم الغالية" : "👑 Honoring Parents & Mother's Gift Box";
             document.getElementById("title-box-4").innerText = isAr ? "🔮 صندوق عبارات العتب والحزن" : "🔮 Reproach & Sadness Expressions Box";
+            document.getElementById("title-box-secret").innerText = isAr ? "🎁 صندوق الرسالة السرية والمفاجآت المغلقة" : "🎁 Secret Message & Closed Surprises Box";
+            document.getElementById("title-box-holiday").innerText = isAr ? "📅 بطاقات ومعايدات جميع الأعياد والمناسبات" : "📅 All Holidays & Occasions Greeting Cards";
             
-            for(var i=1; i<=4; i++) { 
-                document.getElementById("name-box" + i).placeholder = isAr ? "اكتب اسمك كمرسل الحين الحين..." : "Type your name here..."; 
-            }
+            for(var i=1; i<=4; i++) { document.getElementById("name-box" + i).placeholder = isAr ? "اكتب اسمك كمرسل الحين الحين..." : "Type your name here..."; }
+            document.getElementById("name-secret").placeholder = isAr ? "اكتب اسمك كمرسل الحين الحين..." : "Type your name here...";
+            document.getElementById("name-holiday").placeholder = isAr ? "اكتب اسمك كمرسل الحين الحين..." : "Type your name here...";
+            document.getElementById("wheel-username").placeholder = isAr ? "اكتب اسمك الحين لتفعيل حظك اليومي..." : "Type your name here...";
+            document.getElementById("royal-search-query").placeholder = isAr ? "اكتب ما تبحث عنه بقلب جوجل الحين..." : "Type your search query here...";
+            
             var sBtns = document.getElementsByClassName("royal-share-btn");
             for (var i = 0; i < sBtns.length; i++) { 
                 sBtns[i].innerText = isAr ? "🟢 مشاركة الإهداء على الواتساب" : "🟢 Share Blessing via WhatsApp"; 
             }
             updateClock();
+            calculateFinancials();
+            generateGoalPlan();
+            generateProjectPlan();
         }
 
         initVisitorCounter();
