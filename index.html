@@ -212,6 +212,24 @@ body.ltr .merchant-box { text-align: left; }
         </div>
         <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #b8860b, #ffd700) !important; color: #000 !important; border: 1px solid #ffd700;" onclick="shareFinancialReport()">🟢 مشاركة التقرير المالي عبر واتساب</button>
     </div>
+    <!-- 🌟 صندوق مستشار التخطيط الشخصي وصانع الأهداف العالمي -->
+    <div class="royal-box box-green" style="border-color: #ffd700 !important; background: #050505 !important;">
+        <div class="royal-box-title" id="title-box-8" style="color: #ffd700 !important;">🌟 مستشار التخطيط وصانع الأهداف الذكي</div>
+        <div style="display: flex; gap: 6px; margin-bottom: 10px;">
+            <input type="text" id="goal-input" class="royal-input" placeholder="اكتب هدفك الرئيسي للعام الجديد هنا..." style="margin-bottom: 0 !important; border-color: #ffd700 !important; flex: 2;" oninput="generateSuccessPlan()">
+            <select class="royal-select" id="goal-category" style="flex: 1; margin-bottom: 0 !important;" onchange="generateSuccessPlan()">
+                <option value="تطوير الذات">ذاتي 🧠</option>
+                <option value="زيادة الدخل والمال">مالي 💰</option>
+                <option value="الدراسة والتعليم">تعليمي 📚</option>
+                <option value="الصحة والرشاقة">صحي 🏃‍♂️</option>
+                <option value="بناء العادات الإيجابية">عادات 👍</option>
+            </select>
+        </div>
+        <div class="preview-box" id="success-plan-report" style="border-color: #ffd700; text-align: right; font-size: 13px; line-height: 1.6; color: #fff; max-height: 250px; overflow-y: auto;">
+            اكتب هدفك الحين لتلقي خطة العمل الذكية وجدول النجاح الشخصي فوراً...
+        </div>
+        <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #1d9bf0, #00ba7c) !important; color: #fff !important; border: 1px solid #ffd700;" onclick="shareSuccessPlan()">🟢 مشاركة خطة النجاح عبر واتساب</button>
+    </div>
 
      <div class="royal-footer-brand"><div class="royal-brand-kr">👑 KR 👑</div><br><span id="royal-footer-text">👑 منصة العائلة الملكية المعتمدة عالمياً 👑</span></div>
    
@@ -241,7 +259,26 @@ function shareFinancialReport() {
     var msg = `💰 *تقرير المستشار المالي وحاسبة الخليج المعتمدة* 💰\n\n💵 *المبلغ الإجمالي:* ${amt} ${cur}\n📿 *الزكاة الشرعية المستحقة:* ${(amt*0.025).toFixed(2)} ${cur}\n📉 *خطة الادخار المقترحة:* ${(amt*0.20).toFixed(2)} ${cur}\n━━━━━━━━━━━━━━━\n👑 *عالم الحب KR* 👑`;
     window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
 }
-  
+  function generateSuccessPlan() {
+    var goal = document.getElementById("goal-input").value.trim();
+    var cat = document.getElementById("goal-category").value;
+    var repBox = document.getElementById("success-plan-report");
+    if (!goal) {
+        repBox.innerHTML = "اكتب هدفك الحين لتلقي خطة العمل الذكية وجدول النجاح الشخصي فوراً...";
+        return;
+    }
+    var step1 = cat === "تطوير الذات" ? "🎯 قراءة كتاب متخصص لمدة 15 دقيقة يومياً" : cat === "زيادة الدخل والمال" ? "🎯 تحديد ميزانية صارمة وتسجيل المصاريف يومياً" : cat === "الدراسة والتعليم" ? "🎯 تلخيص فصل واحد أو درس كامل كل ليلة" : cat === "الصحة والرشاقة" ? "🎯 ممارسة المشي السريع وشرب 3 لتر ماء" : "🎯 الاستيقاظ مبكراً وتنظيم أول ساعتين من اليوم";
+    var step2 = cat === "تطوير الذات" ? "🚀 حضور دورة تدريبية أو الاستماع لبودكاست مفيد" : cat === "زيادة الدخل والمال" ? "🚀 استثمار 10% من الدخل في مهارة جانبية جديدة" : cat === "الدراسة والتعليم" ? "🚀 حل اختبارات تجريبية والتركيز على نقاط الضعف" : cat === "الصحة والرشاقة" ? "🚀 قطع السكريات المصنعة واستبدالها بوجبات صحية" : "🚀 الالتزام التام بالتوثيق والتقييم الأسبوعي للعادات";
+    repBox.innerHTML = `🌟 <b>خطة النجاح التفاعلية للهدف [ ${goal} ] :</b><br>📂 تصنيف المجال: ${cat}<br>📋 <b>خطوات العمل اليومية الموصى بها:</b><br>${step1}<br>${step2}<br>💪 <i>مستشار النجاح يقول لك: الأهداف الكبيرة تتحقق بالخطوات الصغيرة المستمرة، ابدأ الحين ولا تؤجل!</i>`;
+}
+function shareSuccessPlan() {
+    var goal = document.getElementById("goal-input").value.trim();
+    var cat = document.getElementById("goal-category").value;
+    if(!goal) { alert("الرجاء كتابة هدفك أولاً"); return; }
+    var msg = `🌟 *خطة النجاح وصناعة الأهداف المعتمدة* 🌟\n\n🎯 *الهدف الرئيسي:* ${goal}\n📂 *المجال التابع له:* ${cat}\n🚀 *ابدأ خطة عملك الحين وحقق أحلامك!*\n━━━━━━━━━━━━━━━\n👑 *عالم الحب KR* 👑`;
+    window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
+}
+
 var royalCounterValue = 0;
 function incrementRoyalCounter() {
     royalCounterValue++;
