@@ -303,6 +303,26 @@ body.ltr .merchant-box { text-align: left; }
         </div>
         <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #00ba7c, #00fa9a) !important; color: #000 !important; border: 1px solid #00fa9a; font-weight: bold;" onclick="shareVentReport()">🟢 مشاركة طاقة الأمل والفرج عبر واتساب</button>
     </div>
+    <!-- 🎰 صندوق عجلة الحظ والفرص اليومية المضيئة -->
+    <div class="royal-box box-purple" style="border-color: #ffd700 !important; background: #08050c !important; position: relative; overflow: hidden; text-align: center;">
+        <div class="royal-box-title" id="title-box-13" style="color: #ffd700 !important;">🎰 عجلة الحظ والفرص اليومية المضيئة</div>
+        <div style="margin-bottom: 15px; position: relative; display: inline-block;">
+            <!-- 🌟 مؤشر العجلة الفخم -->
+            <div style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); font-size: 24px; z-index: 10; filter: drop-shadow(0 0 5px #ffd700);">👇</div>
+            <!-- 🎡 واجهة العجلة المضيئة -->
+            <div id="royal-wheel" style="width: 160px; height: 160px; border-radius: 50%; border: 6px solid #ffd700; background: conic-gradient(#ff007f 0deg 90deg, #ba55d3 90deg 180deg, #00fa9a 180deg 270deg, #00beff 270deg 360deg); margin: 10px auto; transition: transform 4s cubic-bezier(0.1, 0.8, 0.3, 1); filter: drop-shadow(0 0 15px rgba(255,215,0,0.4)); box-shadow: inset 0 0 20px rgba(0,0,0,0.6); position: relative;">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 25px; height: 25px; background: #fff; border-radius: 50%; border: 3px solid #ffd700; z-index: 5;"></div>
+            </div>
+        </div>
+        <div style="display: flex; gap: 6px; margin-bottom: 10px;">
+            <input type="text" id="wheel-username" class="royal-input" placeholder="اكتب اسمك الحين لتفعيل حظك اليومي..." style="margin-bottom: 0 !important; border-color: #ffd700 !important; text-align: center;">
+        </div>
+        <div class="preview-box" id="wheel-report" style="border-color: #ffd700; text-align: right; font-size: 13px; line-height: 1.6; color: #fff; max-height: 250px; overflow-y: auto;">
+            اكتب اسمك الحين، واكبس زر الدوران لتكشف العجلة المضيئة عن نصيبك وفرصتك الفلكية لليوم فوراً...
+        </div>
+        <button type="button" id="spin-btn" class="royal-share-btn" style="background: linear-gradient(45deg, #ffd700, #ff007f) !important; color: #000 !important; font-weight: bold; border: 1px solid #ffd700; margin-bottom: 8px;" onclick="spinRoyalWheel()">🎰 أدر العجلة واكشف حظك الحين</button>
+        <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #1d9bf0, #00ba7c) !important; color: #fff !important; border: 1px solid #ffd700;" onclick="shareWheelReport()">🟢 مشاركة هديتك وفرصتك اليومية عبر واتساب</button>
+    </div>
 
      <div class="royal-footer-brand"><div class="royal-brand-kr">👑 KR 👑</div><br><span id="royal-footer-text">👑 منصة العائلة الملكية المعتمدة عالمياً 👑</span></div>
    
@@ -423,6 +443,29 @@ function shareVentReport() {
     var sType = document.getElementById("support-type").value;
     if(!vent) { alert("الرجاء الفضفضة وكتابة كلماتك أولاً"); return; }
     var msg = `🌿 *رسالة مستشار الأمل وصندوق الفضفضة النفسية* 🌿\n\n🎯 *نوع الدعم المعنوي:* ${sType}\n🔮 *تم استقبال فضفضتك السرية وتوليد طاقة الأمل والفرج بنجاح!*\n━━━━━━━━━━━━━━━\n👑 *عالم الحب KR* 👑`;
+    window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
+}
+var currentWheelRotation = 0;
+function spinRoyalWheel() {
+    var name = document.getElementById("wheel-username").value.trim();
+    var repBox = document.getElementById("wheel-report");
+    var wheel = document.getElementById("royal-wheel");
+    if (!name) { alert("الرجاء كتابة اسمك أولاً لتفعيل حظك اليومي"); return; }
+    currentWheelRotation += Math.floor(Math.random() * 360) + 1440;
+    wheel.style.transform = `rotate(${currentWheelRotation}deg)`;
+    repBox.innerHTML = "🔮 العجلة المضيئة تدور الحين... انتظر كشف نصيبك الفلكي...";
+    setTimeout(function() {
+        var titles = ["👑 بطل اليوم الخارق", "💎 ملك الروقان والذكاء", "💸 مغناطيس الكاش والوفرة", "🌟 جوهرة القلوب المشعة"];
+        var fortunes = ["بشارة مالية كبرى قادمة إليك في الطريق دغري", "استقرار نفسي وراحة بال واسعة تغمر قلبك الحين", "فرصة ذهبية غير متوقعة تفتح لك أبواب النجاح المالي", "تيسير سريع لأمر كان معلقاً والفرج يطرق بابك"];
+        var luckyNum = Math.floor(Math.random() * 90) + 10;
+        var randomIdx = Math.floor(Math.random() * titles.length);
+        repBox.innerHTML = `🎰 <b>تقرير حظك وفرصتك الفلكية اليومية لليوم:</b><br>👤 الاسم: ${name}<br>👑 اللقب الملكي الممنوح لك اليوم: <b>${titles[randomIdx]}</b><br>🎲 رقم الحظ الفلكي الخاص بك: <b>${luckyNum}</b><br>💌 رسالة البشارة والفرج السرية: <b>${fortunes[randomIdx]}</b><br>💡 <i>مستشار الفلك والعجلة يقول لك: حظك اليوم مشع بالطاقة الإيجابية، احتفظ بهذه الهدية وشاركها الحين كالملك لنشر الفرح لأولادك الغاليين.</i>`;
+    }, 4000);
+}
+function shareWheelReport() {
+    var name = document.getElementById("wheel-username").value.trim();
+    if(!name) { alert("الرجاء كشف حظك أولاً"); return; }
+    var msg = `🎰 *تقرير عجلة الحظ والفرص اليومية المضيئة* 🎰\n\n👤 *الاسم الشخصي:* ${name}\n✨ *تم كشف اللقب الفخم ورقم الحظ وبشارة اليوم بنجاح!*\n🚀 *ادخل الحين وأدر العجلة واكشف فرصتك اليومية مجاناً!*\n━━━━━━━━━━━━━━━\n👑 *عالم الحب KR* 👑`;
     window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
 }
 
