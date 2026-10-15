@@ -65,8 +65,14 @@
         .lang-btn { background: #0a0a0a !important; border: 1px solid #ffd700; color: #ffd700 !important; padding: 6px 18px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 13px; }
         .lang-btn.active { background: linear-gradient(45deg, #ffd700, #b8860b) !important; color: #000000 !important; border: none; box-shadow: 0 0 12px rgba(255,215,0,0.5); }
         
-        .main-title-ar { color: #ffd700 !important; font-size: 46px; font-weight: 700; text-shadow: 0 0 20px #ffd700, 0 0 40px #b8860b, 0 0 70px #ffd700; animation: krBrandBeat 2s infinite ease-in-out; text-align: center; margin: 10px 0; }
-        .main-title-en { color: #ffd700 !important; font-size: 34px; margin-top: 5px; margin-bottom: 12px; font-weight: bold; text-shadow: 0 0 20px #ffd700, 0 0 40px #b8860b, 0 0 70px #ff007f; animation: krBrandBeat 2.2s infinite ease-in-out; text-align: center; }
+            .main-title-ar { color: #ffd700 !important; font-size: 42px; font-weight: 700; text-align: center; margin: 15px 0 2px 0; font-family: 'Cairo', sans-serif; animation: golden3DBeamBeat 2.2s infinite ease-in-out; }
+        .main-title-en { color: #ffd700 !important; font-size: 30px; margin-top: 0px; margin-bottom: 12px; font-weight: bold; text-align: center; font-family: 'Cairo', sans-serif; letter-spacing: 1px; animation: golden3DBeamBeat 2.2s infinite ease-in-out; }
+        
+        @keyframes golden3DBeamBeat {
+            0% { transform: scale(1); text-shadow: 0 0 12px #ffd700, 0 0 25px #b8860b, 0 0 40px #ffd700, 0 2px 4px rgba(0,0,0,0.9); }
+            50% { transform: scale(1.03); text-shadow: 0 0 30px #ffd700, 0 0 55px #ffaa00, 0 0 80px #ffd700, 0 0 110px #ffea00, 0 4px 15px rgba(255,215,0,0.45); }
+            100% { transform: scale(1); text-shadow: 0 0 12px #ffd700, 0 0 25px #b8860b, 0 0 40px #ffd700, 0 2px 4px rgba(0,0,0,0.9); }
+        }
         
         .royal-panda-panel { background: rgba(20, 12, 35, 0.9) !important; border: 2px solid #ffd700 !important; border-radius: 24px; padding: 25px; margin: 15px 0; text-align: center; box-shadow: 0 0 25px rgba(255,215,0,0.4) !important; display: flex; flex-direction: column; align-items: center; }
         .panda-img-row { font-size: 90px; margin-bottom: 12px; display: inline-block; filter: drop-shadow(0 0 20px #ffd700); animation: pandaSmoothBeat 2s infinite ease-in-out; }
