@@ -77,6 +77,14 @@ body.ltr .merchant-box { text-align: left; }
 <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية 🇱🇧</button>
 <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English 🇬🇧</button>
 </div>
+<!-- 🔍 محرك بحث جوجل الذكي المطور للمنصة الملكية -->
+<div style="margin: 10px auto; max-width: 100%; padding: 2px;">
+    <form action="https://google.com" method="get" target="_blank" style="display: flex; gap: 6px; align-items: center;">
+        <input type="text" name="q" class="royal-input" placeholder="🔍 ابحث في جوجل الذكي من هنا الحين..." style="margin-bottom: 0 !important; border-color: #ffd700 !important; background: #050505 !important;">
+        <button type="submit" class="lang-btn active" style="padding: 10px 18px; border-radius: 8px; font-size: 13px; height: 100%; cursor: pointer;">بحث</button>
+    </form>
+</div>
+        
 <div class="clock-box" id="live-clock">جاري مزامنة التوقيت الملكي وحالة الطقس...</div>
 <h1 class="main-title-ar" id="main-title-ar-txt">عالم الحب</h1>
 <h2 class="main-title-en" id="main-title-en-txt">World of Love</h2>
@@ -140,6 +148,18 @@ body.ltr .merchant-box { text-align: left; }
 <input type="text" class="royal-input" id="name-box4" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box4')">
 <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box4')">🟢 مشاركة الإهداء على الواتساب</button>
 </div>
+      <!-- 📿 صندوق لوحة عداد الاستغفار والتسبيح الرقمي المضيء -->
+    <div class="royal-box box-green" style="border-color: #25d366 !important;">
+        <div class="royal-box-title" id="title-box-6" style="color: #25d366 !important;">📿 لوحة عداد الاستغفار والتسبيح الرقمي</div>
+        <div class="preview-box" id="counter-display" style="font-size: 26px; font-weight: bold; color: #25d366; text-shadow: 0 0 10px rgba(37,211,102,0.4); border-color: #25d366; text-align: center;">0</div>
+        <div style="display: flex; gap: 8px; margin-bottom: 10px;">
+            <button type="button" class="royal-share-btn" style="margin-top:0; background: linear-gradient(45deg, #128c7e, #25d366) !important; flex: 2;" onclick="incrementRoyalCounter()">📿 سبّح الآن</button>
+            <button type="button" class="lang-btn" style="border-color: #ff3333; color: #ff3333 !important; border-radius: 25px; padding: 0 15px; flex: 1;" onclick="resetRoyalCounter()">🔄 تصفير</button>
+        </div>
+        <input type="text" class="royal-input" id="name-box6" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box6')">
+        <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #075e54, #128c7e) !important;" onclick="shareRoyalCounter()">🟢 مشاركة مجموع التسبيح عبر واتساب</button>
+    </div>
+      
 <div class="merchant-box">
 <div class="merchant-header">📱 خدمات تشريج الخطوط والإنترنت الموثوقة</div>
 <div class="merchant-body">دليلك الآمن والكامل لتشريج خطوط <span class="color-alfa">Alfa</span> وتاتش <span class="color-mtc">MTC</span> وتجديد اشتراكات بطاقات إنترنت <span class="color-ushare">Ushare</span> برواقة تامة وبأعلى مصداقية في لبنان. تواصلوا مباشرة مع الموزع المستقل المعتمد لقفل طلباتكم بثقة وسرية:</div>
@@ -172,6 +192,22 @@ body.ltr .merchant-box { text-align: left; }
    
 
 <script>
+var royalCounterValue = 0;
+function incrementRoyalCounter() {
+    royalCounterValue++;
+    document.getElementById("counter-display").innerText = royalCounterValue;
+}
+function resetRoyalCounter() {
+    royalCounterValue = 0;
+    document.getElementById("counter-display").innerText = royalCounterValue;
+}
+function shareRoyalCounter() {
+    var s = document.getElementById("name-box6").value.trim();
+    if (!s) { s = (currentLang === 'ar') ? "مُرسِل مخلص" : "A Loyal Sender"; }
+    var msg = `🎁 *إهداء خاص من: [ ${s} ]* \n\n📿 *مجموع التسبيح والاستغفار الحين:* \n" [ ${royalCounterValue} ] تس تسبيحة " \n\n━━━━━━━━━━━━━━━\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n👑 *الشعار المعتمد:* KR 👑`;
+    window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
+}
+        
 var currentLang = 'ar';
 document.addEventListener('contextmenu', e => e.preventDefault());
 function connectMerchant(t) {
@@ -244,6 +280,9 @@ document.getElementById("title-box-3").innerText = isAr ? "👑 صندوق بر 
 document.getElementById("title-box-4").innerText = isAr ? "🔮 صندوق عبارات العتب والحزن" : "🔮 Reproach & Sadness Expressions Box";
     document.getElementById("title-box-5").innerText = isAr ? "🎉 صندوق الأعياد والمناسبات الشامل" : "🎉 Comprehensive Holidays & Occasions Box";
     document.getElementById("name-box5").placeholder = isAr ? "اكتب اسمك كمرسل الحين الحين..." : "Type your name here...";
+            document.getElementById("title-box-6").innerText = isAr ? "📿 لوحة عداد الاستغفار والتسبيح الرقمي" : "📿 Digital Tasbeeh & Istighfar Counter";
+    document.getElementById("name-box6").placeholder = isAr ? "اكتب اسمك كمرسل الحين الحين..." : "Type your name here...";
+
   
 for(var i=1; i<=4; i++) { document.getElementById("name-box" + i).placeholder = isAr ? "اكتب اسمك كمرسل الحين الحين..." : "Type your name here..."; }
 var sBtns = document.getElementsByClassName("royal-share-btn");
