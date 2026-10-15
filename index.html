@@ -342,14 +342,16 @@ body.ltr .merchant-box { text-align: left; }
                 50% { transform: scale(1.06); filter: drop-shadow(0 0 20px #ffd700) brightness(1.3); }
                 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255,215,0,0.4)) brightness(1); }
             }
-            @keyframes pandaSmoothBeat {
-                0% { transform: scale(1); filter: drop-shadow(0 -5px 10px rgba(255, 215, 0, 0.25)); }
-                50% { transform: scale(1.04); filter: drop-shadow(0 -8px 25px rgba(255, 215, 0, 0.5)); }
-                100% { transform: scale(1); filter: drop-shadow(0 -5px 10px rgba(255, 215, 0, 0.25)); }
-            }
+        @keyframes pandaSmoothBeat {
+            0% { transform: scale(1); filter: drop-shadow(0 -5px 10px rgba(255, 215, 0, 0.25)); }
+            50% { transform: scale(1.04); filter: drop-shadow(0 -8px 25px rgba(255, 215, 0, 0.5)); }
+            100% { transform: scale(1); filter: drop-shadow(0 -5px 10px rgba(255, 215, 0, 0.25)); }
+        }
         </style>
-    </div>
+       </div>
+
     <script>
+
 
     var amt = parseFloat(document.getElementById("financial-amount").value);
     var cur = document.getElementById("currency-select").value;
