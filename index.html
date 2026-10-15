@@ -9,27 +9,27 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; user-select: none !important; -webkit-user-select: none !important; }
         html, body { background-color: #030107 !important; color: #ffffff !important; text-align: center; padding: 5px; min-height: 100vh; overflow-x: hidden; position: relative; }
         
-        /* 🌌 خلفية الفضاء ثلاثية الأبعاد والنجوم المتحركة */
+        /* 🌌 خلفية الفضاء ثلاثية الأبعاد والنجوم المتحركة برواقة */
         .space-3d-deep { position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at center, #0f061e 0%, #040108 70%, #000000 100%); z-index: -4; }
         .space-3d-stars1 { position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background-image: radial-gradient(white, rgba(255,255,255,.3) 2px, transparent 40px), radial-gradient(rgba(255,255,255,0.9), rgba(255,255,255,.2) 1px, transparent 30px); background-size: 350px 350px, 200px 200px; background-position: 0 0, 40px 60px; z-index: -3; opacity: 0.55; animation: spaceRotate3D 45s linear infinite; }
         .space-3d-stars2 { position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background-image: radial-gradient(white, rgba(255,255,255,.2) 1.5px, transparent 30px), radial-gradient(rgba(255,0,127,0.35), transparent 60px); background-size: 450px 450px, 300px 300px; background-position: 130px 270px, 90px 120px; z-index: -2; opacity: 0.45; animation: spaceRotate3D 30s linear infinite reverse; }
         @keyframes spaceRotate3D { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عالم الحب KR | المنصة الملكية المعتمدة</title>
-    <link href="https://googleapis.com" rel="stylesheet">
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; user-select: none !important; -webkit-user-select: none !important; }
-        html, body { background-color: #030107 !important; color: #ffffff !important; text-align: center; padding: 5px; min-height: 100vh; overflow-x: hidden; position: relative; }
+        /* 📊 شريط البورصة والذهب والدولار الذكي المتحرك في رأس الصفحة */
+        .ticker-bar { width: 100%; background: rgba(5,7,5,0.95) !important; border-bottom: 2px solid #ffd700; padding: 12px 0; overflow: hidden; white-space: nowrap; box-shadow: 0 4px 15px rgba(0,0,0,0.9); position: fixed; top: 0; left: 0; z-index: 9999; display: block !important; }
+        .ticker-move { display: inline-block; white-space: nowrap; padding-left: 100%; animation: royalMarqueeAnimation 18s linear infinite; }
+        @keyframes royalMarqueeAnimation { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+        .ticker-item { background: #0c0f0c !important; padding: 6px 14px; border-radius: 6px; border: 1px solid #ffd700; text-decoration: none; color: #ffd700 !important; font-weight: bold; font-size: 13px; margin-right: 25px; display: inline-block !important; }
         
-        /* 🌌 خلفية الفضاء ثلاثية الأبعاد والنجوم المتحركة */
-        .space-3d-deep { position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at center, #0f061e 0%, #040108 70%, #000000 100%); z-index: -4; }
-        .space-3d-stars1 { position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background-image: radial-gradient(white, rgba(255,255,255,.3) 2px, transparent 40px), radial-gradient(rgba(255,255,255,0.9), rgba(255,255,255,.2) 1px, transparent 30px); background-size: 350px 350px, 200px 200px; background-position: 0 0, 40px 60px; z-index: -3; opacity: 0.55; animation: spaceRotate3D 45s linear infinite; }
-        .space-3d-stars2 { position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background-image: radial-gradient(white, rgba(255,255,255,.2) 1.5px, transparent 30px), radial-gradient(rgba(255,0,127,0.35), transparent 60px); background-size: 450px 450px, 300px 300px; background-position: 130px 270px, 90px 120px; z-index: -2; opacity: 0.45; animation: spaceRotate3D 30s linear infinite reverse; }
-        @keyframes spaceRotate3D { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        /* 💎 حاوية تنسيق الصناديق مفرودة بالملي ومنسقة */
+        .royal-container { width: 100%; max-width: 480px; display: flex; flex-direction: column; gap: 20px; margin: 80px auto 20px auto; padding: 10px 5px; position: relative; z-index: 10; }
+        .royal-box, .merchant-box { background: rgba(20, 12, 35, 0.9) !important; border-radius: 24px; padding: 22px; text-align: center; margin-bottom: 5px; width: 100%; display: block; }
+        
+        /* 🎨 تلوين وتوهج الصناديق الفخمة بالألوان الأصلية المشعة */
+        .box-green { border: 2px solid #00fa9a !important; box-shadow: 0 0 20px rgba(0, 250, 154, 0.45) !important; }
+        .box-pink { border: 2px solid #ff007f !important; box-shadow: 0 0 20px rgba(255, 0, 127, 0.45) !important; }
+        .box-blue { border: 2px solid #00bfff !important; box-shadow: 0 0 20px rgba(0, 191, 255, 0.45) !important; }
+        .box-purple { border: 2px solid #ba55d3 !important; box-shadow: 0 0 20px rgba(186, 85, 211, 0.45) !important; }
+        .box-gold { border: 2px solid #ffd700 !important; box-shadow: 0 0 20px rgba(255, 215, 0, 0.45) !important; }
         .royal-box-title, .merchant-header { font-size: 18.5px; font-weight: bold; margin-bottom: 15px; text-align: center; }
         .box-green .royal-box-title { color: #00fa9a !important; text-shadow: 0 0 10px rgba(0,250,154,0.6); }
         .box-pink .royal-box-title { color: #ff007f !important; text-shadow: 0 0 10px rgba(255, 0, 127, 0.6); }
@@ -92,6 +92,7 @@
     <div class="space-3d-deep"></div>
     <div class="space-3d-stars1"></div>
     <div class="space-3d-stars2"></div>
+    <!-- 📊 شريط البورصة والذهب والدولار الذكي المتحرك في رأس الصفحة -->
     <div class="ticker-bar">
         <div class="ticker-move">
             <a href="https://goldprice.org" target="_blank" class="ticker-item"><span id="tick-gold">أوقية الذهب العالمية:</span> $2,624.50 <span style="color:#ff3333;">▼ نازل</span></a>
@@ -101,21 +102,21 @@
     </div>
 
     <div class="royal-container">
-        <!-- 👑 واجهة عناوين المنصة الملكية بالذهب المضيء والنبّاض -->
+        <!-- 👑 واجهة عناوين المنصة الملكية بالذهب المضيء المشع والنبّاض (العربي والإنجليزي سوا) -->
         <h1 class="main-title-ar" id="main-title-ar-txt">عالم الحب</h1>
-        <h2 class="main-title-en" id="main-title-en-txt" style="display:none;">World of Love</h2>
+        <h2 class="main-title-en" id="main-title-en-txt">World of Love</h2>
 
-        <!-- 🌐 أزرار ترجمة الصفحة من العربي للانجليزي -->
+        <!-- 🌐 أزرار ترجمة الصفحة من العربي للانجليزي المصلحة -->
         <div class="lang-zone">
             <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">العربية 🇱🇧</button>
             <button class="lang-btn" id="btn-en" onclick="switchLang('en')">English 🇬🇧</button>
         </div>
-
         <!-- ⏰ لوحة التوقيت الفلكي والتاريخ والطقس ببيروت المشعة -->
-        <div class="royal-box box-purple">
+        <div class="royal-box box-purple" style="border-color:#ba55d3 !important;">
             <div class="royal-clock" id="live-clock">00:00:00 م</div>
             <div class="royal-date" id="live-date">جاري مزامنة التوقيت الملكي...</div>
         </div>
+
         <!-- 🔍 محرك البحث الذكي الملوكي السريع دغري تحت الترجمة والوقت -->
         <div class="royal-box box-gold">
             <div class="royal-box-title">🔍 محرك البحث الذكي الملوكي السريع</div>
@@ -125,7 +126,7 @@
 
         <!-- 👥 لوحة عدد زوار صفحتنا الحين -->
         <div class="visitor-box">
-            👥 <span id="lbl-visitors">عدد زوار صفحتنا الحين:</span> <strong id="live-visitor-counter">3,910</strong>
+            👥 <span id="lbl-visitors">عدد زوار صفحتنا الحين:</span> <strong id="live-visitor-counter">3,959</strong>
         </div>
 
         <!-- 🐼 صندوق الباندا وكلمة الترحيب المضيئة بالأبيض والأحمر النبّاض -->
@@ -205,7 +206,7 @@
                 <option value="بشارة خير وبركة تطرق باب قلبك الطيب الحين، ابتسم كالملك فكل مر سيمر فوراً.">🌟 بشارة السرور وباب الفرج المفتوح</option>
                 <option value="رسالة حب مشفرة ومغلقة بعهد الوفاء الأبدي، مخصصة لروحك النقيّة المشعة بالأمل.">🔒 رسالة العهد المشفرة والنبض الحي</option>
             </select>
-            <div class="preview-box" id="preview-box-secret">هدية سرية كبرى قادمة في طريقها إليك, ثق تماماً بعهد الأمان والمصداقية الكبرى!</div>
+            <div class="preview-box" id="preview-box-secret">هدية سرية كبرى قادمة في طريقها إليك، ثق تماماً بعهد الأمان والمصداقية الكبرى!</div>
             <input type="text" class="royal-input" id="name-secret" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('secret')">
             <button class="royal-share-btn" onclick="fireRoyalWhatsapp('secret')">🟢 مشاركة التهنئة الاحتفالية عبر واتساب</button>
         </div>
@@ -284,7 +285,7 @@
             <select id="currency-select" class="royal-select">
                 <option value="ريال سعودي">ريال سعودي 🇸🇦</option>
                 <option value="درهم إماراتي">درهم إماراتي 🇦🇪</option>
-                <option value="دينار كويتي">دينار كويتي 🇰🇼</option>
+                <option value="دينار كويتي">دينار كويتي 🇰ฒ</option>
                 <option value="دولار أمريكي">دولار أمريكي 🇺🇸</option>
             </select>
             <input type="number" id="financial-amount" class="royal-input" placeholder="أدخل المبلغ المالي الإجمالي المُراد حسابه..." oninput="calculateFinancialMetrics()">
@@ -392,7 +393,7 @@
             var text = document.getElementById("wish-text").value.trim();
             var repBox = document.getElementById("wish-report");
             if(!name || !text) { repBox.innerHTML = "الرجاء كتابة اسمك وأمنيتك لتفعيل شجرة الأنوار"; return; }
-            repBox.innerHTML = `🔮 <b>شجرة الأمنيات الكونية:</b><br>👤 الاسم: ${name}<br>💭 الأمنية Mرفوعة: تم استقبال أمنيتك السرية بأمان بنجاح<br>💌 <b>بشارة الشجرة الفورية لكم اليوم:</b> أمنيتك مستجابة والفرج يطرق بابك دغري مية بالمية ابتسم كالملك من أجل أولادك الغاليين.`;
+            repBox.innerHTML = `🔮 <b>شجرة الأمنيات الكونية:</b><br>👤 الاسم: ${name}<br>💭 الأمنية المرفوعة: تم استقبال أمنيتك السرية بأمان بنجاح<br>💌 <b>بشارة الشجرة الفورية لكم اليوم:</b> أمنيتك مستجابة والفرج يطرق بابك دغري مية بالمية ابتسم كالملك من أجل أولادك الغاليين.`;
         }
 
         function shareWishReport() { fireRoyalWhatsapp('wish'); }
@@ -424,7 +425,7 @@
             if (!name) { alert("الرجاء كتابة اسمك أولاً لتفعيل حظك اليومي"); return; }
             currentWheelRotation += Math.floor(Math.random() * 360) + 1440;
             if(wheel) wheel.style.transform = `rotate(${currentWheelRotation}deg)`;
-            if(repBox) repBox.innerText = "🔮 العجلة المضيئة تدور الحين... انتظر كشف نصيبك الفلكي...";
+            if(repBox) repBox.innerText = "🔮 <b>العجلة المضيئة تدور الحين... انتظر كشف نصيبك الفلكي...</b>";
             setTimeout(function() {
                 var titles = ["👑 بطل اليوم الخارق", "💎 ملك الروقان والذكاء", "💸 مغناطيس الكاش والوفرة", "🌟 جوهرة القلوب المشعة"];
                 var fortunes = ["بشارة مالية كبرى قادمة إليك في الطريق دغري", "استقرار نفسي وراحة بال واسعة تغمر قلبك الحين", "فرصة ذهبية غير متوقعة تفتح لك أبواب النجاح المالي", "تيسير سريع لأمر كان معلقاً والفرج يطرق بابك"];
@@ -454,7 +455,6 @@
             var view = document.getElementById("royal-counter-view");
             if(view) view.innerText = royalCounterValue;
         }
-
         function calculateFinancialMetrics() {
             var amt = parseFloat(document.getElementById("financial-amount").value);
             var repBox = document.getElementById("financial-report");
@@ -479,69 +479,7 @@
             if(!query) { alert("الرجاء كتابة كلمات البحث أولاً كالملك"); return; }
             window.open("https://google.com" + encodeURIComponent(query), "_blank");
         }
-        var currentWheelRotation = 0;
-        function spinRoyalWheel() {
-            var name = document.getElementById("wheel-username").value.trim();
-            var repBox = document.getElementById("wheel-report");
-            var wheel = document.getElementById("royal-wheel");
-            if (!name) { alert("الرجاء كتابة اسمك أولاً لتفعيل حظك اليومي"); return; }
-            currentWheelRotation += Math.floor(Math.random() * 360) + 1440;
-            if(wheel) wheel.style.transform = `rotate(${currentWheelRotation}deg)`;
-            if(repBox) repBox.innerText = "🔮 العجلة المضيئة تدور الحين... انتظر كشف نصيبك الفلكي...";
-            setTimeout(function() {
-                var titles = ["👑 بطل اليوم الخارق", "💎 ملك الروقان والذكاء", "💸 مغناطيس الكاش والوفرة", "🌟 جوهرة القلوب المشعة"];
-                var fortunes = ["بشارة مالية كبرى قادمة إليك في الطريق دغري", "استقرار نفسي وراحة بال واسعة تغمر قلبك الحين", "فرصة ذهبية غير متوقعة تفتح لك أبواب النجاح المالي", "تيسير سريع لأمر كان معلقاً والفرج يطرق بابك"];
-                var luckyNum = Math.floor(Math.random() * 90) + 10;
-                var randomIdx = Math.floor(Math.random() * titles.length);
-                if(repBox) {
-                    repBox.innerHTML = `🎰 <b>تقرير حظك وفرصتك الفلكية اليومية لليوم:</b><br>👤 الاسم: ${name}<br>👑 اللقب الملكي الممنوح لك اليوم: <b>${titles[randomIdx]}</b><br>🎲 رقم الحظ الفلكي الخاص بك: <b>${luckyNum}</b><br>💌 رسالة البشارة والفرج السرية: <b>${fortunes[randomIdx]}</b>`;
-                }
-            }, 4000);
-        }
 
-        function shareWheelReport() {
-            var name = document.getElementById("wheel-username").value.trim();
-            if(!name) { alert("الرجاء كشف حظك أولاً"); return; }
-            var text = document.getElementById("wheel-report").innerText;
-            window.location.href = "whatsapp://send?text=" + encodeURIComponent(text + "\n\n👑 عالم الحب KR 👑");
-        }
-
-        var royalCounterValue = 0;
-        function incrementRoyalCounter() {
-            royalCounterValue++;
-            var view = document.getElementById("royal-counter-view");
-            if(view) view.innerText = royalCounterValue;
-        }
-        function resetRoyalCounter() {
-            royalCounterValue = 0;
-            var view = document.getElementById("royal-counter-view");
-            if(view) view.innerText = royalCounterValue;
-        }
-
-        function calculateFinancialMetrics() {
-            var amt = parseFloat(document.getElementById("financial-amount").value);
-            var repBox = document.getElementById("financial-report");
-            if (isNaN(amt) || amt <= 0) { if(repBox) repBox.innerHTML = "الرجاء كتابة المبلغ الإجمالي المُراد حسابه فوراً"; return; }
-            var zakat = amt * 0.025;
-            var save = amt * 0.20;
-            var invest = amt * 0.10;
-            if(repBox) {
-                repBox.innerHTML = `💰 <b>مستشار الاستشارة والزكاة والوفرة المالي الذكي:</b><br>🕌 قيمة الزكاة الشرعية الواجبة (2.5%): <b>${zakat.toFixed(2)}</b><br>🛡️ خطة الادخار والأمان الموصى بها (20%): <b>${save.toFixed(2)}</b><br>📈 خطة الاستثمار وتدفق الوفرة (10%): <b>${invest.toFixed(2)}</b><br>💡 <i>مستشار المال يهمس لك: طهر مالك بالزكاة، لتفتح أبواب تدفق الرزق المبارك والوفرة لأولادك الغاليين دغري مية بالمية.</i>`;
-            }
-        }
-
-        function shareFinancialReport() {
-            var amt = document.getElementById("financial-amount").value;
-            if(!amt) { alert("الرجاء إدخال المبلغ أولاً"); return; }
-            var text = document.getElementById("financial-report").innerText;
-            window.location.href = "whatsapp://send?text=" + encodeURIComponent(text + "\n\n👑 عالم الحب KR 👑");
-        }
-
-        function executeRoyalSearch() {
-            var query = document.getElementById("royal-search-query").value.trim();
-            if(!query) { alert("الرجاء كتابة كلمات البحث أولاً كالملك"); return; }
-            window.open("https://google.com" + encodeURIComponent(query), "_blank");
-        }
         function switchLang(l) {
             currentLang = l;
             var bAr = document.getElementById("btn-ar");
@@ -592,7 +530,6 @@
             if(bWheel) bWheel.innerText = isAr ? "🎰 عجلة الحظ والفرص اليومية المضيئة" : "🎰 Lucky Wheel & Daily Shining Opportunities";
             if(bCount) bCount.innerText = isAr ? "📿 عداد الاستغفار والتسبيح المضيء" : "📿 Digital Tasbeeh & Prayers Counter";
             if(bFin) bFin.innerText = isAr ? "💰 حاسبة الاستشارة والزكاة والوفرة المالية" : "💰 Smart Zakat & Wealth Flow Calculator";
-            
             for(var i=1; i<=4; i++) {
                 var el = document.getElementById("name-box" + i);
                 if(el) el.placeholder = isAr ? "اكتب اسمك كمرسل الحين الحين..." : "Type your name here...";
