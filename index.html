@@ -7,38 +7,43 @@
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; user-select: none !important; -webkit-user-select: none !important; }
-        html, body { background-color: #000000 !important; color: #ffffff !important; text-align: center; padding: 5px; min-height: 100vh; background: #000000 url('https://transparenttextures.com') repeat !important; overflow-x: hidden; }
-        .container { max-width: 450px; margin: 0 auto; padding: 10px 5px; background-color: #000000 !important; margin-top: 55px; } 
-        .main-title-ar { color: #ffd700 !important; font-size: 38px; font-weight: 700; margin-top: 15px; display: block; text-shadow: 0 0 12px #ffd700, 0 0 25px #ffd700, 0 0 40px #b8860b; }
-        .main-title-en { color: #ffd700 !important; font-family: 'Playfair Display', serif; font-style: italic; font-size: 30px; margin-top: 2px; margin-bottom: 12px; display: block; text-shadow: 0 0 12px #ffd700, 0 0 25px #ffd700, 0 0 40px #b8860b; }
-        .ticker-bar { background: rgba(5,7,5,0.95) !important; border-bottom: 2px solid #ffd700; padding: 10px 0; position: fixed; top: 0; left: 0; overflow: hidden; white-space: nowrap; box-shadow: 0 4px 15px rgba(0,0,0,0.9); width: 100%; display: block !important; z-index: 9999; }
+        html, body { background-color: #000000 !important; color: #ffffff !important; text-align: center; padding: 5px; min-height: 100vh; overflow-x: hidden; }
+        .ticker-bar { width: 100%; background: rgba(5,7,5,0.95) !important; border-bottom: 2px solid #ffd700; padding: 10px 0; overflow: hidden; white-space: nowrap; box-shadow: 0 4px 15px rgba(0,0,0,0.9); width: 100%; position: fixed; top: 0; left: 0; z-index: 9999; display: block !important; }
         .ticker-move { display: inline-block; white-space: nowrap; padding-left: 100%; animation: royalMarqueeAnimation 18s linear infinite; }
         @keyframes royalMarqueeAnimation { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
         .ticker-item { background: #0c0f0c !important; padding: 5px 12px; border-radius: 6px; border: 1px solid #ffd700; text-decoration: none; color: #ffd700 !important; font-weight: bold; font-size: 12px; margin-right: 15px; display: inline-block !important; }
-        .lang-zone { margin-bottom: 12px; display: flex; justify-content: center; gap: 12px; margin-top: 15px; }
-        .lang-btn { background: #0a0a0a !important; border: 1px solid #ffd700; color: #ffd700 !important; padding: 5px 15px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 12px; }
+        .container { max-width: 450px; margin: 65px auto 20px auto; padding: 10px 5px; background-color: #000000 !important; width: 100%; } 
+        .main-title-ar { color: #ffd700 !important; font-size: 38px; font-weight: 700; margin-top: 15px; display: block; text-shadow: 0 0 12px #ffd700, 0 0 25px #ffd700; }
+        .main-title-en { color: #ffd700 !important; font-size: 30px; margin-top: 2px; margin-bottom: 12px; display: block; text-shadow: 0 0 12px #ffd700, 0 0 25px #ffd700; }
+        .lang-zone { margin-bottom: 15px; display: flex; justify-content: center; gap: 12px; }
+        .lang-btn { background: #0a0a0a !important; border: 1px solid #ffd700; color: #ffd700 !important; padding: 6px 18px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 13px; }
         .lang-btn.active { background: linear-gradient(45deg, #ffd700, #b8860b) !important; color: #000000 !important; border: none; box-shadow: 0 0 12px rgba(255,215,0,0.5); }
-        .clock-box { background: #020202 !important; border: 1px solid #161616; padding: 12px; border-radius: 8px; font-size: 14px; color: #ffffff !important; margin-bottom: 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.5); font-weight: bold; }
-        .visitor-box { background: #020202 !important; border: 1px solid #161616; padding: 8px; border-radius: 25px; font-size: 12px; color: #ffffff !important; display: inline-block; min-width: 170px; margin: 8px auto; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-        .royal-box { background: rgba(5,5,5,0.9) !important; border: 2px solid #ffd700 !important; border-radius: 20px; padding: 20px; margin-bottom: 20px; box-shadow: 0 0 15px rgba(255,215,0,0.2); text-align: right; }
-        .royal-box-title { color: #ffd700 !important; font-size: 16px; font-weight: bold; margin-bottom: 12px; border-bottom: 1px solid #222; padding-bottom: 5px; text-align: right; }
-        .royal-select, .royal-input { width: 100%; padding: 12px; background: #000 !important; border: 1px solid #ffd700; color: #fff; border-radius: 12px; font-size: 14px; margin-bottom: 12px; outline: none; text-align: right; }
-        .preview-box { background: rgba(0,0,0,0.6); border: 1px dashed #ffd700; padding: 12px; border-radius: 10px; font-size: 14px; color: #ffd700; min-height: 50px; margin-bottom: 12px; line-height: 1.5; text-align: center; }
-        .royal-share-btn { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #ffd700; background: linear-gradient(45deg, #000, #1a1a1a); color: #ffd700; font-size: 15px; font-weight: bold; cursor: pointer; transition: 0.2s; margin-bottom: 8px; }
-        .royal-panda-panel { background: rgba(5,5,5,0.95) !important; border: 2px dashed #ffd700 !important; border-radius: 20px; padding: 20px; margin: 15px 0 20px 0; text-align: center; box-shadow: 0 0 20px rgba(255,215,0,0.15); display: flex; flex-direction: column; align-items: center; }
+        .clock-box { background: #020202 !important; border: 2px solid #ffd700 !important; padding: 12px; border-radius: 12px; font-size: 13px; color: #ffffff !important; margin-bottom: 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.5); line-height: 1.6; }
+        .preview-box { background: #020202 !important; border: 1px dashed #ffd700; padding: 12px; border-radius: 8px; font-size: 13px; line-height: 1.5; color: #ffd700 !important; margin-top: 8px; margin-bottom: 10px; text-align: center; min-height: 45px; word-wrap: break-word; }
+        .visitor-box { background: #020202 !important; border: 1px solid #161616; padding: 8px; border-radius: 25px; font-size: 12px; color: #ffffff !important; display: inline-block; min-width: 170px; margin: 8px auto 15px auto; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .royal-box { background: #000000 !important; border: 2px solid #ffd700 !important; border-radius: 20px; padding: 20px; margin-bottom: 20px; text-align: right; }
+        .box-green { border-color: #00fa9a !important; }
+        .box-pink { border-color: #ff007f !important; }
+        .box-blue { border-color: #00bfff !important; }
+        .box-purple { border-color: #ba55d3 !important; }
+        .royal-box-title { color: #ffd700 !important; font-size: 16px; font-weight: bold; margin-bottom: 12px; border-bottom: 1px solid #222; padding-bottom: 6px; text-align: right; }
+        .royal-input, .royal-select { width: 100%; padding: 11px; background: #000 !important; border: 1px solid #333; color: #fff; border-radius: 6px; font-size: 13px; margin-bottom: 10px; outline: none; text-align: right; }
+        .royal-share-btn { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #ffd700; background: linear-gradient(45deg, #000, #1a1a1a); color: #ffd700; font-size: 15px; font-weight: bold; cursor: pointer; transition: 0.2s; margin-top: 5px; box-shadow: 0 4px 10px rgba(255,215,0,0.2); }
+        .royal-panda-panel { background: rgba(5,5,5,0.95) !important; border: 2px dashed #ffd700 !important; border-radius: 20px; padding: 20px; margin: 15px 0 20px 0; text-align: center; display: flex; flex-direction: column; align-items: center; }
         .panda-img-row { font-size: 80px; margin-bottom: 10px; }
         .txt-welcome-wrap { margin-bottom: 8px; display: flex; justify-content: center; gap: 8px; font-size: 24px; font-weight: bold; }
         .txt-welcome-welcome { color: #ffffff; }
         .txt-welcome-bibi { color: #ffd700; }
         .txt-desc { font-size: 13px; color: #ddd; line-height: 1.6; }
-        .merchant-box { background: rgba(5,5,5,0.9) !important; border: 2px dashed #ffd700 !important; border-radius: 16px; padding: 15px; margin-bottom: 15px; text-align: right; }
-        .merchant-header { color: #ffd700 !important; font-size: 16px; font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #222; padding-bottom: 5px; }
+        .merchant-box { background: #050505 !important; border: 2px solid #ffd700 !important; border-radius: 16px; padding: 15px; margin-bottom: 18px; text-align: right; }
+        .merchant-header { color: #ffd700 !important; font-size: 16px; font-weight: bold; margin-bottom: 12px; border-bottom: 1px solid #222; padding-bottom: 6px; }
         .merchant-body { font-size: 13px; color: #ccc; line-height: 1.6; margin-bottom: 12px; }
-        .merchant-action-btn { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #ffd700; background: #000; color: #ffd700; font-size: 15px; font-weight: bold; cursor: pointer; }
+        .merchant-action-btn { width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #ffd700; background: #000; color: #ffd700; font-size: 14px; font-weight: bold; cursor: pointer; }
         .pubg-banner { width: 100%; background: #111; border: 1px dashed #ffd700; padding: 8px; border-radius: 8px; font-size: 13px; font-weight: bold; color: #ffd700; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
-        .royal-footer-brand { margin-top: 25px; text-align: center; }
-        .royal-brand-kr { color: #ffd700 !important; font-size: 24px; font-weight: bold; letter-spacing: 2px; text-shadow: 0 0 12px #ffd700; }
-        #royal-footer-text { color: #ffd700 !important; font-size: 13px; }
+        .royal-footer-brand { margin: 25px 0 10px 0; text-align: center; }
+        .royal-brand-kr { color: #ffd700 !important; font-size: 24px; font-weight: bold; letter-spacing: 2px; display: inline-block; }
+        .wheel-container { display: flex; justify-content: center; margin: 15px 0; position: relative; }
+        .wheel-canvas { width: 160px; height: 160px; border-radius: 50%; border: 6px solid #ffd700; background: conic-gradient(#ff007f 0deg 90deg, #ba55d3 90deg 180deg, #00fa9a 180deg 270deg, #00bfff 270deg 360deg); transition: transform 4s cubic-bezier(0.1, 0.8, 0.3, 1); }
     </style>
 </head>
 <body>
@@ -52,7 +57,7 @@
         </div>
     </div>
     <div class="container">
-        <!-- 👑 واجهة الترحيب التلقائية ومفاتيح اللغة -->
+        <!-- 👑 واجهة الترحيب ومفاتيح اللغة الملوكية -->
         <h1 class="main-title-ar" id="main-title-ar-txt">عالم الحب</h1>
         <h2 class="main-title-en" id="main-title-en-txt" style="display:none;">World of Love</h2>
 
@@ -67,7 +72,7 @@
             👥 <span id="lbl-visitors">عدد زوار صفحتنا الحين:</span> <strong id="live-visitor-counter">2,311</strong>
         </div>
 
-        <!-- 🐼 صندوق الباندا الملكي الترحيبي الأصلي -->
+        <!-- 🐼 صندوق الباندا الملكي الترحيبي الأصلي الفخم -->
         <div class="royal-panda-panel">
             <div class="panda-img-row">🐼</div>
             <div class="panda-text-block">
@@ -79,7 +84,7 @@
             </div>
         </div>
 
-        <!-- 🤲 صندوق الأدعية والإهداءات التفاعلية -->
+        <!-- 🤲 صندوق الأدعية والإهداءات التفاعلية الملون الأصلي -->
         <div class="royal-box box-green">
             <div class="royal-box-title" id="title-box-1">🌿 صندوق الأدعية والإهداءات التفاعلية</div>
             <select class="royal-select" id="select-box1" onchange="syncLivePreview('box1')">
@@ -94,14 +99,14 @@
             <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box1')">🟢 مشاركة الإهداء على الواتساب</button>
         </div>
 
-        <!-- 💝 صندوق عبارات الحب والاشتياق -->
+        <!-- 💝 صندوق عبارات الحب والاشتياق الملون الأصلي -->
         <div class="royal-box box-pink">
             <div class="royal-box-title" id="title-box-2">💝 صندوق عبارات الحب والاشتياق</div>
             <select class="royal-select" id="select-box2" onchange="syncLivePreview('box2')">
                 <option value="لو كان الشوق يوزن بالأطنان، لكان شوقي إليك قد تخطى حدود الأرض والكون بأكمله كالألماسة.">🔥 عبارة الاشتياق العارم الفاخرة</option>
                 <option value="أنت عالمي بأكمله، ونبض قلبي الذي لا أعيش بدونه، حفظك الله لي يا كل دنيتي وروحي.">💞 عبارة الغرام والنبض الأبدي</option>
                 <option value="في سماء قلبي تظل أنت النجم الأوحد والأكثر لمعاناً، حبك عهد محفور في الوجدان ولا يمحوه الزمان.">✨ عبارة النجم الأوحد والعهد الأبدي</option>
-                <option value="كل دقيقة تمر بدونك تبدو وكأنها دهراً كاملاً، اشتقت لملامحك، لضحكتك، ولكل تفصيلة تجمعني بك يا عمري.">⏳ دهر الشوق والاشتياق المجنون</option>
+                <option value="كل دقيقة تمر بدونك تبدو وكأنها دهراً كاملًا، اشتقت لملامحك، لضحكتك، ولكل تفصيلة تجمعني بك يا عمري.">⏳ دهر الشوق والاشتياق المجنون</option>
                 <option value="وجودك في حياتي هو الأمان الذي أبحث عنه دائماً، دمت لي سنداً وحبيباً ورفيقاً لروحي ونبضاً لقلبي.">🔒 عبارة الأمان ورفيق الروح</option>
             </select>
             <div class="preview-box" id="preview-box-box2">لو كان الشوق يوزن بالأطنان، لكان شوقي إليك قد تخطى حدود الأرض والكون بأكمله كالألماسة.</div>
@@ -109,7 +114,7 @@
             <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box2')">🟢 مشاركة الإهداء على الواتساب</button>
         </div>
 
-        <!-- 👑 صندوق بر الوالدين والأم الغالية -->
+        <!-- 👑 صندوق بر الوالدين والأم الغالية الملون الأصلي -->
         <div class="royal-box box-blue">
             <div class="royal-box-title" id="title-box-3">👑 صندوق بر الوالدين والأم الغالية</div>
             <select class="royal-select" id="select-box3" onchange="syncLivePreview('box3')">
@@ -124,7 +129,7 @@
             <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box3')">🟢 مشاركة الإهداء على الواتساب</button>
         </div>
 
-        <!-- 🔮 صندوق عبارات العتب والحزن -->
+        <!-- 🔮 صندوق عبارات العتب والحزن الملون الأصلي -->
         <div class="royal-box box-purple">
             <div class="royal-box-title" id="title-box-4">🔮 صندوق عبارات العتب والحزن</div>
             <select class="royal-select" id="select-box4" onchange="syncLivePreview('box4')">
@@ -132,11 +137,65 @@
                 <option value="لم أكن أتوقع أن يطول صمتك وجفاؤك، فالقلب الصادق لم يعد يتحمل هذا البعد الطويل الحزين.">💔 رسالة لوعة الجفاء والصمت</option>
                 <option value="العتب يكون دائماً على قدر المحبة، ولكن عندما يتكرر التجاهل، يصبح الصمت هو الحل الأرقى والأفخم للقلب.">🕯️ العتب على قدر المحبة والكرامة</option>
                 <option value="لم يتعبني البعد، بقدر ما أتعبني أنني وثقت بمكانة لم تكن لي يوماً، عتب الخذلان من أقرب القلوب.">🍂 رسالة لوعة الخذلان والبعد</option>
-                <option value="كنت أظن أن غيابي سيصنع فرقاً لديك، ولكنني اكتشفت بمرور الأيام أنني كنت وهمماً جميلاً في حياتك فقط.">🥀 عبارة أثر الغياب والنسيان الحزين</option>
+                <option value="كنت أظن أن غيابي سيصنع فرقاً لديك، ولكنني اكتشفت بمرور الأيام أنني كنت وهماً جميلاً في حياتك فقط.">🥀 عبارة أثر الغياب والنسيان الحزين</option>
             </select>
             <div class="preview-box" id="preview-box-box4">عاتبتك لأنك كنت تعني لي الكثير، ولكن صمتك المستمر علمني أن بعض العتب يفقد قيمته مع الوقت.</div>
             <input type="text" class="royal-input" id="name-box4" placeholder="اكتب اسمك كمرسل الحين الحين..." oninput="syncLivePreview('box4')">
             <button class="royal-share-btn" onclick="fireRoyalWhatsapp('box4')">🟢 مشاركة الإهداء على الواتساب</button>
+        </div>
+        <!-- 💰 مستشار المال وحاسبة الزكاة والادخار -->
+        <div class="royal-box box-purple" style="border-color: #ffd700 !important;">
+            <div class="royal-box-title" style="color: #ffd700 !important;">💰 المستشار المالي وحاسبة الزكاة والادخار</div>
+            <select class="royal-select" id="currency-select" style="border-color: #ffd700;">
+                <option value="SAR">ريال سعودي 🇸🇦</option>
+                <option value="AED">درهم إماراتي 🇦🇪</option>
+                <option value="KWD">دينار كويتي 🇰🇼</option>
+                <option value="USD">دولار أمريكي 🇺🇸</option>
+            </select>
+            <input type="number" id="financial-amount" class="royal-input" placeholder="اكتب المبلغ المتوفر لديك الحين..." style="border-color: #ffd700;" oninput="calculateFinancials()">
+            <div class="preview-box" id="financial-report" style="border-color: #ffd700; max-height: 250px; overflow-y: auto; text-align: right;">قم بكتابة المبلغ المالي الحين لتلقي تقرير الاستشارة والزكاة فوراً...</div>
+            <button class="royal-share-btn" style="background: linear-gradient(45deg, #ffd700, #ff007f) !important; color: #000 !important; font-weight: bold; border: 1px solid #ffd700;" onclick="shareFinancials()">مشاركة التقرير المالي عبر واتساب</button>
+        </div>
+
+        <!-- 🌟 مستشار التخطيط وصانع الأهداف الذكي -->
+        <div class="royal-box box-blue">
+            <div class="royal-box-title">🌟 مستشار التخطيط وصانع الأهداف الذكي</div>
+            <select class="royal-select" id="goal-type">
+                <option value="مالي 💰">مالي 💰</option>
+                <option value="شخصي 👤">شخصي 👤</option>
+                <option value="عملي 💼">عملي 💼</option>
+            </select>
+            <input type="text" id="goal-input" class="royal-input" placeholder="اكتب هدفك الرئيسي للعام الجديد هنا..." oninput="generateGoalPlan()">
+            <div class="preview-box" id="goal-report" style="text-align: right;">اكتب هدفك الحين لتلقي خطة العمل الذكية وجدول النجاح الشخصي فوراً...</div>
+            <button class="royal-share-btn" onclick="shareGoalPlan()">مشاركة خطة النجاح عبر واتساب</button>
+        </div>
+
+        <!-- 🤖 مستشار الذكاء الاصطناعي للمشاريع والإعلانات -->
+        <div class="royal-box box-green">
+            <div class="royal-box-title">🤖 مستشار الذكاء الاصطناعي للمشاريع والإعلانات</div>
+            <select class="royal-select" id="project-budget">
+                <option value="رأس مال بسيط 💡">رأس مال بسيط 💡</option>
+                <option value="رأس مال متوسط 🚀">رأس مال متوسط 🚀</option>
+                <option value="بدون رأس مال 🎯">بدون رأس مال 🎯</option>
+            </select>
+            <input type="text" id="project-input" class="royal-input" placeholder="اكتب مهارة تحبها أو كلمة مفتاحية هنا..." oninput="generateProjectPlan()">
+            <div class="preview-box" id="project-report" style="text-align: right;">اكتب مهارة أو فكرة بسيطة الحين، ليتولى الذكاء الاصطناعي بناء خطة المشروع المربحة ونص الإعلان الاحترافي فوراً...</div>
+            <button class="royal-share-btn" onclick="shareProjectPlan()">مشاركة خطة المشروع والإعلان عبر واتساب</button>
+        </div>
+
+        <!-- 🎰 صندوق عجلة الحظ والفرص اليومية المضيئة القديمة بالكامل -->
+        <div class="royal-box box-purple" style="border-color: #ffd700 !important; background: #08050c !important;">
+            <div class="royal-box-title" style="color: #ffd700 !important;">🎰 عجلة الحظ والفرص اليومية المضيئة</div>
+            <div class="wheel-container">
+                <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); font-size: 24px; z-index: 10;">👇</div>
+                <div id="royal-wheel" class="wheel-canvas"></div>
+            </div>
+            <input type="text" id="wheel-username" class="royal-input" placeholder="اكتب اسمك الحين لتفعيل حظك اليومي..." style="border-color: #ffd700 !important; text-align: center;">
+            <div class="preview-box" id="wheel-report" style="border-color: #ffd700; text-align: right; font-size: 13px; line-height: 1.6; max-height: 250px; overflow-y: auto;">
+                اكتب اسمك الحين، واكبس زر الدوران لتكشف العجلة عن نصيبك المضيئة وعن فرصتك الفلكية لليوم فوراً...
+            </div>
+            <button type="button" id="spin-btn" class="royal-share-btn" style="background: linear-gradient(45deg, #ffd700, #ff007f) !important; color: #000 !important; font-weight: bold; border: 1px solid #ffd700; margin-bottom: 8px;" onclick="spinRoyalWheel()">🎰 أدر العجلة واكشف حظك الحين</button>
+            <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #25d366, #075e54) !important; border: 1px solid #ffd700;" onclick="shareWheelReport()">🟢 مشاركة هديتك وفرصتك اليومية عبر واتساب</button>
         </div>
 
         <!-- 📱 خدمات تشريج الخطوط والإنترنت الموثوقة -->
@@ -154,12 +213,13 @@
             <button class="merchant-action-btn" onclick="connectMerchant('gaming')">💬 اطلب شحن الشدات والطلبيات (واتساب)</button>
         </div>
 
-        <!-- 👑 التذييل الملكي المعتمد -->
+        <!-- 👑 التذييل الملكي المعتمد الأصلي القديم -->
         <div class="royal-footer-brand">
             <div class="royal-brand-kr">👑 KR 👑</div>
             <br>
             <span id="royal-footer-text">👑 منصة العائلة الملكية المعتمدة عالمياً 👑</span>
         </div>
+        <div style="font-size:11px; color:#555; margin-top:5px;">Panda KR 🐼</div>
     </div>
     <script>
         var currentLang = 'ar';
@@ -177,11 +237,13 @@
             if (!s) {
                 var n = b + 1;
                 localStorage.setItem('worldOfLove_visitors', n);
-                document.getElementById("live-visitor-counter").innerText = n.toLocaleString();
+                var counterEl = document.getElementById("live-visitor-counter");
+                if(counterEl) counterEl.innerText = n.toLocaleString();
             } else {
                 var c = parseInt(s) + Math.floor(Math.random() * 3) + 1;
                 localStorage.setItem('worldOfLove_visitors', c);
-                document.getElementById("live-visitor-counter").innerText = c.toLocaleString();
+                var counterEl = document.getElementById("live-visitor-counter");
+                if(counterEl) counterEl.innerText = c.toLocaleString();
             }
         }
 
@@ -202,9 +264,9 @@
         }
 
         function syncLivePreview(t) {
-            var sText = document.getElementById("select-" + t).value;
+            var select = document.getElementById("select-" + t);
             var pBox = document.getElementById("preview-box-" + t);
-            if (pBox) { pBox.innerText = sText; }
+            if (select && pBox) { pBox.innerText = select.value; }
         }
 
         function fireRoyalWhatsapp(t) {
@@ -218,6 +280,106 @@
             if (t === 'box4') h = "رسالة عتب";
             var msg = `🎁 *إهداء خاص من: [ ${s} ]* \n\n✨ *${h}:* \n" ${txt} "\n\n━━━━━━━━━━━━━━━\n🌹 *تمت المشاركة من صفحة:* \nعالم الحب ❤️ World of Love \n👑 *الشعار المعتمد:* KR 👑`;
             window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
+        }
+
+        function calculateFinancials() {
+            var amt = parseFloat(document.getElementById("financial-amount").value);
+            var cur = document.getElementById("currency-select").value;
+            var repBox = document.getElementById("financial-report");
+            if (!repBox) return;
+            if (isNaN(amt) || amt <= 0) {
+                repBox.innerText = currentLang === 'ar' ? "قم بكتابة المبلغ المالي الحين لتلقي تقرير الاستشارة والزكاة فوراً..." : "Enter your amount to get your financial report instantly...";
+                return;
+            }
+            var zakat = amt * 0.025;
+            var save = amt * 0.20;
+            var invest = amt * 0.10;
+            if (currentLang === 'ar') {
+                repBox.innerHTML = `📊 <b>التقرير المالي الذكي وحسابات الخليج:</b><br>🔹 العملة المعتمدة: ${cur}<br>🪙 مقدار الزكاة الشرعية (2.5%): <b>${zakat.toFixed(2)} ${cur}</b><br>📈 نصيحة الادخار الآمن المقترحة (20%): <b>${save.toFixed(2)} ${cur}</b><br>🛡️ محفظة الاستثمار الموصى بها (10%): <b>${invest.toFixed(2)} ${cur}</b><br>💡 مستشارك المالي يقول لك: نظّم ميزانيتك الحين، واجعل الـ 70% المتبقية للمصاريف الأساسية لتأمين أعلى استقرار مالي لأولادك الغاليين.`;
+            } else {
+                repBox.innerHTML = `📊 <b>Smart Financial Report & Gulf Calculations:</b><br>🔹 Selected Currency: ${cur}<br>🪙 Islamic Zakat Amount (2.5%): <b>${zakat.toFixed(2)} ${cur}</b><br>📈 Recommended Safe Savings (20%): <b>${save.toFixed(2)} ${cur}</b><br>🛡️ Advised Investment Wallet (10%): <b>${invest.toFixed(2)} ${cur}</b>`;
+            }
+        }
+        function shareFinancials() {
+            var amt = document.getElementById("financial-amount").value;
+            if (!amt) { alert(currentLang === 'ar' ? "الرجاء إدخال المبلغ أولاً" : "Please enter the amount first"); return; }
+            var text = document.getElementById("financial-report").innerText;
+            window.location.href = "whatsapp://send?text=" + encodeURIComponent(text + "\n\n👑 عالم الحب KR 👑");
+        }
+
+        function generateGoalPlan() {
+            var goal = document.getElementById("goal-input").value.trim();
+            var type = document.getElementById("goal-type").value;
+            var repBox = document.getElementById("goal-report");
+            if (!repBox) return;
+            if (!goal) {
+                repBox.innerText = currentLang === 'ar' ? "اكتب هدفك الحين لتلقي خطة العمل الذكية وجدول النجاح الشخصي فوراً..." : "Type your goal to receive your work plan instantly...";
+                return;
+            }
+            if (currentLang === 'ar') {
+                repBox.innerHTML = `🎯 <b>خطة مستشار التخطيط الاستراتيجية لجدارتك:</b><br>🔹 نوع الهدف المحدد: ${type}<br>📝 خطة العمل الذكية: تم تفكيك هدفك لـ 3 خطوات يومية صغيرة ومبسطة للحفاظ على الطاقة الإيجابية وتحقيق النجاح الحليف فوراً بمصداقية كبرى للأولاد الغاليين!`;
+            } else {
+                repBox.innerHTML = `🎯 <b>Strategic Planning Consultant Plan:</b><br>🔹 Selected Goal Type: ${type}<br>📝 Smart Action Plan: Your goal has been analyzed into small daily steps to maintain positive energy and secure success!`;
+            }
+        }
+
+        function shareGoalPlan() {
+            var goal = document.getElementById("goal-input").value.trim();
+            if (!goal) { alert(currentLang === 'ar' ? "الرجاء كتابة الهدف أولاً" : "Please enter your goal first"); return; }
+            var text = document.getElementById("goal-report").innerText;
+            window.location.href = "whatsapp://send?text=" + encodeURIComponent(text + "\n\n👑 عالم الحب KR 👑");
+        }
+
+        function generateProjectPlan() {
+            var input = document.getElementById("project-input").value.trim();
+            var budget = document.getElementById("project-budget").value;
+            var repBox = document.getElementById("project-report");
+            if (!repBox) return;
+            if (!input) {
+                repBox.innerText = currentLang === 'ar' ? "اكتب مهارة أو فكرة بسيطة الحين، ليتولى الذكاء الاصطناعي بناء خطة المشروع المربحة ونص الإعلان الاحترافي فوراً..." : "Type a skill or an idea to build your commercial ad instantly...";
+                return;
+            }
+            if (currentLang === 'ar') {
+                repBox.innerHTML = `🤖 <b>مستشار الذكاء الاصطناعي للمشاريع السريعة:</b><br>🔹 الميزانية المتاحة: ${budget}<br>📈 خطة بناء المشروع المربحة: تم دمج مهارتك [ ${input} ] مع خطة كاش ذكية لبناء مشروعك المربح، وتم توليد نص الإعلان الاحترافي لجلب الأرباح والوفرة الكبرى الحين!`;
+            } else {
+                repBox.innerHTML = `🤖 <b>AI Business & Ads Consultant:</b><br>🔹 Available Budget: ${budget}<br>📈 Profitable Project Plan: Your skill [ ${input} ] has been merged with a smart cash flow strategy to build your venture and generate your commercial copy instantly!`;
+            }
+        }
+
+        function shareProjectPlan() {
+            var input = document.getElementById("project-input").value.trim();
+            if (!input) { alert(currentLang === 'ar' ? "الرجاء كتابة الفكرة أولاً" : "Please enter the idea first"); return; }
+            var text = document.getElementById("project-report").innerText;
+            window.location.href = "whatsapp://send?text=" + encodeURIComponent(text + "\n\n👑 عالم الحب KR 👑");
+        }
+
+        var currentWheelRotation = 0;
+        function spinRoyalWheel() {
+            var name = document.getElementById("wheel-username").value.trim();
+            var repBox = document.getElementById("wheel-report");
+            var wheel = document.getElementById("royal-wheel");
+            if (!name) { alert(currentLang === 'ar' ? "الرجاء كتابة اسمك أولاً لتفعيل حظك اليومي" : "Please enter your name first"); return; }
+            currentWheelRotation += Math.floor(Math.random() * 360) + 1440;
+            if(wheel) wheel.style.transform = `rotate(${currentWheelRotation}deg)`;
+            if(repBox) repBox.innerText = currentLang === 'ar' ? "🔮 العجلة المضيئة تدور الحين... انتظر كشف نصيبك الفلكي..." : "🔮 Spinning your royal wheel now... Please wait...";
+            setTimeout(function() {
+                var titles = currentLang === 'ar' ? ["👑 بطل اليوم الخارق", "💎 ملك الروقان والذكاء", "💸 مغناطيس الكاش والوفرة", "🌟 جوهرة القلوب المشعة"] : ["👑 Superhero of the Day", "💎 King of Wisdom & Focus", "💸 Cash & Wealth Magnet", "🌟 Shiny Jewel of Hearts"];
+                var fortunes = currentLang === 'ar' ? ["بشارة مالية كبرى قادمة إليك في الطريق دغري", "استقرار نفسي وراحة بال واسعة تغمر قلبك الحين", "فرصة ذهبية غير متوقعة تفتح لك أبواب النجاح المالي", "تيسير سريع لأمر كان معلقاً والفرج يطرق بابك"] : ["A major financial blessing is coming your way directly", "Mental stability and complete peace of mind fill your heart", "An unexpected golden opportunity opens doors of wealth", "Fast facilitation for a pending matter, relief is close"];
+                var luckyNum = Math.floor(Math.random() * 90) + 10;
+                var randomIdx = Math.floor(Math.random() * titles.length);
+                if(repBox) {
+                    repBox.innerHTML = currentLang === 'ar' ? 
+                    `🎰 <b>تقرير حظك وفرصتك الفلكية اليومية لليوم:</b><br>👤 الاسم: ${name}<br>👑 اللقب الملكي الممنوح لك اليوم: <b>${titles[randomIdx]}</b><br>🎲 رقم الحظ الفلكي الخاص بك: <b>${luckyNum}</b><br>💌 رسالة البشارة والفرج السرية: <b>${fortunes[randomIdx]}</b><br>💡 مستشار الفلك والعجلة يقول لك: حظك اليوم مشع بالطاقة الإيجابية، احتفظ بهذه الهدية وشاركها الحين كالملك لنشر الفرح لأولادك الغاليين.` :
+                    `🎰 <b>Daily Astronomical Fortune Report:</b><br>👤 Name: ${name}<br>👑 Royal Title Granted Today: <b>${titles[randomIdx]}</b><br>🎲 Your Astrological Lucky Number: <b>${luckyNum}</b><br>💌 Secret Blessing & Relief Message: <b>${fortunes[randomIdx]}</b>`;
+                }
+            }, 4000);
+        }
+
+        function shareWheelReport() {
+            var name = document.getElementById("wheel-username").value.trim();
+            if (!name) { alert(currentLang === 'ar' ? "الرجاء كشف حظك أولاً" : "Please roll the wheel first"); return; }
+            var text = document.getElementById("wheel-report").innerText;
+            window.location.href = "whatsapp://send?text=" + encodeURIComponent(text + "\n\n👑 عالم الحب KR 👑");
         }
 
         function switchLang(l) {
