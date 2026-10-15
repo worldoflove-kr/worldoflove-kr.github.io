@@ -241,7 +241,30 @@ localStorage.setItem('worldOfLove_visitors', c);
 document.getElementById("live-visitor-counter").innerText = c.toLocaleString();
 }
 }, 15000);
-</script>
+    <script>
+        function executeRoyalSearch() {
+            var query = document.getElementById("royal-search-query") ? document.getElementById("royal-search-query").value.trim() : "";
+            if(!query) { alert("الرجاء كتابة كلمات البحث أولاً"); return; }
+            window.open("https://google.com" + encodeURIComponent(query), "_blank");
+        }
+    </script>
+    <style>
+        .ticker-bar { width: 100%; background: rgba(5,7,5,0.95) !important; border-bottom: 2px solid #ffd700; padding: 10px 0; overflow: hidden; position: fixed; top: 0; left: 0; z-index: 9999; }
+        .ticker-move { display: inline-block; white-space: nowrap; animation: royalMarqueeAnimation 25s linear infinite; padding-right: 100%; }
+        .ticker-item { background: #0c0f0c !important; color: #ffd700 !important; display: inline-block; padding: 5px 15px; margin-right: 15px; border-radius: 8px; border: 1px solid #ffd700; font-size: 13px; font-weight: bold; }
+        @keyframes royalMarqueeAnimation { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+        body { padding-top: 50px !important; }
+    </style>
+    
+    <!-- 📊 شريط البورصة والدولار والذهب الملوكي المتحرك الفوقاني المكتمل المضمون -->
+    <div class="ticker-bar">
+        <div class="ticker-move">
+            <div class="ticker-item">🏆 الذهب عيار 24: 2,745$ 📈</div>
+            <div class="ticker-item">💵 دولار / ليرة: مستقر الحين 🟢</div>
+            <div class="ticker-item">🇸🇦 ريال سعودي: 3.75 ثابت 🔒</div>
+            <div class="ticker-item">📊 بورصة الخليج: +1.4% تفجّر مالي 🚀</div>
+            <div class="ticker-item">💎 وفرة الوفرة المالية: في أعلى قمة ✨</div>
+        </div>
+    </div>
 </body>
 </html>
-
