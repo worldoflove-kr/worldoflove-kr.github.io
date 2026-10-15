@@ -464,10 +464,17 @@ function spinRoyalWheel() {
 }
 function shareWheelReport() {
     var name = document.getElementById("wheel-username").value.trim();
-    if(!name) { alert("الرجاء كشف حظك أولاً"); return; }
-    var msg = `🎰 *تقرير عجلة الحظ والفرص اليومية المضيئة* 🎰\n\n👤 *الاسم الشخصي:* ${name}\n✨ *تم كشف اللقب الفخم ورقم الحظ وبشارة اليوم بنجاح!*\n🚀 *ادخل الحين وأدر العجلة واكشف فرصتك اليومية مجاناً!*\n━━━━━━━━━━━━━━━\n👑 *عالم الحب KR* 👑`;
+    var repBox = document.getElementById("wheel-report");
+    if(!name || repBox.innerHTML.includes("اكتب اسمك")) { alert("الرجاء كشف حظك أولاً بالضغط على زر أدر العجلة الحين"); return; }
+    var textContent = repBox.innerText.replace(/📊|🎰|👤|👑|🎲|💌|💡/g, "");
+    var lines = textContent.split("\n");
+    var titleLine = lines[2] ? lines[2].trim() : "";
+    var numLine = lines[3] ? lines[3].trim() : "";
+    var fortuneLine = lines[4] ? lines[4].trim() : "";
+    var msg = `🎰 *تقرير عجلة الحظ والفرص اليومية المضيئة* 🎰\n\n👤 *الاسم الشخصي:* ${name}\n✨ *${titleLine}*\n🎲 *${numLine}*\n💌 *${fortuneLine}*\n\n🚀 *ادخل الحين وأدر العجلة واكشف فرصتك اليومية مجاناً!*\n━━━━━━━━━━━━━━━\n👑 *عالم الحب KR* 👑`;
     window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
 }
+
 
 var royalCounterValue = 0;
 function incrementRoyalCounter() {
