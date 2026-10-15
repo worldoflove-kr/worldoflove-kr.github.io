@@ -287,6 +287,22 @@ body.ltr .merchant-box { text-align: left; }
         </div>
         <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #b8860b, #ffd700) !important; color: #000 !important; border: 1px solid #ffd700; font-weight: bold;" onclick="shareDreamReport()">🟢 مشاركة بشارة التفسير عبر واتساب</button>
     </div>
+    <!-- 🌿 صندوق مستشار الأمل والفضفضة النفسية الذكي -->
+    <div class="royal-box box-green" style="border-color: #00fa9a !important; background: #050807 !important;">
+        <div class="royal-box-title" id="title-box-12" style="color: #00fa9a !important;">🌿 مستشار الأمل وصندوق الفضفضة النفسية</div>
+        <div style="display: flex; gap: 6px; margin-bottom: 10px;">
+            <input type="text" id="vent-input" class="royal-input" placeholder="فضفض واكتب ما بداخل قلبك الحين بكل سرية..." style="margin-bottom: 0 !important; border-color: #00fa9a !important; flex: 2;" oninput="generateAiHopeReport()">
+            <select class="royal-select" id="support-type" style="flex: 1; margin-bottom: 0 !important;" onchange="generateAiHopeReport()">
+                <option value="جرعة تفاؤل">أمل ☀️</option>
+                <option value="طاقة قوة">قوة 💪</option>
+                <option value="ططبّة حنونة">طبطبة ❤️</option>
+            </select>
+        </div>
+        <div class="preview-box" id="vent-report" style="border-color: #00fa9a; text-align: right; font-size: 13px; line-height: 1.6; color: #fff; max-height: 280px; overflow-y: auto;">
+            اكتب ما يُتعبك الحين دغري، ليتولى مستشار الأمل تفكيك الكلمات وإضاءة قلبك برسالة الطمأنينة الفورية...
+        </div>
+        <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #00ba7c, #00fa9a) !important; color: #000 !important; border: 1px solid #00fa9a; font-weight: bold;" onclick="shareVentReport()">🟢 مشاركة طاقة الأمل والفرج عبر واتساب</button>
+    </div>
 
      <div class="royal-footer-brand"><div class="royal-brand-kr">👑 KR 👑</div><br><span id="royal-footer-text">👑 منصة العائلة الملكية المعتمدة عالمياً 👑</span></div>
    
@@ -389,6 +405,24 @@ function shareDreamReport() {
     var dTime = document.getElementById("dream-time").value;
     if(!dream) { alert("الرجاء كتابة رمز أو حلم أولاً"); return; }
     var msg = `🌙 *تقرير مفسر الأحلام ومستكشف الفلك الذكي* 🌙\n\n🔍 *الرمز المكتشف:* ${dream}\n⏰ *توقيت الرؤية:* ${dTime}\n🔮 *تم تفكيك طاقة المنام وتوليد التفسير والبشارة بنجاح!*\n━━━━━━━━━━━━━━━\n👑 *عالم الحب KR* 👑`;
+    window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
+}
+function generateAiHopeReport() {
+    var vent = document.getElementById("vent-input").value.trim();
+    var sType = document.getElementById("support-type").value;
+    var repBox = document.getElementById("vent-report");
+    if (!vent) {
+        repBox.innerHTML = "اكتب ما يُتعبك الحين دغري، ليتولى مستشار الأمل تفكيك الكلمات وإضاءة قلبك برسالة الطمأنينة الفورية...";
+        return;
+    }
+    var msg = sType === "جرعة تفاؤل" ? "🌅 تفاءل جداً، فما ضاقت إلا لتُفرج، والأنوار القادمة ستمسح كل ذرة تعب مررت بها فوراً" : sType === "طاقة قوة" ? "💪 أنت قوي جداً وتحملت الكثير، وما قدّرك الله على هذا إلا لأنه يعلم أنك قادر على تجاوزه بنجاح" : "❤️ طبطبة حنونة على قلبك الطيب، اهدأ وارح فكرك، فكل مرّ سيمر، والأيام القادمة مليئة بالسلام والأمان";
+    repBox.innerHTML = `🌿 <b>مستشار الأمل وصندوق الفضفضة النفسية:</b><br>💭 المشاعر المسجلة: تم استلام كلماتك السرية بأمان كامل<br>🎯 الدعم المطلوب: ${sType}<br>🔮 <b>رسالة الطمأنينة والإشراق الفورية:</b><br>${msg}<br>💡 <i>مستشار الأمل يهمس لك: لا تحمل هم الغد، فلك رب رحيم يدبر الأمر، ابتسم كالملك من أجل أولادك الغاليين.</i>`;
+}
+function shareVentReport() {
+    var vent = document.getElementById("vent-input").value.trim();
+    var sType = document.getElementById("support-type").value;
+    if(!vent) { alert("الرجاء الفضفضة وكتابة كلماتك أولاً"); return; }
+    var msg = `🌿 *رسالة مستشار الأمل وصندوق الفضفضة النفسية* 🌿\n\n🎯 *نوع الدعم المعنوي:* ${sType}\n🔮 *تم استقبال فضفضتك السرية وتوليد طاقة الأمل والفرج بنجاح!*\n━━━━━━━━━━━━━━━\n👑 *عالم الحب KR* 👑`;
     window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
 }
 
