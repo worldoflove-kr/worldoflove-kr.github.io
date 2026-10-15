@@ -345,13 +345,11 @@ body.ltr .merchant-box { text-align: left; }
             @keyframes pandaSmoothBeat {
                 0% { transform: scale(1); filter: drop-shadow(0 -5px 10px rgba(255, 215, 0, 0.25)); }
                 50% { transform: scale(1.04); filter: drop-shadow(0 -8px 25px rgba(255, 215, 0, 0.5)); }
-                100% { transform: scale(1); filter: drop-shadow(0 -5px 10px rgba(255, 215, 0, 0.25)); }
-            }
-        </style>
+            </style>
     </div>
 
-    
-  function calculateFinancialMetrics() {
+    <script>
+
     var amt = parseFloat(document.getElementById("financial-amount").value);
     var cur = document.getElementById("currency-select").value;
     var repBox = document.getElementById("financial-report");
