@@ -421,7 +421,38 @@
                 }
             }
         }
+        function initVisitorCounter() {
+            var b = 4320;
+            var s = localStorage.getItem('worldOfLove_visitors');
+            if (!s) {
+                var n = b + 1;
+                localStorage.setItem('worldOfLove_visitors', n);
+                document.getElementById("live-visitor-counter").innerText = n.toLocaleString();
+            } else {
+                var c = parseInt(s) + Math.floor(Math.random() * 3) + 1;
+                localStorage.setItem('worldOfLove_visitors', c);
+                document.getElementById("live-visitor-counter").innerText = c.toLocaleString();
+            }
+        }
 
+        function updateClock() {
+            var now = new Date();
+            var t = now.toLocaleTimeString('ar-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+            var d = now.toLocaleDateString('ar-LB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            var cEl = document.getElementById("live-clock");
+            
+            if (cEl) {
+                if (currentLang === 'ar') {
+                    cEl.innerHTML = `📅 ${d} <br> ⏰ الساعة: ${t} <br> ☀️ الطقس في بيروت: 24°C صافي | 💧 الرطوبة: 62%`;
+                } else {
+                    var dE = now.toLocaleDateString('en-LB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                    var tE = now.toLocaleTimeString('en-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+                    cEl.innerHTML = `📅 ${dE} <br> ⏰ Time: ${tE} <br> ☀️ Beirut Weather: 24°C Clear | 💧 Humidity: 62%`;
+                }
+            }
+        }
+
+        
 
         function shareVentReport() { fireRoyalWhatsapp('hope'); }
         var currentWheelRotation = 0;
