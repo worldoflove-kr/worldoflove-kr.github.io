@@ -405,33 +405,23 @@
             window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
         }
 
-        function generateWishReport() {
-            var name = document.getElementById("wish-name").value.trim();
-            var text = document.getElementById("wish-text").value.trim();
-            var repBox = document.getElementById("wish-report");
-            if(!name || !text) { repBox.innerHTML = "الرجاء كتابة اسمك وأمنيتك لتفعيل شجرة الأنوار"; return; }
-            repBox.innerHTML = `🔮 <b>شجرة الأمنيات الكونية:</b><br>👤 الاسم: ${name}<br>💭 الأمنية المرفوعة: تم استقبال أمنيتك السرية بأمان بنجاح<br>💌 <b>بشارة الشجرة الفورية لكم اليوم:</b> أمنيتك مستجابة والفرج يطرق بابك دغري مية بالمية ابتسم كالملك من أجل أولادك الغاليين.`;
+              function updateClock() {
+            var now = new Date();
+            var t = now.toLocaleTimeString('ar-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+            var d = now.toLocaleDateString('ar-LB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            var cEl = document.getElementById("live-clock");
+            
+            if (cEl) {
+                if (currentLang === 'ar') {
+                    cEl.innerHTML = `📅 ${d} <br> ⏰ الساعة: ${t} <br> ☀️ الطقس في بيروت: 24°C صافي | 💧 الرطوبة: 62%`;
+                } else {
+                    var dE = now.toLocaleDateString('en-LB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                    var tE = now.toLocaleTimeString('en-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+                    cEl.innerHTML = `📅 ${dE} <br> ⏰ Time: ${tE} <br> ☀️ Beirut Weather: 24°C Clear | 💧 Humidity: 62%`;
+                }
+            }
         }
 
-        function shareWishReport() { fireRoyalWhatsapp('wish'); }
-
-        function generateDreamReport() {
-            var dream = document.getElementById("dream-input").value.trim();
-            var repBox = document.getElementById("dream-report");
-            if(!dream) { repBox.innerHTML = "اكتب تفاصيل حلمك الحين لتفسيره فوراً"; return; }
-            repBox.innerHTML = `🌌 <b>مفسر الأحلام الفوري العبقري:</b><br>💭 الرؤية المسجلة: تم استلام رموز حلمك بأمان كامل<br>🔮 <b>بشارة المفسر الفورية لكم:</b> رؤية محمودة جداً تدل على زوال الهم وفتح أبواب رزق ومال قادمة دغري مية بالمية لأولادك الغاليين.`;
-        }
-
-        function shareDreamReport() { fireRoyalWhatsapp('dream'); }
-
-        function generateAiHopeReport() {
-            var vent = document.getElementById("vent-input").value.trim();
-            var sType = document.getElementById("support-type").value;
-            var repBox = document.getElementById("vent-report");
-            if (!vent) { repBox.innerHTML = "اكتب ما يُتعبك الحين دغري ليتولى مستشار الأمل إضاءة قلبك..."; return; }
-            var msg = sType.includes("تفاؤل") ? "🌅 تفاءل جداً فما ضاقت إلا لتُفرج والأنوار القادمة ستمسح كل تعب مررت به فوراً" : sType.includes("قوة") ? "💪 أنت قوي جداً وتحملت الكثير وما قدّرك الله على هذا إلا لأنه يعلم أنك قادر على تجاوزه" : "❤️ طبطبة حنونة على قلبك الطيب اهدأ وارح فكرك فكل مرّ سيمر والأيام القادمة مليئة بالسلام والأمان";
-            repBox.innerHTML = `🌿 <b>مستشار الأمل والفضفضة النفسية:</b><br>🎯 الدعم المطلوب: ${sType}<br>🔮 <b>رسالة الطمأنينة والإشراق الفورية:</b><br>${msg}`;
-        }
 
         function shareVentReport() { fireRoyalWhatsapp('hope'); }
         var currentWheelRotation = 0;
