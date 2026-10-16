@@ -356,6 +356,37 @@
             </div>
             <button class="merchant-action-btn" style="width: 100% !important; padding: 12px !important; border-radius: 10px !important; border: 1px solid #ffd700 !important; background: #000000 !important; color: #ffd700 !important; font-size: 13.5px !important; font-weight: bold !important; cursor: pointer !important;" onclick="connectMerchant('gaming')">💬 اطلب شحن الشدات والطلبيات (واتساب)</button>
         </div>
+                <!-- 🎬 14. صانع فلاتر وعبارات فيديوهات التيك توك المضيئة - KR -->
+        <div class="royal-box box-purple" style="border: 2px solid #ba55d3 !important; box-shadow: 0 0 15px rgba(186, 85, 211, 0.25) !important; margin: 15px auto !important; max-width: 100% !important; background: rgba(5, 2, 12, 0.85) !important;">
+            <div class="royal-box-title" style="color: #ba55d3 !important; font-size: 18.5px; font-weight: bold; text-shadow: 0 0 10px rgba(186,85,211,0.6);">🎬 صانع نصوص وعبارات فيديوهات التيك توك</div>
+            <div style="display: flex; gap: 8px; margin-bottom: 12px; align-items: center; justify-content: center;">
+                <select id="tiktok-type" class="royal-select" style="width: 40% !important; margin-bottom: 0 !important; font-size: 13.5px !important;">
+                    <option value="اقتباس قوي 💪">💪 اقتباس قوي</option>
+                    <option value="عتب وعمق 🖤">🖤 عتب وعمق</option>
+                    <option value="طاقة وتفاؤل ✨">✨ تفاؤل وإشراق</option>
+                    <option value="عشق ملكي ❤️">❤️ عشق ملكي</option>
+                </select>
+                <input type="text" id="tiktok-name" class="royal-input" placeholder="اكتب اسمك كصانع محتوى هنا..." style="flex: 1; margin-bottom: 0 !important; font-size: 13px !important; text-align: right; direction: rtl; outline: none;">
+            </div>
+            <div class="preview-box" id="tiktok-report" style="border: 1px dashed #ba55d3; color: #ba55d3; min-height: 70px; line-height: 1.6; font-size: 13.5px; padding: 12px; margin-bottom: 15px; background: rgba(0,0,0,0.5); border-radius: 10px; text-align: center;">اكتب اسمك الحين لتوليد ونسخ وسم العبارة المضيئة لفيديو التيك توك القادم فوراً...</div>
+            <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #00bfff, #ba55d3); color: #fff; font-weight: bold; box-shadow: 0 4px 12px rgba(186,85,211,0.4);" onclick="generateTikTokScript()">🎬 توليد عبارة التيك توك الفورية الحين</button>
+            <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #00fa9a, #00bfff); color: #000; font-weight: bold; margin-top: 10px;" onclick="copyTikTokScript()">📋 نسخ العبارة الجاهزة للفيديو</button>
+        </div>
+        <!-- 👥 16. محرك المنشورات التفاعلية وجذب التعليقات للفيسبوك - KR -->
+        <div class="royal-box box-blue" style="border: 2px solid #1877f2 !important; box-shadow: 0 0 15px rgba(24, 119, 242, 0.25) !important; margin: 15px auto !important; max-width: 100% !important; background: rgba(5, 2, 12, 0.85) !important;">
+            <div class="royal-box-title" style="color: #1877f2 !important; font-size: 18.5px; font-weight: bold; text-shadow: 0 0 10px rgba(24,119,242,0.6);">👥 محرك منشورات الفيسبوك التفاعلية</div>
+            <div style="display: flex; gap: 8px; margin-bottom: 12px; align-items: center; justify-content: center;">
+                <select id="fb-category" class="royal-select" style="width: 100% !important; margin-bottom: 0 !important; font-size: 13.5px !important; text-align: right; direction: rtl;">
+                    <option value="سؤال فلكي تفاعلي يثير الجدل الإيجابي 🔮">🔮 سؤال فلكي تفاعلي لجذب تعليقات الجروبات</option>
+                    <option value="تحدي الذكاء والوفرة الملوكي 💸">💸 تحدي الذكار المالي وجذب المتفاعلين</option>
+                    <option value="اقتباس كوني يهز القلوب الطيبّة ❤️">❤️ اقتباس كوني يهز جروبات الفيسبوك</option>
+                </select>
+            </div>
+            <div class="preview-box" id="fb-report" style="border: 1px dashed #1877f2; color: #1877f2; min-height: 70px; line-height: 1.6; font-size: 13.5px; padding: 12px; margin-bottom: 15px; background: rgba(0,0,0,0.5); border-radius: 10px; text-align: center;">اختر تصنيف المنشور الحين لتوليد وصناعة البوست التفاعلي الفيروسي لصفحتك فوراً...</div>
+            <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #1877f2, #00bfff); color: #fff; font-weight: bold; box-shadow: 0 4px 12px rgba(24,119,242,0.4);" onclick="generateFbPost()">👥 صناعة المنشور التفاعلي الحين</button>
+            <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #00fa9a, #1877f2); color: #000; font-weight: bold; margin-top: 10px;" onclick="copyFbPost()">📋 نسخ البوست الجاهز للنشر دغري</button>
+        </div>
+
         <!-- 🎯 13. مستشار التخطيط وصانع الأهداف الذكي الملون الفخم - فوق الشعار -->
         <div class="royal-box box-gold" style="border: 2px solid #ffd700 !important; box-shadow: 0 0 15px rgba(255, 215, 0, 0.25) !important; margin: 15px auto !important; max-width: 100% !important; background: rgba(5, 2, 12, 0.85) !important;">
             <div class="royal-box-title" id="title-box-goal" style="color: #ffd700 !important; font-size: 18.5px; font-weight: bold; text-shadow: 0 0 10px rgba(255,215,0,0.6);">🌟 مستشار التخطيط وصانع الأهداف الذكي</div>
@@ -433,6 +464,83 @@
             var pBox = document.getElementById("preview-box-" + t);
             if (select && pBox) { pBox.innerText = select.value; }
         }
+        function generateTikTokScript() {
+            var name = document.getElementById("tiktok-name").value.trim();
+            var type = document.getElementById("tiktok-type").value;
+            var repBox = document.getElementById("tiktok-report");
+            if (!name) { name = (currentLang === 'ar') ? "مبدع KR" : "KR Creator"; }
+            
+            var quotes = "";
+            if (type.includes("قوي")) {
+                quotes = "🔥 *أنا لا أتنافس مع أحد، أنا القمة التي ينظر إليها الجميع كالملوك.*";
+            } else if (type.includes("عتب")) {
+                quotes = "🖤 *البعض يرحل كالعابرين، والبعض يترك ندبة بقلب العمر لا تمحى نهائياً قط.*";
+            } else if (type.includes("تفاؤل")) {
+                quotes = "✨ *تفاءل جداً، فما تضيق بالكون إلا لتُفرج والأنوار القادمة ستمسح كل تعب.*";
+            } else {
+                quotes = "❤️ *أنت لست مجرد قلب بقلبي، أنت عهد الأمان والأمل والروح بالوجود كلو.*";
+            }
+            
+            repBox.innerHTML = `🎬 <b>وسم التيك توك الجاهز للفيديو:</b><br>👤 صانع المحتوى: [ ${name} ]<br>👑 النبرة المعتمدة: ${type}<br>📝 <b>النص المضيء المولد الحين:</b><br>" ${quotes} "<br><br>💎 <i>(انسخي النص الحين لوضعه في تصميم التيك توك طيران)</i>`;
+        }
+
+        function copyTikTokScript() {
+            var text = document.getElementById("tiktok-report").innerText;
+            navigator.clipboard.writeText(text + "\n\n👑 عالم الحب KR 👑").then(function() {
+                alert("تم نسخ النص بالذهب بنجاح، ضعه بقلب فيديو التيك توك فوراً كالملك!");
+            });
+        }
+
+        function generateInstaCard() {
+            var name = document.getElementById("insta-username").value.trim();
+            var energy = document.getElementById("insta-energy").value;
+            var repBox = document.getElementById("insta-report");
+            if (!name) { alert("الرجاء كتابة اسمك لتصميم بطاقة الاستوري كالملكة"); return; }
+            
+            var tips = "";
+            if (energy.includes("ياقوت")) {
+                tips = "💎 *ياقوت مشع:* حظك المالي اليوم 98% وفرص ذهبية استراتيجية تقترب من أبواب أولادك دغري مية بالمية ابتسم كالملك.";
+            } else if (energy.includes("ذهب")) {
+                tips = "✨ *ذهب كوني:* طاقة وفرة فلكية واسعة تغمر فكرك ومالك الحين، تيسير سريع لأمر معلق والفرج يطرق بابك دغري.";
+            } else if (energy.includes("زمرد")) {
+                tips = "🌿 *زمرد نادر:* استقرار نفسي وراحة بال واسعة، خطة ذكية للنجاح وتأمين الكنز المالي القادم بثقة مباركة مية بالمية.";
+            } else {
+                tips = "🌙 *طاقة القمر:* رموز محمودة تدل على زوال الهم وفتح أبواب رزق وسعادة قادمة دغري لأولادك وعائلتك الغاليين بالكون.";
+            }
+            
+            repBox.innerHTML = `📸 <b>وثيقة ستوري انستغرام الألماسية لليوم:</b><br>👤 الاسم المعتمد: <b>${name}</b><br>🔮 نوع الطاقة الفلكية: <b>${energy}</b><br>💌 <b>بشارة البطاقة الفورية لك الحين:</b><br>${tips}`;
+        }
+
+        function shareInstaCard() {
+            var name = document.getElementById("insta-username").value.trim();
+            if (!name) { alert("الرجاء صياغة بطاقتك الفلكية أولاً"); return; }
+            var text = document.getElementById("insta-report").innerText;
+            window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg = `📸 *بطاقة ستوري انستغرام الملكية الخاصة بي اليوم:* \n\n${text}\n\n━━━━━━━━━━━━━━━\n👑 *تم التوليد من منصة:* عالم الحب KR 👑`);
+        }
+
+        function generateFbPost() {
+            var cat = document.getElementById("fb-category").value;
+            var repBox = document.getElementById("fb-report");
+            
+            var post = "";
+            if (cat.includes("سؤال")) {
+                post = "🔮 *سؤال فلكي تفاعلي يقلب الحظ:* لو فتحت رمز الخزنة الملكية اليوم ولقيت بقلبها أمنية واحدة مستجابة بالثواني، شو هي الأمنية الكبرى اللي رح تطلبها لأولادك وعائلتك؟ شاركونا الحين كالملوك! 👇🔥";
+            } else if (cat.includes("تحدي")) {
+                post = "💸 *تحدي الذكاء والوفرة المالي:* قسّم مالك الحين بنسبة (20% ادخار، 10% استثمار) واكتب اسمك تحت لتفعيل مغناطيس الكاش اليومي دغري مية بالمية! منو جاهز للتحدي كالملك؟ 👇💰";
+            } else {
+                post = "❤️ *عهد القلوب الكوني:* قيل بالتاريخ إن الحروف بتملك حرارة وطاقة سحرية بتكشف نسبة التوافق والانسجام دغري بالثواني! اكتب حرفك وحرف الغالي على قلبك وشوف الإعجاز الحين! 👇🌹";
+            }
+            
+            repBox.innerHTML = `👥 <b>بوست الفيسبوك التفاعلي المولد بالذهب:</b><br>🗂️ التصنيف الملكي: ${cat}<br>📝 <b>نص البوست الجاهز للنشر الفيروسي الحين:</b><br>${post}<br><br>💎 <i>(انسخ البوست الحين وانشره بجروبك لتشاهد انفجار التعليقات طيران)</i>`;
+        }
+
+        function copyFbPost() {
+            var text = document.getElementById("fb-report").innerText;
+            navigator.clipboard.writeText(text + "\n\n🔗 *جرب المحرك الفوري المباشر الحين:* \nhttps://github.io \n👑 عالم الحب KR 👑").then(function() {
+                alert("تم نسخ البوست التفاعلي بالذهب بنجاح، انشره بالجروبات وشاهد الملايين طيران!");
+            });
+        }
+              
         function fireRoyalWhatsapp(t) {
             var select = document.getElementById("select-" + t);
             var txt = select ? select.value : "";
