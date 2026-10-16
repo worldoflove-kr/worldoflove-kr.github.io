@@ -565,19 +565,7 @@
             if(nHol) nHol.placeholder = isAr ? "اكتب اسمك كمرسل الحين الحين..." : "Type your name here...";
             if(nWish) nWish.placeholder = isAr ? "اكتب اسمك الشخصي الملكي الحين..." : "Type your name here...";
             if(tWish) tWish.placeholder = isAr ? "اكتب أمنيتك السرية الكبرى لهون..." : "Type your secret wish here...";
-            if(iDream) iDream.placeholder = isAr ? "اكتب حلمك أو رؤيتك بالتفصيل الحين..." : "Type your dream here...";
-            if(iVent) iVent.placeholder = isAr ? "اكتب ما يتعب قلبك وفضفض الحين بأمان كامل..." : "Type what tires your heart here...";
-            if(uWheel) uWheel.placeholder = isAr ? "اكتب اسمك الحين لتفعيل حظك اليومي..." : "Type your name here...";
-            if(qSearch) qSearch.placeholder = isAr ? "اكتب ما تبحث عنه بقلب جوجل الحين..." : "Type your search query here...";
-            if(fAmt) fAmt.placeholder = isAr ? "أدخل المبلغ المالي الإجمالي المُراد حسابه..." : "Enter your total financial capital here...";
-            
-            var sBtns = document.getElementsByClassName("royal-share-btn");
-            for (var i = 0; i < sBtns.length; i++) { 
-                sBtns[i].innerText = isAr ? "🟢 مشاركة الإهداء على الواتساب" : "🟢 Share Blessing via WhatsApp"; 
-            }
-            updateClock();
-        }
-         // 🔍 تفعيل وإصلاح دالة محرك بحث جوجل الذكي الشغال فوراً بمجرد الكبس
+        // 🔍 تفعيل وإصلاح محرك بحث جوجل الذكي الشغال طيران فوراً بمجرد الكبس
         function executeRoyalSearch() {
             var query = document.getElementById("royal-search-query").value.trim();
             if(!query) { alert("الرجاء كتابة كلمات البحث أولاً كالملك"); return; }
@@ -596,6 +584,9 @@
                 localStorage.setItem('worldOfLove_visitors', c);
                 var view = document.getElementById("live-visitor-counter");
                 if(view) view.innerText = c.toLocaleString();
+            }
+        }, 15000);
+
             }
         }, 15000);
     </script>
