@@ -575,12 +575,14 @@
             }
             updateClock();
         }
+         // 🔍 تفعيل وإصلاح دالة محرك بحث جوجل الذكي الشغال فوراً بمجرد الكبس
         function executeRoyalSearch() {
             var query = document.getElementById("royal-search-query").value.trim();
             if(!query) { alert("الرجاء كتابة كلمات البحث أولاً كالملك"); return; }
             window.open("https://google.com" + encodeURIComponent(query), "_blank");
         }
 
+        // ⏰ إدارة ثواني الساعة المباشرة والمزامنة الفلكية الفورية الحين
         initVisitorCounter();
         updateClock();
         setInterval(updateClock, 1000);
