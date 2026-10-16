@@ -593,9 +593,13 @@
             var text = document.getElementById("financial-report").innerText;
             window.location.href = "whatsapp://send?text=" + encodeURIComponent(text + "\n\n👑 عالم الحب KR 👑");
         }
+       
+            function switchLang(1) {
+            currentLang = m;
+ 
 
-        function switchLang(l) {
-            currentLang = l;
+      
+
             var bAr = document.getElementById("btn-ar");
             var bEn = document.getElementById("btn-en");
             if(bAr) bAr.classList.toggle("active", l === 'ar');
