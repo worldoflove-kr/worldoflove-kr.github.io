@@ -377,7 +377,8 @@
             <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #00bfff, #00fa9a); color: #000; font-weight: bold; box-shadow: 0 4px 12px rgba(0,250,154,0.4);" onclick="generateGoalReport()">🎯 صياغة خطة النجاح الفورية الحين</button>
             <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #00bfff, #ba55d3); margin-top: 10px;" onclick="shareGoalReport()">🟢 مشاركة خطة النجاح عبر واتساب</button>
         </div>
-        // 🎯 تفعيل وإصلاح دالة مستشار التخطيط وصناعة الأهداف الذكي للعام الجديد
+        <script>
+        // 🎯 تفعيل وإصلاح دالة مستشار التخطيط وصناعة الأهداف الذكي للعام الجديد داخل السكريبت
         function generateGoalReport() {
             var type = document.getElementById("goal-type").value;
             var input = document.getElementById("goal-input").value.trim();
@@ -392,7 +393,7 @@
             } else if(type.includes("صحي")) {
                 tips = "🍏 <b>الخطة الصحية الشاملة:</b> حافظ على شرب الماء برواقة، قسّم وجباتك بنعومة، وامنح جسدك طاقة قوة ونشاط دائم لتظل بقمة البريق والروقان كالملوك.";
             } else {
-                tips = "🧠 <b>خطة التطوير الذاتي:</b> استثمر بنقاء فكرك يومياً، تعلم مهارات رقمية وتجارية جديدة، واجعل عهد الأمان والمصداقية شعار نجاحك الشخصي المطلق in كل خطوة.";
+                tips = "🧠 <b>خطة التطوير الذاتي:</b> استثمر بنقاء فكرك يومياً، تعلم مهارات رقمية وتجارية جديدة، واجعل عهد الأمان والمصداقية شعار نجاحك الشخصي المطلق في كل خطوة.";
             }
             
             repBox.innerHTML = `🎯 <b>صانع الأهداف المستقبلي:</b><br>🗂️ تصنيف الهدف: <b>${type}</b><br>💭 هدفك المسجل: "${input}"<br>✨ <b>خطة العمل الذكية الموصى بها لك اليوم:</b><br>${tips}`;
@@ -405,7 +406,50 @@
             window.location.href = "whatsapp://send?text=" + encodeURIComponent(text + "\n\n👑 منصة عالم الحب KR الملكية 👑");
         }
 
-    <script>
+        function switchLang(l) {
+            currentLang = l;
+            var bAr = document.getElementById("btn-ar");
+            var bEn = document.getElementById("btn-en");
+            if(bAr) bAr.classList.toggle("active", l === 'ar');
+            if(bEn) bEn.classList.toggle("active", l === 'en');
+            var isAr = l === 'ar';
+            document.body.style.direction = isAr ? "rtl" : "ltr";
+            
+            var tGold = document.getElementById("tick-gold");
+            var tIndex = document.getElementById("tick-index");
+            var tLbp = document.getElementById("tick-lbp");
+            var lVis = document.getElementById("lbl-visitors");
+            var rFoot = document.getElementById("royal-footer-text");
+            
+            if(tGold) tGold.innerText = isAr ? "أوقية الذهب العالمية:" : "Global Gold Ounce:";
+            if(tIndex) tIndex.innerText = isAr ? "مؤشر الدولار عالمياً:" : "Global Dollar Index:";
+            if(tLbp) tLbp.innerText = isAr ? "فريش دولار في لبنان:" : "Fresh Dollar in Lebanon:";
+            if(lVis) lVis.innerText = isAr ? "عدد زوار صفحتنا الحين:" : "Our Platform Visitors Now:";
+            if(rFoot) rFoot.innerText = isAr ? "👑 منصة العائلة الملكية المعتمدة عالمياً 👑" : "👑 The Globally Approved Royal Platform 👑";
+            
+            var qSearch = document.getElementById("royal-search-query");
+            if(qSearch) qSearch.placeholder = isAr ? "بحث جوجل..." : "Google Search...";
+            
+            updateClock();
+        }
+
+        initVisitorCounter();
+        updateClock();
+        setInterval(updateClock, 1000);
+        
+        setInterval(function() {
+            var s = localStorage.getItem('worldOfLove_visitors');
+            if (s) {
+                var c = parseInt(s) + Math.floor(Math.random() * 2);
+                localStorage.setItem('worldOfLove_visitors', c);
+                var view = document.getElementById("live-visitor-counter");
+                if(view) view.innerText = c.toLocaleString();
+            }
+        }, 15000);
+    </script>
+</body>
+</html>
+
         var currentLang = 'ar';
         document.addEventListener('contextmenu', e => e.preventDefault());
 
