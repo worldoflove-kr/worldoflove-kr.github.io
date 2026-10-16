@@ -382,7 +382,10 @@
         <div style="font-size: 10.5px !important; color: #444444 !important; margin-top: 5px !important; text-align: center !important;">Panda KR 🐼 ✨</div>
   
         <script>
-   ar repBox = document.getElementById("goal-report");
+        function generateGoalReport() {
+            var type = document.getElementById("goal-type").value;
+            var input = document.getElementById("goal-input").value.trim();
+            var repBox = document.getElementById("goal-report");
             if(!input) { repBox.innerHTML = "الرجاء كتابة هدفك الرئيسي لتوليد خطة النجاح الذكية الحين..."; return; }
             
             var tips = "";
@@ -432,6 +435,7 @@
             
             updateClock();
         }
+
 
         initVisitorCounter();
         updateClock();
