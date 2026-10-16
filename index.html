@@ -511,12 +511,14 @@
             repBox.innerHTML = `📸 <b>وثيقة ستوري انستغرام الألماسية لليوم:</b><br>👤 الاسم المعتمد: <b>${name}</b><br>🔮 نوع الطاقة الفلكية: <b>${energy}</b><br>💌 <b>بشارة البطاقة الفورية لك الحين:</b><br>${tips}`;
         }
 
-        function shareInstaCard() {
+                function shareInstaCard() {
             var name = document.getElementById("insta-username").value.trim();
             if (!name) { alert("الرجاء صياغة بطاقتك الفلكية أولاً"); return; }
             var text = document.getElementById("insta-report").innerText;
-            window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg = `📸 *بطاقة ستوري انستغرام الملكية الخاصة بي اليوم:* \n\n${text}\n\n━━━━━━━━━━━━━━━\n👑 *تم التوليد من منصة:* عالم الحب KR 👑`);
+            var msg = `📸 *بطاقة ستوري انستغرام الملكية الخاصة بي اليوم:* \n\n${text}\n\n━━━━━━━━━━━━━━━\n👑 *تم التوليد من منصة:* عالم الحب KR 👑`;
+            window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
         }
+
 
         function generateFbPost() {
             var cat = document.getElementById("fb-category").value;
