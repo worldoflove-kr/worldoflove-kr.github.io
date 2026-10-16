@@ -361,7 +361,50 @@
             <span id="royal-footer-text" style="color: #ffd700 !important; font-size: 13px !important; font-weight: bold !important; text-shadow: 0 0 10px rgba(255,215,0,0.4) !important;">👑 منصة العائلة الملكية المعتمدة عالمياً 👑</span>
         </div>
         <div style="font-size: 10.5px !important; color: #444444 !important; margin-top: 5px !important; text-align: center !important;">Panda KR 🐼 ✨</div>
-    </div>
+    </div>        <!-- 🎯 13. مستشار التخطيط وصانع الأهداف الذكي الملون الفخم متل الصورة -->
+        <div class="royal-box box-gold" style="border: 2px solid #ffd700 !important; box-shadow: 0 0 15px rgba(255, 215, 0, 0.25) !important; margin: 15px auto !important; max-width: 100% !important; background: rgba(5, 2, 12, 0.85) !important;">
+            <div class="royal-box-title" id="title-box-goal" style="color: #ffd700 !important; font-size: 18.5px; font-weight: bold; text-shadow: 0 0 10px rgba(255,215,0,0.6);">🌟 مستشار التخطيط وصانع الأهداف الذكي</div>
+            <div style="display: flex; gap: 8px; margin-bottom: 12px; align-items: center; justify-content: center;">
+                <select id="goal-type" class="royal-select" style="width: 40% !important; margin-bottom: 0 !important; font-size: 13.5px !important;">
+                    <option value="ذاتي 🧠">🧠 ذاتي</option>
+                    <option value="مالي 💸">💸 مالي</option>
+                    <option value="عائلي 🏡">🏡 عائلي</option>
+                    <option value="صحي 🍏">🍏 صحي</option>
+                </select>
+                <input type="text" id="goal-input" class="royal-input" placeholder="اكتب هدفك الرئيسي للعام الجديد هنا..." style="flex: 1; margin-bottom: 0 !important; font-size: 13px !important; text-align: right; direction: rtl; outline: none;">
+            </div>
+            <div class="preview-box" id="goal-report" style="border: 1px dashed #ffd700; color: #ffd700; min-height: 60px; line-height: 1.6; font-size: 13.5px; padding: 12px; margin-bottom: 15px; background: rgba(0,0,0,0.5); border-radius: 10px;">اكتب هدفك الحين لتلقي خطة العمل الذكية وجدول النجاح الشخصي فوراً...</div>
+            <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #00bfff, #00fa9a); color: #000; font-weight: bold; box-shadow: 0 4px 12px rgba(0,250,154,0.4);" onclick="generateGoalReport()">🎯 صياغة خطة النجاح الفورية الحين</button>
+            <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #00bfff, #ba55d3); margin-top: 10px;" onclick="shareGoalReport()">🟢 مشاركة خطة النجاح عبر واتساب</button>
+        </div>
+        // 🎯 تفعيل وإصلاح دالة مستشار التخطيط وصناعة الأهداف الذكي للعام الجديد
+        function generateGoalReport() {
+            var type = document.getElementById("goal-type").value;
+            var input = document.getElementById("goal-input").value.trim();
+            var repBox = document.getElementById("goal-report");
+            if(!input) { repBox.innerHTML = "الرجاء كتابة هدفك الرئيسي لتوليد خطة النجاح الذكية الحين..."; return; }
+            
+            var tips = "";
+            if(type.includes("مالي")) {
+                tips = "💰 <b>خطة الوفرة المالية:</b> طهر مالك بالزكاة أولاً، قسّم دخلك (20% ادخار، 10% استثمار)، وابدأ مشروعك المستقل بثقة ومصداقية كبرى لتأمين مستقبل أولادك الغاليين دغري مية بالمية.";
+            } else if(type.includes("عائلي")) {
+                tips = "🏡 <b>الخطة العائلية الملكية:</b> خصص وقتاً يومياً ناعماً ومباركاً للجلوس مع عائلتك وأولادك الغاليين، ابنِ حصناً من الأمان والمحبة والود الأبدي، واجعل الرضا والسكينة عهد عائلتك المعتمد.";
+            } else if(type.includes("صحي")) {
+                tips = "🍏 <b>الخطة الصحية الشاملة:</b> حافظ على شرب الماء برواقة، قسّم وجباتك بنعومة، وامنح جسدك طاقة قوة ونشاط دائم لتظل بقمة البريق والروقان كالملوك.";
+            } else {
+                tips = "🧠 <b>خطة التطوير الذاتي:</b> استثمر بنقاء فكرك يومياً، تعلم مهارات رقمية وتجارية جديدة، واجعل عهد الأمان والمصداقية شعار نجاحك الشخصي المطلق in كل خطوة.";
+            }
+            
+            repBox.innerHTML = `🎯 <b>صانع الأهداف المستقبلي:</b><br>🗂️ تصنيف الهدف: <b>${type}</b><br>💭 هدفك المسجل: "${input}"<br>✨ <b>خطة العمل الذكية الموصى بها لك اليوم:</b><br>${tips}`;
+        }
+
+        function shareGoalReport() {
+            var input = document.getElementById("goal-input").value.trim();
+            if(!input) { alert("الرجاء صياغة هدفك أولاً"); return; }
+            var text = document.getElementById("goal-report").innerText;
+            window.location.href = "whatsapp://send?text=" + encodeURIComponent(text + "\n\n👑 منصة عالم الحب KR الملكية 👑");
+        }
+
     <script>
         var currentLang = 'ar';
         document.addEventListener('contextmenu', e => e.preventDefault());
