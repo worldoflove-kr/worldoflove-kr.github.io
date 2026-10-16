@@ -481,27 +481,7 @@
             if (cEl) {
                 if (currentLang === 'ar') {
                     cEl.innerHTML = `📅 ${d} <br> ⏰ الساعة: ${t} <br> ☀️ الطقس في بيروت: 24°C صافي | 💧 الرطوبة: 62%`;
-                } else {
-                    var dE = now.toLocaleDateString('en-LB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-                    var tE = now.toLocaleTimeString('en-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
-                    cEl.innerHTML = `📅 ${dE} <br> ⏰ Time: ${tE} <br> ☀️ Beirut Weather: 24°C Clear | 💧 Humidity: 62%`;
-                }
-            }
-        }
-
-        function executeRoyalSearch() {
-            var query = document.getElementById("royal-search-query").value.trim();
-            if(!query) { alert("الرجاء كتابة كلمات البحث أولاً كالملك"); return; }
-            window.open("https://google.com" + encodeURIComponent(query), "_blank");
-        }
-
-        function syncLivePreview(t) {
-            var select = document.getElementById("select-" + t);
-            var pBox = document.getElementById("preview-box-" + t);
-            if (select && pBox) { pBox.innerText = select.value; }
-        }
-
-        function fireRoyalWhatsapp(t) {
+   
             var select = document.getElementById("select-" + t);
             var txt = select ? select.value : "";
             if(t === 'wish') txt = document.getElementById("wish-text").value.trim();
