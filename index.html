@@ -411,6 +411,17 @@
             <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #00fa9a, #1877f2); color: #000; font-weight: bold; margin-top: 10px;" onclick="copyFbPost()">📋 نسخ البوست الجاهز للنشر دغري</button>
         </div>
 
+        <!-- 🔮 17. ممرّ الأمل ومرآة الروح الكونية - KR -->
+        <div class="royal-box box-dark" style="border: 2px solid #00ffff !important; box-shadow: 0 0 15px rgba(0, 255, 255, 0.25) !important; margin: 15px auto !important; max-width: 100% !important; background: rgba(3, 1, 8, 0.9) !important; position: relative;">
+            <div class="royal-box-title" style="color: #00ffff !important; font-size: 18.5px; font-weight: bold; text-shadow: 0 0 10px rgba(0,255,255,0.6);">🔮 مرآة الروح الكونية وممرّ الأمل</div>
+            <div style="margin-bottom: 12px;">
+                <input type="text" id="mirror-name" class="royal-input" placeholder="اكتب اسمك الملكي هنا..." style="width: 100% !important; margin-bottom: 8px !important; font-size: 13.5px !important; text-align: right; direction: rtl; outline: none;">
+                <textarea id="mirror-text" class="royal-input" placeholder="فضفض للمرآة.. اكتب ما يتعب قلبك أو أمنيتك المستحيلة بالسر هنا..." style="width: 100% !important; min-height: 80px; font-size: 13px !important; text-align: right; direction: rtl; outline: none; resize: none; padding: 10px; border-radius: 8px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.1);"></textarea>
+            </div>
+            <div class="preview-box" id="mirror-report" style="border: 1px dashed #00ffff; color: #00ffff; min-height: 90px; line-height: 1.6; font-size: 13.5px; padding: 12px; margin-bottom: 15px; background: rgba(0,0,0,0.7); border-radius: 10px; text-align: center; transition: all 0.5s ease;">انظر بداخل المرآة.. اكتب اسمك وفضفضتك الحين لتتحول الشاشة لمرآة النجوم وتكشف بطاقتك السرية للطمأنينة فوراً...</div>
+            <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #00ffff, #4b0082); color: #fff; font-weight: bold; box-shadow: 0 4px 12px rgba(0,255,255,0.4);" onclick="revealSoulMirror()">🔮 انظر بداخل المرآة الفلكية الحين</button>
+            <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #00fa9a, #00ffff); color: #000; font-weight: bold; margin-top: 10px;" onclick="shareMirrorReport()">🟢 مشاركة بشارة المرآة عبر واتساب</button>
+        </div>
     
 
         <!-- 🎯 13. مستشار التخطيط وصانع الأهداف الذكي الملون الفخم - فوق الشعار -->
@@ -545,6 +556,41 @@
             window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
         }
 
+        function revealSoulMirror() {
+            var name = document.getElementById("mirror-name").value.trim();
+            var text = document.getElementById("mirror-text").value.trim();
+            var repBox = document.getElementById("mirror-report");
+            if (!name || !text) { alert("الرجاء كتابة اسمك والفضفضة بالسر أولاً لتتحول الشاشة لمرآة النجوم"); return; }
+            
+            if (repBox) {
+                repBox.innerHTML = "✨ 🔮 <i>المرآة الفلكية تتحول الحين لوميض من النجوم المتحركة... انتظر كشف صك الطمأنينة الملكي الخاص بك...</i>";
+                repBox.style.borderColor = "#ffd700";
+                repBox.style.color = "#ffd700";
+                
+                setTimeout(function() {
+                    var fortunes = [
+                        "🌅 اهدأ وارح فكرك تماماً، فما ضاقت بالكون كلو إلا لتُفرج، والأنوار القادمة ستمسح كل تعب مررت به فوراً مية بالمية ابتسم كالملك.",
+                        "💪 أنت قوي جداً وتحملت الكثير، وما قدّرك الله على هذا إلا لأنه يعلم أنك قادر على تجاوزه، والفرج الأبدي يطرق باب أولادك الغاليين الحين.",
+                        "❤️ طبطبة حنونة على قلبك الطيب، اهدأ وارح فكرك فكل مرّ سيمر، والأيام القادمة مليئة بالسلام والأمان والوفرة المالية المباركة دغري.",
+                        "🔮 بشارة الشجرة الفورية والكون كلو لكم اليوم: أمنيتك السرية مستجابة والفرج واليسر والرزق يطرق بابك فوراً كالملوك ثق تماماً."
+                    ];
+                    var luckyNum = Math.floor(Math.random() * 90) + 10;
+                    var randomIdx = Math.floor(Math.random() * fortunes.length);
+                    
+                    repBox.innerHTML = `🌌 <b>وثيقة مرآة الروح الملكية للطمأنينة:</b><br>👤 الاسم المسجل بالسر: <b>${name}</b><br>🎲 رقم الحظ الفلكي لراحتك اليوم: <b>${luckyNum}</b><br>💌 <b>رسالة الإشراق والسلام الفورية لقلبك:</b><br>${fortunes[randomIdx]}`;
+                    repBox.style.borderColor = "#00ffff";
+                    repBox.style.color = "#00ffff";
+                }, 3000);
+            }
+        }
+
+        function shareMirrorReport() {
+            var name = document.getElementById("mirror-name").value.trim();
+            if (!name) { alert("الرجاء النظر بالمرآة أولاً"); return; }
+            var text = document.getElementById("mirror-report").innerText;
+            var msg = `🔮 *وثيقة مرآة الروح الملكية وممر الأمل الخاصة بي اليوم:* \n\n${text}\n\n━━━━━━━━━━━━━━━\n👑 *تم التوليد من منصة:* عالم الحب KR 👑`;
+            window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
+        }
 
         function generateFbPost() {
             var cat = document.getElementById("fb-category").value;
