@@ -434,6 +434,34 @@
                 <div id="legal-modal-body" style="color: #fff !important; font-size: 13px !important; line-height: 1.7 !important; font-family: 'Cairo', sans-serif !important; white-space: pre-line !important;"></div>
             </div>
         </div>
+        <!-- 🔮 20. رادار التوافق الفلكي وكشف طاقة الحروف - KR المطور باللون الأحمر المتوهج -->
+        <div class="royal-box" style="border: 2px solid #ff0044 !important; box-shadow: 0 0 20px #ff0044 !important; margin: 25px auto !important; max-width: 100% !important; background: rgba(12, 1, 4, 0.95) !important; border-radius: 16px !important; padding: 18px !important; text-align: center !important;">
+            <div class="royal-box-title" style="color: #ff0044 !important; font-size: 19px !important; font-weight: bold !important; text-shadow: 0 0 15px #ff0044 !important; font-family: 'Cairo', sans-serif !important; margin-bottom: 15px !important;">🔮 رادار التوافق الفلكي وطاقة الحروف</div>
+            
+            <div style="margin-bottom: 12px; display: flex; flex-direction: column; gap: 8px;">
+                <input type="text" id="radar-name1" class="royal-input" placeholder="اكتب اسمك الملكي هنا..." style="width: 100% !important; font-size: 13.5px !important; text-align: right; direction: rtl; outline: none; border: 1px solid #ff0044 !important; background: rgba(0,0,0,0.6) !important; color: #fff !important; padding: 8px !important; border-radius: 8px !important;">
+                <input type="text" id="radar-name2" class="royal-input" placeholder="اكتب اسم الشخص الغالي (شريك، ابن، صديق)..." style="width: 100% !important; font-size: 13.5px !important; text-align: right; direction: rtl; outline: none; border: 1px solid #ff0044 !important; background: rgba(0,0,0,0.6) !important; color: #fff !important; padding: 8px !important; border-radius: 8px !important;">
+                <select id="radar-relation" class="royal-select" style="width: 100% !important; text-align: right; direction: rtl; font-size: 13.5px !important; border: 1px solid #ff0044 !important; background: #000 !important; color: #fff !important; padding: 8px !important; border-radius: 8px !important;">
+                    <option value="عشق ملكي وأمان أبدي ❤️">❤️ عشق ملكي وأمان أبدي</option>
+                    <option value="طاقة حب وعاطفة عائلية 👨‍👩‍👧‍👦">👨‍👩‍👧‍👦 طاقة حب وعاطفة عائلية</option>
+                    <option value="صداقة ألمماسية ووفاء دائم 💎">💎 صداقة ألماسيّة ووفاء دائم</option>
+                    <option value="شراكة عمل ووفرة مالية 💰">💰 شراكة عمل ووفرة مالية</option>
+                </select>
+            </div>
+
+            <!-- 🛑 منطقة رادار المسح الدائري الليزري الأحمر المشع -->
+            <div id="radar-circle-zone" style="margin: 20px auto !important; width: 110px !important; height: 110px !important; border: 2px solid #ff0044 !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; position: relative !important; cursor: pointer !important; background: rgba(255,0,68,0.05) !important; overflow: hidden !important; box-shadow: inset 0 0 15px rgba(255,0,68,0.2) !important;">
+                <div id="radar-sweep" style="position: absolute !important; width: 100% !important; height: 100% !important; background: linear-gradient(90deg, rgba(255,0,68,0.4), transparent) !important; top: 0 !important; left: 0 !important; transform-origin: center !important; display: none;"></div>
+                <span id="radar-icon" style="font-size: 40px !important; animation: pulse 1.8s infinite !important;">❤️</span>
+            </div>
+            <div id="radar-status" style="color: #ff0044 !important; font-size: 12.5px !important; margin-bottom: 15px !important; font-weight: bold !important; text-shadow: 0 0 5px rgba(255,0,68,0.3) !important;">اضغط لتشغيل رادار المسح الفلكي الأحمر الحين...</div>
+
+            <!-- شاشة عرض وثيقة الانسجام الناتجة -->
+            <div class="preview-box" id="radar-report" style="border: 1px dashed #ff0044 !important; color: #ff0044 !important; min-height: 80px; line-height: 1.6; font-size: 13.5px; padding: 12px; margin-bottom: 15px; background: rgba(0,0,0,0.8) !important; border-radius: 10px; text-align: center; display: none; text-shadow: 0 0 8px rgba(255,0,68,0.4);"></div>
+            
+            <button type="button" id="radar-start-btn" class="royal-share-btn" style="background: linear-gradient(45deg, #ff0044, #ff7700) !important; color: #fff !important; font-weight: bold !important; width: 100% !important; box-shadow: 0 4px 15px rgba(255,0,68,0.4) !important; border: none !important; padding: 12px !important; border-radius: 8px !important; font-size: 14px !important; cursor: pointer !important;" onclick="startRoyalRadar()">🔮 أطلق رادار الفحص الفلكي الحين</button>
+            <button type="button" id="radar-share-btn" class="royal-share-btn" style="background: linear-gradient(45deg, #00fa9a, #ff0044) !important; color: #000 !important; font-weight: bold !important; display: none; margin-top: 10px !important; width: 100% !important; padding: 12px !important; border-radius: 8px !important; border: none !important; font-size: 14px !important;" onclick="shareRadarReport()">🟢 مشاركة وثيقة الانسجام عبر واتساب</button>
+        </div>
  
         <div class="royal-box box-gold" style="border: 2px solid #ffd700 !important; box-shadow: 0 0 20px rgba(255, 215, 0, 0.3) !important; margin: 25px auto !important; max-width: 100% !important; background: rgba(6, 3, 15, 0.95) !important; border-radius: 16px !important; padding: 18px !important; text-align: center !important;">
             
@@ -901,6 +929,60 @@
         function closeLegalModal() {
             var modal = document.getElementById("legal-modal");
             if (modal) { modal.style.display = "none"; }
+        }
+        function startRoyalRadar() {
+            var name1 = document.getElementById("radar-name1").value.trim();
+            var name2 = document.getElementById("radar-name2").value.trim();
+            var relation = document.getElementById("radar-relation").value;
+            var statusText = document.getElementById("radar-status");
+            var sweep = document.getElementById("radar-sweep");
+            var radarIcon = document.getElementById("radar-icon");
+            var repBox = document.getElementById("radar-report");
+            var shareBtn = document.getElementById("radar-share-btn");
+
+            if (!name1 || !name2) { alert("الرجاء كتابة اسمك واسم الشخص الغالي أولاً لتشغيل رادار الفحص الفلكي"); return; }
+
+            statusText.innerHTML = "⚡ <i>جاري مسح طاقة الحروف وحساب الجمل الفلكي.. الرادار الأحمر يدور الحين...</i>";
+            statusText.style.color = "#ff0044";
+            sweep.style.display = "block";
+            sweep.style.animation = "radarSweepAnimation 1s linear infinite";
+            radarIcon.style.animation = "pulse 0.5s infinite";
+
+            if (!document.getElementById("radar-style-id")) {
+                var style = document.createElement('style');
+                style.id = "radar-style-id";
+                style.innerHTML = "@keyframes radarSweepAnimation { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }";
+                document.head.appendChild(style);
+            }
+
+            setTimeout(function() {
+                sweep.style.display = "none";
+                radarIcon.style.animation = "pulse 1.8s infinite";
+                statusText.innerHTML = "✅ اكتمل المسح الفلكي الحراري للحروف بنجاح 100%!";
+                statusText.style.color = "#00ffcc";
+
+                var percentage = (Math.random() * (99.8 - 85.0) + 85.0).toFixed(1);
+                
+                var responses = [
+                    "🌅 <b>صك التوافق والوئام الملكي:</b> القلوب منسجمة بالملّي مية ع المسطرة والقلم! طاقة حروفكم تحمل ترابطاً فلكياً نادراً مبنياً على الوفاء والراحة النفسية العميقة. نصيحة مستشار الحب: حافظ على هذا القلب الطيب ولا تدع ضغوط الحياة تسرق بريق أنواركم، فأنتم سند حقيقي لبعضكم لآخر العمر ابتسم كالملك.",
+                    "🛡️ <b>وثيقة الدعم العاطفي والأمان الكوني:</b> نسبة انسجام ألماسيّة خارقة! رادار الحروف يكشف عن حرارة عاطفية عالية جداً، وطاقة تيسير ورزق مشتركة ستفتح بوابات الخير والبركة لأهل بيتك وعائلتك قريباً جداً ثق تماماً.",
+                    "✨ <b>بشارة الانسجام والوفرة الفلكية:</b> حروفكم تفيض بالسلام والأمان الفلكي الشامل، علاقتكم محمية بطاقة حب نقية وصافية، والأنوار القادمة ستمسح كل تعب أو سوء تفاهم مررتم به فوراً كالملوك."
+                ];
+                var randomIdx = Math.floor(Math.random() * responses.length);
+
+                repBox.innerHTML = `❤️ <b>وثيقة الانسجام الملكية المعتمدة KR:</b><br>👤 الاسم الأول: <b>${name1}</b> | 👤 الاسم الثاني: <b>${name2}</b><br>🔮 نوع الرابط: <span style='color:#ff0044;'><b>${relation}</b></span><br>📊 نسبة الانسجام الطاقي: <span style='color:#ffd700; font-size:16px; font-weight:bold; text-shadow: 0 0 10px #ffd700;'>${percentage}%</span><br><br>💌 <b>تحليل طاقة الحروف والقلوب الحين:</b><br>${responses[randomIdx]}`;
+                repBox.style.display = "block";
+                shareBtn.style.display = "block";
+            }, 4000);
+        }
+
+        function shareRadarReport() {
+            var name1 = document.getElementById("radar-name1").value.trim();
+            var name2 = document.getElementById("radar-name2").value.trim();
+            if (!name1 || !name2) { alert("الرجاء تشغيل الرادار أولاً"); return; }
+            var text = document.getElementById("radar-report").innerText;
+            var msg = `🔮 *وثيقة رادار التوافق الفلكي وكشف طاقة الحروف الخاصة بي اليوم:* \n\n${text}\n\n━━━━━━━━━━━━━━━\n👑 *تم التوليد من منصة:* عالم الحب KR 👑`;
+            window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
         }
 
         function switchLang(l) {
