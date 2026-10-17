@@ -304,18 +304,31 @@
             <button type="button" class="royal-share-btn" onclick="generateAiHopeReport()">🌿 الحصول على طبطبة الأمل الفورية</button>
             <button type="button" class="royal-share-btn" onclick="shareVentReport()">🟢 Share Vent</button>
         </div>
-        <!-- 🎰 عجلة الحظ والفرص اليومية المضيئة الملون الأصلي المرتب -->
-        <div class="royal-box box-gold">
-            <div class="royal-box-title" id="title-box-wheel">🎰 عجلة الحظ والفرص اليومية المضيئة</div>
-            <div class="wheel-container">
-                <div style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); font-size: 24px; z-index: 10;">👇</div>
-                <div id="royal-wheel" class="wheel-canvas"></div>
+              <!-- 🔮 21. مِغناطيس الحظ والوفرة البصري ثلاثي الأبعاد - KR المطور -->
+        <div class="royal-box" style="border: 2px solid #00ffcc !important; box-shadow: 0 0 20px #00ffcc !important; margin: 25px auto !important; max-width: 100% !important; background: rgba(2, 12, 10, 0.95) !important; border-radius: 16px !important; padding: 18px !important; text-align: center !important;">
+            <div class="royal-box-title" style="color: #00ffcc !important; font-size: 19px !important; font-weight: bold !important; text-shadow: 0 0 15px #00ffcc !important; font-family: 'Cairo', sans-serif !important; margin-bottom: 15px !important;">🔮 مِغناطيس الحظ والوفرة ثلاثي الأبعاد</div>
+            
+            <div style="margin-bottom: 15px;">
+                <input type="text" id="magnet-name" class="royal-input" placeholder="اكتب اسمك الملكي لكشف حظك اليومي الحين..." style="width: 100% !important; font-size: 13.5px !important; text-align: right; direction: rtl; outline: none; border: 1px solid #00ffcc !important; background: rgba(0,0,0,0.6) !important; color: #fff !important; padding: 8px !important; border-radius: 8px !important;">
             </div>
-            <input type="text" id="wheel-username" class="royal-input" placeholder="اكتب اسمك الحين لتفعيل حظك اليومي...">
-            <div class="preview-box" id="wheel-report">اكتب اسمك الحين، واكبس زر الدوران لتكشف العجلة عن نصيبك لهون لليوم فوراً...</div>
-            <button type="button" id="spin-btn" class="royal-share-btn" onclick="spinRoyalWheel()">🎰 أدر العجلة واكشف حظك الحين</button>
-            <button type="button" class="royal-share-btn" onclick="shareWheelReport()">🟢 Share Wheel</button>
+
+            <!-- 🔮 zone -->
+            <div id="magnet-crystal-orb" style="margin: 25px auto !important; width: 130px !important; height: 130px !important; border-radius: 50% !important; background: radial-gradient(circle, #00ffcc, #0055ff, #05021a) !important; box-shadow: 0 0 30px #00ffcc, inset 0 0 20px #fff !important; display: flex !important; align-items: center !important; justify-content: center !important; position: relative !important; cursor: pointer !important; animation: orbFloatAnimation 3s ease-in-out infinite alternate !important;" onclick="activateLuckMagnet()">
+                <div id="orb-glow-flash" style="position: absolute !important; width: 100% !important; height: 100% !important; background: #fff !important; border-radius: 50% !important; opacity: 0 !important; transition: all 0.2s ease !important;"></div>
+                <span id="orb-icon" style="font-size: 50px !important; animation: spinOrb 6s linear infinite !important; display: inline-block !important;">🔮</span>
+            </div>
+            <div id="magnet-status" style="color: #00ffcc !important; font-size: 12.5px !important; margin-bottom: 15px !important; font-weight: bold !important; text-shadow: 0 0 5px rgba(0,255,204,0.3) !important;">المس البلورة السحرية بـ إصبعك الحين لتوليد الصك الملكي...</div>
+
+            <style>
+                @keyframes orbFloatAnimation { 0% { transform: translateY(0px); box-shadow: 0 0 25px #00ffcc; } 100% { transform: translateY(-10px); box-shadow: 0 0 40px #00ffff; } }
+                @keyframes spinOrb { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+            </style>
+
+            <div class="preview-box" id="magnet-report" style="border: 1px dashed #00ffcc !important; color: #00ffcc !important; min-height: 80px; line-height: 1.6; font-size: 13.5px; padding: 12px; margin-bottom: 15px; background: rgba(0,0,0,0.8) !important; border-radius: 10px; text-align: center; display: none; text-shadow: 0 0 8px rgba(0,255,204,0.4);"></div>
+            
+            <button type="button" id="magnet-share-btn" class="royal-share-btn" style="background: linear-gradient(45deg, #00fa9a, #00ffcc) !important; color: #000 !important; font-weight: bold !important; display: none; margin-top: 10px !important; width: 100% !important; padding: 12px !important; border-radius: 8px !important; border: none !important; font-size: 14px !important;" onclick="shareMagnetReport()">🟢 مشاركة صك الحظ الملكي عبر واتساب</button>
         </div>
+
 
         <!-- 📿 عداد الاستغفار والتسبيح المضيء الملون الأصلي المرتب -->
         <div class="royal-box box-green">
