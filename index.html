@@ -758,11 +758,12 @@
             var text = document.getElementById("goal-report").innerText;
             window.location.href = "whatsapp://send?text=" + encodeURIComponent(text + "\n\n👑 منصة عالم الحب KR الملكية 👑");
         }
-                function executeRoyalSearch() {
+                     function executeRoyalSearch() {
             var query = document.getElementById("royal-search-query").value.trim();
             if(!query) { alert("الرجاء كتابة كلمات البحث أولاً كالملك"); return; }
             window.open("https://google.com" + encodeURIComponent(query), "_blank");
         }
+
 
 
         function switchLang(l) {
