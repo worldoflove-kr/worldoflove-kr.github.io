@@ -304,30 +304,74 @@
             <button type="button" class="royal-share-btn" onclick="generateAiHopeReport()">🌿 الحصول على طبطبة الأمل الفورية</button>
             <button type="button" class="royal-share-btn" onclick="shareVentReport()">🟢 Share Vent</button>
         </div>
-              <!-- 🔮 21. مِغناطيس الحظ والوفرة البصري ثلاثي الأبعاد - KR المطور -->
-        <div class="royal-box" style="border: 2px solid #00ffcc !important; box-shadow: 0 0 20px #00ffcc !important; margin: 25px auto !important; max-width: 100% !important; background: rgba(2, 12, 10, 0.95) !important; border-radius: 16px !important; padding: 18px !important; text-align: center !important;">
-            <div class="royal-box-title" style="color: #00ffcc !important; font-size: 19px !important; font-weight: bold !important; text-shadow: 0 0 15px #00ffcc !important; font-family: 'Cairo', sans-serif !important; margin-bottom: 15px !important;">🔮 مِغناطيس الحظ والوفرة ثلاثي الأبعاد</div>
+        <!-- 🔮 21. مِغناطيس الحظ والوفرة البصري ثلاثي الأبعاد بالأصفر المشع الشغال فوراً - KR -->
+        <div class="royal-box" style="border: 2px solid #ffd700 !important; box-shadow: 0 0 20px #ffd700 !important; margin: 25px auto !important; max-width: 100% !important; background: rgba(15, 12, 2, 0.95) !important; border-radius: 16px !important; padding: 18px !important; text-align: center !important;">
+            <div class="royal-box-title" style="color: #ffd700 !important; font-size: 19px !important; font-weight: bold !important; text-shadow: 0 0 15px #ffd700 !important; font-family: 'Cairo', sans-serif !important; margin-bottom: 15px !important;">🔮 مِغناطيس الحظ والوفرة ثلاثي الأبعاد</div>
             
             <div style="margin-bottom: 15px;">
-                <input type="text" id="magnet-name" class="royal-input" placeholder="اكتب اسمك الملكي لكشف حظك اليومي الحين..." style="width: 100% !important; font-size: 13.5px !important; text-align: right; direction: rtl; outline: none; border: 1px solid #00ffcc !important; background: rgba(0,0,0,0.6) !important; color: #fff !important; padding: 8px !important; border-radius: 8px !important;">
+                <input type="text" id="magnet-name" class="royal-input" placeholder="اكتب اسمك الملكي لكشف حظك اليومي الحين..." style="width: 100% !important; font-size: 13.5px !important; text-align: right; direction: rtl; outline: none; border: 1px solid #ffd700 !important; background: rgba(0,0,0,0.6) !important; color: #fff !important; padding: 8px !important; border-radius: 8px !important;">
             </div>
 
-            <!-- 🔮 zone -->
-            <div id="magnet-crystal-orb" style="margin: 25px auto !important; width: 130px !important; height: 130px !important; border-radius: 50% !important; background: radial-gradient(circle, #00ffcc, #0055ff, #05021a) !important; box-shadow: 0 0 30px #00ffcc, inset 0 0 20px #fff !important; display: flex !important; align-items: center !important; justify-content: center !important; position: relative !important; cursor: pointer !important; animation: orbFloatAnimation 3s ease-in-out infinite alternate !important;" onclick="activateLuckMagnet()">
-                <div id="orb-glow-flash" style="position: absolute !important; width: 100% !important; height: 100% !important; background: #fff !important; border-radius: 50% !important; opacity: 0 !important; transition: all 0.2s ease !important;"></div>
-                <span id="orb-icon" style="font-size: 50px !important; animation: spinOrb 6s linear infinite !important; display: inline-block !important;">🔮</span>
+            <!-- 🔮 منطقة البلورة التفاعلية الذكية بالأصفر الذهبي المشع -->
+            <div id="magnet-crystal-orb" style="margin: 25px auto !important; width: 130px !important; height: 130px !important; border-radius: 50% !important; background: radial-gradient(circle, #ffd700, #ffaa00, #1a1202) !important; box-shadow: 0 0 35px #ffd700, inset 0 0 20px #fff !important; display: flex !important; align-items: center !important; justify-content: center !important; position: relative !important; cursor: pointer !important; animation: orbFloatAnimation 3s ease-in-out infinite alternate !important;" onclick="executeCrystalLuckOrbit()">
+                <div id="orb-glow-flash" style="position: absolute !important; width: 100% !important; height: 100% !important; background: #fff !important; border-radius: 50% !important; opacity: 0 !important; transition: all 0.2s ease !important; pointer-events: none !important;"></div>
+                <span id="orb-icon" style="font-size: 50px !important; animation: spinOrb 6s linear infinite !important; display: inline-block !important; pointer-events: none !important;">🔮</span>
             </div>
-            <div id="magnet-status" style="color: #00ffcc !important; font-size: 12.5px !important; margin-bottom: 15px !important; font-weight: bold !important; text-shadow: 0 0 5px rgba(0,255,204,0.3) !important;">المس البلورة السحرية بـ إصبعك الحين لتوليد الصك الملكي...</div>
+            <div id="magnet-status" style="color: #ffd700 !important; font-size: 13.5px !important; margin-bottom: 15px !important; font-weight: bold !important; text-shadow: 0 0 5px rgba(255,215,0,0.3) !important; font-family: 'Cairo', sans-serif !important;">المس البلورة السحرية الصفراء الآن لتوليد صك الحظ الملكي</div>
 
             <style>
-                @keyframes orbFloatAnimation { 0% { transform: translateY(0px); box-shadow: 0 0 25px #00ffcc; } 100% { transform: translateY(-10px); box-shadow: 0 0 40px #00ffff; } }
+                @keyframes orbFloatAnimation { 0% { transform: translateY(0px); box-shadow: 0 0 25px #ffd700; } 100% { transform: translateY(-10px); box-shadow: 0 0 45px #ffaa00; } }
                 @keyframes spinOrb { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
             </style>
 
-            <div class="preview-box" id="magnet-report" style="border: 1px dashed #00ffcc !important; color: #00ffcc !important; min-height: 80px; line-height: 1.6; font-size: 13.5px; padding: 12px; margin-bottom: 15px; background: rgba(0,0,0,0.8) !important; border-radius: 10px; text-align: center; display: none; text-shadow: 0 0 8px rgba(0,255,204,0.4);"></div>
+            <!-- شاشة عرض صك ملكية الحظ اليومي الناتج -->
+            <div class="preview-box" id="magnet-report" style="border: 1px dashed #ffd700 !important; color: #ffd700 !important; min-height: 80px; line-height: 1.6; font-size: 13.5px; padding: 12px; margin-bottom: 15px; background: rgba(0,0,0,0.8) !important; border-radius: 10px; text-align: center; display: none; text-shadow: 0 0 8px rgba(255,215,0,0.4); font-family: 'Cairo', sans-serif !important;"></div>
             
-            <button type="button" id="magnet-share-btn" class="royal-share-btn" style="background: linear-gradient(45deg, #00fa9a, #00ffcc) !important; color: #000 !important; font-weight: bold !important; display: none; margin-top: 10px !important; width: 100% !important; padding: 12px !important; border-radius: 8px !important; border: none !important; font-size: 14px !important;" onclick="shareMagnetReport()">🟢 مشاركة صك الحظ الملكي عبر واتساب</button>
+            <button type="button" id="magnet-share-btn" class="royal-share-btn" style="background: linear-gradient(45deg, #00fa9a, #ffd700) !important; color: #000 !important; font-weight: bold !important; display: none; margin-top: 10px !important; width: 100% !important; padding: 12px !important; border-radius: 8px !important; border: none !important; font-size: 14px !important; font-family: 'Cairo', sans-serif !important;" onclick="shareMagnetReportDirectly()">🟢 مشاركة صك الحظ الملكي عبر واتساب</button>
         </div>
+
+        <script>
+        function executeCrystalLuckOrbit() {
+            var name = document.getElementById("magnet-name").value.trim();
+            var statusText = document.getElementById("magnet-status");
+            var flash = document.getElementById("orb-glow-flash");
+            var repBox = document.getElementById("magnet-report");
+            var shareBtn = document.getElementById("magnet-share-btn");
+
+            if (!name) { alert("الرجاء كتابة اسمك الملكي أولاً لتفعيل مغناطيس الحظ"); return; }
+
+            flash.style.opacity = "1";
+            statusText.innerHTML = "⚡ <i>جاري سحب طاقة الوفرة وتوليد صك الحظ الفلكي باسمك...</i>";
+            statusText.style.color = "#ffd700";
+
+            setTimeout(function() {
+                flash.style.opacity = "0";
+                statusText.innerHTML = "✅ تم سحب طاقة الحظ والوفرة بنجاح 100% كالملك!";
+                statusText.style.color = "#00ffcc";
+
+                var luckyNum1 = Math.floor(Math.random() * 90 + 10);
+                var luckyNum2 = Math.floor(Math.random() * 900 + 100);
+                
+                var insights = [
+                    "💰 <b>صك الوفرة المالية المفاجئة:</b> طاقة اسمك اليوم تفتح لك أبواباً مغلقة! هناك كنز أو تيسير مالي غير متوقع قادم إليك أو لعائلتك قريباً جداً. أرقامك القيادية الفلكية لليوم هي: [ " + luckyNum1 + " ] و [ " + luckyNum2 + " ]. نصيحة البلورة: تفاءل بالخير الحين فالأنوار تحيط بك وبأولادك الغاليين.",
+                    "🛡️ <b>صك الحماية وتيسير الأمور المعلقة:</b> اهدأ تماماً، مغناطيس الحظ جذب لك اليوم طاقة فك العقد والفرص النادرة، أمر كنت تسعى إليه بالسر سيتحقق دغري بالثواني القادمة كالملوك وأرقام حظك هي: [ " + luckyNum1 + " ].",
+                    "✨ <b>صك السعادة العائلية المطلقة:</b> البلورة تكشف عن بريق من الفرح والبهجة سيدخل عتبة بيتك، طاقة حظ أولادك وأهلك بقمة الذروة، وأيامك القادمة مفرودة بالراحة والسكينة والرزق الفياض مية بالمية."
+                ];
+                var randomIdx = Math.floor(Math.random() * insights.length);
+
+                repBox.innerHTML = `🔮 <b>صك الحظ الملكي المعتمد لليوم KR:</b><br>👤 حامل الصك: <b>${name}</b><br>📅 تاريخ الصدور الفلكي: <b>اليوم حياً ومباشرة</b><br><br>💌 <b>بشارة البلورة ثلاثية الأبعاد الحين:</b><br>${insights[randomIdx]}<br><br>💎 <i>(المس البلورة غداً مرة أخرى لتجديد طاقة جذب الوفرة كالملوك)</i>`;
+                repBox.style.display = "block";
+                shareBtn.style.display = "block";
+            }, 1500);
+        }
+
+        function shareMagnetReportDirectly() {
+            var text = document.getElementById("magnet-report").innerText;
+            var msg = `🔮 *صك مغناطيس الحظ والوفرة البصري الخاص بي اليوم:* \n\n${text}\n\n━━━━━━━━━━━━━━━\n👑 *بوابة جذب الوفرة:* عالم الحب KR 👑`;
+            window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
+        }
+        </script>
+
 
 
         <!-- 📿 عداد الاستغفار والتسبيح المضيء الملون الأصلي المرتب -->
