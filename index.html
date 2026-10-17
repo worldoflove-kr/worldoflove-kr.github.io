@@ -416,6 +416,38 @@
             <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #1877f2, #00bfff); color: #fff; font-weight: bold; box-shadow: 0 4px 12px rgba(24,119,242,0.4);" onclick="generateFbPost()">👥 صناعة المنشور التفاعلي الحين</button>
             <button type="button" class="royal-share-btn" style="background: linear-gradient(45deg, #00fa9a, #1877f2); color: #000; font-weight: bold; margin-top: 10px;" onclick="copyFbPost()">📋 نسخ البوست الجاهز للنشر دغري</button>
         </div>
+        <!-- 🔐 18. برنامج خزنة الأسرار الديجيتال وقارئ البصمة الكونية - KR -->
+        <div class="royal-box box-gold" style="border: 2px solid #ffd700 !important; box-shadow: 0 0 20px rgba(255, 215, 0, 0.3) !important; margin: 25px auto !important; max-width: 100% !important; background: rgba(6, 3, 15, 0.95) !important; border-radius: 16px !important; padding: 18px !important; text-align: center !important;">
+            
+            <!-- 🛡️ وثيقة الأمان والشرح الاستراتيجي لبناء الثقة المطلقة -->
+            <div style="background: rgba(255, 255, 255, 0.03) !important; border: 1px solid rgba(255, 215, 0, 0.2) !important; padding: 12px !important; border-radius: 12px !important; margin-bottom: 18px !important; text-align: right !important; direction: rtl !important;">
+                <div style="color: #ffd700 !important; font-size: 15px !important; font-weight: bold !important; margin-bottom: 6px !important; text-shadow: 0 0 8px rgba(255,215,0,0.4) !important;">🛡️ بروتوكول الأمان والخصوصية الملكي الصارم:</div>
+                <p style="color: #fff !important; font-size: 12.5px !important; line-height: 1.6 !important; margin: 0 !important; font-family: 'Cairo', sans-serif !important;">
+                    مرحباً بك في النظام الرقمي المشفر لـ <b>عالم الحب KR</b>. هيدا البرنامج مخصص حصرياً لتأمين وحفظ أمنياتك وأهداف عائلتك وأولادك بالسر التام. 
+                    <br><span style="color: #00ffcc !important;">✔ نظام آمن ومجاني 100%</span> | <span style="color: #00ffcc !important;">✔ تشفير ديجيتال مغلق</span> | <span style="color: #00ffcc !important;">✔ لا يتطلب أي كلمات مرور أو بيانات حساسة</span>.
+                    <br>البيانات والفضفضة التي تكتبها تتبخر برمجياً فوراً بمجرد خروجك، ولا يمكن لأي مخلوق بالكون رؤيتها قط. استخدم قارئ البصمة الكونية الحين بكل طمأنينة وأمان ملكي مطلق.
+                </p>
+            </div>
+
+            <div class="royal-box-title" style="color: #ffd700 !important; font-size: 19px !important; font-weight: bold !important; text-shadow: 0 0 15px rgba(255,215,0,0.6) !important; margin-bottom: 15px !important;">🔮 خزنة الأسرار وقارئ البصمة الكونية</div>
+            
+            <div style="margin-bottom: 12px;">
+                <input type="text" id="vault-name" class="royal-input" placeholder="اكتب اسمك الملكي هنا..." style="width: 100% !important; margin-bottom: 8px !important; font-size: 13.5px !important; text-align: right; direction: rtl; outline: none;">
+                <textarea id="vault-secret" class="royal-input" placeholder="أدخل سرّك، أمنيتك المستحيلة... لتشغيله بالذهب الحين..." style="width: 100% !important; min-height: 75px; font-size: 13px !important; text-align: right; direction: rtl; outline: none; resize: none; padding: 10px; border-radius: 8px; background: rgba(0,0,0,0.5); color: #fff; border: 1px solid rgba(255,215,0,0.2);"></textarea>
+            </div>
+
+            <!-- 🛑 منطقة ماسح البصمة الليزري التفاعلي المذهل -->
+            <div id="biometric-zone" style="margin: 20px auto !important; width: 120px !important; height: 120px !important; border: 2px dashed #00ffff !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; position: relative !important; cursor: pointer !important; background: rgba(0,255,255,0.03) !important; transition: all 0.3s ease !important;" onclick="startLaserScanner()">
+                <div id="laser-line" style="position: absolute !important; width: 100% !important; height: 2px !important; background: #00ffff !important; top: 0 !important; left: 0 !important; box-shadow: 0 0 10px #00ffff !important; display: none;"></div>
+                <span id="finger-icon" style="font-size: 45px !important; transition: all 0.3s ease !important; animation: pulse 1.5s infinite !important;">👆</span>
+            </div>
+            <div id="scanner-status" style="color: #00ffff !important; font-size: 12.5px !important; margin-bottom: 15px !important; font-weight: bold !important;">اضغط فوق البصمة الحين لتفعيل ماسح الليزر الطاقي...</div>
+
+            <!-- شاشة عرض وثيقة الأمان والتشفير الناتجة -->
+            <div class="preview-box" id="vault-report" style="border: 1px dashed #ffd700; color: #ffd700; min-height: 80px; line-height: 1.6; font-size: 13.5px; padding: 12px; margin-bottom: 15px; background: rgba(0,0,0,0.7); border-radius: 10px; text-align: center; display: none;"></div>
+            
+            <button type="button" id="vault-share-btn" class="royal-share-btn" style="background: linear-gradient(45deg, #00fa9a, #ffd700); color: #000; font-weight: bold; display: none;" onclick="shareVaultReport()">🟢 مشاركة كود التشفير وبشارة الخزنة عبر واتساب</button>
+        </div>
 
         <!-- 🔮 17. ممرّ الأمل ومرآة الروح الكونية - KR المطور بالبريق اللوني الفيروزي النادر -->
         <div class="royal-box" style="border: 2px solid #00f5ff !important; box-shadow: 0 0 20px #00f5ff !important; margin: 20px auto !important; max-width: 100% !important; background: rgba(2, 8, 15, 0.95) !important; position: relative; border-radius: 15px !important; padding: 15px !important;">
@@ -771,6 +803,57 @@
         }
 
 
+        function startLaserScanner() {
+            var name = document.getElementById("vault-name").value.trim();
+            var secret = document.getElementById("vault-secret").value.trim();
+            var statusText = document.getElementById("scanner-status");
+            var laserLine = document.getElementById("laser-line");
+            var fingerIcon = document.getElementById("finger-icon");
+            var repBox = document.getElementById("vault-report");
+            var shareBtn = document.getElementById("vault-share-btn");
+            
+            if (!name || !secret) { alert("الرجاء كتابة اسمك وسرّك أو طموحك أولاً لتفعيل ماسح البصمة"); return; }
+            
+            statusText.innerHTML = "⚡ <i>جاري مسح البصمة طاقياً بالليزر الكوني.. ثبت إصبعك دغري...</i>";
+            statusText.style.color = "#ffd700";
+            fingerIcon.style.transform = "scale(1.3)";
+            laserLine.style.display = "block";
+            laserLine.style.animation = "scanLaserAnimation 1s infinite alternate";
+            
+            if (!document.getElementById("laser-style-id")) {
+                var style = document.createElement('style');
+                style.id = "laser-style-id";
+                style.innerHTML = "@keyframes scanLaserAnimation { 0% { top: 0%; } 100% { top: 100%; } }";
+                document.head.appendChild(style);
+            }
+
+            setTimeout(function() {
+                laserLine.style.display = "none";
+                fingerIcon.style.transform = "scale(1)";
+                statusText.innerHTML = "✅ تم التحقق الطاقي وقفل وتشفير السر بنجاح 100%!";
+                statusText.style.color = "#00ffcc";
+                
+                var cryptoCode = "KR-" + Math.floor(Math.random() * 900 + 100) + "-" + String.fromCharCode(65 + Math.floor(Math.random() * 26));
+                var insights = [
+                    "💰 <b>بشارة طاقة الوفرة وتأمين الأهداف:</b> سرك محفوظ بالذهب، الحقل الطاقي لعائلتك يشهد انفراجاً مالياً وتيسيراً قريباً جداً، وأمر معلق سيُفتح دغري بالثواني القادمة ابتسم كالملك.",
+                    "🛡️ <b>صك الأمان النفسي وزوال الهم:</b> اهدأ تماماً فالحق الرقمي والكوني يحمي نواياك، تعبك لن يضيع قط، والفرج الكوني قادم طيران ليمسح كل ضيق وحزن من قلبك وقلب أولادك الغاليين.",
+                    "✨ <b>بشارة طموح العائلة المكتمل:</b> أمنيتك المستحيلة المشفرة الحين دخلت خزائن التيسير المباركة، رموزك محمودة مية بالمية وبوابات الرزق والراحة ستفتح لأهل بيتك كالملوك قريباً جداً."
+                ];
+                var randomIdx = Math.floor(Math.random() * insights.length);
+                
+                repBox.innerHTML = `🛡️ <b>وثيقة التشفير الرقمي والخصوصية الملكية KR:</b><br>👤 صانع السر: <b>${name}</b><br>🔐 كود التشفير الديجيتال المغلق: <span style='color:#00ffcc;'>[ ${cryptoCode} ]</span><br><br>💌 <b>بشارة الخزنة وقارئ البصمة لليوم الحين:</b><br>${insights[randomIdx]}<br><br>💎 <i>(سرّك تبخر برمجياً الحين وتحول لكود تشفير آمن بالكون كلو)</i>`;
+                repBox.style.display = "block";
+                shareBtn.style.display = "block";
+            }, 4000);
+        }
+
+        function shareVaultReport() {
+            var name = document.getElementById("vault-name").value.trim();
+            if (!name) { alert("الرجاء تشفير سرّك أولاً"); return; }
+            var text = document.getElementById("vault-report").innerText;
+            var msg = `🔐 *وثيقة خزنة الأسرار وقارئ البصمة الملكية المشفرة الخاصة بي اليوم:* \n\n${text}\n\n━━━━━━━━━━━━━━━\n👑 *منصة الأمان والخصوصية:* عالم الحب KR 👑`;
+            window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
+        }
 
         function switchLang(l) {
             currentLang = l;
