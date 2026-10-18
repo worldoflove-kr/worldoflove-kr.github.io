@@ -942,18 +942,20 @@
             document.getElementById("radar-main-zone").style.display = "block";
             document.getElementById("radar-card-zone").style.display = "none";
      // كود ملوكي لتجاوز حظر المتصفح وتشغيل الصوت عند أول لمسة للشاشة
+// كود ملوكي آمن لتشغيل الصوت دون تعطيل الرادار والأزرار
 function unlockAudio() {
-    var audioPlayer = document.getElementById("radar-audio-player") || document.querySelector("audio");
+    var audioPlayer = document.querySelector("audio") || document.getElementById("audioPlayer");
     if (audioPlayer) {
         audioPlayer.play().then(function() {
-            audioPlayer.pause(); // نفتح القفل ثم نوقفه مؤقتاً حتى يبدأ الفحص
-        }).catch(function(e) { console.log(e); });
+            audioPlayer.pause(); 
+        }).catch(function(e) { console.log("تحذير صوتي:", e); });
     }
     document.removeEventListener('click', unlockAudio);
     document.removeEventListener('touchstart', unlockAudio);
 }
 document.addEventListener('click', unlockAudio);
 document.addEventListener('touchstart', unlockAudio);
+
 
         </script>
 
