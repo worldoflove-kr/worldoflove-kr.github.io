@@ -941,7 +941,20 @@
             try { audioPlayer.pause(); audioPlayer.currentTime = 0; } catch(e){}
             document.getElementById("radar-main-zone").style.display = "block";
             document.getElementById("radar-card-zone").style.display = "none";
-        }
+     // كود ملوكي لتجاوز حظر المتصفح وتشغيل الصوت عند أول لمسة للشاشة
+function unlockAudio() {
+    var audioPlayer = document.getElementById("radar-audio-player") || document.querySelector("audio");
+    if (audioPlayer) {
+        audioPlayer.play().then(function() {
+            audioPlayer.pause(); // نفتح القفل ثم نوقفه مؤقتاً حتى يبدأ الفحص
+        }).catch(function(e) { console.log(e); });
+    }
+    document.removeEventListener('click', unlockAudio);
+    document.removeEventListener('touchstart', unlockAudio);
+}
+document.addEventListener('click', unlockAudio);
+document.addEventListener('touchstart', unlockAudio);
+
         </script>
 
 
