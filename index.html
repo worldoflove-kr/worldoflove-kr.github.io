@@ -872,46 +872,63 @@
             { name: "راشد الماجد", song: "https://soundhelix.com", text: "الرادار الليزري يكشف أن الروقان تَبَعك بيتقاطع بنسبة 99.0% مع سندباد الأغنية راشد الماجد! التطابق مستقر بـ [الابتسامة الخليجية الفخمة وجلسات النخبة العامرة برائحة العود] كالملوك دائماً!" }
         ];
 
-        // ⚡ المحرك التفاعلي الذكي لرادار المشاهير والتشغيل الصوتي التلقائي
-        function startCelebrityRadarScan() {
-            var userName = document.getElementById("radar-user-name").value.trim();
-            var genderType = document.getElementById("radar-gender-type").value;
-            var mainZone = document.getElementById("radar-main-zone");
-            var cardZone = document.getElementById("radar-card-zone");
-            var textContainer = document.getElementById("radar-generated-text");
-            var sealContainer = document.getElementById("radar-gold-seal");
-            var audioPlayer = document.getElementById("radar-audio-player");
-            var audioBtn = document.getElementById("radar-audio-btn");
+  function startCelebrityRadarScan() {
+    var userName = document.getElementById("userName") ? document.getElementById("userName").value : "Mano";
+    var genderType = document.getElementById("genderType") ? document.getElementById("genderType").value : "female";
+    var mainZone = document.getElementById("mainZone");
+    var cardZone = document.getElementById("cardZone");
+    var textContainer = document.getElementById("textContainer");
+    var sealContainer = document.getElementById("sealContainer");
+    
+    // تعريف آمن ومحمي لعناصر الصوت والأزرار حتى لا تتجمد الصفحة لو كانت ناقصة
+    var audioPlayer = document.getElementById("audioPlayer") || document.querySelector("audio");
+    var audioBtn = document.getElementById("audioBtn") || document.querySelector(".btn-audio");
 
-            if (!userName) { alert("الرجاء إدخال اسمك بالكامل لتفعيل مسح الرادار الليزري للأغاني!"); return; }
+    if (!userName) {
+        alert("الرجاء كتابة الاسم اللامع أولاً لبدء اللمسة الملكية!");
+        return;
+    }
 
-            var selectedCeleb = {};
-            var randomIdx = Math.floor(Math.random() * 5); // تدوير عشوائي ذكي بين توب المشاهير
+    var selectedCeleb = {};
+    var randomIdx = 0;
 
-            if (genderType === "female") {
-                selectedCeleb = radarFemaleCelebs[randomIdx];
-            } else if (genderType === "male") {
-                selectedCeleb = radarMaleCelebs[randomIdx];
-            }
-
-            // حقن النص والختم الذهبي باسم النجم والزائر بنقاء الألماس
-            textContainer.innerText = selectedCeleb.text;
-            sealContainer.innerText = "التوأم الكوني لـ " + selectedCeleb.name;
-
-            // 🎶 تشغيل المقطع الصوتي المخفي التلقائي للفنان بالخلفية
-            try {
-                audioPlayer.src = selectedCeleb.song;
-                audioPlayer.play();
-                audioBtn.innerText = "🔈 إيقاف اللحن الملوكي لـ " + selectedCeleb.name;
-                audioBtn.style.color = "#00ffcc";
-            } catch(e) {
-                console.log("Audio play deferred or blocked by browser policies.");
-            }
-
-            // حركية التبديل وإظهار لوحة الفحص
-            mainZone.style.display = "none";
-            cardZone.style.display = "block";
+    if (genderType === "female") {
+        if(typeof radarFemaleCelebs !== 'undefined' && radarFemaleCelebs.length > 0) {
+            randomIdx = Math.floor(Math.random() * radarFemaleCelebs.length);
+            selectedCeleb = radarFemaleCelebs[randomIdx];
         }
+    } else if (genderType === "male") {
+        if(typeof radarMaleCelebs !== 'undefined' && radarMaleCelebs.length > 0) {
+            randomIdx = Math.floor(Math.random() * radarMaleCelebs.length);
+            selectedCeleb = radarMaleCelebs[randomIdx];
+        }
+    }
+
+    if(textContainer && selectedCeleb.name) {
+        textContainer.innerText = selectedCeleb.name;
+    }
+    if(sealContainer) {
+        sealContainer.innerText = "أمير الأناقة والجاذبية الملكية";
+    }
+
+    // تشغيل الصوت بأمان تام مية مية
+    try {
+        if (audioPlayer && selectedCeleb.song) {
+            audioPlayer.src = selectedCeleb.song;
+            audioPlayer.play().catch(function(e){ console.log("حظر متصفح عادي:", e); });
+        }
+        if (audioBtn) {
+            audioBtn.innerText = "🔈 إيقاف اللحن الملوكي للفنان";
+            audioBtn.style.color = "#00ffcc";
+        }
+    } catch(e) {
+        console.log("تم تخطي خطأ الصوت بأمان والتحليل مستمر:", e);
+    }
+
+    // حركية التبديل وإظهار لوحة الفحص الملكية
+    if(mainZone) mainZone.style.display = "none";
+    if(cardZone) cardZone.style.display = "block";
+}
 
         // 🔈 دالة التحكم اليدوية لتشغيل وإيقاف اللحن الملوكي للفنان
         function toggleRadarAudio() {
