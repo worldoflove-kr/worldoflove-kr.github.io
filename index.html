@@ -873,32 +873,27 @@
             { name: "راشد الماجد", song: "https://soundhelix.com", text: "الرادار الليزري يكشف أن الروقان تَبَعك بيتقاطع بنسبة 99.0% مع سندباد الأغنية راشد الماجد! التطابق مستقر بـ [الابتسامة الخليجية الفخمة وجلسات النخبة العامرة برائحة العود] كالملوك دائماً!" }
         ];
 
-  function startCelebrityRadarScan() {
-    var mainZone = document.getElementById("mainZone") || document.querySelector(".main-zone") || document.body;
-    var cardZone = document.getElementById("cardZone") || document.querySelector(".card-zone");
-    var textContainer = document.getElementById("textContainer");
+function startCelebrityRadarScan() {
+    var mainZone = document.getElementById("radar-main-zone") || document.getElementById("mainZone") || document.querySelector('[id*="main"]');
+    var cardZone = document.getElementById("radar-card-zone") || document.getElementById("cardZone") || document.querySelector('[id*="card"]');
     
-    // تشغيل الصوت بأمان ملوكي تام دون أي تجميد
+    // تشغيل الصوت بأمان ملوكي تام
     try {
-        var audioPlayer = document.querySelector("audio") || document.getElementById("audioPlayer");
+        var audioPlayer = document.getElementById("radar-audio-player") || document.querySelector("audio");
         if (audioPlayer) {
-            audioPlayer.play().catch(function(e){ console.log("حظر المتصفح:", e); });
+            audioPlayer.play().catch(function(e){ console.log(e); });
         }
     } catch(e) { console.log(e); }
 
-    // نقل المستخدم فوراً لصفحة النتيجة والتحليل طيران
+    // فتح صفحة النتيجة والتحليل طيران فوراً وبدون أي شروط معقدة
     if(cardZone) {
         cardZone.style.display = "block";
-        if(mainZone && mainZone !== document.body) mainZone.style.display = "none";
+        if(mainZone) mainZone.style.display = "none";
     } else {
         alert("جاري تحليل ملامح النخبة الملكية... انتظر ثواني!");
     }
 }
 
-        if (audioPlayer && selectedCeleb.song) {
-            audioPlayer.src = selectedCeleb.song;
-            audioPlayer.play().catch(function(e){ console.log("حظر متصفح عادي:", e); });
-        }
         if (audioBtn) {
             audioBtn.innerText = "🔈 إيقاف اللحن الملوكي للفنان";
             audioBtn.style.color = "#00ffcc";
