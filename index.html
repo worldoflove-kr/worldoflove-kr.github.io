@@ -873,46 +873,27 @@
         ];
 
   function startCelebrityRadarScan() {
-    var userName = document.getElementById("userName") ? document.getElementById("userName").value : "Mano";
-    var genderType = document.getElementById("genderType") ? document.getElementById("genderType").value : "female";
-    var mainZone = document.getElementById("mainZone");
-    var cardZone = document.getElementById("cardZone");
+    var mainZone = document.getElementById("mainZone") || document.querySelector(".main-zone") || document.body;
+    var cardZone = document.getElementById("cardZone") || document.querySelector(".card-zone");
     var textContainer = document.getElementById("textContainer");
-    var sealContainer = document.getElementById("sealContainer");
     
-    // تعريف آمن ومحمي لعناصر الصوت والأزرار حتى لا تتجمد الصفحة لو كانت ناقصة
-    var audioPlayer = document.getElementById("audioPlayer") || document.querySelector("audio");
-    var audioBtn = document.getElementById("audioBtn") || document.querySelector(".btn-audio");
-
-    if (!userName) {
-        alert("الرجاء كتابة الاسم اللامع أولاً لبدء اللمسة الملكية!");
-        return;
-    }
-
-    var selectedCeleb = {};
-    var randomIdx = 0;
-
-    if (genderType === "female") {
-        if(typeof radarFemaleCelebs !== 'undefined' && radarFemaleCelebs.length > 0) {
-            randomIdx = Math.floor(Math.random() * radarFemaleCelebs.length);
-            selectedCeleb = radarFemaleCelebs[randomIdx];
-        }
-    } else if (genderType === "male") {
-        if(typeof radarMaleCelebs !== 'undefined' && radarMaleCelebs.length > 0) {
-            randomIdx = Math.floor(Math.random() * radarMaleCelebs.length);
-            selectedCeleb = radarMaleCelebs[randomIdx];
-        }
-    }
-
-    if(textContainer && selectedCeleb.name) {
-        textContainer.innerText = selectedCeleb.name;
-    }
-    if(sealContainer) {
-        sealContainer.innerText = "أمير الأناقة والجاذبية الملكية";
-    }
-
-    // تشغيل الصوت بأمان تام مية مية
+    // تشغيل الصوت بأمان ملوكي تام دون أي تجميد
     try {
+        var audioPlayer = document.querySelector("audio") || document.getElementById("audioPlayer");
+        if (audioPlayer) {
+            audioPlayer.play().catch(function(e){ console.log("حظر المتصفح:", e); });
+        }
+    } catch(e) { console.log(e); }
+
+    // نقل المستخدم فوراً لصفحة النتيجة والتحليل طيران
+    if(cardZone) {
+        cardZone.style.display = "block";
+        if(mainZone && mainZone !== document.body) mainZone.style.display = "none";
+    } else {
+        alert("جاري تحليل ملامح النخبة الملكية... انتظر ثواني!");
+    }
+}
+
         if (audioPlayer && selectedCeleb.song) {
             audioPlayer.src = selectedCeleb.song;
             audioPlayer.play().catch(function(e){ console.log("حظر متصفح عادي:", e); });
