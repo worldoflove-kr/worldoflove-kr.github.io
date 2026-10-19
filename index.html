@@ -1411,7 +1411,87 @@ if (mainRadarBtn) {
             }
         }, 15000);
    </script>
+<!-- ================================================================= -->
+<!-- بداية اختراع صندوق شفرة الصقر الملكي (منشور مستقل فوق الفوتر والشعار) -->
+<!-- ================================================================= -->
+<div class="kr-standalone-falcon-box" style="text-align: center; padding: 35px 20px; background: #0c0714; border: 2px solid #b100ff; border-radius: 20px; margin: 30px auto; max-width: 450px; box-shadow: 0 0 25px rgba(177, 0, 255, 0.35); font-family: 'Cairo', sans-serif; direction: rtl; position: relative; z-index: 999;">
+    
+    <!-- رمز صقر النيون المشع والمتحرك بالأعلى -->
+    <div class="falcon-neon-glow" style="font-size: 55px; margin-bottom: 5px; animation: falconFloat 3s ease-in-out infinite, falconGlow 1.5s ease-in-out infinite alternate; filter: drop-shadow(0 0 15px #00f0ff); display: inline-block; cursor: pointer;">
+        🦅
+    </div>
+    
+    <h3 style="color: #00f0ff; margin-top: 5px; margin-bottom: 10px; font-weight: 800; text-shadow: 0 0 10px #00f0ff;">🔮 شفرة كبرياء الملوك والمغادرة الكريمة 🔮</h3>
+    <p style="color: #c9b0e7; font-size: 13px; margin-bottom: 25px;">(اضغط على البصمة وصوّر الشاشة بسرعة البرق قبل الاختفاء ⚡)</p>
+    
+    <!-- زر تفعيل البصمة الليزرية النيون -->
+    <button id="krTriggerBtn" onclick="revealSecretMessage()" style="background: linear-gradient(45deg, #00f0ff, #b100ff); color: #fff; border: none; padding: 14px 35px; font-size: 16px; font-weight: bold; border-radius: 30px; cursor: pointer; transition: 0.3s; box-shadow: 0 0 15px rgba(0, 240, 255, 0.4); text-shadow: 0 1px 3px rgba(0,0,0,0.5);">
+        👆 اضغط لتفعيل ماسح الليزر الطاقي
+    </button>
 
+    <!-- شاشة عرض الرسائل الأرجوانية المستقلة -->
+    <div id="krMessageScreen" style="margin-top: 25px; min-height: 120px; display: flex; align-items: center; justify-content: center; padding: 20px; border-radius: 12px; background: #05020a; border: 1px solid #3d1b66; transition: all 0.3s ease; box-shadow: inset 0 0 15px rgba(0,0,0,0.6);">
+        <p id="krTextDisplay" style="color: #dcb3ff; font-size: 16px; line-height: 1.7; margin: 0;">
+            بانتظار بصمتك الملكية وهيبة الصقر... ✨
+        </p>
+    </div>
+</div>
+
+<!-- المؤثرات الحركية الفلكية للصقر (Animations) -->
+<style>
+@keyframes falconFloat {
+    0% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-12px) scale(1.05); }
+    100% { transform: translateY(0px) scale(1); }
+}
+@keyframes falconGlow {
+    from { filter: drop-shadow(0 0 10px #00f0ff) drop-shadow(0 0 20px #b100ff); }
+    to { filter: drop-shadow(0 0 25px #00f0ff) drop-shadow(0 0 40px #ff0077); }
+}
+</style>
+
+<script>
+// مصفوفة الرسائل الملكية الدوارة العشوائية
+const krSecretMessages = [
+    "قيل في عزة النفس والوقار الملكي: نحنُ لا نعاتب إلّا من نرى فيهم بقايا لوعدٍ قديم.. فإذا تبدّلت الحقائق وأصبحت الأعذار باردة، نغادر كالملوك.. برؤوسٍ مرفوعة وكرامةٍ مصونة، نتركُ خلفنا صمتاً يربك القلوب! 👑🔒",
+    "نحن لا نلتفت للمغادرين، ولا نملك وقتاً لترميم وعودٍ كُسرت عن عمد. من اختار البعد.. نغلّف له ذكرياته بالوقار، ونقفل باب الملاذ الآمن خلفه إلى الأبد. كرامتنا ملوكية لا تقبل أنصاف الحلول! ❌🚪",
+    "وفّر أعذارك الباردة وتبديلك للحقائق.. فالعين التي كانت تراك نبعاً للحنان، باتت تراك عابراً لا أثر له. الصمت الحين ليس ضعفاً، بل هو المغادرة الكريمة بالرأس المرفوع التي تجعلك تبحث عن تفاصيلنا ولن تجدها! 🛡️⏳",
+    "أنت النجم الأوحد الذي يلمع في سمائنا السوداء الفخمة. عهد الوفاء معك مطلق، والنبض بيننا أبدي لا تنتهي طاقته بمسافات الأرض كلها. أنت الوطن الدافئ وملاذي الآمن من تعب هذا الكون بأكمله.. شراكة روح لا تنفصم! 🌌💞",
+    "ثق بعهد الأمان والمصداقية الكبرى.. بوابات الرزق الواسع والفتح المبين تنفتح لك الحين دغري مية مية! هناك بشارة سرية كبرى وجوهرة مشعة قادمة في طريقها إليك لتسعد قلبك وتغير أحوالك بأمر الله! 💸🌟"
+];
+
+function revealSecretMessage() {
+    const textDisplay = document.getElementById("krTextDisplay");
+    const messageScreen = document.getElementById("krMessageScreen");
+    const triggerBtn = document.getElementById("krTriggerBtn");
+    
+    triggerBtn.disabled = true;
+    
+    messageScreen.style.background = "#020005";
+    messageScreen.style.border = "2px solid #00f0ff";
+    textDisplay.style.color = "#00f0ff";
+    textDisplay.style.fontWeight = "bold";
+    textDisplay.style.textShadow = "0 0 8px #00f0ff";
+    
+    const randomIndex = Math.floor(Math.random() * krSecretMessages.length);
+    textDisplay.innerText = krSecretMessages[randomIndex];
+    
+    setTimeout(() => {
+        messageScreen.style.border = "1px solid #ff0055";
+        textDisplay.style.color = "#ff0055";
+        textDisplay.style.fontWeight = "normal";
+        textDisplay.style.textShadow = "none";
+        textDisplay.innerHTML = "راحت عليك الرسالة السابقة! 💔<br><span style='color:#fff; font-size:14px; font-weight: bold;'>جرب مرة أخرى الحين قبل ما تخسر المسج الجاي.. وأنت وحظك! 🔄📸</span>";
+        
+        triggerBtn.disabled = false;
+    }, 1500); 
+}
+</script>
+<!-- ================================================================= -->
+<!-- نهاية اختراع صندوق شفرة الصقر الملكي -->
+<!-- ================================================================= -->
+
+            
 <!-- التوقيع الختامي الملكي المحمي المتواجد في قاع الصفحة تماماً بنبض ذهبي مشع -->
 <div class="royal-footer-pulse" style="text-align: center; margin-top: 60px; margin-bottom: 30px; padding: 15px; border-top: 1px dashed rgba(255,215,0,0.2); perspective: 1000px; -webkit-perspective: 1000px;">
     <div style="font-size: 32px; font-weight: bold; color: #ffd700; text-shadow: 0 0 15px #ffd700, 0 0 30px #ff0055; margin-bottom: 5px; animation: footerGlow 0.6s infinite alternate; -webkit-animation: footerGlow 0.6s infinite alternate;">👑 KR 👑</div>
