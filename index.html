@@ -874,31 +874,19 @@
         ];
 
 function startCelebrityRadarScan() {
-    var mainZone = document.getElementById("radar-main-zone") || document.getElementById("mainZone") || document.querySelector('[id*="main"]');
-    var cardZone = document.getElementById("radar-card-zone") || document.getElementById("cardZone") || document.querySelector('[id*="card"]');
+    var mainZone = document.getElementById("mainZone") || document.getElementById("radar-main-zone");
+    var cardZone = document.getElementById("cardZone") || document.getElementById("radar-card-zone");
     
-    // تشغيل الصوت بأمان ملوكي تام
-    try {
-        var audioPlayer = document.getElementById("radar-audio-player") || document.querySelector("audio");
-        if (audioPlayer) {
-            audioPlayer.play().catch(function(e){ console.log(e); });
-        }
-    } catch(e) { console.log(e); }
-
-    // فتح صفحة النتيجة والتحليل طيران فوراً وبدون أي شروط معقدة
-    if(cardZone) {
-        cardZone.style.display = "block";
-        if(mainZone) mainZone.style.display = "none";
-    } else {
-        alert("جاري تحليل ملامح النخبة الملكية... انتظر ثواني!");
+    // إخفاء الواجهة الحالية وإظهار صفحة النتيجة طيران
+    if (mainZone) mainZone.style.display = "none";
+    if (cardZone) cardZone.style.display = "block";
+    
+    // تشغيل نظام التوافق الفلكي وطاقة الحروف الأصلي
+    if (typeof startFingerprintScan === "function") {
+        startFingerprintScan();
     }
 }
 
-        if (audioBtn) {
-            audioBtn.innerText = "🔈 إيقاف اللحن الملوكي للفنان";
-            audioBtn.style.color = "#00ffcc";
-        }
-    } catch(e) {
         console.log("تم تخطي خطأ الصوت بأمان والتحليل مستمر:", e);
     }
 
