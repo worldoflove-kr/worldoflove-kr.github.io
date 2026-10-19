@@ -100,13 +100,27 @@
     <div class="space-3d-stars1"></div>
     <div class="space-3d-stars2"></div>
 
-    <div class="ticker-bar" style="box-shadow: 0 2px 15px rgba(255, 215, 0, 0.2) !important;">
-        <div class="ticker-move">
-            <a href="https://goldprice.org" target="_blank" class="ticker-item"><span id="tick-gold">أوقية الذهب العالمية:</span> $2,624.50 <span style="color:#ff3333;">▼ نازل</span></a>
-            <a href="https://marketwatch.com" target="_blank" class="ticker-item"><span id="tick-index">مؤشر الدولار عالمياً:</span> 103.85</a>
-            <a href="https://lirarate.org" target="_blank" class="ticker-item"><span id="tick-lbp">فريش دولار في لبنان:</span> 89,500 LBP</a>
-        </div>
-         </div>
+  <!-- شريط أسعار الذهب والبورصة الملوكي المطور 2026 -->
+<div id="crypto-ticker-zone" style="width: 100%; background: linear-gradient(90deg, #000, #150010); border-bottom: 2px solid #ffd700; padding: 10px 0; overflow: hidden; position: relative; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.25); z-index: 9999;">
+    <div style="display: inline-block; white-space: nowrap; animation: tickerMove 25s linear infinite; -webkit-animation: tickerMove 25s linear infinite;">
+        <span style="color: #ffd700; font-weight: bold; margin-right: 40px; font-size: 14px;">👑 بورصة عالم الحب الملكية المباشرة KR 👑</span>
+        <span style="color: #fff; font-weight: bold; margin-right: 40px; font-size: 14px;">🪙 أوقية الذهب العالمية: <span style="color: #ff0055;">$4,147.30</span> <span style="color: #ff3333; font-size: 12px;">▼ 0.51%</span></span>
+        <span style="color: #fff; font-weight: bold; margin-right: 40px; font-size: 14px;">💵 الدولار مقابل الليرة اللبنانية (LBP): <span style="color: #00ffcc;">89,478 ليرة</span> <span style="color: #00ffcc; font-size: 12px;">▲ 0.23%</span></span>
+        <span style="color: #ffd700; font-weight: bold; margin-right: 40px; font-size: 14px;">✨ طاقة الأسواق اليوم: <span style="color: #fff;">استقرار وثقة ملكية مطلقة</span></span>
+    </div>
+</div>
+
+<style>
+@keyframes tickerMove {
+    0% { transform: translate3d(100%, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+}
+@-webkit-keyframes tickerMove {
+    0% { -webkit-transform: translate3d(100%, 0, 0); }
+    100% { -webkit-transform: translate3d(-100%, 0, 0); }
+}
+</style>
+
         
         <div class="royal-container">
             <div class="lang-zone" style="margin-bottom: 5px;">
