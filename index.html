@@ -800,6 +800,36 @@
             document.getElementById("gulf-main-zone").style.display = "block";
             document.getElementById("gulf-card-zone").style.display = "none";
         }
+// محرك رادار التوافق الفلكي وإحياء نبض القلب الملكي //
+function startFingerprintScan() {
+    var heartElement = document.querySelector(".heart") || document.querySelector('[class*="heart"]') || document.querySelector('.heart-icon');
+    
+    // إعادة النبض والحركة الحماسية للقلب
+    if (heartElement) {
+        heartElement.style.animation = "pulse 0.6s infinite alternate";
+    }
+    
+    // إخفاء الواجهة الحالية بعد ثوانٍ من النبض والفحص وإظهار النتيجة
+    setTimeout(function() {
+        var mainZone = document.getElementById("mainZone") || document.getElementById("radar-main-zone");
+        var cardZone = document.getElementById("cardZone") || document.getElementById("radar-card-zone");
+        
+        if (mainZone) mainZone.style.display = "none";
+        if (cardZone) cardZone.style.display = "block";
+        
+        // إعادة شكل القلب الطبيعي بعد انتهاء الفحص
+        if (heartElement) heartElement.style.animation = "";
+    }, 3000); // الفحص يستغرق 3 ثوانٍ كالملوك
+}
+
+// ربط الزر الأخضر "بدء تشغيل الرادار الليزري للملامح" ليقوم بتشغيل المحرك فوراً عند النقر
+var mainRadarBtn = document.getElementById("radar-start-btn") || document.querySelector('[id*="start"]');
+if (mainRadarBtn) {
+    mainRadarBtn.onclick = function() {
+        startFingerprintScan();
+    };
+}
+
         </script>
     
 
