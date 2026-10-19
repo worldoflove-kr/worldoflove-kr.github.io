@@ -503,7 +503,7 @@
 </select>
 
 <!-- شاشة عرض وثيقة الانسجام الملكية الفخمة -->
-<div class="preview-box" id="radar-card-zone" style="display:none; padding:20px; background:rgba(0,0,10,0.9); border:2px solid #ffd700; border-radius:15px; text-align:center; color:#fff; margin-top:15px; margin-bottom: 15px;">
+<div class="preview-box" id="radar-card-zone" style="display:none; padding:20px; background:rgba(0,0,10,0.9); border:2px solid #ffd700; border-radius:15px; text-align:center; color:#fff; margin-top:15px; margin-bottom: 15px; box-shadow: 0 0 20px #ff0055;">
     <h3 style="color:#ffd700; margin-bottom:15px;">👑 وثيقة الانسجام الملكية المعتمدة 👑</h3>
     <p id="res-n1" style="font-size:16px; margin:5px 0; color: #fff; font-weight: bold;">👑 الاسم الأول: </p>
     <p id="res-n2" style="font-size:16px; margin:5px 0; color: #fff; font-weight: bold;">👑 الاسم الثاني: </p>
@@ -511,42 +511,16 @@
     <p style="font-style:italic; color:#aaa; font-size:14px;">مستشار الحب KR: طاقة الحروف تشير إلى ترابط كوني متين بين القلوب!</p>
 </div>
 
-<!-- أيقونة القلب الملكي النابض الثابت في المنتصف -->
-<div style="text-align: center; margin: 20px 0;">
-    <div class="heart" style="font-size: 50px; color: #ff0055; display: inline-block; animation: pulse 0.6s infinite alternate; -webkit-animation: pulse 0.6s infinite alternate;">💖</div>
-    <p id="radar-status" style="color: #ff0055; font-size: 14px; margin-top: 5px;">اضغط لتشغيل رادار المسح الفلكي الأحمر الحين...</p>
+<!-- أيقونة القلب الأحمر الملكي النابض الثابت مع الإضاءة الخلفية المشعة -->
+<div style="text-align: center; margin: 25px 0; position: relative;">
+    <div class="heart" style="font-size: 55px; color: #ff0055; display: inline-block; animation: pulse 0.5s infinite alternate; -webkit-animation: pulse 0.5s infinite alternate; text-shadow: 0 0 25px #ff0055, 0 0 50px #ff0055;">❤️</div>
+    <p id="radar-status" style="color: #ff0055; font-size: 14px; margin-top: 8px; font-weight: bold; text-shadow: 0 0 10px rgba(255,0,85,0.5);">⚡ اضغط لتشغيل رادار المسح الفلكي الليزري...</p>
 </div>
 
-<!-- أزرار التشغيل والمشاركة الفخمة الشغالة طيران -->
-<button type="button" id="radar-start-btn" onclick="var inps=document.getElementsByTagName('input'); var v1=''; var v2=''; var textInputs=[]; for(var i=0; i&lt;inps.length; i++){ if(inps[i].type==='text'||!inps[i].type){ textInputs.push(inps[i]); } } if(textInputs.length&gt;0){v1=textInputs[textInputs.length-2]?textInputs[textInputs.length-2].value:textInputs[0].value;} if(textInputs.length&gt;1){v2=textInputs[textInputs.length-1]?textInputs[textInputs.length-1].value:textInputs[1].value;} if(!v1){alert('الرجاء كتابة اسمك الملكي أولاً!');return;} if(!v2){alert('الرجاء كتابة اسم الشخص الغالي!');return;} var h=document.querySelector('.heart'); if(h){h.style.animation='pulse 0.3s infinite alternate';} var st=document.getElementById('radar-status'); if(st){st.innerHTML='🔮 جاري قراءة طاقة الحروف والمسح الليزري...';} setTimeout(function(){ var cz=document.getElementById('radar-card-zone'); if(cz){ document.getElementById('res-n1').innerHTML='👑 الاسم الأول: ' + v1; document.getElementById('res-n2').innerHTML='👑 الاسم الثاني: ' + v2; cz.style.display='block'; } if(h){h.style.animation='pulse 0.6s infinite alternate';} if(st){st.innerHTML='اضغط لتشغيل رادار المسح الفلكي الأحمر الحين...';} }, 3000);" style="cursor: pointer; padding: 15px 30px; font-weight: bold; background: linear-gradient(45deg, #ff0055, #ff5500); color: #fff; border: none; border-radius: 25px; box-shadow: 0 0 15px #ff0055; width: 100%; font-size: 16px; margin-bottom: 10px; width: 100%;">🔮 بدء تشغيل رادار التوافق الفلكي وطاقة الحروف</button>
+<!-- أزرار التشغيل والمشاركة المنسقة بدون أي تكرار -->
+<button type="button" id="radar-start-btn" onclick="var v1=document.getElementById('royal-name-1')?document.getElementById('royal-name-1').value:''; var v2=document.getElementById('royal-name-2')?document.getElementById('royal-name-2').value:''; if(!v1){alert('الرجاء كتابة اسمك الملكي أولاً!');return;} if(!v2){alert('الرجاء كتابة اسم الشخص الغالي!');return;} var h=document.querySelector('.heart'); if(h){h.style.animation='pulse 0.2s infinite alternate';} var st=document.getElementById('radar-status'); if(st){st.innerHTML='🔮 جاري قراءة طاقة الحروف والمسح الليزري الفخم...';} setTimeout(function(){ var cz=document.getElementById('radar-card-zone'); if(cz){ document.getElementById('res-n1').innerHTML='👑 الاسم الأول: ' + v1; document.getElementById('res-n2').innerHTML='👑 الاسم الثاني: ' + v2; cz.style.display='block'; } if(h){h.style.animation='pulse 0.5s infinite alternate';} if(st){st.innerHTML='⚡ اكتمل المسح الليزري بنجاح ملوكي!';} }, 3000);" style="cursor: pointer; padding: 15px 30px; font-weight: bold; background: linear-gradient(45deg, #ff0055, #ff5500); color: #fff; border: none; border-radius: 25px; box-shadow: 0 0 15px #ff0055; width: 100%; font-size: 16px; margin-bottom: 12px;">🔮 بدء تشغيل رادار التوافق الفلكي وطاقة الحروف</button>
 
 <button type="button" id="radar-share-btn" onclick="var msg=encodeURIComponent('👑 منصة عالم الحب الملكية الذكية | WORLD OF LOVE KR 👑\n\n✨ قست نسبة التوافق الفلكي وطاقة الحروف الفخمة وطلعت النتيجة ملوكية ونخبة مية مية! 😍❤️\n\n👇 جرب حظك واكتشف توأمك الكوني ونسبة الانسجام الآن عبر رابط صفحتنا الرسمي:\nworldoflove-kr.github.io'); window.location.href='whatsapp://send?text='+msg;" style="cursor: pointer; padding: 12px 24px; font-weight: bold; background: #25D366; color: #fff; border: none; border-radius: 25px; box-shadow: 0 0 10px #25D366; width: 100%; font-size: 15px; margin-bottom: 15px; width: 100%;">🟢 مشاركة النتيجة الملكية عبر WhatsApp</button>
-
-<!-- شاشة عرض وثيقة الانسجام الملكية الفخمة -->
-<div class="preview-box" id="radar-card-zone" style="display:none; padding:20px; background:rgba(0,0,10,0.9); border:2px solid #ffd700; border-radius:15px; text-align:center; color:#fff; margin-top:15px; margin-bottom: 15px;">
-    <h3 style="color:#ffd700; margin-bottom:15px;">👑 وثيقة الانسجام الملكية المعتمدة 👑</h3>
-    <p id="res-n1" style="font-size:16px; margin:5px 0; color: #fff; font-weight: bold;">👑 الاسم الأول: </p>
-    <p id="res-n2" style="font-size:16px; margin:5px 0; color: #fff; font-weight: bold;">👑 الاسم الثاني: </p>
-    <h4 style="color:#00ffcc; font-size:24px; margin:15px 0;">💖 نسبة الانسجام: 93.0% 💖</h4>
-    <p style="font-style:italic; color:#aaa; font-size:14px;">مستشار الحب KR: طاقة الحروف تشير إلى ترابط كوني متين بين القلوب!</p>
-</div>
-
-<!-- أيقونة القلب الملكي النابض الثابت في المنتصف -->
-<div style="text-align: center; margin: 20px 0;">
-    <div class="heart" style="font-size: 50px; color: #ff0055; display: inline-block; animation: pulse 0.6s infinite alternate; -webkit-animation: pulse 0.6s infinite alternate;">💖</div>
-    <p id="radar-status" style="color: #ff0055; font-size: 14px; margin-top: 5px;">اضغط لتشغيل رادار المسح الفلكي الأحمر الحين...</p>
-</div>
-
-<!-- أزرار التشغيل والمشاركة الفخمة الشغالة طيران -->
-<button type="button" id="radar-start-btn" onclick="var inps=document.getElementsByTagName('input'); var v1=''; var v2=''; var textInputs=[]; for(var i=0; i&lt;inps.length; i++){ if(inps[i].type==='text'||!inps[i].type){ textInputs.push(inps[i]); } } if(textInputs.length&gt;0){v1=textInputs[textInputs.length-2]?textInputs[textInputs.length-2].value:textInputs[0].value;} if(textInputs.length&gt;1){v2=textInputs[textInputs.length-1]?textInputs[textInputs.length-1].value:textInputs[1].value;} if(!v1){alert('الرجاء كتابة اسمك الملكي أولاً!');return;} if(!v2){alert('الرجاء كتابة اسم الشخص الغالي!');return;} var h=document.querySelector('.heart'); if(h){h.style.animation='pulse 0.3s infinite alternate';} var st=document.getElementById('radar-status'); if(st){st.innerHTML='🔮 جاري قراءة طاقة الحروف والمسح الليزري...';} setTimeout(function(){ var cz=document.getElementById('radar-card-zone'); if(cz){ document.getElementById('res-n1').innerHTML='👑 الاسم الأول: ' + v1; document.getElementById('res-n2').innerHTML='👑 الاسم الثاني: ' + v2; cz.style.display='block'; } if(h){h.style.animation='pulse 0.6s infinite alternate';} if(st){st.innerHTML='اضغط لتشغيل رادار المسح الفلكي الأحمر الحين...';} }, 3000);" style="cursor: pointer; padding: 15px 30px; font-weight: bold; background: linear-gradient(45deg, #ff0055, #ff5500); color: #fff; border: none; border-radius: 25px; box-shadow: 0 0 15px #ff0055; width: 100%; font-size: 16px; margin-bottom: 10px; width: 100%;">🔮 بدء تشغيل رادار التوافق الفلكي وطاقة الحروف</button>
-
-<button type="button" id="radar-share-btn" onclick="var msg=encodeURIComponent('👑 منصة عالم الحب الملكية الذكية | WORLD OF LOVE KR 👑\n\n✨ قست نسبة التوافق الفلكي وطاقة الحروف الفخمة وطلعت النتيجة ملوكية ونخبة مية مية! 😍❤️\n\n👇 جرب حظك واكتشف توأمك الكوني ونسبة الانسجام الآن عبر رابط صفحتنا الرسمي:\nworldoflove-kr.github.io'); window.location.href='whatsapp://send?text='+msg;" style="cursor: pointer; padding: 12px 24px; font-weight: bold; background: #25D366; color: #fff; border: none; border-radius: 25px; box-shadow: 0 0 10px #25D366; width: 100%; font-size: 15px; margin-bottom: 15px; width: 100%;">🟢 مشاركة النتيجة الملكية عبر WhatsApp</button>
-
-
-<!-- أزرار التشغيل والمشاركة الفخمة الشغالة طيران -->
-<button type="button" id="radar-start-btn" onclick="var v1=document.getElementById('radar-name')?document.getElementById('radar-name').value:document.querySelector('input').value; var v2=document.getElementById('radar-name2')?document.getElementById('radar-name2').value:document.querySelectorAll('input')[1].value; if(!v1){alert('الرجاء كتابة اسمك الملكي أولاً!');return;} if(!v2){alert('الرجاء كتابة اسم الشخص الغالي!');return;} var h=document.querySelector('.heart')||document.querySelector('.heart-icon'); if(h){h.style.animation='pulse 0.3s infinite alternate';} var st=document.getElementById('radar-status'); if(st){st.innerHTML='🔮 جاري قراءة طاقة الحروف والمسح الليزري...';} setTimeout(function(){ var cz=document.getElementById('radar-card-zone'); if(cz){ var n1_el=document.getElementById('res-n1'); var n2_el=document.getElementById('res-n2'); if(n1_el){ n1_el.innerHTML='👑 الاسم الأول: ' + v1; } if(n2_el){ n2_el.innerHTML='👑 الاسم الثاني: ' + v2; } cz.style.display='block'; } if(h){h.style.animation='pulse 0.6s infinite alternate';} if(st){st.innerHTML='اضغط لتشغيل رادار المسح الفلكي الأحمـر الحين...';} }, 3000);" style="cursor: pointer; padding: 15px 30px; font-weight: bold; background: linear-gradient(45deg, #ff0055, #ff5500); color: #fff; border: none; border-radius: 25px; box-shadow: 0 0 15px #ff0055; width: 100%; font-size: 16px; margin-bottom: 10px;">🔮 بدء تشغيل رادار التوافق الفلكي وطاقة الحروف</button>
-
-<button type="button" id="radar-share-btn" onclick="var msg=encodeURIComponent('👑 منصة عالم الحب الملكية الذكية | WORLD OF LOVE KR 👑\n\n✨ قست نسبة التوافق الفلكي وطاقة الحروف الفخمة وطلعت النتيجة ملوكية ونخبة مية مية! 😍❤️\n\n👇 جرب حظك واكتشف توأمك الكوني ونسبة الانسجام الآن عبر رابط صفحتنا الرسمي:\nworldoflove-kr.github.io'); window.location.href='whatsapp://send?text='+msg;" style="cursor: pointer; padding: 12px 24px; font-weight: bold; background: #25D366; color: #fff; border: none; border-radius: 25px; box-shadow: 0 0 10px #25D366; width: 100%; font-size: 15px; margin-bottom: 15px;">🟢 مشاركة النتيجة الملكية عبر WhatsApp</button>
 
 
         <div class="royal-box box-gold" style="border: 2px solid #ffd700 !important; box-shadow: 0 0 20px rgba(255, 215, 0, 0.3) !important; margin: 25px auto !important; max-width: 100% !important; background: rgba(6, 3, 15, 0.95) !important; border-radius: 16px !important; padding: 18px !important; text-align: center !important;">
