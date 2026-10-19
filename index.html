@@ -1464,24 +1464,58 @@ function runGulfOracle() {
     var status = document.getElementById('oracle-status');
     var card = document.getElementById('gulf-result-card');
     var resText = document.getElementById('gulf-res-text');
-    
+<!-- قسم اسم الصفحة الملكي المطور بالإشعاع الخلفي الشامل والنبض السريع مثل الباندا -->
+<div style="text-align: center; margin-top: 35px; margin-bottom: 5px; perspective: 1000px; -webkit-perspective: 1000px;">
+    <!-- أيقونة صقر الفضاء الذهبي المشع والنابض ليزرياً -->
+    <div class="gulf-falcon-glow" style="font-size: 55px; display: inline-block; animation: falconPulse 0.4s infinite alternate; -webkit-animation: falconPulse 0.4s infinite alternate; filter: drop-shadow(0 0 15px #ffd700); text-shadow: 0 0 20px #ff0055;">🦅</div>
+    <!-- العبارة الملوكية بالذهب المصقول والإشعاع النيوني السريع -->
+    <h2 class="gulf-title-glow" style="color: #ffd700; font-size: 26px; font-weight: 900; margin: 10px 0 0 0; font-family: 'Cairo', sans-serif; letter-spacing: 1px;">✧ خَاصٌّ بِأَهْلِ الخَلِيجِ العَرَبِيِّ وَالْبَرَسْتِيجِ المَلَكِيِّ ✧</h2>
+</div>
+
+<!-- صندوق ديوان ومخزن رسائل القدر الخليجي المطور -->
+<div class="royal-box box-gold" id="gulf-oracle-zone" style="margin-top: 15px; margin-bottom: 25px; padding: 25px 20px; background: linear-gradient(135deg, #050005, #100015); border: 2px solid #ffd700; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(255, 0, 85, 0.4), inset 0 0 15px rgba(255, 215, 0, 0.2); position: relative; overflow: hidden;">
+    <h3 style="color: #ffd700; font-size: 19px; margin-bottom: 10px; text-shadow: 0 0 10px #ffd700;">🔮 ديوان الحظ ومخزن رسائل القدر الملكي 🔮</h3>
+    <p style="color: #00ffcc; font-size: 14px; font-weight: bold; margin-bottom: 20px; text-shadow: 0 0 8px rgba(0,255,204,0.4);">🔥 تشوّق وافتح خزنة النبؤات المشفرة لعام 2026.. استخرج صكّك الفلكي والقصيدة الملوكية الحين وانشر عِزّك عبر السوشيال ميديا! 🔥</p>
+
+    <select id="gulf-energy-select" style="width: 100%; padding: 14px; margin-bottom: 20px; border-radius: 12px; border: 1px solid #ffd700; background: #000; color: #ffd700; text-align: center; font-size: 15px; font-weight: bold; cursor: pointer;">
+        <option value="1">📿 طاقة البخور العودي الفاخر (وفرة وعشق)</option>
+        <option value="2">☕ طاقة القهوة الهيلية الملكية (سلطة وجاه)</option>
+        <option value="3">🦅 طاقة صقر الفضاء الكوني (نصر وعز ملوكي)</option>
+    </select>
+
+    <div style="text-align: center; margin: 15px 0;">
+        <div id="oracle-status" style="color: #ff0055; font-size: 14px; font-weight: bold; text-shadow: 0 0 8px rgba(255,0,85,0.4);">⚡ الخزنة مغلقة.. اختر طاقتك وفجّر النبؤة والأنوار الحين</div>
+    </div>
+
+    <div id="gulf-result-card" style="display: none; padding: 20px; background: rgba(0,0,0,0.9); border: 2px dashed #00ffcc; border-radius: 15px; margin-top: 15px; margin-bottom: 20px; box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);">
+        <h4 style="color: #ffd700; font-size: 18px; margin-bottom: 12px; text-shadow: 0 0 5px #ffd700;">📜 الصك الفلكي والقصيدة القدرية المعتمدة 📜</h4>
+        <p id="gulf-res-text" style="color: #fff; font-size: 15px; line-height: 1.6; font-weight: bold;"></p>
+    </div>
+
+    <button type="button" onclick="runGulfOracle();" style="cursor: pointer; padding: 15px 25px; font-weight: bold; background: linear-gradient(45deg, #ffd700, #ff5500); color: #000; border: none; border-radius: 25px; box-shadow: 0 4px 15px #ffd700; width: 100%; font-size: 16px; font-weight: 900; margin-bottom: 12px;">🔮 فتح مخزن الرسائل المشفرة واستخراج النبؤة</button>
+    <button type="button" onclick="shareGulfOracle();" style="cursor: pointer; padding: 12px 20px; font-weight: bold; background: #25D366; color: #fff; border: none; border-radius: 25px; box-shadow: 0 4px 10px #25D366; width: 100%; font-size: 15px;">🟢 تقديم الضيافة الملكية ونشر الرسالة الفخمة</button>
+</div>
+
+<script>
+var currentGulfMsg = "";
+function runGulfOracle() {
+    var opt = document.getElementById('gulf-energy-select').value;
+    var status = document.getElementById('oracle-status');
+    var card = document.getElementById('gulf-result-card');
+    var resText = document.getElementById('gulf-res-text');
     if(status) status.innerHTML = "🔮 جاري تدوير الخزنة وإشعال البخور الملكي الفخم...";
-    
     var msgs = {
         "1": "✨ طاقة البخور العودي تبشرك بوفرة مالية وعاطفية غير متوقعة قادمة لديوانك هذا الأسبوع! 📿\n\nقالت حُرُوفُ المَجْدِ فِي تَرْتِيبِهَا:\nعَوْدُ البَخُورِ إِذَا سَرَى وتَكَلَّمَا\nأَبْشِرْ بِعِزٍّ فِي الدِّيَارِ ورِفْعَةٍ\nوالحُبُّ يَهْبِطُ فِي سَمَائِكَ أَنْجُمَا ❤️",
-        "2": "✨ طاقة القهوة الهيلية تشير إلى مجالس جاه وسلطة ولقاء شخصية ملوكية تفتح لك أبواباً مغلقة! ☕\n\nصُبَّ الهِيَالَ وفَوِّحِ الأقْدَارَا:\nفَالهِيلُ يَبْعَثُ فِي القُلُوبِ مَنَارَا\nأقْدَارُ عِزِّكَ فِي المَجَالِسِ شَعَّشَعَت\nوتَقَلَّدَتْ مِنْ فَخْرِكَ الأنْوَارَا 💰",
+        "2": "✨ طاقة القهوة الهيلية تشير إلى مجالس جاه وسلطة ولقاء شخصية ملوكية تفتح لك أبواباً مغلقة! ☕\n\nصُبَّ الهِيَالَ وفَوِّحِ الأقْدَارَا:\nفَالهِيلُ يَبْعَثُ فِي القُلُوبِ مَنَارَا\nأقْدَارُ عِزِّكَ فِي المَجَالِسِ شَعَّشَعَتْ\nوتَقَلَّدَتْ مِنْ فَخْرِكَ الأنْوَارَا 💰",
         "3": "✨ طاقة صقر الفضاء تؤكد نصرك الساحق في تحدي برستيجي قادم وتحقيق هدف استراتيجي فخم لعام 2026! 🦅\n\nصَقْرُ الفَضَاءِ إِذَا تَعَلَّى واعْتَلَى:\nصَادَ المَعَالِي فِي السَّمَاءِ ومَا جَلَا\nخَزَائِنُ الأقْدَارِ تَفْتَحُ بَابَهَا\nلِمَلِيكِ عِزٍّ بِالشُّمُوخِ تَعَدَّلَا ✧"
     };
-
     setTimeout(function() {
         currentGulfMsg = msgs[opt];
         if(resText) resText.innerHTML = currentGulfMsg.replace(/\n/g, '<br>');
         if(card) card.style.display = "block";
-        if(status) status.innerHTML = "⚡ اكتمل المسح الليزري واستخراج النبؤة بنجاح ملوكي!";
-        window.scrollTo({top: card.offsetTop - 50, behavior: 'smooth'});
-    }, 3000);
+        if(status) status.innerHTML = "⚡ اكتمل المسح الليزري بنجاح ملوكي!";
+    }, 2000);
 }
-
 function shareGulfOracle() {
     if(!currentGulfMsg) { alert('الرجاء فتح مخزن الرسائل واستخراج نبؤتك أولاً يا غالي!'); return; }
     var msg = encodeURIComponent('👑 ديوان ومخزن رسائل القدر الملكي | WORLD OF LOVE KR 👑\n\n✨ فتحت خزنة النبؤات وحصلت على صك وقصيدة قدرية تشع بالفخامة والبرستيج الخليجي! 😍📿\n\n👇 اكتشف طاقة يومك وافتح رسالة قدرك المشفرة لعام 2026 الآن عبر الرابط الرسمي:\nworldoflove-kr.github.io');
@@ -1490,35 +1524,12 @@ function shareGulfOracle() {
 </script>
 
 <style>
-.gulf-title-glow {
-    animation: fastGulfLaser 0.4s infinite alternate;
-    -webkit-animation: fastGulfLaser 0.4s infinite alternate;
-}
-.gulf-falcon-glow {
-    animation: falconPulse 0.4s infinite alternate;
-    -webkit-animation: falconPulse 0.4s infinite alternate;
-}
-
-@keyframes fastGulfLaser {
-    0% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 0, 85, 0.4); transform: scale(1); }
-    100% { text-shadow: 0 0 25px #ffd700, 0 0 45px #ff0055, 0 0 70px #ff0055; transform: scale(1.02); }
-}
-@-webkit-keyframes fastGulfLaser {
-    0% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 0, 85, 0.4); -webkit-transform: scale(1); }
-    100% { text-shadow: 0 0 25px #ffd700, 0 0 45px #ff0055, 0 0 70px #ff0055; transform: scale(1.02); }
-}
-
-@keyframes falconPulse {
-    0% { filter: drop-shadow(0 0 15px #ffd700) drop-shadow(0 0 5px #ff0055); transform: scale(1) rotate(-5deg); }
-    100% { filter: drop-shadow(0 0 35px #ff0055) drop-shadow(0 0 55px #ffd700); transform: scale(1.15) rotate(5deg); }
-}
-@-webkit-keyframes falconPulse {
-    0% { -webkit-filter: drop-shadow(0 0 15px #ffd700) drop-shadow(0 0 5px #ff0055); -webkit-transform: scale(1) rotate(-5deg); }
-    100% { -webkit-filter: drop-shadow(0 0 35px #ff0055) drop-shadow(0 0 55px #ffd700); -webkit-transform: scale(1.15) rotate(5deg); }
-}
+.gulf-title-glow { animation: fastGulfLaser 0.4s infinite alternate; -webkit-animation: fastGulfLaser 0.4s infinite alternate; }
+.gulf-falcon-glow { animation: falconPulse 0.4s infinite alternate; -webkit-animation: falconPulse 0.4s infinite alternate; }
+@keyframes fastGulfLaser { 0% { text-shadow: 0 0 10px #ffd700; } 100% { text-shadow: 0 0 25px #ff0055, 0 0 45px #ff0055; } }
+@keyframes falconPulse { 0% { filter: drop-shadow(0 0 15px #ffd700); transform: scale(1); } 100% { filter: drop-shadow(0 0 35px #ff0055) drop-shadow(0 0 55px #ffd700); transform: scale(1.15) rotate(5deg); } }
 </style>
-<!-- النهاية: قسم مجلس ومخزن رسائل القدر الخليجي الملكي المطور -->
-        
+
           </script>
 </body>
 </html>
