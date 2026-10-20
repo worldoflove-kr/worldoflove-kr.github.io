@@ -1840,8 +1840,7 @@ function revealSecretMessage() {
         }, 800);
     };
 
-    // دالة الإرسال الذكية المحدثة لمراقبة تحديث اسم الراسل لحظة الضغط
-    window.shareLoveGift = function(e) {
+     window.shareLoveGift = function(e) {
         const textDisplay = document.getElementById("krLoveText");
         const shareBtn = document.getElementById("krShareWhatsAppBtn");
         let rawSender = document.getElementById("senderName") ? document.getElementById("senderName").value.trim() : "";
@@ -1851,7 +1850,11 @@ function revealSecretMessage() {
             const loveMsg = textDisplay.innerText;
             const fullText = `✨ 🔒 إهداء ملوكي خاص من: (${senderName})\n\n🔮 لَقَدْ فَتَحْتُ خَزْنَةَ العِشْقِ الأَبَدِيَّةِ وَظَهَرَتْ لِي هَذِهِ الكَلِمَةُ لَكِ:\n👉 "${loveMsg}"\n\n👑 منصة عالم الحب world of love الملكية 👑\n🛡️ شعار صفحتنا المعتمد: [ KR ]\n\n🔗 ادخلي وافتحي البلورة السحرية وشوفي نبض قلبك الحين:\nhttps://github.io`;
             
-            shareBtn.href = "https://whatsapp.com" + encodeURIComponent(fullText);
+            const whatsappUrl = "https://whatsapp.com" + encodeURIComponent(fullText);
+            
+            // التوجيه بنفس الصفحة لتفادي أي حظر من المتصفحات نهائياً ومية بمية
+            shareBtn.href = whatsappUrl;
+            window.location.href = whatsappUrl;
         }
     };
 
