@@ -1490,8 +1490,10 @@ function revealSecretMessage() {
 <!-- ================================================================= -->
 <!-- نهاية اختراع صندوق شفرة الصقر الملكي -->
 <!-- ================================================================= -->
-<!-- 1️⃣ هيكل المزاد الفلكي الملكي السريع -->
-<div class="kr-auction-container" id="krAuctionBox" style="text-align: center; padding: 40px 20px; background: #070c14; border: 2px solid #00f0ff; border-radius: 20px; margin: 40px auto; max-width: 450px; box-shadow: 0 0 25px rgba(0, 240, 255, 0.25); font-family: 'Cairo', sans-serif; direction: rtl; position: relative; overflow: hidden; z-index: 998;">
+<!-- ================================================================= -->
+<!-- بداية اختراع لعبة المزاد الفلكي الملكي السريع المتكاملة والمحمية -->
+<!-- ================================================================= -->
+<div class="kr-final-auction-box" id="krAuctionBox" style="text-align: center; padding: 40px 20px; background: #070c14; border: 2px solid #00f0ff; border-radius: 20px; margin: 40px auto; max-width: 450px; box-shadow: 0 0 25px rgba(0, 240, 255, 0.25); font-family: 'Cairo', sans-serif; direction: rtl; position: relative; overflow: hidden; z-index: 998;">
     
     <!-- التاج والدولار المشعان والمتحركان بالأعلى -->
     <div class="crown-dollar-glow" style="font-size: 55px; margin-bottom: 5px; animation: auctionFloat 3s ease-in-out infinite, auctionGlow 1.5s ease-in-out infinite alternate; filter: drop-shadow(0 0 15px #ffcc00); cursor: pointer; display: inline-block;">
@@ -1513,13 +1515,13 @@ function revealSecretMessage() {
         <div id="auctionLog">الشيخ أبو فهد زايد بمبلغ 4,150\$ 🔥</div>
     </div>
 
-    <!-- زر المزايدة الملكي -->
+    <!-- زر المزايدة الملكي التفاعلي المؤكد -->
     <button id="bidBtn" onclick="placeUserBid()" style="background: linear-gradient(45deg, #b100ff, #ff0077); color: #fff; border: none; padding: 12px 30px; font-size: 16px; font-weight: bold; border-radius: 35px; cursor: pointer; transition: 0.3s; box-shadow: 0 0 15px rgba(255, 0, 119, 0.4); width: 100%; position: relative; z-index: 5;">
         💰 زايد بالبركة الحين (+50\$)
     </button>
 </div>
 
-<!-- حركات التاج وتطاير الدولارات المتساقطة -->
+<!-- المؤثرات الحركية الفلكية وتطاير الدولارات المتطابقة -->
 <style>
 @keyframes auctionFloat {
     0% { transform: translateY(0px) scale(1); }
@@ -1542,59 +1544,85 @@ function revealSecretMessage() {
     pointer-events: none;
     animation: dollarFall 2.5s linear infinite;
 }
+</style>
 
-<!-- 2️⃣ كود تشغيل العداد والمنافسة وتطاير الدولارات -->
 <script>
-let bidValue = 4150;
-let timeLeft = 15;
-const competitors = ["الشيخ خالد الوجيه 👑", "صاحب السمو بمشعل 🌟", "أبو راشد الفخم 🦅", "المستشار الملكي KR 🐼", "سلطان البرستيج ✨"];
+(function() {
+    let bidValue = 4150;
+    let timeLeft = 15;
+    const competitors = ["الشيخ خالد الوجيه 👑", "صاحب السمو بمشعل 🌟", "أبو راشد الفخم 🦅", "المستشار الملكي KR 🐼", "سلطان البرستيج ✨"];
 
-const auctionInterval = setInterval(() => {
-    timeLeft--;
-    document.getElementById("auctionTimer").innerText = "00:" + (timeLeft < 10 ? "0" + timeLeft : timeLeft);
-    
-    if (timeLeft > 2 && Math.random() > 0.5) {
-        bidValue += 50;
-        document.getElementById("currentBid").innerText = bidValue.toLocaleString();
-        const randomComp = competitors[Math.floor(Math.random() * competitors.length)];
-        document.getElementById("auctionLog").innerHTML = `<span style="color:#00f0ff;">${randomComp}</span> زايد بمبلغ <span style="color:#ffcc00;">${bidValue}$</span> 🔥`;
-    }
-
-    if (timeLeft <= 0) {
-        clearInterval(auctionInterval);
-        document.getElementById("bidBtn").disabled = true;
-        document.getElementById("auctionTimer").innerText = "مغلق";
-        document.getElementById("auctionTimer").style.color = "#ff4444";
-        document.getElementById("auctionLog").innerHTML = "🎉 <span style='color:#ffcc00; font-weight:bold;'>مبروك! رست الجوهرة الكونية عليكِ وثبت صك الوفرة والبركة باسمكِ الحين مية مية! 💸👑</span>";
+    const auctionInterval = setInterval(() => {
+        timeLeft--;
+        const timerElement = document.getElementById("auctionTimer");
+        if (timerElement) {
+            timerElement.innerText = "00:" + (timeLeft < 10 ? "0" + timeLeft : timeLeft);
+        }
         
-        startDollarRain();
-    }
-}, 1000);
+        if (timeLeft > 2 && Math.random() > 0.5) {
+            bidValue += 50;
+            const bidElement = document.getElementById("currentBid");
+            const logElement = document.getElementById("auctionLog");
+            if (bidElement) bidElement.innerText = bidValue.toLocaleString();
+            if (logElement) {
+                const randomComp = competitors[Math.floor(Math.random() * competitors.length)];
+                logElement.innerHTML = `<span style="color:#00f0ff;">${randomComp}</span> زايد بمبلغ <span style="color:#ffcc00;">${bidValue}$</span> 🔥`;
+            }
+        }
 
-function placeUserBid() {
-    if (timeLeft > 0) {
-        bidValue += 50;
-        document.getElementById("currentBid").innerText = bidValue.toLocaleString();
-        document.getElementById("auctionLog").innerHTML = `👑 <span style="color:#ff0077; font-weight:bold;">أنتِ (ملكة الروح)</span> زايدتِ بمبلغ <span style="color:#ffcc00;">${bidValue}$</span> واكتسحتِ المزاد! 🚀`;
-    }
-}
+        if (timeLeft <= 0) {
+            clearInterval(auctionInterval);
+            const btnElement = document.getElementById("bidBtn");
+            const timerElement = document.getElementById("auctionTimer");
+            const logElement = document.getElementById("auctionLog");
+            
+            if (btnElement) btnElement.disabled = true;
+            if (timerElement) {
+                timerElement.innerText = "مغلق";
+                timerElement.style.color = "#ff4444";
+            }
+            if (logElement) {
+                logElement.innerHTML = "🎉 <span style='color:#ffcc00; font-weight:bold;'>مبروك! رست الجوهرة الكونية عليكِ وثبت صك الوفرة والبركة باسمكِ الحين مية مية! 💸👑</span>";
+            }
+            
+            startDollarRain();
+        }
+    }, 1000);
 
-
-function startDollarRain() {
-    const auctionBox = document.getElementById("krAuctionBox");
-    for (let i = 0; i < 40; i++) {
-        setTimeout(() => {
-            const dollar = document.createElement("div");
-            dollar.innerText = "💸";
-            dollar.className = "falling-dollar";
-            dollar.style.left = Math.random() * 90 + "%";
-            dollar.style.animationDelay = Math.random() * 2 + "s";
-            dollar.style.fontSize = Math.random() * 15 + 20 + "px";
-            auctionBox.appendChild(dollar);
-        }, i * 100);
+    window.placeUserBid = function() {
+        if (timeLeft > 0) {
+            bidValue += 50;
+            const bidElement = document.getElementById("currentBid");
+            const logElement = document.getElementById("auctionLog");
+            if (bidElement) bidElement.innerText = bidValue.toLocaleString();
+            if (logElement) {
+                logElement.innerHTML = `👑 <span style="color:#ff0077; font-weight:bold;">أنتِ (ملكة الروح)</span> زايدتِ بمبلغ <span style="color:#ffcc00;">${bidValue}$</span> واكتسحتِ المزاد! 🚀`;
+            }
+        }
     }
-}
+
+    function startDollarRain() {
+        const auctionBox = document.getElementById("krAuctionBox");
+        if (auctionBox) {
+            for (let i = 0; i < 40; i++) {
+                setTimeout(() => {
+                    const dollar = document.createElement("div");
+                    dollar.innerText = "💸";
+                    dollar.className = "falling-dollar";
+                    dollar.style.left = Math.random() * 90 + "%";
+                    dollar.style.animationDelay = Math.random() * 2 + "s";
+                    dollar.style.fontSize = Math.random() * 15 + 20 + "px";
+                    auctionBox.appendChild(dollar);
+                }, i * 100);
+            }
+        }
+    }
+})();
 </script>
+<!-- ================================================================= -->
+<!-- نهاية اختراع لعبة المزاد الفلكي الملكي السريع -->
+<!-- ================================================================= -->
+t
     
 
 
