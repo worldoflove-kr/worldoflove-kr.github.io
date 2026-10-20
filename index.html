@@ -1490,6 +1490,112 @@ function revealSecretMessage() {
 <!-- ================================================================= -->
 <!-- نهاية اختراع صندوق شفرة الصقر الملكي -->
 <!-- ================================================================= -->
+<!-- 1️⃣ هيكل المزاد الفلكي الملكي السريع -->
+<div class="kr-auction-container" id="krAuctionBox" style="text-align: center; padding: 40px 20px; background: #070c14; border: 2px solid #00f0ff; border-radius: 20px; margin: 40px auto; max-width: 450px; box-shadow: 0 0 25px rgba(0, 240, 255, 0.25); font-family: 'Cairo', sans-serif; direction: rtl; position: relative; overflow: hidden; z-index: 998;">
+    
+    <!-- التاج والدولار المشعان والمتحركان بالأعلى -->
+    <div class="crown-dollar-glow" style="font-size: 55px; margin-bottom: 5px; animation: auctionFloat 3s ease-in-out infinite, auctionGlow 1.5s ease-in-out infinite alternate; filter: drop-shadow(0 0 15px #ffcc00); cursor: pointer; display: inline-block;">
+        👑💵
+    </div>
+    
+    <h3 style="color: #00f0ff; margin-top: 5px; margin-bottom: 5px; font-weight: 800; text-shadow: 0 0 10px #00f0ff;">🪙 مزاد الجوهرة الكونية الملكي 🪙</h3>
+    <p style="color: #aaa; font-size: 13px; margin-bottom: 15px;">المزاد حي ومباشر الآن.. زايد قبل نهاية الوقت واقنص البشارة! ⏳</p>
+
+    <!-- العداد التنازلي والمبلغ الحالي -->
+    <div style="background: #02050a; padding: 15px; border-radius: 12px; border: 1px solid #112233; margin-bottom: 20px; position: relative; z-index: 5;">
+        <div style="color: #ff0077; font-size: 14px; font-weight: bold;">الوقت المتبقي: <span id="auctionTimer">00:15</span> ثانية</div>
+        <div style="color: #fff; font-size: 20px; margin-top: 8px; font-weight: bold;">أعلى سعر حالي: <span id="currentBid" style="color: #ffcc00;">4,150</span> \$</div>
+    </div>
+
+    <!-- لوحة المنافسة المباشرة -->
+    <div id="leaderboardBox" style="background: #05020a; padding: 12px; border-radius: 10px; border: 1px solid #3d1b66; margin-bottom: 20px; min-height: 80px; font-size: 14px; color: #dcb3ff; transition: all 0.3s; position: relative; z-index: 5;">
+        <div style="border-bottom: 1px solid #221133; padding-bottom: 5px; margin-bottom: 5px; font-weight: bold; color: #b100ff;">📡 حركة المزايدة الحية:</div>
+        <div id="auctionLog">الشيخ أبو فهد زايد بمبلغ 4,150\$ 🔥</div>
+    </div>
+
+    <!-- زر المزايدة الملكي -->
+    <button id="bidBtn" onclick="placeUserBid()" style="background: linear-gradient(45deg, #b100ff, #ff0077); color: #fff; border: none; padding: 12px 30px; font-size: 16px; font-weight: bold; border-radius: 35px; cursor: pointer; transition: 0.3s; box-shadow: 0 0 15px rgba(255, 0, 119, 0.4); width: 100%; position: relative; z-index: 5;">
+        💰 زايد بالبركة الحين (+50\$)
+    </button>
+</div>
+
+<!-- حركات التاج وتطاير الدولارات المتساقطة -->
+<style>
+@keyframes auctionFloat {
+    0% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-12px) scale(1.05); }
+    100% { transform: translateY(0px) scale(1); }
+}
+@keyframes auctionGlow {
+    from { filter: drop-shadow(0 0 10px #ffcc00) drop-shadow(0 0 20px #00f0ff); }
+    to { filter: drop-shadow(0 0 25px #ff0077) drop-shadow(0 0 40px #b100ff); }
+}
+@keyframes dollarFall {
+    0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(450px) rotate(360deg); opacity: 0; }
+}
+.falling-dollar {
+    position: absolute;
+    color: #2ecc71;
+    font-size: 24px;
+    z-index: 2;
+    pointer-events: none;
+    animation: dollarFall 2.5s linear infinite;
+}
+
+<!-- 2️⃣ كود تشغيل العداد والمنافسة وتطاير الدولارات -->
+<script>
+let bidValue = 4150;
+let timeLeft = 15;
+const competitors = ["الشيخ خالد الوجيه 👑", "صاحب السمو بمشعل 🌟", "أبو راشد الفخم 🦅", "المستشار الملكي KR 🐼", "سلطان البرستيج ✨"];
+
+const auctionInterval = setInterval(() => {
+    timeLeft--;
+    document.getElementById("auctionTimer").innerText = "00:" + (timeLeft < 10 ? "0" + timeLeft : timeLeft);
+    
+    if (timeLeft > 2 && Math.random() > 0.5) {
+        bidValue += 50;
+        document.getElementById("currentBid").innerText = bidValue.toLocaleString();
+        const randomComp = competitors[Math.floor(Math.random() * competitors.length)];
+        document.getElementById("auctionLog").innerHTML = `<span style="color:#00f0ff;">${randomComp}</span> زايد بمبلغ <span style="color:#ffcc00;">${bidValue}$</span> 🔥`;
+    }
+
+    if (timeLeft <= 0) {
+        clearInterval(auctionInterval);
+        document.getElementById("bidBtn").disabled = true;
+        document.getElementById("auctionTimer").innerText = "مغلق";
+        document.getElementById("auctionTimer").style.color = "#ff4444";
+        document.getElementById("auctionLog").innerHTML = "🎉 <span style='color:#ffcc00; font-weight:bold;'>مبروك! رست الجوهرة الكونية عليكِ وثبت صك الوفرة والبركة باسمكِ الحين مية مية! 💸👑</span>";
+        
+        startDollarRain();
+    }
+}, 1000);
+
+function placeUserBid() {
+    if (timeLeft > 0) {
+        bidValue += 50;
+        document.getElementById("currentBid").innerText = bidValue.toLocaleString();
+        document.getElementById("auctionLog").innerHTML = `👑 <span style="color:#ff0077; font-weight:bold;">أنتِ (ملكة الروح)</span> زايدتِ بمبلغ <span style="color:#ffcc00;">${bidValue}$</span> واكتسحتِ المزاد! 🚀`;
+    }
+}
+
+function startDollarRain() {
+    const auctionBox = document.getElementById("krAuctionBox");
+    for (let i = 0; i < 40; i++) {
+        setTimeout(() => {
+            const dollar = document.createElement("div");
+            dollar.innerText = "💸";
+            dollar.className = "falling-dollar";
+            dollar.style.left = Math.random() * 90 + "%";
+            dollar.style.animationDelay = Math.random() * 2 + "s";
+            dollar.style.fontSize = Math.random() * 15 + 20 + "px";
+            auctionBox.appendChild(dollar);
+        }, i * 100);
+    }
+}
+</script>
+    
+
 
             
 <!-- التوقيع الختامي الملكي المحمي المتواجد في قاع الصفحة تماماً بنبض ذهبي مشع -->
