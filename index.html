@@ -1825,7 +1825,7 @@ function revealSecretMessage() {
         }, 800);
     };
 
-        window.shareLoveGift = function(e) {
+       window.shareLoveGift = function(e) {
         if(e) e.preventDefault();
         const textDisplay = document.getElementById("krLoveText");
         let rawSender = document.getElementById("senderName").value.trim();
@@ -1843,13 +1843,11 @@ function revealSecretMessage() {
             
             const whatsappUrl = "https://whatsapp.com" + encodeURIComponent(fullText);
             
-            const shareLink = document.getElementById("krShareWhatsAppBtn");
-            if (shareLink) {
-                shareLink.href = whatsappUrl;
-                window.open(whatsappUrl, '_blank');
-            }
+            // إصلاح التوجيه المباشر للهواتف الذكية دغري مية مية
+            window.open(whatsappUrl, '_blank');
         }
     };
+
 
 
     window.resetOrbSystem = function() {
