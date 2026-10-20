@@ -1765,7 +1765,7 @@ function revealSecretMessage() {
         "قولي أحبك.. وخلي الكون يبتسم الحين! ✍️💬",
         "بدي تكوني أم ولادي.. وشريكة روحي للأبد! 💍🏡"
     ];
-    window.triggerOrbByTouch = function() {
+      window.triggerOrbByTouch = function() {
         if (isOrbActive) return;
         isOrbActive = true;
 
@@ -1778,12 +1778,10 @@ function revealSecretMessage() {
         const senderBox = document.getElementById("senderNameBox");
         const resetBtn = document.getElementById("krOrbResetBtn");
 
-        // تأثير الدوران والارتجاج السريع للبلورة قبل الانفجار
         orb.style.transform = "scale(1.3) rotate(360deg)";
         orb.style.filter = "drop-shadow(0 0 35px #00f0ff) contrast(1.5)";
 
         setTimeout(() => {
-            // تفجير الإضاءة الخلفية الصاطعة التي تبهر العيون
             if (glow) {
                 glow.style.opacity = "1";
                 glow.style.transform = "scale(2)";
@@ -1794,17 +1792,22 @@ function revealSecretMessage() {
                 orb.style.display = "none";
                 if (glow) glow.style.opacity = "0";
 
-                // اختيار الأيقونة النادرة عشوائياً (تاج أو صقر)
-                const icons = ["👑", "🦅"];
-                if (rareIcon) rareIcon.innerText = icons[Math.floor(Math.random() * icons.length)];
+                // استبدال الأيقونات وإضافة حركة الطيران والتوهج للفراشة الملكية 🦋
+                const icons = ["👑", "🦋"];
+                const chosenIcon = icons[Math.floor(Math.random() * icons.length)];
+                if (rareIcon) {
+                    rareIcon.innerText = chosenIcon;
+                    if (chosenIcon === "🦋") {
+                        rareIcon.style.animation = "butterflyFly 0.4s ease-in-out infinite alternate, butterflyGlow 1.2s ease-in-out infinite alternate";
+                        rareIcon.style.display = "inline-block";
+                    } else {
+                        rareIcon.style.animation = "heartBeatGlow 1.2s infinite alternate";
+                    }
+                }
 
-                // عرض الكلمة الوجْدانية بالترتيب المكرر دورياً دون توقف
                 if (textDisplay) textDisplay.innerText = krLovePhrases[activeLoveIndex];
-                
-                // تحديث العداد للدورة القادمة
                 activeLoveIndex = (activeLoveIndex + 1) % krLovePhrases.length;
 
-                // إظهار لوحة النبض وزر الإرسال وحقل الاسم
                 if (panel) {
                     panel.style.display = "block";
                     setTimeout(() => panel.style.transform = "scale(1)", 50);
@@ -1824,36 +1827,30 @@ function revealSecretMessage() {
         
         if (textDisplay) {
             const loveMsg = textDisplay.innerText;
-            // صياغة الرسالة الفيروسية الفخمة بالرابط والشعار بناءً على طلبكِ الذكي
-            const whatsappText = encodeURIComponent(
-                `✨ 🔒 إهداء ملوكي خاص باسمكِ من: (${senderName})\n\n` +
-                `🔮 لَقَدْ فَتَحْتُ خَزْنَةَ العِشْقِ الأَبَدِيَّةِ وَظَهَرَتْ لِي هَذِهِ الكَلِمَةُ لَكِ:\n` +
-                `👉 "${loveMsg}"\n\n` +
-                `👑 منصة [عالم الحب KR] الملكية المعتمدة 👑\n` +
-                `🔗 ادخل وافتح البلورة السحرية وشوف نبض قلبك الحين:\n` +
-                `https://github.io`
-            );
-            window.open(`https://whatsapp.com{whatsappText}`, '_blank');
+            const fullText = `✨ 🔒 إهداء ملوكي خاص من: (${senderName})\n\n🔮 لَقَدْ فَتَحْتُ خَزْنَةَ العِشْقِ الأَبَدِيَّةِ وَظَهَرَتْ لِي هَذِهِ الكَلِمَةُ لَكِ:\n👉 "${loveMsg}"\n\n👑 منصة [عالم الحب KR] الملكية المعتمدة 👑\n🔗 ادخلي وافتحي البلورة السحرية وشوفي نبض قلبك الحين:\nhttps://github.io`;
+            
+            const whatsappUrl = "https://whatsapp.com" + encodeURIComponent(fullText);
+            window.open(whatsappUrl, '_blank');
         }
     };
 
-    window.resetOrbSystem = function() {
-        document.querySelector('.kr-crystal-orb-container').classList.remove('kr-bright-flash');
-        
-        document.getElementById("krMagicalOrb").style.display = "inline-block";
-        document.getElementById("krMagicalOrb").style.transform = "scale(1) rotate(0deg)";
-        document.getElementById("krMagicalOrb").style.filter = "drop-shadow(0 0 15px #00f0ff)";
-        
-        document.getElementById("krSecretLovePanel").style.display = "none";
-        document.getElementById("krSecretLovePanel").style.transform = "scale(0.8)";
-        document.getElementById("krShareWhatsAppBtn").style.display = "none";
-        document.getElementById("senderNameBox").style.display = "none";
-        document.getElementById("krOrbResetBtn").style.display = "none";
-        
-        isOrbActive = false;
-    };
-})();
-</script>
+    // إضافة كود الحركات الفيزيائية للفراشة المضيئة برمجياً دون تداخل
+    if (!document.getElementById("krButterflyStyles")) {
+        const styleSheet = document.createElement("style");
+        styleSheet.id = "krButterflyStyles";
+        styleSheet.innerHTML = `
+            @keyframes butterflyFly {
+                0% { transform: scale(1) translateY(0px) rotate(-5deg); }
+                100% { transform: scale(1.1) translateY(-8px) rotate(5deg); }
+            }
+            @keyframes butterflyGlow {
+                from { filter: drop-shadow(0 0 10px #00f0ff) drop-shadow(0 0 20px #b100ff); }
+                to { filter: drop-shadow(0 0 25px #00f0ff) drop-shadow(0 0 35px #ff0077); }
+            }
+        `;
+        document.head.appendChild(styleSheet);
+    }
+
 <!-- ================================================================= -->
 <!-- نهاية اختراع البلورة المغناطيسية العاكسة -->
 <!-- ================================================================= -->
