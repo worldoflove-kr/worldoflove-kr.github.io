@@ -1687,8 +1687,9 @@ function revealSecretMessage() {
 <!-- ================================================================= -->
 <!-- نهاية اختراع لعبة المزاد الفلكي الملكي السريع -->
 <!-- ================================================================= -->
-<!-- ================================================================= -->
-<!-- بداية اختراع البلورة المغناطيسية العاكسة - خزنة العشق الأبدي KR -->
+
+ <!-- ================================================================= -->
+<!-- بداية اختراع البلورة المغناطيسية العاكسة - نسخة الفراشة المحمية الكونية -->
 <!-- ================================================================= -->
 <div class="kr-crystal-orb-container" style="text-align: center; padding: 45px 20px; background: #0b0518; border: 2px solid #b100ff; border-radius: 25px; margin: 40px auto; max-width: 450px; box-shadow: 0 0 30px rgba(177, 0, 255, 0.3); position: relative; overflow: hidden; font-family: 'Cairo', sans-serif; direction: rtl; z-index: 997;">
     
@@ -1707,16 +1708,16 @@ function revealSecretMessage() {
         <!-- التوهج الخلفي الصاطع اللي بيبهر العيون -->
         <div id="krBrightGlow" style="position: absolute; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle, rgba(0,240,255,0.8) 0%, rgba(177,0,255,0) 70%); opacity: 0; transition: all 0.4s ease; pointer-events: none; z-index: 1;"></div>
         
-        <!-- مجسم البلورة السحرية -->
-        <div id="krMagicalOrb" onclick="triggerOrbByTouch()" style="font-size: 70px; cursor: pointer; z-index: 5; transition: transform 0.1s ease, filter 0.3s ease; filter: drop-shadow(0 0 15px #00f0ff); animation: orbFloat 3s ease-in-out infinite;">🔮</div>
+        <!-- مجسم البلورة السحرية تفاعلي باللمس والحركة -->
+        <div id="krMagicalOrb" onclick="triggerOrbByTouch()" style="font-size: 70px; cursor: pointer; z-index: 5; transition: transform 0.4s ease, filter 0.3s ease; filter: drop-shadow(0 0 15px #00f0ff); animation: orbFloat 3s ease-in-out infinite; display: inline-block;">🔮</div>
     </div>
 
     <!-- لوحة كشف العبارة الوجدانية والإيقونة النادرة -->
     <div id="krSecretLovePanel" style="background: #05020a; padding: 20px; border-radius: 15px; border: 1px solid #3d1b66; margin-bottom: 25px; display: none; transform: scale(0.8); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; z-index: 10;">
-        <div id="krRareIcon" style="font-size: 50px; margin-bottom: 10px; animation: heartBeatGlow 1.2s infinite alternate;">👑</div>
+        <div id="krRareIcon" style="font-size: 50px; margin-bottom: 10px;">🦋</div>
         <div id="krLoveText" style="font-size: 20px; color: #fff; font-weight: bold; line-height: 1.6; text-shadow: 0 0 8px rgba(255,255,255,0.5); min-height: 40px; margin-bottom: 15px;"></div>
         
-        <!-- زر الإهداء والمشاركة الفيروسي عبر الواتساب والمكتوب فيه اسم ورابط صفحتنا -->
+        <!-- زر الإهداء والمشاركة الفيروسي عبر الواتساب النظيف -->
         <button id="krShareWhatsAppBtn" onclick="shareLoveGift()" style="background: linear-gradient(45deg, #25d366, #128c7e); color: #fff; border: none; padding: 12px 20px; font-size: 14px; font-weight: bold; border-radius: 25px; cursor: pointer; transition: 0.3s; width: 100%; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); display: none;">
             💌 إرسال العبارة إهداء لمن تحب الحين
         </button>
@@ -1733,10 +1734,12 @@ function revealSecretMessage() {
     </button>
 </div>
 
-<!-- الحركات والمؤثرات الضوئية الساحرة للبلورة -->
+<!-- الحركات والمؤثرات الضوئية وحركات طيران الفراشة الملكية المشعة -->
 <style>
 @keyframes orbFloat { 0% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-10px) rotate(10deg); } 100% { transform: translateY(0px) rotate(0deg); } }
 @keyframes heartBeatGlow { from { transform: scale(1); filter: drop-shadow(0 0 10px #00f0ff); } to { transform: scale(1.15); filter: drop-shadow(0 0 25px #ff0077); } }
+@keyframes butterflyFly { 0% { transform: scale(1) translateY(0px) rotate(-5deg); } 100% { transform: scale(1.1) translateY(-8px) rotate(5deg); } }
+@keyframes butterflyGlow { from { filter: drop-shadow(0 0 10px #00f0ff) drop-shadow(0 0 20px #b100ff); } to { filter: drop-shadow(0 0 25px #00f0ff) drop-shadow(0 0 35px #ff0077); } }
 .kr-bright-flash { animation: flashBackground 0.8s ease-out forwards; }
 @keyframes flashBackground {
     0% { background: #0c0714; box-shadow: 0 0 0px #00f0ff; }
@@ -1749,7 +1752,6 @@ function revealSecretMessage() {
     let activeLoveIndex = 0;
     let isOrbActive = false;
 
-    // مصفوفة كلمات العشق الدافئة المكررة دون توقف بناءً على طلبكِ الوجداني
     const krLovePhrases = [
         "بحبك انا.. يا حياة الروح! 💞",
         "يؤبرني حبيبي.. مواااااااه شو اشتقتلك! 💋🥺",
@@ -1765,7 +1767,7 @@ function revealSecretMessage() {
         "قولي أحبك.. وخلي الكون يبتسم الحين! ✍️💬",
         "بدي تكوني أم ولادي.. وشريكة روحي للأبد! 💍🏡"
     ];
-      window.triggerOrbByTouch = function() {
+    window.triggerOrbByTouch = function() {
         if (isOrbActive) return;
         isOrbActive = true;
 
@@ -1778,21 +1780,23 @@ function revealSecretMessage() {
         const senderBox = document.getElementById("senderNameBox");
         const resetBtn = document.getElementById("krOrbResetBtn");
 
-        orb.style.transform = "scale(1.3) rotate(360deg)";
-        orb.style.filter = "drop-shadow(0 0 35px #00f0ff) contrast(1.5)";
+        if(orb) {
+            orb.style.transform = "scale(1.3) rotate(360deg)";
+            orb.style.filter = "drop-shadow(0 0 35px #00f0ff) contrast(1.5)";
+        }
 
         setTimeout(() => {
             if (glow) {
                 glow.style.opacity = "1";
                 glow.style.transform = "scale(2)";
             }
-            document.querySelector('.kr-crystal-orb-container').classList.add('kr-bright-flash');
+            const container = document.querySelector('.kr-crystal-orb-container');
+            if (container) container.classList.add('kr-bright-flash');
 
             setTimeout(() => {
-                orb.style.display = "none";
+                if (orb) orb.style.display = "none";
                 if (glow) glow.style.opacity = "0";
 
-                // استبدال الأيقونات وإضافة حركة الطيران والتوهج للفراشة الملكية 🦋
                 const icons = ["👑", "🦋"];
                 const chosenIcon = icons[Math.floor(Math.random() * icons.length)];
                 if (rareIcon) {
@@ -1834,22 +1838,29 @@ function revealSecretMessage() {
         }
     };
 
-    // إضافة كود الحركات الفيزيائية للفراشة المضيئة برمجياً دون تداخل
-    if (!document.getElementById("krButterflyStyles")) {
-        const styleSheet = document.createElement("style");
-        styleSheet.id = "krButterflyStyles";
-        styleSheet.innerHTML = `
-            @keyframes butterflyFly {
-                0% { transform: scale(1) translateY(0px) rotate(-5deg); }
-                100% { transform: scale(1.1) translateY(-8px) rotate(5deg); }
-            }
-            @keyframes butterflyGlow {
-                from { filter: drop-shadow(0 0 10px #00f0ff) drop-shadow(0 0 20px #b100ff); }
-                to { filter: drop-shadow(0 0 25px #00f0ff) drop-shadow(0 0 35px #ff0077); }
-            }
-        `;
-        document.head.appendChild(styleSheet);
-    }
+    window.resetOrbSystem = function() {
+        const container = document.querySelector('.kr-crystal-orb-container');
+        if (container) container.classList.remove('kr-bright-flash');
+        
+        const orb = document.getElementById("krMagicalOrb");
+        if(orb) {
+            orb.style.display = "inline-block";
+            orb.style.transform = "scale(1) rotate(0deg)";
+            orb.style.filter = "drop-shadow(0 0 15px #00f0ff)";
+        }
+        
+        document.getElementById("krSecretLovePanel").style.display = "none";
+        document.getElementById("krSecretLovePanel").style.transform = "scale(0.8)";
+        document.getElementById("krShareWhatsAppBtn").style.display = "none";
+        document.getElementById("senderNameBox").style.display = "none";
+        document.getElementById("krOrbResetBtn").style.display = "none";
+        
+        isOrbActive = false;
+    };
+})();
+</script>
+ 
+  
 
 <!-- ================================================================= -->
 <!-- نهاية اختراع البلورة المغناطيسية العاكسة -->
