@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+سأ<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -931,19 +931,22 @@ if (mainRadarBtn) {
             window.location.href = "whatsapp://send?phone=" + p + "&text=" + encodeURIComponent(txt);
         }
 
-        function initVisitorCounter() {
-            var b = 4320;
-            var s = localStorage.getItem('worldOfLove_visitors');
-            if (!s) {
-                var n = b + 1;
-                localStorage.setItem('worldOfLove_visitors', n);
-                document.getElementById("live-visitor-counter").innerText = n.toLocaleString();
-            } else {
-                var c = parseInt(s) + Math.floor(Math.random() * 3) + 1;
-                localStorage.setItem('worldOfLove_visitors', c);
-                document.getElementById("live-visitor-counter").innerText = c.toLocaleString();
-            }
+    function initVisitorCounter() {
+        var b = 7487;
+        var s = localStorage.getItem('worldOfLoveVisitors');
+        if (!s) {
+            var n = b + 1;
+            localStorage.setItem('worldOfLoveVisitors', n);
+            var lbl = document.getElementById("lbl-visitors");
+            if(lbl) lbl.innerHTML = "👥 عدد زوار صفحتنا الحين: " + n.toLocaleString();
+        } else {
+            var c = parseInt(s) + Math.floor(Math.random() * 3) + 1;
+            localStorage.setItem('worldOfLoveVisitors', c);
+            var lbl = document.getElementById("lbl-visitors");
+            if(lbl) lbl.innerHTML = "👥 عدد زوار صفحتنا الحين: " + c.toLocaleString();
         }
+    }
+
 
         function updateClock() {
             var now = new Date();
