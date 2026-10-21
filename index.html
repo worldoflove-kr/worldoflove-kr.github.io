@@ -1743,6 +1743,19 @@ function revealSecretMessage() {
         🔄 أعد تدوير البلورة لفتح كلمة عشق ثانية
     </button>
 </div>
+
+<style>
+@keyframes orbFloat { 0% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-10px) rotate(10deg); } 100% { transform: translateY(0px) rotate(0deg); } }
+@keyframes heartBeatGlow { from { transform: scale(1); filter: drop-shadow(0 0 10px #00f0ff); } to { transform: scale(1.15); filter: drop-shadow(0 0 25px #ff0077); } }
+@keyframes butterflyFly { 0% { transform: scale(1) translateY(0px) rotate(-5deg); } 100% { transform: scale(1.1) translateY(-8px) rotate(5deg); } }
+@keyframes butterflyGlow { from { filter: drop-shadow(0 0 10px #00f0ff) drop-shadow(0 0 20px #b100ff); } to { filter: drop-shadow(0 0 25px #00f0ff) drop-shadow(0 0 35px #ff0077); } }
+.kr-bright-flash { animation: flashBackground 0.8s ease-out forwards; }
+@keyframes flashBackground {
+    0% { background: #0c0714; box-shadow: 0 0px #00f0ff; }
+    30% { background: #1a0033; box-shadow: 0 0 50px #00f0ff, inset 0 0 40px #00f0ff; }
+    100% { background: #0b0518; box-shadow: 0 0 30px rgba(177, 0, 255, 0.3); }
+}
+</style>
 <script>
 (function() {
     let activeLoveIndex = 0;
@@ -1820,7 +1833,7 @@ function revealSecretMessage() {
             }, 400);
         }, 800);
     };
-    window.shareLoveGift = function(e) {
+     window.shareLoveGift = function(e) {
         if(e) e.preventDefault();
         const textDisplay = document.getElementById("krLoveText");
         let rawSender = document.getElementById("senderName") ? document.getElementById("senderName").value.trim() : "";
@@ -1878,36 +1891,26 @@ function revealSecretMessage() {
         isOrbActive = false;
     };
 })();
+</script>
 
+<div class="royal-footer-pulse" style="text-align: center; padding: 25px 10px; background: radial-gradient(circle, #0c051a 0%, #030107 100%); border-top: 1px solid #221133; margin-top: 40px; font-family: 'Cairo', sans-serif;">
+    <div style="font-size: 32px; font-weight: 900; animation: footerGlow 2s ease-in-out infinite alternate; cursor: pointer; display: inline-block;">👑 KR 👑</div>
+    <p style="color: #ffd700; font-size: 13px; font-weight: bold; margin: 8px 0 3px; letter-spacing: 1px; text-shadow: 0 0 5px rgba(255,215,0,0.4);">✨ منصة العائلة الملكية المعتمدة عالمياً ✨</p>
+    <p style="color: #aaa; font-size: 11px; margin: 0; letter-spacing: 0.5px;">✨ Panda KR 🐼 ✨</p>
+</div>
 
 <style>
-@keyframes orbFloat { 0% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-10px) rotate(10deg); } 100% { transform: translateY(0px) rotate(0deg); } }
-@keyframes heartBeatGlow { from { transform: scale(1); filter: drop-shadow(0 0 10px #00f0ff); } to { transform: scale(1.15); filter: drop-shadow(0 0 25px #ff0077); } }
-@keyframes butterflyFly { 0% { transform: scale(1) translateY(0px) rotate(-5deg); } 100% { transform: scale(1.1) translateY(-8px) rotate(5deg); } }
-@keyframes butterflyGlow { from { filter: drop-shadow(0 0 10px #00f0ff) drop-shadow(0 0 20px #b100ff); } to { filter: drop-shadow(0 0 25px #00f0ff) drop-shadow(0 0 35px #ff0077); } }
-.kr-bright-flash { animation: flashBackground 0.8s ease-out forwards; }
-@keyframes flashBackground {
-    0% { background: #0c0714; box-shadow: 0 0px #00f0ff; }
-    30% { background: #1a0033; box-shadow: 0 0 50px #00f0ff, inset 0 0 40px #00f0ff; }
-    100% { background: #0b0518; box-shadow: 0 0 30px rgba(177, 0, 255, 0.3); }
+@keyframes footerGlow {
+    0% { transform: scale(1); text-shadow: 0 0 10px #ffd700, 0 0 20px #ff0077; color: #ffd700; }
+    100% { transform: scale(1.05); text-shadow: 0 0 25px #00f0ff, 0 0 40px #b100ff; color: #00f0ff; }
 }
 </style>
-
-    <!-- الفوتر الملكي النظيف - الشعار يظهر مرة واحدة فقط في قاع الكون الرقمي كمسك الختام -->
-    <div class="royal-footer-pulse" style="text-align: center; padding: 25px 10px; background: radial-gradient(circle, #0c051a 0%, #030107 100%); border-top: 1px solid #221133; margin-top: 40px; font-family: 'Cairo', sans-serif;">
-        <div style="font-size: 32px; font-weight: 900; animation: footerGlow 2s ease-in-out infinite alternate; cursor: pointer; display: inline-block;">👑 KR 👑</div>
-        <p style="color: #ffd700; font-size: 13px; font-weight: bold; margin: 8px 0 3px; letter-spacing: 1px; text-shadow: 0 0 5px rgba(255,215,0,0.4);">✨ منصة العائلة الملكية المعتمدة عالمياً ✨</p>
-        <p style="color: #aaa; font-size: 11px; margin: 0; letter-spacing: 0.5px;">✨ Panda KR 🐼 ✨</p>
-    </div>
-
-    <style>
-    @keyframes footerGlow {
-        0% { transform: scale(1); text-shadow: 0 0 10px #ffd700, 0 0 20px #ff0077; color: #ffd700; }
-        100% { transform: scale(1.05); text-shadow: 0 0 25px #00f0ff, 0 0 40px #b100ff; color: #00f0ff; }
-    }
-    </style>
 </body>
 </html>
+<!-- ================================================================= -->
+<!-- نهاية اختراع البلورة المغناطيسية العاكسة والفوتر الملكي النظيف -->
+<!-- ================================================================= -->
+ 
 
 
 
