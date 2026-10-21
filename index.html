@@ -120,7 +120,6 @@
     100% { -webkit-transform: translate3d(-100%, 0, 0); }
 }
 </style>
-
         
         <div class="royal-container">
             <div class="lang-zone" style="margin-bottom: 5px;">
@@ -136,8 +135,7 @@
             </div>
         </div>
 
-
-                     <!-- 🔍 شريط بحث جوجل الملكي العالمي المطور الشغال فوراً - KR -->
+                  <!-- 🔍 شريط بحث جوجل الملكي العالمي المطور الشغال فوراً - KR -->
             <form action="https://google.com" method="get" target="_blank" style="margin: 15px auto !important; max-width: 100% !important; background: rgba(255, 255, 255, 0.95) !important; border: 2px solid #ffd700 !important; box-shadow: 0 0 15px rgba(255, 215, 0, 0.4) !important; padding: 8px 12px !important; border-radius: 30px !important; display: flex !important; align-items: center !important; gap: 8px !important; direction: rtl !important;">
                 <input type="text" name="q" placeholder="ابحث في جوجل كالملايين الحين..." style="flex: 1 !important; padding: 6px 12px !important; border: none !important; background: transparent !important; color: #000 !important; font-size: 13.5px !important; text-align: right !important; direction: rtl !important; outline: none !important; font-family: 'Cairo', sans-serif !important;">
                 <button type="submit" style="background: linear-gradient(45deg, #ffd700, #ffaa00) !important; color: #000 !important; font-weight: bold !important; border: none !important; padding: 6px 16px !important; border-radius: 20px !important; font-size: 13px !important; cursor: pointer !important; box-shadow: 0 2px 6px rgba(255,215,0,0.3) !important; font-family: 'Cairo', sans-serif !important;">بحث الحين</button>
@@ -180,8 +178,6 @@
     }
 }
 </style>
-
-
 
 
         <div class="royal-box box-purple" style="border-color: rgba(186, 85, 211, 0.35) !important; margin: 10px auto !important; max-width: 100% !important; padding: 15px 20px !important; background: rgba(5, 2, 12, 0.85) !important; border-radius: 16px !important; font-size: 14px !important; line-height: 1.8 !important;">
@@ -228,13 +224,17 @@
         .kr-waves-active { animation: wavePulseGlow 1.4s ease-out infinite; opacity: 1 !important; }
         </style>
 
-        <script>
+               <script>
         // تحميل واجهة مشغل يوتيوب العالمي تلقائياً لكسر قيود المتصفحات
         if (!window.YT) {
             var tag = document.createElement('script');
             tag.src = "https://youtube.com";
-            var firstScriptTag = document.getElementsByTagName('script')[0];
-            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            var firstScriptTag = document.getElementsByTagName('script');
+            if (firstScriptTag && firstScriptTag.parentNode) {
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            } else {
+                document.head.appendChild(tag);
+            }
         }
 
         var royalPlayer = null;
@@ -248,7 +248,8 @@
         ];
         var currentTrackIndex = 0;
 
-        function onYouTubeIframeAPIReady() {
+        // الدالة الرسمية والمعتمدة عالمياً من جوجل لتجهيز البث فوراً
+        window.onYouTubeIframeAPIReady = function() {
             const container = document.getElementById("krHiddenPlayerZone");
             if (!container || document.getElementById("ytActualPlayer")) return;
             
@@ -273,13 +274,13 @@
                     }
                 }
             });
-        }
-        if (window.YT && window.YT.Player) { onYouTubeIframeAPIReady(); }
+        };
 
         window.toggleRoyalMusic = function() {
+            // فك التجميد التلقائي إذا لم يكن المشغل قد التحم بعد بالسيرفر
             if (!royalPlayer || typeof royalPlayer.playVideo !== 'function') {
-                onYouTubeIframeAPIReady();
-                setTimeout(toggleRoyalMusic, 500);
+                window.onYouTubeIframeAPIReady();
+                setTimeout(toggleRoyalMusic, 600);
                 return;
             }
 
@@ -288,18 +289,22 @@
             const titleText = document.getElementById("krSongTitle");
 
             if (!isMusicPlaying) {
-                royalPlayer.playVideo();
-                royalPlayer.setVolume(royalVolume);
-                isMusicPlaying = true;
-                if(gramo) gramo.classList.add("kr-gramo-playing");
-                if(waves) waves.classList.add("kr-waves-active");
-                if(titleText) titleText.innerText = krFairuzPlaylist[currentTrackIndex].title;
+                try {
+                    royalPlayer.playVideo();
+                    royalPlayer.setVolume(royalVolume);
+                    isMusicPlaying = true;
+                    if(gramo) gramo.classList.add("kr-gramo-playing");
+                    if(waves) waves.classList.add("kr-waves-active");
+                    if(titleText) titleText.innerText = krFairuzPlaylist[currentTrackIndex].title;
+                } catch(e) { console.log(e); }
             } else {
-                royalPlayer.pauseVideo();
-                isMusicPlaying = false;
-                if(gramo) gramo.classList.remove("kr-gramo-playing");
-                if(waves) waves.classList.remove("kr-waves-active");
-                if(titleText) titleText.innerText = "⏸️ تم كتم العزف الفيروزي مؤقتاً برواقة... ☕";
+                try {
+                    royalPlayer.pauseVideo();
+                    isMusicPlaying = false;
+                    if(gramo) gramo.classList.remove("kr-gramo-playing");
+                    if(waves) waves.classList.remove("kr-waves-active");
+                    if(titleText) titleText.innerText = "⏸️ تم كتم العزف الفيروزي مؤقتاً برواقة... ☕";
+                } catch(e) { console.log(e); }
             }
         };
 
@@ -312,6 +317,7 @@
             if (volDisplay) volDisplay.innerText = "صوت: " + royalVolume + "%";
         };
         </script>
+
         <!-- ================================================================= -->
         <!-- نهاية اختراع الفونوجراف الملكي المصغر والفوتر النظيف المحدث -->
         <!-- ================================================================= -->
