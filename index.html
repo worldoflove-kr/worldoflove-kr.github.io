@@ -1841,11 +1841,10 @@ function revealSecretMessage() {
         
         if (textDisplay) {
             const loveMsg = textDisplay.innerText;
-            const fullText = "إهداء ملوكي خاص من: (" + senderName + ")\n\n" +
-                             "لقد فتحت خزنة العشق الأبدية وظهرت لي هذه الكلمة لك:\n" +
-                             "👉 " + loveMsg + "\n\n" +
-                             "👑 منصة عالم الحب world of love الملكية 👑\n" +
+            const fullText = "👑 منصة عالم الحب world of love الملكية 👑\n" +
                              "🛡️ شعار صفحتنا المعتمد: [ KR ]\n\n" +
+                             "👉 " + loveMsg + "\n\n" +
+                             "إهداء ملوكي خاص من: (" + senderName + ")\n\n" +
                              "🔗 ادخلي وافتحي البلورة السحرية وشوفي نبض قلبك الحين:\n" +
                              "https://github.io";
             
@@ -1870,6 +1869,7 @@ function revealSecretMessage() {
             }
         }
     };
+
 
     window.resetOrbSystem = function() {
         const container = document.querySelector('.kr-crystal-orb-container');
