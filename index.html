@@ -188,8 +188,8 @@
             <div class="royal-clock" id="live-clock" style="font-size: 14.5px !important; color: #ffffff !important; text-shadow: none !important; font-weight: 500 !important;">📅 جاري تحميل التوقيت الملكي...</div>
         </div>
 
-            <!-- ================================================================= -->
-        <!-- بداية اختراع الفونوجراف الملكي المصغر - نغمات فيروز الكونية -->
+        <!-- ================================================================= -->
+        <!-- بداية اختراع الفونوجراف الملكي الرقمي المطور بمشغل البث المعتمد -->
         <!-- ================================================================= -->
         <div class="kr-3d-gramophone-container" style="text-align: center; padding: 15px 10px; background: radial-gradient(circle, #120633 0%, #040108 100%); border: 1px solid #4a1e80; border-radius: 20px; margin: 15px auto; max-width: 320px; box-shadow: 0 0 20px rgba(0, 240, 255, 0.15); position: relative; font-family: 'Cairo', sans-serif; direction: rtl; z-index: 999;">
             
@@ -211,10 +211,13 @@
 
             <!-- لوحة الميكسر الملكية المصغرة (التحكم بالصوت والكتم) -->
             <div style="display: flex; justify-content: center; align-items: center; gap: 10px; background: rgba(255,255,255,0.02); padding: 6px; border-radius: 30px; border: 1px solid rgba(177,0,255,0.2);">
-                <button onclick="changeRoyalVolume(-0.1)" style="background: linear-gradient(45deg, #4a1e80, #120633); color: #00f0ff; border: 1px solid #00f0ff; width: 30px; height: 30px; border-radius: 50%; font-size: 14px; font-weight: bold; cursor: pointer; box-shadow: 0 0 5px rgba(0,240,255,0.2); outline: none;">➖</button>
+                <button onclick="changeRoyalVolume(-10)" style="background: linear-gradient(45deg, #4a1e80, #120633); color: #00f0ff; border: 1px solid #00f0ff; width: 30px; height: 30px; border-radius: 50%; font-size: 14px; font-weight: bold; cursor: pointer; box-shadow: 0 0 5px rgba(0,240,255,0.2); outline: none;">➖</button>
                 <span id="krVolDisplay" style="color: #fff; font-size: 11px; font-weight: bold; min-width: 55px; text-shadow: 0 0 5px rgba(255,255,255,0.3);">صوت: 70%</span>
-                <button onclick="changeRoyalVolume(0.1)" style="background: linear-gradient(45deg, #4a1e80, #120633); color: #00f0ff; border: 1px solid #00f0ff; width: 30px; height: 30px; border-radius: 50%; font-size: 14px; font-weight: bold; cursor: pointer; box-shadow: 0 0 5px rgba(0,240,255,0.2); outline: none;">➕</button>
+                <button onclick="changeRoyalVolume(10)" style="background: linear-gradient(45deg, #4a1e80, #120633); color: #00f0ff; border: 1px solid #00f0ff; width: 30px; height: 30px; border-radius: 50%; font-size: 14px; font-weight: bold; cursor: pointer; box-shadow: 0 0 5px rgba(0,240,255,0.2); outline: none;">➕</button>
             </div>
+            
+            <!-- كبسولة البث المخفية مئة بالمئة لفك حظر جميع أنواع الموبايلات -->
+            <div id="krHiddenPlayerZone" style="display: none; position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none;"></div>
         </div>
 
         <style>
@@ -225,91 +228,96 @@
         .kr-waves-active { animation: wavePulseGlow 1.4s ease-out infinite; opacity: 1 !important; }
         </style>
 
-             <script>
-        (function() {
-            // مخزن المقطوعات الموزونة والمدعومة عالمياً للبث المباشر
-            const krFairuzPlaylist = [
-                { title: "🎻 يعزف الآن: شايف البحر شو كبير - بيانو ملكي ناعم 🌌✨", url: "https://googleapis.com" },
-                { title: "☕ يعزف الآن: نسم علينا الهوى - غيتار ملكي هادئ 🍃 دافئ", url: "https://googleapis.com" },
-                { title: "🌙 يعزف الآن: سألتك حبيبي - بيانو رومانسي وجداني 💎🔒", url: "https://googleapis.com" }
-            ];
+        <script>
+        // تحميل واجهة مشغل يوتيوب العالمي تلقائياً لكسر قيود المتصفحات
+        if (!window.YT) {
+            var tag = document.createElement('script');
+            tag.src = "https://youtube.com";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        }
 
-            let currentTrackIndex = 0;
-            let royalAudio = null;
-            let isMusicPlaying = false;
-            let royalVolume = 0.7;
+        var royalPlayer = null;
+        var isMusicPlaying = false;
+        var royalVolume = 70;
 
-            // دالة هندسة فك حظر متصفحات الهاتف كلياً باللمس المباشر
-            window.toggleRoyalMusic = function() {
-                const gramo = document.getElementById("kr3dGramophone");
-                const waves = document.getElementById("krAudioWaves");
-                const titleText = document.getElementById("krSongTitle");
+        const krFairuzPlaylist = [
+            { title: "🎻 يعزف الآن: شايف البحر شو كبير - بيانو ملكي ناعم 🌌✨", id: "p0ZOf9gM63w" },
+            { title: "☕ يعزف الآن: نسم علينا الهوى - غيتار ملكي هادئ 🍃 دافئ", id: "Y_8K5gCgVpE" },
+            { title: "🌙 يعزف الآن: سألتك حبيبي - بيانو رومانسي وجداني 💎🔒", id: "Gv6y3jSGoio" }
+        ];
+        var currentTrackIndex = 0;
 
-                // إذا لم يتم إنشاء عنصر الصوت بعد، نقوم بإنشائه وشحنه بأعلى حماية
-                if (!royalAudio) {
-                    royalAudio = new Audio();
-                    royalAudio.src = krFairuzPlaylist[currentTrackIndex].url;
-                    royalAudio.volume = royalVolume;
-                    royalAudio.preload = "auto";
-                    royalAudio.crossOrigin = "anonymous";
-                    
-                    // التبديل التلقائي الذكي فور انتهاء المقطوعة
-                    royalAudio.addEventListener("ended", () => {
-                        currentTrackIndex = (currentTrackIndex + 1) % krFairuzPlaylist.length;
-                        royalAudio.src = krFairuzPlaylist[currentTrackIndex].url;
-                        if(titleText) titleText.innerText = krFairuzPlaylist[currentTrackIndex].title;
-                        royalAudio.play();
-                    });
+        function onYouTubeIframeAPIReady() {
+            const container = document.getElementById("krHiddenPlayerZone");
+            if (!container || document.getElementById("ytActualPlayer")) return;
+            
+            var playerDiv = document.createElement("div");
+            playerDiv.id = "ytActualPlayer";
+            container.appendChild(playerDiv);
+
+            royalPlayer = new YT.Player('ytActualPlayer', {
+                height: '1',
+                width: '1',
+                videoId: krFairuzPlaylist[currentTrackIndex].id,
+                playerVars: { 'autoplay': 0, 'controls': 0, 'disablekb': 1, 'fs': 0, 'rel': 0, 'showinfo': 0, 'modestbranding': 1, 'origin': window.location.origin },
+                events: {
+                    'onReady': function(event) { event.target.setVolume(royalVolume); },
+                    'onStateChange': function(event) {
+                        if (event.data === YT.PlayerState.ENDED) {
+                            currentTrackIndex = (currentTrackIndex + 1) % krFairuzPlaylist.length;
+                            royalPlayer.loadVideoById(krFairuzPlaylist[currentTrackIndex].id);
+                            const titleText = document.getElementById("krSongTitle");
+                            if(titleText) titleText.innerText = krFairuzPlaylist[currentTrackIndex].title;
+                        }
+                    }
                 }
+            });
+        }
+        if (window.YT && window.YT.Player) { onYouTubeIframeAPIReady(); }
 
-                if (!isMusicPlaying) {
-                    // الخدعة البرمجية لفك حظر الجوال: نشغل مكتوم ثم نرفع الصوت فوراً بالملي
-                    royalAudio.muted = true;
-                    royalAudio.play().then(() => {
-                        royalAudio.muted = false;
-                        royalAudio.volume = royalVolume;
-                        isMusicPlaying = true;
-                        if(gramo) gramo.classList.add("kr-gramo-playing");
-                        if(waves) waves.classList.add("kr-waves-active");
-                        if(titleText) titleText.innerText = krFairuzPlaylist[currentTrackIndex].title;
-                    }).catch(err => {
-                        console.log("محاولة فك قيود النظام بالتمرير المباشر المكتوم:");
-                        // محاولة ثانية قاطعة مية مية لإجبار المتصفح على التشغيل باللمس المباشر
-                        try {
-                            royalAudio.muted = false;
-                            royalAudio.play();
-                            isMusicPlaying = true;
-                            if(gramo) gramo.classList.add("kr-gramo-playing");
-                            if(waves) waves.classList.add("kr-waves-active");
-                        } catch(e) { console.log(e); }
-                    });
-                } else {
-                    royalAudio.pause();
-                    isMusicPlaying = false;
-                    if(gramo) gramo.classList.remove("kr-gramo-playing");
-                    if(waves) waves.classList.remove("kr-waves-active");
-                    if(titleText) titleText.innerText = "⏸️ تم كتم العزف الفيروزي مؤقتاً برواقة... ☕";
-                }
-            };
+        window.toggleRoyalMusic = function() {
+            if (!royalPlayer || typeof royalPlayer.playVideo !== 'function') {
+                onYouTubeIframeAPIReady();
+                setTimeout(toggleRoyalMusic, 500);
+                return;
+            }
 
-            // دالة الميكسر الملكي المطور للتحكم الدقيق بالصوت
-            window.changeRoyalVolume = function(amount) {
-                royalVolume = Math.min(1.0, Math.max(0.0, royalVolume + amount));
-                if (royalAudio) royalAudio.volume = royalVolume;
-                
-                const volDisplay = document.getElementById("krVolDisplay");
-                if (volDisplay) {
-                    const percent = Math.round(royalVolume * 100);
-                    volDisplay.innerText = "صوت: " + percent + "%";
-                }
-            };
-        })();
+            const gramo = document.getElementById("kr3dGramophone");
+            const waves = document.getElementById("krAudioWaves");
+            const titleText = document.getElementById("krSongTitle");
+
+            if (!isMusicPlaying) {
+                royalPlayer.playVideo();
+                royalPlayer.setVolume(royalVolume);
+                isMusicPlaying = true;
+                if(gramo) gramo.classList.add("kr-gramo-playing");
+                if(waves) waves.classList.add("kr-waves-active");
+                if(titleText) titleText.innerText = krFairuzPlaylist[currentTrackIndex].title;
+            } else {
+                royalPlayer.pauseVideo();
+                isMusicPlaying = false;
+                if(gramo) gramo.classList.remove("kr-gramo-playing");
+                if(waves) waves.classList.remove("kr-waves-active");
+                if(titleText) titleText.innerText = "⏸️ تم كتم العزف الفيروزي مؤقتاً برواقة... ☕";
+            }
+        };
+
+        window.changeRoyalVolume = function(amount) {
+            royalVolume = Math.min(100, Math.max(0, royalVolume + amount));
+            if (royalPlayer && typeof royalPlayer.setVolume === 'function') {
+                royalPlayer.setVolume(royalVolume);
+            }
+            const volDisplay = document.getElementById("krVolDisplay");
+            if (volDisplay) volDisplay.innerText = "صوت: " + royalVolume + "%";
+        };
         </script>
-
         <!-- ================================================================= -->
         <!-- نهاية اختراع الفونوجراف الملكي المصغر والفوتر النظيف المحدث -->
         <!-- ================================================================= -->
 
+
+       
   
 
         <div class="royal-panda-panel">
