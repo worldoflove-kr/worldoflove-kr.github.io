@@ -1708,6 +1708,190 @@ function revealSecretMessage() {
         }
     })();
     </script>
+<!-- ================================================================= -->
+<!-- بداية اختراع البلورة المغناطيسية العاكسة - نسخة الفراشة المستقلة الكونية -->
+<!-- ================================================================= -->
+<div class="kr-crystal-orb-container" style="text-align: center; padding: 45px 20px; background: #0b0518; border: 2px solid #b100ff; border-radius: 25px; margin: 60px auto 40px; max-width: 450px; box-shadow: 0 0 30px rgba(177, 0, 255, 0.3); position: relative; overflow: hidden; font-family: 'Cairo', sans-serif; direction: rtl; z-index: 9999;">
+    
+    <h3 style="color: #00f0ff; margin-top: 0; margin-bottom: 5px; font-weight: 800; text-shadow: 0 0 10px #00f0ff;">🔮 خزنة العشق والبلورة المغناطيسية 🔮</h3>
+    
+    <div style="background: linear-gradient(45deg, #1a0033, #001122); padding: 12px; border-radius: 12px; border: 1px dashed #00f0ff; margin-bottom: 20px; box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);">
+        <p style="color: #ffcc00; font-size: 14px; font-weight: bold; margin: 0; line-height: 1.6; text-shadow: 0 0 6px rgba(255, 204, 0, 0.4);">✨ خَزْنَةُ العِشْقِ الأَبَدِيَّةِ 🔮 | وازن البلورة السحرية بهاتفك الحين لتتفجر الإضاءة الصاطعة وتكشف لك عن أسرار نبضات قلبك الكبرى!</p>
+    </div>
+    
+    <p style="color: #c9b0e7; font-size: 13px; margin-bottom: 20px;">حركي هاتفكِ الحين لموازنة البلورة، وافتحي الخزنة بالنور الصاطع! ✨</p>
+
+    <div id="orbStage" style="width: 200px; height: 200px; margin: 0 auto 25px; border-radius: 50%; background: radial-gradient(circle, #220044 0%, #05010a 100%); border: 1px solid #3d1b66; position: relative; display: flex; align-items: center; justify-content: center; transition: all 0.5s ease;">
+        <div id="krBrightGlow" style="position: absolute; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle, rgba(0,240,255,0.8) 0%, rgba(177,0,255,0) 70%); opacity: 0; pointer-events: none; z-index: 1;"></div>
+        <div id="krMagicalOrb" onclick="triggerOrbByTouch()" style="font-size: 70px; cursor: pointer; z-index: 5; transition: transform 0.4s ease, filter 0.3s ease; filter: drop-shadow(0 0 15px #00f0ff); animation: orbFloat 3s ease-in-out infinite; display: inline-block;">🔮</div>
+    </div>
+
+    <div id="krSecretLovePanel" style="background: #05020a; padding: 20px; border-radius: 15px; border: 1px solid #3d1b66; margin-bottom: 25px; display: none; transform: scale(0.8); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; z-index: 10;">
+        <div id="krRareIcon" style="font-size: 50px; margin-bottom: 10px;">🦋</div>
+        <div id="krLoveText" style="font-size: 20px; color: #fff; font-weight: bold; line-height: 1.6; text-shadow: 0 0 8px rgba(255,255,255,0.5); min-height: 40px; margin-bottom: 15px;"></div>
+        
+        <button id="krShareWhatsAppBtn" onclick="shareLoveGift(event)" style="background: linear-gradient(45deg, #25d366, #128c7e); color: #fff; border: none; padding: 12px 20px; font-size: 14px; font-weight: bold; border-radius: 25px; cursor: pointer; transition: 0.3s; width: 100%; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); display: none;">
+            💌 إرسال العبارة إهداء لمن تحب الحين
+        </button>
+    </div>
+
+    <div id="senderNameBox" style="margin-bottom: 20px; display: none; position: relative; z-index: 5;">
+        <input type="text" id="senderName" placeholder="✍️ اكتب اسمك كـ مُرسِل للإهداء..." style="width: 85%; padding: 11px 15px; border-radius: 25px; border: 1px solid #00f0ff; background: #02050a; color: #fff; text-align: center; font-size: 14px; outline: none;">
+    </div>
+
+    <button id="krOrbResetBtn" onclick="resetOrbSystem()" style="background: linear-gradient(45deg, #00f0ff, #b100ff); color: #fff; border: none; padding: 12px 35px; font-size: 15px; font-weight: bold; border-radius: 30px; cursor: pointer; transition: 0.3s; box-shadow: 0 0 15px rgba(0, 240, 255, 0.3); width: 100%; display: none;">
+        🔄 أعد تدوير البلورة لفتح كلمة عشق ثانية
+    </button>
+</div>
+<script>
+(function() {
+    let activeLoveIndex = 0;
+    let isOrbActive = false;
+
+    const krLovePhrases = [
+        "بحبك انا.. يا حياة الروح! 💞",
+        "يؤبرني حبيبي.. مواااااااه شو اشتقتلك! 💋🥺",
+        "حياة الروح.. انت نبضي وكل دنيتي! 👑🌌",
+        "انت نبضي.. وما فيني عيش من دونك! 💓",
+        "انت الي وانا الك.. لآخر نفس بعمري! 🔒💍",
+        "شو بحب ضحكتك.. بتنور كوني كله! 😍✨",
+        "بحبك لآخر يوم بعمري.. وعهد الوفا أبدي! 🌹⏳",
+        "بحبك لآخر نفس.. لا تتركني لحالي! 🥺💞",
+        "لا تتركني لحالي.. انا ضايع بدونك! 💔🕊️",
+        "انا مافيي عيش من دونك.. انت الهوا والنبض! 🫁💖",
+        "بحبك يا كل دنيتي.. يا ملاذي الآمن! 🌍🏰",
+        "قولي أحبك.. وخلي الكون يبتسم الحين! ✍️💬",
+        "بدي تكوني أم ولادي.. وشريكة روحي للأبد! 💍🏡"
+    ];
+
+    window.triggerOrbByTouch = function() {
+        if (isOrbActive) return;
+        isOrbActive = true;
+
+        const orb = document.getElementById("krMagicalOrb");
+        const glow = document.getElementById("krBrightGlow");
+        const panel = document.getElementById("krSecretLovePanel");
+        const textDisplay = document.getElementById("krLoveText");
+        const rareIcon = document.getElementById("krRareIcon");
+        const shareBtn = document.getElementById("krShareWhatsAppBtn");
+        const senderBox = document.getElementById("senderNameBox");
+        const resetBtn = document.getElementById("krOrbResetBtn");
+
+        if(orb) {
+            orb.style.transform = "scale(1.3) rotate(360deg)";
+            orb.style.filter = "drop-shadow(0 0 35px #00f0ff) contrast(1.5)";
+        }
+
+        setTimeout(() => {
+            if (glow) {
+                glow.style.opacity = "1";
+                glow.style.transform = "scale(2)";
+            }
+            const container = document.querySelector('.kr-crystal-orb-container');
+            if (container) container.classList.add('kr-bright-flash');
+
+            setTimeout(() => {
+                if (orb) orb.style.display = "none";
+                if (glow) glow.style.opacity = "0";
+
+                const icons = ["👑", "🦋"];
+                const chosenIcon = icons[Math.floor(Math.random() * icons.length)];
+                if (rareIcon) {
+                    rareIcon.innerText = chosenIcon;
+                    if (chosenIcon === "🦋") {
+                        rareIcon.style.animation = "butterflyFly 0.4s ease-in-out infinite alternate, butterflyGlow 1.2s ease-in-out infinite alternate";
+                        rareIcon.style.display = "inline-block";
+                    } else {
+                        rareIcon.style.animation = "heartBeatGlow 1.2s infinite alternate";
+                    }
+                }
+
+                if (textDisplay) textDisplay.innerText = krLovePhrases[activeLoveIndex];
+                activeLoveIndex = (activeLoveIndex + 1) % krLovePhrases.length;
+
+                if (panel) {
+                    panel.style.display = "block";
+                    setTimeout(() => panel.style.transform = "scale(1)", 50);
+                }
+                if (shareBtn) shareBtn.style.display = "block";
+                if (senderBox) senderBox.style.display = "block";
+                if (resetBtn) resetBtn.style.display = "block";
+
+            }, 400);
+        }, 800);
+    };
+    window.shareLoveGift = function(e) {
+        if(e) e.preventDefault();
+        const textDisplay = document.getElementById("krLoveText");
+        let rawSender = document.getElementById("senderName") ? document.getElementById("senderName").value.trim() : "";
+        let senderName = rawSender ? rawSender : "محب غامض";
+        
+        if (textDisplay) {
+            const loveMsg = textDisplay.innerText;
+            const fullText = "إهداء ملوكي خاص من: (" + senderName + ")\n\n" +
+                             "لقد فتحت خزنة العشق الأبدية وظهرت لي هذه الكلمة لك:\n" +
+                             "👉 " + loveMsg + "\n\n" +
+                             "👑 منصة عالم الحب world of love الملكية 👑\n" +
+                             "🛡️ شعار صفحتنا المعتمد: [ KR ]\n\n" +
+                             "🔗 ادخلي وافتحي البلورة السحرية وشوفي نبض قلبك الحين:\n" +
+                             "https://github.io";
+            
+            const tempTextArea = document.createElement("textarea");
+            tempTextArea.value = fullText;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempTextArea);
+            
+            const shareBtn = document.getElementById("krShareWhatsAppBtn");
+            if (shareBtn) {
+                shareBtn.innerHTML = "✅ تَمَّ النَّسْخُ! روح الحين والزقه بالواتساب 💌";
+                shareBtn.style.background = "linear-gradient(45deg, #00f0ff, #b100ff)";
+                shareBtn.style.boxShadow = "0 0 20px #00f0ff";
+                
+                setTimeout(() => {
+                    shareBtn.innerHTML = "💌 إرسال العبارة إهداء لمن تحب الحين";
+                    shareBtn.style.background = "linear-gradient(45deg, #25d366, #128c7e)";
+                    shareBtn.style.boxShadow = "0 4px 10px rgba(37, 211, 102, 0.3)";
+                }, 3000);
+            }
+        }
+    };
+
+    window.resetOrbSystem = function() {
+        const container = document.querySelector('.kr-crystal-orb-container');
+        if (container) container.classList.remove('kr-bright-flash');
+        
+        const orb = document.getElementById("krMagicalOrb");
+        if(orb) {
+            orb.style.display = "inline-block";
+            orb.style.transform = "scale(1) rotate(0deg)";
+            orb.style.filter = "drop-shadow(0 0 15px #00f0ff)";
+        }
+        
+        document.getElementById("krSecretLovePanel").style.display = "none";
+        document.getElementById("krSecretLovePanel").style.transform = "scale(0.8)";
+        document.getElementById("krShareWhatsAppBtn").style.display = "none";
+        document.getElementById("senderNameBox").style.display = "none";
+        document.getElementById("krOrbResetBtn").style.display = "none";
+        
+        isOrbActive = false;
+    };
+})();
+
+
+<style>
+@keyframes orbFloat { 0% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-10px) rotate(10deg); } 100% { transform: translateY(0px) rotate(0deg); } }
+@keyframes heartBeatGlow { from { transform: scale(1); filter: drop-shadow(0 0 10px #00f0ff); } to { transform: scale(1.15); filter: drop-shadow(0 0 25px #ff0077); } }
+@keyframes butterflyFly { 0% { transform: scale(1) translateY(0px) rotate(-5deg); } 100% { transform: scale(1.1) translateY(-8px) rotate(5deg); } }
+@keyframes butterflyGlow { from { filter: drop-shadow(0 0 10px #00f0ff) drop-shadow(0 0 20px #b100ff); } to { filter: drop-shadow(0 0 25px #00f0ff) drop-shadow(0 0 35px #ff0077); } }
+.kr-bright-flash { animation: flashBackground 0.8s ease-out forwards; }
+@keyframes flashBackground {
+    0% { background: #0c0714; box-shadow: 0 0px #00f0ff; }
+    30% { background: #1a0033; box-shadow: 0 0 50px #00f0ff, inset 0 0 40px #00f0ff; }
+    100% { background: #0b0518; box-shadow: 0 0 30px rgba(177, 0, 255, 0.3); }
+}
+</style>
 
     <!-- الفوتر الملكي النظيف - الشعار يظهر مرة واحدة فقط في قاع الكون الرقمي كمسك الختام -->
     <div class="royal-footer-pulse" style="text-align: center; padding: 25px 10px; background: radial-gradient(circle, #0c051a 0%, #030107 100%); border-top: 1px solid #221133; margin-top: 40px; font-family: 'Cairo', sans-serif;">
