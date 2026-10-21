@@ -1534,10 +1534,8 @@ function revealSecretMessage() {
     </div>
 
     <!-- أزرار التحكم الملكية مدمجة برواقة -->
-    <div style="position: relative; z-index: 5; display: flex; flex-direction: column; gap: 10px;">
-        <button id="startAuctionBtn" onclick="activateAuctionSystem()" style="background: linear-gradient(45deg, #00f0ff, #b100ff); color: #fff; border: none; padding: 14px 35px; font-size: 16px; font-weight: bold; border-radius: 35px; cursor: pointer; transition: 0.3s; box-shadow: 0 0 15px rgba(0, 240, 255, 0.4); width: 100%;">
-            👆 اضغط هنا لتفعيل المزاد وبدء العد التنازلي الحين
-        </button>
+  <button id="startAuctionBtn" onclick="startAuctionSystem()" style="background: linear-gradient(45deg, #00f0ff, #b100ff); color: #fff; border: none; padding: 15px 30px; font-size: 16px; font-weight: bold; border-radius: 30px; cursor: pointer; transition: 0.3s; box-shadow: 0 0 15px rgba(0, 240, 255, 0.4); width: 90%; max-width: 380px; margin: 10px auto; display: block; animation: pulseGlow 2s infinite;">👉 اضغط هنا لتفعيل المزاد وبدء العد التنازلي الحين</button>
+
         <button id="bidBtn" onclick="placeUserBid()" style="background: linear-gradient(45deg, #b100ff, #ff0077); color: #fff; border: none; padding: 12px 30px; font-size: 16px; font-weight: bold; border-radius: 35px; cursor: pointer; transition: 0.3s; display: none; box-shadow: 0 0 15px rgba(255, 0, 119, 0.4); width: 100%;">
             ✨ زايد بالبركة الحين (+50)
         </button>
