@@ -185,76 +185,81 @@
         </div>
 
 
-           <!-- ================================================================= -->
-        <!-- بداية اختراع الفونوجراف الملكي الرقمي المطور بمشغل البث المعتمد -->
+         <!-- ================================================================= -->
+        <!-- بداية اختراع شاشة الطرب الفيروزي الملكية بمشغل البث المعتمد -->
         <!-- ================================================================= -->
-        <div class="kr-3d-gramophone-container" style="text-align: center; padding: 15px 10px; background: radial-gradient(circle, #120633 0%, #040108 100%); border: 1px solid #4a1e80; border-radius: 20px; margin: 15px auto; max-width: 320px; box-shadow: 0 0 20px rgba(0, 240, 255, 0.15); position: relative; font-family: 'Cairo', sans-serif; direction: rtl; z-index: 999;">
+        <div class="kr-royal-music-console" style="text-align: center; padding: 20px 15px; background: radial-gradient(circle, #130638 0%, #040108 100%); border: 2px solid #00f0ff; border-radius: 25px; margin: 25px auto; max-width: 340px; box-shadow: 0 0 25px rgba(0, 240, 255, 0.3); position: relative; font-family: 'Cairo', sans-serif; direction: rtl; z-index: 999;">
             
-            <h3 style="color: #00f0ff; margin-top: 0; margin-bottom: 3px; font-weight: 800; text-shadow: 0 0 8px #00f0ff; font-size: 13px;">🎼 الفونوجراف الملكي الناعم 🎷</h3>
+            <h3 style="color: #ffd700; margin-top: 0; margin-bottom: 5px; font-weight: 800; text-shadow: 0 0 10px #ffd700; font-size: 14px; letter-spacing: 0.5px;">🌌 شَاشَةُ الطَّرَبِ الفَيْرُوزِيِّ المَلَكِيَّةِ 🎼</h3>
+            
+            <p style="color: #00f0ff; font-size: 11px; margin-bottom: 15px; text-shadow: 0 0 5px rgba(0,240,255,0.4);">انقري على زر التشغيل الأحمر بقلب الشاشة لتفجير العزف الساحر! ✨</p>
 
-            <!-- شريط الأنباء الموسيقي المشع باسم المعزوفة -->
-            <div style="background: rgba(0,0,0,0.5); border: 1px dashed #ffd700; padding: 4px 10px; border-radius: 20px; margin-bottom: 12px; overflow: hidden; white-space: nowrap;">
-                <span id="krSongTitle" style="color: #ffd700; font-size: 11px; font-weight: bold; text-shadow: 0 0 5px #ffd700; display: inline-block; animation: textScroll 12s linear infinite;">🎵 اكبسي زر التشغيل الأحمر بالفيديو بالأسفل لإطلاق العزف الفيروزي... ✨</span>
+            <!-- مسرح مشغل يوتيوب الرسمي الفخم والمصمم للموبايل -->
+            <div style="margin: 0 auto 15px; width: 100%; max-width: 290px; border-radius: 15px; overflow: hidden; border: 2px solid #b100ff; box-shadow: 0 0 20px rgba(177, 0, 255, 0.25); background: #000; height: 165px; position: relative;">
+                <iframe id="krRoyalPlayer" src="https://youtube.com" style="width: 100%; height: 100%; border: none; display: block;" allow="autoplay; encrypted-media"></iframe>
             </div>
 
-            <!-- مسرح الفونوجراف المصغر والموجات التفاعلية -->
-            <div id="krGramophoneStage" style="width: 110px; height: 110px; margin: 0 auto 12px; position: relative; display: flex; align-items: center; justify-content: center; perspective: 600px;">
-                <!-- ذبذبات وموجات النيون الصوتية بالخلفية -->
-                <div class="kr-audio-waves" id="krAudioWaves" style="position: absolute; width: 100%; height: 100%; border-radius: 50%; background: repeating-radial-gradient(circle, rgba(0,240,255,0.1), rgba(177,0,255,0) 20px); opacity: 0; transform: scale(0.8); transition: all 0.4s ease; z-index: 1;"></div>
-                
-                <!-- بوق وقرص الفونوجراف بنظام الأبعاد المائلة المصغرة الفخمة -->
-                <div id="kr3dGramophone" style="font-size: 60px; transform: rotateX(25deg) rotateY(-15deg); transition: transform 0.5s ease, filter 0.3s ease; filter: drop-shadow(0 0 10px #00f0ff); z-index: 5; position: relative; display: inline-block; user-select: none;">🎷</div>
-            </div>
-
-            <!-- مشغل البث المباشر الفلكي المعتمد لفك حظر الهواتف كلياً وبث نغمات فيروز -->
-            <div style="margin: 10px auto; width: 100%; max-width: 280px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(0, 240, 255, 0.3); box-shadow: 0 0 15px rgba(0,240,255,0.2);">
-                <iframe id="krRoyalPlayer" src="https://youtube.com" style="width: 100%; height: 60px; border: none; display: block;" allow="autoplay; encrypted-media"></iframe>
+            <!-- لوحة نبضات موجات النيون التفاعلية الذكية -->
+            <div id="krMusicPulseZone" style="display: flex; justify-content: center; align-items: center; gap: 6px; background: rgba(0,0,0,0.4); padding: 10px; border-radius: 30px; border: 1px dashed rgba(0,240,255,0.3);">
+                <span style="color: #fff; font-size: 11px; font-weight: bold; letter-spacing: 0.5px;">🎚️ حالة البث الحي:</span>
+                <span id="krPulseText" style="color: #ff0077; font-size: 11px; font-weight: bold; text-shadow: 0 0 6px #ff0077; animation: blinkPulse 1.5s infinite alternate;">● بانتظار نقرة يدكِ... ☕</span>
             </div>
         </div>
 
         <style>
-        @keyframes textScroll { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
-        @keyframes gramoDiscRotate { 0% { transform: rotateX(25deg) rotateY(-15deg) rotate(0deg); } 100% { transform: rotateX(25deg) rotateY(-15deg) rotate(360deg); } }
-        @keyframes wavePulseGlow { 0% { transform: scale(0.8); opacity: 0.3; filter: hue-rotate(0deg); } 50% { opacity: 0.8; } 100% { transform: scale(1.4); opacity: 0; filter: hue-rotate(180deg); } }
-        .kr-gramo-playing { animation: gramoDiscRotate 3.5s linear infinite; filter: drop-shadow(0 0 20px #b100ff) contrast(1.3) !important; }
-        .kr-waves-active { animation: wavePulseGlow 1.4s ease-out infinite; opacity: 1 !important; }
+        @keyframes blinkPulse { from { opacity: 0.4; transform: scale(0.98); } to { opacity: 1; transform: scale(1.02); } }
+        .kr-pulse-playing { color: #00f0ff !important; text-shadow: 0 0 10px #00f0ff !important; font-weight: 900 !important; }
         </style>
 
         <script>
-        // دالة ربط حركة دوران الآلة والموجات نيون بتشغيل فيديو يوتيوب تلقائياً في الموبايل
-        var tag = document.createElement('script');
-        tag.src = "https://youtube.com";
-        var firstScriptTag = document.getElementsByTagName('script');
-        if(firstScriptTag && firstScriptTag.parentNode) { firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); }
+        // ربط نبض الشاشة البرمجية والنيون بتفاعل مشغل جوجل (يوتيوب) تلقائياً بالهاتف
+        if (!window.YT) {
+            var tag = document.createElement('script');
+            tag.src = "https://youtube.com";
+            var firstScriptTag = document.getElementsByTagName('script');
+            if (firstScriptTag && firstScriptTag.parentNode) { firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); }
+        }
 
         var rPlayer;
         function onYouTubeIframeAPIReady() {
-            rPlayer = new YT.Player('krRoyalPlayer', {
-                events: {
-                    'onStateChange': function(event) {
-                        const gramo = document.getElementById("kr3dGramophone");
-                        const waves = document.getElementById("krAudioWaves");
-                        const titleText = document.getElementById("krSongTitle");
-                        
-                        if (event.data === YT.PlayerState.PLAYING) {
-                            if(gramo) gramo.classList.add("kr-gramo-playing");
-                            if(waves) waves.classList.add("kr-waves-active");
-                            if(titleText) titleText.innerText = "🎻 يعزف الآن: شايف البحر شو كبير - بيانو ملكي ناعم 🌌✨";
-                        } else {
-                            if(gramo) gramo.classList.remove("kr-gramo-playing");
-                            if(waves) waves.classList.remove("kr-waves-active");
-                            if(titleText) titleText.innerText = "⏸️ تم كتم العزف الفيروزي مؤقتاً... ☕";
+            if (document.getElementById('krRoyalPlayer') && !rPlayer) {
+                rPlayer = new YT.Player('krRoyalPlayer', {
+                    events: {
+                        'onStateChange': function(event) {
+                            const pulseText = document.getElementById("krPulseText");
+                            const consoleBox = document.querySelector(".kr-royal-music-console");
+                            
+                            if (event.data === YT.PlayerState.PLAYING) {
+                                if(pulseText) {
+                                    pulseText.innerText = "🎵 يَعْزِفُ الآنْ بِفَخَامَة... ✨";
+                                    pulseText.classList.add("kr-pulse-playing");
+                                }
+                                if(consoleBox) consoleBox.style.boxShadow = "0 0 35px rgba(0, 240, 255, 0.5), inset 0 0 20px rgba(0, 240, 255, 0.2)";
+                            } else if (event.data === YT.PlayerState.PAUSED) {
+                                if(pulseText) {
+                                    pulseText.innerText = "⏸️ تَمَّ الكَتْمُ مُؤَقَّتَاً... ☕";
+                                    pulseText.classList.remove("kr-pulse-playing");
+                                }
+                                if(consoleBox) consoleBox.style.boxShadow = "0 0 25px rgba(0, 240, 255, 0.3)";
+                            } else {
+                                if(pulseText) {
+                                    pulseText.innerText = "● بانتظار نقرة يدكِ... ☕";
+                                    pulseText.classList.remove("kr-pulse-playing");
+                                }
+                            }
                         }
                     }
-                }
-            });
+                });
+            }
         }
-        if (window.YT && window.YT.Player) { onYouTubeIframeAPIReady(); }
+        // معالجة ذكية إذا كان السيرفر محملاً مسبقاً بداخل الجوال
+        if (window.YT && window.YT.Player) { setTimeout(onYouTubeIframeAPIReady, 500); }
         </script>
         <!-- ================================================================= -->
-        <!-- نهاية اختراع الفونوجراف الملكي المصغر والفوتر النظيف المحدث -->
+        <!-- نهاية اختراع شاشة الطرب الفيروزي الملكية والفوتر النظيف المحدث -->
         <!-- ================================================================= -->
-      
+
+
 
         <div class="royal-panda-panel">
             <div class="panda-img-row">🐼</div>
