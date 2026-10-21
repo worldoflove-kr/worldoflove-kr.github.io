@@ -1593,148 +1593,7 @@ function revealSecretMessage() {
         "أبشر برزق يقر عينك، وتوفيق يبهج خاطرك، وبركة ملوكية تحل في مالك وعملك مية مية الحين! 💰📈",
         "﴿وَأَلْقَيْتُ عَلَيْكَ مَحَبَّةً مِّنِّي﴾.. محبة وقبول وهيبة ملوكية تسري في حروف اسمك أينما حللت! ✨👑",
         "اللهم اجعل صاحب الاسم مستجاب الدعوة، مبارك الخطوة، محفوظاً بعينك التي لا تنام أبداً! 🕊️🔒"
-    ];
-    window.activateAuctionSystem = function() {
-        if (isAuctionActive) return;
-        isAuctionActive = true;
-        timeLeft = 10;
-        bidValue = 4150;
-        let rawName = document.getElementById("visitorName").value.trim();
-        let displayName = rawName ? rawName : "زائرنا الملكي";
-        
-        document.getElementById("startAuctionBtn").style.display = "none";
-        document.getElementById("bidBtn").style.display = "block";
-        document.getElementById("auctionTimer").innerText = "00:10";
-        document.getElementById("auctionTimer").style.color = "#ff0077";
-        document.getElementById("auctionHeaderLabel").innerHTML = `📡 حركة المزايدة الحية:`;
-        document.getElementById("auctionLog").innerHTML = `<div style="color:#ffcc00; font-weight:bold; margin-bottom:8px;">⚡ قبل ما يفوتك القطار! زايد الحين واقنص البشارة قبل ما يخلص الوقت! ⏰</div><span style="color:#00f0ff;">${displayName}</span> فعّل العداد وبدأ التحدي الملكي! 🚀`;
-
-        auctionInterval = setInterval(() => {
-            timeLeft--;
-            document.getElementById("auctionTimer").innerText = "00:" + (timeLeft < 10 ? "0" + timeLeft : timeLeft);
-            
-            if (timeLeft > 2 && Math.random() > 0.5) {
-                bidValue += 50;
-                document.getElementById("currentBid").innerText = bidValue.toLocaleString();
-                const randomComp = competitors[Math.floor(Math.random() * competitors.length)];
-                document.getElementById("auctionLog").innerHTML = `<div style="color:#ffcc00; font-weight:bold; margin-bottom:8px;">⚡ قبل ما يفوتك القطار! زايد الحين واقنص البشارة قبل ما يخلص الوقت! ⏰</div><span style="color:#00f0ff;">${randomComp}</span> زايد بمبلغ <span style="color:#ffcc00;">${bidValue}</span> 🔥`;
-            }
-
-            if (timeLeft <= 0) {
-                clearInterval(auctionInterval);
-                document.getElementById("bidBtn").style.display = "none";
-                document.getElementById("resetAuctionBtn").style.display = "block";
-                document.getElementById("auctionTimer").innerText = "مغلق";
-                document.getElementById("auctionTimer").style.color = "#ff4444";
-                
-                let finalName = document.getElementById("visitorName").value.trim();
-                let userTitle = finalName ? finalName : "ملِك الروح";
-                const randomBlessing = krBlessings[Math.floor(Math.random() * krBlessings.length)];
-                
-                document.getElementById("auctionHeaderLabel").innerHTML = `🕊️ ✨ <span style='color:#00f0ff; font-weight:800;'>زارتنا البركة بحضوركم الملكي</span> ✨ 🕊️`;
-                document.getElementById("auctionLog").innerHTML = `
-                    <div style='color:#ffcc00; font-size:14px; font-weight:bold; margin-bottom:8px;'>📜 صك البشارة الكبرى لـ (${userTitle}) 📜</div>
-                    <div style='font-size:16px; color:#fff; font-weight:bold; background:#02050a; padding:12px; border-radius:8px; border:1px dashed #00f0ff;'>${randomBlessing}</div>
-                `;
-                
-                startDoveRain();
-                isAuctionActive = false;
-            }
-        }, 1000);
-    }
-
-    window.placeUserBid = function() {
-        if (timeLeft > 0) {
-            bidValue += 50;
-            document.getElementById("currentBid").innerText = bidValue.toLocaleString();
-            let rawName = document.getElementById("visitorName").value.trim();
-            let displayName = rawName ? rawName : "أنتِ";
-            document.getElementById("auctionLog").innerHTML = `<div style="color:#ffcc00; font-weight:bold; margin-bottom:8px;">⚡ قبل ما يفوتك القطار! زايد الحين واقنص البشارة قبل ما يخلص الوقت! ⏰</div>👑 <span style="color:#ff0077; font-weight:bold;">${displayName}</span> زادت بمبلغ البركة <span style="color:#ffcc00;">${bidValue}</span> واكتسحت المزاد! 🚀`;
-        }
-    }
-
-    window.resetAuctionSystem = function() {
-        const activeDoves = document.querySelectorAll('.falling-dove');
-        activeDoves.forEach(d => d.remove());
-        document.getElementById("currentBid").innerText = "4,150";
-        document.getElementById("auctionTimer").innerText = "مغلق 🔒";
-        document.getElementById("auctionTimer").style.color = "#fff";
-        document.getElementById("auctionHeaderLabel").innerHTML = `📡 حالة رادار البركة:`;
-        document.getElementById("auctionLog").innerHTML = `بانتظار ضغطتك الملكية لبدء المزاد وسحب البشارة الكبرى... ⏳`;
-        document.getElementById("startAuctionBtn").style.display = "block";
-        document.getElementById("resetAuctionBtn").style.display = "none";
-    }
-
-    function startDoveRain() {
-        const auctionBox = document.getElementById("krAuctionBox");
-        if (auctionBox) {
-            for (let i = 0; i < 40; i++) {
-                setTimeout(() => {
-                    const dove = document.createElement("div");
-                    dove.innerText = "🕊️";
-                    dove.className = "falling-dove";
-                    dove.style.left = Math.random() * 85 + "%";
-                    dove.style.animationDelay = Math.random() * 1.5 + "s";
-                    dove.style.fontSize = Math.random() * 12 + 22 + "px";
-                    auctionBox.appendChild(dove);
-                }, i * 80);
-            }
-        }
-    }
-})();
-
-</script>
-<!-- ================================================================= -->
-<!-- نهاية اختراع لعبة المزاد الفلكي الملكي السريع -->
-<!-- ================================================================= -->
-
- <!-- ================================================================= -->
-<!-- بداية اختراع البلورة المغناطيسية العاكسة - نسخة الفراشة المحمية الكونية -->
-<!-- ================================================================= -->
-<div class="kr-crystal-orb-container" style="text-align: center; padding: 45px 20px; background: #0b0518; border: 2px solid #b100ff; border-radius: 25px; margin: 40px auto; max-width: 450px; box-shadow: 0 0 30px rgba(177, 0, 255, 0.3); position: relative; overflow: hidden; font-family: 'Cairo', sans-serif; direction: rtl; z-index: 997;">
-    
-    <h3 style="color: #00f0ff; margin-top: 0; margin-bottom: 5px; font-weight: 800; text-shadow: 0 0 10px #00f0ff;">🔮 خزنة العشق والبلورة المغناطيسية 🔮</h3>
-    
-    <!-- عبارة الجذب الساحرة الفوق العادة المبهرة للزوار -->
-    <div style="background: linear-gradient(45deg, #1a0033, #001122); padding: 12px; border-radius: 12px; border: 1px dashed #00f0ff; margin-bottom: 20px; box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);">
-        <p style="color: #ffcc00; font-size: 14px; font-weight: bold; margin: 0; line-height: 1.6; text-shadow: 0 0 6px rgba(255, 204, 0, 0.4);">✨ خَزْنَةُ العِشْقِ الأَبَدِيَّةِ 🔮 | وازن البلورة السحرية بهاتفك الحين لتتفجر الإضاءة الصاطعة وتكشف لك عن أسرار نبضات قلبك الكبرى!</p>
-    </div>
-    
-    <p style="color: #c9b0e7; font-size: 13px; margin-bottom: 20px;">حركي هاتفكِ الحين لموازنة البلورة، وافتحي الخزنة بالنور الصاطع! ✨</p>
-
-    <!-- صندوق البلورة الفيزيائي (تأثير الإضاءة الخلفية المشعة) -->
-    <div id="orbStage" style="width: 200px; height: 200px; margin: 0 auto 25px; border-radius: 50%; background: radial-gradient(circle, #220044 0%, #05010a 100%); border: 1px solid #3d1b66; position: relative; display: flex; align-items: center; justify-content: center; transition: all 0.5s ease;">
-        
-        <!-- التوهج الخلفي الصاطع اللي بيبهر العيون -->
-        <div id="krBrightGlow" style="position: absolute; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle, rgba(0,240,255,0.8) 0%, rgba(177,0,255,0) 70%); opacity: 0; transition: all 0.4s ease; pointer-events: none; z-index: 1;"></div>
-        
-        <!-- مجسم البلورة السحرية تفاعلي باللمس والحركة -->
-        <div id="krMagicalOrb" onclick="triggerOrbByTouch()" style="font-size: 70px; cursor: pointer; z-index: 5; transition: transform 0.4s ease, filter 0.3s ease; filter: drop-shadow(0 0 15px #00f0ff); animation: orbFloat 3s ease-in-out infinite; display: inline-block;">🔮</div>
-    </div>
-
-    <!-- لوحة كشف العبارة الوجدانية والإيقونة النادرة -->
-    <div id="krSecretLovePanel" style="background: #05020a; padding: 20px; border-radius: 15px; border: 1px solid #3d1b66; margin-bottom: 25px; display: none; transform: scale(0.8); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; z-index: 10;">
-        <div id="krRareIcon" style="font-size: 50px; margin-bottom: 10px;">🦋</div>
-        <div id="krLoveText" style="font-size: 20px; color: #fff; font-weight: bold; line-height: 1.6; text-shadow: 0 0 8px rgba(255,255,255,0.5); min-height: 40px; margin-bottom: 15px;"></div>
-        
-           <!-- زر الإهداء الملكي الشغال والمضمون 100% لفتح الواتساب دغري -->
-        <a id="krShareWhatsAppBtn" href="#" target="_blank" onclick="shareLoveGift(event)" style="background: linear-gradient(45deg, #25d366, #128c7e); color: #fff; text-decoration: none; padding: 12px 20px; font-size: 14px; font-weight: bold; border-radius: 25px; cursor: pointer; transition: 0.3s; width: calc(100% - 40px); box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); display: none; margin: 0 auto; text-align: center;">
-            💌 إرسال العبارة إهداء لمن تحب الحين
-        </a>
-
-    </div>
-
-    <!-- حقل اسم الراسل عشان يروح اسمه مع الإهداء -->
-    <div id="senderNameBox" style="margin-bottom: 20px; display: none; position: relative; z-index: 5;">
-        <input type="text" id="senderName" placeholder="✍️ اكتب اسمك كـ مُرسِل للإهداء..." style="width: 85%; padding: 11px 15px; border-radius: 25px; border: 1px solid #00f0ff; background: #02050a; color: #fff; text-align: center; font-size: 14px; outline: none;">
-    </div>
-
-    <!-- زر إعادة الكرة الفلكي المكرر للعبارات دون توقف -->
-    <button id="krOrbResetBtn" onclick="resetOrbSystem()" style="background: linear-gradient(45deg, #00f0ff, #b100ff); color: #fff; border: none; padding: 12px 35px; font-size: 15px; font-weight: bold; border-radius: 30px; cursor: pointer; transition: 0.3s; box-shadow: 0 0 15px rgba(0, 240, 255, 0.3); width: 100%; display: none;">
-        🔄 أعد تدوير البلورة لفتح كلمة عشق ثانية
-    </button>
-</div>
-
+    ];   
 <!-- الحركات والمؤثرات الضوئية وحركات طيران الفراشة الملكية المشعة -->
 <style>
 @keyframes orbFloat { 0% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-10px) rotate(10deg); } 100% { transform: translateY(0px) rotate(0deg); } }
@@ -1810,49 +1669,35 @@ function revealSecretMessage() {
                     }
                 }
 
-                // جلب كلمة العشق الدافئة الحالية
-                const currentLoveMsg = krLovePhrases[activeLoveIndex];
-                if (textDisplay) textDisplay.innerText = currentLoveMsg;
+                if (textDisplay) textDisplay.innerText = krLovePhrases[activeLoveIndex];
                 activeLoveIndex = (activeLoveIndex + 1) % krLovePhrases.length;
-
-                // تحديث وصياغة الرابط المباشر بداخل الزر فوراً قبل أن يضغط الزائر!
-                let rawSender = document.getElementById("senderName") ? document.getElementById("senderName").value.trim() : "";
-                let senderName = rawSender ? rawSender : "مُحِبّ غامض";
-                
-                const fullText = `✨ 🔒 إهداء ملوكي خاص من: (${senderName})\n\n🔮 لَقَدْ فَتَحْتُ خَزْنَةَ العِشْقِ الأَبَدِيَّةِ وَظَهَرَتْ لِي هَذِهِ الكَلِمَةُ لَكِ:\n👉 "${currentLoveMsg}"\n\n👑 منصة عالم الحب world of love الملكية 👑\n🛡️ شعار صفحتنا المعتمد: [ KR ]\n\n🔗 ادخلي وافتحي البلورة السحرية وشوفي نبض قلبك الحين:\nhttps://github.io`;
-                
-                const whatsappUrl = "https://whatsapp.com" + encodeURIComponent(fullText);
-                
-                // حقن الرابط مباشرة بداخل عنصر الـ <a> لتفادي حظر المتصفحات مية مية
-                if (shareBtn) {
-                    shareBtn.href = whatsappUrl;
-                    shareBtn.style.display = "block";
-                }
 
                 if (panel) {
                     panel.style.display = "block";
                     setTimeout(() => panel.style.transform = "scale(1)", 50);
                 }
+                if (shareBtn) shareBtn.style.display = "block";
                 if (senderBox) senderBox.style.display = "block";
                 if (resetBtn) resetBtn.style.display = "block";
 
             }, 400);
         }, 800);
+    };
     window.shareLoveGift = function(e) {
         if(e) e.preventDefault();
         const textDisplay = document.getElementById("krLoveText");
         let rawSender = document.getElementById("senderName") ? document.getElementById("senderName").value.trim() : "";
-        let senderName = rawSender ? rawSender : "مُحِبّ غامض";
+        let senderName = rawSender ? rawSender : "محب غامض";
         
         if (textDisplay) {
             const loveMsg = textDisplay.innerText;
-            const fullText = `✨ 🔒 إهداء ملوكي خاص من: (${senderName})\n\n` +
-                             `🔮 لَقَدْ فَتَحْتُ خَزْنَةَ العِشْقِ الأَبَدِيَّةِ وَظَهَرَتْ لِي هَذِهِ الكَلِمَةُ لَكِ:\n` +
-                             `👉 "${loveMsg}"\n\n` +
-                             `👑 منصة عالم الحب world of love الملكية 👑\n` +
-                             `🛡️ شعار صفحتنا المعتمد: [ KR ]\n\n` +
-                             `🔗 ادخلي وافتحي البلورة السحرية وشوفي نبض قلبك الحين:\n` +
-                             `https://github.io`;
+            const fullText = "إهداء ملوكي خاص من: (" + senderName + ")\n\n" +
+                             "لقد فتحت خزنة العشق الأبدية وظهرت لي هذه الكلمة لك:\n" +
+                             "👉 " + loveMsg + "\n\n" +
+                             "👑 منصة عالم الحب world of love الملكية 👑\n" +
+                             "🛡️ شعار صفحتنا المعتمد: [ KR ]\n\n" +
+                             "🔗 ادخلي وافتحي البلورة السحرية وشوفي نبض قلبك الحين:\n" +
+                             "https://github.io";
             
             const tempTextArea = document.createElement("textarea");
             tempTextArea.value = fullText;
@@ -1876,27 +1721,7 @@ function revealSecretMessage() {
         }
     };
 
-
-     window.shareLoveGift = function(e) {
-        const textDisplay = document.getElementById("krLoveText");
-        const shareBtn = document.getElementById("krShareWhatsAppBtn");
-        let rawSender = document.getElementById("senderName") ? document.getElementById("senderName").value.trim() : "";
-        let senderName = rawSender ? rawSender : "مُحِبّ غامض";
-        
-        if (textDisplay && shareBtn) {
-            const loveMsg = textDisplay.innerText;
-            const fullText = `✨ 🔒 إهداء ملوكي خاص من: (${senderName})\n\n🔮 لَقَدْ فَتَحْتُ خَزْنَةَ العِشْقِ الأَبَدِيَّةِ وَظَهَرَتْ لِي هَذِهِ الكَلِمَةُ لَكِ:\n👉 "${loveMsg}"\n\n👑 منصة عالم الحب world of love الملكية 👑\n🛡️ شعار صفحتنا المعتمد: [ KR ]\n\n🔗 ادخلي وافتحي البلورة السحرية وشوفي نبض قلبك الحين:\nhttps://github.io`;
-            
-            const whatsappUrl = "https://whatsapp.com" + encodeURIComponent(fullText);
-            
-            // التوجيه بنفس الصفحة لتفادي أي حظر من المتصفحات نهائياً ومية بمية
-            shareBtn.href = whatsappUrl;
-            window.location.href = whatsappUrl;
-        }
-    };
-
-
-
+           
 
     window.resetOrbSystem = function() {
         const container = document.querySelector('.kr-crystal-orb-container');
@@ -1947,7 +1772,8 @@ function revealSecretMessage() {
 }
 </style>
 </body>
-</hhtml
+</html>
+
 
 
 
