@@ -1592,7 +1592,7 @@ function revealSecretMessage() {
             "بشارة كبرى وجوهرة مشعة في طريقها إليك لتسعد قلبك 💎"
         ];
 
-        window.startAuctionSystem = function() {
+            window.startAuctionSystem = function() {
             if (isAuctionActive) return;
             
             const visitorName = document.getElementById("visitorName") ? document.getElementById("visitorName").value.trim() : "";
@@ -1603,7 +1603,10 @@ function revealSecretMessage() {
 
             isAuctionActive = true;
             timeLeft = 10;
-            document.getElementById("startAuctionBtn").style.display = "none";
+            
+            // تفعيل وتوجيه معرف زر الموبايل دغري مية مية
+            const actionBtn = document.getElementById("startAuctionBtn");
+            if (actionBtn) actionBtn.style.display = "none";
             
             const logBox = document.getElementById("auctionLog");
             if(logBox) logBox.innerHTML = `<div>🚀 انطلق المزاد الملكي الحين باسم: <span style='color:#00f0ff;font-weight:bold;'>${visitorName}</span></div>`;
@@ -1622,6 +1625,7 @@ function revealSecretMessage() {
             }, 1000);
         };
 
+        
         function simulateCompetitorBid() {
             const comp = competitors[Math.floor(Math.random() * competitors.length)];
             bidValue += Math.floor(Math.random() * 150) + 50;
