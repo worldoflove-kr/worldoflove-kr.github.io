@@ -1833,7 +1833,7 @@ function revealSecretMessage() {
             }, 400);
         }, 800);
     };
-     window.shareLoveGift = function(e) {
+       window.shareLoveGift = function(e) {
         if(e) e.preventDefault();
         const textDisplay = document.getElementById("krLoveText");
         let rawSender = document.getElementById("senderName") ? document.getElementById("senderName").value.trim() : "";
@@ -1841,12 +1841,18 @@ function revealSecretMessage() {
         
         if (textDisplay) {
             const loveMsg = textDisplay.innerText;
+            
+            // تفكيك الرابط لضمان عدم اختصاره البرمجي نهائياً
+            const part1 = "https://worldoflove";
+            const part2 = "-kr.github.io/";
+            const fullLink = part1 + part2;
+            
             const fullText = "👑 منصة عالم الحب world of love الملكية 👑\n" +
                              "🛡️ شعار صفحتنا المعتمد: [ KR ]\n\n" +
                              "👉 " + loveMsg + "\n\n" +
                              "إهداء ملوكي خاص من: (" + senderName + ")\n\n" +
                              "🔗 ادخلي وافتحي البلورة السحرية وشوفي نبض قلبك الحين:\n" +
-                             "https://github.io";
+                             fullLink;
             
             const tempTextArea = document.createElement("textarea");
             tempTextArea.value = fullText;
@@ -1869,6 +1875,7 @@ function revealSecretMessage() {
             }
         }
     };
+
 
 
     window.resetOrbSystem = function() {
