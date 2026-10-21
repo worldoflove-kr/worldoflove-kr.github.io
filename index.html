@@ -216,11 +216,11 @@
         @keyframes krScroll { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
         </style>
 
-        <script>
+            <script>
         (function() {
-            // كبسولة البث الصوتي المشفرة والمفتوحة عالمياً لفك حظر متصفحات الهاتف كلياً
+            // روابط بث سحابية مباشرة ومفتوحة الأذونات عالمياً 100% لتخطي حظر السيرفرات وأنظمة الجوال فوراً
             const krFairuzPlaylist = [
-                { title: "🎻 يعزف الآن: شايف البحر شو كبير - بيانو كلاسيكي ناعم 🌌✨", url: "https://soundhelix.com" }
+                { title: "🎻 يعزف الآن: شايف البحر شو كبير - بيانو كلاسيكي ناعم 🌌✨", url: "https://archive.org" }
             ];
             let currentTrackIndex = 0;
             let royalAudio = null;
@@ -239,7 +239,7 @@
                 }
 
                 if (!isMusicPlaying) {
-                    // كسر حظر آيفون وأندرويد بالبث الصامت في أول جزء من الثانية ثم فك الكتم تلقائياً فوراً باللمس
+                    // كسر حظر أنظمة آيفون وأندرويد بالبث الصامت الفوري في أول جزء من الثانية ثم فك الكتم تلقائياً فوراً باللمس
                     royalAudio.muted = true;
                     royalAudio.play().then(() => {
                         royalAudio.muted = false;
@@ -248,7 +248,7 @@
                         if(btn) btn.innerHTML = "⏸️ كتم مؤقت";
                         if(titleText) titleText.innerText = krFairuzPlaylist[currentTrackIndex].title;
                     }).catch(err => {
-                        console.log("إعادة المحاولة عبر فك القيود التلقائي:");
+                        console.log("تمرير سحابي بديل وفك القيود تلقائياً:");
                         royalAudio.muted = false;
                         royalAudio.play();
                         isMusicPlaying = true;
@@ -275,6 +275,7 @@
             };
         })();
         </script>
+
         <!-- ================================================================= -->
         <!-- نهاية اختراع كونسول الطرب الفيروزي الملكي والفوتر النظيف المحدث -->
         <!-- ================================================================= -->
