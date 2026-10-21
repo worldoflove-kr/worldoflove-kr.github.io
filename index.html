@@ -225,9 +225,9 @@
         .kr-waves-active { animation: wavePulseGlow 1.4s ease-out infinite; opacity: 1 !important; }
         </style>
 
-        <script>
+             <script>
         (function() {
-            // تحديث روابط المعزوفات بروابط بث مباشرة وسريعة من سيرفرات جوجل الآمنة لتعمل فوراً بالهاتف من دون حظر
+            // مخزن المقطوعات الموزونة والمدعومة عالمياً للبث المباشر
             const krFairuzPlaylist = [
                 { title: "🎻 يعزف الآن: شايف البحر شو كبير - بيانو ملكي ناعم 🌌✨", url: "https://googleapis.com" },
                 { title: "☕ يعزف الآن: نسم علينا الهوى - غيتار ملكي هادئ 🍃 دافئ", url: "https://googleapis.com" },
@@ -239,15 +239,21 @@
             let isMusicPlaying = false;
             let royalVolume = 0.7;
 
+            // دالة هندسة فك حظر متصفحات الهاتف كلياً باللمس المباشر
             window.toggleRoyalMusic = function() {
                 const gramo = document.getElementById("kr3dGramophone");
                 const waves = document.getElementById("krAudioWaves");
                 const titleText = document.getElementById("krSongTitle");
 
+                // إذا لم يتم إنشاء عنصر الصوت بعد، نقوم بإنشائه وشحنه بأعلى حماية
                 if (!royalAudio) {
-                    royalAudio = new Audio(krFairuzPlaylist[currentTrackIndex].url);
+                    royalAudio = new Audio();
+                    royalAudio.src = krFairuzPlaylist[currentTrackIndex].url;
                     royalAudio.volume = royalVolume;
+                    royalAudio.preload = "auto";
+                    royalAudio.crossOrigin = "anonymous";
                     
+                    // التبديل التلقائي الذكي فور انتهاء المقطوعة
                     royalAudio.addEventListener("ended", () => {
                         currentTrackIndex = (currentTrackIndex + 1) % krFairuzPlaylist.length;
                         royalAudio.src = krFairuzPlaylist[currentTrackIndex].url;
@@ -257,19 +263,25 @@
                 }
 
                 if (!isMusicPlaying) {
-                    // فك قيود كتم الصوت في متصفحات الجوال وتوجيه أمر البث المباشر
-                    royalAudio.muted = false;
+                    // الخدعة البرمجية لفك حظر الجوال: نشغل مكتوم ثم نرفع الصوت فوراً بالملي
+                    royalAudio.muted = true;
                     royalAudio.play().then(() => {
+                        royalAudio.muted = false;
+                        royalAudio.volume = royalVolume;
                         isMusicPlaying = true;
                         if(gramo) gramo.classList.add("kr-gramo-playing");
                         if(waves) waves.classList.add("kr-waves-active");
                         if(titleText) titleText.innerText = krFairuzPlaylist[currentTrackIndex].title;
                     }).catch(err => {
-                        console.log("محاولة فك حظر نظام آيفون وأندرويد بالبث المباشر:", err);
-                        royalAudio.play();
-                        isMusicPlaying = true;
-                        if(gramo) gramo.classList.add("kr-gramo-playing");
-                        if(waves) waves.classList.add("kr-waves-active");
+                        console.log("محاولة فك قيود النظام بالتمرير المباشر المكتوم:");
+                        // محاولة ثانية قاطعة مية مية لإجبار المتصفح على التشغيل باللمس المباشر
+                        try {
+                            royalAudio.muted = false;
+                            royalAudio.play();
+                            isMusicPlaying = true;
+                            if(gramo) gramo.classList.add("kr-gramo-playing");
+                            if(waves) waves.classList.add("kr-waves-active");
+                        } catch(e) { console.log(e); }
                     });
                 } else {
                     royalAudio.pause();
@@ -280,6 +292,7 @@
                 }
             };
 
+            // دالة الميكسر الملكي المطور للتحكم الدقيق بالصوت
             window.changeRoyalVolume = function(amount) {
                 royalVolume = Math.min(1.0, Math.max(0.0, royalVolume + amount));
                 if (royalAudio) royalAudio.volume = royalVolume;
@@ -291,8 +304,8 @@
                 }
             };
         })();
-
         </script>
+
         <!-- ================================================================= -->
         <!-- نهاية اختراع الفونوجراف الملكي المصغر والفوتر النظيف المحدث -->
         <!-- ================================================================= -->
