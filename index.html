@@ -184,31 +184,28 @@
             <div class="royal-clock" id="live-clock" style="font-size: 14.5px !important; color: #ffffff !important; text-shadow: none !important; font-weight: 500 !important;">📅 جاري تحميل التوقيت الملكي...</div>
         </div>
 
-
-          <!-- ================================================================= -->
-        <!-- بداية اختراع الكونسول الصوتي الملكي المطور بالمؤشر الرقمي للنسبة -->
         <!-- ================================================================= -->
-        <div class="kr-royal-audio-mixer" style="text-align: center; padding: 18px 15px; background: radial-gradient(circle, #130638 0%, #040108 100%); border: 1px solid #00f0ff; border-radius: 20px; margin: 20px auto; max-width: 320px; box-shadow: 0 0 20px rgba(0, 240, 255, 0.25); position: relative; font-family: 'Cairo', sans-serif; direction: rtl; z-index: 999;">
+        <!-- بداية اختراع الكونسول الصوتي الملكي المطور بالمشغل المدمج والميكسر -->
+        <!-- ================================================================= -->
+        <div class="kr-royal-music-console" style="text-align: center; padding: 18px 15px; background: radial-gradient(circle, #130638 0%, #040108 100%); border: 1px solid #00f0ff; border-radius: 20px; margin: 20px auto; max-width: 320px; box-shadow: 0 0 20px rgba(0, 240, 255, 0.25); position: relative; font-family: 'Cairo', sans-serif; direction: rtl; z-index: 999;">
             
-            <h3 style="color: #ffd700; margin-top: 0; margin-bottom: 5px; font-weight: 800; text-shadow: 0 0 10px #ffd700; font-size: 13px;">🌌 كُونْسُولُ الطَّرَبِ الفَيْرُوزِيِّ Mَلَكِيِّ 🎼</h3>
+            <h3 style="color: #ffd700; margin-top: 0; margin-bottom: 5px; font-weight: 800; text-shadow: 0 0 10px #ffd700; font-size: 13px;">🌌 كُونْسُولُ الطَّرَبِ الفَيْرُوزِيِّ المَلَكِيِّ 🎼</h3>
             
             <!-- شريط نبض المعزوفة المضيء -->
-            <div style="background: rgba(0,0,0,0.5); border: 1px dashed rgba(0,240,255,0.3); padding: 5px 10px; border-radius: 15px; margin-bottom: 15px; overflow: hidden; white-space: nowrap;">
-                <span id="krAudioTrackTitle" style="color: #00f0ff; font-size: 11px; font-weight: bold; text-shadow: 0 0 5px #00f0ff; display: inline-block; animation: krScroll 12s linear infinite;">🎵 انقري لتفجير عزف جارة القمر فيروز الفخم الحين... ✨</span>
+            <div style="background: rgba(0,0,0,0.5); border: 1px dashed rgba(0,240,255,0.3); padding: 5px 10px; border-radius: 15px; margin-bottom: 12px; overflow: hidden; white-space: nowrap;">
+                <span id="krAudioTrackTitle" style="color: #00f0ff; font-size: 11px; font-weight: bold; text-shadow: 0 0 5px #00f0ff; display: inline-block; animation: krScroll 12s linear infinite;">🎵 اكبسي زر التشغيل الأحمر بالفيديو بالأسفل لإطلاق العزف الفيروزي... ✨</span>
             </div>
 
             <!-- أزرار التحكم النيون والمؤشر الرقمي المشع لنسبة الصوت -->
-            <div style="display: flex; justify-content: center; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); padding: 6px 12px; border-radius: 30px; border: 1px solid rgba(0,240,255,0.15);">
-                <button onclick="window.changeKrVol(-0.1)" style="background: rgba(255,255,255,0.05); color: #00f0ff; border: 1px solid rgba(0,240,255,0.3); width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 12px; font-weight: bold; outline: none; box-shadow: 0 0 5px rgba(0,240,255,0.1); user-select: none;">🔉</button>
-                
+            <div style="display: flex; justify-content: center; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); padding: 6px 12px; border-radius: 30px; border: 1px solid rgba(0,240,255,0.15); margin-bottom: 15px;">
+                <button onclick="window.changeKrVol(-10)" style="background: rgba(255,255,255,0.05); color: #00f0ff; border: 1px solid rgba(0,240,255,0.3); width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 12px; font-weight: bold; outline: none; box-shadow: 0 0 5px rgba(0,240,255,0.1); user-select: none;">🔉</button>
                 <span id="krVolumePercent" style="color: #fff; font-size: 11px; font-weight: bold; min-width: 60px; text-shadow: 0 0 5px rgba(255,255,255,0.3);">صوت: 80%</span>
-                
-                <button onclick="window.changeKrVol(0.1)" style="background: rgba(255,255,255,0.05); color: #00f0ff; border: 1px solid rgba(0,240,255,0.3); width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 12px; font-weight: bold; outline: none; box-shadow: 0 0 5px rgba(0,240,255,0.1); user-select: none;">🔊</button>
+                <button onclick="window.changeKrVol(10)" style="background: rgba(255,255,255,0.05); color: #00f0ff; border: 1px solid rgba(0,240,255,0.3); width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 12px; font-weight: bold; outline: none; box-shadow: 0 0 5px rgba(0,240,255,0.1); user-select: none;">🔊</button>
             </div>
 
-            <!-- زر التشغيل الملكي المنفصل بالأسفل لمظهر قمة في البرستيج -->
-            <div style="margin-top: 15px;">
-                <button onclick="window.toggleKrMusic()" id="krPlayBtn" style="background: linear-gradient(45deg, #00f0ff, #b100ff); color: #fff; border: none; padding: 10px 25px; border-radius: 20px; font-size: 12px; font-weight: bold; cursor: pointer; box-shadow: 0 0 12px rgba(0,240,255,0.4); outline: none; width: 100%; max-width: 200px; user-select: none;">▶️ تشغيل العزف</button>
+            <!-- شاشة البث المصغرة المعتمدة من يوتيوب لكسر حظر أنظمة الجوال كلياً -->
+            <div style="margin: 0 auto; width: 100%; max-width: 280px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(0, 240, 255, 0.3); box-shadow: 0 0 15px rgba(0,240,255,0.2);">
+                <iframe id="krRoyalPlayer" src="https://youtube.com" style="width: 100%; height: 60px; border: none; display: block;" allow="autoplay; encrypted-media"></iframe>
             </div>
         </div>
 
@@ -217,65 +214,43 @@
         </style>
 
         <script>
-        (function() {
-            // كبسولة بث سحابية مباشرة ومحمية 100% برابط صوتي قوي وعالي الوضوح لكسر قيود الهواتف كلياً
-            const krFairuzPlaylist = [
-                { title: "🔬 يَعْزِفُ الآنْ: لَوْحَةُ الطَّرَبِ الكَوْنِيَّةِ - بِبَعْثٍ مُبَاشِرْ 🌌✨", url: "https://soundhelix.com" }
-            ];
-            let currentTrackIndex = 0;
-            let royalAudio = null;
-            let isMusicPlaying = false;
-            let royalVolume = 0.8;
+        // حقن واجهة مشغل يوتيوب العالمي التفاعلية المربوطة بالميكسر
+        var tag = document.createElement('script');
+        tag.src = "https://youtube.com";
+        var firstScriptTag = document.getElementsByTagName('script');
+        if(firstScriptTag && firstScriptTag.parentNode) { firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); }
 
-            window.toggleKrMusic = function() {
-                const btn = document.getElementById("krPlayBtn");
-                const titleText = document.getElementById("krAudioTrackTitle");
+        var rPlayer;
+        var royalVolume = 80;
 
-                if (!royalAudio) {
-                    royalAudio = new Audio(krFairuzPlaylist[currentTrackIndex].url);
-                    royalAudio.volume = royalVolume;
-                    royalAudio.crossOrigin = "anonymous";
-                    royalAudio.preload = "auto";
+        function onYouTubeIframeAPIReady() {
+            rPlayer = new YT.Player('krRoyalPlayer', {
+                events: {
+                    'onReady': function(event) { event.target.setVolume(royalVolume); },
+                    'onStateChange': function(event) {
+                        const titleText = document.getElementById("krAudioTrackTitle");
+                        if (event.data === YT.PlayerState.PLAYING) {
+                            if(titleText) titleText.innerText = "🎻 يعزف الآن: شايف البحر شو كبير - بيانو ملكي ناعم 🌌✨";
+                        } else {
+                            if(titleText) titleText.innerText = "⏸️ تم كتم العزف الفيروزي مؤقتاً... ☕";
+                        }
+                    }
                 }
+            });
+        }
+        if (window.YT && window.YT.Player) { onYouTubeIframeAPIReady(); }
 
-                if (!isMusicPlaying) {
-                    royalAudio.muted = true;
-                    royalAudio.play().then(() => {
-                        royalAudio.muted = false;
-                        royalAudio.volume = royalVolume;
-                        isMusicPlaying = true;
-                        if(btn) btn.innerHTML = "⏸️ كتم مؤقت";
-                        if(titleText) titleText.innerText = krFairuzPlaylist[currentTrackIndex].title;
-                    }).catch(err => {
-                        console.log("تمرير الإشارة الصوتية المباشرة بجدار الحماية:");
-                        royalAudio.muted = false;
-                        royalAudio.volume = royalVolume;
-                        royalAudio.play();
-                        isMusicPlaying = true;
-                        if(btn) btn.innerHTML = "⏸️ كتم مؤقت";
-                    });
-                } else {
-                    royalAudio.pause();
-                    isMusicPlaying = false;
-                    if(btn) btn.innerHTML = "▶️ تشغيل العزف";
-                    if(titleText) titleText.innerText = "⏸️ تم كتم العزف الفيروزي برواقة... ☕";
-                }
-            };
-
-            window.changeKrVol = function(amt) {
-                royalVolume = Math.min(1.0, Math.max(0.0, royalVolume + amt));
-                if (royalAudio) royalAudio.volume = royalVolume;
-                
-                const volDisplay = document.getElementById("krVolumePercent");
-                if (volDisplay) {
-                    const percent = Math.round(royalVolume * 100);
-                    volDisplay.innerText = "صوت: " + percent + "%";
-                }
-            };
-        })();
+        window.changeKrVol = function(amount) {
+            royalVolume = Math.min(100, Math.max(0, royalVolume + amount));
+            if (rPlayer && typeof rPlayer.setVolume === 'function') {
+                rPlayer.setVolume(royalVolume);
+            }
+            const volDisplay = document.getElementById("krVolumePercent");
+            if (volDisplay) volDisplay.innerText = "صوت: " + royalVolume + "%";
+        };
         </script>
         <!-- ================================================================= -->
-        <!-- نهاية اختراع كونسول الطرب الفيروزي الملكي والفوتر النظيف المحدث -->
+        <!-- نهاية اختراع كونسول الطرب الملكي المطور والفوتر النظيف المحدث -->
         <!-- ================================================================= -->
 
             
