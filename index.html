@@ -287,18 +287,37 @@
             });
         };
 
-        window.toggleRoyalMusic = function() {
-            if (!royalPlayer || typeof royalPlayer.playVideo !== 'function') {
+                window.toggleRoyalMusic = function() {
+            const gramo = document.getElementById("kr3dGramophone");
+            const waves = document.getElementById("krAudioWaves");
+            const titleText = document.getElementById("krSongTitle");
+
+            // فحص جاهزية مشغل يوتيوب العالمي بداخل الهاتف
+            if (royalPlayer && typeof royalPlayer.playVideo === 'function') {
+                var playerState = royalPlayer.getPlayerState();
+                
+                if (playerState !== YT.PlayerState.PLAYING) {
+                    // أمر إجباري لفك الحظر وبدء البث وتشغيل التدوير والموجات
+                    royalPlayer.playVideo();
+                    isMusicPlaying = true;
+                    if(gramo) gramo.classList.add("kr-gramo-playing");
+                    if(waves) waves.classList.add("kr-waves-active");
+                    if(titleText) titleText.innerText = krFairuzPlaylist[currentTrackIndex].title;
+                } else {
+                    // أمر الكتم المؤقت وإيقاف الحركة برواقة
+                    royalPlayer.pauseVideo();
+                    isMusicPlaying = false;
+                    if(gramo) gramo.classList.remove("kr-gramo-playing");
+                    if(waves) waves.classList.remove("kr-waves-active");
+                    if(titleText) titleText.innerText = "⏸️ تم كتم العزف الفيروزي مؤقتاً برواقة... ☕";
+                }
+            } else {
+                // تدارك فوري لربط السيرفر وتنشيط البث تلقائياً باللمس
                 window.onYouTubeIframeAPIReady();
                 setTimeout(toggleRoyalMusic, 500);
-                return;
-            }
-            if (!isMusicPlaying) {
-                royalPlayer.playVideo();
-            } else {
-                royalPlayer.pauseVideo();
             }
         };
+
 
         window.changeRoyalVolume = function(amount) {
             royalVolume = Math.min(100, Math.max(0, royalVolume + amount));
