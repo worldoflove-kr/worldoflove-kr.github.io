@@ -192,11 +192,11 @@
             
             <h3 style="color: #ffd700; margin-top: 0; margin-bottom: 5px; font-weight: 800; text-shadow: 0 0 10px #ffd700; font-size: 14px; letter-spacing: 0.5px;">🌌 شَاشَةُ الطَّرَبِ الفَيْرُوزِيِّ المَلَكِيَّةِ 🎼</h3>
             
-            <p style="color: #00f0ff; font-size: 11px; margin-bottom: 15px; text-shadow: 0 0 5px rgba(0,240,255,0.4);">انقري على زر التشغيل الأحمر بقلب الشاشة لتفجير العزف الساحر! ✨</p>
+            <p style="color: #00f0ff; font-size: 11px; margin-bottom: 15px; text-shadow: 0 0 5px rgba(0,240,255,0.4);">انقري على زر التشغيل بقلب الشاشة لتفجير العزف الساحر! ✨</p>
 
-            <!-- مسرح مشغل يوتيوب الرسمي الفخم والمصمم للموبايل -->
-            <div style="margin: 0 auto 15px; width: 100%; max-width: 290px; border-radius: 15px; overflow: hidden; border: 2px solid #b100ff; box-shadow: 0 0 20px rgba(177, 0, 255, 0.25); background: #000; height: 165px; position: relative;">
-                <iframe id="krRoyalPlayer" src="https://youtube.com" style="width: 100%; height: 100%; border: none; display: block;" allow="autoplay; encrypted-media"></iframe>
+            <!-- مسرح البث المطور المحمي والمفتوح 100% لتخطي حظر أنظمة الجوال والآيفون كلياً -->
+            <div style="margin: 0 auto 15px; width: 100%; max-width: 290px; border-radius: 15px; overflow: hidden; border: 2px solid #b100ff; box-shadow: 0 0 20px rgba(177, 0, 255, 0.25); background: #000; height: 165px;">
+                <iframe id="krRoyalPlayer" src="https://youtube-nocookie.com" style="width: 100%; height: 100%; border: none; display: block;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
 
             <!-- لوحة نبضات موجات النيون التفاعلية الذكية -->
@@ -210,54 +210,10 @@
         @keyframes blinkPulse { from { opacity: 0.4; transform: scale(0.98); } to { opacity: 1; transform: scale(1.02); } }
         .kr-pulse-playing { color: #00f0ff !important; text-shadow: 0 0 10px #00f0ff !important; font-weight: 900 !important; }
         </style>
-
-        <script>
-        // ربط نبض الشاشة البرمجية والنيون بتفاعل مشغل جوجل (يوتيوب) تلقائياً بالهاتف
-        if (!window.YT) {
-            var tag = document.createElement('script');
-            tag.src = "https://youtube.com";
-            var firstScriptTag = document.getElementsByTagName('script');
-            if (firstScriptTag && firstScriptTag.parentNode) { firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); }
-        }
-
-        var rPlayer;
-        function onYouTubeIframeAPIReady() {
-            if (document.getElementById('krRoyalPlayer') && !rPlayer) {
-                rPlayer = new YT.Player('krRoyalPlayer', {
-                    events: {
-                        'onStateChange': function(event) {
-                            const pulseText = document.getElementById("krPulseText");
-                            const consoleBox = document.querySelector(".kr-royal-music-console");
-                            
-                            if (event.data === YT.PlayerState.PLAYING) {
-                                if(pulseText) {
-                                    pulseText.innerText = "🎵 يَعْزِفُ الآنْ بِفَخَامَة... ✨";
-                                    pulseText.classList.add("kr-pulse-playing");
-                                }
-                                if(consoleBox) consoleBox.style.boxShadow = "0 0 35px rgba(0, 240, 255, 0.5), inset 0 0 20px rgba(0, 240, 255, 0.2)";
-                            } else if (event.data === YT.PlayerState.PAUSED) {
-                                if(pulseText) {
-                                    pulseText.innerText = "⏸️ تَمَّ الكَتْمُ مُؤَقَّتَاً... ☕";
-                                    pulseText.classList.remove("kr-pulse-playing");
-                                }
-                                if(consoleBox) consoleBox.style.boxShadow = "0 0 25px rgba(0, 240, 255, 0.3)";
-                            } else {
-                                if(pulseText) {
-                                    pulseText.innerText = "● بانتظار نقرة يدكِ... ☕";
-                                    pulseText.classList.remove("kr-pulse-playing");
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        }
-        // معالجة ذكية إذا كان السيرفر محملاً مسبقاً بداخل الجوال
-        if (window.YT && window.YT.Player) { setTimeout(onYouTubeIframeAPIReady, 500); }
-        </script>
         <!-- ================================================================= -->
         <!-- نهاية اختراع شاشة الطرب الفيروزي الملكية والفوتر النظيف المحدث -->
         <!-- ================================================================= -->
+
 
 
 
