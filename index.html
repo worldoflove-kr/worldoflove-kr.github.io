@@ -185,29 +185,74 @@
         </div>
 
 
-             <!-- ================================================================= -->
-        <!-- بداية اختراع كونسول الطرب الملكي بمشغل البث التفاعلي المفتوح -->
+              <!-- ================================================================= -->
+        <!-- بداية اختراع الكونسول الصوتي الملكي المطور لفك حظر الجوال كلياً -->
         <!-- ================================================================= -->
-        <div class="kr-royal-music-console" style="text-align: center; padding: 15px; background: radial-gradient(circle, #130638 0%, #040108 100%); border: 1px solid #00f0ff; border-radius: 20px; margin: 20px auto; max-width: 320px; box-shadow: 0 0 25px rgba(0, 240, 255, 0.3); position: relative; font-family: 'Cairo', sans-serif; direction: rtl; z-index: 999;">
+        <div class="kr-royal-audio-mixer" style="text-align: center; padding: 18px 15px; background: radial-gradient(circle, #130638 0%, #040108 100%); border: 1px solid #00f0ff; border-radius: 20px; margin: 20px auto; max-width: 320px; box-shadow: 0 0 20px rgba(0, 240, 255, 0.25); position: relative; font-family: 'Cairo', sans-serif; direction: rtl; z-index: 999;">
             
             <h3 style="color: #ffd700; margin-top: 0; margin-bottom: 5px; font-weight: 800; text-shadow: 0 0 10px #ffd700; font-size: 13px;">🌌 كُونْسُولُ الطَّرَبِ الفَيْرُوزِيِّ المَلَكِيِّ 🎼</h3>
             
             <!-- شريط نبض المعزوفة المضيء -->
             <div style="background: rgba(0,0,0,0.5); border: 1px dashed rgba(0,240,255,0.3); padding: 5px 10px; border-radius: 15px; margin-bottom: 15px; overflow: hidden; white-space: nowrap;">
-                <span id="krAudioTrackTitle" style="color: #00f0ff; font-size: 11px; font-weight: bold; text-shadow: 0 0 5px #00f0ff; display: inline-block; animation: krScroll 15s linear infinite;">🎵 اكبسي زر التشغيل داخل الشاشة بالأسفل لإطلاق عزف جارة القمر فيروز الفخم... ✨</span>
+                <span id="krAudioTrackTitle" style="color: #00f0ff; font-size: 11px; font-weight: bold; text-shadow: 0 0 5px #00f0ff; display: inline-block; animation: krScroll 12s linear infinite;">🎵 انقري لتفجير عزف جارة القمر فيروز الفخم الحين... ✨</span>
             </div>
 
-            <!-- مسرح البث المطور المحمي والمفتوح 100% لكسر حظر الهاتف كلياً -->
-            <div style="margin: 0 auto 5px; width: 100%; max-width: 280px; border-radius: 12px; overflow: hidden; border: 1px solid #b100ff; box-shadow: 0 0 15px rgba(177, 0, 255, 0.2); background: #000; height: 120px;">
-                <iframe id="krRoyalPlayer" src="https://youtube.com" style="width: 100%; height: 100%; border: none; display: block;" allow="autoplay; encrypted-media"></iframe>
+            <!-- زر التشغيل النيوني الملكي الفخم لفك حظر الجوال كلياً -->
+            <div style="margin: 10px auto;">
+                <button onclick="window.toggleKrMusic()" id="krPlayBtn" style="background: linear-gradient(45deg, #00f0ff, #b100ff); color: #fff; border: none; padding: 10px 30px; border-radius: 25px; font-size: 13px; font-weight: bold; cursor: pointer; box-shadow: 0 0 15px rgba(0,240,255,0.5); outline: none; width: 100%; max-width: 220px; transition: all 0.3s ease;">▶️ تشغيل العزف</button>
             </div>
         </div>
 
         <style>
         @keyframes krScroll { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
         </style>
+
+        <script>
+        (function() {
+            // استخدام رابط بث مباشر ومفتوح الأذونات 100% من سيرفرات جوجل المعتمدة بجميع الهواتف والبلدان
+            const krFairuzPlaylist = [
+                { title: "🎻 يعزف الآن: شايف البحر شو كبير - بيانو كلاسيكي ناعم 🌌✨", url: "https://google.com" }
+            ];
+            let currentTrackIndex = 0;
+            let royalAudio = null;
+            let isMusicPlaying = false;
+
+            window.toggleKrMusic = function() {
+                const btn = document.getElementById("krPlayBtn");
+                const titleText = document.getElementById("krAudioTrackTitle");
+
+                if (!royalAudio) {
+                    royalAudio = new Audio(krFairuzPlaylist[currentTrackIndex].url);
+                    royalAudio.crossOrigin = "anonymous";
+                    royalAudio.preload = "auto";
+                }
+
+                if (!isMusicPlaying) {
+                    // كسر حظر الجوال بالتشغيل المكتوم لأول جزء من الثانية ثم فك الكتم فوراً باللمس البشري
+                    royalAudio.muted = true;
+                    royalAudio.play().then(() => {
+                        royalAudio.muted = false;
+                        isMusicPlaying = true;
+                        if(btn) btn.innerHTML = "⏸️ كتم مؤقت";
+                        if(titleText) titleText.innerText = krFairuzPlaylist[currentTrackIndex].title;
+                    }).catch(err => {
+                        console.log("تمرير الإشارة الصوتية المباشرة:");
+                        royalAudio.muted = false;
+                        royalAudio.play();
+                        isMusicPlaying = true;
+                        if(btn) btn.innerHTML = "⏸️ كتم مؤقت";
+                    });
+                } else {
+                    royalAudio.pause();
+                    isMusicPlaying = false;
+                    if(btn) btn.innerHTML = "▶️ تشغيل العزف";
+                    if(titleText) titleText.innerText = "⏸️ تم كتم العزف الفيروزي برواقة... ☕";
+                }
+            };
+        })();
+        </script>
         <!-- ================================================================= -->
-        <!-- نهاية اختراع كونسول الطرب الملكي المطور والفوتر النظيف المحدث -->
+        <!-- نهاية اختراع كونسول الطرب الفيروزي الملكي والفوتر النظيف المحدث -->
         <!-- ================================================================= -->
 
             
