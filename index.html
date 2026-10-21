@@ -1546,255 +1546,182 @@ function revealSecretMessage() {
         </button>
     </div>
 </div>
+    <!-- المؤثرات الحركية وتطاير طيور الحمام الأبيض -->
+    <style>
+    @keyframes doveFall {
+        0% { transform: translateY(-50px) translateX(0) scale(0.6); opacity: 0; }
+        15% { opacity: 1; }
+        100% { transform: translateY(100vh) translateX(100px) scale(1.2); opacity: 0; }
+    }
+    .falling-dove {
+        position: fixed;
+        top: -50px;
+        font-size: 28px;
+        z-index: 99999;
+        pointer-events: none;
+        animation: doveFall 4s linear forwards;
+    }
+    .kr-flash-effect {
+        animation: krFlash 0.5s ease-out 2;
+    }
+    @keyframes krFlash {
+        0% { background-color: transparent; }
+        50% { background-color: rgba(0, 240, 255, 0.2); }
+        100% { background-color: transparent; }
+    }
+    </style>
 
-<!-- المؤثرات الحركية وتطاير طيور الحمام الأبيض -->
-<style>
-@keyframes auctionFloat { 0% { transform: translateY(0px) scale(1); } 50% { transform: translateY(-12px) scale(1.05); } 100% { transform: translateY(0px) scale(1); } }
-@keyframes auctionGlow { from { filter: drop-shadow(0 0 10px #ffcc00) drop-shadow(0 0 20px #00f0ff); } to { filter: drop-shadow(0 0 25px #ff0077) drop-shadow(0 0 40px #b100ff); } }
-@keyframes doveFall { 0% { transform: translateY(-50px) translateX(0px) scale(0.5); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(450px) translateX(50px) scale(1.1); opacity: 0; } }
-.falling-dove { position: absolute; color: #fff; font-size: 26px; z-index: 2; pointer-events: none; animation: doveFall 3s ease-in-out infinite; filter: drop-shadow(0 0 8px rgba(255,255,255,0.6)); }
-</style>
-<script>
-(function() {
-    let bidValue = 4150;
-    let timeLeft = 10;
-    let auctionInterval;
-    let isAuctionActive = false;
-    const competitors = ["الشيخ خالد الوجيه 👑", "صاحب السمو بمشعل 🌟", "أبو راشد الفخم 🦅", "المستشار الملكي KR 🐼", "سلطان البرستيج ✨"];
+    <script>
+    (function() {
+        let bidValue = 4150;
+        let timeLeft = 10;
+        let auctionInterval;
+        let isAuctionActive = false;
 
-    const krBlessings = [
-        "﴿وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَىٰ﴾ 🕊️✨",
-        "يا صاحب الاسم الكريم.. أبشر بفرجٍ قريب، ورزقٍ وفير، وراحة بال تسكن قلبك وعائلتك الكريمة بأمر الله! 🤲💖",
-        "﴿إِنَّ مَعَ الْعُسْرِ يُسْرًا﴾.. ضاقت فلما استحكمت حلقاتها فُرجت، أبشر بالفتح المبين واليسر العاجل! 🌟🚪",
-        "اللهم صبّ على صاحب هذا الاسم من بركات السماء وخيرات الأرض صبّاً صبّاً، ولا تجعل عيشه كدّاً كدّاً! 🕊️ رزق مبارك!",
-        "﴿وَفِي السَّمَاءِ رِزْقُكُمْ وَمَا تُوعَدُونَ﴾.. حظك القادم مليء بالوفرة والخيرات الصافية التي تثلج صدرك! 🌌💎",
-        "أبشر باستجابة دعوةٍ ألححت بها كثيراً.. سيعوضك الله عوضاً ينسيك كل ما مضى من تعب كوني! 🔒💞",
-        "﴿إِنَّا فَتَحْنَا لَكَ فَتْحًا مُّبِينًا﴾.. بوابات الرزق الواسع والتوفيق الملوكي تنفتح لك الآن مية مية! 🕊️👑",
-        "اللهم ارفع قدر صاحب هذا الاسم، ويسر أمره، واجعل التوفيق والنجاح حليفه في كل خطوة يخطوها! 🛡️✨",
-        "﴿يَأْتِ بِهَا اللَّهُ إِنَّ اللَّهَ لَطِيفٌ خَبِيرٌ﴾.. بشارة سرية كبرى وجوهرة مشعة في طريقها إليك لتسعد قلبك! 🔮🌟",
-        "أبشر ببركة في المال، وصحة في الجسد، وأمان مطلق يحيط بروحك الطاهرة من كل جانب! 🐼💞",
-        "﴿فَاسْتَجَبْنَا لَهُ وَنَجَّيْنَاهُ مِنَ الْغَمِّ﴾.. فرج كربك، وزال همك، وبدأت مصفوفة طاقة الفرح والسعادة الحين! ⚡🕊️",
-        "يا رب افتح لصاحب الاسم أبواب فضلك، وجمل مستقبله بالخير والأمان والمصداقية الكبرى الفوق العادة! 💎🚪",
-        "﴿وَأُفَوِّضُ أَمْرِي إِلَى اللَّهِ﴾.. من فوض أمره للملك كفاه، أبشر بكفاية ورعاية وتدبير رباني مدهش! ✨🔒",
-        "اللهم سخر لصاحب هذا الاسم الأرض ومن عليها، وافتح له قلوب العباد بالقبول والمحبة والهيبة الملوكية! 👑🦁",
-        "﴿فَدَعَا رَبَّهُ أَنِّي مَغْلُوبٌ فَانتَصِرْ﴾.. أبشر بنصر مبين وجبر خاطر يهز أركان قلبك فرحاً ووقاراً! 🛡️⚡",
-        "أبشر بحديث غيبي يسرك، وخبر طال انتظاره يأتيك دغري مية مية ليسعد قلبك الملوكي الفخم! 📡💖",
-        "﴿قَالَ قَدْ أُوتِيتَ سُؤْلَكَ يَا مُوسَىٰ﴾.. كل أمنياتك المعلقة في سمائنا الكونية الحين تقترب لتصبح حقيقة! 🌌🔮",
-        "اللهم اجعل صاحب الاسم من أصحاب اليمين، ومن المقربين، وممن تتنزل عليهم السكينة والبركة الدائمة! 🕊️✨",
-        "﴿وَاصْبِرْ لِحُكْمِ رَبِّكَ فَإِنَّكَ بِأَعْيُنِنَا﴾.. أنت في رعاية الملك وصونه، نم قرير العين فبشارات الخير قادمة! 👁️🌟",
-        "أبشر بتيسير أمر عسير، وانفراج ضيق كوني، وتدفق أموال بركة ورزق وفير يغمر حياتك الحين! 🕊️💰",
-        "﴿وَكَانَ فَضْلُ اللَّهِ عَلَيْكَ عَظِيمًا﴾.. فضل الله عظيم، وعطاؤه مدهش، وقادم أيامك مليء بالمسرات الكبرى! 👑✨",
-        "اللهم ارزق صاحب هذا الاسم رزقاً حلالاً طيباً مباركاً فيه من حيث لا يحتسب ولا يدري! 🌾🕊️",
-        "﴿فَسَنُيَسِّرُهُ لِلْيُسْرَىٰ﴾.. طرقك الحين خضراء ميسرة، والنجاح حليفك بإذن الفتاح العليم! 🌿🚀",
-        "أبشر بنفحة رحمات وتيسير، وسعادة تملأ أرجاء ديوانيتك وبيتك الفخم هذا المساء برواقة تامة! ☕💞",
-        "﴿لَا تَخَفْ وَلَا تَحْزَنْ إِنَّا مُنَجُّوكَ﴾.. أمان مطلق وثقة ملوكية تحرسك من كل مكروه وسوء طاقي! 🔒🛡️",
-        "اللهم ارزق صاحب هذا الاسم طمأنينة لا تزول، وراحة لا تنتهي، وجبر خاطر كريم يليق بكرمك يا الله! 🤲💖",
-        "﴿إِنَّ رَبِّي لَطِيفٌ لِّمَا يَشَاءُ﴾.. بلطف خفي يدبر الله أمرك، ويجمعك بأمنياتك الغالية قريباً جداً! 🔮✨",
-        "أبشر برزق يقر عينك، وتوفيق يبهج خاطرك، وبركة ملوكية تحل في مالك وعملك مية مية الحين! 💰📈",
-        "﴿وَأَلْقَيْتُ عَلَيْكَ مَحَبَّةً مِّنِّي﴾.. محبة وقبول وهيبة ملوكية تسري في حروف اسمك أينما حللت! ✨👑",
-        "اللهم اجعل صاحب الاسم مستجاب الدعوة، مبارك الخطوة، محفوظاً بعينك التي لا تنام أبداً! 🕊️🔒"
-    ];   
-    };
-})();
-</script>
+        const competitors = ["المستشار الملكي 🦅👑", "الأمير المجهول ⚔️", "الفارس النبيل 🐎", "البرنس KR 👑"];
+        
+        const krBlessings = [
+            "✨ { وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَىٰ } ✨",
+            "🕊️ رزق وفير، وراحة بال تسكن قلبك وعائلتك الكريمة بأمر الله 🕊️",
+            "حكمة وفرج عاجل، أبشر بالفتح المبين واليسر العاجل 🗝️",
+            "صبّاً صبّاً، ولا تجعل عيشه كدّاً كدّاً! 💎 رزق مبارك",
+            "العام القادم مليء بالوفرة والخيرات الصافية التي تثلج صدرك ✨",
+            "سيعوضك الله عوضاً ينسيك كل ما مضى من تعب كوني 🌌",
+            "الرزق الواسع والتوفيق الملوكي تنفتح لك الآن مية مية 🔑",
+            "بركة وتوفيق ونجاح حليفه في كل خطوة يخطوها 🌟",
+            "بشارة كبرى وجوهرة مشعة في طريقها إليك لتسعد قلبك 💎"
+        ];
 
-<div class="royal-footer-pulse" style="text-align: center; padding: 25px 10px; background: radial-gradient(circle, #0c051a 0%, #030107 100%); border-top: 1px solid #221133; margin-top: 5px; font-family: 'Cairo', sans-serif;">
-    <div style="font-size: 32px; font-weight: 900; animation: footerGlow 2s ease-in-out infinite alternate; cursor: pointer; display: inline-block;">👑 KR 👑</div>
-    <p style="color: #ffd700; font-size: 13px; font-weight: bold; margin: 8px 0 3px; letter-spacing: 1px; text-shadow: 0 0 5px rgba(255,215,0,0.4);">✨ منصة العائلة الملكية المعتمدة عالمياً ✨</p>
-    <p style="color: #aaa; font-size: 11px; margin: 0; letter-spacing: 0.5px;">✨ Panda KR 🐼 ✨</p>
-</div>
+        window.startAuctionSystem = function() {
+            if (isAuctionActive) return;
+            
+            const visitorName = document.getElementById("visitorName") ? document.getElementById("visitorName").value.trim() : "";
+            if (!visitorName) {
+                alert("✍️ بليز اكتب اسمك الكريم أولاً لتفعيل المزاد الملكي!");
+                return;
+            }
 
-<style>
-@keyframes footerGlow {
-    0% { transform: scale(1); text-shadow: 0 0 10px #ffd700, 0 0 20px #ff0077; color: #ffd700; }
-    100% { transform: scale(1.05); text-shadow: 0 0 25px #00f0ff, 0 0 40px #b100ff; color: #00f0ff; }
-}
-</style>
-</body>
-</html>
+            isAuctionActive = true;
+            timeLeft = 10;
+            document.getElementById("startAuctionBtn").style.display = "none";
+            
+            const logBox = document.getElementById("auctionLog");
+            if(logBox) logBox.innerHTML = `<div>🚀 انطلق المزاد الملكي الحين باسم: <span style='color:#00f0ff;font-weight:bold;'>${visitorName}</span></div>`;
 
- <!-- الحركات والمؤثرات الضوئية وحركات طيران الفراشة الملكية المشعة -->
-<style>
-@keyframes orbFloat { 0% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-10px) rotate(10deg); } 100% { transform: translateY(0px) rotate(0deg); } }
-@keyframes heartBeatGlow { from { transform: scale(1); filter: drop-shadow(0 0 10px #00f0ff); } to { transform: scale(1.15); filter: drop-shadow(0 0 25px #ff0077); } }
-@keyframes butterflyFly { 0% { transform: scale(1) translateY(0px) rotate(-5deg); } 100% { transform: scale(1.1) translateY(-8px) rotate(5deg); } }
-@keyframes butterflyGlow { from { filter: drop-shadow(0 0 10px #00f0ff) drop-shadow(0 0 20px #b100ff); } to { filter: drop-shadow(0 0 25px #00f0ff) drop-shadow(0 0 35px #ff0077); } }
-.kr-bright-flash { animation: flashBackground 0.8s ease-out forwards; }
-@keyframes flashBackground {
-    0% { background: #0c0714; box-shadow: 0 0 0px #00f0ff; }
-    30% { background: #1a0033; box-shadow: 0 0 50px #00f0ff, inset 0 0 40px #00f0ff; }
-    100% { background: #0b0518; box-shadow: 0 0 30px rgba(177, 0, 255, 0.3); }
-}
-</style>
-<script>
-(function() {
-    let activeLoveIndex = 0;
-    let isOrbActive = false;
+            auctionInterval = setInterval(() => {
+                timeLeft--;
+                const timerText = document.getElementById("timerText");
+                if (timerText) timerText.innerText = `الوقت المتبقي: ${timeLeft} ثوانٍ`;
 
-    const krLovePhrases = [
-        "بحبك انا.. يا حياة الروح! 💞",
-        "يؤبرني حبيبي.. مواااااااه شو اشتقتلك! 💋🥺",
-        "حياة الروح.. انت نبضي وكل دنيتي! 👑🌌",
-        "انت نبضي.. وما فيني عيش من دونك! 💓",
-        "انت الي وانا الك.. لآخر نفس بعمري! 🔒💍",
-        "شو بحب ضحكتك.. بتنور كوني كله! 😍✨",
-        "بحبك لآخر يوم بعمري.. وعهد الوفا أبدي! 🌹⏳",
-        "بحبك لآخر نفس.. لا تتركني لحالي! 🥺💞",
-        "لا تتركني لحالي.. انا ضايع بدونك! 💔🕊️",
-        "انا مافيي عيش من دونك.. انت الهوا والنبض! 🫁💖",
-        "بحبك يا كل دنيتي.. يا ملاذي الآمن! 🌍🏰",
-        "قولي أحبك.. وخلي الكون يبتسم الحين! ✍️💬",
-        "بدي تكوني أم ولادي.. وشريكة روحي للأبد! 💍🏡"
-    ];
-     window.triggerOrbByTouch = function() {
-        if (isOrbActive) return;
-        isOrbActive = true;
+                if (timeLeft <= 0) {
+                    clearInterval(auctionInterval);
+                    endAuctionSystem(visitorName);
+                } else if (timeLeft % 3 === 0) {
+                    simulateCompetitorBid();
+                }
+            }, 1000);
+        };
 
-        const orb = document.getElementById("krMagicalOrb");
-        const glow = document.getElementById("krBrightGlow");
-        const panel = document.getElementById("krSecretLovePanel");
-        const textDisplay = document.getElementById("krLoveText");
-        const rareIcon = document.getElementById("krRareIcon");
-        const shareBtn = document.getElementById("krShareWhatsAppBtn");
-        const senderBox = document.getElementById("senderNameBox");
-        const resetBtn = document.getElementById("krOrbResetBtn");
-
-        if(orb) {
-            orb.style.transform = "scale(1.3) rotate(360deg)";
-            orb.style.filter = "drop-shadow(0 0 35px #00f0ff) contrast(1.5)";
+        function simulateCompetitorBid() {
+            const comp = competitors[Math.floor(Math.random() * competitors.length)];
+            bidValue += Math.floor(Math.random() * 150) + 50;
+            
+            const priceText = document.getElementById("highestBidText");
+            if (priceText) priceText.innerText = `أعلى سعر بركة حالي: ${bidValue.toLocaleString()} نُوراً`;
+            
+            const logBox = document.getElementById("auctionLog");
+            if (logBox) {
+                logBox.innerHTML += `<div style='color:#ff0077;'>⚡ زاد ${comp} بمبلغ بقيمة البركة!</div>`;
+                logBox.scrollTop = logBox.scrollHeight;
+            }
+            triggerDoveRainEffect();
         }
 
-        setTimeout(() => {
-            if (glow) {
-                glow.style.opacity = "1";
-                glow.style.transform = "scale(2)";
+        window.placeUserBid = function() {
+            if (!isAuctionActive) return;
+            bidValue += 50;
+            
+            const priceText = document.getElementById("highestBidText");
+            if (priceText) priceText.innerText = `أعلى سعر بركة حالي: ${bidValue.toLocaleString()} نُوراً`;
+            
+            const logBox = document.getElementById("auctionLog");
+            if (logBox) {
+                logBox.innerHTML += `<div style='color:#00f0ff;font-weight:bold;'>💎 قمت بالزيادة بالبركة الحين (+50)</div>`;
+                logBox.scrollTop = logBox.scrollHeight;
             }
-            const container = document.querySelector('.kr-crystal-orb-container');
-            if (container) container.classList.add('kr-bright-flash');
+            triggerDoveRainEffect();
+        };
 
-            setTimeout(() => {
-                if (orb) orb.style.display = "none";
-                if (glow) glow.style.opacity = "0";
-
-                const icons = ["👑", "🦋"];
-                const chosenIcon = icons[Math.floor(Math.random() * icons.length)];
-                if (rareIcon) {
-                    rareIcon.innerText = chosenIcon;
-                    if (chosenIcon === "🦋") {
-                        rareIcon.style.animation = "butterflyFly 0.4s ease-in-out infinite alternate, butterflyGlow 1.2s ease-in-out infinite alternate";
-                        rareIcon.style.display = "inline-block";
-                    } else {
-                        rareIcon.style.animation = "heartBeatGlow 1.2s infinite alternate";
-                    }
-                }
-
-                if (textDisplay) textDisplay.innerText = krLovePhrases[activeLoveIndex];
-                activeLoveIndex = (activeLoveIndex + 1) % krLovePhrases.length;
-
-                if (panel) {
-                    panel.style.display = "block";
-                    setTimeout(() => panel.style.transform = "scale(1)", 50);
-                }
-                if (shareBtn) shareBtn.style.display = "block";
-                if (senderBox) senderBox.style.display = "block";
-                if (resetBtn) resetBtn.style.display = "block";
-
-            }, 400);
-        }, 800);
-    };
-    window.shareLoveGift = function(e) {
-        if(e) e.preventDefault();
-        const textDisplay = document.getElementById("krLoveText");
-        let rawSender = document.getElementById("senderName") ? document.getElementById("senderName").value.trim() : "";
-        let senderName = rawSender ? rawSender : "محب غامض";
-        
-        if (textDisplay) {
-            const loveMsg = textDisplay.innerText;
-            const fullText = "إهداء ملوكي خاص من: (" + senderName + ")\n\n" +
-                             "لقد فتحت خزنة العشق الأبدية وظهرت لي هذه الكلمة لك:\n" +
-                             "👉 " + loveMsg + "\n\n" +
-                             "👑 منصة عالم الحب world of love الملكية 👑\n" +
-                             "🛡️ شعار صفحتنا المعتمد: [ KR ]\n\n" +
-                             "🔗 ادخلي وافتحي البلورة السحرية وشوفي نبض قلبك الحين:\n" +
-                             "https://github.io";
+        function endAuctionSystem(winner) {
+            const priceText = document.getElementById("highestBidText");
+            if (priceText) priceText.innerText = `🎉 مبروك الفوز! السعر النهائي: ${bidValue.toLocaleString()} نُوراً`;
             
-            const tempTextArea = document.createElement("textarea");
-            tempTextArea.value = fullText;
-            document.body.appendChild(tempTextArea);
-            tempTextArea.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempTextArea);
+            const blessing = krBlessings[Math.floor(Math.random() * krBlessings.length)];
+            const logBox = document.getElementById("auctionLog");
+            if (logBox) {
+                logBox.innerHTML = `<div style='color:#ffd700; font-size:16px; font-weight:bold; text-align:center;'>👑 تَمَّ رُسُوُّ المَزَادِ المَلَكِيِّ العَالَمِيِّ بِنَجَاحٍ! 👑</div>
+                                    <div style='text-align:center; margin:10px 0; color:#fff;'>المبارك الفائز بالصك: <span style='color:#00f0ff;'>${winner}</span></div>
+                                    <div style='background:#1a0033; padding:10px; border-radius:8px; border:1px dashed #ffd700; text-align:center; color:#ffcc00; font-weight:bold; animation:footerGlow 1.5s infinite alternate;'>🔮 بَشَارَةُ البَرَكَةِ الصَّادِرَةِ لَكِ الحِين:\n${blessing}</div>`;
+            }
             
-            const shareBtn = document.getElementById("krShareWhatsAppBtn");
-            if (shareBtn) {
-                shareBtn.innerHTML = "✅ تَمَّ النَّسْخُ! روح الحين والزقه بالواتساب 💌";
-                shareBtn.style.background = "linear-gradient(45deg, #00f0ff, #b100ff)";
-                shareBtn.style.boxShadow = "0 0 20px #00f0ff";
-                
-                setTimeout(() => {
-                    shareBtn.innerHTML = "💌 إرسال العبارة إهداء لمن تحب الحين";
-                    shareBtn.style.background = "linear-gradient(45deg, #25d366, #128c7e)";
-                    shareBtn.style.boxShadow = "0 4px 10px rgba(37, 211, 102, 0.3)";
-                }, 3000);
+            document.getElementById("resetAuctionBtn").style.display = "block";
+            for(let i=0; i<25; i++) {
+                setTimeout(triggerDoveRainEffect, i * 100);
             }
         }
-    };
 
-           
-
-    window.resetOrbSystem = function() {
-        const container = document.querySelector('.kr-crystal-orb-container');
-        if (container) container.classList.remove('kr-bright-flash');
-        
-        const orb = document.getElementById("krMagicalOrb");
-        if(orb) {
-            orb.style.display = "inline-block";
-            orb.style.transform = "scale(1) rotate(0deg)";
-            orb.style.filter = "drop-shadow(0 0 15px #00f0ff)";
-        }
-        
-        document.getElementById("krSecretLovePanel").style.display = "none";
-        document.getElementById("krSecretLovePanel").style.transform = "scale(0.8)";
-        document.getElementById("krShareWhatsAppBtn").style.display = "none";
-        document.getElementById("senderNameBox").style.display = "none";
-        document.getElementById("krOrbResetBtn").style.display = "none";
-        
-        isOrbActive = false;
-    };
-})();
-</script>
- 
-  
-
-<!-- ================================================================= -->
-<!-- نهاية اختراع البلورة المغناطيسية العاكسة -->
-<!-- ================================================================= -->
-
-
-
+        window.resetAuctionSystem = function() {
+            bidValue = 4150;
+            timeLeft = 10;
+            isAuctionActive = false;
             
-<!-- التوقيع الختامي الملكي المحمي المتواجد في قاع الصفحة تماماً بنبض ذهبي مشع -->
-<div class="royal-footer-pulse" style="text-align: center; margin-top: 60px; margin-bottom: 30px; padding: 15px; border-top: 1px dashed rgba(255,215,0,0.2); perspective: 1000px; -webkit-perspective: 1000px;">
-    <div style="font-size: 32px; font-weight: bold; color: #ffd700; text-shadow: 0 0 15px #ffd700, 0 0 30px #ff0055; margin-bottom: 5px; animation: footerGlow 0.6s infinite alternate; -webkit-animation: footerGlow 0.6s infinite alternate;">👑 KR 👑</div>
-    <p style="color: #ffd700; font-size: 13px; margin: 5px 0; font-weight: bold; text-shadow: 0 0 8px rgba(255,215,0,0.5);">👑 منصة العائلة الملكية المعتمدة عالمياً 👑</p>
-    <p style="color: #aaa; font-size: 11px; margin: 5px 0; letter-spacing: 1px;">✨ 🐼 Panda KR ✨</p>
-</div>
+            const priceText = document.getElementById("highestBidText");
+            if (priceText) priceText.innerText = `أعلى سعر بركة حالي: 4,150 نُوراً`;
+            
+            const timerText = document.getElementById("timerText");
+            if (timerText) timerText.innerText = `الوقت المتبقي: مغلق 🔒`;
+            
+            const logBox = document.getElementById("auctionLog");
+            if (logBox) logBox.innerHTML = `<div style='color:#aaa;'>بانتظار ضغطتك الملكية بالأسفل لبدء العداد وسحب البشارة الكبرى... ⏳</div>`;
+            
+            document.getElementById("startAuctionBtn").style.display = "block";
+            document.getElementById("resetAuctionBtn").style.display = "none";
+            document.getElementById("visitorName").value = "";
+        };
 
-<style>
-@keyframes footerGlow {
-    0% { transform: scale(1); text-shadow: 0 0 10px #ffd700, 0 0 20px #ff0055; }
-    100% { transform: scale(1.05); text-shadow: 0 0 25px #ffd700, 0 0 45px #ff0055, 0 0 60px #ff0055; }
-}
-@-webkit-keyframes footerGlow {
-    0% { -webkit-transform: scale(1); text-shadow: 0 0 10px #ffd700, 0 0 20px #ff0055; }
-    100% { -webkit-transform: scale(1.05); text-shadow: 0 0 25px #ffd700, 0 0 45px #ff0055, 0 0 60px #ff0055; }
-}
-</style>
+        function triggerDoveRainEffect() {
+            const dove = document.createElement("div");
+            dove.className = "falling-dove";
+            dove.innerText = "🕊️";
+            dove.style.left = Math.random() * 100 + "vw";
+            dove.style.animationDuration = (Math.random() * 2 + 2) + "s";
+            document.body.appendChild(dove);
+            setTimeout(() => dove.remove(), 4000);
+            
+            const box = document.getElementById("krAuctionBox");
+            if(box) {
+                box.classList.add("kr-flash-effect");
+                setTimeout(() => box.classList.remove("kr-flash-effect"), 500);
+            }
+        }
+    })();
+    </script>
+
+    <!-- الفوتر الملكي النظيف - الشعار يظهر مرة واحدة فقط في قاع الكون الرقمي كمسك الختام -->
+    <div class="royal-footer-pulse" style="text-align: center; padding: 25px 10px; background: radial-gradient(circle, #0c051a 0%, #030107 100%); border-top: 1px solid #221133; margin-top: 40px; font-family: 'Cairo', sans-serif;">
+        <div style="font-size: 32px; font-weight: 900; animation: footerGlow 2s ease-in-out infinite alternate; cursor: pointer; display: inline-block;">👑 KR 👑</div>
+        <p style="color: #ffd700; font-size: 13px; font-weight: bold; margin: 8px 0 3px; letter-spacing: 1px; text-shadow: 0 0 5px rgba(255,215,0,0.4);">✨ منصة العائلة الملكية المعتمدة عالمياً ✨</p>
+        <p style="color: #aaa; font-size: 11px; margin: 0; letter-spacing: 0.5px;">✨ Panda KR 🐼 ✨</p>
+    </div>
+
+    <style>
+    @keyframes footerGlow {
+        0% { transform: scale(1); text-shadow: 0 0 10px #ffd700, 0 0 20px #ff0077; color: #ffd700; }
+        100% { transform: scale(1.05); text-shadow: 0 0 25px #00f0ff, 0 0 40px #b100ff; color: #00f0ff; }
+    }
+    </style>
 </body>
 </html>
-
-
-
 
 
 
