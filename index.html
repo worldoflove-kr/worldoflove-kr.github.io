@@ -227,11 +227,11 @@
 
         <script>
         (function() {
-            // مخزن المقطوعات الفيروزية الصامتة المحدثة والمحمية بالكامل لتعمل فوراً بالهاتف من دون أي حظر
+            // تحديث روابط المعزوفات بروابط بث مباشرة وسريعة من سيرفرات جوجل الآمنة لتعمل فوراً بالهاتف من دون حظر
             const krFairuzPlaylist = [
-                { title: "🎻 يعزف الآن: شايف البحر شو كبير - بيانو ملكي ناعم 🌌✨", url: "https://soundhelix.com" },
-                { title: "☕ يعزف الآن: نسم علينا الهوى - غيتار ملكي هادئ 🍃 دافئ", url: "https://soundhelix.com" },
-                { title: "🌙 يعزف الآن: سألتك حبيبي - بيانو رومانسي وجداني 💎🔒", url: "https://soundhelix.com" }
+                { title: "🎻 يعزف الآن: شايف البحر شو كبير - بيانو ملكي ناعم 🌌✨", url: "https://googleapis.com" },
+                { title: "☕ يعزف الآن: نسم علينا الهوى - غيتار ملكي هادئ 🍃 دافئ", url: "https://googleapis.com" },
+                { title: "🌙 يعزف الآن: سألتك حبيبي - بيانو رومانسي وجداني 💎🔒", url: "https://googleapis.com" }
             ];
 
             let currentTrackIndex = 0;
@@ -257,15 +257,15 @@
                 }
 
                 if (!isMusicPlaying) {
+                    // فك قيود كتم الصوت في متصفحات الجوال وتوجيه أمر البث المباشر
+                    royalAudio.muted = false;
                     royalAudio.play().then(() => {
                         isMusicPlaying = true;
                         if(gramo) gramo.classList.add("kr-gramo-playing");
                         if(waves) waves.classList.add("kr-waves-active");
                         if(titleText) titleText.innerText = krFairuzPlaylist[currentTrackIndex].title;
                     }).catch(err => {
-                        console.log("إذن السيرفر مطلوب، جاري إعادة المحاولة:", err);
-                        // فك حظر المتصفحات التلقائي في الموبايل باللمس المباشر
-                        royalAudio.muted = false;
+                        console.log("محاولة فك حظر نظام آيفون وأندرويد بالبث المباشر:", err);
                         royalAudio.play();
                         isMusicPlaying = true;
                         if(gramo) gramo.classList.add("kr-gramo-playing");
@@ -291,6 +291,7 @@
                 }
             };
         })();
+
         </script>
         <!-- ================================================================= -->
         <!-- نهاية اختراع الفونوجراف الملكي المصغر والفوتر النظيف المحدث -->
