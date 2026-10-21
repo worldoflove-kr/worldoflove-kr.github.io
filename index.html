@@ -184,6 +184,7 @@
             <div class="royal-clock" id="live-clock" style="font-size: 14.5px !important; color: #ffffff !important; text-shadow: none !important; font-weight: 500 !important;">📅 جاري تحميل التوقيت الملكي...</div>
         </div>
 
+     
         <!-- ================================================================= -->
         <!-- بداية اختراع الكونسول الصوتي الملكي المطور بالمشغل المدمج والميكسر -->
         <!-- ================================================================= -->
@@ -203,9 +204,9 @@
                 <button onclick="window.changeKrVol(10)" style="background: rgba(255,255,255,0.05); color: #00f0ff; border: 1px solid rgba(0,240,255,0.3); width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 12px; font-weight: bold; outline: none; box-shadow: 0 0 5px rgba(0,240,255,0.1); user-select: none;">🔊</button>
             </div>
 
-            <!-- شاشة البث المصغرة المعتمدة من يوتيوب لكسر حظر أنظمة الجوال كلياً -->
-            <div style="margin: 0 auto; width: 100%; max-width: 280px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(0, 240, 255, 0.3); box-shadow: 0 0 15px rgba(0,240,255,0.2);">
-                <iframe id="krRoyalPlayer" src="https://youtube.com" style="width: 100%; height: 60px; border: none; display: block;" allow="autoplay; encrypted-media"></iframe>
+            <!-- شاشة البث المصغرة المحمية والمفتوحة 100% لتخطي حظر أنظمة الجوال كلياً -->
+            <div style="margin: 0 auto; width: 100%; max-width: 280px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(0, 240, 255, 0.3); box-shadow: 0 0 15px rgba(0,240,255,0.2); background: #000; height: 60px;">
+                <iframe id="krRoyalPlayer" src="https://youtube-nocookie.com" style="width: 100%; height: 100%; border: none; display: block;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
 
@@ -215,30 +216,34 @@
 
         <script>
         // حقن واجهة مشغل يوتيوب العالمي التفاعلية المربوطة بالميكسر
-        var tag = document.createElement('script');
-        tag.src = "https://youtube.com";
-        var firstScriptTag = document.getElementsByTagName('script');
-        if(firstScriptTag && firstScriptTag.parentNode) { firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); }
+        if (!window.YT) {
+            var tag = document.createElement('script');
+            tag.src = "https://youtube.com";
+            var firstScriptTag = document.getElementsByTagName('script');
+            if(firstScriptTag && firstScriptTag.parentNode) { firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); }
+        }
 
         var rPlayer;
         var royalVolume = 80;
 
         function onYouTubeIframeAPIReady() {
-            rPlayer = new YT.Player('krRoyalPlayer', {
-                events: {
-                    'onReady': function(event) { event.target.setVolume(royalVolume); },
-                    'onStateChange': function(event) {
-                        const titleText = document.getElementById("krAudioTrackTitle");
-                        if (event.data === YT.PlayerState.PLAYING) {
-                            if(titleText) titleText.innerText = "🎻 يعزف الآن: شايف البحر شو كبير - بيانو ملكي ناعم 🌌✨";
-                        } else {
-                            if(titleText) titleText.innerText = "⏸️ تم كتم العزف الفيروزي مؤقتاً... ☕";
+            if (document.getElementById('krRoyalPlayer') && !rPlayer) {
+                rPlayer = new YT.Player('krRoyalPlayer', {
+                    events: {
+                        'onReady': function(event) { event.target.setVolume(royalVolume); },
+                        'onStateChange': function(event) {
+                            const titleText = document.getElementById("krAudioTrackTitle");
+                            if (event.data === YT.PlayerState.PLAYING) {
+                                if(titleText) titleText.innerText = "🎻 يعزف الآن: شايف البحر شو كبير - بيانو ملكي ناعم 🌌✨";
+                            } else {
+                                if(titleText) titleText.innerText = "⏸️ تم كتم العزف الفيروزي مؤقتاً... ☕";
+                            }
                         }
                     }
-                }
-            });
+                });
+            }
         }
-        if (window.YT && window.YT.Player) { onYouTubeIframeAPIReady(); }
+        if (window.YT && window.YT.Player) { setTimeout(onYouTubeIframeAPIReady, 500); }
 
         window.changeKrVol = function(amount) {
             royalVolume = Math.min(100, Math.max(0, royalVolume + amount));
