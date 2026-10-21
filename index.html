@@ -197,6 +197,108 @@
             <div class="royal-clock" id="live-clock" style="font-size: 14.5px !important; color: #ffffff !important; text-shadow: none !important; font-weight: 500 !important;">📅 جاري تحميل التوقيت الملكي...</div>
         </div>
 
+        <!-- ================================================================= -->
+        <!-- بداية اختراع الفونوجراف الملكي ثلاثي الأبعاد - نغمات فيروز الكونية -->
+        <!-- ================================================================= -->
+        <div class="kr-3d-gramophone-container" style="text-align: center; padding: 25px 20px; background: radial-gradient(circle, #120633 0%, #040108 100%); border: 1px solid #4a1e80; border-radius: 25px; margin: 30px auto; max-width: 420px; box-shadow: 0 0 30px rgba(0, 240, 255, 0.2); position: relative; font-family: 'Cairo', sans-serif; direction: rtl; z-index: 999;">
+            
+            <h3 style="color: #00f0ff; margin-top: 0; margin-bottom: 5px; font-weight: 800; text-shadow: 0 0 10px #00f0ff; font-size: 16px;">🎼 الفونوجراف الملكي الرقمي 🎷</h3>
+
+            <!-- شريط الأنباء الموسيقي المشع باسم المعزوفة -->
+            <div style="background: rgba(0,0,0,0.5); border: 1px dashed #ffd700; padding: 7px 15px; border-radius: 25px; margin-bottom: 20px; overflow: hidden; white-space: nowrap;">
+                <span id="krSongTitle" style="color: #ffd700; font-size: 13px; font-weight: bold; text-shadow: 0 0 6px #ffd700; display: inline-block; animation: textScroll 12s linear infinite;">🎵 انقري على بوق الفونوجراف لإطلاق عزف جارة القمر فيروز الفلكي... ✨</span>
+            </div>
+
+            <!-- مسرح الفونوجراف ثلاثي الأبعاد والموجات التفاعلية -->
+            <div id="krGramophoneStage" style="width: 170px; height: 170px; margin: 0 auto 20px; position: relative; display: flex; align-items: center; justify-content: center; perspective: 600px;">
+                <!-- ذبذبات وموجات النيون الصوتية بالخلفية -->
+                <div class="kr-audio-waves" id="krAudioWaves" style="position: absolute; width: 100%; height: 100%; border-radius: 50%; background: repeating-radial-gradient(circle, rgba(0,240,255,0.12), rgba(177,0,255,0) 25px); opacity: 0; transform: scale(0.8); transition: all 0.4s ease; z-index: 1;"></div>
+                
+                <!-- بوق وقرص الفونوجراف بنظام الأبعاد المائلة 3D والنبض التفاعلي -->
+                <div id="kr3dGramophone" onclick="toggleRoyalMusic()" style="font-size: 90px; cursor: pointer; transform: rotateX(25deg) rotateY(-15deg); transition: transform 0.5s ease, filter 0.3s ease; filter: drop-shadow(0 0 15px #00f0ff); z-index: 5; position: relative; display: inline-block; user-select: none;">🎷</div>
+            </div>
+
+            <!-- لوحة الميكسر الملكية (التحكم بالصوت والكتم) -->
+            <div style="display: flex; justify-content: center; align-items: center; gap: 15px; background: rgba(255,255,255,0.03); padding: 10px; border-radius: 35px; border: 1px solid rgba(177,0,255,0.25);">
+                <button onclick="changeRoyalVolume(-0.1)" style="background: linear-gradient(45deg, #4a1e80, #120633); color: #00f0ff; border: 1px solid #00f0ff; width: 40px; height: 40px; border-radius: 50%; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 0 8px rgba(0,240,255,0.3); outline: none;">➖</button>
+                <span id="krVolDisplay" style="color: #fff; font-size: 12px; font-weight: bold; min-width: 70px; text-shadow: 0 0 5px rgba(255,255,255,0.3);">صوت: 70%</span>
+                <button onclick="changeRoyalVolume(0.1)" style="background: linear-gradient(45deg, #4a1e80, #120633); color: #00f0ff; border: 1px solid #00f0ff; width: 40px; height: 40px; border-radius: 50%; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 0 8px rgba(0,240,255,0.3); outline: none;">➕</button>
+            </div>
+        </div>
+
+        <style>
+        @keyframes textScroll { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+        @keyframes gramoDiscRotate { 0% { transform: rotateX(25deg) rotateY(-15deg) rotate(0deg); } 100% { transform: rotateX(25deg) rotateY(-15deg) rotate(360deg); } }
+        @keyframes wavePulseGlow { 0% { transform: scale(0.8); opacity: 0.3; filter: hue-rotate(0deg); } 50% { opacity: 0.8; } 100% { transform: scale(1.5); opacity: 0; filter: hue-rotate(180deg); } }
+        .kr-gramo-playing { animation: gramoDiscRotate 3.5s linear infinite; filter: drop-shadow(0 0 25px #b100ff) contrast(1.3) !important; }
+        .kr-waves-active { animation: wavePulseGlow 1.4s ease-out infinite; opacity: 1 !important; }
+        </style>
+        <script>
+        (function() {
+            // خزنة المقطوعات الموسيقية الموزونة لروائع جارة القمر السيدة فيروز (عزف بيانو وغيتار صامت ناعم)
+            const krFairuzPlaylist = [
+                { title: "🎻 يعزف الآن: شايف البحر شو كبير - عزف بيانو كلاسيكي ناعم 🌌✨", url: "https://soundhelix.com" },
+                { title: "☕ يعزف الآن: نسم علينا الهوى - غيتار ملكي هادئ 🍃 دافئ", url: "https://soundhelix.com" },
+                { title: "🌙 يعزف الآن: سألتك حبيبي - بيانو رومانسي وجداني 💎🔒", url: "https://soundhelix.com" },
+                { title: "🕊️ يعزف الآن: أعطني الناي وغنّ - معزوفة الفجر الفلكية 🗝️✨", url: "https://soundhelix.com" }
+            ];
+
+            let currentTrackIndex = 0;
+            let royalAudio = null;
+            let isMusicPlaying = false;
+            let royalVolume = 0.7;
+
+            // دالة تشغيل وكتم الفونوجراف ثلاثي الأبعاد وتدوير القرص
+            window.toggleRoyalMusic = function() {
+                const gramo = document.getElementById("kr3dGramophone");
+                const waves = document.getElementById("krAudioWaves");
+                const titleText = document.getElementById("krSongTitle");
+
+                if (!royalAudio) {
+                    royalAudio = new Audio(krFairuzPlaylist[currentTrackIndex].url);
+                    royalAudio.volume = royalVolume;
+                    
+                    // الانتقال الآلي والذكي للأغنية التالية عند الانتهاء لضمان عدم توقف الطرب الملكي
+                    royalAudio.addEventListener("ended", () => {
+                        currentTrackIndex = (currentTrackIndex + 1) % krFairuzPlaylist.length;
+                        royalAudio.src = krFairuzPlaylist[currentTrackIndex].url;
+                        if(titleText) titleText.innerText = krFairuzPlaylist[currentTrackIndex].title;
+                        royalAudio.play();
+                    });
+                }
+
+                if (!isMusicPlaying) {
+                    royalAudio.play().then(() => {
+                        isMusicPlaying = true;
+                        if(gramo) gramo.classList.add("kr-gramo-playing");
+                        if(waves) waves.classList.add("kr-waves-active");
+                        if(titleText) titleText.innerText = krFairuzPlaylist[currentTrackIndex].title;
+                    }).catch(err => console.log("تحصين صوتي تلقائي:", err));
+                } else {
+                    royalAudio.pause();
+                    isMusicPlaying = false;
+                    if(gramo) gramo.classList.remove("kr-gramo-playing");
+                    if(waves) waves.classList.remove("kr-waves-active");
+                    if(titleText) titleText.innerText = "⏸️ تم كتم العزف الفيروزي مؤقتاً برواقة... ☕";
+                }
+            };
+
+            // دالة الميكسر الملكي لرفع وتنويس وتخفيض مستوى الصوت بالملي
+            window.changeRoyalVolume = function(amount) {
+                royalVolume = Math.min(1.0, Math.max(0.0, royalVolume + amount));
+                if (royalAudio) royalAudio.volume = royalVolume;
+                
+                const volDisplay = document.getElementById("krVolDisplay");
+                if (volDisplay) {
+                    const percent = Math.round(royalVolume * 100);
+                    volDisplay.innerText = "صوت: " + percent + "%";
+                }
+            };
+        })();
+        </script>
+        <!-- ================================================================= -->
+        <!-- نهاية اختراع الفونوجراف الملكي ثلاثي الأبعاد - نغمات فيروز الكونية -->
+        <!-- ================================================================= -->
        
 
  
