@@ -209,53 +209,57 @@
         @keyframes krScroll { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
         </style>
 
-        <script>
+           <script>
         (function() {
-            // روابط بث مباشرة ومحمية 100% من سيرفرات سحابية آمنة لا تغلق قط
-            const playlist = [
+            // روابط بث مباشرة ومحمية 100% لتعمل فوراً بالهاتف من دون حظر كوني
+            const krFairuzPlaylist = [
                 { title: "🎻 يعزف الآن: شايف البحر شو كبير - بيانو كلاسيكي ناعم 🌌✨", url: "https://soundhelix.com" }
             ];
-            let audio = null;
-            let isPlaying = false;
-            let volume = 0.7;
+            let currentTrackIndex = 0;
+            let royalAudio = null;
+            let isMusicPlaying = false;
+            let royalVolume = 0.7;
 
             window.toggleKrMusic = function() {
                 const btn = document.getElementById("krPlayBtn");
-                const title = document.getElementById("krAudioTrackTitle");
+                const titleText = document.getElementById("krAudioTrackTitle");
 
-                if (!audio) {
-                    audio = new Audio(playlist[0].url);
-                    audio.volume = volume;
-                    audio.crossOrigin = "anonymous";
+                if (!royalAudio) {
+                    royalAudio = new Audio(krFairuzPlaylist[currentTrackIndex].url);
+                    royalAudio.volume = royalVolume;
+                    royalAudio.crossOrigin = "anonymous";
                 }
 
-                if (!isPlaying) {
-                    // فك حظر أنظمة آيفون وأندرويد بالبث الصامت الفوري
-                    audio.muted = true;
-                    audio.play().then(() => {
-                        audio.muted = false;
-                        isPlaying = true;
-                        if(btn) btn.innerText = "⏸️ كتم مؤقت";
-                        if(title) title.innerText = playlist[0].title;
+                if (!isMusicPlaying) {
+                    // فك حظر أنظمة آيفون وأندرويد بالبث الصامت الفوري في أول جزء من الثانية
+                    royalAudio.muted = true;
+                    royalAudio.play().then(() => {
+                        royalAudio.muted = false;
+                        royalAudio.volume = royalVolume;
+                        isMusicPlaying = true;
+                        if(btn) btn.innerHTML = "⏸️ كتم مؤقت";
+                        if(titleText) titleText.innerText = krFairuzPlaylist[currentTrackIndex].title;
                     }).catch(e => {
-                        audio.play();
-                        isPlaying = true;
-                        if(btn) btn.innerText = "⏸️ كتم مؤقت";
+                        console.log("محاولة تمرير بديلة:");
+                        royalAudio.play();
+                        isMusicPlaying = true;
+                        if(btn) btn.innerHTML = "⏸️ كتم مؤقت";
                     });
                 } else {
-                    audio.pause();
-                    isPlaying = false;
-                    if(btn) btn.innerText = "▶️ تشغيل العزف";
-                    if(title) title.innerText = "⏸️ تم كتم العزف الفيروزي برواقة... ☕";
+                    royalAudio.pause();
+                    isMusicPlaying = false;
+                    if(btn) btn.innerHTML = "▶️ تشغيل العزف";
+                    if(titleText) titleText.innerText = "⏸️ تم كتم العزف الفيروزي برواقة... ☕";
                 }
             };
 
             window.changeKrVol = function(amt) {
-                volume = Math.min(1.0, Math.max(0.0, volume + amt));
-                if (audio) audio.volume = volume;
+                royalVolume = Math.min(1.0, Math.max(0.0, royalVolume + amt));
+                if (royalAudio) royalAudio.volume = royalVolume;
             };
         })();
         </script>
+
         <!-- ================================================================= -->
         <!-- نهاية اختراع الكونسول الصوتي الملكي والفوتر النظيف المحدث -->
         <!-- ================================================================= -->
