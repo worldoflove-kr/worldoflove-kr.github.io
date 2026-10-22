@@ -184,8 +184,9 @@
             <div class="royal-clock" id="live-clock" style="font-size: 14.5px !important; color: #ffffff !important; text-shadow: none !important; font-weight: 500 !important;">📅 جاري تحميل التوقيت الملكي...</div>
         </div>
 
-             <!-- ================================================================= -->
-        <!-- بداية اختراع كونسول الطرب الملكي - معزوفة Mon Amour المصلحة والنهائية -->
+ 
+        <!-- ================================================================= -->
+        <!-- بداية اختراع الكونسول الصوتي الملكي المطور لفك حظر الجوال كلياً -->
         <!-- ================================================================= -->
         <div class="kr-royal-music-console" style="text-align: center; padding: 20px 15px; background: radial-gradient(circle, #130638 0%, #040108 100%); border: 1px solid #00f0ff; border-radius: 25px; margin: 25px auto; max-width: 320px; box-shadow: 0 0 25px rgba(0, 240, 255, 0.25); position: relative; font-family: 'Cairo', sans-serif; direction: rtl; z-index: 999;">
             
@@ -198,9 +199,9 @@
 
             <!-- أزرار التحكم النيون والمؤشر الرقمي المشع لنسبة الصوت -->
             <div style="display: flex; justify-content: center; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); padding: 6px 12px; border-radius: 30px; border: 1px solid rgba(0,240,255,0.15); margin-bottom: 15px;">
-                <button onclick="window.changeKrVol(-0.1)" style="background: rgba(255,255,255,0.05); color: #00f0ff; border: 1px solid rgba(0,240,255,0.3); width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 12px; font-weight: bold; outline: none; box-shadow: 0 0 5px rgba(0,240,255,0.1); user-select: none;">🔉</button>
+                <button onclick="window.changeKrVol(-0.1)" style="background: rgba(255,255,255,0.05); color: #00f0ff; border: 1px solid #00f0ff; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 12px; font-weight: bold; outline: none; box-shadow: 0 0 5px rgba(0,240,255,0.1); user-select: none;">🔉</button>
                 <span id="krVolumePercent" style="color: #fff; font-size: 11px; font-weight: bold; min-width: 60px; text-shadow: 0 0 5px rgba(255,255,255,0.3);">صوت: 80%</span>
-                <button onclick="window.changeKrVol(0.1)" style="background: rgba(255,255,255,0.05); color: #00f0ff; border: 1px solid rgba(0,240,255,0.3); width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 12px; font-weight: bold; outline: none; box-shadow: 0 0 5px rgba(0,240,255,0.1); user-select: none;">🔊</button>
+                <button onclick="window.changeKrVol(0.1)" style="background: rgba(255,255,255,0.05); color: #00f0ff; border: 1px solid #00f0ff; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 12px; font-weight: bold; outline: none; box-shadow: 0 0 5px rgba(0,240,255,0.1); user-select: none;">🔊</button>
             </div>
 
             <!-- زر التنشيط الماسي لمعزوفة Mon Amour -->
@@ -213,53 +214,45 @@
                 <p style="color: #ffd700; font-size: 12px; font-weight: bold; margin: 0 0 5px; text-shadow: 0 0 8px rgba(255,215,0,0.5);">✨ إِهْدَاءٌ مَلَكِيٌّ عَالِي النَّبْضِ ✨</p>
                 <p style="color: #fff; font-size: 11px; line-height: 1.6; margin: 0; font-weight: 500;">"بكل حب وأثير عاطفي كوني، نرحب بكم في منصة <span style="color:#00f0ff; font-weight:bold; text-shadow:0 0 5px #00f0ff;">Panda KR 🐼</span> الفاخرة! مع أنغام Mon Amour الدافئة، نتمنى لقلوبكم النقية وقتاً مليئاً بالسلام والاسترخاء والبركة الملوكية الملكية! دمتم بقلب السعادة أوفياء دائمًا! 👑💞🎻🌌"</p>
             </div>
+
+            <!-- كبسولة عنصر الصوت الرسمي المدمج والمخفي تحت الأرض لفك حظر الجوال كلياً للأبد -->
+            <audio id="krHiddenAudio" src="https://archive.org" preload="auto" crossorigin="anonymous" style="display: none; position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none;"></audio>
         </div>
 
         <style>
         @keyframes krScroll { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
         </style>
 
-           <script>
+        <script>
         (function() {
-            // كبسولة بث سحابية مباشرة ومفتوحة الأذونات 100% لمعزوفة Mon Amour لتخطي حظر أنظمة الجوال فوراً وبصوت قوي
-            const krFairuzPlaylist = [
-                { title: "🎻 يعزف الآن: روائع روحي الدافئة - معزوفة Mon Amour الملكية 🎻✨", url: "https://archive.org" }
-            ];
-            let currentTrackIndex = 0;
-            let royalAudio = null;
             let isMusicPlaying = false;
             let royalVolume = 0.8;
 
             window.toggleKrMusic = function() {
+                const audio = document.getElementById("krHiddenAudio");
                 const btn = document.getElementById("krPlayBtn");
                 const titleText = document.getElementById("krAudioTrackTitle");
 
-                if (!royalAudio) {
-                    royalAudio = new Audio(krFairuzPlaylist[currentTrackIndex].url);
-                    royalAudio.volume = royalVolume;
-                    royalAudio.crossOrigin = "anonymous";
-                    royalAudio.preload = "auto";
-                }
+                if (!audio) return;
 
                 if (!isMusicPlaying) {
-                    // فك حظر أنظمة آيفون وأندرويد بالبث الصامت الفوري في أول جزء من الثانية ثم فك الكتم تلقائياً فوراً باللمس البشري
-                    royalAudio.muted = true;
-                    royalAudio.play().then(() => {
-                        royalAudio.muted = false;
-                        royalAudio.volume = royalVolume;
+                    audio.volume = royalVolume;
+                    // الخدعة البرمجية الحتمية: تشغيل مكتوم ثم فك كتم الصوت فوراً بداخل الـ Promise لكسر الحظر الأمني بالملي
+                    audio.muted = true;
+                    audio.play().then(() => {
+                        audio.muted = false;
                         isMusicPlaying = true;
                         if(btn) btn.innerHTML = "⏸️ كتم المعزوفة";
-                        if(titleText) titleText.innerText = krFairuzPlaylist[currentTrackIndex].title;
+                        if(titleText) titleText.innerText = "🎻 يعزف الآن: روائع روحي الدافئة - معزوفة Mon Amour الملكية 🎻✨";
                     }).catch(err => {
-                        console.log("تمرير الإشارة الصوتية بجدار الحماية المباشر:");
-                        royalAudio.muted = false;
-                        royalAudio.volume = royalVolume;
-                        royalAudio.play();
+                        console.log("تمرير الإشارة عبر المشغل الأصلي:");
+                        audio.muted = false;
+                        audio.play();
                         isMusicPlaying = true;
                         if(btn) btn.innerHTML = "⏸️ كتم المعزوفة";
                     });
                 } else {
-                    royalAudio.pause();
+                    audio.pause();
                     isMusicPlaying = false;
                     if(btn) btn.innerHTML = "💖 إطلاق معزوفة Mon Amour 🌌";
                     if(titleText) titleText.innerText = "⏸️ تم كتم العزف والنبض الروحي بداخل الصفحة... ☕";
@@ -267,8 +260,9 @@
             };
 
             window.changeKrVol = function(amt) {
+                const audio = document.getElementById("krHiddenAudio");
                 royalVolume = Math.min(1.0, Math.max(0.0, royalVolume + amt));
-                if (royalAudio) royalAudio.volume = royalVolume;
+                if (audio) audio.volume = royalVolume;
                 
                 const volDisplay = document.getElementById("krVolumePercent");
                 if (volDisplay) {
@@ -278,7 +272,6 @@
             };
         })();
         </script>
-
         <!-- ================================================================= -->
         <!-- نهاية اختراع كونسول الطرب الملكي - معزوفة Mon Amour بداخل الصفحة 100% -->
         <!-- ================================================================= -->
