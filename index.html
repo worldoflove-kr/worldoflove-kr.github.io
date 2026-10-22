@@ -184,147 +184,83 @@
             <div class="royal-clock" id="live-clock" style="font-size: 14.5px !important; color: #ffffff !important; text-shadow: none !important; font-weight: 500 !important;">📅 جاري تحميل التوقيت الملكي...</div>
         </div>
 
-             <!-- ================================================================= -->
-        <!-- بداية اختراع كونسول الطرب الملكي - معزوفة Mon Amour الوجدانية الساحرة -->
+                  <!-- ================================================================= -->
+        <!-- بداية اختراع كونسول الطرب الفلكي المطور بمشغل البث التفاعلي المفتوح -->
         <!-- ================================================================= -->
-        <div class="kr-royal-synth-console" style="text-align: center; padding: 25px 15px; background: radial-gradient(circle, #130638 0%, #040108 100%); border: 2px solid #00f0ff; border-radius: 25px; margin: 25px auto; max-width: 340px; box-shadow: 0 0 25px rgba(0, 240, 255, 0.3); position: relative; font-family: 'Cairo', sans-serif; direction: rtl; z-index: 999;">
+        <div class="kr-royal-music-console" style="text-align: center; padding: 25px 15px; background: radial-gradient(circle, #130638 0%, #040108 100%); border: 2px solid #00f0ff; border-radius: 25px; margin: 25px auto; max-width: 340px; box-shadow: 0 0 25px rgba(0, 240, 255, 0.3); position: relative; font-family: 'Cairo', sans-serif; direction: rtl; z-index: 999;">
             
-            <h3 style="color: #ffd700; margin-top: 0; margin-bottom: 5px; font-weight: 800; text-shadow: 0 0 10px #ffd700; font-size: 14px; letter-spacing: 0.5px;">🎻 كُونْسُولُ العَزْفِ الوجْدَانِيِّ المَلَكِيِّ 🌌</h3>
+            <h3 style="color: #ffd700; margin-top: 0; margin-bottom: 5px; font-weight: 800; text-shadow: 0 0 10px #ffd700; font-size: 14px; letter-spacing: 0.5px;">🌌 كُونْسُولُ الطَّرَبِ وَالرُّومَانْسِيَّةِ المَلَكِيِّ 🎼</h3>
             
-            <!-- شريط الأنباء المضيء -->
+            <!-- شريط الأنباء المضيء باسم المعزوفة -->
             <div style="background: rgba(0,0,0,0.5); border: 1px dashed #ffd700; padding: 6px 10px; border-radius: 15px; margin-bottom: 15px; overflow: hidden; white-space: nowrap;">
-                <span id="krSynthTitle" style="color: #00f0ff; font-size: 11px; font-weight: bold; text-shadow: 0 0 5px #00f0ff; display: inline-block; animation: krSynthScroll 12s linear infinite;">🎵 انقري لإطلاق معزوفة Mon Amour الفلكية الساحرة مع عبارة الإهداء الدافئة... ✨</span>
+                <span id="krAudioTrackTitle" style="color: #00f0ff; font-size: 11px; font-weight: bold; text-shadow: 0 0 5px #00f0ff; display: inline-block; animation: krScroll 15s linear infinite;">🎵 اكبسي زر التشغيل الأحمر بقلب الشاشة بالأسفل لإطلاق السحر... ✨</span>
             </div>
 
-            <!-- لوحة التحكم بالميكسر والنسبة الرقمية المشعة -->
-            <div style="display: flex; justify-content: center; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); padding: 6px 12px; border-radius: 30px; border: 1px solid rgba(0,240,255,0.15); margin-bottom: 15px;">
-                <button onclick="window.changeSynthVol(-10)" style="background: rgba(255,255,255,0.05); color: #00f0ff; border: 1px solid #00f0ff; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 12px; font-weight: bold; outline: none; box-shadow: 0 0 5px rgba(0,240,255,0.1); user-select: none;">🔉</button>
-                <span id="krSynthVolDisplay" style="color: #fff; font-size: 11px; font-weight: bold; min-width: 60px; text-shadow: 0 0 5px rgba(255,255,255,0.3);">صوت: 80%</span>
-                <button onclick="window.changeSynthVol(10)" style="background: rgba(255,255,255,0.05); color: #00f0ff; border: 1px solid #00f0ff; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 12px; font-weight: bold; outline: none; box-shadow: 0 0 5px rgba(0,240,255,0.1); user-select: none;">🔊</button>
+            <!-- مسرح البث المطور المحمي والمفتوح 100% لتخطي حظر الهاتف كلياً وتشغيل الموسيقى بداخل الصفحة -->
+            <div style="margin: 0 auto 15px; width: 100%; max-width: 290px; border-radius: 15px; overflow: hidden; border: 2px solid #b100ff; box-shadow: 0 0 20px rgba(177, 0, 255, 0.25); background: #000; height: 130px;">
+                <iframe id="krRoyalPlayer" src="https://youtube.com" style="width: 100%; height: 100%; border: none; display: block;" allow="autoplay; encrypted-media"></iframe>
             </div>
 
-            <!-- زر التنشيط الماسي لمعزوفة Mon Amour -->
-            <div style="margin-bottom: 15px;">
-                <button onclick="window.toggleKrSynth()" id="krSynthPlayBtn" style="background: linear-gradient(45deg, #00f0ff, #b100ff); color: #fff; border: none; padding: 11px 25px; border-radius: 20px; font-size: 12px; font-weight: bold; cursor: pointer; box-shadow: 0 0 15px rgba(0,240,255,0.4); outline: none; width: 100%; max-width: 230px; user-select: none;">💖 إطلاق معزوفة Mon Amour 🌌</button>
-            </div>
-
-            <!-- بطاقة لوحة الإهداء الوجدانية الفخمة المضيئة بالنيون -->
-            <div id="krGiftCard" style="background: rgba(0, 240, 255, 0.02); border: 1px solid rgba(0, 240, 255, 0.2); padding: 15px; border-radius: 15px; box-shadow: inset 0 0 15px rgba(0,240,255,0.05); display: none; opacity: 0; transition: all 0.6s ease; transform: translateY(10px);">
-                <p style="color: #ffd700; font-size: 12px; font-weight: bold; margin: 0 0 5px; text-shadow: 0 0 8px rgba(255,215,0,0.5);">✨ إِهْدَاءٌ مَلَكِيٌّ عَالِي النَّبْضِ ✨</p>
-                <p style="color: #fff; font-size: 11px; line-height: 1.6; margin: 0; font-weight: 500;">"بكل حب وأثير عاطفي كوني، نرحب بكم في منصة <span style="color:#00f0ff; font-weight:bold; text-shadow:0 0 5px #00f0ff;">Panda KR 🐼</span> الفاخرة! مع أنغام Mon Amour الدافئة، نتمنى لقلوبكم النقية وقتاً مليئاً بالسلام والاسترخاء والبركة الملوكية الملكية! دمتم بقلب السعادة أوفياء دائمًا! 👑💞🎻🌌"</p>
+            <!-- بطاقة لوحة الإهداء الوجدانية الفخمة المضيئة بالنيون والتي تتغير تلقائياً مع الموسيقى -->
+            <div id="krGiftCard" style="background: rgba(0, 240, 255, 0.02); border: 1px solid rgba(0, 240, 255, 0.2); padding: 15px; border-radius: 15px; box-shadow: inset 0 0 15px rgba(0,240,255,0.05); transition: all 0.5s ease;">
+                <p id="krCardHeadline" style="color: #ffd700; font-size: 12px; font-weight: bold; margin: 0 0 5px; text-shadow: 0 0 8px rgba(255,215,0,0.5);">✨ إِهْدَاءٌ مَلَكِيٌّ عَالِي النَّبْضِ ✨</p>
+                <p id="krCardText" style="color: #fff; font-size: 11px; line-height: 1.6; margin: 0; font-weight: 500;">"بكل حب وأثير عاطفي كوني، نرحب بكم في منصة <span style="color:#00f0ff; font-weight:bold; text-shadow:0 0 5px #00f0ff;">Panda KR 🐼</span> الفاخرة! مع أنغام Mon Amour الدافئة، نتمنى لقلوبكم النقية وقتاً مليئاً بالسلام والاسترخاء والبركة الملوكية الملكية! دمتم بقلب السعادة أوفياء دائمًا! 👑💞🎻🌌"</p>
             </div>
         </div>
 
         <style>
-        @keyframes krSynthScroll { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+        @keyframes krScroll { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
         </style>
 
         <script>
-        (function() {
-            let audioCtx = null;
-            let timeoutRefs = [];
-            let isSynthPlaying = false;
-            let currentVolume = 0.8;
+        // دالة ربط نصوص الإهداءات والعبارات التلقائية الذكية بتغير فيديوهات البث بداخل الجوال
+        if (!window.YT) {
+            var tag = document.createElement('script');
+            tag.src = "https://youtube.com";
+            var firstScriptTag = document.getElementsByTagName('script');
+            if (firstScriptTag && firstScriptTag.parentNode) { firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); }
+        }
 
-            // نوتات وترددات معزوفة Mon Amour الكلاسيكية (بيانو وغيتار ناعم جداً بداخل الصفحة)
-            const notes = [
-                440.00, 493.88, 523.25, 587.33, 523.25, 493.88, 440.00,
-                392.00, 440.00, 493.88, 523.25, 493.88, 440.00, 392.00,
-                349.23, 392.00, 440.00, 493.88, 440.00, 392.00, 349.23,
-                329.63, 392.00, 440.00, 329.63
-            ];
-            // أزمنة النوتات بالثواني لضبط اللحن الوجداني بالمسطرة والقلم
-            const durations = [
-                0.5, 0.5, 0.8, 0.5, 0.5, 0.5, 1.2,
-                0.5, 0.5, 0.8, 0.5, 0.5, 0.5, 1.2,
-                0.5, 0.5, 0.8, 0.5, 0.5, 0.5, 1.2,
-                0.6, 0.6, 0.6, 1.5
-            ];
+        var rPlayer;
+        const krPlaylistData = [
+            { title: "🎻 يعزف الآن: روائع روحي الدافئة - معزوفة Mon Amour الملكية 🎻✨", headline: "✨ أثِيرُ الحُبِّ وَالعِشْقِ الكَوْنِيِّ ✨", text: "بكل حب وأثير عاطفي كوني، نرحب بكم في منصة Panda KR 🐼 الفاخرة! مع أنغام Mon Amour الدافئة، نتمنى لقلوبكم النقية وقتاً مليئاً بالسلام والاسترخاء والبركة الملوكية الملكية! دمتم بقلب السعادة أوفياء دائمًا! 👑💞🎻🌌" },
+            { title: "🎂 يعزف الآن: المعزوفة الملكية السعيدة Happy Birthday 🎈✨", headline: "🎉 بَرَكَةُ المِيلادِ وَالأَفْرَاحِ المَلَكِيَّةِ 🎁", text: "عائلة Panda KR 🐼 تبارك لك هذه اللحظة السعيدة وعيد الميلاد المبهج! نتمنى لك عاماً مليئاً بالوفرة، والنبضات النقية، والبركة الملكية بأمر الله! كل عام وأنت بقلب السعادة أوفى دائمًا! 🎂🎈💎🔒" },
+            { title: "☕ يعزف الآن: نسم علينا الهوى - رائعة جارة القمر فيروز 🍃 دافئ", headline: "☕ نَبَضَاتُ المَسَاءِ وَالفَيْرُوزِ الوجْدَانِيِّ 🍃", text: "نستقبل مساؤكم الفخم بنغمات فيروزية دافئة تلامس الروح برواقة! نتمنى لكم تصفحاً ملوكياً ساحراً في عالمنا، حيث تلتقي القلوب النقية لتصنع من الحب نبضاً أبدياً لا ينتهي قط! 🕊️🗝️✨" }
+        ];
 
-            window.toggleKrSynth = function() {
-                const btn = document.getElementById("krSynthPlayBtn");
-                const titleText = document.getElementById("krSynthTitle");
-                const card = document.getElementById("krGiftCard");
-
-                if (!audioCtx) {
-                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                }
-
-                if (!isSynthPlaying) {
-                    if (audioCtx.state === 'suspended') { audioCtx.resume(); }
-                    isSynthPlaying = true;
-                    if(btn) btn.innerHTML = "⏸️ إيقاف المعزوفة برواقة";
-                    if(titleText) titleText.innerText = "🌌 يعزف الآن: روائع روحي الدافئة - معزوفة Mon Amour الملكية 🎻✨";
-                    
-                    // إظهار بطاقة الإهداء الفخمة ببرستيج وتأثير ضوئي واااو
-                    if(card) {
-                        card.style.display = "block";
-                        setTimeout(() => { card.style.opacity = "1"; card.style.transform = "translateY(0)"; }, 50);
+        function onYouTubeIframeAPIReady() {
+            if (document.getElementById('krRoyalPlayer') && !rPlayer) {
+                rPlayer = new YT.Player('krRoyalPlayer', {
+                    events: {
+                        'onStateChange': function(event) {
+                            const titleText = document.getElementById("krAudioTrackTitle");
+                            const cardHeadline = document.getElementById("krCardHeadline");
+                            const cardText = document.getElementById("krCardText");
+                            
+                            // فحص تغير حالة التشغيل والانتقال التلقائي للعبارات والقصائد
+                            if (event.data === YT.PlayerState.PLAYING) {
+                                // استخراج اسم الفيديو الحالي لربط العبارة المناسبة له بالملي
+                                let currentSrc = rPlayer.getVideoUrl();
+                                let trackIndex = 0;
+                                if(currentSrc.includes("p0ZOf9gM63w") || currentSrc.includes("ricerocks_theme")) trackIndex = 1;
+                                if(currentSrc.includes("Y_8K5gCgVpE") || currentSrc.includes("thrust")) trackIndex = 2;
+                                
+                                if(titleText) titleText.innerText = krPlaylistData[trackIndex].title;
+                                if(cardHeadline) cardHeadline.innerText = krPlaylistData[trackIndex].headline;
+                                if(cardText) cardText.innerHTML = `"${krPlaylistData[trackIndex].text}"`;
+                            }
+                        }
                     }
-
-                    // محرك تشغيل العزف المتتالي بالثواني
-                    let startTime = audioCtx.currentTime + 0.1;
-                    let accumulatedDelay = 0;
-
-                    for (let i = 0; i < notes.length; i++) {
-                        let tRef = setTimeout(() => {
-                            if (!isSynthPlaying) return;
-                            playNote(notes[i], durations[i]);
-                        }, accumulatedDelay * 1000);
-                        timeoutRefs.push(tRef);
-                        accumulatedDelay += durations[i];
-                    }
-
-                    // إعادة زر التشغيل تلقائياً بعد انتهاء الأغنية كاملة لضمان التجدد
-                    let endRef = setTimeout(() => {
-                        if (isSynthPlaying) window.toggleKrSynth();
-                    }, accumulatedDelay * 1000);
-                    timeoutRefs.push(endRef);
-
-                } else {
-                    // كتم وإيقاف فوري وتنظيف المؤقتات
-                    timeoutRefs.forEach(clearTimeout);
-                    timeoutRefs = [];
-                    isSynthPlaying = false;
-                    if(btn) btn.innerHTML = "💖 إطلاق معزوفة Mon Amour 🌌";
-                    if(titleText) titleText.innerText = "⏸️ تم كتم العزف والنبض الروحي بداخل الصفحة... ☕";
-                    if(card) { card.style.opacity = "0"; card.style.transform = "translateY(10deg)"; setTimeout(() => { card.style.display = "none"; }, 400); }
-                }
-            };
-
-            function playNote(freq, duration) {
-                if (!audioCtx || !isSynthPlaying) return;
-                try {
-                    let osc = audioCtx.createOscillator();
-                    let gainNode = audioCtx.createGain();
-                    
-                    osc.type = 'sine'; // موجة ناعمة ودافئة لأعلى برستيج سمعي ملوكي بقلب الهاتف
-                    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-                    
-                    gainNode.gain.setValueAtTime(currentVolume * 0.16, audioCtx.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration - 0.05);
-                    
-                    osc.connect(gainNode);
-                    gainNode.connect(audioCtx.destination);
-                    
-                    osc.start();
-                    osc.stop(audioCtx.currentTime + duration);
-                } catch(e) { console.log(e); }
+                });
             }
-
-            window.changeSynthVol = function(amount) {
-                currentVolume = Math.min(1.0, Math.max(0.0, currentVolume + (amount / 100)));
-                const volDisplay = document.getElementById("krSynthVolDisplay");
-                if (volDisplay) {
-                    volDisplay.innerText = "صوت: " + Math.round(currentVolume * 100) + "%";
-                }
-            };
-        })();
+        }
+        if (window.YT && window.YT.Player) { setTimeout(onYouTubeIframeAPIReady, 500); }
         </script>
         <!-- ================================================================= -->
-        <!-- نهاية اختراع كونسول الطرب الملكي - معزوفة Mon Amour الوجدانية الساحرة -->
+        <!-- نهاية اختراع كونسول الطرب الفلكي المطور والفوتر النظيف المحدث -->
         <!-- ================================================================= -->
 
+           
 
 
 
