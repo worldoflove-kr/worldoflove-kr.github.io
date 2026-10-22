@@ -216,7 +216,8 @@
             </div>
 
             <!-- كبسولة استدعاء الملف الصوتي القانوني والداخلي المحفوظ بقلب السيرفر نفسه لضمان أمان الهاتف 100% -->
-            <audio id="krHiddenAudio" src="mon_amour.mp3" preload="auto" crossorigin="anonymous" style="display: none; position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none;"></audio>
+                     <!-- كبسولة عنصر الصوت الرسمي المدمج والمخفي تحت الأرض لفك حظر الجوال كلياً للأبد -->
+            <audio id="krHiddenAudio" src="fairuz.mp3" preload="auto" crossorigin="anonymous" style="display: none; position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none;"></audio>
         </div>
 
         <style>
@@ -238,12 +239,12 @@
                 if (!isMusicPlaying) {
                     audio.volume = royalVolume;
                     audio.muted = true;
-                    // فك الحظر الفوري بما أن الملف ابن الصفحة ومن نفس دومين الموقع 100%
+                    // فك الحظر الفوري التلقائي داخل الصفحة بما أن الملف من نفس الدومين تماماً
                     audio.play().then(() => {
                         audio.muted = false;
                         isMusicPlaying = true;
                         if(btn) btn.innerHTML = "⏸️ كتم المعزوفة";
-                        if(titleText) titleText.innerText = "🎻 يعزف الآن: روائع روحي الدافئة - معزوفة Mon Amour الملكية 🎻✨";
+                        if(titleText) titleText.innerText = "🎻 يعزف الآن: روائع روحي الدافئة - معزوفة ضوء القمر للرحباني 🎻✨";
                     }).catch(err => {
                         console.log("تمرير آمن ومباشر:");
                         audio.muted = false;
@@ -254,7 +255,7 @@
                 } else {
                     audio.pause();
                     isMusicPlaying = false;
-                    if(btn) btn.innerHTML = "💖 إطلاق معزوفة Mon Amour 🌌";
+                    if(btn) btn.innerHTML = "💖 إطلاق معزوفة ضوء القمر 🌌";
                     if(titleText) titleText.innerText = "⏸️ تم كتم العزف والنبض الروحي بداخل الصفحة... ☕";
                 }
             };
@@ -272,6 +273,7 @@
             };
         })();
         </script>
+
         <!-- ================================================================= -->
         <!-- نهاية اختراع كونسول الطرب الملكي - معزوفة Mon Amour بداخل الصفحة 100% -->
         <!-- ================================================================= -->
