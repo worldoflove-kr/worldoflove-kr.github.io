@@ -184,48 +184,100 @@
             <div class="royal-clock" id="live-clock" style="font-size: 14.5px !important; color: #ffffff !important; text-shadow: none !important; font-weight: 500 !important;">📅 جاري تحميل التوقيت الملكي...</div>
         </div>
 
-     
-           <!-- ================================================================= -->
-        <!-- بداية اختراع بوابات البث الموسيقي الملكية الآمنة 100% -->
+             <!-- ================================================================= -->
+        <!-- بداية اختراع عازف نبضات العشق الملكي بداخل الصفحة 100% -->
         <!-- ================================================================= -->
-        <div class="kr-royal-music-console" style="text-align: center; padding: 20px 15px; background: radial-gradient(circle, #130638 0%, #040108 100%); border: 1px solid #00f0ff; border-radius: 25px; margin: 25px auto; max-width: 320px; box-shadow: 0 0 25px rgba(0, 240, 255, 0.25); position: relative; font-family: 'Cairo', sans-serif; direction: rtl; z-index: 999;">
+        <div class="kr-royal-synth-console" style="text-align: center; padding: 20px 15px; background: radial-gradient(circle, #130638 0%, #040108 100%); border: 1px solid #00f0ff; border-radius: 20px; margin: 20px auto; max-width: 320px; box-shadow: 0 0 25px rgba(0, 240, 255, 0.25); position: relative; font-family: 'Cairo', sans-serif; direction: rtl; z-index: 999;">
             
-            <h3 style="color: #ffd700; margin-top: 0; margin-bottom: 5px; font-weight: 800; text-shadow: 0 0 10px #ffd700; font-size: 13px; letter-spacing: 0.5px;">🌌 كُونْسُولُ الطَّرَبِ الفَيْرُوزِيِّ المَلَكِيِّ 🎼</h3>
+            <h3 style="color: #ffd700; margin-top: 0; margin-bottom: 5px; font-weight: 800; text-shadow: 0 0 10px #ffd700; font-size: 13px; letter-spacing: 0.5px;">🎼 عازِفُ نَبَضَاتِ العِشْقِ المَلَكِيِّ 🌌</h3>
             
-            <p style="color: #00f0ff; font-size: 11px; margin-bottom: 15px; text-shadow: 0 0 5px rgba(0,240,255,0.4);">انقري على أي معزوفة لفتح البث الحي الفوري بداخل منصة الطرب العالمية... ✨</p>
+            <!-- شريط الأنباء المضيء -->
+            <div style="background: rgba(0,0,0,0.5); border: 1px dashed rgba(0,240,255,0.3); padding: 5px 10px; border-radius: 15px; margin-bottom: 15px; overflow: hidden; white-space: nowrap;">
+                <span id="krSynthTitle" style="color: #00f0ff; font-size: 11px; font-weight: bold; text-shadow: 0 0 5px #00f0ff; display: inline-block; animation: krSynthScroll 12s linear infinite;">🎵 انقري لتفجير معزوفة نبضات القلوب الدافئة بداخل الصفحة... ✨</span>
+            </div>
 
-            <!-- أزرار البوابات الصوتية النيون المحدثة بروابط بث رسمية نظيفة خالية من الإعلانات -->
-            <div style="display: flex; flex-direction: column; gap: 10px; align-items: center; width: 100%;">
-                
-                <!-- البوابة الأولى -->
-                <a href="https://soundcloud.com" target="_blank" style="text-decoration: none; width: 100%; max-width: 250px;">
-                    <button style="background: linear-gradient(45deg, #00f0ff, #120633); color: #fff; border: 1px solid #00f0ff; padding: 9px; border-radius: 25px; font-size: 11px; font-weight: bold; cursor: pointer; box-shadow: 0 0 8px rgba(0,240,255,0.3); width: 100%; font-family: 'Cairo', sans-serif; outline: none; user-select: none;">🎻 معزوفة: شايف البحر شو كبير ✨</button>
-                </a>
+            <!-- لوحة التحكم بالميكسر والنسبة الرقمية المشعة -->
+            <div style="display: flex; justify-content: center; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); padding: 6px 12px; border-radius: 30px; border: 1px solid rgba(0,240,255,0.15); margin-bottom: 15px;">
+                <button onclick="window.changeSynthVol(-10)" style="background: rgba(255,255,255,0.05); color: #00f0ff; border: 1px solid rgba(0,240,255,0.3); width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 12px; font-weight: bold; outline: none; user-select: none;">🔉</button>
+                <span id="krSynthVolDisplay" style="color: #fff; font-size: 11px; font-weight: bold; min-width: 60px; text-shadow: 0 0 5px rgba(255,255,255,0.3);">صوت: 80%</span>
+                <button onclick="window.changeSynthVol(10)" style="background: rgba(255,255,255,0.05); color: #00f0ff; border: 1px solid rgba(0,240,255,0.3); width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 12px; font-weight: bold; outline: none; user-select: none;">🔊</button>
+            </div>
 
-                <!-- البوابة الثانية -->
-                <a href="https://soundcloud.com" target="_blank" style="text-decoration: none; width: 100%; max-width: 250px;">
-                    <button style="background: linear-gradient(45deg, #b100ff, #120633); color: #fff; border: 1px solid #b100ff; padding: 9px; border-radius: 25px; font-size: 11px; font-weight: bold; cursor: pointer; box-shadow: 0 0 8px rgba(177,0,255,0.3); width: 100%; font-family: 'Cairo', sans-serif; outline: none; user-select: none;">🍃 معزوفة: نسم علينا الهوى ☕</button>
-                </a>
-
-                <!-- البوابة الثالثة -->
-                <a href="https://soundcloud.com" target="_blank" style="text-decoration: none; width: 100%; max-width: 250px;">
-                    <button style="background: linear-gradient(45deg, #ff0077, #120633); color: #fff; border: 1px solid #ff0077; padding: 9px; border-radius: 25px; font-size: 11px; font-weight: bold; cursor: pointer; box-shadow: 0 0 8px rgba(255,0,119,0.3); width: 100%; font-family: 'Cairo', sans-serif; outline: none; user-select: none;">🌙 معزوفة: سألتك حبيبي 💎🔒</button>
-                </a>
-
-                <!-- البوابة الرابعة -->
-                <a href="https://soundcloud.com" target="_blank" style="text-decoration: none; width: 100%; max-width: 250px;">
-                    <button style="background: linear-gradient(45deg, #ffd700, #120633); color: #fff; border: 1px solid #ffd700; padding: 9px; border-radius: 25px; font-size: 11px; font-weight: bold; cursor: pointer; box-shadow: 0 0 8px rgba(255,215,0,0.3); width: 100%; font-family: 'Cairo', sans-serif; outline: none; user-select: none;">🕊️ معزوفة: أعطني الناي وغنّ 🗝️</button>
-                </a>
-
-                <!-- البوابة الخامسة -->
-                <a href="https://soundcloud.com" target="_blank" style="text-decoration: none; width: 100%; max-width: 250px;">
-                    <button style="background: linear-gradient(45deg, #00ff66, #120633); color: #fff; border: 1px solid #00ff66; padding: 9px; border-radius: 25px; font-size: 11px; font-weight: bold; cursor: pointer; box-shadow: 0 0 8px rgba(0,255,102,0.3); width: 100%; font-family: 'Cairo', sans-serif; outline: none; user-select: none;">🥀 معزوفة: حبيتك بالصيف 🍂✨</button>
-                </a>
-
+            <!-- زر التنشيط الماسي الكبير لبرستيج ملوكي طاغ زي ما حلمنا -->
+            <div>
+                <button onclick="window.toggleKrSynth()" id="krSynthPlayBtn" style="background: linear-gradient(45deg, #00f0ff, #b100ff); color: #fff; border: none; padding: 10px 25px; border-radius: 20px; font-size: 12px; font-weight: bold; cursor: pointer; box-shadow: 0 0 15px rgba(0,240,255,0.4); outline: none; width: 100%; max-width: 220px; user-select: none;">▶️ إطلاق العزف الروحي</button>
             </div>
         </div>
+
+        <style>
+        @keyframes krSynthScroll { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+        </style>
+
+        <script>
+        (function() {
+            let audioCtx = null;
+            let synthInterval = null;
+            let isSynthPlaying = false;
+            let currentVolume = 0.8;
+
+            // نوتات النبضات الدافئة الموزونة موسيقياً (ترددات بيانو دافئ وهادئ جداً)
+            const royalMelody = [261.63, 329.63, 392.00, 440.00, 392.00, 329.63];
+            let noteIndex = 0;
+
+            window.toggleKrSynth = function() {
+                const btn = document.getElementById("krSynthPlayBtn");
+                const titleText = document.getElementById("krSynthTitle");
+
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+
+                if (!isSynthPlaying) {
+                    if (audioCtx.state === 'suspended') { audioCtx.resume(); }
+                    isSynthPlaying = true;
+                    if(btn) btn.innerHTML = "⏸️ كتم العزف الروحي";
+                    if(titleText) titleText.innerText = "🎻 يعزف الآن: نبضات العشق الكونية - برواقة بداخل الصفحة 🌌✨";
+
+                    // محرك التوليد الصوتي الفوري لتمرير النغمات كل ثانية ونصف برواقة
+                    synthInterval = setInterval(() => {
+                        try {
+                            let osc = audioCtx.createOscillator();
+                            let gainNode = audioCtx.createGain();
+                            
+                            osc.type = 'sine'; // موجة ناعمة جداً تشبه البيانو الكلاسيكي الهادئ
+                            osc.frequency.setValueAtTime(royalMelody[noteIndex], audioCtx.currentTime);
+                            
+                            gainNode.gain.setValueAtTime(currentVolume * 0.15, audioCtx.currentTime);
+                            gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.2);
+                            
+                            osc.connect(gainNode);
+                            gainNode.connect(audioCtx.destination);
+                            
+                            osc.start();
+                            osc.stop(audioCtx.currentTime + 1.2);
+                            
+                            noteIndex = (noteIndex + 1) % royalMelody.length;
+                        } catch(e) { console.log(e); }
+                    }, 1400);
+                } else {
+                    clearInterval(synthInterval);
+                    isSynthPlaying = false;
+                    if(btn) btn.innerHTML = "▶️ إطلاق العزف الروحي";
+                    if(titleText) titleText.innerText = "⏸️ تم كتم العزف الفيروزي الروحي بداخل الصفحة... ☕";
+                }
+            };
+
+            window.changeSynthVol = function(amount) {
+                currentVolume = Math.min(1.0, Math.max(0.0, currentVolume + (amount / 100)));
+                const volDisplay = document.getElementById("krSynthVolDisplay");
+                if (volDisplay) {
+                    volDisplay.innerText = "صوت: " + Math.round(currentVolume * 100) + "%";
+                }
+            };
+        })();
+        </script>
         <!-- ================================================================= -->
-        <!-- نهاية اختراع بوابات البث الموسيقي الملكية والفوتر النظيف المحدث -->
+        <!-- نهاية اختراع عازف نبضات العشق الملكي بداخل الصفحة 100% -->
         <!-- ================================================================= -->
 
 
