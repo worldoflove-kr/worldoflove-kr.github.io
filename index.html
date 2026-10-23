@@ -773,14 +773,20 @@
             var msg = `🔮 *دخلت على مرآة العشق المقلوبة ثلاثية الأبعاد بـ عالم الحب KR ولقيت رسالة سحرية مشفرة طافية مقلوبة كرمالك!* 🔄\n\nابرم تليفونك الحين رأساً على عقب 🙃 عشان تقدر تقرأ شو مكتوب بقلب الصندوق الزهري المشع طيران الحين الحين! \n\n👑 *رابط التحدي والمشاركة الحية:* \nhttps://github.io\n\n━━━━━━━━━━━━━━━\n👑 *منصة الروقان الملكي ثلاثي الأبعاد:* عالم الحب KR 👑`;
             window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
         }
-         /* بروتوكول Panda KR النهائي المصفى لتطهير العداد ومنع التكرار البصري كلياً */
+        /* بروتوكول Panda KR الشامل لإجبار المتصفح على مسح التكرار وتصفية العبارة كلياً */
         document.addEventListener("DOMContentLoaded", function() {
-            // مسح أي نصوص تكرارية قديمة داخل علبة العداد فوراً
-            const txtLabel = document.getElementById('visitor-text-label');
-            if (txtLabel) {
-                txtLabel.innerText = "عدد زوار صفحتنا الحين:";
+            function krForceCleanCounter() {
+                const txtLabel = document.getElementById('visitor-text-label');
+                if (txtLabel) {
+                    txtLabel.innerHTML = "عدد زوار صفحتنا الحين:";
+                }
             }
-            // ضبط اللغات ومنع حشو الكلمات دبل بالمتصفح
+            // تشغيل التطهير الفوري دغري عند فتح الصفحة لكسر الكاش القديم العنيد
+            krForceCleanCounter();
+            setTimeout(krForceCleanCounter, 100);
+            setTimeout(krForceCleanCounter, 500);
+
+            // ضبط اللغات ومنع حشو الكلمات دبل بداخل المتصفح عند التبديل
             const langBtns = document.querySelectorAll('.lang-btn');
             langBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -788,16 +794,16 @@
                         const currentLabel = document.getElementById('visitor-text-label');
                         if (currentLabel) {
                             if (document.documentElement.lang === 'en' || btn.innerText.includes('English')) {
-                                currentLabel.innerText = "Our Platform Visitors Now:";
+                                currentLabel.innerHTML = "Our Platform Visitors Now:";
                             } else {
-                                currentLabel.innerText = "عدد زوار صفحتنا الحين:";
+                                currentLabel.innerHTML = "عدد زوار صفحتنا الحين:";
                             }
                         }
-                    }, 30);
+                    }, 50);
                 });
             });
         });
-
+ 
 
 
         </script>
