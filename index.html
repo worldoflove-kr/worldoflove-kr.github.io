@@ -753,6 +753,25 @@
                 100% { transform: translateY(-12px) rotateX(-5deg) rotateY(5deg); box-shadow: 0 20px 45px rgba(255,0,127,0.6); }
             }
      
+        /* بروتوكول Panda KR لإعادة إنعاش وتشغيل الأزرار والعداد والترجمة 100% */
+        document.addEventListener("DOMContentLoaded", function() {
+            // تشغيل عداد الزوار التلقائي فوراً
+            if (typeof initVisitorCounter === "function") {
+                initVisitorCounter();
+            }
+            
+            // إنعاش أزرار اللغات وحماية التبديل السلس
+            const langBtns = document.querySelectorAll('.lang-btn');
+            langBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    setTimeout(() => {
+                        if (typeof initVisitorCounter === "function") {
+                            initVisitorCounter();
+                        }
+                    }, 50);
+                });
+            });
+        });
 
         </script>
         <!-- 🇸🇦 24. موسوعة التهاني الملوكية الخليجية المتجددة ثلاثية الأبعاد بختم الذهب - عالم الحب KR -->
