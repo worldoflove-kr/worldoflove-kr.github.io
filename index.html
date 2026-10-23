@@ -776,40 +776,29 @@
             var msg = `🔮 *دخلت على مرآة العشق المقلوبة ثلاثية الأبعاد بـ عالم الحب KR ولقيت رسالة سحرية مشفرة طافية مقلوبة كرمالك!* 🔄\n\nابرم تليفونك الحين رأساً على عقب 🙃 عشان تقدر تقرأ شو مكتوب بقلب الصندوق الزهري المشع طيران الحين الحين! \n\n👑 *رابط التحدي والمشاركة الحية:* \nhttps://github.io\n\n━━━━━━━━━━━━━━━\n👑 *منصة الروقان الملكي ثلاثي الأبعاد:* عالم الحب KR 👑`;
             window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
         }
-           /* بروتوكول Panda Force Block لإجبار المتصفح على مسح التكرار وتصفية عبارة العداد كلياً */
+              /* بروتوكول Panda KR النهائي المصفى كلياً لحماية وثبات عداد الزوار الفوقي */
         document.addEventListener("DOMContentLoaded", function() {
-            function krAbsoluteClean() {
-                const txtLabel = document.getElementById('visitor-text-label');
-                if (txtLabel) {
-                    // حظر الحشو المزدوج وتثبيت عبارة واحدة صافية مية بالمئة
-                    txtLabel.innerText = "عدد زوار صفحتنا الحين:";
-                }
+            const vBox = document.querySelector('.visitor-box');
+            if (vBox) {
+                vBox.style.display = 'inline-flex';
+                vBox.style.visibility = 'visible';
+                vBox.style.opacity = '1';
             }
-            
-            // تشغيل التطهير الليزري على موجات متتالية لكسر كاش المتصفح العنيد
-            krAbsoluteClean();
-            setTimeout(krAbsoluteClean, 50);
-            setTimeout(krAbsoluteClean, 200);
-            setTimeout(krAbsoluteClean, 600);
-            setTimeout(krAbsoluteClean, 1500);
-
-            // مراقبة أزرار اللغات لضمان ثبات النص ومنع التكرار عند التبديل
             const langBtns = document.querySelectorAll('.lang-btn');
             langBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
                     setTimeout(() => {
-                        const currentLabel = document.getElementById('visitor-text-label');
-                        if (currentLabel) {
-                            if (document.documentElement.lang === 'en' || btn.innerText.includes('English')) {
-                                currentLabel.innerText = "Our Platform Visitors Now:";
-                            } else {
-                                currentLabel.innerText = "عدد زوار صفحتنا الحين:";
-                            }
+                        const vBoxFix = document.querySelector('.visitor-box');
+                        if (vBoxFix) {
+                            vBoxFix.style.display = 'inline-flex';
+                            vBoxFix.style.visibility = 'visible';
+                            vBoxFix.style.opacity = '1';
                         }
-                    }, 40);
+                    }, 50);
                 });
             });
         });
+
 
         </script>
         <!-- 🇸🇦 24. موسوعة التهاني الملوكية الخليجية المتجددة ثلاثية الأبعاد بختم الذهب - عالم الحب KR -->
