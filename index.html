@@ -774,25 +774,32 @@
             var msg = `🔮 *دخلت على مرآة العشق المقلوبة ثلاثية الأبعاد بـ عالم الحب KR ولقيت رسالة سحرية مشفرة طافية مقلوبة كرمالك!* 🔄\n\nابرم تليفونك الحين رأساً على عقب 🙃 عشان تقدر تقرأ شو مكتوب بقلب الصندوق الزهري المشع طيران الحين الحين! \n\n👑 *رابط التحدي والمشاركة الحية:* \nhttps://github.io\n\n━━━━━━━━━━━━━━━\n👑 *منصة الروقان الملكي ثلاثي الأبعاد:* عالم الحب KR 👑`;
             window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
         }
-           /* بروتوكول Panda KR لحماية العداد المطور ومنع التكرار التلقائي في المتصفح */
+           /* بروتوكول الإنعاش والتثبيت الشامل لعداد الزوار المطور - Panda KR */
         document.addEventListener("DOMContentLoaded", function() {
-            const oldBox = document.querySelector('.visitor-box:not([style*="margin"])');
-            if(oldBox) oldBox.style.display = 'none';
-            
+            const vBox = document.querySelector('.visitor-box');
+            if (vBox) {
+                vBox.style.display = 'inline-flex';
+                vBox.style.visibility = 'visible';
+                vBox.style.opacity = '1';
+            }
             const langBtns = document.querySelectorAll('.lang-btn');
             langBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
                     setTimeout(() => {
                         const txtLabel = document.getElementById('visitor-text-label');
-                        if(txtLabel) {
-                            if(document.documentElement.lang === 'en' || btn.innerText.includes('English')) {
+                        if (txtLabel) {
+                            if (document.documentElement.lang === 'en' || btn.innerText.includes('English')) {
                                 txtLabel.innerText = "Our Platform Visitors Now:";
                             } else {
                                 txtLabel.innerText = "عدد زوار صفحتنا الحين:";
                             }
                         }
-                        const badDublicate = document.querySelector('.royal-box .visitor-box');
-                        if(badDublicate) badDublicate.remove();
+                        const vBoxFix = document.querySelector('.visitor-box');
+                        if (vBoxFix) {
+                            vBoxFix.style.display = 'inline-flex';
+                            vBoxFix.style.visibility = 'visible';
+                            vBoxFix.style.opacity = '1';
+                        }
                     }, 50);
                 });
             });
