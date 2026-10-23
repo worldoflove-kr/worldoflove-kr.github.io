@@ -726,6 +726,30 @@
                 0% { transform: translateY(0px) rotateX(5deg) rotateY(-5deg); box-shadow: 0 10px 25px rgba(255,0,127,0.3); }
                 100% { transform: translateY(-12px) rotateX(-5deg) rotateY(5deg); box-shadow: 0 20px 45px rgba(255,0,127,0.6); }
             }
+        /* اختراع المنظومة الزجاجية الشفافة الكريستالية لفك أسر الليزر والضوء الكوني ثلاثي الأبعاد */
+        .preview-box, #radar-card-zone, #gulf-card-zone .preview-box {
+            background: rgba(10, 3, 28, 0.45) !important;
+            backdrop-filter: blur(12px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(12px) saturate(180%) !important;
+            border: 2px solid rgba(0, 240, 255, 0.25) !important;
+            box-shadow: 0 8px 32px 0 rgba(0, 240, 255, 0.2), inset 0 0 20px rgba(177, 0, 255, 0.15) !important;
+            position: relative;
+            overflow: hidden;
+        }
+        /* دمج النبض الليزري العاكس بقلب الزجاج الشفاف */
+        .preview-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.12) 0%, rgba(177, 0, 255, 0.05) 50%, transparent 100%);
+            animation: krGlassLaser 6s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes krGlassLaser { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  
         </style>
 
         <script>
