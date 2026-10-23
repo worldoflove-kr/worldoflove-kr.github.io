@@ -726,31 +726,31 @@
                 0% { transform: translateY(0px) rotateX(5deg) rotateY(-5deg); box-shadow: 0 10px 25px rgba(255,0,127,0.3); }
                 100% { transform: translateY(-12px) rotateX(-5deg) rotateY(5deg); box-shadow: 0 20px 45px rgba(255,0,127,0.6); }
             }
-         /* فك أسر الليزر والضوء الكوني ثلاثي الأبعاد بالتطهير الزجاجي الشامل 100% */
-        .preview-box, #radar-card-zone, #gulf-card-zone .preview-box, div[class*="preview-box"] {
-            background: rgba(13, 5, 36, 0.4) !important;
-            background-color: rgba(13, 5, 36, 0.4) !important;
-            backdrop-filter: blur(15px) saturate(200%) !important;
-            -webkit-backdrop-filter: blur(15px) saturate(200%) !important;
-            border: 2px solid rgba(0, 240, 255, 0.3) !important;
-            box-shadow: 0 8px 32px 0 rgba(0, 240, 255, 0.25), inset 0 0 25px rgba(177, 0, 255, 0.2) !important;
+           /* اختراع منظومة زجاج الكريستال الشفاف المطلق لإنعكاس الليزر والضوء ثلاثي الأبعاد */
+        .royal-box, .preview-box, #radar-card-zone, #gulf-card-zone .preview-box, div[class*="preview-box"] {
+            background: rgba(10, 3, 28, 0.12) !important;
+            background-color: rgba(10, 3, 28, 0.12) !important;
+            backdrop-filter: blur(25px) saturate(250%) !important;
+            -webkit-backdrop-filter: blur(25px) saturate(250%) !important;
+            border: 2px solid rgba(0, 240, 255, 0.6) !important;
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.45), inset 0 0 30px rgba(177, 0, 255, 0.35) !important;
             position: relative !important;
             overflow: hidden !important;
         }
-        /* إطلاق النبض الليزري ثلاثي الأبعاد المضيء خلف الكلمات والصور */
-        .preview-box::before {
+        /* إطلاق شفرة الإشعاع النيوني والوميض الليزري الدوار خلف الكلمات والصور */
+        .royal-box::before, .preview-box::before {
             content: '' !important;
             position: absolute !important;
             top: -50% !important;
             left: -50% !important;
             width: 200% !important;
             height: 200% !important;
-            background: radial-gradient(circle, rgba(0, 240, 255, 0.18) 0%, rgba(177, 0, 255, 0.08) 50%, transparent 100%) !important;
-            animation: krGlassLaser 5s linear infinite !important;
+            background: conic-gradient(from 0deg, transparent, rgba(0, 240, 255, 0.45), rgba(177, 0, 255, 0.35), transparent) !important;
+            animation: krAbsoluteLaser 3.5s linear infinite !important;
             pointer-events: none !important;
             z-index: -1 !important;
         }
-        @keyframes krGlassLaser { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes krAbsoluteLaser { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         </style>
 
