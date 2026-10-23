@@ -1080,6 +1080,26 @@ if (mainRadarBtn) {
 
         </script>
     
+    function initVisitorCounter() {
+        var b = 7487;
+        var s = localStorage.getItem('worldOfLoveVisitors');
+        var n = s ? (parseInt(s) + Math.floor(Math.random() * 3) + 1) : (b + 1);
+        localStorage.setItem('worldOfLoveVisitors', n);
+        
+        var lbl = document.getElementById("lbl-visitors");
+        var txtLabel = document.getElementById("visitor-text-label");
+        
+        if (lbl) {
+            lbl.innerHTML = n.toLocaleString();
+        }
+        if (txtLabel) {
+            if (document.documentElement.lang === 'en') {
+                txtLabel.innerHTML = "Our Platform Visitors Now:";
+            } else {
+                txtLabel.innerText = "عدد زوار صفحتنا الحين:";
+            }
+        }
+    }
 
 
   
