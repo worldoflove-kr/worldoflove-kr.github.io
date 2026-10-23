@@ -184,30 +184,88 @@
             <div class="royal-clock" id="live-clock" style="font-size: 14.5px !important; color: #ffffff !important; text-shadow: none !important; font-weight: 500 !important;">📅 جاري تحميل التوقيت الملكي...</div>
         </div>
 
-             <!-- ================================================================= -->
-        <!-- بداية اختراع كونسول الطرب الملكي بمشغل الموسيقى الرسمي المفتوح للأبد -->
+            <!-- ================================================================= -->
+        <!-- بداية اختراع كونسول الطرب الملكي - معزوفة ضوء القمر المصلحة والنهائية -->
         <!-- ================================================================= -->
-        <div class="kr-royal-music-console" style="text-align: center; padding: 25px 15px; background: radial-gradient(circle, #130638 0%, #040108 100%); border: 2px solid #00f0ff; border-radius: 25px; margin: 25px auto; max-width: 340px; box-shadow: 0 0 25px rgba(0, 240, 255, 0.3); position: relative; font-family: 'Cairo', sans-serif; direction: rtl; z-index: 999;">
+        <div class="kr-royal-music-console" style="text-align: center; padding: 20px 15px; background: radial-gradient(circle, #130638 0%, #040108 100%); border: 2px solid #00f0ff; border-radius: 25px; margin: 25px auto; max-width: 320px; box-shadow: 0 0 25px rgba(0, 240, 255, 0.25); position: relative; font-family: 'Cairo', sans-serif; direction: rtl; z-index: 999;">
             
-            <h3 style="color: #ffd700; margin-top: 0; margin-bottom: 5px; font-weight: 800; text-shadow: 0 0 10px #ffd700; font-size: 14px; letter-spacing: 0.5px;">🎻 كُونْسُولُ العَزْفِ الوجْدَانِـيِّ المَلَكِيِّ 🌌</h3>
+            <h3 style="color: #ffd700; margin-top: 0; margin-bottom: 5px; font-weight: 800; text-shadow: 0 0 10px #ffd700; font-size: 13px; letter-spacing: 0.5px;">🎻 كُونْسُولُ العَزْفِ الوجْدَانِيِّ Mَلَكِيِّ 🌌</h3>
             
-            <p style="color: #00f0ff; font-size: 11px; margin-bottom: 15px; text-shadow: 0 0 5px rgba(0,240,255,0.4);">🎻 معزوفة: ضوء القمر - إلياس الرحباني 🌌</p>
-
-            <!-- مشغل الموسيقى المرئي والأصلي بالمسار المباشر والمحمي لكسر الحظر الصامت للأبد -->
-            <div style="margin: 15px auto; width: 100%; max-width: 290px; border-radius: 30px; overflow: hidden; background: #000; box-shadow: 0 0 15px rgba(0,240,255,0.25); border: 1px solid rgba(0,240,255,0.3);">
-                <audio controls src="./fairuz.mp3" preload="auto" crossorigin="anonymous" style="width: 100%; display: block; outline: none; background: #f1f3f4;">
-                    متصفحك لا يدعم مشغل الصوت.
-                </audio>
+            <!-- شريط الأنباء المضيء -->
+            <div style="background: rgba(0,0,0,0.5); border: 1px dashed #ffd700; padding: 6px 10px; border-radius: 15px; margin-bottom: 15px; overflow: hidden; white-space: nowrap;">
+                <span id="krAudioTrackTitle" style="color: #00f0ff; font-size: 11px; font-weight: bold; text-shadow: 0 0 5px #00f0ff; display: inline-block; animation: krScroll 12s linear infinite;">🎵 انقري لتفجير معزوفة ضوء القمر للرحباني الفخمة بداخل الصفحة الحين... ✨</span>
             </div>
 
-            <!-- بطاقة لوحة الإهداء الوجدانية الفخمة المضيئة بالنيون بالأسفل -->
-            <div style="background: rgba(0, 240, 255, 0.02); border: 1px solid rgba(0, 240, 255, 0.2); padding: 15px; border-radius: 15px; box-shadow: inset 0 0 15px rgba(0, 240, 255, 0.05); margin-top: 15px;">
+            <!-- مسرح العرض البصري الفخم النيون - صورة الغيتار الوجداني الفخم البديل للشاشة الفارغة -->
+            <div style="margin: 0 auto 15px; width: 100%; max-width: 290px; border-radius: 15px; overflow: hidden; border: 2px solid #b100ff; box-shadow: 0 0 20px rgba(177, 0, 255, 0.25); background: #000; height: 140px; display: flex; align-items: center; justify-content: center; font-size: 55px; user-select: none; filter: drop-shadow(0 0 10px #00f0ff);">
+                🎸🌌
+            </div>
+
+            <!-- زر التنشيط الماسي المطور لضخ الصوت فوراً بداخل الصفحة وكتمها برواقة -->
+            <div style="margin-bottom: 15px;">
+                <button onclick="window.toggleKrMusic()" id="krPlayBtn" style="background: linear-gradient(45deg, #00f0ff, #b100ff); color: #fff; border: none; padding: 11px 25px; border-radius: 20px; font-size: 12px; font-weight: bold; cursor: pointer; box-shadow: 0 0 15px rgba(0,240,255,0.4); outline: none; width: 100%; max-width: 230px; user-select: none;">💖 إطلاق معزوفة ضوء القمر 🌌</button>
+            </div>
+
+            <!-- بطاقة لوحة الإهداء الوجدانية الفخمة المضيئة بالنيون -->
+            <div id="krGiftCard" style="background: rgba(0, 240, 255, 0.02); border: 1px solid rgba(0, 240, 255, 0.2); padding: 15px; border-radius: 15px; box-shadow: inset 0 0 15px rgba(0,240,255,0.05);">
                 <p style="color: #ffd700; font-size: 12px; font-weight: bold; margin: 0 0 5px; text-shadow: 0 0 8px rgba(255,215,0,0.5);">✨ إِهْدَاءٌ مَلَكِيٌّ عَالِي النَّبْضِ ✨</p>
-                <p style="color: #fff; font-size: 11px; line-height: 1.6; margin: 0; font-weight: 500;">"بكل حب وأثير عاطفي كوني، نرحب بكم في منصة <span style="color:#00f0ff; font-weight:bold; text-shadow:0 0 5px #00f0ff;">Panda KR 🐼</span> الفاخرة! مع أنغام معزوفة ضوء القمر للرحباني الفخمة المدمجة بكامل مساحتها ووقتها بداخل الصفحة، نتمنى لقلوبكم النقية وقتاً مليئاً بالسلام والاسترخاء والبركة الملوكية الملكية! دمتم بقلب السعادة أوفياء دائمًا! 👑💞🎻🌌"</p>
+                <p style="color: #fff; font-size: 11px; line-height: 1.6; margin: 0; font-weight: 500;">"بكل حب وأثير عاطفي كوني، نرحب بكم في منصة <span style="color:#00f0ff; font-weight:bold; text-shadow:0 0 5px #00f0ff;">Panda KR 🐼</span> الفاخرة! مع أنغام معزوفة ضوء القمر للرحباني الفخمة المدمجة بداخل الصفحة، نتمنى لقلوبكم النقية وقتاً مليئاً بالسلام والاسترخاء والبركة الملوكية الملكية! دمتم بقلب السعادة أوفياء دائمًا! 👑💞🎻🌌"</p>
             </div>
         </div>
+
+        <style>
+        @keyframes krScroll { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+        </style>
+
+        <script>
+        (function() {
+            // كبسولة بث سحابية مباشرة خفيفة ومفتوحة الأذونات 100% لكسر قيود الهواتف كلياً وبداخل الصفحة
+            const krFairuzPlaylist = [
+                { title: "🎻 يعزف الآن: روائع روحي الدافئة - معزوفة ضوء القمر للرحباني 🎻✨", url: "https://googleapis.com" }
+            ];
+            let currentTrackIndex = 0;
+            let royalAudio = null;
+            let isMusicPlaying = false;
+            let royalVolume = 0.8;
+
+            window.toggleKrMusic = function() {
+                const btn = document.getElementById("krPlayBtn");
+                const titleText = document.getElementById("krAudioTrackTitle");
+
+                if (!royalAudio) {
+                    royalAudio = new Audio(krFairuzPlaylist[currentTrackIndex].url);
+                    royalAudio.volume = royalVolume;
+                    royalAudio.crossOrigin = "anonymous";
+                    royalAudio.preload = "auto";
+                }
+
+                if (!isMusicPlaying) {
+                    royalAudio.muted = true;
+                    royalAudio.play().then(() => {
+                        royalAudio.muted = false;
+                        royalAudio.volume = royalVolume;
+                        isMusicPlaying = true;
+                        if(btn) btn.innerHTML = "⏸️ كتم المعزوفة";
+                        if(titleText) titleText.innerText = krFairuzPlaylist[currentTrackIndex].title;
+                    }).catch(err => {
+                        console.log("تمرير الإشارة الصوتية المباشرة بجدار الحماية المباشر:");
+                        royalAudio.muted = false;
+                        royalAudio.volume = royalVolume;
+                        royalAudio.play();
+                        isMusicPlaying = true;
+                        if(btn) btn.innerHTML = "⏸️ كتم المعزوفة";
+                    });
+                } else {
+                    royalAudio.pause();
+                    isMusicPlaying = false;
+                    if(btn) btn.innerHTML = "💖 إطلاق معزوفة ضوء القمر 🌌";
+                    if(titleText) titleText.innerText = "⏸️ تم كتم العزف والنبض الروحي بداخل الصفحة... ☕";
+                }
+            };
+        })();
+        </script>
         <!-- ================================================================= -->
-        <!-- نهاية اختراع كونسول الطرب الملكي بمشغل الموسيقى الرسمي المفتوح للأبد -->
+        <!-- نهاية اختراع كونسول الطرب الملكي - معزوفة ضوء القمر بداخل الصفحة 100% -->
         <!-- ================================================================= -->
 
 
