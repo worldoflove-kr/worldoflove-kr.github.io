@@ -774,6 +774,30 @@
             var msg = `🔮 *دخلت على مرآة العشق المقلوبة ثلاثية الأبعاد بـ عالم الحب KR ولقيت رسالة سحرية مشفرة طافية مقلوبة كرمالك!* 🔄\n\nابرم تليفونك الحين رأساً على عقب 🙃 عشان تقدر تقرأ شو مكتوب بقلب الصندوق الزهري المشع طيران الحين الحين! \n\n👑 *رابط التحدي والمشاركة الحية:* \nhttps://github.io\n\n━━━━━━━━━━━━━━━\n👑 *منصة الروقان الملكي ثلاثي الأبعاد:* عالم الحب KR 👑`;
             window.location.href = "whatsapp://send?text=" + encodeURIComponent(msg);
         }
+           /* بروتوكول Panda KR لحماية العداد المطور ومنع التكرار التلقائي في المتصفح */
+        document.addEventListener("DOMContentLoaded", function() {
+            const oldBox = document.querySelector('.visitor-box:not([style*="margin"])');
+            if(oldBox) oldBox.style.display = 'none';
+            
+            const langBtns = document.querySelectorAll('.lang-btn');
+            langBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    setTimeout(() => {
+                        const txtLabel = document.getElementById('visitor-text-label');
+                        if(txtLabel) {
+                            if(document.documentElement.lang === 'en' || btn.innerText.includes('English')) {
+                                txtLabel.innerText = "Our Platform Visitors Now:";
+                            } else {
+                                txtLabel.innerText = "عدد زوار صفحتنا الحين:";
+                            }
+                        }
+                        const badDublicate = document.querySelector('.royal-box .visitor-box');
+                        if(badDublicate) badDublicate.remove();
+                    }, 50);
+                });
+            });
+        });
+
         </script>
         <!-- 🇸🇦 24. موسوعة التهاني الملوكية الخليجية المتجددة ثلاثية الأبعاد بختم الذهب - عالم الحب KR -->
         <div class="royal-box" style="border: 2px solid #ffd700 !important; box-shadow: 0 0 25px rgba(255, 215, 0, 0.3) !important; margin: 25px auto !important; max-width: 100% !important; background: linear-gradient(135deg, #0f0008, #1a0012) !important; border-radius: 16px !important; padding: 20px !important; text-align: center !important; position: relative !important; z-index: 99999 !important; font-family: 'Cairo', sans-serif !important;">
