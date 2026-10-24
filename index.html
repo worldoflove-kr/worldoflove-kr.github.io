@@ -1004,21 +1004,22 @@ if (mainRadarBtn) {
 
 
         function updateClock() {
-            var now = new Date();
-            var t = now.toLocaleTimeString('ar-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
-            var d = now.toLocaleDateString('ar-LB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-            var cEl = document.getElementById("live-clock");
-            
-            if (cEl) {
-                if (currentLang === 'ar') {
-                    cEl.innerHTML = `📅 ${d} <br> ⏰ الساعة: ${t} <br> ☀️ الطقس في بيروت: 24°C صافي | 💧 الرطوبة: 62%`;
-                } else {
-                    var dE = now.toLocaleDateString('en-LB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-                    var tE = now.toLocaleTimeString('en-LB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
-                    cEl.innerHTML = `📅 ${dE} <br> ⏰ Time: ${tE} <br> ☀️ Beirut Weather: 24°C Clear | 💧 Humidity: 62%`;
-                }
-            }
+    var now = new Date();
+    var t = now.toLocaleTimeString('ar-LB', {hour: '2-digit', minute: '2-digit', second: '2-digit'});
+    var d = now.toLocaleDateString('ar-LB', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
+    var cEl = document.getElementById("live-clock");
+    
+    if (cEl) {
+        if (document.documentElement.lang === 'en') {
+            var tEn = now.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'});
+            var dEn = now.toLocaleDateString('en-US', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
+            cEl.innerHTML = `📅 ${dEn} <span style="color:#ff0080; margin:0 2px;">|</span> ⏰ Time: ${tEn}`;
+        } else {
+            cEl.innerHTML = `📅 ${d} <span style="color:#ff0080; margin:0 2px;">|</span> ⏰ الساعة: ${t}`;
         }
+    }
+}
+
 
         function executeRoyalSearch() {
             var query = document.getElementById("royal-search-query").value.trim();
