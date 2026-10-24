@@ -1018,6 +1018,44 @@ if (mainRadarBtn) {
             var txt = (t === 'alpha') ? "مرحباً، أود طلب تشريج خط من صفحة عالم الحب KR" : "مرحباً، أود الاستفسار عن خدمات شحن ببجي / مشتريات شي إن من صفحة عالم الحب KR";
             window.location.href = "whatsapp://send?phone=" + p + "&text=" + encodeURIComponent(txt);
         }
+function changeLanguage(lang) {
+    document.documentElement.lang = lang;
+    
+    // تحديث حالة نشاط الأزرار الفوقية فوراً
+    const btnAr = document.querySelector("button[onclick*='ar']");
+    const btnEn = document.getElementById("btn-en");
+    
+    if (lang === 'en') {
+        if (btnEn) btnEn.classList.add('active');
+        if (btnAr) btnAr.classList.remove('active');
+        
+        // ترجمة تسمية عداد الزوار للإنجليزية فوراً ومن دون أي تكرار
+        const lblLabel = document.getElementById("visitor-text-label");
+        if (lblLabel) lblLabel.innerText = "Our Platform Visitors Now:";
+        
+        // ترجمة شريط بحث جوجل للإنجليزية فوراً
+        const searchInput = document.querySelector("input[name='q']");
+        const searchBtn = document.querySelector("form button[type='submit']");
+        if (searchInput) searchInput.placeholder = "Search Google Like Millions Now...";
+        if (searchBtn) searchBtn.innerText = "Search Now";
+    } else {
+        if (btnAr) btnAr.classList.add('active');
+        if (btnEn) btnEn.classList.remove('active');
+        
+        const lblLabel = document.getElementById("visitor-text-label");
+        if (lblLabel) lblLabel.innerText = "عدد زوار صفحتنا الحين:";
+        
+        const searchInput = document.querySelector("input[name='q']");
+        const searchBtn = document.querySelector("form button[type='submit']");
+        if (searchInput) searchInput.placeholder = "ابحث في جوجل كالملايين الحين...";
+        if (searchBtn) searchBtn.innerText = "بحث الحين";
+    }
+    
+    // تحديث دقات الساعة تلقائياً لقلب اللغة دغري الحين
+    if (typeof updateClock === "function") {
+        updateClock();
+    }
+}
 
     function initVisitorCounter() {
         var b = 7487;
