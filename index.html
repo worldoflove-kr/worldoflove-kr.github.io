@@ -121,7 +121,7 @@
 }
 </style>
         
-    <div class="royal-container" style="position: relative; background: radial-gradient(circle at center, #0a0a16 0%, #020205 100%); padding: 10px 0; overflow: hidden; border-radius: 20px;">
+     <div class="royal-container" style="position: relative; background: radial-gradient(circle at center, #0a0a16 0%, #020205 100%); padding: 10px 0; overflow: hidden; border-radius: 20px;">
         <!-- جزيئات نجوم الفضاء المتلألئة والناعمة بالخلفية السوداء -->
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.6; z-index: 1;">
             <div style="position: absolute; width: 2px; height: 2px; background: #fff; top: 15%; left: 20%; border-radius: 50%; box-shadow: 0 0 4px #fff; animation: starBlink 3s infinite;"></div>
@@ -142,9 +142,9 @@
             100% { opacity: 0.3; width: 110px; height: 35px; }
         }
         @keyframes goldTextGlow {
-            0% { text-shadow: 0 0 6px #ffd700, 0 0 12px #ff0080; }
-            50% { text-shadow: 0 0 12px #ffd700, 0 0 20px #ffaa00, 0 0 25px #ff0080; }
-            100% { text-shadow: 0 0 6px #ffd700, 0 0 12px #ff0080; }
+            0% { text-shadow: 0 0 6px #ffd700, 0 0 12px #ff0080; transform: scale(0.98); }
+            50% { text-shadow: 0 0 12px #ffd700, 0 0 20px #ffaa00, 0 0 25px #ff0080; transform: scale(1.02); }
+            100% { text-shadow: 0 0 6px #ffd700, 0 0 12px #ff0080; transform: scale(0.98); }
         }
         </style>
 
@@ -155,10 +155,10 @@
                 <button class="lang-btn" id="btn-en" onclick="changeLanguage('en')" style="font-size: 10px !important; padding: 3px 9px !important; margin: 0 2px;">English</button>
             </div>
 
-            <!-- شعار المنصة الملكي (عالم الحب) مكتوب حر بالكامل بنبض ووميض مشع بالذهب من دون صناديق -->
+            <!-- شعار المنصة الملكي (عالم الحب) بالتاج الملكي والوميض المشع بالذهب الخالص من دون صناديق -->
             <div class="royal-panda-panel" style="text-align: center; margin: 2px auto; max-width: 260px; background: none !important; border: none !important; box-shadow: none !important; padding: 0;">
                 <div class="panda-img-row" style="display: flex; justify-content: center; align-items: center; margin-bottom: 0px;">
-                    <span style="font-size: 18px; filter: drop-shadow(0 0 6px #ffd700); animation: starBlink 3s infinite;">🐼</span>
+                    <span style="font-size: 20px; filter: drop-shadow(0 0 6px #ffd700); animation: starBlink 2s infinite;">👑</span>
                 </div>
                 <div class="panda-text-block" style="margin: 0; padding: 0;">
                     <div class="txt-welcome-wrap" style="margin: 0 auto; text-align: center; position: relative; display: inline-block;">
@@ -166,7 +166,7 @@
                         <div class="gold-glow-aura" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120px; height: 40px; background: radial-gradient(circle, rgba(255,215,0,0.22) 0%, rgba(255,215,0,0) 70%); filter: blur(6px); z-index: 1; animation: goldPulseFix 2s infinite ease-in-out;"></div>
                         
                         <h1 class="txt-welcome-word" style="font-family: 'Cairo', sans-serif; font-size: 16px; font-weight: 900; color: #ffd700; text-shadow: 0 0 8px #ffd700, 0 0 15px #ff0080; margin: 1px 0; position: relative; z-index: 2; animation: goldTextGlow 2s infinite ease-in-out;">عالم الحب</h1>
-                        <h2 class="txt-welcome-bi" style="font-family: 'Cairo', sans-serif; font-size: 9px; font-weight: 700; color: #fff; text-shadow: 0 0 5px rgba(255,255,255,0.5); margin: 0; letter-spacing: 0.6px; text-transform: uppercase; position: relative; z-index: 2;">WORLD OF LOVE</h2>
+                        <h2 class="txt-welcome-bi" style="font-family: 'Cairo', sans-serif; font-size: 10px; font-weight: 800; color: #ffd700; text-shadow: 0 0 8px #ffd700, 0 0 15px #ff0080; margin: 0; letter-spacing: 0.6px; text-transform: uppercase; position: relative; z-index: 2; animation: goldTextGlow 2s infinite ease-in-out;">WORLD OF LOVE</h2>
                     </div>
                 </div>
             </div>
@@ -175,8 +175,8 @@
             <div style="text-align: center; margin: 2px auto; max-width: 240px; font-family: 'Cairo', sans-serif; padding: 0;">
                 <div class="visitor-box" id="kr-unified-counter" style="background: rgba(255, 215, 0, 0.02); border: 1px solid rgba(255, 215, 0, 0.3); padding: 3px 10px; border-radius: 30px; display: inline-flex; align-items: center; justify-content: center; gap: 5px; box-shadow: 0 0 6px rgba(255, 215, 0, 0.06);">
                     <span style="font-size: 11px; text-shadow: 0 0 3px rgba(255,215,0,0.5);">👥</span>
-                    <span id="visitor-text-label" class="notranslate" style="color: #fff; font-size: 9px; font-weight: bold; text-shadow: 0 0 5px rgba(255,255,255,0.3);">عدد زوار صفحتنا الحين:</span>
-                    <span id="lbl-visitors" class="notranslate" style="color: #ffd700; font-size: 10px; font-weight: 800; text-shadow: 0 0 6px #ffd700;">10,663</span>
+                    <span id="visitor-text-label" style="color: #fff; font-size: 9px; font-weight: bold; text-shadow: 0 0 5px rgba(255,255,255,0.3);">عدد زوار صفحتنا الحين:</span>
+                    <span id="lbl-visitors" style="color: #ffd700; font-size: 10px; font-weight: 800; text-shadow: 0 0 6px #ffd700;">10,685</span>
                 </div>
             </div>
 
@@ -187,9 +187,7 @@
             </form>
         </div>
     </div>
-    
-
-          
+ 
 
                   <!-- 🔍 شريط بحث جوجل الملكي العالمي المطور الشغال فوراً - KR -->
             <form action="https://google.com" method="get" target="_blank" style="margin: 15px auto !important; max-width: 100% !important; background: rgba(255, 255, 255, 0.95) !important; border: 2px solid #ffd700 !important; box-shadow: 0 0 15px rgba(255, 215, 0, 0.4) !important; padding: 8px 12px !important; border-radius: 30px !important; display: flex !important; align-items: center !important; gap: 8px !important; direction: rtl !important;">
