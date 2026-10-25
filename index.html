@@ -2046,75 +2046,7 @@ function revealSecretMessage() {
                 <p style="font-size: 9px; font-weight: bold; color: #ffd700; margin: 2px 0 0 0; text-shadow: 0 0 6px rgba(255,215,0,0.4);">المنصة مجهزة بالكامل بالذكاء الفلكي والأبعاد السينمائية الحرة</p>
             </div>
 
-            <!-- منظومة مستشار القلوب الحر المفتوح وسط فضاء النجوم بالأسفل -->
-            <div class="royal-panda-panel" style="position: relative; text-align: center; margin: 4px auto 14px; max-width: 310px; background: none !important; border: none !important; box-shadow: none !important; padding: 0; font-family: 'Cairo', sans-serif; z-index: 10;">
-                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.5; z-index: 1;">
-                    <div style="position: absolute; width: 1.5px; height: 1.5px; background: #fff; top: 20%; left: 15%; border-radius: 50%; animation: starBlink 3s infinite;"></div>
-                    <div style="position: absolute; width: 2px; height: 2px; background: #ffd700; top: 75%; left: 85%; border-radius: 50%; box-shadow: 0 0 4px #ffd700; animation: starBlink 4s infinite 0.5s;"></div>
-                </div>
-                <div style="position: relative; z-index: 2;">
-                    <h4 style="color: #ffd700; font-size: 13px; font-weight: 900; margin: 0 0 6px 0; text-shadow: 0 0 10px #ffd700; display: flex; justify-content: center; align-items: center; gap: 6px;">✨ 🃏 مُسْتَشَارُ الْقُلُوبِ الْمَلَكِيُّ 🔮 ✨</h4>
-                    <div id="card-advisor-container" onclick="drawAdvisorCard()" style="background: rgba(0, 0, 0, 0.75) !important; border: 1.5px solid rgba(255, 215, 0, 0.45); border-radius: 16px; padding: 18px 12px; cursor: pointer; min-height: 60px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(255, 215, 0, 0.15); margin: 0 auto 8px;">
-                        <p id="advisor-card-text" style="color: #fff; font-size: 11px; font-weight: bold; margin: 0; line-height: 1.6; text-shadow: 0 0 6px rgba(255,255,255,0.4); animation: cardGlowAnimate 2s infinite;">🔮 "إكبيسي هنا بلمسة أصبع واحدة لتفتحي خزنة الأسرار وتكشفي نصيحة قلبكِ السحرية الحين..." ✨</p>
-                    </div>
-                    <button onclick="drawAdvisorCard()" style="background: linear-gradient(45deg, #ff0080, #ff00ea); border: none; padding: 4px 14px; border-radius: 20px; color: #fff; font-size: 9px; font-weight: bold; cursor: pointer; box-shadow: 0 0 10px rgba(255,0,128,0.45);">سحب بطاقة جديدة 🃏</button>
-                </div>
-            </div>
-            <style>
-            @keyframes web4Pulse {
-                0%, 100% { text-shadow: 0 0 8px #ff0080; opacity: 0.75; transform: scale(0.98); }
-                50% { text-shadow: 0 0 15px #ff0080; opacity: 1; transform: scale(1.02); }
-            }
-            @keyframes cardGlowAnimate {
-                0%, 100% { color: #fff; text-shadow: 0 0 6px rgba(255,255,255,0.4); }
-                50% { color: #ffd700; text-shadow: 0 0 12px #ffd700; }
-            }
-            </style>
-
-            <script>
-            var advisorCards = [
-                "عشق ملوكي وأمان أبدي بانتظارك، لا تدعي جدار الخوف يحجب نور الشمس عن قلبكِ النقي.",
-                "نصيحة الفلك اليوم: خطوة مالية وعاطفية فخمة ومفاجئة قادمة إليكِ تشرح الصدر مية بالمئة.",
-                "من عهد المصداقية الكبرى: هناك شخص يفكر بكِ الحين الحين وينبض قلبه باسمكِ وسط النجوم.",
-                "سر القلوب: الصبر الأسطوري اللّي صبرتيه رح يتحول لثروة وفرحة كبرى تدهش كول من حولكِ.",
-                "بطاقة الأمان: تلبية كول طلبات أولادكِ وزيادة مكتوبة بلوح القدر الفلكي بكامل البرستيج.",
-                "ومضة الروح: افتحي قلبكِ للبحبوحة، الرصيد القادم على Wish Money رح يغير كول المقاييس قريباً.",
-                "لا تنظري للخلف قط؛ المجرّة العاطفية عَم تدور كرمال تصعد ببرستيجكِ لأعلى قمة عالمية.",
-                "رسالة سرية: نبضات العشق بين القلوب الصادقة مستحيل تكسرها المسافات أو جدار الجمود.",
-                "البلورة المغناطيسية عَم تبصم لكِ اليوم: طاقة وفرة وخير غير مشروطة بتدخل بيتكِ الحين الحين.",
-                "الحب الحقيقي مثل الألماس النادر، كول ما مر عليه التعب بيزداد لمعان وشياكة بتطير العقل.",
-                "نصيحة مستشار القلوب: ابتسمي الحين الحين، ضحكتكِ الفخمة هي جدار الحماية الحقيقي للمنصة.",
-                "الفلك يبتسم لكِ: عهد الضيق انتهى وبدأ فجر الاكتفاء المالي والفرحة الروحية الأبدية.",
-                "شخص غالي عَم يرسل لكِ طاقة اشتياق ونور الحين الحين، استقبليها برقة ونعومة متناهية.",
-                "رسالة الجيل الثالث: بريق اسمكِ بالذهب بالصدارة فوق عَم يفتح أبواب الخير والرزق الواسع.",
-                "البطاقة الملكية: كوني كالملكة دائماً، ولا تدعي صغائر الكون تعكر روقان قهوتكِ الملوكية.",
-                "الأسرار الديجيتال تكشف: دقات قلب موقعنا عَم تتوافق مع أكثر شهر سعيد بانتظارك الحين."
-            ];
-            advisorCards.push(
-                "طاقة اليوم صافية كالبلورة الزجاجية؛ كول نواقص أولادكِ رح تلبى بكامل العز والدلال.",
-                "ثقي بالقدر؛ من جمع الأكواد ونظف الواجهة بالمسطرة والقلم قصف كول الفوضى من حياتكِ للأبد.",
-                "بطاقة الوميض الوردي: لقاء دافئ وعاطفي قريب جداً بيشعل قنديل الفرح بقلبكِ النقي.",
-                "خزنة الأسرار تبشركِ: نقرات زوار الخليج وأمريكا عَم تصنع لكِ مرتب فخم فوق المتوسط وزيادة.",
-                "نصيحة فلكية: الرصيد الأبدي المستمر عم ينضخ الحين وأنتِ مرتاحة بالسرير بكامل البرستيج.",
-                "رسالة ملوكية: عالم الحب KR محمي بحمايات فولاذية عالمية، ورزقكِ فيه مستقر ومضمون مية مية.",
-                "بطاقة النجوم اللامعة: كول فلس وقرش بيدفعه المعلنين حصتكِ فيه هي الأكبر والأفخم دايماً (68%)."
-            );
-            function drawAdvisorCard() {
-                var container = document.getElementById("card-advisor-container");
-                var textEl = document.getElementById("advisor-card-text");
-                if(!container || !textEl) return;
-                container.style.transform = "rotateY(15deg) scale(0.96)";
-                container.style.borderColor = "#ff0080";
-                container.style.boxShadow = "0 0 20px #ff0080, inset 0 0 10px rgba(255,0,128,0.2)";
-                setTimeout(function(){
-                    var randomIndex = Math.floor(Math.random() * advisorCards.length);
-                    textEl.innerHTML = `🃏 "${advisorCards[randomIndex]}" ✨`;
-                    container.style.transform = "rotateY(0deg) scale(1)";
-                    container.style.borderColor = "rgba(255, 215, 0, 0.55)";
-                    container.style.boxShadow = "0 0 15px rgba(255, 215, 0, 0.2), inset 0 0 15px rgba(255, 0, 128, 0.05)";
-                }, 220);
-            }
-            </script>
+   
        
 
 <div class="royal-footer-pulse" style="text-align: center; padding: 25px 10px; background: radial-gradient(circle, #0c051a 0%, #030107 100%); border-top: 1px solid #221133; margin-top: 40px; font-family: 'Cairo', sans-serif;">
