@@ -2042,7 +2042,200 @@ function revealSecretMessage() {
         </div>
      
 
+<!-- ========================================== -->
+<!-- 1. واجهة قسم الكرة الأرضية الكونية ثلاثية الأبعاد (KR GLOBE) -->
+<!-- تنسخ هذا الجزء وتضعه تحت آخر صندوق وقبل صندوق السياسات -->
+<!-- ========================================== -->
+<div id="kr-global-globe-section" style="background: linear-gradient(180deg, #09090b 0%, #020205 100%); padding: 40px 20px; text-align: center; font-family: 'Cairo', sans-serif; border-top: 2px solid #eab308; color: #ffffff; position: relative; overflow: hidden;">
+    
+    <h2 style="color: #eab308; font-size: 28px; margin-bottom: 10px; font-weight: 700; text-shadow: 0 0 15px rgba(234, 179, 8, 0.4);">🌍 أطلس المشاعر والوفرة الكوني ثلاثي الأبعاد</h2>
+    <p style="color: #a1a1aa; font-size: 16px; max-width: 600px; margin: 0 auto 30px auto; line-height: 1.6;">بث حي ومباشر لطاقة الوفرة والبركة الملوكية العابرة للقارات. المس الكرة الأرضية، حدد دولتك، واشحن هالتك الفلكية دغري برواقة!</p>
+
+    <!-- حاوية العداد الطاقي الحي -->
+    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(234,179,8,0.2); border-radius: 15px; padding: 15px; max-width: 450px; margin: 0 auto 30px auto; backdrop-filter: blur(10px);">
+        <span style="color: #a1a1aa; font-size: 14px;">✨ إجمالي نبضات طاقة الوفرة الملوكية الممرّرة الآن:</span>
+        <div id="live-fortune-counter" style="color: #eab308; font-size: 32px; font-weight: bold; margin-top: 5px; font-family: 'monospace'; text-shadow: 0 0 10px rgba(234, 179, 8, 0.6);">4,500,120</div>
+    </div>
+
+    <!-- مسرح عرض الكرة الأرضية -->
+    <div id="globe-3d-container" style="width: 100%; height: 450px; margin: 0 auto; max-width: 800px; background: radial-gradient(circle, #09090e 0%, #020205 100%); border-radius: 20px; box-shadow: inset 0 0 50px rgba(0,0,0,0.9), 0 0 30px rgba(234,179,8,0.1); position: relative; cursor: grab;">
+        <div id="globe-loading" style="position: absolute; top:50%; left:50%; transform:translate(-50%, -50%); color:#eab308; font-size:16px;">
+            <div style="border: 4px solid #18181b; border-top: 4px solid #eab308; border-radius: 50%; width: 40px; height: 40px; animation: spinGlobe 1s linear infinite; margin: 0 auto 10px auto;"></div>
+            جاري استدعاء المجرة الفلكية...
+        </div>
+    </div>
+
+    <!-- كارت تقرير طاقة الدولة المتجدد تلقائياً -->
+    <div id="country-energy-card" style="margin-top: 30px; display: none; max-width: 500px; margin-left: auto; margin-right: auto; animation: fadeInUp 0.6s ease-out;">
+        <div style="background: linear-gradient(135deg, rgba(24,24,27,0.9) 0%, rgba(9,9,11,0.95) 100%); border: 2px solid #eab308; border-radius: 20px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+            <h3 id="detected-country-name" style="color: #ffffff; margin: 0 0 10px 0; font-size: 22px;">📍 السعودية العظمى</h3>
+            <div style="width: 60px; height: 2px; background: #eab308; margin: 0 auto 15px auto;"></div>
+            <p id="daily-astro-report" style="color: #e4e4e7; font-size: 15px; line-height: 1.7; margin-bottom: 20px;">اليوم هالة دولتك مشبعة بالذهب الفلكي الصافي بنسبة 98%. طاقتك المالية الملوكية في ذروتها وكبرياؤك يهزّ الأرض برواقة وثقة.</p>
+            <button onclick="boostCountryEnergy()" style="background: linear-gradient(45deg, #eab308, #ca8a04); color: #000; border: none; padding: 12px 30px; font-size: 16px; font-weight: bold; border-radius: 30px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(234,179,8,0.4);">
+                🚀 ضخ شعاع الوفرة الملوكي في سمائنا الحين
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- استدعاء ملفات التنسيق وحركات الأنيميشن الخفيفة -->
+<style>
+    @keyframes spinGlobe { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    #globe-3d-container:active { cursor: grabbing; }
+</style>
+
+<!-- استدعاء مكتبة الـ Three.js العالمية لتشغيل الجرافيكس ثلاثي الأبعاد -->
+<script src="https://cloudflare.com"></script>
    
+<script>
+    // إعداد العداد الحي ليتجدد تلقائياً كل ثانية لضمان تفاعل واقعي للزوار
+    let baseCounter = 4500120;
+    setInterval(() => {
+        baseCounter += Math.floor(Math.random() * 5) + 1;
+        const counterDiv = document.getElementById('live-fortune-counter');
+        if(counterDiv) counterDiv.innerText = baseCounter.toLocaleString();
+    }, 1500);
+
+    // نصوص وتقارير الهيبة والبرستيج المتجددة ذاتياً حسب الأيام لمنع التكرار والملل
+    const royalReports = [
+        "اليوم هالة دولتك مشبعة بالذهب الفلكي الصافي بنسبة 98%. طاقتك المالية الملوكية في ذروتها وكبرياؤك يهزّ الأرض برواقة وثقة الملكية المطلقة.",
+        "طاقة النور والبركة تحيط بأجوائكم اليوم. الفلك يشير إلى انفراجة مالية قريبة ودخول في مدار السعد الملوكي الفاخر دغري مية مية.",
+        "الهيبة كالعادة في أعلى مستوياتها بنسبة 99%. النبض المغناطيسي لمدينتك يتجه نحو وفرة قوية، ثق بحدسك الملوكي ولا تتراجع.",
+        "استقرار طاقي فخم وثقة فلكية تهزّ الأسواق لعيونكم. اليوم هو الوقت المثالي لقطف ألماسة الحظ الكونية ومشاركة البرستيج الفخم."
+    ];
+
+    // دالة محاكاة قراءة وتحديد موقع الدولة وعرض تقريرها الفلكي المتجدد تلقائياً
+    function showCountryCardData() {
+        const card = document.getElementById('country-energy-card');
+        const countryTitle = document.getElementById('detected-country-name');
+        const reportText = document.getElementById('daily-astro-report');
+        
+        const gulfCountries = [
+            "👑 المملكة العربية السعودية (المنطقة الملكية)",
+            "✨ الإمارات العربية المتحدة (ممر الوفرة)",
+            "🇰🇼 دولة الكويت (طاقة البركة)",
+            "🇶🇦 دولة قطر (منارة العز الملوكية)",
+            "🇴🇲 سلطنة عمان (أجواء الهدوء والرواق)",
+            "🇧🇭 مملكة البحرين (نبض الهيبة الصافية)",
+            "🇱🇧 لبنان الملوكي (ساحة طاقة الأرز والباندا)"
+        ];
+
+        if (card && card.style.display === 'none') {
+            const randomCountry = gulfCountries[Math.floor(Math.random() * gulfCountries.length)];
+            const dayIndex = new Date().getDate() % royalReports.length;
+            
+            countryTitle.innerText = `📍 ${randomCountry}`;
+            reportText.innerText = royalReports[dayIndex];
+            card.style.display = 'block';
+        }
+    }
+
+    // تأثير ضخ ليزر الطاقة عند ضغط الزائر على زر الشحن
+    function boostCountryEnergy() {
+        alert("🚀 تم إطلاق شعاع الوفرة الفلكي بنجاح ملوكي مطلق! سماء بلدك مشعة الآن بالبركة والذهب الصافي.");
+        baseCounter += 777;
+        const counterDiv = document.getElementById('live-fortune-counter');
+        if(counterDiv) counterDiv.innerText = baseCounter.toLocaleString();
+    }
+</script>
+<script>
+    // تفعيل مكتبة Three.js لرسم مجسم الكرة الأرضية الكونية ثلاثية الأبعاد
+    const container = document.getElementById('globe-3d-container');
+    const loadingDiv = document.getElementById('globe-loading');
+    
+    if (container) {
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        // إضاءة الكون الملوكي الفاخر
+        const ambientLight = new THREE.AmbientLight(0x333333);
+        scene.add(ambientLight);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        directionalLight.position.set(5, 3, 5);
+        scene.add(directionalLight);
+
+        // بناء مجسم الكرة الأرضية وتلبيسها بخريطة مشعة (مظهر ليزري فلكي)
+        const geometry = new THREE.SphereGeometry(2, 32, 32);
+        const material = new THREE.MeshPhongMaterial({
+            color: 0x111827,
+            emissive: 0x1e1b4b,
+            specular: 0xeab308,
+            shininess: 30,
+            wireframe: true
+        });
+        const globe = new THREE.Mesh(geometry, material);
+        scene.add(globe);
+
+        // إضافة غلاف هالة من النجوم الطافية حول الكرة الأرضية
+        const starsGeometry = new THREE.BufferGeometry();
+        const starsCount = 500;
+        const starPositions = new Float32Array(starsCount * 3);
+        for(let i=0; i<starsCount*3; i++) {
+            starPositions[i] = (Math.random() - 0.5) * 10;
+        }
+        starsGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
+        const starsMaterial = new THREE.PointsMaterial({color: 0xeab308, size: 0.03});
+        const starField = new THREE.Points(starsGeometry, starsMaterial);
+        scene.add(starField);
+
+        camera.position.z = 5;
+
+        // متغيرات للتحكم باللمس والتدوير برواقة
+        let isDragging = false;
+        let previousMousePosition = { x: 0, y: 0 };
+
+        container.addEventListener('mousedown', (e) => { isDragging = true; });
+        container.addEventListener('mousemove', (e) => {
+            const deltaMove = { x: e.offsetX - previousMousePosition.x, y: e.offsetY - previousMousePosition.y };
+            if (isDragging) {
+                globe.rotation.y += deltaMove.x * 0.005;
+                globe.rotation.x += deltaMove.y * 0.005;
+                showCountryCardData(); // فتح التقرير تلقائياً عند التدوير
+            }
+            previousMousePosition = { x: e.offsetX, y: e.offsetY };
+        });
+        window.addEventListener('mouseup', (e) => { isDragging = false; });
+
+        // دعم شاشات الموبايل واللمس لجروبات السوشيال ميديا
+        container.addEventListener('touchstart', (e) => { isDragging = true; previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY }; });
+        container.addEventListener('touchmove', (e) => {
+            if(isDragging && e.touches.length > 0) {
+                const deltaMove = { x: e.touches[0].clientX - previousMousePosition.x, y: e.touches[0].clientY - previousMousePosition.y };
+                globe.rotation.y += deltaMove.x * 0.008;
+                globe.rotation.x += deltaMove.y * 0.008;
+                showCountryCardData();
+                previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+            }
+        });
+        window.addEventListener('touchend', () => { isDragging = false; });
+
+        // محرك الدوران التلقائي المستمر وهادئ
+        function animate() {
+            requestAnimationFrame(animate);
+            if (!isDragging) {
+                globe.rotation.y += 0.002;
+            }
+            starField.rotation.y += 0.0005;
+            renderer.render(scene, camera);
+        }
+        
+        if(loadingDiv) loadingDiv.style.display = 'none';
+        animate();
+
+        // تجاوب الأبعاد تلقائياً مع حجم شاشات الهواتف
+        window.addEventListener('resize', () => {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+    }
+</script>
        
 
 <div class="royal-footer-pulse" style="text-align: center; padding: 25px 10px; background: radial-gradient(circle, #0c051a 0%, #030107 100%); border-top: 1px solid #221133; margin-top: 40px; font-family: 'Cairo', sans-serif;">
