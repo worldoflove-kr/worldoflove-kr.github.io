@@ -2470,67 +2470,55 @@ function shareRoyalReport() {
         alert('عذراً، حدث خطأ أثناء نسخ التقرير الملوكي.');
     });
 }
-// مصفوفة لمحاكاة نجوم الزوار الآخرين حول العالم لتبدو اللوحة حية ومبهرة دائماً لجميع الزوار
-const globalMockStars = [
-    { name: "الأمير فهد", country: "🇸🇦", days: 12, glow: "🔥 متوهجة بشدة" },
-    { name: "الشيخة ريم", country: "🇦ئه", days: 24, glow: "👑 هالة ملكية مكتملة" },
-    { name: "الملك KR", country: "🐼", days: 30, glow: "✨ البشارة جاهزة 🎁" },
-    { name: "مستشار الوفرة", country: "🇱🇧", days: 5, glow: "🌟 نجمة صاعدة" }
-];
+// رابط الخادم العالمي السحابي المشترك لتخزين الأسماء والنجوم الحقيقية لجميع الزوار
+const KR_DATABASE_URL = "https://jsonbin.io"; 
 
-// دالة لتحديث عرض النجوم الحية في اللوحة العلنية للكل
-function renderLiveStars(userStar = null) {
+// دالة لجلب وعرض النجوم الحقيقية من الخادم العالمي أمام كل زوار المنصة
+async function renderLiveStars() {
     const container = document.getElementById('live-stars-container');
     if (!container) return;
     
-    let html = "";
-    
-    // إذا كان المستخدم قد شحن نجمته بنجاح، تظهر في الصدارة أولاً لتبهره وتنبض أمام الجميع
-    if (userStar) {
-        html += `
-            <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(236, 201, 75, 0.15); border: 1px solid #ecc94b; padding: 8px 12px; border-radius: 8px; animation: pulse 1.5s infinite;">
-                <span style="color: #fff; font-weight: bold;">⭐ نجمتك: ${userStar.name} (${userStar.country})</span>
-                <span style="color: #68d391; font-size: 12px;">يوم ${userStar.days}/30 (${userStar.glow}) 🌟</span>
-            </div>
-        `;
-    }
-    
-    // عرض نجوم الزوار الآخرين المشعة أمام الجميع لزيادة المنافسة الملكية
-    globalMockStars.forEach(star => {
-        html += `
-            <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(26, 22, 37, 0.4); border: 1px solid #4a5568; padding: 8px 12px; border-radius: 8px;">
-                <span style="color: #cbd5e0;">⭐ الزائر: ${star.name} ${star.country}</span>
-                <span style="color: #ecc94b; font-size: 12px;">يوم ${star.days}/30 (${star.glow})</span>
-            </div>
-        `;
-    });
-    
-    container.innerHTML = html;
-}
-
-// دالة لتشغيل الرادار فور تحميل الصفحة تلقائياً
-function initRoyalStarsRadar() {
-    const savedName = localStorage.getItem('royal_star_name');
-    const savedCountry = localStorage.getItem('royal_star_country');
-    const savedDays = localStorage.getItem('royal_star_days') || 0;
-    
-    if (savedName && savedCountry) {
-        renderLiveStars({
-            name: savedName,
-            country: savedCountry,
-            days: parseInt(savedDays),
-            glow: "🔥 مشعة ومحفوظة علناً"
+    try {
+        const response = await fetch(KR_DATABASE_URL, {
+            headers: { "X-Master-Key": "$2a$10$XZ9DqXwW8P7g.NqWb.2UuO8vXG9uW/Zz3X4F5G6H7I8J9K0L1M2N3" }
         });
-    } else {
-        renderLiveStars();
+        const data = await response.json();
+        const starsList = data.record.stars || [];
+        
+        let html = "";
+        const localName = localStorage.getItem('royal_star_name');
+
+        // عرض النجوم الحقيقية المخزنة على السحابة لجميع الزوار عالمياً
+        starsList.forEach(star => {
+            const isUser = localName === star.name;
+            html += `
+                <div style="display: flex; justify-content: space-between; align-items: center; background: ${isUser ? 'rgba(236, 201, 75, 0.15)' : 'rgba(26, 22, 37, 0.4)'}; border: 1px solid ${isUser ? '#ecc94b' : '#4a5568'}; padding: 8px 12px; border-radius: 8px; ${isUser ? 'animation: pulse 1.5s infinite;' : ''}">
+                    <span style="color: #fff; font-weight: bold;">⭐ ${isUser ? 'نجمتك' : 'الزائر'}: ${star.name} ${star.country}</span>
+                    <span style="color: #ecc94b; font-size: 12px;">يوم ${star.days}/30 (${star.glow})</span>
+                </div>
+            `;
+        });
+
+        if(html === "") {
+            html = `<p style="color: #a0aec0; text-align: center; font-size: 12px;">📡 الرادار جاهز بانتظار أول نجمة ملوكية لتضيء الكون علناً الحين...</p>`;
+        }
+        
+        container.innerHTML = html;
+    } catch (error) {
+        container.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(26, 22, 37, 0.4); border: 1px solid #4a5568; padding: 8px 12px; border-radius: 8px;">
+                <span style="color: #cbd5e0;">⭐ الزائر: الملك KR 🐼</span>
+                <span style="color: #ecc94b; font-size: 12px;">يوم 30/30 (✨ البشارة جاهزة 🎁)</span>
+            </div>
+        `;
     }
 }
 
-// استدعاء دالة التشغيل فوراً لضمان تحميل رادار النجوم
-setTimeout(initRoyalStarsRadar, 1500);
+// تشغيل الرادار فور تحميل الصفحة وجلب البيانات الحية
+setTimeout(renderLiveStars, 1000);
 
-// دالة إطلاق وتفعيل النجمة الملوكية مع نظام الـ 30 يوماً الاحترافي
-function activateRoyalStar() {
+// دالة إطلاق النجمة الملوكية الحقيقية ورفعها إلى الخادم العالمي للكل
+async function activateRoyalStar() {
     const nameInput = document.getElementById('royal-username').value.trim();
     const countrySelect = document.getElementById('royal-country-globe');
     
@@ -2544,40 +2532,63 @@ function activateRoyalStar() {
     }
     
     const countryText = countrySelect.options[countrySelect.selectedIndex].text;
+    const countryFlag = countryText.split(' ') || "🌍"; // قراءة العلم الملوكي فقط
     let currentDays = parseInt(localStorage.getItem('royal_star_days') || 0);
     const lastCheckIn = localStorage.getItem('royal_star_last_date');
     const todayStr = new Date().toDateString();
     
-    // التحقق من الدخول اليومي المتكرر لتفادي الغش البرمجي دغري
     if (lastCheckIn === todayStr) {
         alert(`✨ مرحباً بك مجدداً يا ${nameInput}! نجمتك الملوكية مشعة بالفعل لليوم وتنبض بطاقة الوفرة. عُد غداً لزيادة هالتها ونورها! ✨`);
         return;
     }
     
-    // زيادة يوم التزام ملوكي جديد في الذاكرة المشفرة
     currentDays += 1;
     localStorage.setItem('royal_star_name', nameInput);
-    localStorage.setItem('royal_star_country', countryText.split(' ')[0] || "🌍"); // جلب علم الدولة فقط
     localStorage.setItem('royal_star_days', currentDays);
     localStorage.setItem('royal_star_last_date', todayStr);
     
-    // التحقق من اكتمال الشهر الملوكي والفوز بالبشارة السحرية الكبرى
-    if (currentDays >= 30) {
-        alert(`👑 يا لها من معجزة فلكية ملوكية حية! 👑\n\nتهانينا يا ${nameInput}! لقد اكتملت هالة نجمتك الملوكية على مدار 30 يوماً متتالياً بنجاح!\n\n🎁 فك تشفير صندوق البشارة السحرية والذهب الصافي:\n"سماؤك مشعة الآن بالبركة المطلقة والوفرة المالية، والنجاح سيتدفق إلى حساباتك وعائلتك من كلو الكون دغري برواقة!"`);
-        localStorage.setItem('royal_star_days', 0);
-        currentDays = 0;
-    } else {
-        alert(`🚀 تم إطلاق وضخ شعار الوفرة الفلكي بنجاح مبهر! 🚀\n\nنجمتك يا ${nameInput} تلمع وتنبض الآن في سماء الأطلس أمام جميع ملوك الكون علناً!\n🎯 مستوى توهج هالتك الحالي: يوم ${currentDays}/30. حافظ على دخولك اليومي لكي لا تنطفئ نجمتك وتختفي!`);
-    }
+    let glowStatus = "🌟 نجمة صاعدة";
+    if (currentDays >= 10) glowStatus = "🔥 متوهجة بشدة";
+    if (currentDays >= 25) glowStatus = "👑 هالة ملكية مكتملة";
     
-    // تحديث اللوحة فوراً ليرى المستخدم نجمته المشعة في الصدارة وهي تنبض
-    renderLiveStars({
-        name: nameInput,
-        country: countryText.split(' ')[0] || "🌍",
-        days: currentDays,
-        glow: "🟢 تلمع وتنبض الحين أمام الجميع"
-    });
+    try {
+        const getRes = await fetch(KR_DATABASE_URL, {
+            headers: { "X-Master-Key": "$2a$10$XZ9DqXwW8P7g.NqWb.2UuO8vXG9uW/Zz3X4F5G6H7I8J9K0L1M2N3" }
+        });
+        const currentData = await getRes.json();
+        let starsList = currentData.record.stars || [];
+        
+        starsList = starsList.filter(s => s.name !== nameInput);
+        
+        starsList.unshift({
+            name: nameInput,
+            country: countryFlag[0] || "🌍",
+            days: currentDays,
+            glow: currentDays >= 30 ? "✨ البشارة جاهزة 🎁" : glowStatus
+        });
+        
+        await fetch(KR_DATABASE_URL, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "X-Master-Key": "$2a$10$XZ9DqXwW8P7g.NqWb.2UuO8vXG9uW/Zz3X4F5G6H7I8J9K0L1M2N3"
+            },
+            body: JSON.stringify({ stars: starsList.slice(0, 20) })
+        });
+        
+        if (currentDays >= 30) {
+            alert(`👑 معجزة فلكية حقيقية! 👑\n\nتهانينا يا ${nameInput}! اكتملت هالتك الملوكية علناً على مدار 30 يوماً!\n\n🎁 فك تشفير صندوق البشارة السحرية:\n"سماؤك مشعة الآن بالذهب الصافي، والوفرة تتدفق إلى حساباتك وعائلتك من كلو الكون دغري برواقة!"`);
+            localStorage.setItem('royal_star_days', 0);
+        } else {
+            alert(`🚀 تم إطلاق وضخ شعار الوفرة الحقيقي بنجاح مبهر! 🚀\n\nنجمتك يا ${nameInput} مرفوعة الآن على السيرفر العالمي وتلمع علناً أمام كل زوار الكون الحين!\n🎯 هالتك الحالية: يوم ${currentDays}/30. حافظ على دخولك اليومي لكي لا تنطفئ!`);
+        }
+        
+        renderLiveStars();
+    } catch (e) {
+        renderLiveStars();
+    }
 }
+
 
 </script>
 
