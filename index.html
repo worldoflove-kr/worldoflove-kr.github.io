@@ -2263,6 +2263,90 @@ function revealSecretMessage() {
     });
 </script>
 
+<script>
+    // تشغيل المحرك ثلاثي الأبعاد بعد استقرار القسم تماماً في مكانه الملوكي
+    document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(function() {
+            const container = document.getElementById('globe-3d-container');
+            const loadingDiv = document.getElementById('globe-loading');
+            
+            if (container) {
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+                const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+                
+                renderer.setSize(container.clientWidth, container.clientHeight);
+                renderer.setPixelRatio(window.devicePixelRatio);
+                container.innerHTML = ''; // تنظيف المحتوى القديم دغري
+                if(loadingDiv) container.appendChild(loadingDiv);
+                container.appendChild(renderer.domElement);
+
+                const ambientLight = new THREE.AmbientLight(0x333333);
+                scene.add(ambientLight);
+                const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+                directionalLight.position.set(5, 3, 5);
+                scene.add(directionalLight);
+
+                const geometry = new THREE.SphereGeometry(2, 32, 32);
+                const material = new THREE.MeshPhongMaterial({
+                    color: 0x111827, emissive: 0x1e1b4b, specular: 0xeab308, shininess: 30, wireframe: true
+                });
+                const globe = new THREE.Mesh(geometry, material);
+                scene.add(globe);
+
+                const starsGeometry = new THREE.BufferGeometry();
+                const starsCount = 500;
+                const starPositions = new Float32Array(starsCount * 3);
+                for(let i=0; i<starsCount*3; i++) { starPositions[i] = (Math.random() - 0.5) * 10; }
+                starsGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
+                const starsMaterial = new THREE.PointsMaterial({color: 0xeab308, size: 0.03});
+                const starField = new THREE.Points(starsGeometry, starsMaterial);
+                scene.add(starField);
+
+                camera.position.z = 5;
+                let isDragging = false; let previousMousePosition = { x: 0, y: 0 };
+                container.addEventListener('mousemove', (e) => {
+                    const deltaMove = { x: e.offsetX - previousMousePosition.x, y: e.offsetY - previousMousePosition.y };
+                    if (isDragging) {
+                        globe.rotation.y += deltaMove.x * 0.005;
+                        globe.rotation.x += deltaMove.y * 0.005;
+                        showCountryCardData();
+                    }
+                    previousMousePosition = { x: e.offsetX, y: e.offsetY };
+                });
+                window.addEventListener('mouseup', (e) => { isDragging = false; });
+
+                container.addEventListener('touchstart', (e) => { isDragging = true; if(e.touches && e.touches[0]) previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY }; });
+                container.addEventListener('touchmove', (e) => {
+                    if(isDragging && e.touches.length > 0) {
+                        const deltaMove = { x: e.touches[0].clientX - previousMousePosition.x, y: e.touches[0].clientY - previousMousePosition.y };
+                        globe.rotation.y += deltaMove.x * 0.008;
+                        globe.rotation.x += deltaMove.y * 0.008;
+                        showCountryCardData();
+                        previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+                    }
+                });
+                window.addEventListener('touchend', () => { isDragging = false; });
+
+                function animate() {
+                    requestAnimationFrame(animate);
+                    if (!isDragging) { globe.rotation.y += 0.002; }
+                    starField.rotation.y += 0.0005;
+                    renderer.render(scene, camera);
+                }
+                
+                if(loadingDiv) loadingDiv.style.display = 'none';
+                animate();
+
+                window.addEventListener('resize', () => {
+                    camera.aspect = container.clientWidth / container.clientHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(container.clientWidth, container.clientHeight);
+                });
+            }
+        }, 1000);
+    });
+</script>
 
       
 
