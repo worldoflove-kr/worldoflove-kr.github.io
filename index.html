@@ -2178,7 +2178,77 @@ function revealSecretMessage() {
     });
 </script>
 
-   
+   <!-- ========================================== -->
+<!-- بداية قائمة اختيار دول العالم الملوكية الذكية -->
+<!-- ========================================== -->
+<div id="kr-country-selector-box" style="margin: 25px auto; max-width: 450px; padding: 0 15px;">
+    <label for="kr-global-countries" style="display: block; color: #a1a1aa; font-size: 14px; margin-bottom: 8px; font-weight: 500;">🌐 اختر دولتك أو دولة شريكك من كلو الكون:</label>
+    <select id="kr-global-countries" onchange="syncSelectedCountry()" style="width: 100%; padding: 12px 20px; font-size: 16px; font-family: 'Cairo', sans-serif; background: #09090b; color: #ffffff; border: 2px solid rgba(234, 179, 8, 0.4); border-radius: 30px; outline: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: all 0.3s ease;">
+        <option value="" disabled selected>-- اختر بلدك الحين --</option>
+        <!-- دول الشرق الأوسط وشمال أفريقيا في البداية لسهولة الوصول -->
+        <option value="🇱🇧 لبنان الملوكي">لبنان 🇱🇧</option>
+        <option value="👑 المملكة العربية السعودية">المملكة العربية السعودية 🇸🇦</option>
+        <option value="✨ الإمارات العربية المتحدة">الإمارات العربية المتحدة 🇦🇪</option>
+        <option value="🇰🇼 دولة الكويت">الكويت 🇰🇼</option>
+        <option value="🇶🇦 دولة قطر">قطر 🇶🇦</option>
+        <option value="🇴🇲 سلطنة عمان">عمان 🇴🇲</option>
+        <option value="🇧🇭 مملكة البحرين">البحرين 🇧🇭</option>
+        <option value="🇪🇬 جمهورية مصر العربية">مصر 🇪🇬</option>
+        <option value="🇮🇶 جمهورية العراق">العراق 🇮🇶</option>
+        <option value="🇯🇴 المملكة الأردنية الهاشمية">الأردن 🇯🇴</option>
+        <option value="🇸🇾 الجمهورية العربية السورية">سوريا 🇸🇾</option>
+        <option value="🇵🇸 فلسطين الحرة">فلسطين 🇵🇸</option>
+        <option value="🇲🇦 المملكة المغربية">المغرب 🇲🇦</option>
+        <option value="🇩🇿 الجمهورية الجزائرية">الجزائر 🇩🇿</option>
+        <option value="🇹🇳 الجمهورية التونسية">تونس 🇹🇳</option>
+        <option value="🇱🇾 دولة ليبيا">ليبيا 🇱🇾</option>
+        <option value="🇾🇪 الجمهورية اليمنية">اليمن 🇾🇪</option>
+        <option value="🇸🇩 جمهورية السودان">السودان 🇸🇩</option>
+        <!-- بقية دول العالم الكبرى للشمولية العالمية المطلقة -->
+        <option value="🇺🇸 الولايات المتحدة الأمريكية">الولايات المتحدة الأمريكية 🇺🇸</option>
+        <option value="🇬🇧 المملكة المتحدة">بريطانيا 🇬🇧</option>
+        <option value="🇫🇷 الجمهورية الفرنسية">فرنسا 🇫🇷</option>
+        <option value="🇩🇪 جمهورية ألمانيا الاتحادية">ألمانيا 🇩🇪</option>
+        <option value="🇨🇦 كندا العالمية">كندا 🇨🇦</option>
+        <option value="🇦🇺 أستراليا">أستراليا 🇦🇺</option>
+        <option value="🇹🇷 الجمهورية التركية">تركيا 🇹🇷</option>
+        <option value="🌎 دولة أخرى من قارات العالم">دولة أخرى 🌍</option>
+    </select>
+</div>
+<script>
+    // دالة المزامنة الملكية لتشغيل البيانات فوراً عند اختيار الزائر لبلده
+    function syncSelectedCountry() {
+        const selector = document.getElementById('kr-global-countries');
+        const card = document.getElementById('country-energy-card');
+        const countryTitle = document.getElementById('detected-country-name');
+        const reportText = document.getElementById('daily-astro-report');
+        
+        if (selector && selector.value !== "") {
+            // اهتزاز خفيف بالهاتف للتفاعل الفخم إن أمكن
+            if (navigator.vibrate) navigator.vibrate(50);
+            
+            // تحديث اسم الدولة المختار مع العلم الملكي دغري
+            countryTitle.innerText = `📍 ${selector.value}`;
+            
+            // اختيار تقرير فلكي متغير ومحدث تلقائياً حسب تاريخ اليوم لمنع التكرار
+            const dayIndex = new Date().getDate() % royalReports.length;
+            reportText.innerText = royalReports[dayIndex];
+            
+            // إظهار كارت البشارة الفلكية الملوكية فوراً برواقة
+            card.style.display = 'block';
+            
+            // إحداث حركة سريعة ومفاجئة بالكرة الأرضية لتبهر الزائر
+            const globeMesh = document.getElementById('interactive-royal-globe');
+            if (globeMesh) {
+                globeMesh.style.transform = 'translate(-50%, -50%) scale(1.15) rotate(45deg)';
+                setTimeout(() => {
+                    globeMesh.style.transform = 'translate(-50%, -50%) scale(1) rotate(0deg)';
+                }, 400);
+            }
+        }
+    }
+</script>
+
  </div>
 <style>
     /* إظهار الأطلس بأعلى طبقة رؤية بالصفحة وفصله بصرياً */
