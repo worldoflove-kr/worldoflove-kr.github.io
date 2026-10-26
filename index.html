@@ -2141,102 +2141,44 @@ function revealSecretMessage() {
     }
 </script>
 <script>
-    // تفعيل مكتبة Three.js لرسم مجسم الكرة الأرضية الكونية ثلاثية الأبعاد
-    const container = document.getElementById('globe-3d-container');
-    const loadingDiv = document.getElementById('globe-loading');
-    
-    if (container) {
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        
-        renderer.setSize(container.clientWidth, container.clientHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
-        container.appendChild(renderer.domElement);
-
-        // إضاءة الكون الملوكي الفاخر
-        const ambientLight = new THREE.AmbientLight(0x333333);
-        scene.add(ambientLight);
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-        directionalLight.position.set(5, 3, 5);
-        scene.add(directionalLight);
-
-        // بناء مجسم الكرة الأرضية وتلبيسها بخريطة مشعة (مظهر ليزري فلكي)
-        const geometry = new THREE.SphereGeometry(2, 32, 32);
-        const material = new THREE.MeshPhongMaterial({
-            color: 0x111827,
-            emissive: 0x1e1b4b,
-            specular: 0xeab308,
-            shininess: 30,
-            wireframe: true
-        });
-        const globe = new THREE.Mesh(geometry, material);
-        scene.add(globe);
-
-        // إضافة غلاف هالة من النجوم الطافية حول الكرة الأرضية
-        const starsGeometry = new THREE.BufferGeometry();
-        const starsCount = 500;
-        const starPositions = new Float32Array(starsCount * 3);
-        for(let i=0; i<starsCount*3; i++) {
-            starPositions[i] = (Math.random() - 0.5) * 10;
+    // تشغيل المجرة الفلكية ثلاثية الأبعاد بنظام الحماية الذكي والتوليد الفوري
+    document.addEventListener("DOMContentLoaded", function() {
+        const container = document.getElementById('globe-3d-container');
+        if (container) {
+            // تنظيف واجهة التحميل القديمة وإشعال الفضاء الملوكي
+            container.innerHTML = `
+                <div style="width:100%; height:100%; position:relative; overflow:hidden; border-radius:20px; background:radial-gradient(circle at center, #1e1b4b 0%, #020205 100%);">
+                    <!-- النجوم الكونية المضيئة المتحركة -->
+                    <div style="position:absolute; width:4px; height:4px; background:#eab308; border-radius:50%; top:20%; left:30%; box-shadow:0 0 10px #eab308; animation: pulseStar 2s infinite;"></div>
+                    <div style="position:absolute; width:3px; height:3px; background:#ffffff; border-radius:50%; top:60%; left:75%; box-shadow:0 0 8px #ffffff; animation: pulseStar 3s infinite;"></div>
+                    <div style="position:absolute; width:5px; height:5px; background:#eab308; border-radius:50%; top:70%; left:20%; box-shadow:0 0 12px #eab308; animation: pulseStar 1.5s infinite;"></div>
+                    
+                    <!-- مجسم الكرة الأرضية الليزري ثلاثي الأبعاد المشع -->
+                    <div id="interactive-royal-globe" onclick="showCountryCardData()" style="width:200px; height:200px; border:2px dashed rgba(234, 179, 8, 0.4); border-radius:50%; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%) rotate(0deg); background:radial-gradient(circle at 30% 30%, #111827 0%, #09090b 100%); box-shadow: 0 0 40px rgba(234,179,8,0.2), inset -10px -10px 30px rgba(0,0,0,0.8); cursor:pointer; transition:all 0.5s ease; animation: spinGlobeLinear 12s linear infinite;">
+                        <!-- خطوط القارات المشعة بالذهب الملكي -->
+                        <div style="width:100%; height:2px; background:rgba(234, 179, 8, 0.15); position:absolute; top:50%;"></div>
+                        <div style="width:2px; height:100%; background:rgba(234, 179, 8, 0.15); position:absolute; left:50%;"></div>
+                        <div style="width:80%; height:80%; border:1px dashed rgba(234, 179, 8, 0.2); border-radius:50%; position:absolute; top:10%; left:10%;"></div>
+                    </div>
+                    
+                    <!-- حلقات الهالة المغناطيسية الدوارة حول الكرة -->
+                    <div style="width:280px; height:100px; border:1px solid rgba(234,179,8,0.2); border-radius:50%; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%) rotateX(75deg) rotateZ(0deg); animation: spinRing 8s linear infinite; pointer-events:none;"></div>
+                </div>
+            `;
+            
+            // إضافة حركات الأنيميشن ثلاثية الأبعاد في المتصفح دغري
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes spinGlobeLinear { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+                @keyframes spinRing { from { transform: translate(-50%, -50%) rotateX(75deg) rotateZ(0deg); } to { transform: translate(-50%, -50%) rotateX(75deg) rotateZ(360deg); } }
+                @keyframes pulseStar { 0%, 100% { opacity: 0.3; transform:scale(0.8); } 50% { opacity: 1; transform:scale(1.2); } }
+            `;
+            document.head.appendChild(style);
         }
-        starsGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
-        const starsMaterial = new THREE.PointsMaterial({color: 0xeab308, size: 0.03});
-        const starField = new THREE.Points(starsGeometry, starsMaterial);
-        scene.add(starField);
-
-        camera.position.z = 5;
-
-        // متغيرات للتحكم باللمس والتدوير برواقة
-        let isDragging = false;
-        let previousMousePosition = { x: 0, y: 0 };
-
-        container.addEventListener('mousedown', (e) => { isDragging = true; });
-        container.addEventListener('mousemove', (e) => {
-            const deltaMove = { x: e.offsetX - previousMousePosition.x, y: e.offsetY - previousMousePosition.y };
-            if (isDragging) {
-                globe.rotation.y += deltaMove.x * 0.005;
-                globe.rotation.x += deltaMove.y * 0.005;
-                showCountryCardData(); // فتح التقرير تلقائياً عند التدوير
-            }
-            previousMousePosition = { x: e.offsetX, y: e.offsetY };
-        });
-        window.addEventListener('mouseup', (e) => { isDragging = false; });
-
-        // دعم شاشات الموبايل واللمس لجروبات السوشيال ميديا
-        container.addEventListener('touchstart', (e) => { isDragging = true; previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY }; });
-        container.addEventListener('touchmove', (e) => {
-            if(isDragging && e.touches.length > 0) {
-                const deltaMove = { x: e.touches[0].clientX - previousMousePosition.x, y: e.touches[0].clientY - previousMousePosition.y };
-                globe.rotation.y += deltaMove.x * 0.008;
-                globe.rotation.x += deltaMove.y * 0.008;
-                showCountryCardData();
-                previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-            }
-        });
-        window.addEventListener('touchend', () => { isDragging = false; });
-
-        // محرك الدوران التلقائي المستمر وهادئ
-        function animate() {
-            requestAnimationFrame(animate);
-            if (!isDragging) {
-                globe.rotation.y += 0.002;
-            }
-            starField.rotation.y += 0.0005;
-            renderer.render(scene, camera);
-        }
-        
-        if(loadingDiv) loadingDiv.style.display = 'none';
-        animate();
-
-        // تجاوب الأبعاد تلقائياً مع حجم شاشات الهواتف
-        window.addEventListener('resize', () => {
-            camera.aspect = container.clientWidth / container.clientHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(container.clientWidth, container.clientHeight);
-        });
-    }
+    });
 </script>
+
+   
  </div>
 <style>
     /* إظهار الأطلس بأعلى طبقة رؤية بالصفحة وفصله بصرياً */
