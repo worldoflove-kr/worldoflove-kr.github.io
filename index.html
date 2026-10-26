@@ -2345,6 +2345,17 @@ function revealSecretMessage() {
         }, 1000);
     });
 </script>
+<script>
+    // سكريبت ملوكي لنقل صندوق الوثائق القانونية تحت أطلس المشاعر فوراً
+    document.addEventListener("DOMContentLoaded", function() {
+        const globeSection = document.getElementById("kr-global-globe-section");
+        const docFooter = document.querySelector(".royal-box.box-gold");
+        if (globeSection && docFooter) {
+            // نقل صندوق الوثائق ليصبح تحت الأطلس مباشرة وقبل الفوتر النهائي
+            globeSection.parentNode.insertBefore(docFooter, globeSection.nextSibling);
+        }
+    });
+</script>
 
       
 
