@@ -2083,7 +2083,6 @@ function revealSecretMessage() {
     <p style="color: #e2e8f0; font-size: 13.5px; margin: 6px 0; line-height: 1.6;">⚡ **التوهج اليومي وعقوبة الغياب:** حضورك اليومي والضغط على الزر يحمي توهج نجمتك. الغياب لأكثر من 24 ساعة يطفئ هالتك الفلكية وتختفي لتفقد موقعك الملوكي الحركي!</p>
 </div>
 
-<!-- ✍️ لوحة التحكم الملكية الموحدة: الاسم ثم الدولة ثم الزر في مكان واحد فخم فوق الأرضية -->
 <div style="background: rgba(26, 22, 37, 0.65); border: 2px solid #ecc94b; border-radius: 18px; padding: 20px; margin: 0 15px 25px 15px; box-shadow: 0 0 15px rgba(236, 201, 75, 0.15); backdrop-filter: blur(5px);">
     
     <!-- 1. خانة الاسم الملكي -->
@@ -2092,16 +2091,29 @@ function revealSecretMessage() {
         <input type="text" id="royal-username" placeholder="اكتب اسمك الفخم هنا لتثبيت هالتك..." style="width: 100%; background: #1a1625; color: #fff; padding: 12px; border-radius: 10px; border: 1px solid #4a5568; text-align: center; font-size: 14px; outline: none; box-sizing: border-box; font-weight: bold; transition: 0.3s;" onfocus="this.style.borderColor='#ecc94b'">
     </div>
 
-    <!-- 2. قائمة اختيار الدولة الملوكية -->
+    <!-- 2. قائمة اختيار الدولة الملوكية الشاملة لجميع بلدان الكون -->
     <div class="input-group" style="margin-bottom: 20px;">
         <label style="color: #ecc94b; display: block; margin-bottom: 8px; font-size: 13px; font-weight: bold; text-align: right;">🌍 حدد دولتك لشحن طاقة هالتك الفلكية:</label>
         <select id="royal-country-globe" style="width: 100%; background: #1a1625; color: #fff; padding: 12px; border-radius: 10px; border: 1px solid #4a5568; text-align: center; font-size: 14px; cursor: pointer; box-sizing: border-box; font-weight: bold; outline: none; transition: 0.3s;" onfocus="this.style.borderColor='#ecc94b'">
             <option value="">-- اختر بلدك الحين لتفعيل النجمة --</option>
-            <option value="BHD">🇧🇭 مملكة البحرين (نبض الهيبة الصافية)</option>
-            <option value="SAR">🇸🇦 المملكة العربية السعودية (طاقة الوفرة الملوكية)</option>
-            <option value="AED">🇦🇪 الإمارات العربية المتحدة (هالة الازدهار الكونى)</option>
-            <option value="KWD">🇰🇼 دولة الكويت (نبض البركة الملوكية)</option>
             <option value="LB">🇱🇧 لبنان الملوكي (طاقة الأرز والوفرة الروحية)</option>
+            <option value="SAR">🇸🇦 المملكة العربية السعودية (طاقة الوفرة الملوكية)</option>
+            <option value="BHD">🇧🇭 مملكة البحرين (نبض الهيبة الصافية)</option>
+            <option value="AED">🇦🇪 الإمارات العربية المتحدة (هالة الازدهار الكوني)</option>
+            <option value="KWD">🇰🇼 دولة الكويت (نبض البركة الملوكية)</option>
+            <option value="OM">🇴🇲 سلطنة عمان (هالة الجود والوقار)</option>
+            <option value="QA">🇶🇦 دولة قطر (طاقة المجد والريادة)</option>
+            <option value="EG">🇪🇬 جمهورية مصر العربية (كنوز طاقة النيل العظيمة)</option>
+            <option value="IQ">🇮🇶 جمهورية العراق (أرض الحضارة والبركة المطلقة)</option>
+            <option value="JO">🇯🇴 المملكة الأردنية الهاشمية (نبض طاقة النخوة والوفرة)</option>
+            <option value="SY">🇸🇾 الجمهورية العربية السورية (طاقة البركة والياسمين الملوكي)</option>
+            <option value="MA">🇲🇦 المملكة المغربية (أنوار الوفرة الأصيلة)</option>
+            <option value="TN">🇹🇳 تونس الخضراء (طاقة الهمة والخيرات الشاملة)</option>
+            <option value="DZ">🇩🇿 الجزائر الأبية (طاقة العزة والوفرة المباركة)</option>
+            <option value="LY">🇱🇾 ليبيا (طاقة النماء والخير الوفير)</option>
+            <option value="SD">🇸🇩 السودان (أرض الخير والبركة الواعدة)</option>
+            <option value="YE">🇾🇪 اليمن (أرض الأصالة والمدد الفلكي)</option>
+            <option value="GLOBAL">🌍 باقي دول العالم والشركاء في الكون (طاقة الوفرة العالمية)</option>
         </select>
     </div>
 
@@ -2111,6 +2123,7 @@ function revealSecretMessage() {
     </button>
     
 </div>
+
 
 
 <!-- إضافة أنيميشن الشراع ثلاثي الأبعاد في الـ CSS الخاص بالبطاقة -->
