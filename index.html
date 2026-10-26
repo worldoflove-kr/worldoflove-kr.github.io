@@ -2371,7 +2371,45 @@ function revealSecretMessage() {
                 });
             }
         }, 1000);
+  
     });
+function calculateRoyalWealth() {
+    // جلب القيم المدخلة من المستخدم
+    const amountInput = document.getElementById('royal-amount-input').value;
+    const currencySelect = document.getElementById('royal-currency-select');
+    const currencyText = currencySelect.options[currencySelect.selectedIndex].text;
+    const resultBox = document.getElementById('calculator-results');
+    
+    // التأكد من إدخال رقم صحيح
+    if (!amountInput || amountInput <= 0) {
+        alert('الرجاء إدخال مبلغ مالي صحيح لتوليد تدفقات الوفرة الملوكية! ✨');
+        return;
+    }
+    
+    const amount = parseFloat(amountInput);
+    
+    // الحسبية الشرعية والملوكية برواقة
+    const zakat = (amount * 0.025).toFixed(2); // نسبة الزكاة الشرعية 2.5%
+    const investmentBuffer = (amount * 0.20).toFixed(2); // ميزانية الوفرة والاستثمار 20%
+    const netWealth = (amount - zakat).toFixed(2);
+    
+    // توليد النتائج بتصميم فخم ومتحرك داخل الصندوق
+    resultBox.innerHTML = `
+        <div style="border-top: 1px dashed #ecc94b; margin-top: 15px; padding-top: 15px;">
+            <p style="color: #ecc94b; font-weight: bold; font-size: 15px; text-align: center; margin-bottom: 10px;">📊 تقرير تدفق الوفرة والخطة المالية:</p>
+            <p style="color: #fff; font-size: 13px; margin: 5px 0; text-align: right;">✨ المبلغ الإجمالي: <span style="color: #63b3ed; font-weight: bold;">${amount.toLocaleString()}</span> ${currencyText.split(' ') || ''}</p>
+            <p style="color: #fff; font-size: 13px; margin: 5px 0; text-align: right;">🕌 الزكاة الشرعية المستحقة (2.5%): <span style="color: #fc8181; font-weight: bold;">${parseFloat(zakat).toLocaleString()}</span> ${currencyText.split(' ') || ''}</p>
+            <p style="color: #fff; font-size: 13px; margin: 5px 0; text-align: right;">📈 ميزانية الاستشارة وتوليد الوفرة (20%): <span style="color: #68d391; font-weight: bold;">${parseFloat(investmentBuffer).toLocaleString()}</span> ${currencyText.split(' ') || ''}</p>
+            <p style="color: #ecc94b; font-size: 14px; margin: 10px 0 0 0; text-align: center; font-weight: bold; border: 1px solid #ecc94b; padding: 8px; border-radius: 8px; background: rgba(236, 201, 75, 0.1);">
+                💰 صافي طاقة المال المبارك: ${parseFloat(netWealth).toLocaleString()}
+            </p>
+        </div>
+    `;
+    
+    // إظهار صندوق النتائج بتأثير انسيابي
+    resultBox.style.display = 'block';
+}
+
 </script>
 
 <!-- قسم الوثائق القانونية الرسمية للمنصة فوق الشعار -->
