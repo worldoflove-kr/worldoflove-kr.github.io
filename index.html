@@ -2251,6 +2251,16 @@ function revealSecretMessage() {
         margin-top: 40px !important;
     }
 </style>
+<script>
+    // سكريبت ملوكي لنقل الأطلس فوق صندوق الوثائق تلقائياً وبدون أي غلط
+    document.addEventListener("DOMContentLoaded", function() {
+        const globeSection = document.getElementById("kr-global-globe-section");
+        const footerSection = document.querySelector(".royal-box.box-gold");
+        if (globeSection && footerSection) {
+            footerSection.parentNode.insertBefore(globeSection, footerSection);
+        }
+    });
+</script>
 
       
 
