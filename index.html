@@ -2239,28 +2239,30 @@ function revealSecretMessage() {
 </script>
  </div>
 <style>
-    /* إجبار أطلس المشاعر على الصعود فوق الصناديق القديمة والفوتر */
+    /* إظهار الأطلس بأعلى طبقة رؤية بالصفحة وفصله بصرياً */
     #kr-global-globe-section {
         position: relative !important;
-        z-index: 9999 !important;
+        z-index: 99999 !important;
         display: block !important;
+        visibility: visible !important;
+        margin: 40px auto !important;
         clear: both !important;
     }
-    /* إرسال صندوق الوثائق والفوتر الملكي غصب عنهم لآخر الصفحة تحت */
-    .royal-box.box-gold {
-        margin-top: 40px !important;
-    }
 </style>
+
 <script>
-    // سكريبت ملوكي لنقل الأطلس فوق صندوق الوثائق تلقائياً وبدون أي غلط
+    // نقل الأطلس ليكون فوق صندوق الوثائق مباشرة وبشكل مرئي 100%
     document.addEventListener("DOMContentLoaded", function() {
         const globeSection = document.getElementById("kr-global-globe-section");
         const footerSection = document.querySelector(".royal-box.box-gold");
         if (globeSection && footerSection) {
+            footerSection.style.position = "relative";
+            footerSection.style.zIndex = "1";
             footerSection.parentNode.insertBefore(globeSection, footerSection);
         }
     });
 </script>
+
 
       
 
