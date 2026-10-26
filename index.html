@@ -2077,6 +2077,40 @@ function revealSecretMessage() {
 <!-- تنسخ هذا الجزء وتضعه تحت آخر صندوق وقبل صندوق السياسات -->
 <!-- ========================================== -->
 <div id="kr-global-globe-section" style="background: linear-gradient(180deg, #09090b 0%, #020205 100%); padding: 40px 20px; text-align: center; font-family: 'Cairo', sans-serif; border-top: 2px solid #eab308; color: #ffffff; position: relative; overflow: hidden;">
+<!-- ======================================================= -->
+<!-- 🔮 بطاقة بروتوكول النجوم الملوكية بتأثير ثلاثي الأبعاد الشفاف الزجاجي 🔮 -->
+<!-- ======================================================= -->
+<div class="card-3d-royal" style="background: linear-gradient(135deg, rgba(26, 22, 37, 0.85), rgba(13, 11, 24, 0.95)); border: 2px solid #ecc94b; border-radius: 20px; padding: 22px; margin: 20px 15px; text-align: right; direction: rtl; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), inset 0 0 15px rgba(236, 201, 75, 0.2); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transform: perspective(1000px) rotateX(2deg); transition: transform 0.5s ease, box-shadow 0.5s ease; position: relative; overflow: hidden;">
+    
+    <!-- تأثير شعاع الإضاءة المتحرك بداخل البطاقة -->
+    <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(236, 201, 75, 0.05), transparent); transform: rotate(45deg); animation: royalShine 6s infinite linear; pointer-events: none;"></div>
+
+    <p style="color: #ecc94b; font-weight: bold; font-size: 16px; margin-bottom: 12px; text-shadow: 0 0 8px rgba(236, 201, 75, 0.4); display: flex; align-items: center; gap: 8px;">
+        ✨ بروتوكول شحن هالة النجوم الملكية الكونية ثلاثية الأبعاد:
+    </p>
+    <p style="color: #e2e8f0; font-size: 13.5px; margin: 6px 0; line-height: 1.6;">🌟 **احجز نجمتك علناً:** عند تفعيل شعار الوفرة، تضيء نجمتك باسمك على أطلس الكون وتنكشف أمام جميع الملوك والزوار عالمياً دغري برواقة!</p>
+    <p style="color: #e2e8f0; font-size: 13.5px; margin: 6px 0; line-height: 1.6;">⚡ **التوهج اليومي وعقوبة الغياب:** حضورك اليومي يزيد نور نجمتك. الغياب لأكثر من 24 ساعة يطفئ هالتك وتختفي لتفقد موقعك الفلكي الملوكي الحركي!</p>
+    <p style="color: #68d391; font-size: 14px; margin: 8px 0 0 0; font-weight: bold; text-shadow: 0 0 5px rgba(104, 211, 145, 0.3);">🎁 **البشارة الكبرى:** اكتمال توهج النجمة لـ 30 يوماً متتالياً يفك تشفير صندوق البشارة الرقمية الفخمة فوراً للزائر.</p>
+</div>
+
+<!-- خانة إدخال الاسم الملوكي المضيء للزائر لتثبيت هالتة -->
+<div class="input-group" style="margin: 0 15px 25px 15px;">
+    <input type="text" id="royal-username" placeholder="✍️ اكتب اسمك الملوكي هنا لحفر نجمتك المشعة في الكون الحين..." style="width: 100%; background: rgba(26, 22, 37, 0.8); color: #fff; padding: 15px; border-radius: 12px; border: 2px solid #ecc94b; text-align: center; font-size: 15px; outline: none; box-sizing: border-box; box-shadow: 0 0 12px rgba(236, 201, 75, 0.15); font-weight: bold; transition: 0.3s;" onfocus="this.style.borderColor='#fff'; this.style.boxShadow='0 0 15px rgba(255,255,255,0.2)'" onblur="this.style.borderColor='#ecc94b'; this.style.boxShadow='0 0 12px rgba(236, 201, 75, 0.15)'">
+</div>
+
+<!-- إضافة أنيميشن الشراع ثلاثي الأبعاد في الـ CSS الخاص بالبطاقة -->
+<style>
+@keyframes royalShine {
+    0% { transform: translate(-30%, -30%) rotate(45deg); }
+    100% { transform: translate(30%, 30%) rotate(45deg); }
+}
+/* تأثير حركي ملوكي عند تمرير الماوس للأبعاد */
+.card-3d-royal:hover {
+    transform: perspective(1000px) rotateX(0deg) rotateY(1deg) scale(1.01) !important;
+    box-shadow: 0 20px 40px rgba(236, 201, 75, 0.15) !important;
+}
+</style>
+<!-- ======================================================= -->
     
     <h2 style="color: #eab308; font-size: 28px; margin-bottom: 10px; font-weight: 700; text-shadow: 0 0 15px rgba(234, 179, 8, 0.4);">🌍 أطلس المشاعر والوفرة الكوني ثلاثي الأبعاد</h2>
     <p style="color: #a1a1aa; font-size: 16px; max-width: 600px; margin: 0 auto 30px auto; line-height: 1.6;">بث حي ومباشر لطاقة الوفرة والبركة الملوكية العابرة للقارات. المس الكرة الأرضية، حدد دولتك، واشحن هالتك الفلكية دغري برواقة!</p>
@@ -2101,11 +2135,18 @@ function revealSecretMessage() {
             <h3 id="detected-country-name" style="color: #ffffff; margin: 0 0 10px 0; font-size: 22px;">📍 السعودية العظمى</h3>
             <div style="width: 60px; height: 2px; background: #eab308; margin: 0 auto 15px auto;"></div>
             <p id="daily-astro-report" style="color: #e4e4e7; font-size: 15px; line-height: 1.7; margin-bottom: 20px;">اليوم هالة دولتك مشبعة بالذهب الفلكي الصافي بنسبة 98%. طاقتك المالية الملوكية في ذروتها وكبرياؤك يهزّ الأرض برواقة وثقة.</p>
-            <button onclick="boostCountryEnergy()" style="background: linear-gradient(45deg, #eab308, #ca8a04); color: #000; border: none; padding: 12px 30px; font-size: 16px; font-weight: bold; border-radius: 30px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(234,179,8,0.4);">
-                🚀 ضخ شعاع الوفرة الملوكي في سمائنا الحين
-            </button>
-        </div>
+          <button onclick="activateRoyalStar()" style="width: 100%; background: linear-gradient(90deg, #ecc94b, #b7791f); color: #0d0b18; padding: 15px; border: none; border-radius: 12px; font-weight: bold; font-size: 16px; cursor: pointer; box-shadow: 0 4px 10px rgba(236, 201, 75, 0.3); transition: 0.3s; margin-bottom: 20px;">
+    🚀 ضخ شعاع الوفرة الملوكي في سمائنا الحين
+</button>
+
+<!-- شاشة عرض النجوم العالمية الحية (اللوحة العلنية المشتركة لجميع الزوار) -->
+<div style="border-top: 1px solid #4a5568; padding-top: 15px; margin-top: 15px; text-align: right; direction: rtl;">
+    <p style="color: #ecc94b; font-weight: bold; font-size: 14px; margin-bottom: 10px; text-align: center;">📡 رادار النجوم الملوكية المشعة الحين في الكون أمام الجميع:</p>
+    <div id="live-stars-container" style="display: flex; flex-direction: column; gap: 8px; max-height: 150px; overflow-y: auto; padding-right: 5px;">
+        <!-- النجوم والأسماء الحية والمحاكاة تظهر هنا ديناميكياً للكل -->
     </div>
+</div>
+
 </div>
 
 <!-- استدعاء ملفات التنسيق وحركات الأنيميشن الخفيفة -->
@@ -2427,6 +2468,114 @@ function shareRoyalReport() {
         alert('✅ تم نسخ تقرير تدفق الوفرة بنجاح! يمكنك الآن لصقه ومشاركته مع شركائك دغري برواقة 🟢');
     }).catch(err => {
         alert('عذراً، حدث خطأ أثناء نسخ التقرير الملوكي.');
+    });
+}
+// مصفوفة لمحاكاة نجوم الزوار الآخرين حول العالم لتبدو اللوحة حية ومبهرة دائماً لجميع الزوار
+const globalMockStars = [
+    { name: "الأمير فهد", country: "🇸🇦", days: 12, glow: "🔥 متوهجة بشدة" },
+    { name: "الشيخة ريم", country: "🇦ئه", days: 24, glow: "👑 هالة ملكية مكتملة" },
+    { name: "الملك KR", country: "🐼", days: 30, glow: "✨ البشارة جاهزة 🎁" },
+    { name: "مستشار الوفرة", country: "🇱🇧", days: 5, glow: "🌟 نجمة صاعدة" }
+];
+
+// دالة لتحديث عرض النجوم الحية في اللوحة العلنية للكل
+function renderLiveStars(userStar = null) {
+    const container = document.getElementById('live-stars-container');
+    if (!container) return;
+    
+    let html = "";
+    
+    // إذا كان المستخدم قد شحن نجمته بنجاح، تظهر في الصدارة أولاً لتبهره وتنبض أمام الجميع
+    if (userStar) {
+        html += `
+            <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(236, 201, 75, 0.15); border: 1px solid #ecc94b; padding: 8px 12px; border-radius: 8px; animation: pulse 1.5s infinite;">
+                <span style="color: #fff; font-weight: bold;">⭐ نجمتك: ${userStar.name} (${userStar.country})</span>
+                <span style="color: #68d391; font-size: 12px;">يوم ${userStar.days}/30 (${userStar.glow}) 🌟</span>
+            </div>
+        `;
+    }
+    
+    // عرض نجوم الزوار الآخرين المشعة أمام الجميع لزيادة المنافسة الملكية
+    globalMockStars.forEach(star => {
+        html += `
+            <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(26, 22, 37, 0.4); border: 1px solid #4a5568; padding: 8px 12px; border-radius: 8px;">
+                <span style="color: #cbd5e0;">⭐ الزائر: ${star.name} ${star.country}</span>
+                <span style="color: #ecc94b; font-size: 12px;">يوم ${star.days}/30 (${star.glow})</span>
+            </div>
+        `;
+    });
+    
+    container.innerHTML = html;
+}
+
+// دالة لتشغيل الرادار فور تحميل الصفحة تلقائياً
+function initRoyalStarsRadar() {
+    const savedName = localStorage.getItem('royal_star_name');
+    const savedCountry = localStorage.getItem('royal_star_country');
+    const savedDays = localStorage.getItem('royal_star_days') || 0;
+    
+    if (savedName && savedCountry) {
+        renderLiveStars({
+            name: savedName,
+            country: savedCountry,
+            days: parseInt(savedDays),
+            glow: "🔥 مشعة ومحفوظة علناً"
+        });
+    } else {
+        renderLiveStars();
+    }
+}
+
+// استدعاء دالة التشغيل فوراً لضمان تحميل رادار النجوم
+setTimeout(initRoyalStarsRadar, 1500);
+
+// دالة إطلاق وتفعيل النجمة الملوكية مع نظام الـ 30 يوماً الاحترافي
+function activateRoyalStar() {
+    const nameInput = document.getElementById('royal-username').value.trim();
+    const countrySelect = document.getElementById('royal-country-globe');
+    
+    if (!nameInput) {
+        alert('الرجاء كتابة اسمك الملوكي أولاً لحفر نجمتك في سماء الأطلس المضيء! 👑');
+        return;
+    }
+    if (!countrySelect || !countrySelect.value) {
+        alert('الرجاء اختيار دولتك من القائمة لتوجيه شعاع الوفرة الفلكي بدقة! 🌍');
+        return;
+    }
+    
+    const countryText = countrySelect.options[countrySelect.selectedIndex].text;
+    let currentDays = parseInt(localStorage.getItem('royal_star_days') || 0);
+    const lastCheckIn = localStorage.getItem('royal_star_last_date');
+    const todayStr = new Date().toDateString();
+    
+    // التحقق من الدخول اليومي المتكرر لتفادي الغش البرمجي دغري
+    if (lastCheckIn === todayStr) {
+        alert(`✨ مرحباً بك مجدداً يا ${nameInput}! نجمتك الملوكية مشعة بالفعل لليوم وتنبض بطاقة الوفرة. عُد غداً لزيادة هالتها ونورها! ✨`);
+        return;
+    }
+    
+    // زيادة يوم التزام ملوكي جديد في الذاكرة المشفرة
+    currentDays += 1;
+    localStorage.setItem('royal_star_name', nameInput);
+    localStorage.setItem('royal_star_country', countryText.split(' ')[0] || "🌍"); // جلب علم الدولة فقط
+    localStorage.setItem('royal_star_days', currentDays);
+    localStorage.setItem('royal_star_last_date', todayStr);
+    
+    // التحقق من اكتمال الشهر الملوكي والفوز بالبشارة السحرية الكبرى
+    if (currentDays >= 30) {
+        alert(`👑 يا لها من معجزة فلكية ملوكية حية! 👑\n\nتهانينا يا ${nameInput}! لقد اكتملت هالة نجمتك الملوكية على مدار 30 يوماً متتالياً بنجاح!\n\n🎁 فك تشفير صندوق البشارة السحرية والذهب الصافي:\n"سماؤك مشعة الآن بالبركة المطلقة والوفرة المالية، والنجاح سيتدفق إلى حساباتك وعائلتك من كلو الكون دغري برواقة!"`);
+        localStorage.setItem('royal_star_days', 0);
+        currentDays = 0;
+    } else {
+        alert(`🚀 تم إطلاق وضخ شعار الوفرة الفلكي بنجاح مبهر! 🚀\n\nنجمتك يا ${nameInput} تلمع وتنبض الآن في سماء الأطلس أمام جميع ملوك الكون علناً!\n🎯 مستوى توهج هالتك الحالي: يوم ${currentDays}/30. حافظ على دخولك اليومي لكي لا تنطفئ نجمتك وتختفي!`);
+    }
+    
+    // تحديث اللوحة فوراً ليرى المستخدم نجمته المشعة في الصدارة وهي تنبض
+    renderLiveStars({
+        name: nameInput,
+        country: countryText.split(' ')[0] || "🌍",
+        days: currentDays,
+        glow: "🟢 تلمع وتنبض الحين أمام الجميع"
     });
 }
 
