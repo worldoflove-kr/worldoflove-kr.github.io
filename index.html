@@ -2031,6 +2031,46 @@ function revealSecretMessage() {
     };
 })();
 </script>
+<!-- ======================================================= -->
+<!--💰 حاسبة الاستشارة والزكاة والوفرة المالية الملوكية المعتمدة -->
+<!-- ======================================================= -->
+<div id="calculator-section" class="royal-box box-gold" style="border: 2px solid #ecc94b; border-radius: 20px; padding: 25px; margin: 20px; background: #0d0b18; box-shadow: 0 0 15px rgba(236, 201, 75, 0.2); text-align: center;">
+    <h3 style="color: #ecc94b; font-size: 20px; margin-bottom: 5px; font-weight: bold;">👑 حاسبة الاستشارة والزكاة والوفرة المالية</h3>
+    <p style="color: #a0aec0; font-size: 13px; margin-bottom: 20px;">احسب تدفقاتك المالية الملوكية والزكاة الشرعية لتوليد خطة الوفرة دغري برواقة</p>
+    
+    <!-- خانة إدخال المبلغ -->
+    <div class="input-group" style="margin-bottom: 15px; position: relative;">
+        <span style="position: absolute; left: 15px; top: 12px; color: #ecc94b; font-weight: bold;">💰</span>
+        <input type="number" id="royal-amount-input" placeholder="أدخل المبلغ المالي الإجمالي..." style="width: 100%; background: #1a1625; color: #fff; padding: 12px 15px 12px 40px; border-radius: 12px; border: 1px solid #4a5568; text-align: right; font-size: 15px; outline: none; box-sizing: border-box;">
+    </div>
+    
+    <!-- قائمة اختيار العملة والبلد -->
+    <div class="input-group" style="margin-bottom: 20px;">
+        <select id="royal-currency-select" style="width: 100%; background: #1a1625; color: #fff; padding: 12px; border-radius: 12px; border: 1px solid #4a5568; text-align: center; font-size: 15px; outline: none; cursor: pointer; box-sizing: border-box;">
+            <option value="SAR">🇸🇦 ريال سعودي (SAR)</option>
+            <option value="BHD">🇧🇭 دينار بحريني (BHD)</option>
+            <option value="AED">🇦🇪 درهم إماراتي (AED)</option>
+            <option value="KWD">🇰🇼 دينار كويتي (KWD)</option>
+            <option value="USD">🇺🇸 دولار أمريكي (USD)</option>
+        </select>
+    </div>
+    
+    <!-- أزرار التحكم الفخمة -->
+    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+        <button onclick="calculateRoyalWealth()" style="flex: 1; background: linear-gradient(90deg, #ecc94b, #b7791f); color: #0d0b18; padding: 14px; border: none; border-radius: 12px; font-weight: bold; font-size: 15px; cursor: pointer; transition: 0.3s;">
+            احسب الوفرة الآن ✨
+        </button>
+        <button style="flex: 1; background: linear-gradient(90deg, #800020, #4a0011); color: #fff; padding: 14px; border: none; border-radius: 12px; font-weight: bold; font-size: 15px; cursor: pointer; transition: 0.3s;">
+            Share Financial 🟢
+        </button>
+    </div>
+    
+    <!-- صندوق عرض النتائج الذكي -->
+    <div id="calculator-results" style="background: rgba(26, 22, 37, 0.6); border: 1px dashed #4a5568; border-radius: 12px; padding: 15px; display: none; text-align: right;">
+        <!-- النتائج تظهر هنا عبر الجافاسكريبت -->
+    </div>
+</div>
+<!-- ======================================================= -->
  
 <!-- 1. واجهة قسم الكرة الأرضية الكونية ثلاثية الأبعاد (KR GLOBE) -->
 <!-- تنسخ هذا الجزء وتضعه تحت آخر صندوق وقبل صندوق السياسات -->
