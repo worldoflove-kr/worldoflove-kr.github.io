@@ -2251,18 +2251,15 @@ function revealSecretMessage() {
 
  </div>
 <style>
-    /* إظهار الأطلس بأعلى طبقة رؤية بالصفحة وفصله بصرياً */
+    /* كود ملوكي لترتيب أطلس المشاعر وجعله مستقراً فوق الفوتر دغري */
     #kr-global-globe-section {
         position: relative !important;
-        z-index: 99999 !important;
         display: block !important;
-        visibility: visible !important;
-        margin: 40px auto !important;
+        margin: 20px auto !important;
         clear: both !important;
     }
 </style>
 
-<script>
     // نقل الأطلس ليكون فوق صندوق الوثائق مباشرة وبشكل مرئي 100%
     document.addEventListener("DOMContentLoaded", function() {
         const globeSection = document.getElementById("kr-global-globe-section");
