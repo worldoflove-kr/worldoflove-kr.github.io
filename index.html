@@ -2578,7 +2578,7 @@ setTimeout(() => {
     secureGlobeInteraction();
 }, 1200);
 
-// دالة إطلاق النجمة الملوكية الحقيقية، فك القفل، ورفع البيانات للسحابة علناً
+// دالة إطلاق النجمة الملوكية الحقيقية، فك القفل، ورفع البيانات للسحابة فوراً للظهور بالرادار
 async function activateRoyalStar() {
     const nameInput = document.getElementById('royal-username').value.trim();
     const countrySelect = document.getElementById('royal-country-globe');
@@ -2595,18 +2595,12 @@ async function activateRoyalStar() {
     const countryText = countrySelect.options[countrySelect.selectedIndex].text;
     const countryFlag = countrySelect.value; 
     let currentDays = parseInt(localStorage.getItem('royal_star_days') || 0);
-    const lastCheckIn = localStorage.getItem('royal_star_last_date');
     const todayStr = new Date().toDateString();
     
-    if (lastCheckIn === todayStr) {
-        isGlobeUnlocked = true; // فك قفل التفاعل للكرة للأرضية اليوم
-        alert(`✨ مرحباً بك مجدداً يا ${nameInput}! نجمتك الملوكية مشعة بالفعل لليوم وتنبض بطاقة الوفرة، وتم فتح قفل تفاعل الكرة الأرضية لك بنجاح! ✨`);
-        return;
-    }
-    
+    // زيادة يوم التزام ملوكي جديد في الذاكرة
     currentDays += 1;
     localStorage.setItem('royal_star_name', nameInput);
-    localStorage.setItem('royal_star_country', countrySelect.options[countrySelect.selectedIndex].text.split(' ')[0] || "🌍");
+    localStorage.setItem('royal_star_country', countrySelect.options[countrySelect.selectedIndex].text.split(' ') || "🌍");
     localStorage.setItem('royal_star_days', currentDays);
     localStorage.setItem('royal_star_last_date', todayStr);
     
@@ -2615,21 +2609,25 @@ async function activateRoyalStar() {
     if (currentDays >= 25) glowStatus = "👑 هالة ملكية مكتملة";
     
     try {
+        // رفع وتحديث البيانات الحية على السحابة العالمية فوراً ليراها كل الزوار
         const getRes = await fetch(KR_DATABASE_URL, {
             headers: { "X-Master-Key": "$2a$10$XZ9DqXwW8P7g.NqWb.2UuO8vXG9uW/Zz3X4F5G6H7I8J9K0L1M2N3" }
         });
         const currentData = await getRes.json();
         let starsList = currentData.record.stars || [];
         
+        // إزالة أي سجل قديم لنفس الاسم لتحديثه باليوم الجديد فوراً
         starsList = starsList.filter(s => s.name !== nameInput);
         
+        // إضافة النجمة الحقيقية الحالية إلى صدارة القائمة السحابية
         starsList.unshift({
             name: nameInput,
-            country: countrySelect.options[countrySelect.selectedIndex].text.split(' ')[0] || "🌍",
+            country: countrySelect.options[countrySelect.selectedIndex].text.split(' ') || "🌍",
             days: currentDays,
             glow: currentDays >= 30 ? "✨ البشارة جاهزة 🎁" : glowStatus
         });
         
+        // حفظ القائمة المحدثة بالكامل على السيرفر العالمي فوراً للكل
         await fetch(KR_DATABASE_URL, {
             method: "PUT",
             headers: {
@@ -2639,22 +2637,24 @@ async function activateRoyalStar() {
             body: JSON.stringify({ stars: starsList.slice(0, 20) })
         });
         
-        // تفعيل فك القفل بشكل كامل وفوري للأطلس
+        // تفعيل فك القفل بشكل كامل وفوري للأطلس والكرة الأرضية
         isGlobeUnlocked = true;
         
         if (currentDays >= 30) {
             alert(`👑 معجزة فلكية واقعية حية! 👑\n\nتهانينا يا ${nameInput}! اكتملت هالتك الملوكية ونجمتك المزدوجة علناً على مدار 30 يوماً متتالياً بنجاح!\n\n🎁 فك تشفير صندوق البشارة السحرية الكبرى وعالم الحب:\n"سماؤك مشعة الآن بالنور المطلق والذهب الصافي، والوفرة والبركة تتدفق إلى حساباتك وعائلتك من كلو الكون دغري برواقة وتظل تحت اسمك مفخرة ملوكية لأيام!"`);
             localStorage.setItem('royal_star_days', 0);
         } else {
-            alert(`🚀 تم إطلاق وضخ شعار الوفرة الملوكي بنجاح وانبهر الكون! 🚀\n\nنجمتك الأولى تلمع الحين حد اسمك بالرادار، ونجمتك الثانية شعّت داخل مجسم الكرة الأرضية لـ ${countryText.split(' ')[0]} علناً أمام الجميع!\n🎯 مستوى توهج هالتك الحالي: يوم ${currentDays}/30. تَم فك قفل الأطلس بنجاح، حافظ على دخولك اليومي لكي لا تنطفئ!`);
+            alert(`🚀 تم إطلاق وضخ شعار الوفرة الملوكي بنجاح وانبهر الكون! 🚀\n\nنجمتك الأولى تلمع الحين حد اسمك بالرادار، ونجمتك الثانية شعّت داخل مجسم الكرة الأرضية لـ ${countryText.split(' ')} علناً أمام الجميع!\n🎯 مستوى توهج هالتك الحالي: يوم ${currentDays}/30. تَم فك قفل الأطلس بنجاح وعُرض اسمك علناً للزوار!`);
         }
         
+        // تحديث الرادار فوراً لقراءة الاسم والنجمة اللامعة بالراديو السحابي
         renderLiveStars();
     } catch (e) {
         isGlobeUnlocked = true;
         renderLiveStars();
     }
 }
+
 
 // إضافة أنيميشن التوهج الملكي للأسماء والنجمات المضيئة
 const styleSheet = document.createElement("style");
