@@ -2060,9 +2060,10 @@ function revealSecretMessage() {
         <button onclick="calculateRoyalWealth()" style="flex: 1; background: linear-gradient(90deg, #ecc94b, #b7791f); color: #0d0b18; padding: 14px; border: none; border-radius: 12px; font-weight: bold; font-size: 15px; cursor: pointer; transition: 0.3s;">
             احسب الوفرة الآن ✨
         </button>
-        <button style="flex: 1; background: linear-gradient(90deg, #800020, #4a0011); color: #fff; padding: 14px; border: none; border-radius: 12px; font-weight: bold; font-size: 15px; cursor: pointer; transition: 0.3s;">
-            Share Financial 🟢
-        </button>
+ <button onclick="shareRoyalReport()" style="flex: 1; background: linear-gradient(90deg, #800020, #4a0011); color: #fff; padding: 14px; border: none; border-radius: 12px; font-weight: bold; font-size: 15px; cursor: pointer; transition: 0.3s;">
+    Share Financial 🟢
+</button>
+
     </div>
     
     <!-- صندوق عرض النتائج الذكي -->
@@ -2408,6 +2409,25 @@ function calculateRoyalWealth() {
     
     // إظهار صندوق النتائج بتأثير انسيابي
     resultBox.style.display = 'block';
+}
+function shareRoyalReport() {
+    const resultBox = document.getElementById('calculator-results');
+    
+    // التأكد من وجود صندوق النتائج وظهوره
+    if (!resultBox || resultBox.style.display === 'none' || !resultBox.innerText) {
+        alert('الرجاء حساب الوفرة المالية أولاً لتوليد التقرير الملوكي ومشاركته! ✨');
+        return;
+    }
+    
+    // تنسيق النص الذي سيتم نسخه لمشاركته بشكل فخم ومحمي
+    const reportText = `👑 منصة World of Love - KR 👑\n📊 تقرير تدفق الوفرة والخطة المالية الملوكية:\n\n${resultBox.innerText}\n\n✨ طُوِّر برواقة ملوكية تامة ✨`;
+    
+    // نسخ النص إلى حافظة الجهاز تلقائياً
+    navigator.clipboard.writeText(reportText).then(() => {
+        alert('✅ تم نسخ تقرير تدفق الوفرة بنجاح! يمكنك الآن لصقه ومشاركته مع شركائك دغري برواقة 🟢');
+    }).catch(err => {
+        alert('عذراً، حدث خطأ أثناء نسخ التقرير الملوكي.');
+    });
 }
 
 </script>
