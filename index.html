@@ -2345,46 +2345,17 @@ function revealSecretMessage() {
         }, 1000);
     });
 </script>
-<script>
-    // سكريبت ملوكي لإصلاح الترتيب الحركي ونقل الوثائق تحت الأطلس فوراً
-    document.addEventListener("DOMContentLoaded", function() {
-        setTimeout(function() {
-            const globeSection = document.getElementById("kr-global-globe-section");
-            const docFooter = document.querySelector(".royal-box.box-gold");
-            if (globeSection && docFooter) {
-                // دفع صندوق الوثائق ليكون تحت أطلس المشاعر الكوني وفوق الباندا دغري
-                globeSection.parentNode.insertBefore(docFooter, globeSection.nextSibling);
-            }
-        }, 500);
-    });
-</script>
-<style>
-    /* كود ملوكي حاسم لعكس الترتيب بصرياً فوراً في المتصفح */
-    #kr-global-globe-section {
-        position: relative !important;
-        display: block !important;
-        margin: 20px auto !important;
-        clear: both !important;
-    }
-    .royal-box.box-gold {
-        margin-top: 40px !important;
-        position: relative !important;
-    }
-    /* سحر الـ Flexbox لإجبار الوثائق على الهبوط تحت الأطلس */
-    body {
-        display: flex !important;
-        flex-direction: column !important;
-    }
-    #kr-global-globe-section {
-        order: 10 !important;
-    }
-    .royal-box.box-gold {
-        order: 20 !important;
-    }
-    .royal-footer-pulse {
-        order: 30 !important;
-    }
-</style>
+
+<!-- قسم الوثائق القانونية الرسمية للمنصة فوق الشعار -->
+<div id="legal-section" style="border: 1px solid #4a5568; border-radius: 15px; padding: 20px; margin: 20px; background: rgba(13, 11, 24, 0.7); text-align: center; clear: both;">
+    <h4 style="color: #fff; font-size: 14px; margin-bottom: 10px;">🛡️ الوثائق القانونية الرسمية للمنصة 🛡️</h4>
+    <p style="color: #cbd5e0; font-size: 12px; line-height: 1.8;">
+        مرحباً بك في النظام الرقمي المشفر لـ <span style="color: #ecc94b;">World of Love</span>.<br>
+        جميع الحقوق محفوظة ومحمية بروتوكولياً بموجب سياسات النشر العالمية لـ <span style="color: #4299e1;">Google AdSense</span>.<br>
+        تصفح آمن مئة بالمئة وضمانة ملوكية مطلقة. ✨
+    </p>
+</div>
+
 
       
 
