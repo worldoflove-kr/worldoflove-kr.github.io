@@ -2071,30 +2071,34 @@ function revealSecretMessage() {
         <!-- النتائج تظهر هنا عبر الجافاسكريبت -->
     </div>
 </div>
-<!-- ========================================== -->
-<!-- بداية أطلس المشاعر الكوني ثلاثي الأبعاد المطور والمعدل -->
-<!-- ========================================== -->
-<section id="cosmic-atlas-section" style="position: relative; padding: 40px 20px; text-align: center; color: #fff; font-family: 'Cairo', sans-serif; overflow: hidden; background: #02000a;">
-    
-    <!-- حاوية الـ 3D الواقعي (هنا سيتم رسم الفضاء والكرة الأرضية والنجمة الحية) -->
-    <div id="threejs-globe-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;"></div>
 
-    <!-- المحتوى الفوقي والتحكم (تم تعديل الخصائص ليعمل اللمس والضغط بالكامل) -->
+<!-- ========================================== -->
+<!-- بداية أطلس المشاعر الكوني المطور والمضمون مئة بالمئة -->
+<!-- ========================================== -->
+<section id="cosmic-atlas-section" style="position: relative; padding: 40px 20px; text-align: center; color: #fff; font-family: 'Cairo', sans-serif; overflow: hidden; background: radial-gradient(circle at center, #0f021a 0%, #02000a 100%);">
+    
+    <!-- محتوى الأطلس والعداد -->
     <div style="position: relative; z-index: 2; max-width: 800px; margin: auto;">
         
-        <!-- العنوان والعداد الفخم المتحرك -->
-        <h1 style="font-size: 2.6rem; color: #00ffcc; text-shadow: 0 0 25px rgba(0,255,204,0.7); margin-bottom: 10px; font-weight: 800;">🌍 أطلس المشاعر والوفرة الكوني ثلاثي الأبعاد</h1>
-        <p style="font-size: 1.15rem; color: #e0b0ff; margin-bottom: 25px; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">بث حي ومباشر لطاقة الوفرة والبركة الملوكية العابرة للقارات. تفاعل مع الكون، واشحن هالتك الفلكية دغري برواقة!</p>
+        <h1 style="font-size: 2.4rem; color: #00ffcc; text-shadow: 0 0 20px rgba(0,255,204,0.6); margin-bottom: 10px; font-weight: 800;">🌍 أطلس المشاعر والوفرة الكوني ثلاثي الأبعاد</h1>
+        <p style="font-size: 1.1rem; color: #e0b0ff; margin-bottom: 25px;">بث حي ومباشر لطاقة الوفرة والبركة الملوكية العابرة للقارات. تفاعل مع الكون، واشحن هالتك الفلكية دغري برواقة!</p>
         
-        <div style="background: rgba(255, 215, 0, 0.15); border: 2px solid #ffd700; padding: 12px 25px; border-radius: 50px; display: inline-block; margin-bottom: 320px; box-shadow: 0 0 20px rgba(255,215,0,0.3); font-weight: bold; backdrop-filter: blur(5px);">
-            ✨ إجمالي نبضات طاقة الوفرة الملوكية الممررة الآن: <span id="pulse-counter" style="color: #ffd700; font-size: 1.4rem; text-shadow: 0 0 10px #ffd700;">4,500,120</span>
+        <div style="background: rgba(255, 215, 0, 0.12); border: 2px solid #ffd700; padding: 12px 25px; border-radius: 50px; display: inline-block; margin-bottom: 25px; box-shadow: 0 0 20px rgba(255,215,0,0.2); font-weight: bold;">
+            ✨ إجمالي نبضات طاقة الوفرة الملوكية الممررة الآن: <span id="pulse-counter" style="color: #ffd700; font-size: 1.4rem; text-shadow: 0 0 10px #ffd700;">4,500,155</span>
         </div>
-        <!-- كارت بروتوكول الشحن الموحد والنظيف الشامل لكل الدول -->
-        <div style="background: rgba(6, 3, 20, 0.85); border: 2px solid #3d1466; border-radius: 24px; padding: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); backdrop-filter: blur(12px); margin-bottom: 30px; text-align: right;" dir="rtl">
+
+        <!-- مسرح الكرة الأرضية الكونية التفاعلية المضمونة (Canvas) -->
+        <div style="position: relative; width: 280px; height: 280px; margin: 0 auto 30px auto; display: flex; align-items: center; justify-content: center;">
+            <canvas id="cosmic-globe-canvas" width="280" height="280" style="position: absolute; z-index: 1; cursor: pointer; filter: drop-shadow(0 0 30px rgba(0, 255, 204, 0.4));"></canvas>
+            <!-- النجمة المدارية الثانية التي تظهر عند الفقس وتلف حول الكورة -->
+            <div id="glowing-orbit-star" style="display: none; position: absolute; z-index: 2; font-size: 2rem; text-shadow: 0 0 20px #ffd700; pointer-events: none; transition: all 0.05s linear;">⭐</div>
+        </div>
+        <!-- كارت بروتوكول الشحن والنظام النظيف الشامل وكل البلدان -->
+        <div style="background: rgba(6, 3, 20, 0.9); border: 2px solid #3d1466; border-radius: 24px; padding: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); text-align: right;" dir="rtl">
             <h2 style="color: #ffd700; font-size: 1.5rem; text-align: center; margin-bottom: 20px; border-bottom: 1px solid #3d1466; padding-bottom: 10px; font-weight: 700;">✨ بروتوكول شحن هالة النجوم الملكية الكونية</h2>
             <ul style="list-style: none; padding: 0; margin-bottom: 25px; font-size: 0.95rem; line-height: 1.7; color: #ddd;">
                 <li style="margin-bottom: 10px;">🌟 <strong style="color: #00ffcc;">احجز نجمتك علناً:</strong> اكتب اسمك الملوكي، حدد بلدك، واضغط زر التفعيل لتنطلق نجمتك الواقعية وتدور الحين في مجسم الكون المضيء!</li>
-                <li>⚡ <strong style="color: #ff3366;">عقوبة الغياب:</strong> حضورك اليومي يحمي توهج نجمتك. الغياب لأكثر من 24 ساعة يطفئ هالتك لتفقد موقعك الملوكي الحركي!</li>
+                <li>⚡ <strong style="color: #ff3366;">عقوبة الغياب:</strong> حضورك اليومي يحمي توهج نجمتك وتوهج مسيرتنا لآخر الشهر!</li>
             </ul>
 
             <div style="margin-bottom: 20px;">
@@ -2127,122 +2131,91 @@ function revealSecretMessage() {
                 </select>
             </div>
 
-            <button id="activate-star-btn" style="width: 100%; padding: 16px; border: none; border-radius: 15px; background: linear-gradient(45deg, #7700ff, #00ffcc); color: #fff; font-size: 1.15rem; font-weight: bold; cursor: pointer; box-shadow: 0 0 25px rgba(119,0,255,0.5); transition: all 0.3s ease;">🚀 اضغط هنا لضخ شعار الوفرة وإطلاق نجمتك الحين</button>
+            <button type="button" id="activate-star-btn" style="width: 100%; padding: 16px; border: none; border-radius: 15px; background: linear-gradient(45deg, #7700ff, #00ffcc); color: #fff; font-size: 1.15rem; font-weight: bold; cursor: pointer; box-shadow: 0 0 25px rgba(119,0,255,0.5); display: block;">🚀 اضغط هنا لضخ شعار الوفرة وإطلاق نجمتك الحين</button>
         </div>
 
-        <!-- لوحة تفعيل الاسم والعبارة التفاؤلية الفخمة الكونية -->
-        <div id="activation-result-box" style="display: none; background: rgba(0, 255, 204, 0.07); border: 2px solid #00ffcc; border-radius: 24px; padding: 25px; box-shadow: 0 0 40px rgba(0,255,204,0.3); animation: fadeInUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);" dir="rtl">
+        <!-- لوحة ظهور النتائج بعد الضغط دغري -->
+        <div id="activation-result-box" style="display: none; background: rgba(0, 255, 204, 0.08); border: 2px solid #00ffcc; border-radius: 24px; padding: 25px; box-shadow: 0 0 40px rgba(0,255,204,0.3); margin-top: 25px;" dir="rtl">
             <h3 style="color: #00ffcc; margin-bottom: 15px; font-weight: 700;">✨ تم تفعيل هالتك الفلكية بنجاح لمسيرتنا الفخمة!</h3>
-            
             <p style="font-size: 1.25rem; margin-bottom: 20px;">
                 المستشار الفخم: <span id="display-visitor-name" style="font-weight: bold; color: #ffd700; text-shadow: 0 0 12px #ffd700;"></span> 
                 <span style="display: inline-block; animation: pulseGlow 1s infinite; font-size: 1.5rem;">🌟</span>
             </p>
-
             <div id="country-radar-card" style="background: rgba(255,255,255,0.07); padding: 15px; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid #ffd700; text-align: right; line-height: 1.6;"></div>
-
             <div style="background: rgba(4, 1, 10, 0.85); border: 1px dashed #7700ff; padding: 15px; border-radius: 15px;">
-                <span style="color: #ffd700; font-weight: bold; display: block; margin-bottom: 6px;">🎁 الرمز الكوني لروقانك اليوم:</span>
+                <span style="color: #ffd700; font-weight: bold; display: block; margin-bottom: 6px;">🎁 الرمز الكوني لروقانك اليوم والعبارة المستمرة لآخر الشهر:</span>
                 <p id="optimism-quote" style="font-style: italic; color: #00ffcc; font-size: 1.15rem; margin: 0; font-weight: 500;"></p>
             </div>
         </div>
 
     </div>
 </section>
-
-<!-- استدعاء مكتبة Three.js عن طريق الـ CDN لـ الأبعاد ثلاثية الواقعية -->
-<script src="https://cloudflare.com"></script>
-
-<style>
-@keyframes pulseGlow { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px #ffd700); } 50% { transform: scale(1.2); filter: drop-shadow(0 0 20px #ffd700); } }
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-#activate-star-btn:hover { transform: scale(1.02); box-shadow: 0 0 35px rgba(0,255,204,0.7); }
-</style>
 <script>
-// بناء الكون ثلاثي الأبعاد الواقعي
-const container = document.getElementById('threejs-globe-container');
-const scene = new THREE.Scene();
-
-const camera = new THREE.PerspectiveCamera(60, container.offsetWidth / container.offsetHeight, 0.1, 1000);
-camera.position.z = 18;
-
-const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-renderer.setSize(container.offsetWidth, container.offsetHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
-container.appendChild(renderer.domElement);
-
-const ambientLight = new THREE.AmbientLight(0x331155, 1.5);
-scene.add(ambientLight);
-const directionalLight = new THREE.DirectionalLight(0x00ffcc, 2);
-directionalLight.position.set(5, 3, 5);
-scene.add(directionalLight);
-
-// حقل النجوم الواقعي في الخلفية
-const starsGeometry = new THREE.BufferGeometry();
-const starsCount = 400;
-const starPositions = new Float32Array(starsCount * 3);
-for(let i=0; i<starsCount*3; i++) {
-    starPositions[i] = (Math.random() - 0.5) * 50;
-}
-starsGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
-const starsMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.1, transparent: true, opacity: 0.8 });
-const starPoints = new THREE.Points(starsGeometry, starsMaterial);
-scene.add(starPoints);
-
-// مجسم الكرة الأرضية التكنولوجي الواقعي
-const globeGeometry = new THREE.SphereGeometry(4.5, 32, 32);
-const globeMaterial = new THREE.MeshPhongMaterial({
-    color: 0x110533,
-    wireframe: true,
-    emissive: 0x220044,
-    shininess: 30
-});
-const globe = new THREE.Mesh(globeGeometry, globeMaterial);
-globe.position.y = 3;
-scene.add(globe);
-
-let orbitalStar = null;
+// 1. رسم وتشغيل الكرة الأرضية التفاعلية الحية بدون مكاتب خارجية لضمان عملها فوراً
+const cvs = document.getElementById('cosmic-globe-canvas');
+const cx = cvs.getContext('2d');
+let rotationAngle = 0;
 let starAngle = 0;
+let showOrbStar = false;
 
-function create3DOrbitalStar() {
-    const starGeom = new THREE.SphereGeometry(0.3, 16, 16);
-    const starMat = new THREE.MeshBasicMaterial({ color: 0xffd700 });
-    orbitalStar = new THREE.Mesh(starGeom, starMat);
-    scene.add(orbitalStar);
-}
-
-function animate() {
-    requestAnimationFrame(animate);
-    globe.rotation.y += 0.003;
-    globe.rotation.x += 0.001;
-    starPoints.rotation.y -= 0.0005;
+function drawGlobe() {
+    cx.clearRect(0, 0, cvs.width, cvs.height);
+    const cxCenter = cvs.width / 2;
+    const cyCenter = cvs.height / 2;
     
-    if (orbitalStar) {
-        starAngle += 0.02;
-        orbitalStar.position.x = globe.position.x + Math.cos(starAngle) * 6;
-        orbitalStar.position.z = globe.position.z + Math.sin(starAngle) * 6;
-        orbitalStar.position.y = globe.position.y + Math.sin(starAngle * 0.5) * 2;
+    // هالة الضوء الكونية الخلفية الكروية
+    let glowGrad = cx.createRadialGradient(cxCenter, cyCenter, 80, cxCenter, cyCenter, 130);
+    glowGrad.addColorStop(0, 'rgba(0, 255, 204, 0.2)');
+    glowGrad.addColorStop(1, 'transparent');
+    cx.fillStyle = glowGrad;
+    cx.beginPath(); cx.arc(cxCenter, cyCenter, 130, 0, Math.PI*2); cx.fill();
+
+    // جسم الكرة الأرضية (المحيطات الأزرق الملكي الفخم)
+    cx.fillStyle = '#0f053a';
+    cx.strokeStyle = '#00ffcc';
+    cx.lineWidth = 2;
+    cx.beginPath(); cx.arc(cxCenter, cyCenter, 100, 0, Math.PI*2); cx.fill(); cx.stroke();
+
+    // خطوط طول وعرض تكنولوجية تدور وتتحرك لإعطاء عمق ثلاثي الأبعاد حقيقي
+    rotationAngle += 0.01;
+    cx.strokeStyle = 'rgba(0, 255, 204, 0.3)';
+    cx.lineWidth = 1;
+    
+    for (let i = -90; i <= 90; i += 30) {
+        let rad = (i * Math.PI) / 180;
+        let radiusY = 100 * Math.sin(rad);
+        let radiusX = 100 * Math.cos(rad);
+        
+        cx.beginPath();
+        cx.ellipse(cxCenter, cyCenter, radiusX, 100, rotationAngle, 0, Math.PI*2);
+        cx.stroke();
     }
-    renderer.render(scene, camera);
+    
+    // النجمة المدارية الثانية (إذا تم تفعيل زر الفقس)
+    if (showOrbStar) {
+        starAngle += 0.04;
+        const starX = cxCenter + Math.cos(starAngle) * 120 - 15;
+        const starY = cyCenter + Math.sin(starAngle) * 50 - 15;
+        const oStar = document.getElementById('glowing-orbit-star');
+        if (oStar) {
+            oStar.style.display = 'block';
+            oStar.style.left = starX + 'px';
+            oStar.style.top = starY + 'px';
+        }
+    }
+    requestAnimationFrame(drawGlobe);
 }
-animate();
+drawGlobe();
 
-window.addEventListener('resize', () => {
-    camera.aspect = container.offsetWidth / container.offsetHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(container.offsetWidth, container.offsetHeight);
-});
-// تشغيل العداد الذكي التلقائي (نبضات الوفرة الحية المباشرة)
-let baseCounter = 4500155;
-const counterDiv = document.getElementById('pulse-counter');
-if (counterDiv) {
-    setInterval(() => {
-        baseCounter += Math.floor(Math.random() * 3) + 1;
-        counterDiv.innerText = baseCounter.toLocaleString();
-    }, 1500);
-}
+// 2. تشغيل العداد التلقائي الفوري بدون توقف
+let currentVolCounter = 4500155;
+const countDisplay = document.getElementById('pulse-counter');
+setInterval(() => {
+    currentVolCounter += Math.floor(Math.random() * 2) + 1;
+    if (countDisplay) countDisplay.innerText = currentVolCounter.toLocaleString();
+}, 1200);
 
-// مصفوفة العبارات التفاؤلية المستمرة لآخر الشهر لشعار KR
+// 3. مصفوفة العبارات والرموز الكونية لآخر الشهر
 const quotes = [
     "الكون يفتح لك بوابات الوفرة المطلقة الحين، روقانك اليوم هو مغناطيس لأجمل الأقدار وشعارنا KR يضيء دربك! ✨",
     "خطواتك الفخمة اليوم مباركة بطاقة فلكية استثنائية. افتح قلبك للحياة والربح السريع، القادم مذهل! 🚀",
@@ -2250,8 +2223,8 @@ const quotes = [
     "أنت في المكان الصحيح ومع الرفقة الفخمة؛ طاقتك اليوم تهز الأكوان، عِش برواقة ودع الحظ يخدمك! 👑"
 ];
 
-// منطق تشغيل زر التفعيل وإطلاق النجمة المدارية ثلاثية الأبعاد
-document.getElementById('activate-star-btn').addEventListener('click', function() {
+// 4. منطق تفعيل الزر الفوري المضمون
+document.getElementById('activate-star-btn').onclick = function() {
     const nameInput = document.getElementById('visitor-name-input').value.trim();
     const countrySelect = document.getElementById('visitor-country-select');
     const countryText = countrySelect.options[countrySelect.selectedIndex].text;
@@ -2261,30 +2234,21 @@ document.getElementById('activate-star-btn').addEventListener('click', function(
         return;
     }
 
-    // زيادة العداد دغري عند الضغط
-    baseCounter += 1;
-    if (counterDiv) counterDiv.innerText = baseCounter.toLocaleString();
+    currentVolCounter += 1;
+    if (countDisplay) countDisplay.innerText = currentVolCounter.toLocaleString();
 
-    // تشغيل النجمة الواقعية الثانية في المدار حول الكرة الأرضية
-    if (!orbitalStar) {
-        create3DOrbitalStar();
-    }
+    // تشغيل وإطلاق النجمة الحية
+    showOrbStar = true;
 
-    // حقن البيانات والعبارات التفاؤلية المستحقة للزائر
+    // حقن وتجهيز النتائج والعبارات الحلوة
     document.getElementById('display-visitor-name').innerText = nameInput;
-    
-    let radarText = `<strong>${countryText}</strong><br>استقرار طاقي فخم وثقة فلكية تهزّ الأسواق لعيونكم. اليوم هو الوقت المثالي لقطف ألماسة الحظ الكونية ومشاركة البرستيج الفخم ومسيرتنا Panda KR.`;
-    document.getElementById('country-radar-card').innerHTML = radarText;
+    document.getElementById('country-radar-card').innerHTML = `<strong>${countryText}</strong><br>استقرار طاقي فخم وثقة فلكية تهزّ الأسواق لعيونكم. اليوم هو الوقت المثالي لقطف ألماسة الحظ ومشاركتنا مسيرة الباندا.`;
+    document.getElementById('optimism-quote').innerText = quotes[Math.floor(Math.random() * quotes.length)];
 
-    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-    document.getElementById('optimism-quote').innerText = randomQuote;
-
-    // إظهار لوحة النتيجة والنجمة الأولى المضيئة بجانب الاسم
+    // إظهار اللوحة دغري والتمرير برواقة
     document.getElementById('activation-result-box').style.display = 'block';
-    
-    // Tمرير سلس للوحة لتجربة مستخدم ملوكية ورائقة
     document.getElementById('activation-result-box').scrollIntoView({ behavior: 'smooth' });
-});
+};
 </script>
 
 
