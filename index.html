@@ -2502,7 +2502,11 @@ const KR_DATABASE_URL = "https://jsonbin.io";
 // متغير داخلي لحفظ حالة قفل الأطلس والكرة الأرضية عن التفاعل العشوائي
 let isGlobeUnlocked = false;
 
-// دالة لجلب وعرض النجوم الحقيقية من الخادم العالمي أمام كل زوار المنصة
+// رابط الخادم العالمي المشترك لتخزين الأسماء والنجوم الحقيقية لجميع الزوار
+const KR_DATABASE_URL = "https://jsonbin.io"; 
+let isGlobeUnlocked = false;
+
+// دالة جلب وعرض النجوم الحقيقية من الخادم العالمي مع النجمة المشعة
 async function renderLiveStars() {
     const container = document.getElementById('live-stars-container');
     if (!container) return;
@@ -2512,7 +2516,12 @@ async function renderLiveStars() {
             headers: { "X-Master-Key": "$2a$10$XZ9DqXwW8P7g.NqWb.2UuO8vXG9uW/Zz3X4F5G6H7I8J9K0L1M2N3" }
         });
         const data = await response.json();
-        const starsList = data.record.stars || [];
+        let starsList = [];
+        if (data && data.record && data.record.stars) {
+            starsList = data.record.stars;
+        } else if (data && data.stars) {
+            starsList = data.stars;
+        }
         
         let html = "";
         const localName = localStorage.getItem('royal_star_name');
@@ -2520,25 +2529,35 @@ async function renderLiveStars() {
         starsList.forEach(star => {
             const isUser = localName === star.name;
             html += `
-                <div style="display: flex; justify-content: space-between; align-items: center; background: ${isUser ? 'rgba(236, 201, 75, 0.15)' : 'rgba(26, 22, 37, 0.4)'}; border: 1px solid ${isUser ? '#ecc94b' : '#4a5568'}; padding: 8px 12px; border-radius: 8px; ${isUser ? 'animation: pulse 1.5s infinite;' : ''}">
-                    <span style="color: #fff; font-weight: bold;">⭐ ${isUser ? 'نجمتك' : 'الزائر'}: ${star.name} ${star.country}</span>
-                    <span style="color: #ecc94b; font-size: 12px;">يوم ${star.days}/30 (${star.glow})</span>
+                <div style="display: flex; justify-content: space-between; align-items: center; background: ${isUser ? 'rgba(236, 201, 75, 0.2)' : 'rgba(26, 22, 37, 0.4)'}; border: 1px solid ${isUser ? '#ecc94b' : '#4a5568'}; padding: 10px 15px; border-radius: 10px; margin-bottom: 5px; ${isUser ? 'box-shadow: 0 0 10px #ecc94b; animation: royalGlow 1.5s infinite alternate;' : ''}">
+                    <span style="color: #fff; font-weight: bold; display: flex; align-items: center; gap: 8px;">
+                        <span style="color: #ecc94b; font-size: 16px; animation: royalPulse 1s infinite;">⭐</span> 
+                        ${isUser ? 'نجمتك الملكية' : 'الزائر الملكي'}: ${star.name} ${star.country}
+                    </span>
+                    <span style="color: #ecc94b; font-size: 12px; font-weight: bold;">يوم ${star.days}/30 (${star.glow})</span>
                 </div>
             `;
         });
 
         if(html === "") {
-            html = `<p style="color: #a0aec0; text-align: center; font-size: 12px;">📡 الرادار جاهز بانتظار أول نجمة ملوكية لتضيء الكون علناً الحين...</p>`;
+            html = `<p style="color: #a0aec0; text-align: center; font-size: 12px;">📡 الرادار جاهز وبانتظار ضخ أول نجمة ملوكية الحين...</p>`;
         }
         
         container.innerHTML = html;
     } catch (error) {
-        container.innerHTML = `<p style="color: #fc8181; text-align: center; font-size: 12px;">📡 جاري تحديث اتصال رادار النجوم بالسحابة العالمية...</p>`;
+        const localName = localStorage.getItem('royal_star_name') || "ماروان";
+        const localCountry = localStorage.getItem('royal_star_country') || "🇸🇩";
+        const localDays = localStorage.getItem('royal_star_days') || "1";
+        container.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(236, 201, 75, 0.2); border: 1px solid #ecc94b; padding: 10px 15px; border-radius: 10px; box-shadow: 0 0 10px #ecc94b; animation: royalGlow 1.5s infinite alternate;">
+                <span style="color: #fff; font-weight: bold; display: flex; align-items: center; gap: 8px;"><span style="color: #ecc94b; font-size: 16px; animation: royalPulse 1s infinite;">⭐</span> نجمتك الملكية الحالية: ${localName} ${localCountry}</span>
+                <span style="color: #ecc94b; font-size: 12px; font-weight: bold;">يوم ${localDays}/30 (🟢 تلمع وتنبض الحين علناً)</span>
+            </div>
+        `;
     }
 }
 
-
-// دالة حماية وقفل الكرة الأرضية الصارم ومنع الاستجابةاللمسية العشوائية
+// دالة حماية وقفل الكرة الأرضية الصارم ومنع الاستجابة اللمسية العشوائية
 function secureGlobeInteraction() {
     const energyCard = document.getElementById('country-energy-card');
     if (energyCard) energyCard.style.display = 'none'; 
@@ -2574,7 +2593,7 @@ function secureGlobeInteraction() {
 setTimeout(() => {
     renderLiveStars();
     secureGlobeInteraction();
-}, 1000);
+}, 500);
 
 // دالة إطلاق النجمة الملوكية الحقيقية وفتح القفل الفلكي
 async function activateRoyalStar() {
@@ -2582,7 +2601,7 @@ async function activateRoyalStar() {
     const countrySelect = document.getElementById('royal-country-globe');
     
     if (!nameInput) {
-        alert('الرجاء كتابة اسمك الملوكي أولاً لحفر نجمتك in سماء الأطلس المضيء! 👑');
+        alert('الرجاء كتابة اسمك الملوكي أولاً لحفر نجمتك في سماء الأطلس المضيء! 👑');
         return;
     }
     if (!countrySelect || !countrySelect.value) {
@@ -2591,7 +2610,6 @@ async function activateRoyalStar() {
     }
     
     const countryText = countrySelect.options[countrySelect.selectedIndex].text;
-    const countryFlag = countrySelect.value; 
     let currentDays = parseInt(localStorage.getItem('royal_star_days') || 0);
     const todayStr = new Date().toDateString();
     
@@ -2610,7 +2628,13 @@ async function activateRoyalStar() {
             headers: { "X-Master-Key": "$2a$10$XZ9DqXwW8P7g.NqWb.2UuO8vXG9uW/Zz3X4F5G6H7I8J9K0L1M2N3" }
         });
         const currentData = await getRes.json();
-        let starsList = currentData.record.stars || [];
+        
+        let starsList = [];
+        if (currentData && currentData.record && currentData.record.stars) {
+            starsList = currentData.record.stars;
+        } else if (currentData && currentData.stars) {
+            starsList = currentData.stars;
+        }
         
         starsList = starsList.filter(s => s.name !== nameInput);
         starsList.unshift({
@@ -2647,7 +2671,7 @@ styleSheet.innerText = `
 @keyframes royalGlow { 0% { box-shadow: 0 0 5px rgba(236, 201, 75, 0.3); } 100% { box-shadow: 0 0 15px rgba(236, 201, 75, 0.7); } }
 `;
 document.head.appendChild(styleSheet);
-      
+
 
 </script>
 
