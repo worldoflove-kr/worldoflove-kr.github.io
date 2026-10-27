@@ -2215,9 +2215,9 @@ function drawRealGlobe() {
     cx.fillStyle = spaceGlow;
     cx.beginPath(); cx.arc(cxCenter, cyCenter, radius + 35, 0, Math.PI*2); cx.fill();
 
-    // 2. جسم الكرة الأرضية الأساسي (أعماق المحيطات باللون الأزرق الملكي الداكن الفخم)
-    cx.fillStyle = '#06021f';
-    cx.strokeStyle = '#3d1466';
+      // 2. جسم الكرة الأرضية الأساسي (أعماق المحيطات باللون الأزرق الكوكبي الواقعي)
+    cx.fillStyle = '#0a192f'; // لون المحيط الأزرق العميق
+    cx.strokeStyle = '#0055ff'; // حدود المحيطات المشعة الفخمة
     cx.lineWidth = 3;
     cx.beginPath(); cx.arc(cxCenter, cyCenter, radius, 0, Math.PI*2); cx.fill(); cx.stroke();
 
@@ -2227,9 +2227,10 @@ function drawRealGlobe() {
     // حبس الرسم داخل حدود الكرة الدائرية ليعطي تأثير المجسم الكروي (3D Clipping)
     cx.beginPath(); cx.arc(cxCenter, cyCenter, radius, 0, Math.PI*2); cx.clip();
 
-    cx.fillStyle = '#00ffcc'; // لون اليابسة والقارات المشعة الفخمة
-    cx.shadowBlur = 10;
-    cx.shadowColor = '#00ffcc';
+     cx.fillStyle = '#22c55e'; // لون اليابسة والقارات الأخضر الحقيقي الواقعي
+    cx.shadowBlur = 15;
+    cx.shadowColor = '#22c55e';
+
 
     const mapRows = earthRawMap.length;
     for (let y = 0; y < mapRows; y++) {
