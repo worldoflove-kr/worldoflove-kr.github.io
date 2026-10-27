@@ -2148,6 +2148,24 @@ function revealSecretMessage() {
             </div>
         </div>
 
+         <!-- لوحة شرف النجوم الملكية المشعة علناً أمام الجميع -->
+        <div id="royal-stars-registry" style="background: rgba(10, 5, 25, 0.85); border: 2px solid #7700ff; border-radius: 24px; padding: 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.6); margin-top: 30px; text-align: right;" dir="rtl">
+            <h3 style="color: #ffd700; font-size: 1.4rem; text-align: center; margin-bottom: 20px; border-bottom: 1px dashed #7700ff; padding-bottom: 10px; font-weight: 700;">📜 لوحة شرف النجوم الملكية المشعة الحين في الكون:</h3>
+            
+            <!-- قائمة الأسماء الديناميكية المتوهجة -->
+            <div id="stars-live-list" style="max-height: 200px; overflow-y: auto; padding-left: 10px;">
+                <!-- أسماء افتراضية ملوكية لتزيين اللوحة فوراً قبل تسجيل أي زائر جديد -->
+                <div class="registry-item" style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); padding: 10px 15px; border-radius: 12px; margin-bottom: 8px; border-right: 3px solid #00ffcc;">
+                    <span style="color: #fff; font-weight: bold;">المستشار الفخم: Panda KR 🐼</span>
+                    <span style="animation: pulseGlow 1s infinite; font-size: 1.2rem;">🌟</span>
+                </div>
+                <div class="registry-item" style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); padding: 10px 15px; border-radius: 12px; margin-bottom: 8px; border-right: 3px solid #ffd700;">
+                    <span style="color: #fff; font-weight: bold;">المستشارة الفخمة: مهى 👑</span>
+                    <span style="animation: pulseGlow 1s infinite; font-size: 1.2rem;">🌟</span>
+                </div>
+            </div>
+        </div>
+ 
     </div>
 </section>
 <script>
@@ -2244,6 +2262,15 @@ document.getElementById('activate-star-btn').onclick = function() {
     document.getElementById('display-visitor-name').innerText = nameInput;
     document.getElementById('country-radar-card').innerHTML = `<strong>${countryText}</strong><br>استقرار طاقي فخم وثقة فلكية تهزّ الأسواق لعيونكم. اليوم هو الوقت المثالي لقطف ألماسة الحظ ومشاركتنا مسيرة الباندا.`;
     document.getElementById('optimism-quote').innerText = quotes[Math.floor(Math.random() * quotes.length)];
+
+     // حقن اسم الزائر ونجمته المضيئة فوراً في لوحة شرف النجوم العلنية
+    const liveList = document.getElementById('stars-live-list');
+    if (liveList) {
+        const newItem = document.createElement('div');
+        newItem.style = "display: flex; justify-content: space-between; align-items: center; background: rgba(0, 255, 204, 0.05); padding: 10px 15px; border-radius: 12px; margin-bottom: 8px; border-right: 3px solid #00ffcc; animation: fadeInUp 0.5s ease-out;";
+        newItem.innerHTML = `<span style="color: #ffd700; font-weight: bold;">المستشار الفخم: ${nameInput} ✨ (${countryText.split(' ')[0]})</span><span style="animation: pulseGlow 1s infinite; font-size: 1.2rem;">🌟</span>`;
+        liveList.insertBefore(newItem, liveList.firstChild);
+    }
 
     // إظهار اللوحة دغري والتمرير برواقة
     document.getElementById('activation-result-box').style.display = 'block';
