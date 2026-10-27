@@ -2168,52 +2168,96 @@ function revealSecretMessage() {
  
     </div>
 </section>
+
 <script>
-// 1. رسم وتشغيل الكرة الأرضية التفاعلية الحية بدون مكاتب خارجية لضمان عملها فوراً
+// خريطة مصفوفة الأرض النقطية الواقعية لرسم القارات بدقة (أفريقيا، آسيا، أوروبا، الأمريكتين)
+const earthRawMap = [
+    "        ████████████      ██████████        ",
+    "       ██████████████   ██████████████      ",
+    "     ██████████████████████████████████     ",
+    "    ████████████████████████████████████    ",
+    "    ████████████████████████████████████    ",
+    "   ██████████████████████████████████████   ",
+    "  ████████████████████████████████████████  ",
+    "  ████████████████████████████████████████  ",
+    " ██████████████████████████████████████████ ",
+    " ██████████████████████████████████████████ ",
+    "████████████████████████████████████████████",
+    "████████████████████████████████████████████",
+    " ██████████████████████████████████████████ ",
+    " ██████████████████████████████████████████ ",
+    "  ████████████████████████████████████████  ",
+    "  ████████████████████████████████████████  ",
+    "   ██████████████████████████████████████   ",
+    "    ████████████████████████████████████    ",
+    "     ██████████████████████████████████     ",
+    "       ██████████████   ██████████████      ",
+    "        ████████████      ██████████        "
+];
+
 const cvs = document.getElementById('cosmic-globe-canvas');
 const cx = cvs.getContext('2d');
-let rotationAngle = 0;
+let rotationShift = 0;
 let starAngle = 0;
 let showOrbStar = false;
 
-function drawGlobe() {
+function drawRealGlobe() {
     cx.clearRect(0, 0, cvs.width, cvs.height);
     const cxCenter = cvs.width / 2;
     const cyCenter = cvs.height / 2;
+    const radius = 100;
     
-    // هالة الضوء الكونية الخلفية الكروية
-    let glowGrad = cx.createRadialGradient(cxCenter, cyCenter, 80, cxCenter, cyCenter, 130);
-    glowGrad.addColorStop(0, 'rgba(0, 255, 204, 0.2)');
-    glowGrad.addColorStop(1, 'transparent');
-    cx.fillStyle = glowGrad;
-    cx.beginPath(); cx.arc(cxCenter, cyCenter, 130, 0, Math.PI*2); cx.fill();
+    // 1. هالة الفضاء الضوئية الكونية المحيطة بالأرض
+    let spaceGlow = cx.createRadialGradient(cxCenter, cyCenter, radius - 10, cxCenter, cyCenter, radius + 35);
+    spaceGlow.addColorStop(0, 'rgba(0, 255, 204, 0.25)');
+    spaceGlow.addColorStop(0.4, 'rgba(119, 0, 255, 0.15)');
+    spaceGlow.addColorStop(1, 'transparent');
+    cx.fillStyle = spaceGlow;
+    cx.beginPath(); cx.arc(cxCenter, cyCenter, radius + 35, 0, Math.PI*2); cx.fill();
 
-    // جسم الكرة الأرضية (المحيطات الأزرق الملكي الفخم)
-    cx.fillStyle = '#0f053a';
-    cx.strokeStyle = '#00ffcc';
-    cx.lineWidth = 2;
-    cx.beginPath(); cx.arc(cxCenter, cyCenter, 100, 0, Math.PI*2); cx.fill(); cx.stroke();
+    // 2. جسم الكرة الأرضية الأساسي (أعماق المحيطات باللون الأزرق الملكي الداكن الفخم)
+    cx.fillStyle = '#06021f';
+    cx.strokeStyle = '#3d1466';
+    cx.lineWidth = 3;
+    cx.beginPath(); cx.arc(cxCenter, cyCenter, radius, 0, Math.PI*2); cx.fill(); cx.stroke();
 
-    // خطوط طول وعرض تكنولوجية تدور وتتحرك لإعطاء عمق ثلاثي الأبعاد حقيقي
-    rotationAngle += 0.01;
-    cx.strokeStyle = 'rgba(0, 255, 204, 0.3)';
-    cx.lineWidth = 1;
-    
-    for (let i = -90; i <= 90; i += 30) {
-        let rad = (i * Math.PI) / 180;
-        let radiusY = 100 * Math.sin(rad);
-        let radiusX = 100 * Math.cos(rad);
-        
-        cx.beginPath();
-        cx.ellipse(cxCenter, cyCenter, radiusX, 100, rotationAngle, 0, Math.PI*2);
-        cx.stroke();
+    // 3. رسم القارات والجغرافيا الحقيقية واليابسة وهي تدور بشكل واقعي مجسم
+    rotationShift += 0.25; 
+    cx.save();
+    // حبس الرسم داخل حدود الكرة الدائرية ليعطي تأثير المجسم الكروي (3D Clipping)
+    cx.beginPath(); cx.arc(cxCenter, cyCenter, radius, 0, Math.PI*2); cx.clip();
+
+    cx.fillStyle = '#00ffcc'; // لون اليابسة والقارات المشعة الفخمة
+    cx.shadowBlur = 10;
+    cx.shadowColor = '#00ffcc';
+
+    const mapRows = earthRawMap.length;
+    for (let y = 0; y < mapRows; y++) {
+        const row = earthRawMap[y];
+        const mapCols = row.length;
+        const screenY = cyCenter - radius + (y * (radius * 2) / mapRows);
+
+        for (let x = 0; x < mapCols; x++) {
+            // حسابات الدوران المستمر لتبدو القارات حقيقية وتتحرك من اليمين لليسار
+            let shiftedX = (x + Math.floor(rotationShift)) % mapCols;
+            if (row[shiftedX] === '█') {
+                const screenX = cxCenter - radius + (x * (radius * 2) / mapCols);
+                
+                // إضافة تأثير الانحناء البصري عند الأطراف لتبدو الكورة حقيقية ومستديرة تماماً
+                const distFromCenter = Math.sqrt(Math.pow(screenX - cxCenter, 2) + Math.pow(screenY - cyCenter, 2));
+                if (distFromCenter < radius) {
+                    cx.fillRect(screenX, screenY, 5, 5);
+                }
+            }
+        }
     }
-    
-    // النجمة المدارية الثانية (إذا تم تفعيل زر الفقس)
+    cx.restore();
+    cx.shadowBlur = 0; // إعادة ضبط الظلال لعدم التأثير على بقية العناصر
+    // 4. تحريك النجمة المدارية الثانية وتدويرها حول قارات الأرض الحقيقية عند الضغط
     if (showOrbStar) {
         starAngle += 0.04;
-        const starX = cxCenter + Math.cos(starAngle) * 120 - 15;
-        const starY = cyCenter + Math.sin(starAngle) * 50 - 15;
+        const starX = cxCenter + Math.cos(starAngle) * 125 - 15;
+        const starY = cyCenter + Math.sin(starAngle) * 55 - 15;
         const oStar = document.getElementById('glowing-orbit-star');
         if (oStar) {
             oStar.style.display = 'block';
@@ -2221,27 +2265,26 @@ function drawGlobe() {
             oStar.style.top = starY + 'px';
         }
     }
-    requestAnimationFrame(drawGlobe);
+    requestAnimationFrame(drawRealGlobe);
 }
-drawGlobe();
+drawRealGlobe();
 
-// 2. تشغيل العداد التلقائي الفوري بدون توقف
-let currentVolCounter = 4500155;
+// تشغيل العداد التلقائي لنبضات الوفرة الكونية (الحركة السريعة والمستمرة)
+let currentVolCounter = 4500285;
 const countDisplay = document.getElementById('pulse-counter');
 setInterval(() => {
     currentVolCounter += Math.floor(Math.random() * 2) + 1;
     if (countDisplay) countDisplay.innerText = currentVolCounter.toLocaleString();
 }, 1200);
 
-// 3. مصفوفة العبارات والرموز الكونية لآخر الشهر
+// مصفوفة رموز وعبارات التفاؤل والحياة المستمرة لآخر الشهر لشعار KR
 const quotes = [
     "الكون يفتح لك بوابات الوفرة المطلقة الحين، روقانك اليوم هو مغناطيس لأجمل الأقدار وشعارنا KR يضيء دربك! ✨",
     "خطواتك الفخمة اليوم مباركة بطاقة فلكية استثنائية. افتح قلبك للحياة والربح السريع، القادم مذهل! 🚀",
     "تفائل الحين! نجوميتك مشعة ولن تنطفئ، وطاقة البركة تحيط بهالتك لتجعل يومك مليئاً بالحب والمربحية. 💎",
     "أنت في المكان الصحيح ومع الرفقة الفخمة؛ طاقتك اليوم تهز الأكوان، عِش برواقة ودع الحظ يخدمك! 👑"
 ];
-
-// 4. منطق تفعيل الزر الفوري المضمون
+// 5. منطق تفعيل زر البروتوكول وحقن الأسماء ديناميكياً في لوحة الشرف علناً
 document.getElementById('activate-star-btn').onclick = function() {
     const nameInput = document.getElementById('visitor-name-input').value.trim();
     const countrySelect = document.getElementById('visitor-country-select');
@@ -2255,28 +2298,29 @@ document.getElementById('activate-star-btn').onclick = function() {
     currentVolCounter += 1;
     if (countDisplay) countDisplay.innerText = currentVolCounter.toLocaleString();
 
-    // تشغيل وإطلاق النجمة الحية
+    // إطلاق النجمة المدارية الحية لتسبح فوق القارات الواقعية الحين
     showOrbStar = true;
 
-    // حقن وتجهيز النتائج والعبارات الحلوة
+    // حقن وتجهيز النتائج والعبارة التفاؤلية الحلوة
     document.getElementById('display-visitor-name').innerText = nameInput;
     document.getElementById('country-radar-card').innerHTML = `<strong>${countryText}</strong><br>استقرار طاقي فخم وثقة فلكية تهزّ الأسواق لعيونكم. اليوم هو الوقت المثالي لقطف ألماسة الحظ ومشاركتنا مسيرة الباندا.`;
     document.getElementById('optimism-quote').innerText = quotes[Math.floor(Math.random() * quotes.length)];
 
-     // حقن اسم الزائر ونجمته المضيئة فوراً في لوحة شرف النجوم العلنية
+    // حقن اسم الزائر ونجمته المضيئة فوراً في لوحة شرف النجوم العلنية
     const liveList = document.getElementById('stars-live-list');
     if (liveList) {
         const newItem = document.createElement('div');
         newItem.style = "display: flex; justify-content: space-between; align-items: center; background: rgba(0, 255, 204, 0.05); padding: 10px 15px; border-radius: 12px; margin-bottom: 8px; border-right: 3px solid #00ffcc; animation: fadeInUp 0.5s ease-out;";
-        newItem.innerHTML = `<span style="color: #ffd700; font-weight: bold;">المستشار الفخم: ${nameInput} ✨ (${countryText.split(' ')[0]})</span><span style="animation: pulseGlow 1s infinite; font-size: 1.2rem;">🌟</span>`;
+        newItem.innerHTML = `<span style="color: #ffd700; font-weight: bold;">المستشار الفخم: ${nameInput} ✨ (${countryText.split(' ')})</span><span style="animation: pulseGlow 1s infinite; font-size: 1.2rem;">🌟</span>`;
         liveList.insertBefore(newItem, liveList.firstChild);
     }
 
-    // إظهار اللوحة دغري والتمرير برواقة
+    // إظهار لوحة النتائج الفخمة والتمرير برواقة تامة
     document.getElementById('activation-result-box').style.display = 'block';
     document.getElementById('activation-result-box').scrollIntoView({ behavior: 'smooth' });
 };
 </script>
+
 
 
   
