@@ -2537,12 +2537,12 @@ async function renderLiveStars() {
     }
 }
 
-// دالة حماية وقفل الكرة الأرضية الصارم ومنع الاستجابة للماوس أو اللمس العشوائي
+
+// دالة حماية وقفل الكرة الأرضية الصارم ومنع الاستجابةاللمسية العشوائية
 function secureGlobeInteraction() {
     const energyCard = document.getElementById('country-energy-card');
-    if (energyCard) energyCard.style.display = 'none'; // إخفاء كارت النتائج تلقائياً عند الدخول
+    if (energyCard) energyCard.style.display = 'none'; 
     
-    // حظر دالة التحديث والكبس الخاصة بالـ Three.js والبلدان العشوائية بالكامل
     const blockHandler = function(e) {
         if (!isGlobeUnlocked) {
             e.stopPropagation();
@@ -2553,7 +2553,6 @@ function secureGlobeInteraction() {
         }
     };
 
-    // ربط الحظر المباشر بمسرح الكرة الأرضية الحركي لمنع فتح بلدان عشوائية
     const globeContainer = document.getElementById('globe-3d-container');
     if (globeContainer) {
         globeContainer.addEventListener('click', blockHandler, true);
@@ -2561,7 +2560,6 @@ function secureGlobeInteraction() {
         globeContainer.addEventListener('touchstart', blockHandler, true);
     }
 
-    // إجبار دالة تفعيل الطاقة القديمة على التوقف إن لم يتم فك القفل
     const originalBoost = window.boostCountryEnergy;
     window.boostCountryEnergy = function() {
         if (!isGlobeUnlocked) {
@@ -2572,19 +2570,19 @@ function secureGlobeInteraction() {
     };
 }
 
-// تشغيل الرادار وبروتوكول القفل فور تحميل الصفحة
+// تشغيل الرادار وفك قفل الأمان تلقائياً فور تحميل الصفحة
 setTimeout(() => {
     renderLiveStars();
     secureGlobeInteraction();
-}, 1200);
+}, 1000);
 
-// دالة إطلاق النجمة الملوكية الحقيقية، فك القفل، ورفع البيانات للسحابة فوراً للظهور بالرادار
+// دالة إطلاق النجمة الملوكية الحقيقية وفتح القفل الفلكي
 async function activateRoyalStar() {
     const nameInput = document.getElementById('royal-username').value.trim();
     const countrySelect = document.getElementById('royal-country-globe');
     
     if (!nameInput) {
-        alert('الرجاء كتابة اسمك الملوكي أولاً لحفر نجمتك في سماء الأطلس المضيء! 👑');
+        alert('الرجاء كتابة اسمك الملوكي أولاً لحفر نجمتك in سماء الأطلس المضيء! 👑');
         return;
     }
     if (!countrySelect || !countrySelect.value) {
@@ -2597,7 +2595,6 @@ async function activateRoyalStar() {
     let currentDays = parseInt(localStorage.getItem('royal_star_days') || 0);
     const todayStr = new Date().toDateString();
     
-    // زيادة يوم التزام ملوكي جديد في الذاكرة
     currentDays += 1;
     localStorage.setItem('royal_star_name', nameInput);
     localStorage.setItem('royal_star_country', countrySelect.options[countrySelect.selectedIndex].text.split(' ') || "🌍");
@@ -2609,17 +2606,13 @@ async function activateRoyalStar() {
     if (currentDays >= 25) glowStatus = "👑 هالة ملكية مكتملة";
     
     try {
-        // رفع وتحديث البيانات الحية على السحابة العالمية فوراً ليراها كل الزوار
         const getRes = await fetch(KR_DATABASE_URL, {
             headers: { "X-Master-Key": "$2a$10$XZ9DqXwW8P7g.NqWb.2UuO8vXG9uW/Zz3X4F5G6H7I8J9K0L1M2N3" }
         });
         const currentData = await getRes.json();
         let starsList = currentData.record.stars || [];
         
-        // إزالة أي سجل قديم لنفس الاسم لتحديثه باليوم الجديد فوراً
         starsList = starsList.filter(s => s.name !== nameInput);
-        
-        // إضافة النجمة الحقيقية الحالية إلى صدارة القائمة السحابية
         starsList.unshift({
             name: nameInput,
             country: countrySelect.options[countrySelect.selectedIndex].text.split(' ') || "🌍",
@@ -2627,7 +2620,6 @@ async function activateRoyalStar() {
             glow: currentDays >= 30 ? "✨ البشارة جاهزة 🎁" : glowStatus
         });
         
-        // حفظ القائمة المحدثة بالكامل على السيرفر العالمي فوراً للكل
         await fetch(KR_DATABASE_URL, {
             method: "PUT",
             headers: {
@@ -2637,17 +2629,10 @@ async function activateRoyalStar() {
             body: JSON.stringify({ stars: starsList.slice(0, 20) })
         });
         
-        // تفعيل فك القفل بشكل كامل وفوري للأطلس والكرة الأرضية
         isGlobeUnlocked = true;
         
-        if (currentDays >= 30) {
-            alert(`👑 معجزة فلكية واقعية حية! 👑\n\nتهانينا يا ${nameInput}! اكتملت هالتك الملوكية ونجمتك المزدوجة علناً على مدار 30 يوماً متتالياً بنجاح!\n\n🎁 فك تشفير صندوق البشارة السحرية الكبرى وعالم الحب:\n"سماؤك مشعة الآن بالنور المطلق والذهب الصافي، والوفرة والبركة تتدفق إلى حساباتك وعائلتك من كلو الكون دغري برواقة وتظل تحت اسمك مفخرة ملوكية لأيام!"`);
-            localStorage.setItem('royal_star_days', 0);
-        } else {
-            alert(`🚀 تم إطلاق وضخ شعار الوفرة الملوكي بنجاح وانبهر الكون! 🚀\n\nنجمتك الأولى تلمع الحين حد اسمك بالرادار، ونجمتك الثانية شعّت داخل مجسم الكرة الأرضية لـ ${countryText.split(' ')} علناً أمام الجميع!\n🎯 مستوى توهج هالتك الحالي: يوم ${currentDays}/30. تَم فك قفل الأطلس بنجاح وعُرض اسمك علناً للزوار!`);
-        }
+        alert(`🚀 تم إطلاق وضخ شعار الوفرة الملوكي بنجاح وانبهر الكون! 🚀\n\nنجمتك الأولى تلمع الحين حد اسمك بالرادار بالأسفل، ونجمتك الثانية شعّت داخل مجسم الكرة الأرضية لدولة ${countryText.split(' ')} علناً أمام الجميع!\n🎯 مستوى توهج هالتك الحالي: يوم ${currentDays}/30. تَم فك قفل الأطلس بنجاح وعُرض اسمك علناً للزوار الحين دغري برواقة!`);
         
-        // تحديث الرادار فوراً لقراءة الاسم والنجمة اللامعة بالراديو السحابي
         renderLiveStars();
     } catch (e) {
         isGlobeUnlocked = true;
@@ -2655,16 +2640,14 @@ async function activateRoyalStar() {
     }
 }
 
-
-// إضافة أنيميشن التوهج الملكي للأسماء والنجمات المضيئة
+// إضافة أنيميشن التوهج والنبض الملكي المشع في رأس الصفحة تلقائياً
 const styleSheet = document.createElement("style");
 styleSheet.innerText = `
 @keyframes royalPulse { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.3); opacity: 1; } }
 @keyframes royalGlow { 0% { box-shadow: 0 0 5px rgba(236, 201, 75, 0.3); } 100% { box-shadow: 0 0 15px rgba(236, 201, 75, 0.7); } }
 `;
 document.head.appendChild(styleSheet);
-
-
+      
 
 </script>
 
