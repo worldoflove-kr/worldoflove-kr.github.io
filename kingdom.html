@@ -163,24 +163,29 @@
  function updateGoldenCounter() {
     const startDate = new Date("2024-08-02T00:00:00");
     const now = new Date();
-    const diff = now - startDate;
-    
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-    
-    const counterEl = document.getElementById("golden-counter");
-    if (counterEl) {
-        if (typeof currentLang !== 'undefined' && currentLang === 'ar') {
-            counterEl.innerHTML = `⏱️ ${days} يوم : ${hours} ساعة : ${minutes} دقيقة : ${seconds} ثانية`;
-        } else {
-            counterEl.innerHTML = `⏱️ ${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
-        }
+   const diff = now - startDate;
+const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+const counterEl = document.getElementById("golden-counter");
+if (counterEl) {
+    if (typeof currentLang !== 'undefined' && currentLang === 'ar') {
+        counterEl.innerHTML = `⏱️ ${days} يوم : ${hours} ساعة : ${minutes} دقيقة : ${seconds} ثانية`;
+    } else {
+        counterEl.innerHTML = `⏱️ ${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
     }
+}
+
+const allLinks = document.querySelectorAll("a[href='index.html']");
+if (allLinks.length > 1) {
+    allLinks[0].parentElement.style.display = "none";
+}
 }
 setInterval(updateGoldenCounter, 1000);
 updateGoldenCounter();
+
 
         setInterval(updateAstroClock, 1000); updateAstroClock();
           function switchLanguage(lang) {
