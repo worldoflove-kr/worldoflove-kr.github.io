@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الشروط والأحكام السياسية الملكية | Panda KR</title>
+    <style>
+        :root {
+            --bg-color: #0d0d0d;
+            --gold-royal: #d4af37;
+            --gold-glow: #f3e5ab;
+            --sky-blue: #00bfff;
+            --glass-bg: rgba(20, 20, 20, 0.65);
+            --glass-border: rgba(212, 175, 55, 0.25);
+            --text-main: #f5f5f5;
+            --text-muted: #b0b0b0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle at 30% 20%, rgba(0, 191, 255, 0.1), transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.08), transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .glass-container {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 30px 25px;
+            width: 100%;
+            max-width: 650px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 
+                        0 0 15px rgba(0, 191, 255, 0.05);
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            padding-bottom: 20px;
+        }
+
+        .header h1 {
+            color: var(--gold-royal);
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: var(--sky-blue);
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            color: var(--gold-royal);
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .section-title::before {
+            content: '👑';
+            margin-left: 8px;
+            font-size: 1rem;
+        }
+
+        .section-content {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        .lang-switch {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 15px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--gold-royal);
+            color: var(--gold-royal);
+            padding: 5px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            background: var(--gold-royal);
+            color: var(--bg-color);
+            box-shadow: 0 0 10px var(--gold-royal);
+        }
+
+        .en-text {
+            display: none;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .en .ar-text { display: none; }
+        .en .en-text { display: block; }
+        .en .section-title::before { content: ''; }
+        .en .section-title::after { content: ' 👑'; margin-left: 8px; }
+
+        .footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(245, 245, 245, 0.4);
+            margin-top: 10px;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glass-container" id="mainContainer">
+        <div class="lang-switch">
+            <button class="lang-btn" id="langToggle" onclick="toggleLanguage()">English</button>
+        </div>
+
+        <div class="header">
+            <h1 class="ar-text">الشروط والأحكام السياسية الملكية</h1>
+            <h1 class="en-text">Royal Policy Terms & Conditions</h1>
+            <p class="ar-text">لـ Panda KR الملكي</p>
+            <p class="en-text">For Panda KR Royal</p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <span class="ar-text">العهد الملكي والاستخدام العادل</span>
+                <span class="en-text">Royal Covenant & Fair Use</span>
+            </div>
+            <div class="section-content">
+                <p class="ar-text">مرحباً بكم في منصة عائلة KR الملكية. باستخدامك لهذا الموقع، فإنك تتعهد بالالتزام الكامل ببنود الاستخدام العادل والاحترام المتبادل لخصوصية ومحتويات المنصة الرقمية، وتجنب أي استخدام غير مصرح به للملفات أو البرمجيات الخاصة.</p>
+                <p class="en-text">Welcome to the KR Royal Family platform. By using this website, you pledge to fully comply with the fair use terms, mutual respect for privacy, and digital contents, avoiding any unauthorized use of private files or software.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <span class="ar-text">سياسة الخصوصية وأمن البيانات</span>
+                <span class="en-text">Privacy Policy & Data Security</span>
+            </div>
+            <div class="section-content">
+                <p class="ar-text">نحن في عائلة KR نولي أمن بيانات الزوار أولوية قصوى. نلتزم بحماية كافة البيانات الشخصية المجمعة عبر ملفات تعريف الارتباط المتوافقة مع معايير غوغل لتقديم تجربة تصفح آمنة ونظيفة ومحمية بالكامل بنسبة 100%.</p>
+                <p class="en-text">We in the KR family place the utmost priority on visitor data security. We are committed to protecting all personal data collected through cookies in compliance with Google standards to provide a 100% safe, clean, and fully protected browsing experience.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <span class="ar-text">حماية البيانات وعهود KR</span>
+                <span class="en-text">Data Protection & KR Covenants</span>
+            </div>
+            <div class="section-content">
+                <p class="ar-text">تخضع كافة الحقوق الفكرية، الأكواد البرمجية، والتصاميم الفريدة في هذا الموقع لعقود وعهود عائلة KR الملكية المعتمدة عالمياً. لا يُسمح بإعادة نسخ أو اقتباس أي جزء برميجي دون إذن مسبق.</p>
+                <p class="en-text">All intellectual property rights, programming codes, and unique designs on this website are subject to the globally approved KR Royal Family covenants. No code reproduction or quoting is allowed without prior permission.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <span class="ar-text">إخلاء المسؤولية القانونية</span>
+                <span class="en-text">Legal Disclaimer</span>
+            </div>
+            <div class="section-content">
+                <p class="ar-text">يتم تقديم المعلومات والمحتوى في هذا الموقع "كما هي" لأغراض التطوير والتصفح الرقمي الفخم. المنصة غير مسؤولة عن أي تفسيرات خارج الإطار الرسمي المحدد للسياسات البرمجية المعتمدة.</p>
+                <p class="en-text">The information and content on this website are provided "as is" for development and luxury digital browsing purposes. The platform is not responsible for any interpretations outside the official framework of approved software policies.</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span class="ar-text">جميع الحقوق محفوظة © عائلة KR الملكية 2026</span>
+            <span class="en-text">All Rights Reserved © KR Royal Family 2026</span>
+        </div>
+    </div>
+
+    <script>
+        function toggleLanguage() {
+            const container = document.getElementById('mainContainer');
+            const btn = document.getElementById('langToggle');
+            
+            if (container.classList.contains('en')) {
+                container.classList.remove('en');
+                container.setAttribute('dir', 'rtl');
+                btn.innerText = 'English';
+            } else {
+                container.classList.add('en');
+                container.setAttribute('dir', 'ltr');
+                btn.innerText = 'العربية';
+            }
+        }
+    </script>
+</body>
+</html>
