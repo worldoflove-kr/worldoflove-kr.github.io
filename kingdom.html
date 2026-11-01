@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مملكة الوعود | Kingdom of Promises 👑 KR 👑</title>
-    <link rel="stylesheet" href="style2.css?v=125">
+    <link rel="stylesheet" href="style2.css?v=160">
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Amiri:ital@1&family=Cairo:wght@300;600;800&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
             <div class="astro-row">
                 <span id="dateTxt">📅 الأحد، 1 تشرين الثاني 2026</span>
                 <span class="divider-line">|</span>
-                <span id="timeTxt">⏰ الساعة: 04:05:00 ص</span>
+                <span id="timeTxt">⏰ الساعة: 04:25:00 ص</span>
             </div>
             <div class="astro-row bottom-row">
                 <span id="weatherTxt">☀️ الطقس في بيروت: C°24 صافي</span>
@@ -48,7 +48,18 @@
             </div>
         </div>
     </div>
-    <div class="center-lang-switcher">
+    
+    <!-- 👥 عداد الزوار المضيء تم نقله هنا تحت التوقيت الفلكي مباشرة بالتناظر -->
+    <div style="text-align: center; margin-top: 15px;">
+        <div class="visitor-counter-box" style="display: inline-block; background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(10px); border: 1px solid rgba(138, 43, 226, 0.4); border-radius: 20px; padding: 6px 22px; box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);">
+            <span style="font-size: 13px; color: #e5e5e5; font-weight: 600;">
+                👥 <span class="lang-txt" data-ar="عدد زوار مملكتنا الحين:" data-en="Our Realm Visitors Now:">عدد زوار مملكتنا الحين:</span> 
+                <span id="liveCounter" style="color: #00e5ff; font-weight: 800; text-shadow: 0 0 8px #00e5ff; font-family: monospace; font-size: 15px;">14,352</span>
+            </span>
+        </div>
+    </div>
+
+    <div class="center-lang-switcher" style="margin-top: 15px;">
         <button onclick="switchLanguage('ar')" class="lang-btn active-lang" id="btnAr">العربية</button>
         <button onclick="switchLanguage('en')" class="lang-btn" id="btnEn">English</button>
     </div>
@@ -60,25 +71,36 @@
             <h1 class="shining-title-ar">مَمْلَكَةُ اَلْوُعُودِ</h1>
             <h2 class="shining-title-en">𝓚𝓲𝓷𝓰𝓭𝓸𝓶 𝓸𝓯 𝓟𝓻𝓸𝓶𝓲𝓼𝓮𝓼</h2>
         </div>
-        <div class="golden-kr-container" style="margin: 30px 0; display: inline-block; animation: forcePulse 1.8s infinite ease-in-out;">
-            <span style="font-family: 'Amiri', serif; font-size: 55px; font-weight: bold; background: linear-gradient(45deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 25px rgba(255, 215, 0, 1)) drop-shadow(0 0 10px #ffaa00); letter-spacing: 2px;">👑 KR 👑</span>
+        <div class="royal-center-logo" style="margin: 25px auto; text-align: center;">
+            <div class="crown-glow-effect" style="font-size: 45px; animation: crownPulse 2s infinite ease-in-out; text-shadow: 0 0 20px #ffaa00, 0 0 40px #ffd700;">👑 KR 👑</div>
+            <div style="font-size: 14px; color: #ffd700; font-weight: bold; margin-top: 10px; letter-spacing: 1px; text-shadow: 0 0 8px rgba(255,215,0,0.6);">✨ منصة العائلة الملكية المعتمدة عالمياً ✨</div>
+            <div style="font-size: 13px; color: #ffffff; margin-top: 5px; opacity: 0.9;">🐼 Panda KR ✨</div>
         </div>
         <div class="glass-welcome-box">
             <h3 id="boxTitle" class="lang-txt" data-ar="أهلاً بك في فضاء الشراكة والعهد الجديد" data-en="Welcome to the Realm of Partnership and New Vows">أهلاً بك في فضاء الشراكة والعهد الجديد</h3>
             <p id="boxDesc" class="lang-txt" data-ar="هنا، حيث تلتقي الأكواد المحدثة بنبض القلوب الفخمة. فتحنا الخزنة السحرية لنرسم معاً لوحة الغد برواقة تامة وعمق لا ينتهي. النجوم تتحرك من خلفنا، والوعود ثابتة لا تتغير." data-en="Here, where the updated codes meet the pulse of noble hearts. We have unlocked the magic vault to seamlessly paint tomorrow's canvas with utter serenity and infinite depth. Stars drift behind us, while promises remain unyielding.">هنا، حيث تلتقي الأكواد المحدثة بنبض القلوب الفخمة. فتحنا الخزنة السحرية لنرسم معاً لوحة الغد برواقة تامة وعمق لا ينتهي. النجوم تتحرك من خلفنا، والوعود ثابتة لا تتغير.</p>
         </div>
     </div>
-    <footer class="royal-footer" style="text-align: center; margin-top: 50px; padding: 25px 0; border-top: 1px solid rgba(255, 215, 0, 0.1); background: rgba(5, 2, 10, 0.6); backdrop-filter: blur(10px);">
-        <div style="font-family: 'Amiri', serif; font-size: 26px; font-weight: bold; background: linear-gradient(45deg, #bf953f, #fcf6ba, #aa771c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 8px rgba(218, 165, 32, 0.6)); animation: forcePulse 3s infinite ease-in-out;">👑 KR Family Site 👑</div>
-        <p style="font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 5px; font-weight: 300; letter-spacing: 1px;">جميع الحقوق محفوظة للمملكة © 2026</p>
+    <footer class="royal-footer" style="text-align: center; margin-top: 50px; padding: 25px 0; border-top: 1px solid rgba(255, 215, 0, 0.15); background: rgba(5, 2, 10, 0.75); backdrop-filter: blur(15px);">
+        <div class="crown-glow-effect" style="font-family: 'Amiri', serif; font-size: 32px; font-weight: bold; background: linear-gradient(45deg, #bf953f, #fcf6ba, #aa771c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8)); animation: crownPulse 2.5s infinite ease-in-out;">👑 KR 👑</div>
+        <div style="font-size: 13px; color: #ffd700; margin-top: 6px; font-weight: bold; letter-spacing: 1px;">✨ منصة العائلة الملكية المعتمدة عالمياً ✨</div>
+        <div style="font-size: 12px; color: #ffffff; margin-top: 4px; opacity: 0.8;">🐼 Panda KR ✨</div>
+        <p style="font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 12px; font-weight: 300; letter-spacing: 1px;">جميع الحقوق محفوظة للمملكة © 2026</p>
     </footer>
     <style>
-        @keyframes forcePulse { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.9)); } 50% { transform: scale(1.08); filter: drop-shadow(0 0 35px rgba(255, 215, 0, 1)); } }
+        @keyframes crownPulse { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8)); } 50% { transform: scale(1.06); filter: drop-shadow(0 0 30px rgba(255, 215, 0, 1)) drop-shadow(0 0 15px #ffaa00); } }
         .stars-forced { width: 3px; height: 3px; background: transparent; box-shadow: 120px 80px #fff, 750px 250px #fff, 450px 550px #fff, 1150px 650px #fff, 250px 850px #fff, 950px 450px #00e5ff, 50px 300px #fff, 600px 150px #fff, 850px 700px #fff, 1300px 400px #ffaa00, 100px 600px #fff, 300px 400px rgba(255,255,255,0.8), 650px 750px #fff, 900px 120px #00ffff; animation: moveStarsForced 25s linear infinite; }
         @keyframes moveStarsForced { from { transform: translateY(0); } to { transform: translateY(-1000px); } }
     </style>
     <script>
         let currentLang = 'ar';
+        function setupVisitorCounter() {
+            let count = localStorage.getItem('kingdom_v_count');
+            if (!count) { count = Math.floor(Math.random() * (15000 - 14000) + 14000); }
+            count = parseInt(count) + 1; localStorage.setItem('kingdom_v_count', count);
+            document.getElementById('liveCounter').innerText = Number(count).toLocaleString();
+        }
+        setupVisitorCounter();
         function updateAstroClock() {
             const now = new Date();
             const dateOptionsAr = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -112,5 +134,4 @@
 </html>
 
 
-
-
+    
