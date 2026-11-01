@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مملكة الوعود | Kingdom of Promises 👑 KR 👑</title>
-    <link rel="stylesheet" href="style2.css?v=99">
+    <link rel="stylesheet" href="style2.css?v=105">
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Amiri:ital@1&family=Cairo:wght@300;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- 🌌 خلفية الفضاء والنجوم المتحركة الكثيفة جداً -->
+    <!-- 🌌 خلفية الفضاء والنجوم المتحركة الكثيفة جداً المريحة للعين -->
     <div class="space-background">
         <div class="stars"></div>
         <div class="stars2"></div>
@@ -74,18 +74,18 @@
             <div class="diamond-3d">💎</div>
         </div>
 
-        <!-- اسم الصفحة المضيء المشع المحدث للغتين -->
-        <h1 class="shining-title" id="pageTitle">
-            <span class="title-ar">مملكة الوعود</span>
-            <span class="title-en" style="display:none;">Kingdom of Promises</span>
-        </h1>
-
-        <!-- شعار KR النابض بالذهب والاضاءة القوية المباشرة في الكود -->
-        <div class="golden-kr-container">
-            <div class="golden-kr-logo" style="font-family: 'Amiri', serif; font-size: 42px; font-weight: bold; background: linear-gradient(45deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.9));">👑 KR 👑</div>
+        <!-- ⚪ اسم الصفحة المضيء بالعربي والانجليزي تحت بعض وعم يتحركوا برواقة وإثارة -->
+        <div class="titles-wrapper">
+            <h1 class="shining-title-ar">مملكة الوعود</h1>
+            <h2 class="shining-title-en">Kingdom of Promises</h2>
         </div>
 
-        <!-- 🪞 الصندوق الزجاجي الترحيبي الشفاف الفاخر -->
+        <!-- 👑 شعار KR المكتوب بالذهب الخالص النابض والمضيء بقوة نيون إجبارية -->
+        <div class="golden-kr-container" style="margin: 30px 0; display: inline-block; animation: forcePulse 1.8s infinite ease-in-out;">
+            <span style="font-family: 'Amiri', serif; font-size: 55px; font-weight: bold; background: linear-gradient(45deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 25px rgba(255, 215, 0, 1)) drop-shadow(0 0 10px #ffaa00); letter-spacing: 2px;">👑 KR 👑</span>
+        </div>
+
+        <!-- 🪞 الصندوق الزجاجي الترحيبي الشفاف الفاخر (المرآة) -->
         <div class="glass-welcome-box">
             <h3 id="boxTitle" class="lang-txt" data-ar="أهلاً بك في فضاء الشراكة والعهد الجديد" data-en="Welcome to the Realm of Partnership and New Vows">أهلاً بك في فضاء الشراكة والعهد الجديد</h3>
             <p id="boxDesc" class="lang-txt" data-ar="هنا، حيث تلتقي الأكواد المحدثة بنبض القلوب الفخمة. فتحنا الخزنة السحرية لنرسم معاً لوحة الغد برواقة تامة وعمق لا ينتهي. النجوم تتحرك من خلفنا، والوعود ثابتة لا تتغير." data-en="Here, where the updated codes meet the pulse of noble hearts. We have unlocked the magic vault to seamlessly paint tomorrow's canvas with utter serenity and infinite depth. Stars drift behind us, while promises remain unyielding.">
@@ -94,6 +94,14 @@
         </div>
 
     </div>
+
+    <!-- ⚙️ أنيميشن داخلي إجباري لضمان النبض والإضاءة الذهبية القوية حتى لو علق الكاش -->
+    <style>
+        @keyframes forcePulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.9)); }
+            50% { transform: scale(1.1); filter: drop-shadow(0 0 40px rgba(255, 215, 0, 1)) drop-shadow(0 0 20px #ffaa00); }
+        }
+    </style>
 
     <!-- ⚙️ الأكواد البرمجية لتشغيل تبديل اللغة وتحديث الوقت التلقائي حياً بالثانية -->
     <script>
@@ -125,8 +133,6 @@
         function switchLanguage(lang) {
             currentLang = lang;
             const htmlTag = document.getElementById('mainHtml');
-            const titleAr = document.querySelector('.title-ar');
-            const titleEn = document.querySelector('.title-en');
             const searchInput = document.getElementById('searchInput');
             const searchBtn = document.getElementById('searchBtn');
             const btnAr = document.getElementById('btnAr');
@@ -135,8 +141,6 @@
             if (lang === 'ar') {
                 htmlTag.setAttribute('dir', 'rtl');
                 htmlTag.setAttribute('lang', 'ar');
-                titleAr.style.display = 'block';
-                titleEn.style.display = 'none';
                 searchInput.value = searchInput.getAttribute('data-ar-val');
                 searchBtn.innerHTML = "🔍 ابحث الآن";
                 btnAr.classList.add('active-lang');
@@ -147,8 +151,6 @@
             } else {
                 htmlTag.setAttribute('dir', 'ltr');
                 htmlTag.setAttribute('lang', 'en');
-                titleAr.style.display = 'none';
-                titleEn.style.display = 'block';
                 searchInput.value = searchInput.getAttribute('data-en-val');
                 searchBtn.innerHTML = "🔍 Search Now";
                 btnEn.classList.add('active-lang');
