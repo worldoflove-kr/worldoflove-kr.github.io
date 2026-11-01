@@ -1,62 +1,176 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" id="mainHtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مملكة الوعود | Kingdom of Promises 👑 KR 👑</title>
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="style2.css?v=4">
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Amiri:ital@1&family=Cairo:wght@300;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <!-- 🌌 خلفية الفضاء والنجوم المتحركة الكثيفة -->
     <div class="space-background">
         <div class="stars"></div>
         <div class="stars2"></div>
+        <div class="stars3"></div>
     </div>
 
+    <!-- 🌐 أزرار تبديل اللغة الزجاجية الفخمة -->
+    <div class="lang-switcher-container">
+        <button onclick="switchLanguage('ar')" class="lang-btn active-lang" id="btnAr">العربية</button>
+        <button onclick="switchLanguage('en')" class="lang-btn" id="btnEn">English</button>
+    </div>
+
+    <!-- 📈 شريط الأسعار العالمي الأول -->
     <div class="ticker-wrapper global-ticker">
-        <div class="ticker-content">
-            <span class="ticker-item"><span class="dot-g">•</span> الذهب العالمي: <span class="up">$2,735.40</span></span>
-            <span class="ticker-item"><span class="dot-g">•</span> مؤشر الدولار DXY: <span class="down">104.20</span></span>
-            <span class="ticker-item"><span class="dot-g">•</span> النفط برنت: <span class="up">$75.30</span></span>
-            <span class="ticker-item"><span class="dot-g">•</span> بورصة نيويورك: <span class="up">5,820.50</span></span>
+        <div class="ticker-content" id="tickerGlobal">
+            <span class="ticker-item"><span class="dot-g">•</span> <span class="lang-txt" data-ar="الذهب العالمي:" data-en="Global Gold:">الذهب العالمي:</span> <span class="up">$2,735.40</span></span>
+            <span class="ticker-item"><span class="dot-g">•</span> <span class="lang-txt" data-ar="مؤشر الدولار DXY:" data-en="Dollar Index DXY:">مؤشر الدولار DXY:</span> <span class="down">104.20</span></span>
+            <span class="ticker-item"><span class="dot-g">•</span> <span class="lang-txt" data-ar="النفط برنت:" data-en="Brent Crude Oil:">النفط برنت:</span> <span class="up">$75.30</span></span>
+            <span class="ticker-item"><span class="dot-g">•</span> <span class="lang-txt" data-ar="بورصة نيويورك:" data-en="Wall Street (S&P 500):">بورصة نيويورك:</span> <span class="up">5,820.50</span></span>
         </div>
     </div>
 
+    <!-- 🇸🇦 شريط أسعار الخليج العربي الثاني -->
     <div class="ticker-wrapper gcc-ticker">
-        <div class="ticker-content">
-            <span class="ticker-item"><span class="dot-y">•</span> ذهب السعودية (24): <span class="neutral">330.15 ر.س</span></span>
-            <span class="ticker-item"><span class="dot-y">•</span> ذهب الإمارات (24): <span class="neutral">323.50 د.إ</span></span>
-            <span class="ticker-item"><span class="dot-y">•</span> بورصة تداول السعودية: <span class="up">12,045.20</span></span>
-            <span class="ticker-item"><span class="dot-y">•</span> سوق دبي المالي: <span class="down">4,410.10</span></span>
+        <div class="ticker-content" id="tickerGcc">
+            <span class="ticker-item"><span class="dot-y">•</span> <span class="lang-txt" data-ar="ذهب السعودية (24):" data-en="Saudi Gold (24K):">ذهب السعودية (24):</span> <span class="neutral">330.15 ر.س</span></span>
+            <span class="ticker-item"><span class="dot-y">•</span> <span class="lang-txt" data-ar="ذهب الإمارات (24):" data-en="UAE Gold (24K):">ذهب الإمارات (24):</span> <span class="neutral">323.50 د.إ</span></span>
+            <span class="ticker-item"><span class="dot-y">•</span> <span class="lang-txt" data-ar="بورصة تداول السعودية:" data-en="Tadawul Index:">بورصة تداول السعودية:</span> <span class="up">12,045.20</span></span>
         </div>
     </div>
 
+    <!-- 🔍 شريط بحث غوغل الذكي بضغطة واحدة -->
     <div class="search-section">
         <form action="https://google.com" method="get" target="_blank" class="search-form">
-            <input type="text" name="q" placeholder="ابحث في غوغل من قلب المملكة..." required class="search-input">
-            <button type="submit" class="search-btn">🔍</button>
+            <input type="text" name="q" id="searchInput" placeholder="ابحث في غوغل من قلب المملكة..." class="search-input" data-ar-placeholder="ابحث في غوغل من قلب المملكة..." data-en-placeholder="Search Google from the heart of the Kingdom...">
+            <button type="submit" class="search-btn" id="searchBtn">🔍 ابحث الآن</button>
         </form>
     </div>
 
+    <!-- 📅 صندوق الوقت والتاريخ والطقس البنفسجي المضيء (تحت البحث والترجمة على الطرف) -->
+    <div class="astro-info-container">
+        <div class="astro-box">
+            <div class="astro-row">
+                <span id="dateTxt">📅 الأحد، 1 تشرين الثاني 2026</span>
+                <span class="divider-line">|</span>
+                <span id="timeTxt">⏰ الساعة: 03:30:00 ص</span>
+            </div>
+            <div class="astro-row bottom-row">
+                <span id="weatherTxt">☀️ الطقس في بيروت: C°24 صافي</span>
+                <span class="divider-line">|</span>
+                <span id="humidityTxt">💧 الرطوبة: 62%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔮 المحتوى الرئيسي والترحيب -->
     <div class="main-content">
+        
         <div class="diamond-zone">
             <div class="diamond-3d">💎</div>
         </div>
 
-        <h1 class="shining-title">مملكة الوعود <br><span>Kingdom of Promises</span></h1>
+        <!-- اسم الصفحة المضيء المشع المحدث للغتين -->
+        <h1 class="shining-title" id="pageTitle">
+            <span class="title-ar">مملكة الوعود</span>
+            <span class="title-en" style="display:none;">Kingdom of Promises</span>
+        </h1>
 
-        <div class="golden-kr-logo">👑 KR 👑</div>
+        <div class="golden-kr-container">
+            <div class="golden-kr-logo">👑 KR 👑</div>
+        </div>
 
+        <!-- 🪞 الصندوق الزجاجي الترحيبي الشفاف الفاخر -->
         <div class="glass-welcome-box">
-            <h3>أهلاً بك في فضاء الشراكة والعهد الجديد</h3>
-            <p>
-                هنا، حيث تلتقي الأكواد المحدثة بنبض القلوب الفخمة. فتحنا الخزنة السحرية لنرسم معاً لوحة الغد "برواقة" تامة وعمق لا ينتهي. النجوم تتحرك من خلفنا، والوعود ثابتة لا تتغير.
+            <h3 id="boxTitle" class="lang-txt" data-ar="أهلاً بك في فضاء الشراكة والعهد الجديد" data-en="Welcome to the Realm of Partnership and New Vows">أهلاً بك في فضاء الشراكة والعهد الجديد</h3>
+            <p id="boxDesc" class="lang-txt" data-ar="هنا، حيث تلتقي الأكواد المحدثة بنبض القلوب الفخمة. فتحنا الخزنة السحرية لنرسم معاً لوحة الغد برواقة تامة وعمق لا ينتهي. النجوم تتحرك من خلفنا، والوعود ثابتة لا تتغير." data-en="Here, where the updated codes meet the pulse of noble hearts. We have unlocked the magic vault to seamlessly paint tomorrow's canvas with utter serenity and infinite depth. Stars drift behind us, while promises remain unyielding.">
+                هنا، حيث تلتقي الأكواد المحدثة بنبض القلوب الفخمة. فتحنا الخزنة السحرية لنرسم معاً لوحة الغد برواقة تامة وعمق لا ينتهي. النجوم تتحرك من خلفنا، والوعود ثابتة لا تتغير.
             </p>
         </div>
+
     </div>
 
+    <!-- ⚙️ الأكواد البرمجية لتشغيل تبديل اللغة وتحديث الوقت التلقائي حياً بالثانية -->
+    <script>
+        let currentLang = 'ar';
+
+        // دالة تحديث الوقت الحي تلقائياً بالثانية والتاريخ الفلكي المريح
+        function updateAstroClock() {
+            const now = new Date();
+            
+            // خيارات تنسيق التاريخ والوقت للغتين
+            const dateOptionsAr = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateOptionsEn = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            
+            let dateStr = now.toLocaleDateString(currentLang === 'ar' ? 'ar-LB' : 'en-US', currentLang === 'ar' ? dateOptionsAr : dateOptionsEn);
+            let timeStr = now.toLocaleTimeString(currentLang === 'ar' ? 'ar-LB' : 'en-US', { hour12: true });
+
+            document.getElementById('dateTxt').innerHTML = "📅 " + dateStr;
+            document.getElementById('timeTxt').innerHTML = (currentLang === 'ar' ? "⏰ الساعة: " : "⏰ Time: ") + timeStr;
+            
+            // ترجمة نصوص الطقس الثابتة عند تبديل اللغة
+            if (currentLang === 'ar') {
+                document.getElementById('weatherTxt').innerHTML = "☀️ الطقس في بيروت: C°24 صافي";
+                document.getElementById('humidityTxt').innerHTML = "💧 الرطوبة: 62%";
+            } else {
+                document.getElementById('weatherTxt').innerHTML = "☀️ Weather in Beirut: 24°C Clear";
+                document.getElementById('humidityTxt').innerHTML = "💧 Humidity: 62%";
+            }
+        }
+        
+        // تشغيل الساعة فوراً وجعلها تتحدث كل ثانية تلقائياً
+        setInterval(updateAstroClock, 1000);
+        updateAstroClock();
+
+        // دالة تبديل لغة الصفحة كاملاً بنقرة واحدة
+        function switchLanguage(lang) {
+            currentLang = lang;
+            const htmlTag = document.getElementById('mainHtml');
+            const titleAr = document.querySelector('.title-ar');
+            const titleEn = document.querySelector('.title-en');
+            const searchInput = document.getElementById('searchInput');
+            const searchBtn = document.getElementById('searchBtn');
+            const btnAr = document.getElementById('btnAr');
+            const btnEn = document.getElementById('btnEn');
+
+            if (lang === 'ar') {
+                htmlTag.setAttribute('dir', 'rtl');
+                htmlTag.setAttribute('lang', 'ar');
+                titleAr.style.display = 'block';
+                titleEn.style.display = 'none';
+                searchInput.placeholder = searchInput.getAttribute('data-ar-placeholder');
+                searchBtn.innerHTML = "🔍 ابحث الآن";
+                btnAr.classList.add('active-lang');
+                btnEn.classList.remove('active-lang');
+                
+                document.getElementById('tickerGlobal').style.animation = "scrollTicker 22s linear infinite";
+                document.getElementById('tickerGcc').style.animation = "scrollTicker 22s linear infinite";
+            } else {
+                htmlTag.setAttribute('dir', 'ltr');
+                htmlTag.setAttribute('lang', 'en');
+                titleAr.style.display = 'none';
+                titleEn.style.display = 'block';
+                searchInput.placeholder = searchInput.getAttribute('data-en-placeholder');
+                searchBtn.innerHTML = "🔍 Search Now";
+                btnEn.classList.add('active-lang');
+                btnAr.classList.remove('active-lang');
+
+                document.getElementById('tickerGlobal').style.animation = "scrollTickerLeft 22s linear infinite";
+                document.getElementById('tickerGcc').style.animation = "scrollTickerLeft 22s linear infinite";
+            }
+
+            const txtElements = document.querySelectorAll('.lang-txt');
+            txtElements.forEach(el => {
+                const text = el.getAttribute('data-' + lang);
+                if (text) el.innerHTML = text;
+            });
+            
+            updateAstroClock();
+        }
+    </script>
 </body>
 </html>
