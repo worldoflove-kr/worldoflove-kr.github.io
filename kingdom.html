@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مملكة الوعود | Kingdom of Promises 👑 KR 👑</title>
-    <link rel="stylesheet" href="style2.css?v=4">
+    <link rel="stylesheet" href="style2.css?v=5">
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Amiri:ital@1&family=Cairo:wght@300;600;800&display=swap" rel="stylesheet">
@@ -16,12 +16,6 @@
         <div class="stars"></div>
         <div class="stars2"></div>
         <div class="stars3"></div>
-    </div>
-
-    <!-- 🌐 أزرار تبديل اللغة الزجاجية الفخمة -->
-    <div class="lang-switcher-container">
-        <button onclick="switchLanguage('ar')" class="lang-btn active-lang" id="btnAr">العربية</button>
-        <button onclick="switchLanguage('en')" class="lang-btn" id="btnEn">English</button>
     </div>
 
     <!-- 📈 شريط الأسعار العالمي الأول -->
@@ -43,15 +37,15 @@
         </div>
     </div>
 
-    <!-- 🔍 شريط بحث غوغل الذكي بضغطة واحدة -->
+    <!-- 🔍 شريط بحث غوغل الذكي الجمالي (مغلق للكتابة) -->
     <div class="search-section">
         <form action="https://google.com" method="get" target="_blank" class="search-form">
-            <input type="text" name="q" id="searchInput" placeholder="ابحث في غوغل من قلب المملكة..." class="search-input" data-ar-placeholder="ابحث في غوغل من قلب المملكة..." data-en-placeholder="Search Google from the heart of the Kingdom...">
+            <input type="text" id="searchInput" value="👑 ابحث في غوغل من قلب المملكة 👑" class="search-input" readonly data-ar-val="👑 ابحث في غوغل من قلب المملكة 👑" data-en-val="👑 Search Google from the heart of the Kingdom 👑">
             <button type="submit" class="search-btn" id="searchBtn">🔍 ابحث الآن</button>
         </form>
     </div>
 
-    <!-- 📅 صندوق الوقت والتاريخ والطقس البنفسجي المضيء (تحت البحث والترجمة على الطرف) -->
+    <!-- 📅 صندوق الوقت والتاريخ والطقس البنفسجي المضيء الموزون في المنتصف -->
     <div class="astro-info-container">
         <div class="astro-box">
             <div class="astro-row">
@@ -65,6 +59,12 @@
                 <span id="humidityTxt">💧 الرطوبة: 62%</span>
             </div>
         </div>
+    </div>
+
+    <!-- 🌐 أزرار تبديل اللغة الزجاجية (أصبحت تحت التوقيت في المنتصف) -->
+    <div class="center-lang-switcher">
+        <button onclick="switchLanguage('ar')" class="lang-btn active-lang" id="btnAr">العربية</button>
+        <button onclick="switchLanguage('en')" class="lang-btn" id="btnEn">English</button>
     </div>
 
     <!-- 🔮 المحتوى الرئيسي والترحيب -->
@@ -98,11 +98,8 @@
     <script>
         let currentLang = 'ar';
 
-        // دالة تحديث الوقت الحي تلقائياً بالثانية والتاريخ الفلكي المريح
         function updateAstroClock() {
             const now = new Date();
-            
-            // خيارات تنسيق التاريخ والوقت للغتين
             const dateOptionsAr = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             const dateOptionsEn = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             
@@ -112,7 +109,6 @@
             document.getElementById('dateTxt').innerHTML = "📅 " + dateStr;
             document.getElementById('timeTxt').innerHTML = (currentLang === 'ar' ? "⏰ الساعة: " : "⏰ Time: ") + timeStr;
             
-            // ترجمة نصوص الطقس الثابتة عند تبديل اللغة
             if (currentLang === 'ar') {
                 document.getElementById('weatherTxt').innerHTML = "☀️ الطقس في بيروت: C°24 صافي";
                 document.getElementById('humidityTxt').innerHTML = "💧 الرطوبة: 62%";
@@ -122,11 +118,9 @@
             }
         }
         
-        // تشغيل الساعة فوراً وجعلها تتحدث كل ثانية تلقائياً
         setInterval(updateAstroClock, 1000);
         updateAstroClock();
 
-        // دالة تبديل لغة الصفحة كاملاً بنقرة واحدة
         function switchLanguage(lang) {
             currentLang = lang;
             const htmlTag = document.getElementById('mainHtml');
@@ -142,7 +136,7 @@
                 htmlTag.setAttribute('lang', 'ar');
                 titleAr.style.display = 'block';
                 titleEn.style.display = 'none';
-                searchInput.placeholder = searchInput.getAttribute('data-ar-placeholder');
+                searchInput.value = searchInput.getAttribute('data-ar-val');
                 searchBtn.innerHTML = "🔍 ابحث الآن";
                 btnAr.classList.add('active-lang');
                 btnEn.classList.remove('active-lang');
@@ -154,7 +148,7 @@
                 htmlTag.setAttribute('lang', 'en');
                 titleAr.style.display = 'none';
                 titleEn.style.display = 'block';
-                searchInput.placeholder = searchInput.getAttribute('data-en-placeholder');
+                searchInput.value = searchInput.getAttribute('data-en-val');
                 searchBtn.innerHTML = "🔍 Search Now";
                 btnEn.classList.add('active-lang');
                 btnAr.classList.remove('active-lang');
