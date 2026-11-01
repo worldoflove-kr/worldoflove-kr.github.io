@@ -194,37 +194,56 @@ updateGoldenCounter();
                 htmlTag.setAttribute('dir', 'rtl'); htmlTag.setAttribute('lang', 'ar'); searchInput.value = searchInput.getAttribute('data-ar-val'); searchBtn.innerHTML = "🔍 ابحث الآن"; btnAr.classList.add('active-lang'); btnEn.classList.remove('active-lang');
             } else {
                 htmlTag.setAttribute('dir', 'ltr'); htmlTag.setAttribute('lang', 'en'); searchInput.value = searchInput.getAttribute('data-en-val'); searchBtn.innerHTML = "🔍 Search Now"; btnEn.classList.add('active-lang'); btnAr.classList.remove('active-lang');
-            const txtElements = document.querySelectorAll('.txt-rotate');
+        const txtElements = document.querySelectorAll('.txt-rotate');
+    </script>
+    <script>
+        function updateAstroClock() {
+            const clockElement = document.getElementById('astroClock');
+            if (!clockElement) return;
+            const now = new Date();
+            let hours = now.getHours(), minutes = now.getMinutes(), seconds = now.getSeconds();
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            clockElement.innerText = hours + ':' + minutes + ':' + seconds;
+        }
+        setInterval(updateAstroClock, 1000);
+        updateAstroClock();
 
-function applyKingdomGreeting() {
-    const currentHour = new Date().getHours();
-    const banner = document.createElement('div');
-    banner.id = "royal-welcome-banner";
-    banner.style.cssText = "text-align: center; margin: 20px auto 10px auto; padding: 12px; background: rgba(20, 20, 20, 0.5); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 12px; max-width: 600px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);";
-    
-    const text = document.createElement('p');
-    text.style.cssText = "font-size: 0.95rem; font-weight: bold; margin: 0; transition: all 0.5s ease;";
-    
-    if (currentHour >= 17 || currentHour < 5) {
-        text.style.color = '#d4af37';
-        text.style.textShadow = '0 0 10px rgba(212, 175, 55, 0.6)';
-        text.innerHTML = '🌙 ليلة هادئة ورواق ملكي نتمناه لك في مملكة الوعود';
-    } else {
-        text.style.color = '#00bfff';
-        text.style.textShadow = '0 0 10px rgba(0, 191, 255, 0.6)';
-        text.innerHTML = '☀️ يوم مشرق ومريح نتمناه لك في مملكة الوعود';
-    }
-    
-    banner.appendChild(text);
-    const returnBtn = document.querySelector('a[href*="index"]') || document.body.lastChild;
-    if(returnBtn && returnBtn.parentNode) { 
-        returnBtn.parentNode.insertBefore(banner, returnBtn); 
-    } else { 
-        document.body.appendChild(banner); 
-    }
-}
+        function switchLanguage(lang) {
+            const container = document.getElementById('mainContainer');
+            const btnAr = document.getElementById('btnAr'), btnEn = document.getElementById('btnEn');
+            if (lang === 'en') {
+                container.classList.add('en'); container.setAttribute('dir', 'ltr');
+                btnEn.classList.add('active'); btnAr.classList.remove('active');
+            } else {
+                container.classList.remove('en'); container.setAttribute('dir', 'rtl');
+                btnAr.classList.add('active'); btnEn.classList.remove('active');
+            }
+        }
 
-window.addEventListener('DOMContentLoaded', applyKingdomGreeting);
-</script>
+        function executeGoogleSearch() {
+            const query = document.getElementById('searchInput').value;
+            if (query.trim() !== "") { window.open('https://google.com' + encodeURIComponent(query), '_blank'); }
+        }
+
+        function applyKingdomGreeting() {
+            const welcomeTextElement = document.getElementById('welcome-text');
+            if (!welcomeTextElement) return;
+            const currentHour = new Date().getHours();
+            if (currentHour >= 17 || currentHour < 5) {
+                welcomeTextElement.style.color = '#d4af37';
+                welcomeTextElement.style.textShadow = '0 0 10px rgba(212, 175, 55, 0.6)';
+                welcomeTextElement.innerHTML = '🌙 ليلة هادئة ورواق ملكي نتمناه لك في مملكة الوعود';
+            } else {
+                welcomeTextElement.style.color = '#00bfff';
+                welcomeTextElement.style.textShadow = '0 0 10px rgba(0, 191, 255, 0.6)';
+                welcomeTextElement.innerHTML = '☀️ يوم مشرق ومريح نتمناه لك في مملكة الوعود';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', applyKingdomGreeting);
+    </script>
 </body>
 </html>
+
