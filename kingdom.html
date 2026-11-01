@@ -215,11 +215,12 @@ updateGoldenCounter();
             text.innerHTML = '☀️ يوم مشرق ومريح نتمناه لك في مملكة الوعود';
         }
         
-        banner.appendChild(text);
-        document.body.insertBefore(banner, document.body.firstChild);
+            banner.appendChild(text);
+        const returnBtn = document.querySelector('a[href*="index"]') || document.body.lastChild;
+        if(returnBtn && returnBtn.parentNode) { returnBtn.parentNode.insertBefore(banner, returnBtn); }
+        else { document.body.appendChild(banner); }
     }
-    applyKingdomGreeting();
-          
+    applyKingdomGreeting();          
     </script>
 </body>
 </html>
