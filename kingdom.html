@@ -194,7 +194,7 @@ updateGoldenCounter();
                 htmlTag.setAttribute('dir', 'rtl'); htmlTag.setAttribute('lang', 'ar'); searchInput.value = searchInput.getAttribute('data-ar-val'); searchBtn.innerHTML = "🔍 ابحث الآن"; btnAr.classList.add('active-lang'); btnEn.classList.remove('active-lang');
             } else {
                 htmlTag.setAttribute('dir', 'ltr'); htmlTag.setAttribute('lang', 'en'); searchInput.value = searchInput.getAttribute('data-en-val'); searchBtn.innerHTML = "🔍 Search Now"; btnEn.classList.add('active-lang'); btnAr.classList.remove('active-lang');
-        const txtElements = document.querySelectorAll('.txt-rotate');
+            const txtElements = document.querySelectorAll('.txt-rotate');
     </script>
     <script>
         function updateAstroClock() {
@@ -208,7 +208,6 @@ updateGoldenCounter();
             clockElement.innerText = hours + ':' + minutes + ':' + seconds;
         }
         setInterval(updateAstroClock, 1000);
-        updateAstroClock();
 
         function switchLanguage(lang) {
             const container = document.getElementById('mainContainer');
@@ -228,22 +227,44 @@ updateGoldenCounter();
         }
 
         function applyKingdomGreeting() {
-            const welcomeTextElement = document.getElementById('welcome-text');
-            if (!welcomeTextElement) return;
-            const currentHour = new Date().getHours();
-            if (currentHour >= 17 || currentHour < 5) {
-                welcomeTextElement.style.color = '#d4af37';
-                welcomeTextElement.style.textShadow = '0 0 10px rgba(212, 175, 55, 0.6)';
-                welcomeTextElement.innerHTML = '🌙 ليلة هادئة ورواق ملكي نتمناه لك في مملكة الوعود';
-            } else {
-                welcomeTextElement.style.color = '#00bfff';
-                welcomeTextElement.style.textShadow = '0 0 10px rgba(0, 191, 255, 0.6)';
-                welcomeTextElement.innerHTML = '☀️ يوم مشرق ومريح نتمناه لك في مملكة الوعود';
+            // حل ذكي: البحث عن كلمة Loading الميتة في الصفحة واستبدالها بالكامل
+            const allParagraphs = document.querySelectorAll('p');
+            let targetElement = null;
+            
+            allParagraphs.forEach(p => {
+                if (p.textContent.includes('Loading...')) {
+                    targetElement = p;
+                }
+            });
+
+            if (targetElement) {
+                const currentHour = new Date().getHours();
+                targetElement.style.fontSize = "1rem";
+                targetElement.style.fontWeight = "bold";
+                targetElement.style.transition = "all 0.5s ease";
+                targetElement.style.textAlign = "center";
+                targetElement.style.margin = "20px auto";
+                targetElement.style.padding = "10px";
+                
+                if (currentHour >= 17 || currentHour < 5) {
+                    targetElement.style.color = '#d4af37';
+                    targetElement.style.textShadow = '0 0 10px rgba(212, 175, 55, 0.6)';
+                    targetElement.innerHTML = '🌙 ليلة هادئة ورواق ملكي نتمناه لك في مملكة الوعود';
+                } else {
+                    targetElement.style.color = '#00bfff';
+                    targetElement.style.textShadow = '0 0 10px rgba(0, 191, 255, 0.6)';
+                    targetElement.innerHTML = '☀️ يوم مشرق ومريح نتمناه لك في مملكة الوعود';
+                }
             }
         }
 
-        window.addEventListener('DOMContentLoaded', applyKingdomGreeting);
+        // تشغيل النبضات الفلكية فوراً دون تأخير
+        window.addEventListener('DOMContentLoaded', () => {
+            updateAstroClock();
+            applyKingdomGreeting();
+        });
+        // حماية إضافية للتشغيل الفوري
+        setTimeout(() => { updateAstroClock(); applyKingdomGreeting(); }, 100);
     </script>
 </body>
 </html>
-
