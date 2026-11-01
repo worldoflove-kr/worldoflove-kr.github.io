@@ -2,13 +2,13 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    background-color: #020204 !important;
+    background-color: #010103 !important;
     font-family: 'Cairo', sans-serif;
     color: #ffffff;
     overflow-x: hidden;
 }
 
-/* 🌌 كود النجوم ثلاثية الأبعاد الفائقة والظاهرة بقوة مجبرة */
+/* 🌌 كود تفجير النجوم الكثيفة ثلاثية الأبعاد اللامعة بالكامل في الخلفية */
 .space-background {
     position: fixed;
     top: 0;
@@ -16,43 +16,41 @@ html, body {
     width: 100% !important;
     height: 100% !important;
     z-index: -2 !important;
-    background: radial-gradient(circle at center, #0e0e26 0%, #020204 100%) !important;
-    display: block !important;
+    background: radial-gradient(circle at center, #0c0c22 0%, #010103 100%) !important;
 }
 .stars, .stars2, .stars3 {
     position: absolute !important;
     width: 3px !important;
     height: 3px !important;
     background: #ffffff !important;
-    border-radius: 50%;
-    box-shadow: 120px 80px #fff, 750px 250px #fff, 450px 550px #fff, 1150px 650px #fff, 250px 850px #fff, 950px 450px #00e5ff, 50px 300px #fff, 600px 150px #fff, 850px 700px #fff, 1300px 400px #ffaa00 !important;
-    animation: spaceMove 25s linear infinite !important;
-    display: block !important;
+    border-radius: 50% !important;
+    box-shadow: 120px 80px #fff, 750px 250px #fff, 450px 550px #fff, 1150px 650px #fff, 250px 850px #fff, 950px 450px #00e5ff, 50px 300px #fff, 600px 150px #fff, 850px 700px #fff, 1300px 400px #ffaa00, 100px 600px #fff, 500px 200px #fff, 800px 900px #00ffff !important;
+    animation: spaceMove 20s linear infinite !important;
 }
 .stars2 {
     width: 4px !important;
     height: 4px !important;
-    box-shadow: 300px 200px #fff, 900px 500px #fff, 600px 800px #00e5ff, 1300px 100px #fff, 150px 700px #fff, 1050px 50px #fff !important;
-    animation: spaceMove 15s linear infinite !important;
+    box-shadow: 300px 200px #fff, 900px 500px #fff, 600px 800px #00e5ff, 1300px 100px #fff, 150px 700px #fff, 1050px 50px #fff, 700px 350px #fff !important;
+    animation: spaceMove 12s linear infinite !important;
 }
 .stars3 {
     width: 2px !important;
     height: 2px !important;
-    box-shadow: 50px 400px #fff, 500px 100px #fff, 1000px 900px #fff, 200px 150px #fff, 700px 600px #fff !important;
-    animation: spaceMove 40s linear infinite !important;
+    box-shadow: 50px 400px #fff, 500px 100px #fff, 1000px 900px #fff, 200px 150px #fff, 700px 600px #fff, 1200px 800px #fff !important;
+    animation: spaceMove 30s linear infinite !important;
 }
 @keyframes spaceMove {
     from { transform: translateY(0); }
     to { transform: translateY(-1000px); }
 }
 
-/* 📈 الأشرطة العلوية منسابة */
+/* 📈 الأشرطة المنسابة */
 .ticker-wrapper {
     position: fixed;
     left: 0;
     width: 100%;
     height: 32px;
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 255, 255, 0.01);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     z-index: 999;
@@ -70,20 +68,14 @@ html, body {
     animation: scrollTicker 22s linear infinite;
     font-size: 11px;
 }
-@keyframes scrollTicker {
-    0% { transform: translate3d(0, 0, 0); }
-    100% { transform: translate3d(100%, 0, 0); }
-}
-@keyframes scrollTickerLeft {
-    0% { transform: translate3d(0, 0, 0); }
-    100% { transform: translate3d(-100%, 0, 0); }
-}
+@keyframes scrollTicker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(100%, 0, 0); } }
+@keyframes scrollTickerLeft { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 .ticker-item { margin-left: 30px; font-weight: 600; }
 .dot-g { color: #00e5ff; text-shadow: 0 0 8px #00e5ff; }
 .dot-y { color: #ffd700; text-shadow: 0 0 8px #ffd700; }
 .up { color: #00ff88; } .down { color: #ff3366; } .neutral { color: #e0e0e0; }
 
-/* 🔍 تصميم شريط غوغل الشفاف */
+/* 🔍 شريط غوغل الشفاف */
 .search-section {
     margin-top: 90px;
     display: flex;
@@ -122,10 +114,9 @@ html, body {
     padding: 6px 16px;
     font-size: 12px;
     white-space: nowrap;
-    transition: 0.3s;
 }
 
-/* 📅 صندوق الوقت والتاريخ والطقس البنفسجي المضيء */
+/* 📅 صندوق التوقيت البنفسجي النيون */
 .astro-info-container {
     display: flex;
     justify-content: center;
@@ -135,7 +126,6 @@ html, body {
 .astro-box {
     background: rgba(20, 5, 35, 0.6) !important;
     backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
     border: 2px solid #8a2be2 !important;
     border-radius: 16px;
     padding: 12px 20px;
@@ -159,14 +149,37 @@ html, body {
     border-radius: 20px;
     font-size: 12px;
     cursor: pointer;
-    transition: 0.3s;
 }
 .active-lang, .lang-btn:hover { background: rgba(255, 255, 255, 0.2); border-color: #00e5ff; color: #fff; box-shadow: 0 0 10px rgba(0, 191, 255, 0.4); }
 
-/* 🔮 المحتوى الرئيسي */
+/* 🔮 المحتوى الرئيسي والعناوين المتحركة */
 .main-content { text-align: center; padding: 20px; margin-top: 10px; }
+.titles-wrapper { margin: 15px 0; }
 
-/* 💎 الجوهرة ثلاثية الأبعاد الفخمة المضيئة بقوة */
+/* ⚪ اسم الصفحة المضيء والمتحرك برواقة باللغتين عربي وإنجليزي تحت بعض */
+.shining-title-ar, .shining-title-en {
+    margin: 5px 0;
+    color: #ffffff !important;
+    animation: floatTitle 3s infinite ease-in-out;
+    font-weight: 800;
+}
+.shining-title-ar {
+    font-size: 32px;
+    text-shadow: 0 0 20px #ffffff, 0 0 35px #00e5ff !important;
+}
+.shining-title-en {
+    font-size: 20px;
+    font-weight: 300;
+    opacity: 0.9;
+    text-shadow: 0 0 15px #ffffff, 0 0 25px #8a2be2 !important;
+    animation-delay: 1.5s; /* تتابع حركي مذهل */
+}
+@keyframes floatTitle {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-8px) scale(1.03); }
+}
+
+/* 💎 الجوهرة ثلاثية الأبعاد الفخمة */
 .diamond-zone { perspective: 1000px; margin-bottom: 5px; }
 .diamond-3d {
     font-size: 65px;
@@ -180,26 +193,9 @@ html, body {
     100% { transform: translateY(0) rotateY(360deg); }
 }
 
-/* ⚪ اسم الصفحة باللون الأبيض المشع القوي والمتحرك */
-.shining-title {
-    font-size: 28px;
-    color: #ffffff !important;
-    text-shadow: 0 0 15px #ffffff, 0 0 30px #00e5ff !important;
-    animation: titleFloat 3s infinite ease-in-out;
-    margin: 10px 0;
-    font-weight: 800;
-}
-@keyframes titleFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); text-shadow: 0 0 25px #00ffff, 0 0 45px #00e5ff !important; }
-}
-
-/* 👑 شعار KR بالذهب الخالص والاضاءة القوية الفخمة جداً مجبر */
-.golden-kr-container { margin: 15px 0; display: inline-block; }
-
 /* 🪞 الصندوق المرآة الشفاف */
 .glass-welcome-box {
-    background: rgba(255, 255, 255, 0.03) !important;
+    background: rgba(255, 255, 255, 0.02) !important;
     backdrop-filter: blur(20px) !important;
     -webkit-backdrop-filter: blur(20px) !important;
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
