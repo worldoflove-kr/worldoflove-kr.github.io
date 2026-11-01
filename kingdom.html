@@ -4,21 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مملكة الوعود | Kingdom of Promises 👑 KR 👑</title>
-    <link rel="stylesheet" href="style2.css?v=105">
+    <link rel="stylesheet" href="style2.css?v=125">
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Amiri:ital@1&family=Cairo:wght@300;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <!-- 🌌 خلفية الفضاء والنجوم المتحركة الكثيفة جداً المريحة للعين -->
-    <div class="space-background">
-        <div class="stars"></div>
-        <div class="stars2"></div>
-        <div class="stars3"></div>
+    <div class="space-background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; background: #010103; overflow: hidden;">
+        <div class="stars-forced"></div>
     </div>
-
-    <!-- 📈 شريط الأسعار العالمي الأول -->
     <div class="ticker-wrapper global-ticker">
         <div class="ticker-content" id="tickerGlobal">
             <span class="ticker-item"><span class="dot-g">•</span> <span class="lang-txt" data-ar="الذهب العالمي:" data-en="Global Gold:">الذهب العالمي:</span> <span class="up">$2,735.40</span></span>
@@ -27,8 +21,6 @@
             <span class="ticker-item"><span class="dot-g">•</span> <span class="lang-txt" data-ar="بورصة نيويورك:" data-en="Wall Street (S&P 500):">بورصة نيويورك:</span> <span class="up">5,820.50</span></span>
         </div>
     </div>
-
-    <!-- 🇸🇦 شريط أسعار الخليج العربي الثاني -->
     <div class="ticker-wrapper gcc-ticker">
         <div class="ticker-content" id="tickerGcc">
             <span class="ticker-item"><span class="dot-y">•</span> <span class="lang-txt" data-ar="ذهب السعودية (24):" data-en="Saudi Gold (24K):">ذهب السعودية (24):</span> <span class="neutral">330.15 ر.س</span></span>
@@ -36,22 +28,18 @@
             <span class="ticker-item"><span class="dot-y">•</span> <span class="lang-txt" data-ar="بورصة تداول السعودية:" data-en="Tadawul Index:">بورصة تداول السعودية:</span> <span class="up">12,045.20</span></span>
         </div>
     </div>
-
-    <!-- 🔍 شريط بحث غوغل الذكي الجمالي (مغلق للكتابة) -->
     <div class="search-section">
         <form action="https://google.com" method="get" target="_blank" class="search-form">
             <input type="text" id="searchInput" value="👑 ابحث في غوغل من قلب المملكة 👑" class="search-input" readonly data-ar-val="👑 ابحث في غوغل من قلب المملكة 👑" data-en-val="👑 Search Google from the heart of the Kingdom 👑">
             <button type="submit" class="search-btn" id="searchBtn">🔍 ابحث الآن</button>
         </form>
     </div>
-
-    <!-- 📅 صندوق الوقت والتاريخ والطقس البنفسجي المضيء الموزون في المنتصف -->
     <div class="astro-info-container">
         <div class="astro-box">
             <div class="astro-row">
                 <span id="dateTxt">📅 الأحد، 1 تشرين الثاني 2026</span>
                 <span class="divider-line">|</span>
-                <span id="timeTxt">⏰ الساعة: 03:30:00 ص</span>
+                <span id="timeTxt">⏰ الساعة: 04:05:00 ص</span>
             </div>
             <div class="astro-row bottom-row">
                 <span id="weatherTxt">☀️ الطقس في بيروت: C°24 صافي</span>
@@ -60,64 +48,45 @@
             </div>
         </div>
     </div>
-
-    <!-- 🌐 أزرار تبديل اللغة الزجاجية في المنتصف -->
     <div class="center-lang-switcher">
         <button onclick="switchLanguage('ar')" class="lang-btn active-lang" id="btnAr">العربية</button>
         <button onclick="switchLanguage('en')" class="lang-btn" id="btnEn">English</button>
     </div>
-
-    <!-- 🔮 المحتوى الرئيسي والترحيب -->
     <div class="main-content">
-        
         <div class="diamond-zone">
             <div class="diamond-3d">💎</div>
         </div>
-
-        <!-- ⚪ اسم الصفحة المضيء بالعربي والانجليزي تحت بعض وعم يتحركوا برواقة وإثارة -->
         <div class="titles-wrapper">
-            <h1 class="shining-title-ar">مملكة الوعود</h1>
-            <h2 class="shining-title-en">Kingdom of Promises</h2>
+            <h1 class="shining-title-ar">مَمْلَكَةُ اَلْوُعُودِ</h1>
+            <h2 class="shining-title-en">𝓚𝓲𝓷𝓰𝓭𝓸𝓶 𝓸𝓯 𝓟𝓻𝓸𝓶𝓲𝓼𝓮𝓼</h2>
         </div>
-
-        <!-- 👑 شعار KR المكتوب بالذهب الخالص النابض والمضيء بقوة نيون إجبارية -->
         <div class="golden-kr-container" style="margin: 30px 0; display: inline-block; animation: forcePulse 1.8s infinite ease-in-out;">
             <span style="font-family: 'Amiri', serif; font-size: 55px; font-weight: bold; background: linear-gradient(45deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 25px rgba(255, 215, 0, 1)) drop-shadow(0 0 10px #ffaa00); letter-spacing: 2px;">👑 KR 👑</span>
         </div>
-
-        <!-- 🪞 الصندوق الزجاجي الترحيبي الشفاف الفاخر (المرآة) -->
         <div class="glass-welcome-box">
             <h3 id="boxTitle" class="lang-txt" data-ar="أهلاً بك في فضاء الشراكة والعهد الجديد" data-en="Welcome to the Realm of Partnership and New Vows">أهلاً بك في فضاء الشراكة والعهد الجديد</h3>
-            <p id="boxDesc" class="lang-txt" data-ar="هنا، حيث تلتقي الأكواد المحدثة بنبض القلوب الفخمة. فتحنا الخزنة السحرية لنرسم معاً لوحة الغد برواقة تامة وعمق لا ينتهي. النجوم تتحرك من خلفنا، والوعود ثابتة لا تتغير." data-en="Here, where the updated codes meet the pulse of noble hearts. We have unlocked the magic vault to seamlessly paint tomorrow's canvas with utter serenity and infinite depth. Stars drift behind us, while promises remain unyielding.">
-                هنا، حيث تلتقي الأكواد المحدثة بنبض القلوب الفخمة. فتحنا الخزنة السحرية لنرسم معاً لوحة الغد برواقة تامة وعمق لا ينتهي. النجوم تتحرك من خلفنا، والوعود ثابتة لا تتغير.
-            </p>
+            <p id="boxDesc" class="lang-txt" data-ar="هنا، حيث تلتقي الأكواد المحدثة بنبض القلوب الفخمة. فتحنا الخزنة السحرية لنرسم معاً لوحة الغد برواقة تامة وعمق لا ينتهي. النجوم تتحرك من خلفنا، والوعود ثابتة لا تتغير." data-en="Here, where the updated codes meet the pulse of noble hearts. We have unlocked the magic vault to seamlessly paint tomorrow's canvas with utter serenity and infinite depth. Stars drift behind us, while promises remain unyielding.">هنا، حيث تلتقي الأكواد المحدثة بنبض القلوب الفخمة. فتحنا الخزنة السحرية لنرسم معاً لوحة الغد برواقة تامة وعمق لا ينتهي. النجوم تتحرك من خلفنا، والوعود ثابتة لا تتغير.</p>
         </div>
-
     </div>
-
-    <!-- ⚙️ أنيميشن داخلي إجباري لضمان النبض والإضاءة الذهبية القوية حتى لو علق الكاش -->
+    <footer class="royal-footer" style="text-align: center; margin-top: 50px; padding: 25px 0; border-top: 1px solid rgba(255, 215, 0, 0.1); background: rgba(5, 2, 10, 0.6); backdrop-filter: blur(10px);">
+        <div style="font-family: 'Amiri', serif; font-size: 26px; font-weight: bold; background: linear-gradient(45deg, #bf953f, #fcf6ba, #aa771c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 8px rgba(218, 165, 32, 0.6)); animation: forcePulse 3s infinite ease-in-out;">👑 KR Family Site 👑</div>
+        <p style="font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 5px; font-weight: 300; letter-spacing: 1px;">جميع الحقوق محفوظة للمملكة © 2026</p>
+    </footer>
     <style>
-        @keyframes forcePulse {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.9)); }
-            50% { transform: scale(1.1); filter: drop-shadow(0 0 40px rgba(255, 215, 0, 1)) drop-shadow(0 0 20px #ffaa00); }
-        }
+        @keyframes forcePulse { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.9)); } 50% { transform: scale(1.08); filter: drop-shadow(0 0 35px rgba(255, 215, 0, 1)); } }
+        .stars-forced { width: 3px; height: 3px; background: transparent; box-shadow: 120px 80px #fff, 750px 250px #fff, 450px 550px #fff, 1150px 650px #fff, 250px 850px #fff, 950px 450px #00e5ff, 50px 300px #fff, 600px 150px #fff, 850px 700px #fff, 1300px 400px #ffaa00, 100px 600px #fff, 300px 400px rgba(255,255,255,0.8), 650px 750px #fff, 900px 120px #00ffff; animation: moveStarsForced 25s linear infinite; }
+        @keyframes moveStarsForced { from { transform: translateY(0); } to { transform: translateY(-1000px); } }
     </style>
-
-    <!-- ⚙️ الأكواد البرمجية لتشغيل تبديل اللغة وتحديث الوقت التلقائي حياً بالثانية -->
     <script>
         let currentLang = 'ar';
-
         function updateAstroClock() {
             const now = new Date();
             const dateOptionsAr = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             const dateOptionsEn = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            
             let dateStr = now.toLocaleDateString(currentLang === 'ar' ? 'ar-LB' : 'en-US', currentLang === 'ar' ? dateOptionsAr : dateOptionsEn);
             let timeStr = now.toLocaleTimeString(currentLang === 'ar' ? 'ar-LB' : 'en-US', { hour12: true });
-
             document.getElementById('dateTxt').innerHTML = "📅 " + dateStr;
             document.getElementById('timeTxt').innerHTML = (currentLang === 'ar' ? "⏰ الساعة: " : "⏰ Time: ") + timeStr;
-            
             if (currentLang === 'ar') {
                 document.getElementById('weatherTxt').innerHTML = "☀️ الطقس في بيروت: C°24 صافي";
                 document.getElementById('humidityTxt').innerHTML = "💧 الرطوبة: 62%";
@@ -126,48 +95,22 @@
                 document.getElementById('humidityTxt').innerHTML = "💧 Humidity: 62%";
             }
         }
-        
-        setInterval(updateAstroClock, 1000);
-        updateAstroClock();
-
+        setInterval(updateAstroClock, 1000); updateAstroClock();
         function switchLanguage(lang) {
-            currentLang = lang;
-            const htmlTag = document.getElementById('mainHtml');
-            const searchInput = document.getElementById('searchInput');
-            const searchBtn = document.getElementById('searchBtn');
-            const btnAr = document.getElementById('btnAr');
-            const btnEn = document.getElementById('btnEn');
-
+            currentLang = lang; const htmlTag = document.getElementById('mainHtml'); const searchInput = document.getElementById('searchInput'); const searchBtn = document.getElementById('searchBtn'); const btnAr = document.getElementById('btnAr'); const btnEn = document.getElementById('btnEn');
             if (lang === 'ar') {
-                htmlTag.setAttribute('dir', 'rtl');
-                htmlTag.setAttribute('lang', 'ar');
-                searchInput.value = searchInput.getAttribute('data-ar-val');
-                searchBtn.innerHTML = "🔍 ابحث الآن";
-                btnAr.classList.add('active-lang');
-                btnEn.classList.remove('active-lang');
-                
-                document.getElementById('tickerGlobal').style.animation = "scrollTicker 22s linear infinite";
-                document.getElementById('tickerGcc').style.animation = "scrollTicker 22s linear infinite";
+                htmlTag.setAttribute('dir', 'rtl'); htmlTag.setAttribute('lang', 'ar'); searchInput.value = searchInput.getAttribute('data-ar-val'); searchBtn.innerHTML = "🔍 ابحث الآن"; btnAr.classList.add('active-lang'); btnEn.classList.remove('active-lang');
+                document.getElementById('tickerGlobal').style.animation = "scrollTicker 22s linear infinite"; document.getElementById('tickerGcc').style.animation = "scrollTicker 22s linear infinite";
             } else {
-                htmlTag.setAttribute('dir', 'ltr');
-                htmlTag.setAttribute('lang', 'en');
-                searchInput.value = searchInput.getAttribute('data-en-val');
-                searchBtn.innerHTML = "🔍 Search Now";
-                btnEn.classList.add('active-lang');
-                btnAr.classList.remove('active-lang');
-
-                document.getElementById('tickerGlobal').style.animation = "scrollTickerLeft 22s linear infinite";
-                document.getElementById('tickerGcc').style.animation = "scrollTickerLeft 22s linear infinite";
+                htmlTag.setAttribute('dir', 'ltr'); htmlTag.setAttribute('lang', 'en'); searchInput.value = searchInput.getAttribute('data-en-val'); searchBtn.innerHTML = "🔍 Search Now"; btnEn.classList.add('active-lang'); btnAr.classList.remove('active-lang');
+                document.getElementById('tickerGlobal').style.animation = "scrollTickerLeft 22s linear infinite"; document.getElementById('tickerGcc').style.animation = "scrollTickerLeft 22s linear infinite";
             }
-
-            const txtElements = document.querySelectorAll('.lang-txt');
-            txtElements.forEach(el => {
-                const text = el.getAttribute('data-' + lang);
-                if (text) el.innerHTML = text;
-            });
-            
-            updateAstroClock();
+            const txtElements = document.querySelectorAll('.lang-txt'); txtElements.forEach(el => { const text = el.getAttribute('data-' + lang); if (text) el.innerHTML = text; }); updateAstroClock();
         }
     </script>
 </body>
 </html>
+
+
+
+
