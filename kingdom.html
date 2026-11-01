@@ -196,7 +196,30 @@ updateGoldenCounter();
                 htmlTag.setAttribute('dir', 'ltr'); htmlTag.setAttribute('lang', 'en'); searchInput.value = searchInput.getAttribute('data-en-val'); searchBtn.innerHTML = "🔍 Search Now"; btnEn.classList.add('active-lang'); btnAr.classList.remove('active-lang');
             }
             const txtElements = document.querySelectorAll('.lang-txt'); txtElements.forEach(el => { const text = el.getAttribute('data-' + lang); if (text) el.innerHTML = text; }); updateAstroClock();
+    function applyKingdomGreeting() {
+        const currentHour = new Date().getHours();
+        const banner = document.createElement('div');
+        banner.id = "royal-welcome-banner";
+        banner.style.cssText = "text-align: center; margin: 20px auto 10px auto; padding: 12px; background: rgba(20, 20, 20, 0.5); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 12px; max-width: 600px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);";
+        
+        const text = document.createElement('p');
+        text.style.cssText = "font-size: 0.95rem; font-weight: bold; margin: 0; transition: all 0.5s ease;";
+        
+        if (currentHour >= 17 || currentHour < 5) {
+            text.style.color = '#d4af37';
+            text.style.textShadow = '0 0 10px rgba(212, 175, 55, 0.6)';
+            text.innerHTML = '🌙 ليلة هادئة ورواق ملكي نتمناه لك في مملكة الوعود';
+        } else {
+            text.style.color = '#00bfff';
+            text.style.textShadow = '0 0 10px rgba(0, 191, 255, 0.6)';
+            text.innerHTML = '☀️ يوم مشرق ومريح نتمناه لك في مملكة الوعود';
         }
+        
+        banner.appendChild(text);
+        document.body.insertBefore(banner, document.body.firstChild);
+    }
+    applyKingdomGreeting();
+          
     </script>
 </body>
 </html>
