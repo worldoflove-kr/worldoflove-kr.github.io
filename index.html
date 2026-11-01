@@ -2328,6 +2328,28 @@ document.getElementById('activate-star-btn').onclick = function() {
 
 
 
+<!-- نظام الترحيب الذكي الزمني الملكي -->
+<div id="royal-welcome-banner" style="text-align: center; margin: 25px auto; padding: 15px; max-width: 600px; background: rgba(20, 20, 20, 0.7); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 12px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+    <p id="welcome-text" style="font-size: 15px; font-weight: bold; margin: 0; transition: all 0.5s ease;"></p>
+</div>
+
+<script>
+    function applyRoyalGreeting() {
+        const welcomeTextElement = document.getElementById('welcome-text');
+        const currentHour = new Date().getHours();
+        
+        if (currentHour >= 17 || currentHour < 5) {
+            welcomeTextElement.style.color = '#d4af37'; /* ذهبي ملكي مضيء */
+            welcomeTextElement.style.textShadow = '0 0 10px rgba(212, 175, 55, 0.6)';
+            welcomeTextElement.innerHTML = '🌙 ليلة هادئة ورواق ملكي نتمناه لك في عالم الحب';
+        } else {
+            welcomeTextElement.style.color = '#00bfff'; /* أزرق سماوي مشرق */
+            welcomeTextElement.style.textShadow = '0 0 10px rgba(0, 191, 255, 0.6)';
+            welcomeTextElement.innerHTML = '☀️ يوم مشرق ومريح نتمناه لك في عالم الحب';
+        }
+    }
+    window.addEventListener('DOMContentLoaded', applyRoyalGreeting);
+</script>
 
 <!-- قسم الوثائق القانونية الرسمية للمنصة فوق الشعار -->
 <div id="legal-section" style="border: 1px solid #4a5568; border-radius: 15px; padding: 20px; margin: 20px; background: rgba(13, 11, 24, 0.7); text-align: center; clear: both;">
