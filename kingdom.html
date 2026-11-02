@@ -172,24 +172,31 @@
         }
     }
 
-    // 3. منظومة عداد الأيام (مملكة الوعود)
+      // 3. منظومة عداد الوقت الفلكي الحي (ناعم ومصغر جداً)
     function updateGoldenCounter() {
         const startDate = new Date("2024-08-02T00:00:00");
         const now = new Date();
         const diff = now - startDate;
         
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+        
         const counterEl = document.getElementById("golden-counter");
         
         if (counterEl) {
+            counterEl.style.fontSize = "0.78rem";
+            counterEl.style.lineHeight = "1.5";
+            
             if (currentLang === 'ar') {
-                counterEl.innerHTML = `👑 تم حفر العهد منذ ${days} يوم في الفضاء الملكي`;
+                counterEl.innerHTML = `👑 تم حفر العهد منذ <span style="color: #d4af37; font-weight: bold;">${days}</span> يوم و <span style="color: #00bfff;">${hours}</span> س و <span style="color: #00bfff;">${minutes}</span> د و <span style="color: #d4af37;">${seconds}</span> ث`;
             } else {
-                counterEl.innerHTML = `👑 Covenant engraved ${days} days ago in Royal Space`;
+                counterEl.innerHTML = `👑 Covenant: <span style="color: #d4af37; font-weight: bold;">${days}</span>d, <span style="color: #00bfff;">${hours}</span>h, <span style="color: #00bfff;">${minutes}</span>m, <span style="color: #d4af37;">${seconds}</span>s ago`;
             }
         }
     }
-
+ 
     // 4. منظومة تغيير اللغة الذكية
     function switchLanguage(lang) {
         currentLang = lang;
@@ -260,7 +267,7 @@
         updateAstroClock();
         setInterval(updateAstroClock, 1000);
         updateGoldenCounter();
-        setInterval(updateGoldenCounter, 60000);
+        setInterval(updateGoldenCounter, 1000);
         applyKingdomGreeting();
         // درع الأمان لصفحة المملكة: منع النسخ والتفتيش
         document.addEventListener('contextmenu', event => event.preventDefault());
