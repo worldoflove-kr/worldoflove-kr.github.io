@@ -62,13 +62,19 @@
         <button onclick="switchLanguage('ar')" class="lang-btn active-lang" id="btnAr">العربية</button>
         <button onclick="switchLanguage('en')" class="lang-btn" id="btnEn">English</button>
     </div>
-<!-- منظومة الدرع الكوني والهالة الملكية التفاعلية المدمجة لعائلة KR -->
-<div id="cosmic-nebula-canvas-container" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; pointer-events: none; overflow: hidden; background: radial-gradient(circle at 50% 50%, rgba(10, 10, 10, 1) 0%, rgba(5, 5, 5, 1) 100%);">
-    <div style="position: absolute; width: 150%; height: 150%; top: -25%; left: -25%; background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.06), transparent 45%), radial-gradient(circle at 70% 70%, rgba(0, 191, 255, 0.06), transparent 50%); filter: blur(40px); animation: nebulaOrbit 40s linear infinite;"></div>
+<!-- منظومة الدرع الكوني والهالة الملكية التفاعلية المدمجة لعائلة KR المحدثة بقوة الاختراق -->
+<div id="cosmic-nebula-canvas-container" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1 !important; pointer-events: none; overflow: hidden; background: radial-gradient(circle at 50% 50%, rgba(10, 10, 10, 0.9) 0%, rgba(5, 5, 5, 1) 100%) !important;">
+    <div style="position: absolute; width: 150%; height: 150%; top: -25%; left: -25%; background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.12), transparent 45%), radial-gradient(circle at 70% 70%, rgba(0, 191, 255, 0.12), transparent 50%) !important; filter: blur(40px); animation: nebulaOrbit 40s linear infinite;"></div>
 </div>
-<canvas id="royalAuraCanvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none;"></canvas>
+<canvas id="royalAuraCanvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 2 !important; pointer-events: none;"></canvas>
 
 <style>
+    /* اختراق ذكي لإجبار الحاويات على الشفافية لرؤية السحر الفلكي خلفها */
+    body { background: transparent !important; }
+    .main-content { position: relative; z-index: 10 !important; }
+    .glass-panel { position: relative; z-index: 11 !important; backdrop-filter: blur(12px) !important; -webkit-backdrop-filter: blur(12px) !important; }
+    .ticker-wrap { z-index: 1000 !important; }
+    
     @keyframes nebulaOrbit {
         0% { transform: rotate(0deg) scale(1); }
         50% { transform: rotate(180deg) scale(1.08); }
@@ -94,7 +100,7 @@
             constructor(x, y) {
                 this.x = x;
                 this.y = y;
-                this.size = Math.random() * 2 + 0.8;
+                this.size = Math.random() * 2 + 1;
                 this.speedX = Math.random() * 1.6 - 0.8;
                 this.speedY = Math.random() * 1.6 - 0.8;
                 this.color = Math.random() > 0.5 ? 'rgba(212, 175, 55, ' : 'rgba(0, 191, 255, ';
@@ -112,7 +118,7 @@
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fillStyle = this.color + this.alpha + ')';
-                ctx.shadowBlur = 8;
+                ctx.shadowBlur = 10;
                 ctx.shadowColor = this.color === 'rgba(212, 175, 55, ' ? '#d4af37' : '#00bfff';
                 ctx.fill();
                 ctx.restore();
@@ -120,10 +126,17 @@
         }
 
         function createAura(e) {
-            let pointerX = e.touches ? e.touches[0].clientX : e.clientX;
-            let pointerY = e.touches ? e.touches[0].clientY : e.clientY;
+            let pointerX = e.touches ? e.touches.clientX : e.touches[0].clientX : e.clientX;
+            let pointerY = e.touches ? e.touches.clientY : e.touches[0].clientY : e.clientY;
+            
+            // دعم كامل لسحب الشاشة اللمسي في الهاتف
+            if(e.touches && e.touches[0]) {
+                pointerX = e.touches[0].clientX;
+                pointerY = e.touches[0].clientY;
+            }
+            
             if(pointerX && pointerY) {
-                for (let i = 0; i < 3; i++) {
+                for (let i = 0; i < 4; i++) {
                     particles.push(new AuraParticle(pointerX, pointerY));
                 }
             }
@@ -147,6 +160,8 @@
         animateAura();
     });
 </script>
+
+ 
     
     <div class="main-content">
         <div class="diamond-zone">
