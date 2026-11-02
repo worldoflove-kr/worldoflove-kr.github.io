@@ -135,136 +135,145 @@
         @keyframes buttonFloat { 0%, 100% { transform: translateY(0); box-shadow: 0 0 12px rgba(0, 229, 255, 0.2); } 50% { transform: translateY(-3px); border-color: #00ffff; box-shadow: 0 0 20px rgba(0, 229, 255, 0.45); } }
     </style>
 
-    <script>
-        let currentLang = 'ar';
-        function setupVisitorCounter() {
-            let count = localStorage.getItem('kingdom_v_count');
-            if (!count) { count = 14478; }
-            count = parseInt(count) + 1; localStorage.setItem('kingdom_v_count', count);
-            document.getElementById('liveCounter').innerText = Number(count).toLocaleString();
-        }
-        setupVisitorCounter();
-        function updateAstroClock() {
-            const now = new Date();
-            const dateOptionsAr = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            const dateOptionsEn = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            let dateStr = now.toLocaleDateString(currentLang === 'ar' ? 'ar-LB' : 'en-US', currentLang === 'ar' ? dateOptionsAr : dateOptionsEn);
-            let timeStr = now.toLocaleTimeString(currentLang === 'ar' ? 'ar-LB' : 'en-US', { hour12: true });
-            document.getElementById('dateTxt').innerHTML = "📅 " + dateStr;
-            document.getElementById('timeTxt').innerHTML = (currentLang === 'ar' ? "⏰ الساعة: " : "⏰ Time: ") + timeStr;
-            if (currentLang === 'ar') {
-                document.getElementById('weatherTxt').innerHTML = "☀️ الطقس في بيروت: C°24 صافي";
-                document.getElementById('humidityTxt').innerHTML = "💧 الرطوبة: 62%";
-            } else {
-                document.getElementById('weatherTxt').innerHTML = "☀️ Weather in Beirut: 24°C Clear";
-                document.getElementById('humidityTxt').innerHTML = "💧 Humidity: 62%";
-            }
-        }
- function updateGoldenCounter() {
-    const startDate = new Date("2024-08-02T00:00:00");
-    const now = new Date();
-   const diff = now - startDate;
-const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+ <script>
+    let currentLang = 'ar';
 
-const counterEl = document.getElementById("golden-counter");
-if (counterEl) {
-    if (typeof currentLang !== 'undefined' && currentLang === 'ar') {
-        counterEl.innerHTML = `⏱️ ${days} يوم : ${hours} ساعة : ${minutes} دقيقة : ${seconds} ثانية`;
-    } else {
-        counterEl.innerHTML = `⏱️ ${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
+    // 1. منظومة عداد الزوار
+    function setupVisitorCounter() {
+        let count = localStorage.getItem('visitorCount');
+        if (!count) { count = 14478; }
+        count = parseInt(count) + 1;
+        localStorage.setItem('visitorCount', count);
+        const liveCounterEl = document.getElementById('liveCounter');
+        if(liveCounterEl) liveCounterEl.innerText = count.toLocaleString();
     }
-}
 
-const allLinks = document.querySelectorAll("a[href='index.html']");
-if (allLinks.length > 1) {
-    allLinks[0].parentElement.style.display = "none";
-}
-}
-setInterval(updateGoldenCounter, 1000);
-updateGoldenCounter();
-
-
-        setInterval(updateAstroClock, 1000); updateAstroClock();
-          function switchLanguage(lang) {
-            currentLang = lang; const htmlTag = document.getElementById('mainHtml'); const searchInput = document.getElementById('searchInput'); const searchBtn = document.getElementById('searchBtn'); const btnAr = document.getElementById('btnAr'); const btnEn = document.getElementById('btnEn');
-            if (lang === 'ar') {
-                htmlTag.setAttribute('dir', 'rtl'); htmlTag.setAttribute('lang', 'ar'); searchInput.value = searchInput.getAttribute('data-ar-val'); searchBtn.innerHTML = "🔍 ابحث الآن"; btnAr.classList.add('active-lang'); btnEn.classList.remove('active-lang');
-            } else {
-                htmlTag.setAttribute('dir', 'ltr'); htmlTag.setAttribute('lang', 'en'); searchInput.value = searchInput.getAttribute('data-en-val'); searchBtn.innerHTML = "🔍 Search Now"; btnEn.classList.add('active-lang'); btnAr.classList.remove('active-lang');
-            const txtElements = document.querySelectorAll('.txt-rotate');
-    </script>
-    <script>
-        function updateAstroClock() {
-            const clockElement = document.getElementById('astroClock');
-            if (!clockElement) return;
-            const now = new Date();
+    // 2. منظومة الساعة الفلكية والطقس الموحدة
+    function updateAstroClock() {
+        const now = new Date();
+        
+        // تحديث النصوص والتواريخ
+        const dateOptionsAr = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const dateOptionsEn = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        
+        const dateTxtEl = document.getElementById('dateTxt');
+        const timeTxtEl = document.getElementById('timeTxt');
+        
+        if(timeTxtEl) {
             let hours = now.getHours(), minutes = now.getMinutes(), seconds = now.getSeconds();
             hours = hours < 10 ? '0' + hours : hours;
             minutes = minutes < 10 ? '0' + minutes : minutes;
             seconds = seconds < 10 ? '0' + seconds : seconds;
-            clockElement.innerText = hours + ':' + minutes + ':' + seconds;
+            timeTxtEl.innerText = hours + ':' + minutes + ':' + seconds;
         }
-        setInterval(updateAstroClock, 1000);
 
-        function switchLanguage(lang) {
-            const container = document.getElementById('mainContainer');
-            const btnAr = document.getElementById('btnAr'), btnEn = document.getElementById('btnEn');
-            if (lang === 'en') {
-                container.classList.add('en'); container.setAttribute('dir', 'ltr');
-                btnEn.classList.add('active'); btnAr.classList.remove('active');
+        if(dateTxtEl) {
+            dateTxtEl.innerText = now.toLocaleDateString(currentLang === 'ar' ? 'ar-LB' : 'en-US', currentLang === 'ar' ? dateOptionsAr : dateOptionsEn);
+        }
+    }
+
+    // 3. منظومة عداد الأيام (مملكة الوعود)
+    function updateGoldenCounter() {
+        const startDate = new Date("2024-08-02T00:00:00");
+        const now = new Date();
+        const diff = now - startDate;
+        
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const counterEl = document.getElementById("golden-counter");
+        
+        if (counterEl) {
+            if (currentLang === 'ar') {
+                counterEl.innerHTML = `👑 تم حفر العهد منذ ${days} يوم في الفضاء الملكي`;
             } else {
-                container.classList.remove('en'); container.setAttribute('dir', 'rtl');
-                btnAr.classList.add('active'); btnEn.classList.remove('active');
+                counterEl.innerHTML = `👑 Covenant engraved ${days} days ago in Royal Space`;
             }
         }
+    }
 
-        function executeGoogleSearch() {
-            const query = document.getElementById('searchInput').value;
-            if (query.trim() !== "") { window.open('https://google.com' + encodeURIComponent(query), '_blank'); }
+    // 4. منظومة تغيير اللغة الذكية
+    function switchLanguage(lang) {
+        currentLang = lang;
+        const mainContainer = document.getElementById('mainHtml');
+        if (!mainContainer) return;
+        
+        if (lang === 'en') {
+            mainContainer.classList.add('en');
+            mainContainer.setAttribute('dir', 'ltr');
+        } else {
+            mainContainer.classList.remove('en');
+            mainContainer.setAttribute('dir', 'rtl');
         }
+        updateGoldenCounter();
+        updateAstroClock();
+        applyKingdomGreeting();
+    }
 
-        function applyKingdomGreeting() {
-            // حل ذكي: البحث عن كلمة Loading الميتة في الصفحة واستبدالها بالكامل
-            const allParagraphs = document.querySelectorAll('p');
-            let targetElement = null;
-            
-            allParagraphs.forEach(p => {
-                if (p.textContent.includes('Loading...')) {
-                    targetElement = p;
-                }
-            });
-
-            if (targetElement) {
-                const currentHour = new Date().getHours();
-                targetElement.style.fontSize = "1rem";
-                targetElement.style.fontWeight = "bold";
-                targetElement.style.transition = "all 0.5s ease";
-                targetElement.style.textAlign = "center";
-                targetElement.style.margin = "20px auto";
-                targetElement.style.padding = "10px";
-                
-                if (currentHour >= 17 || currentHour < 5) {
-                    targetElement.style.color = '#d4af37';
-                    targetElement.style.textShadow = '0 0 10px rgba(212, 175, 55, 0.6)';
-                    targetElement.innerHTML = '🌙 ليلة هادئة ورواق ملكي نتمناه لك في مملكة الوعود';
-                } else {
-                    targetElement.style.color = '#00bfff';
-                    targetElement.style.textShadow = '0 0 10px rgba(0, 191, 255, 0.6)';
-                    targetElement.innerHTML = '☀️ يوم مشرق ومريح نتمناه لك في مملكة الوعود';
-                }
-            }
+    // 5. منظومة البحث الملكي
+    function executeGoogleSearch() {
+        const searchInput = document.getElementById('searchInput');
+        if(searchInput && searchInput.value.trim() !== "") {
+            window.open('https://google.com' + encodeURIComponent(searchInput.value), '_blank');
         }
+    }
 
-        // تشغيل النبضات الفلكية فوراً دون تأخير
-        window.addEventListener('DOMContentLoaded', () => {
-            updateAstroClock();
-            applyKingdomGreeting();
-        });
-        // حماية إضافية للتشغيل الفوري
-        setTimeout(() => { updateAstroClock(); applyKingdomGreeting(); }, 100);
-    </script>
+    // 6. منظومة الترحيب الذكي الزمني المطور (حل مشكلة Loading)
+    function applyKingdomGreeting() {
+        const counterEl = document.getElementById("golden-counter");
+        if (!counterEl) return;
+        
+        // إزالة أي بنر ترحيبي مكرر قديم
+        const oldBanner = document.getElementById('royal-welcome-banner');
+        if(oldBanner) oldBanner.remove();
+
+        const currentHour = new Date().getHours();
+        const banner = document.createElement('div');
+        banner.id = "royal-welcome-banner";
+        banner.style.cssText = "text-align: center; margin: 20px auto 10px auto; padding: 12px; background: rgba(20, 20, 20, 0.5); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 12px; max-width: 600px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);";
+        
+        const text = document.createElement('p');
+        text.style.cssText = "font-size: 0.95rem; font-weight: bold; margin: 0; transition: all 0.5s ease;";
+        
+        if (currentHour >= 17 || currentHour < 5) {
+            text.style.color = '#d4af37';
+            text.style.textShadow = '0 0 10px rgba(212, 175, 55, 0.6)';
+            text.innerHTML = currentLang === 'ar' ? '🌙 ليلة هادئة ورواق ملكي نتمناه لك في مملكة الوعود' : '🌙 A peaceful night & royal ambiance we wish you in the Kingdom of Promises';
+        } else {
+            text.style.color = '#00bfff';
+            text.style.textShadow = '0 0 10px rgba(0, 191, 255, 0.6)';
+            text.innerHTML = currentLang === 'ar' ? '☀️ يوم مشرق ومريح نتمناه لك في مملكة الوعود' : '☀️ A bright & comfortable day we wish you in the Kingdom of Promises';
+        }
+        
+        banner.appendChild(text);
+        
+        // وضعه بدقة فوق زر العودة إلى عالم الحب
+        const returnBtn = document.querySelector('a[href*="index"]') || document.body.lastChild;
+        if(returnBtn && returnBtn.parentNode) { 
+            returnBtn.parentNode.insertBefore(banner, returnBtn); 
+        } else { 
+            document.body.appendChild(banner); 
+        }
+    }
+
+    // تشغيل المنظومة بالكامل بنظام مصفوفة موحدة عند التحميل
+    window.addEventListener('DOMContentLoaded', () => {
+        setupVisitorCounter();
+        updateAstroClock();
+        setInterval(updateAstroClock, 1000);
+        updateGoldenCounter();
+        setInterval(updateGoldenCounter, 60000);
+        applyKingdomGreeting();
+        
+        // إخفاء روابط مكررة إن وجدت لحماية المظهر
+        const allLinks = document.querySelectorAll("a");
+        if(allLinks.length > 1 && allLinks[0].parentElement) {
+            // كود تنظيف إضافي اختياري للحماية
+        }
+    });
+</script>
 </body>
 </html>
+
+
+
+ 
+   
