@@ -226,14 +226,6 @@
     });
 </script>
 
-
-     
-
-    
-
-   
-     
-
  
     
     <div class="main-content">
@@ -308,88 +300,11 @@
         @keyframes buttonFloat { 0%, 100% { transform: translateY(0); box-shadow: 0 0 12px rgba(0, 229, 255, 0.2); } 50% { transform: translateY(-3px); border-color: #00ffff; box-shadow: 0 0 20px rgba(0, 229, 255, 0.45); } }
     </style>
 
- <script>
+<script>
+    // 1. المتغيرات والتعريفات الأساسية المستقرة
     let currentLang = 'ar';
 
-    // 1. منظومة عداد الزوار
-    function setupVisitorCounter() {
-        let count = localStorage.getItem('visitorCount');
-        if (!count) { count = 14478; }
-        count = parseInt(count) + 1;
-        localStorage.setItem('visitorCount', count);
-        const liveCounterEl = document.getElementById('liveCounter');
-        if(liveCounterEl) liveCounterEl.innerText = count.toLocaleString();
-    }
-
-    // 2. منظومة الساعة الفلكية والطقس الموحدة
-    function updateAstroClock() {
-        const now = new Date();
-        
-        // تحديث النصوص والتواريخ
-        const dateOptionsAr = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        const dateOptionsEn = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        
-        const dateTxtEl = document.getElementById('dateTxt');
-        const timeTxtEl = document.getElementById('timeTxt');
-        
-        if(timeTxtEl) {
-            let hours = now.getHours(), minutes = now.getMinutes(), seconds = now.getSeconds();
-            hours = hours < 10 ? '0' + hours : hours;
-            minutes = minutes < 10 ? '0' + minutes : minutes;
-            seconds = seconds < 10 ? '0' + seconds : seconds;
-            timeTxtEl.innerText = hours + ':' + minutes + ':' + seconds;
-        }
-
-        if(dateTxtEl) {
-            dateTxtEl.innerText = now.toLocaleDateString(currentLang === 'ar' ? 'ar-LB' : 'en-US', currentLang === 'ar' ? dateOptionsAr : dateOptionsEn);
-        }
-    }
-
-      // 3. منظومة عداد الوقت الفلكي الحي (ناعم ومصغر جداً)
-    function updateGoldenCounter() {
-        const startDate = new Date("2024-08-02T00:00:00");
-        const now = new Date();
-        const diff = now - startDate;
-        
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        const minutes = Math.floor((diff / (1000 * 60)) % 60);
-        const seconds = Math.floor((diff / 1000) % 60);
-        
-        const counterEl = document.getElementById("golden-counter");
-        
-        if (counterEl) {
-            counterEl.style.fontSize = "0.78rem";
-            counterEl.style.lineHeight = "1.5";
-            
-            if (currentLang === 'ar') {
-                counterEl.innerHTML = `👑 تم حفر العهد منذ <span style="color: #d4af37; font-weight: bold;">${days}</span> يوم و <span style="color: #00bfff;">${hours}</span> س و <span style="color: #00bfff;">${minutes}</span> د و <span style="color: #d4af37;">${seconds}</span> ث`;
-            } else {
-                counterEl.innerHTML = `👑 Covenant: <span style="color: #d4af37; font-weight: bold;">${days}</span>d, <span style="color: #00bfff;">${hours}</span>h, <span style="color: #00bfff;">${minutes}</span>m, <span style="color: #d4af37;">${seconds}</span>s ago`;
-            }
-        }
-    }
- 
-    // 4. منظومة تغيير اللغة الذكية
-    function switchLanguage(lang) {
-        currentLang = lang;
-        const mainContainer = document.getElementById('mainHtml');
-        if (!mainContainer) return;
-        
-        if (lang === 'en') {
-            mainContainer.classList.add('en');
-            mainContainer.setAttribute('dir', 'ltr');
-        } else {
-            mainContainer.classList.remove('en');
-            mainContainer.setAttribute('dir', 'rtl');
-        }
-        updateGoldenCounter();
-        updateAstroClock();
-        applyKingdomGreeting();
-    }
-
-      // 1. منظومة الساعة والطقس والعداد الفلكي الحي لعائلة KR
-    function updateAstroClock() {
+    window.updateAstroClock = function() {
         const clockEl = document.getElementById('astro-clock');
         if (clockEl) {
             const now = new Date();
@@ -398,9 +313,9 @@
             const seconds = String(now.getSeconds()).padStart(2, '0');
             clockEl.innerHTML = `⏰ الساعة: <span style="color: #00bfff;">${hours}:${minutes}:${seconds}</span>`;
         }
-    }
+    };
 
-    function setupVisitorCounter() {
+    window.setupVisitorCounter = function() {
         const counterEl = document.getElementById('visitor-count');
         if (counterEl) {
             let count = parseInt(counterEl.innerText.replace(/,/g, '')) || 14478;
@@ -409,9 +324,9 @@
                 counterEl.innerText = count.toLocaleString();
             }
         }
-    }
+    };
 
-    function updateGoldenCounter() {
+    window.updateGoldenCounter = function() {
         const counterEl = document.getElementById("golden-counter");
         if (counterEl) {
             const startDate = new Date("2024-08-02T00:00:00");
@@ -431,18 +346,34 @@
                 counterEl.innerHTML = `👑 Covenant: <span style="color: #d4af37; font-weight: bold;">${days}</span>d, <span style="color: #00bfff;">${hours}</span>h, <span style="color: #00bfff;">${minutes}</span>m, <span style="color: #d4af37;">${seconds}</span>s ago`;
             }
         }
-    }
+    };
 
-    // 2. مصفوفة تشغيل المنظومة والتحميل التلقائي الشامل للموقع
+    window.switchLanguage = function(lang) {
+        currentLang = lang;
+        const mainContainer = document.getElementById('mainContainer');
+        if (!mainContainer) return;
+        if (lang === 'en') {
+            mainContainer.classList.add('en');
+            mainContainer.setAttribute('dir', 'ltr');
+        } else {
+            mainContainer.classList.remove('en');
+            mainContainer.setAttribute('dir', 'rtl');
+        }
+        window.updateGoldenCounter();
+        window.updateAstroClock();
+        if (typeof window.applyKingdomGreeting === 'function') window.applyKingdomGreeting();
+    };
+
+    // 2. المحرك الرئيسي للتحميل وإطلاق الأمان والنجوم اللامعة
     window.addEventListener('DOMContentLoaded', () => {
-        updateAstroClock();
-        setInterval(updateAstroClock, 1000);
-        updateGoldenCounter();
-        setInterval(updateGoldenCounter, 1000);
-        setInterval(setupVisitorCounter, 4000);
-        if (typeof applyKingdomGreeting === 'function') applyKingdomGreeting();
+        window.updateAstroClock();
+        setInterval(window.updateAstroClock, 1000);
+        window.updateGoldenCounter();
+        setInterval(window.updateGoldenCounter, 1000);
+        setInterval(window.setupVisitorCounter, 4000);
+        if (typeof window.applyKingdomGreeting === 'function') window.applyKingdomGreeting();
 
-        // 3. المحرك المطور للنجوم المتلألئة والهالة اللمسية التفاعلية
+        // تنشيط الفضاء والنجوم المتلألئة والهالة التفاعلية للّمس
         const canvas = document.getElementById('royalAuraCanvas');
         if (canvas) {
             const ctx = canvas.getContext('2d');
@@ -519,7 +450,7 @@
             initStars(); animateCosmos();
         }
 
-        // 4. درع الحماية السيبراني لحظر النسخ والتفتيش
+        // 3. درع الحماية السيبراني لحظر النسخ والتفتيش
         document.addEventListener('contextmenu', event => event.preventDefault());
         document.addEventListener('keydown', event => {
             if (event.ctrlKey && (event.key === 'u' || event.key === 'c' || event.key === 's' || event.key === 'i')) {
@@ -530,23 +461,10 @@
         document.body.style.webkitUserSelect = "none";
         document.body.style.userSelect = "none";
     });
-      
-            if (event.key === 'F12') event.preventDefault();
-        });
-        document.body.style.webkitUserSelect = "none";
-        document.body.style.userSelect = "none";
-        
-        // إخفاء روابط مكررة إن وجدت لحماية المظهر
-        const allLinks = document.querySelectorAll("a");
-        if(allLinks.length > 1 && allLinks[0].parentElement) {
-            // كود تنظيف إضافي اختياري للحماية
-        }
-    });
 </script>
 </body>
 </html>
 
-
-
- 
+  
+     
    
