@@ -169,6 +169,19 @@
         }
     };
 
+    window.triggerCosmicAlignment = function() {
+        const infoBox = document.getElementById('cosmic-alignment-info');
+        const btn = document.getElementById('activate-cosmic-btn');
+        if (infoBox && btn) {
+            infoBox.style.maxHeight = "250px";
+            infoBox.style.opacity = "1";
+            infoBox.style.marginTop = "10px";
+            btn.innerHTML = "🔒 تم تفعيل القران الفلكي وتوثيق البيانات";
+            btn.style.border = "1px solid #2ecc71";
+            btn.style.background = "rgba(46, 204, 113, 0.15)";
+        }
+    };
+
     window.switchLanguage = function(lang) {
         currentLang = lang;
         const tAr = document.getElementById('king-title-ar');
@@ -204,13 +217,13 @@
         }
         window.updateGoldenCounter();
     };
-
-    window.addEventListener('DOMContentLoaded', () => {
+    // 2. محرك تشغيل المنظومة الفلكية والنجوم واللمس التفاعلي الإجباري
+    function initCosmicEngine() {
         window.updateAstroClock();
         setInterval(window.updateAstroClock, 1000);
         window.updateGoldenCounter();
         setInterval(window.updateGoldenCounter, 1000);
-        setInterval(window.setupVisitorCounter, 4000);
+        setInterval(window.setupVisitorCounter, 3000);
 
         const canvas = document.getElementById('royalAuraCanvas');
         if (canvas) {
@@ -227,7 +240,7 @@
 
             function initStars() {
                 backgroundStars = [];
-                const starCount = Math.floor((canvas.width * canvas.height) / 6000);
+                const starCount = Math.floor((canvas.width * canvas.height) / 5000);
                 for (let i = 0; i < starCount; i++) {
                     backgroundStars.push({
                         x: Math.random() * canvas.width,
@@ -242,26 +255,26 @@
             class AuraParticle {
                 constructor(x, y) {
                     this.x = x; this.y = y;
-                    this.size = Math.random() * 2 + 1;
-                    this.speedX = Math.random() * 1.6 - 0.8;
-                    this.speedY = Math.random() * 1.6 - 0.8;
+                    this.size = Math.random() * 2 + 1.2;
+                    this.speedX = Math.random() * 2 - 1;
+                    this.speedY = Math.random() * 2 - 1;
                     this.color = Math.random() > 0.5 ? 'rgba(212, 175, 55, ' : 'rgba(0, 191, 255, ';
                     this.alpha = 1;
-                    this.decay = Math.random() * 0.025 + 0.02;
+                    this.decay = Math.random() * 0.02 + 0.015;
                 }
                 update() { this.x += this.speedX; this.y += this.speedY; this.alpha -= this.decay; }
                 draw() {
                     ctx.save(); ctx.globalAlpha = this.alpha; ctx.beginPath();
                     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                     ctx.fillStyle = this.color + this.alpha + ')';
-                    ctx.shadowBlur = 10; ctx.shadowColor = this.color === 'rgba(212, 175, 55, ' ? '#d4af37' : '#00bfff';
+                    ctx.shadowBlur = 12; ctx.shadowColor = this.color === 'rgba(212, 175, 55, ' ? '#d4af37' : '#00bfff';
                     ctx.fill(); ctx.restore();
                 }
             }
 
             function createAura(pointerX, pointerY) {
                 if(pointerX && pointerY) {
-                    for (let i = 0; i < 3; i++) { auraParticles.push(new AuraParticle(pointerX, pointerY)); }
+                    for (let i = 0; i < 4; i++) { auraParticles.push(new AuraParticle(pointerX, pointerY)); }
                 }
             }
 
@@ -275,7 +288,7 @@
                 backgroundStars.forEach(star => {
                     star.alpha += star.speed;
                     if (star.alpha > 1 || star.alpha < 0) star.speed = -star.speed;
-                    ctx.save(); ctx.globalAlpha = Math.max(0.2, star.alpha); ctx.beginPath();
+                    ctx.save(); ctx.globalAlpha = Math.max(0.15, star.alpha); ctx.beginPath();
                     ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2); ctx.fillStyle = '#ffffff'; ctx.fill(); ctx.restore();
                 });
                 for (let i = 0; i < auraParticles.length; i++) {
@@ -284,20 +297,32 @@
                 }
                 requestAnimationFrame(animateCosmos);
             }
-            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-            initStars(); animateCosmos();
+            resizeCanvas(); animateCosmos();
         }
+    }
 
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.addEventListener('keydown', event => {
-            if (event.ctrlKey && (event.key === 'u' || event.key === 'c' || event.key === 's' || event.key === 'i')) {
-                event.preventDefault();
-            }
-            if (event.key === 'F12') event.preventDefault();
-        });
-        document.body.style.webkitUserSelect = "none";
-        document.body.style.userSelect = "none";
+    // إطلاق إجباري فوري ومباشر لكسر تعليق الذاكرة المؤقتة
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCosmicEngine);
+    } else {
+        initCosmicEngine();
+    }
+
+    // درع الحماية السيبراني
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    document.addEventListener('keydown', event => {
+        if (event.ctrlKey && (event.key === 'u' || event.key === 'c' || event.key === 's' || event.key === 'i')) event.preventDefault();
+        if (event.key === 'F12') event.preventDefault();
     });
+    document.body.style.webkitUserSelect = "none";
+    document.body.style.userSelect = "none";
 </script>
 </body>
 </html>
+
+
+    
+
+  
+    
+         
