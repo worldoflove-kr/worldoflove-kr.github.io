@@ -5,23 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مَمْلَكَةُ الْوُعُودِ - عائلة KR</title>
     <link rel="stylesheet" href="style2.css">
-    <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         body { background: transparent !important; margin: 0; padding: 0; overflow-x: hidden; }
         .glass-panel { background: rgba(20, 20, 20, 0.6) !important; border: 1px solid rgba(212, 175, 55, 0.3) !important; backdrop-filter: blur(12px) !important; -webkit-backdrop-filter: blur(12px) !important; color: #f5f5f5 !important; }
         .main-content { position: relative; z-index: 10 !important; }
+        @keyframes radarRotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes nebulaOrbit { 0% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.05); } 100% { transform: rotate(360deg) scale(1); } }
     </style>
 </head>
 <body>
-
 <div id="mainContainer" class="main-content">
+    
     <!-- شريط البورصة العلوي -->
     <div class="ticker-wrap">
         <div class="ticker">
             <span class="ticker-item">👑 منصة العائلة الملكية المعتمدة عالمياً</span>
             <span class="ticker-item">✨ الذهب العالمي: <span style="color: #2ecc71;">$2,735.40</span></span>
-            <span class="ticker-item">• مؤشر Dollar: <span style="color: #e74c3c;">104.20</span></span>
-            <span class="ticker-item">• النفط برنت: <span style="color: #2ecc71;">$75.30</span></span>
+            <span class="ticker-item">• مؤشر الدولار: <span style="color: #e74c3c;">104.20</span></span>
         </div>
     </div>
 
@@ -32,7 +32,7 @@
             <button style="background: #d4af37; border: none; padding: 8px 15px; border-radius: 6px; color: #000; font-weight: bold;">بحث</button>
         </div>
         <div id="astro-clock" style="font-size: 0.95rem; font-weight: bold; margin-top: 5px;">⏰ الساعة: <span style="color: #00bfff;">--:--:--</span></div>
-        <div style="font-size: 0.85rem; color: #cbd5e0; margin-top: 5px;">📍 الأحد، 1 تشرين الثاني 2026 | 🌤️ الطقس في بيروت: 24°C صافي | 💧 الرطوبة: 62%</div>
+        <div style="font-size: 0.85rem; color: #cbd5e0; margin-top: 5px;">📍 الاثنين، 2 تشرين الثاني 2026 | 🌤️ الطقس في بيروت: 24°C صافي | 💧 الرطوبة: 62%</div>
     </div>
 
     <!-- عداد الزوار التفاعلي -->
@@ -40,8 +40,8 @@
         👥 عدد زوار مملكتنا الحين: <span id="visitor-count" style="color: #00bfff; font-weight: bold;">14,478</span>
     </div>
 
-    <!-- مرصد القران الفلكي الملكي المصغر الملموم بالملّي -->
-    <div class="glass-panel" style="background: rgba(15, 15, 15, 0.7) !important; border: 1px solid rgba(212, 175, 55, 0.25) !important; border-radius: 14px; padding: 15px; width: 85%; max-width: 320px; margin: 15px auto; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.5); position: relative; overflow: hidden; z-index: 100 !important;">
+    <!-- مرصد القران الفلكي الملكي المصغر الملموم والمصحح بالمقاس -->
+    <div class="glass-panel" style="background: rgba(15, 15, 15, 0.7) !important; border: 1px solid rgba(212, 175, 55, 0.25) !important; border-radius: 20px; padding: 12px 8px; width: 85%; max-width: 320px; margin: 12px auto; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.5); position: relative; overflow: hidden; z-index: 100 !important;">
         <div id="cosmic-radar" style="width: 65px; height: 65px; border: 1px dashed rgba(0, 191, 255, 0.3) !important; border-radius: 50%; margin: 0 auto 10px auto; position: relative; animation: radarRotate 25s linear infinite;">
             <div style="width: 41px; height: 41px; border: 1px dashed rgba(212, 175, 55, 0.25) !important; border-radius: 50%; position: absolute; top: 11px; left: 11px;"></div>
             <div style="width: 5px; height: 5px; background: #00bfff !important; border-radius: 50%; position: absolute; top: 3px; left: 29px; box-shadow: 0 0 8px #00bfff;"></div>
@@ -53,12 +53,11 @@
         <div id="cosmic-alignment-info" style="max-height: 0; opacity: 0; overflow: hidden; transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); margin-top: 0; text-align: right; direction: rtl;">
             <div style="height: 1px; background: linear-gradient(to right, transparent, rgba(212,175,55,0.3), transparent); margin: 8px 0;"></div>
             <p style="font-size: 0.78rem; color: #f5f5f5 !important; line-height: 1.5; margin-bottom: 4px;">👑 <span style="color: #d4af37 !important; font-weight: bold;">التقرير الفلكي المعتمد للمنصة:</span></p>
-            <p style="font-size: 0.72rem; color: #cbd5e0 !important; line-height: 1.6; margin: 2px 0;">✨ تلتقي السدم الكونية لتؤكد اصطفاف النجوم فوق سماء المملكة المشفرة لـ <span style="color: #d4af37 !important;">Panda KR</span> الموثقة رقمياً.</p>
-            <p style="font-size: 0.72rem; color: #cbd5e0 !important; line-height: 1.6; margin: 2px 0;">📅 <span style="color: #00bfff !important;">الرحلة الخالدة:</span> انطلقت النبضة منذ تاريخ <span style="color: #d4af37 !important; font-weight: bold;">02 / 08 / 2024</span>, ومحمية ببروتوكولات سيبرانية تمنع التفتيش أو سرقة العهود بنسبة 100%.</p>
+            <p style="font-size: 0.72rem; color: #cbd5e0 !important; line-height: 1.5; margin: 2px 0;">✨ تلتقي السدم الكونية لتؤكد اصطفاف النجوم فوق سماء المملكة المشفرة لـ <span style="color: #d4af37 !important;">Panda KR</span> الموثقة رقمياً.</p>
+            <p style="font-size: 0.72rem; color: #cbd5e0 !important; line-height: 1.5; margin: 2px 0;">📅 <span style="color: #00bfff !important;">الرحلة الخالدة:</span> انطلقت النبضة منذ تاريخ <span style="color: #d4af37 !important; font-weight: bold;">02 / 08 / 2024</span>، ومحمية ببروتوكولات سيبرانية تمنع التفتيش أو سرقة العهود بنسبة 100%.</p>
             <p style="font-size: 0.72rem; color: #00bfff !important; font-weight: bold; text-align: center; margin-top: 6px; text-shadow: 0 0 6px rgba(0,191,255,0.3);">🔒 الاتصال الفلكي آمن ومستمر إلى الأبدية.</p>
         </div>
     </div>
-
     <!-- محتوى صفحة المملكة الأساسي واللوحات العاطفية -->
     <div style="text-align: center; margin: 30px auto;">
         <h1 style="color: #d4af37; font-family: 'Times New Roman', serif; letter-spacing: 2px;">مَمْلَكَةُ الْوُعُودِ</h1>
@@ -72,7 +71,7 @@
         <p style="font-size: 0.88rem; line-height: 1.6; color: #cbd5e0;">هنا بدأ الكون الحقيقي.. اليوم الذي اختصر كل دنيتي وعالمي في نبضة واحدة خالدة، لتصبح الشراكة عهداً مكتوباً بأنوار الفضاء ويحميها التاج الملكي.</p>
         
         <div style="height: 1px; background: linear-gradient(to right, transparent, rgba(212,175,55,0.3), transparent); margin: 15px 0;"></div>
-        <!-- غرس حاوية العداد المفقودة بنجاح لتشغيل الأرقام الحية -->
+        <!-- غرس حاوية العداد المفقودة بنجاح هنا لتشغيل الأرقام الحية -->
         <div id="golden-counter" style="text-align: center; margin: 10px auto;">قيد التحميل الكوني الحارس...</div>
     </div>
 
@@ -93,187 +92,7 @@
 <div id="cosmic-nebula-canvas-container" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -3 !important; pointer-events: none; overflow: hidden; background: #0d0d0d !important;">
     <div style="position: absolute; width: 150%; height: 150%; top: -25%; left: -25%; background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.15), transparent 50%), radial-gradient(circle at 70% 70%, rgba(0, 191, 255, 0.15), transparent 55%) !important; filter: blur(35px); animation: nebulaOrbit 40s linear infinite;"></div>
 </div>
-
 <script>
-    window.addEventListener('DOMContentLoaded', () => {
-        const canvas = document.getElementById('royalAuraCanvas');
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        let auraParticles = [];
-        let backgroundStars = [];
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            initStars(); // إعادة توليد النجوم لتناسب حجم الشاشة الجديد
-        }
-        window.addEventListener('resize', resizeCanvas);
-
-        // 1. توليد النجوم الفضائية الثابتة التي تومض برقة
-        function initStars() {
-            backgroundStars = [];
-            const starCount = Math.floor((canvas.width * canvas.height) / 6000); // كثافة متوازنة للنجوم
-            for (let i = 0; i < starCount; i++) {
-                backgroundStars.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: Math.random() * 1.5 + 0.5,
-                    alpha: Math.random(),
-                    speed: Math.random() * 0.02 + 0.01
-                });
-            }
-        }
-
-        // جزيئات الهالة التفاعلية للّمس
-        class AuraParticle {
-            constructor(x, y) {
-                this.x = x;
-                this.y = y;
-                this.size = Math.random() * 2 + 1;
-                this.speedX = Math.random() * 1.6 - 0.8;
-                this.speedY = Math.random() * 1.6 - 0.8;
-                this.color = Math.random() > 0.5 ? 'rgba(212, 175, 55, ' : 'rgba(0, 191, 255, ';
-                this.alpha = 1;
-                this.decay = Math.random() * 0.025 + 0.02;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                this.alpha -= this.decay;
-            }
-            draw() {
-                ctx.save();
-                ctx.globalAlpha = this.alpha;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = this.color + this.alpha + ')';
-                ctx.shadowBlur = 10;
-                ctx.shadowColor = this.color === 'rgba(212, 175, 55, ' ? '#d4af37' : '#00bfff';
-                ctx.fill();
-                ctx.restore();
-            }
-        }
-
-        function createAura(pointerX, pointerY) {
-            if(pointerX && pointerY) {
-                for (let i = 0; i < 3; i++) {
-                    auraParticles.push(new AuraParticle(pointerX, pointerY));
-                }
-            }
-        }
-
-        window.addEventListener('mousemove', (e) => createAura(e.clientX, e.clientY));
-        window.addEventListener('touchmove', (e) => {
-            if(e.touches && e.touches[0]) {
-                createAura(e.touches[0].clientX, e.touches[0].clientY);
-            }
-        }, { passive: true });
-
-        // المحرك الأساسي للتحريك المدمج
-        function animateCosmos() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            // أ) رسم وتحريك النجوم المتلألئة بالخلفية
-            backgroundStars.forEach(star => {
-                star.alpha += star.speed;
-                if (star.alpha > 1 || star.alpha < 0) {
-                    star.speed = -star.speed; // عكس الحركة لتأثير الوميض الناعم
-                }
-                ctx.save();
-                ctx.globalAlpha = Math.max(0.2, star.alpha);
-                ctx.beginPath();
-                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-                ctx.fillStyle = '#ffffff';
-                ctx.fill();
-                ctx.restore();
-      
-</script>
-
- 
-    
-    <div class="main-content">
-        <div class="diamond-zone">
-            <div class="diamond-3d" style="font-size: 50px; display: inline-block; filter: drop-shadow(0 0 20px #00e5ff); animation: rotateDiamond 4s infinite ease-in-out;">💎</div>
-        </div>
-        <div class="titles-wrapper">
-            <h1 class="shining-title-ar" style="font-size: 30px; font-family: 'Cairo', sans-serif; font-weight: 800; text-shadow: 0 0 15px #fff; margin: 5px 0;">مَمْلَكَةُ اَلْوُعُودِ</h1>
-            <h2 class="shining-title-en" style="font-size: 20px; font-family: 'Georgia', serif; font-style: italic; opacity: 0.9; text-shadow: 0 0 12px #8a2be2; margin: 5px 0;">𝓚𝓲𝓷𝓰𝓭𝓸𝓶 𝓸𝓯 𝓟𝓻𝓸𝓶𝓲𝓼𝓮𝓼</h2>
-        </div>
-
-        <!-- 👑 الشعار الأوسط بالتاج الملون الحقيقي والنبض الذهبي المشع الثابت بالملي -->
-        <div style="margin: 20px auto; text-align: center; animation: goldPulseEffect 1.8s infinite ease-in-out; display: block;">
-            <div style="font-size: 40px; font-weight: bold; letter-spacing: 2px;">👑 KR 👑</div>
-            <div style="font-size: 13px; font-weight: bold; margin-top: 5px; background: linear-gradient(45deg, #ffd700, #fcf6ba, #bf953f); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 5px rgba(255,215,0,0.6));">✨ منصة العائلة الملكية المعتمدة عالمياً ✨</div>
-            <div style="font-size: 11px; color: #ffffff; margin-top: 4px; opacity: 0.8;">🐼 Panda KR ✨</div>
-        </div>
-
-        <!-- الصندوق الترحيبي الأول المصغر والناعم جداً -->
-        <div class="glass-welcome-box" style="background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 20px; padding: 12px 18px; margin: 15px auto; max-width: 340px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);">
-            <h3 id="boxTitle" class="lang-txt" data-ar="أهلاً بك في فضاء الشراكة والعهد الجديد" data-en="Welcome to the Realm of Partnership and New Vows" style="margin-top: 0; color: #ffd700; font-size: 14px; font-weight: bold;">أهلاً بك في فضاء الشراكة والعهد الجديد</h3>
-            <p id="boxDesc" class="lang-txt" data-ar="إذَا كَانَتْ خُطْوَتُكُمْ اَلْأُولَى قَدْ بَدَأَتْ مِنْ (عَالَمِ اَلْحُبِّ)، فَإِنَّ تِلْكَ اَلرِّحْلَةَ قَدْ قَادَتْكُمْ إِلَى هُنَا.. إِلَى اَلْمَمْلَكَةِ اَلَّتِي تَحْمِي ذَلِكَ اَلْحُبَّ وَتُوثِّقُهُ. هُنَا لَا نَكْتُبُ كَلِمَاتٍ عَابِرَةً، بَلْ نَحْفِرُ عُهُوداً بِحِبْرِ اَلذَّهَبِ اَلْمُشِعِّ لِتَبْقَى ثَابِتَةً كَالنُّجُومِ فِي اَلسَّمَاءِ. فُتِحَتْ اَلْخَزْنَةُ اَلسِّحْرِيَّةُ لِتُعْلِنَ بَدْءَ صَفْحَتِنَا اَلْجَدِيدَةِ بِرَوَاقَةٍ تامة، حَيْثُ لَا تَنْتَهِي اَلوُعُودِ، وَلَا يَنْطَفِئُ بَرِيقُ اَلْجَوْهَرَةِ. أَهْلَاً بِكُمْ فِي فَضَاءِ اَلْعَهْدِ اَلْجَدِيدِ." data-en="If your first step began in the 'World of Love', that journey has rightfully led you here.. to the kingdom that protects and enshrines that love. Here, we do not write fleeting words; instead, we engrave vows in radiant golden ink to remain as unyielding as the stars in the sky." style="font-size: 12px; line-height: 1.5; color: #dcdcdc; text-align: justify; margin: 5px 0 0 0;">إذَا كَانَتْ خُطْوَتُكُمْ اَلْأُولَى قَدْ بَدَأَتْ مِنْ (عَالَمِ اَلْحُبِّ)، فَإِنَّ تِلْكَ اَلرِّحْلَةَ قَدْ قَادَتْكُمْ إِلَى هُنَا.. إِلَى اَلْمَمْلَكَةِ اَلَّتِي تَحْمِي ذَلِكَ اَلْحُبَّ وَتُوثِّقُهُ. هُنَا لَا نَكْتُبُ كَلِمَاتٍ عَابِرَةً، بَلْ نَحْفِرُ عُهُوداً بِحِبْرِ اَلذَّهَبِ اَلْمُشِعِّ لِتَبْقَى ثَابِتَةً كَالنُّجُومِ فِي اَلسَّمَاءِ.</p>
-        </div>
-    <!-- صندوق التواريخ الخالدة المضغوط والمصغر جداً -->
-    <div class="glass-welcome-box" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 215, 0, 0.1); border-radius: 12px; padding: 12px; margin: 10px auto; max-width: 420px; backdrop-filter: blur(8px); box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
-        <h3 class="lang-text" data-ar="📅 اللحظات والتواريخ الخالدة" data-en="📅 Timeless Moments & Dates" style="color: #ffd700; text-align: center; margin-bottom: 10px; font-size: 0.95rem;">📅 اللحظات والتواريخ الخالدة</h3>
-        
-        <div style="text-align: center; margin-bottom: 8px;">
-            <p style="font-weight: bold; color: #00bcd4; margin: 2px 0; font-size: 0.9rem;">2024 / 08 / 02 🌟</p>
-            <p id="timelineText1" class="lang-text" data-ar="هنا بدأ الكون الحقيقي.. اليوم الذي اختصر كل دنيتي وعالمي في نبضة واحدة خالدة، لتصبح الشراكة عهداً مكتوباً بأنوار الفضاء ويحميها التاج الملكي." data-en="Here the real universe began.. the day that summarized my whole life and world in one timeless heartbeat, making partnership a covenant written in cosmic lights and protected by the royal crown." style="color: #ccc; line-height: 1.4; font-size: 0.8rem; margin: 2px 0;">هنا بدأ الكون الحقيقي.. اليوم الذي اختصر كل دنيتي وعالمي في نبضة واحدة خالدة، لتصبح الشراكة عهداً مكتوباً بأنوار الفضاء ويحميها التاج الملكي.</p>
-        </div>
-
-       
-       <!-- امسح هذا الجزء فقط (الزر الثابت اللي فوق) -->
-    <div style="text-align: center; margin: 15px auto 5px auto;">
-        <a href="index.html" class="lang-text" data-ar="↩️ العودة إلى عالم الحب" data-en="↩️ Return to World of Love" style="display: inline-block; padding: 6px 18px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.15); color: #eee; border-radius: 20px; text-decoration: none; font-size: 0.8rem; transition: 0.2s;">↩️ العودة إلى عالم الحب</a>
-    </div>
-
-
-
-
-        
-
-    <!-- 👑 الفوتر السفلي بالتاج الملون الحقيقي والنبض الذهبي المشع الثابت بالملي -->
-    <footer class="royal-footer" style="text-align: center; margin-top: 40px; padding: 20px 0; border-top: 1px solid rgba(255, 215, 0, 0.12); background: rgba(5, 2, 10, 0.75); backdrop-filter: blur(15px);">
-        <div class="royal-bottom-logo" style="text-align: center; animation: goldPulseEffect 2.5s infinite ease-in-out;">
-            <div style="font-size: 40px; font-weight: bold; letter-spacing: 2px;">👑 KR 👑</div>
-            <div style="font-size: 12px; font-weight: bold; margin-top: 5px; background: linear-gradient(45deg, #ffd700, #fcf6ba, #bf953f); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.6));">✨ منصة العائلة الملكية المعتمدة عالمياً ✨</div>
-            <div style="font-size: 11px; color: #ffffff; margin-top: 4px; opacity: 0.85;">🐼 Panda KR ✨</div>
-        </div>
-        <p style="font-size: 10px; color: rgba(255,255,255,0.35); margin-top: 12px; font-weight: 300; letter-spacing: 1px;">جميع الحقوق محفوظة للمملكة © 2026</p>
-    </footer>
-
-    <style>
-        @keyframes rotateDiamond { 0% { transform: translateY(0) rotateY(0deg); } 50% { transform: translateY(-12px) rotateY(180deg); } 100% { transform: translateY(0) rotateY(360deg); } }
-        @keyframes goldPulseEffect { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-        @keyframes buttonFloat { 0%, 100% { transform: translateY(0); box-shadow: 0 0 12px rgba(0, 229, 255, 0.2); } 50% { transform: translateY(-3px); border-color: #00ffff; box-shadow: 0 0 20px rgba(0, 229, 255, 0.45); } }
-    </style>
-
-<script>
-    // 1. المتغيرات والتعريفات الأساسية المستقرة
-    let currentLang = 'ar';
-
-    window.updateAstroClock = function() {
-        const clockEl = document.getElementById('astro-clock');
-        if (clockEl) {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            clockEl.innerHTML = `⏰ الساعة: <span style="color: #00bfff;">${hours}:${minutes}:${seconds}</span>`;
-        }
-    };
-
-    
- <!-- لوحة الفضاء الشفافة ومحرك النجوم والهالة اللمسية التفاعلية لعائلة KR -->
-<canvas id="royalAuraCanvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1 !important; pointer-events: none;"></canvas>
-<div id="cosmic-nebula-canvas-container" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -3 !important; pointer-events: none; overflow: hidden; background: #0d0d0d !important;">
-    <div style="position: absolute; width: 150%; height: 150%; top: -25%; left: -25%; background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.15), transparent 50%), radial-gradient(circle at 70% 70%, rgba(0, 191, 255, 0.15), transparent 55%) !important; filter: blur(35px); animation: nebulaOrbit 40s linear infinite;"></div>
-</div>
-
-<script>
-    // 1. المتغيرات والتعريفات الأساسية المستقرة للمنصة
-    let currentLang = 'ar';
-
     window.updateAstroClock = function() {
         const clockEl = document.getElementById('astro-clock');
         if (clockEl) {
@@ -289,10 +108,8 @@
         const counterEl = document.getElementById('visitor-count');
         if (counterEl) {
             let count = parseInt(counterEl.innerText.replace(/,/g, '')) || 14478;
-            if(Math.random() > 0.6) {
-                count += Math.floor(Math.random() * 3) + 1;
-                counterEl.innerText = count.toLocaleString();
-            }
+            count += Math.floor(Math.random() * 2) + 1;
+            counterEl.innerText = count.toLocaleString();
         }
     };
 
@@ -310,40 +127,30 @@
             
             counterEl.style.fontSize = "0.78rem";
             counterEl.style.lineHeight = "1.5";
-            if (currentLang === 'ar') {
-                counterEl.innerHTML = `👑 تم حفر العهد منذ <span style="color: #d4af37; font-weight: bold;">${days}</span> يوم و <span style="color: #00bfff;">${hours}</span> س و <span style="color: #00bfff;">${minutes}</span> د و <span style="color: #d4af37;">${seconds}</span> ث`;
-            } else {
-                counterEl.innerHTML = `👑 Covenant: <span style="color: #d4af37; font-weight: bold;">${days}</span>d, <span style="color: #00bfff;">${hours}</span>h, <span style="color: #00bfff;">${minutes}</span>m, <span style="color: #d4af37;">${seconds}</span>s ago`;
-            }
+            counterEl.innerHTML = `👑 تم حفر العهد منذ <span style="color: #d4af37; font-weight: bold;">${days}</span> يوم و <span style="color: #00bfff;">${hours}</span> س و <span style="color: #00bfff;">${minutes}</span> د و <span style="color: #d4af37;">${seconds}</span> ث`;
         }
     };
 
-    window.switchLanguage = function(lang) {
-        currentLang = lang;
-        const mainContainer = document.getElementById('mainContainer');
-        if (!mainContainer) return;
-        if (lang === 'en') {
-            mainContainer.classList.add('en');
-            mainContainer.setAttribute('dir', 'ltr');
-        } else {
-            mainContainer.classList.remove('en');
-            mainContainer.setAttribute('dir', 'rtl');
+    function triggerCosmicAlignment() {
+        const infoBox = document.getElementById('cosmic-alignment-info');
+        const btn = document.getElementById('activate-cosmic-btn');
+        if (infoBox && btn) {
+            infoBox.style.maxHeight = "250px";
+            infoBox.style.opacity = "1";
+            infoBox.style.marginTop = "10px";
+            btn.innerHTML = "🔒 تم تفعيل القران الفلكي وتوثيق البيانات";
+            btn.style.border = "1px solid #2ecc71 !important";
+            btn.style.background = "rgba(46, 204, 113, 0.15) !important";
         }
-        window.updateGoldenCounter();
-        window.updateAstroClock();
-        if (typeof window.applyKingdomGreeting === 'function') window.applyKingdomGreeting();
-    };
+    }
 
-    // 2. المحرك الرئيسي للتحميل وإطلاق الأمان والنجوم اللامعة واللمس
     window.addEventListener('DOMContentLoaded', () => {
         window.updateAstroClock();
         setInterval(window.updateAstroClock, 1000);
         window.updateGoldenCounter();
         setInterval(window.updateGoldenCounter, 1000);
-        setInterval(window.setupVisitorCounter, 3000);
-        if (typeof window.applyKingdomGreeting === 'function') window.applyKingdomGreeting();
+        setInterval(window.setupVisitorCounter, 4000);
 
-        // تنشيط الفضاء والنجوم المتلألئة والهالة التفاعلية للّمس
         const canvas = document.getElementById('royalAuraCanvas');
         if (canvas) {
             const ctx = canvas.getContext('2d');
@@ -420,7 +227,7 @@
             initStars(); animateCosmos();
         }
 
-        // 3. درع الحماية السيبراني لحظر النسخ والتفتيش
+        // درع الحماية السيبراني لحظر النسخ والتفتيش
         document.addEventListener('contextmenu', event => event.preventDefault());
         document.addEventListener('keydown', event => {
             if (event.ctrlKey && (event.key === 'u' || event.key === 'c' || event.key === 's' || event.key === 'i')) {
@@ -434,7 +241,3 @@
 </script>
 </body>
 </html>
-           
-  
-     
-   
