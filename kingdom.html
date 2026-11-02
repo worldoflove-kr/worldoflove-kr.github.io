@@ -300,11 +300,33 @@
         }
     };
 
+    
+ <!-- لوحة الفضاء الشفافة ومحرك النجوم والهالة اللمسية التفاعلية لعائلة KR -->
+<canvas id="royalAuraCanvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1 !important; pointer-events: none;"></canvas>
+<div id="cosmic-nebula-canvas-container" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -3 !important; pointer-events: none; overflow: hidden; background: #0d0d0d !important;">
+    <div style="position: absolute; width: 150%; height: 150%; top: -25%; left: -25%; background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.15), transparent 50%), radial-gradient(circle at 70% 70%, rgba(0, 191, 255, 0.15), transparent 55%) !important; filter: blur(35px); animation: nebulaOrbit 40s linear infinite;"></div>
+</div>
+
+<script>
+    // 1. المتغيرات والتعريفات الأساسية المستقرة للمنصة
+    let currentLang = 'ar';
+
+    window.updateAstroClock = function() {
+        const clockEl = document.getElementById('astro-clock');
+        if (clockEl) {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            clockEl.innerHTML = `⏰ الساعة: <span style="color: #00bfff;">${hours}:${minutes}:${seconds}</span>`;
+        }
+    };
+
     window.setupVisitorCounter = function() {
         const counterEl = document.getElementById('visitor-count');
         if (counterEl) {
             let count = parseInt(counterEl.innerText.replace(/,/g, '')) || 14478;
-            if(Math.random() > 0.7) {
+            if(Math.random() > 0.6) {
                 count += Math.floor(Math.random() * 3) + 1;
                 counterEl.innerText = count.toLocaleString();
             }
@@ -349,13 +371,13 @@
         if (typeof window.applyKingdomGreeting === 'function') window.applyKingdomGreeting();
     };
 
-    // 2. المحرك الرئيسي للتحميل وإطلاق الأمان والنجوم اللامعة
+    // 2. المحرك الرئيسي للتحميل وإطلاق الأمان والنجوم اللامعة واللمس
     window.addEventListener('DOMContentLoaded', () => {
         window.updateAstroClock();
         setInterval(window.updateAstroClock, 1000);
         window.updateGoldenCounter();
         setInterval(window.updateGoldenCounter, 1000);
-        setInterval(window.setupVisitorCounter, 4000);
+        setInterval(window.setupVisitorCounter, 3000);
         if (typeof window.applyKingdomGreeting === 'function') window.applyKingdomGreeting();
 
         // تنشيط الفضاء والنجوم المتلألئة والهالة التفاعلية للّمس
@@ -414,7 +436,7 @@
 
             window.addEventListener('mousemove', (e) => createAura(e.clientX, e.clientY));
             window.addEventListener('touchmove', (e) => {
-                if(e.touches && e.touches[0]) { createAura(e.touches[0].clientX, e.touches[0].clientY); }
+                if(e.touches && e.touches) { createAura(e.touches.clientX, e.touches.clientY); }
             }, { passive: true });
 
             function animateCosmos() {
@@ -449,7 +471,7 @@
 </script>
 </body>
 </html>
-
+           
   
      
    
