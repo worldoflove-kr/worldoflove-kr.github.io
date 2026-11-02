@@ -62,6 +62,91 @@
         <button onclick="switchLanguage('ar')" class="lang-btn active-lang" id="btnAr">العربية</button>
         <button onclick="switchLanguage('en')" class="lang-btn" id="btnEn">English</button>
     </div>
+<!-- منظومة الدرع الكوني والهالة الملكية التفاعلية المدمجة لعائلة KR -->
+<div id="cosmic-nebula-canvas-container" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; pointer-events: none; overflow: hidden; background: radial-gradient(circle at 50% 50%, rgba(10, 10, 10, 1) 0%, rgba(5, 5, 5, 1) 100%);">
+    <div style="position: absolute; width: 150%; height: 150%; top: -25%; left: -25%; background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.06), transparent 45%), radial-gradient(circle at 70% 70%, rgba(0, 191, 255, 0.06), transparent 50%); filter: blur(40px); animation: nebulaOrbit 40s linear infinite;"></div>
+</div>
+<canvas id="royalAuraCanvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none;"></canvas>
+
+<style>
+    @keyframes nebulaOrbit {
+        0% { transform: rotate(0deg) scale(1); }
+        50% { transform: rotate(180deg) scale(1.08); }
+        100% { transform: rotate(360deg) scale(1); }
+    }
+</style>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.getElementById('royalAuraCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class AuraParticle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 2 + 0.8;
+                this.speedX = Math.random() * 1.6 - 0.8;
+                this.speedY = Math.random() * 1.6 - 0.8;
+                this.color = Math.random() > 0.5 ? 'rgba(212, 175, 55, ' : 'rgba(0, 191, 255, ';
+                this.alpha = 1;
+                this.decay = Math.random() * 0.025 + 0.02;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.alpha -= this.decay;
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color + this.alpha + ')';
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = this.color === 'rgba(212, 175, 55, ' ? '#d4af37' : '#00bfff';
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        function createAura(e) {
+            let pointerX = e.touches ? e.touches[0].clientX : e.clientX;
+            let pointerY = e.touches ? e.touches[0].clientY : e.clientY;
+            if(pointerX && pointerY) {
+                for (let i = 0; i < 3; i++) {
+                    particles.push(new AuraParticle(pointerX, pointerY));
+                }
+            }
+        }
+
+        window.addEventListener('mousemove', createAura);
+        window.addEventListener('touchmove', createAura, { passive: true });
+
+        function animateAura() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                if (particles[i].alpha <= 0) {
+                    particles.splice(i, 1);
+                    i--;
+                }
+            }
+            requestAnimationFrame(animateAura);
+        }
+        animateAura();
+    });
+</script>
     
     <div class="main-content">
         <div class="diamond-zone">
