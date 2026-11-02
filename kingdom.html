@@ -447,6 +447,92 @@
         document.addEventListener('keydown', event => {
             if (event.ctrlKey && (event.key === 'u' || event.key === 'c' || event.key === 's' || event.key === 'i')) {
                 event.preventDefault();
+<!-- إعادة تشغيل محرك النجوم المتلألئة والهالة اللمسية لعائلة KR -->
+<canvas id="royalAuraCanvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1 !important; pointer-events: none;"></canvas>
+<div id="cosmic-nebula-canvas-container" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -3 !important; pointer-events: none; overflow: hidden; background: #0d0d0d !important;">
+    <div style="position: absolute; width: 150%; height: 150%; top: -25%; left: -25%; background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.15), transparent 50%), radial-gradient(circle at 70% 70%, rgba(0, 191, 255, 0.15), transparent 55%) !important; filter: blur(35px); animation: nebulaOrbit 40s linear infinite;"></div>
+</div>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.getElementById('royalAuraCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let auraParticles = [];
+        let backgroundStars = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initStars();
+        }
+        window.addEventListener('resize', resizeCanvas);
+
+        function initStars() {
+            backgroundStars = [];
+            const starCount = Math.floor((canvas.width * canvas.height) / 6000);
+            for (let i = 0; i < starCount; i++) {
+                backgroundStars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 1.5 + 0.5,
+                    alpha: Math.random(),
+                    speed: Math.random() * 0.02 + 0.01
+                });
+            }
+        }
+
+        class AuraParticle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 1.6 - 0.8;
+                this.speedY = Math.random() * 1.6 - 0.8;
+                this.color = Math.random() > 0.5 ? 'rgba(212, 175, 55, ' : 'rgba(0, 191, 255, ';
+                this.alpha = 1;
+                this.decay = Math.random() * 0.025 + 0.02;
+            }
+            update() { this.x += this.speedX; this.y += this.speedY; this.alpha -= this.decay; }
+            draw() {
+                ctx.save(); ctx.globalAlpha = this.alpha; ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color + this.alpha + ')';
+                ctx.shadowBlur = 10; ctx.shadowColor = this.color === 'rgba(212, 175, 55, ' ? '#d4af37' : '#00bfff';
+                ctx.fill(); ctx.restore();
+            }
+        }
+
+        function createAura(pointerX, pointerY) {
+            if(pointerX && pointerY) {
+                for (let i = 0; i < 3; i++) { auraParticles.push(new AuraParticle(pointerX, pointerY)); }
+            }
+        }
+
+        window.addEventListener('mousemove', (e) => createAura(e.clientX, e.clientY));
+        window.addEventListener('touchmove', (e) => {
+            if(e.touches && e.touches) { createAura(e.touches.clientX, e.touches.clientY); }
+        }, { passive: true });
+
+        function animateCosmos() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            backgroundStars.forEach(star => {
+                star.alpha += star.speed;
+                if (star.alpha > 1 || star.alpha < 0) star.speed = -star.speed;
+                ctx.save(); ctx.globalAlpha = Math.max(0.2, star.alpha); ctx.beginPath();
+                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2); ctx.fillStyle = '#ffffff'; ctx.fill(); ctx.restore();
+            });
+            for (let i = 0; i < auraParticles.length; i++) {
+                auraParticles[i].update(); auraParticles[i].draw();
+                if (auraParticles[i].alpha <= 0) { auraParticles.splice(i, 1); i--; }
+            }
+            requestAnimationFrame(animateCosmos);
+        }
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        initStars(); animateCosmos();
+    });
+</script>
+           
             }
             if (event.key === 'F12') event.preventDefault();
         });
