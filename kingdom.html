@@ -9,28 +9,9 @@
         body { background: transparent !important; margin: 0; padding: 0; overflow-x: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         .glass-panel { background: rgba(20, 20, 20, 0.65) !important; border: 1px solid rgba(212, 175, 55, 0.25) !important; backdrop-filter: blur(10px) !important; -webkit-backdrop-filter: blur(10px) !important; color: #f5f5f5 !important; border-radius: 12px; margin: 10px auto; width: 90%; max-width: 450px; box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
         .main-content { position: relative; z-index: 10 !important; padding: 5px; text-align: center; }
-        
-        /* تأثير النبض الذهبي للشعار الملكي */
-        @keyframes goldPulse {
-            0% { transform: scale(1); text-shadow: 0 0 8px rgba(212,175,55,0.4); }
-            50% { transform: scale(1.05); text-shadow: 0 0 18px rgba(212,175,55,0.8), 0 0 25px rgba(212,175,55,0.4); }
-            100% { transform: scale(1); text-shadow: 0 0 8px rgba(212,175,55,0.4); }
-        }
-        
-        /* التموج الفلكي البطيء لاسم الصفحة */
-        @keyframes cosmicWave {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-4px) rotate(0.5deg); text-shadow: 0 0 15px rgba(0,191,255,0.5); }
-            100% { transform: translateY(0px) rotate(0deg); }
-        }
-
-        /* طفو ودوران الجوهرة ثلاثية الأبعاد */
-        @keyframes diamondFloat {
-            0% { transform: translateY(0px) rotate(0deg); filter: drop-shadow(0 0 6px rgba(0,191,255,0.4)); }
-            50% { transform: translateY(-6px) rotate(180deg); filter: drop-shadow(0 0 15px rgba(0,191,255,0.7)); }
-            100% { transform: translateY(0px) rotate(360deg); filter: drop-shadow(0 0 6px rgba(0,191,255,0.4)); }
-        }
-
+        @keyframes goldPulse { 0% { transform: scale(1); text-shadow: 0 0 8px rgba(212,175,55,0.4); } 50% { transform: scale(1.04); text-shadow: 0 0 18px rgba(212,175,55,0.8); } 100% { transform: scale(1); text-shadow: 0 0 8px rgba(212,175,55,0.4); } }
+        @keyframes cosmicWave { 0% { transform: translateY(0px); } 50% { transform: translateY(-4px); text-shadow: 0 0 12px rgba(0,191,255,0.5); } 100% { transform: translateY(0px); } }
+        @keyframes diamondFloat { 0% { transform: translateY(0px) rotate(0deg); filter: drop-shadow(0 0 6px rgba(0,191,255,0.4)); } 50% { transform: translateY(-6px) rotate(180deg); filter: drop-shadow(0 0 15px rgba(0,191,255,0.7)); } 100% { transform: translateY(0px) rotate(360deg); filter: drop-shadow(0 0 6px rgba(0,191,255,0.4)); } }
         @keyframes radarRotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         @keyframes nebulaOrbit { 0% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.04); } 100% { transform: rotate(360deg) scale(1); } }
     </style>
@@ -38,41 +19,49 @@
 <body>
 <div id="mainContainer" class="main-content">
     
-    <!-- 1. شريط البورصة المزدوج المتطور (العالمية + الخليجية) -->
+    <!-- 1. شريط البورصة الشامل والمزدوج (العالمية، الخليجية، السعودية، والإماراتية) -->
     <div class="ticker-wrap" style="background: rgba(10,10,10,0.85); border-bottom: 1px solid rgba(212,175,55,0.2);">
         <div class="ticker">
-            <span class="ticker-item">👑 منصة عائلة KR الملكية المعتمدة</span>
+            <span class="ticker-item">👑 منصة عائلة KR الملكية</span>
             <span class="ticker-item">✨ الذهب العالمي: <span style="color: #2ecc71;">$2,735.40</span></span>
+            <span class="ticker-item">🇸🇦 ذهب السعودية (24): <span style="color: #f1c40f;">330.15 ر.س</span></span>
+            <span class="ticker-item">🇦🇪 ذهب الإمارات (24)</span>
             <span class="ticker-item">📊 بورصة الخليج: <span style="color: #2ecc71;">+0.45%</span></span>
             <span class="ticker-item">💵 مؤشر الدولار: <span style="color: #e74c3c;">104.20</span></span>
         </div>
     </div>
 
-    <!-- 2. شريط بحث غوغل الناعم والمستقل تماماً بأسفل البورصة -->
+    <!-- 2. شريط بحث غوغل الناعم والمستقل -->
     <div class="glass-panel" style="padding: 10px; border-radius: 30px; max-width: 380px;">
         <form action="https://google.com" method="get" target="_blank" style="display: flex; justify-content: center; align-items: center; gap: 5px; margin: 0;">
             <input type="text" name="q" placeholder="البحث في غوغل من قلب المملكة..." style="background: rgba(255,255,255,0.08); border: 1px solid rgba(212,175,55,0.3); color: #fff; padding: 6px 12px; border-radius: 20px; width: 75%; font-size: 0.78rem; outline: none;">
             <button type="submit" style="background: linear-gradient(135deg, #d4af37, #f3e5ab); border: none; padding: 6px 14px; border-radius: 20px; color: #000; font-weight: bold; font-size: 0.75rem; cursor: pointer;">بحث</button>
         </form>
     </div>
-    <!-- 3. صندوق التوقيت الفلكي والطقس الناعم والمستقل -->
+
+    <!-- 3. صندوق التوقيت الفلكي والطقس الصغير والناعم -->
     <div class="glass-panel" style="padding: 10px; max-width: 360px; font-size: 0.76rem; line-height: 1.4;">
         <div id="astro-clock" style="font-size: 0.88rem; font-weight: bold; color: #fff; text-shadow: 0 0 5px rgba(0,191,255,0.4);">⏰ الساعة: <span style="color: #00bfff;">--:--:--</span></div>
         <div style="color: #cbd5e0; margin-top: 3px;">🌤️ طقس بيروت: 24°C صافي | 💧 الرطوبة: 62%</div>
     </div>
 
-    <!-- 4. أزرار الترجمة اللغوية الذكية للمملكة -->
+    <!-- 4. أزرار الترجمة اللغوية الذكية -->
     <div style="margin: 10px auto; display: flex; justify-content: center; gap: 8px;">
         <button onclick="window.switchLanguage('ar')" style="background: rgba(212,175,55,0.15); border: 1px solid #d4af37; color: #fff; padding: 5px 12px; border-radius: 15px; font-size: 0.72rem; font-weight: bold; cursor: pointer;">العربية</button>
         <button onclick="window.switchLanguage('en')" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: #ccc; padding: 5px 12px; border-radius: 15px; font-size: 0.72rem; cursor: pointer;">English</button>
     </div>
 
-    <!-- 5. لوحة عدد زوار الصفحة الملمومة النظيفة -->
+    <!-- 5. لوحة عدد زوار الصفحة الملمومة -->
     <div class="glass-panel" style="max-width: 260px; padding: 6px; border-radius: 20px; font-size: 0.76rem;">
-        👥 عدد زوار مملكتنا الحين: <span id="visitor-count" style="color: #00bfff; font-weight: bold;">14,488</span>
+        👥 عدد زوار مملكتنا الحين: <span id="visitor-count" style="color: #00bfff; font-weight: bold;">14,530</span>
     </div>
 
-    <!-- 6. الجوهرة ثلاثية الأبعاد اللامعة والمتحركة عائلياً بنعومة -->
+    <!-- 6. صندوق الترحيب العاطفي الملكي المعاد بكامل كلماته النبيلة -->
+    <div class="glass-panel" style="max-width: 430px; padding: 15px; text-align: right; direction: rtl;">
+        <h3 id="welcome-title" style="color: #d4af37; font-size: 0.9rem; text-align: center; margin: 0 0 8px 0;">أهلاً بك في فضاء الشراكة والعهد الجديد</h3>
+        <p id="welcome-desc" style="font-size: 0.76rem; line-height: 1.6; color: #cbd5e0; margin: 0;">إذا كانت خطوتكم الأولى قد بدأت من (عالم الحب)، فإن تلك الرحلة قد قادتكم إلى هنا.. إلى المملكة التي تحمي ذلك الحب وتوثقه. هنا لا نكتب كلمات عابرة، بل نحفر عهوداً بحبر الذهب المشع لتبقى ثابتة كالنجوم في السماء.</p>
+    </div>
+    <!-- 7. الجوهرة ثلاثية الأبعاد اللامعة والمتحركة بنعومة -->
     <div style="margin: 15px auto; width: 45px; height: 45px; animation: diamondFloat 4s ease-in-out infinite;">
         <svg viewBox="0 0 100 100" style="width: 100%; height: 100%;">
             <polygon points="50,15 80,35 50,85 20,35" fill="none" stroke="#00bfff" stroke-width="4" style="filter: drop-shadow(0 0 5px #00bfff);"/>
@@ -81,26 +70,50 @@
         </svg>
     </div>
 
-    <!-- 7. اسم الصفحة المتموج والمزخرف حركياً وثنائية اللغة -->
+    <!-- 8. اسم الصفحة المتموج والمزخرف حركياً وثنائية اللغة -->
     <div style="margin: 10px auto; animation: cosmicWave 5s ease-in-out infinite;">
         <h1 id="king-title-ar" style="color: #d4af37; font-size: 1.4rem; margin: 0; font-family: 'Times New Roman', serif; text-shadow: 0 0 8px rgba(212,175,55,0.3); font-weight: bold; letter-spacing: 1px;">مَمْلَكَةُ الْوُعُودِ</h1>
         <h2 id="king-title-en" style="color: #cbd5e0; font-size: 0.8rem; margin: 2px 0 0 0; font-style: italic; letter-spacing: 2px;">Kingdom of Promises</h2>
     </div>
 
-    <!-- لوحة التواريخ الخالدة الحية بالثواني الناعمة -->
-    <div class="glass-panel" style="max-width: 420px; padding: 15px; border-radius: 14px;">
-        <h3 id="panel-heading" style="color: #d4af37; font-size: 0.85rem; margin: 0 0 8px 0;">✨ اللحظات والتواريخ الخالدة</h3>
-        <p style="color: #00bfff; font-size: 0.95rem; font-weight: bold; margin: 5px 0;">🌟 02 / 08 / 2024</p>
+    <!-- 9. لوحة التواريخ الخالدة وميلاد القلوب كاملة ومحدثة كما بالصورة -->
+    <div class="glass-panel" style="max-width: 430px; padding: 15px; border-radius: 14px; text-align: center;">
+        <h3 id="panel-heading" style="color: #d4af37; font-size: 0.88rem; margin: 0 0 8px 0;">📅 اللحظات والتواريخ الخالدة</h3>
+        <p style="color: #00bfff; font-size: 0.95rem; font-weight: bold; margin: 5px 0;">👑 02 / 08 / 2024</p>
         <p id="panel-desc" style="font-size: 0.76rem; line-height: 1.5; color: #cbd5e0; margin: 0 0 10px 0;">هنا بدأ الكون الحقيقي.. اليوم الذي اختصر كل دنيتي وعالمي في نبضة واحدة خالدة، لتصبح الشراكة عهداً مكتوباً بأنوار الفضاء ويحميها التاج الملكي.</p>
+        
         <div style="height: 1px; background: linear-gradient(to right, transparent, rgba(212,175,55,0.25), transparent); margin: 10px 0;"></div>
-        <div id="golden-counter" style="text-align: center; margin: 5px auto; font-size: 0.78rem; font-weight: bold;">قيد الاتصال الكوني الحارس...</div>
+        
+        <p style="color: #00bfff; font-size: 0.95rem; font-weight: bold; margin: 5px 0;">👑 27 / 05 / 1983 ~ 04 / 11 / 1983</p>
+        <p id="birthday-desc" style="font-size: 0.76rem; line-height: 1.5; color: #cbd5e0; margin: 0 0 10px 0;">ميلاد القلوب الملكية التي صنعت هذه المملكة.. تاريخان حفرتهما النجوم في ذاكرة الفضاء لنحتفل معاً بعهد جديد لا يعرف النهاية.</p>
+        
+        <div style="height: 1px; background: linear-gradient(to right, transparent, rgba(212,175,55,0.25), transparent); margin: 10px 0;"></div>
+        <div id="golden-counter" style="text-align: center; margin: 5px auto; font-size: 0.78rem; font-weight: bold; color: #fff;">قيد التحميل الكوني الحارس...</div>
+    </div>
+
+    <!-- 10. مرصد القران الفلكي التفاعلي للأمنيات -->
+    <div class="glass-panel" style="background: rgba(15, 15, 15, 0.7) !important; border-radius: 14px; padding: 12px; max-width: 320px;">
+        <div id="cosmic-radar" style="width: 50px; height: 50px; border: 1px dashed rgba(0, 191, 255, 0.3) !important; border-radius: 50%; margin: 0 auto 8px auto; position: relative; animation: radarRotate 25s linear infinite;">
+            <div style="width: 30px; height: 30px; border: 1px dashed rgba(212, 175, 55, 0.25) !important; border-radius: 50%; position: absolute; top: 9px; left: 9px;"></div>
+        </div>
+        <h3 id="radar-title" style="color: #d4af37; font-size: 0.8rem; margin: 0 0 4px 0;">🌌 مرصد القران الفلكي الملكي</h3>
+        <button id="activate-cosmic-btn" onclick="triggerCosmicAlignment()" style="background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(0,191,255,0.15)); border: 1px solid #d4af37; padding: 5px 10px; color: #fff; border-radius: 15px; font-size: 0.7rem; font-weight: bold; cursor: pointer;">✨ تنشيط القران واستكشاف العهد</button>
+        <div id="cosmic-alignment-info" style="max-height: 0; opacity: 0; overflow: hidden; transition: all 0.6s ease; font-size: 0.72rem; text-align: right; direction: rtl;">
+            <div style="height: 1px; background: linear-gradient(to right, transparent, rgba(212,175,55,0.25), transparent); margin: 8px 0;"></div>
+            <p id="radar-info-text" style="color: #cbd5e0; margin: 0;">✨ تلتقي السدم لتؤكد اصطفاف النجوم فوق سماء المملكة لـ <span style="color: #d4af37;">Panda KR</span> الموثقة رقمياً.</p>
+        </div>
+    </div>
+
+    <!-- 11. شريط يوم مشرق ومريح ناعم مضاف بالكامل -->
+    <div class="glass-panel" style="max-width: 340px; padding: 8px; border-radius: 20px; font-size: 0.8rem; color: #fff; margin: 15px auto;">
+        🌤️ يوم مشرق ومريح نتمناه لك في مملكة الوعود
     </div>
 
     <div style="text-align: center; margin: 15px auto;">
         <a href="index.html" class="glass-panel" style="text-decoration: none; padding: 8px 20px; border-radius: 30px; font-size: 0.78rem; font-weight: bold; display: inline-block;">↪️ العودة إلى عالم الحب</a>
     </div>
 
-    <!-- 8. فوتير الهوية الملكية وشعار KR الذهبي النابض والمتحرك -->
+    <!-- 12. فوتير الهوية الملكية وشعار KR الذهبي النابض والمتحرك -->
     <footer style="text-align: center; padding: 15px; color: #888; font-size: 0.72rem;">
         <div style="color: #d4af37; font-weight: bold; font-size: 1.1rem; margin-bottom: 3px; animation: goldPulse 3s ease-in-out infinite; display: inline-block; letter-spacing: 1px;">👑 KR 👑</div>
         <div style="color: #cbd5e0; font-size: 0.76rem; margin-bottom: 4px;">Panda KR 🐼</div>
@@ -130,7 +143,7 @@
     window.setupVisitorCounter = function() {
         const counterEl = document.getElementById('visitor-count');
         if (counterEl) {
-            let count = parseInt(counterEl.innerText.replace(/,/g, '')) || 14478;
+            let count = parseInt(counterEl.innerText.replace(/,/g, '')) || 14530;
             count += Math.floor(Math.random() * 2) + 1;
             counterEl.innerText = count.toLocaleString();
         }
@@ -162,17 +175,32 @@
         const tEn = document.getElementById('king-title-en');
         const head = document.getElementById('panel-heading');
         const desc = document.getElementById('panel-desc');
+        const bDesc = document.getElementById('birthday-desc');
+        const wTitle = document.getElementById('welcome-title');
+        const wDesc = document.getElementById('welcome-desc');
+        const rTitle = document.getElementById('radar-title');
+        const rText = document.getElementById('radar-info-text');
         
         if(lang === 'en') {
             if(tAr) tAr.style.display = 'none';
             if(tEn) { tEn.style.display = 'block'; tEn.style.fontSize = '1.3rem'; tEn.style.color = '#d4af37'; tEn.style.fontStyle = 'normal'; }
             if(head) head.innerHTML = '✨ Moments & Eternal Dates';
             if(desc) desc.innerHTML = 'Here the true universe began.. The day that summarized all my life and world into one eternal pulse, to make the partnership a covenant written with space lights and protected by the royal crown.';
+            if(bDesc) bDesc.innerHTML = 'The birth of royal hearts that made this kingdom.. Two dates carved by stars in space memory to celebrate together a new covenant that knows no end.';
+            if(wTitle) wTitle.innerHTML = 'Welcome to the Space of Partnership and the New Covenant';
+            if(wDesc) wDesc.innerHTML = 'If your first step started from (World of Love), then that journey has led you here.. to the Kingdom that protects and documents that love. Here we do not write transient words, but carve covenants with glowing gold ink to remain fixed like stars in the sky.';
+            if(rTitle) rTitle.innerHTML = '🌌 Royal Cosmic Alignment Radar';
+            if(rText) rText.innerHTML = '✨ Nebulas meet to confirm stars alignment over the kingdom sky for digitally documented <span style="color: #d4af37;">Panda KR</span>.';
         } else {
             if(tAr) tAr.style.display = 'block';
             if(tEn) { tEn.style.display = 'block'; tEn.style.fontSize = '0.8rem'; tEn.style.color = '#cbd5e0'; tEn.style.fontStyle = 'italic'; }
-            if(head) head.innerHTML = '✨ اللحظات والتواريخ الخالدة';
+            if(head) head.innerHTML = '📅 اللحظات والتواريخ الخالدة';
             if(desc) desc.innerHTML = 'هنا بدأ الكون الحقيقي.. اليوم الذي اختصر كل دنيتي وعالمي في نبضة واحدة خالدة، لتصبح الشراكة عهداً مكتوباً بأنوار الفضاء ويحميها التاج الملكي.';
+            if(bDesc) bDesc.innerHTML = 'ميلاد القلوب الملكية التي صنعت هذه المملكة.. تاريخان حفرتهما النجوم في ذاكرة الفضاء لنحتفل معاً بعهد جديد لا يعرف النهاية.';
+            if(wTitle) wTitle.innerHTML = 'أهلاً بك في فضاء الشراكة والعهد الجديد';
+            if(wDesc) wDesc.innerHTML = 'إذا كانت خطوتكم الأولى قد بدأت من (عالم الحب)، فإن تلك الرحلة قد قادتكم إلى هنا.. إلى المملكة التي تحمي ذلك الحب وتوثقه. هنا لا نكتب كلمات عابرة، بل نحفر عهوداً بحبر الذهب المشع لتبقى ثابتة كالنجوم في السماء.';
+            if(rTitle) rTitle.innerHTML = '🌌 مرصد القران الفلكي الملكي';
+            if(rText) rText.innerHTML = '✨ تلتقي السدم لتؤكد اصطفاف النجوم فوق سماء المملكة لـ <span style="color: #d4af37;">Panda KR</span> الموثقة رقمياً.';
         }
         window.updateGoldenCounter();
     };
