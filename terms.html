@@ -234,6 +234,17 @@
                 btn.innerText = 'العربية';
             }
         }
+        // درع الحماية الملكي لصفحة الشروط والأحكام
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('keydown', event => {
+            if (event.ctrlKey && (event.key === 'u' || event.key === 'c' || event.key === 's' || event.key === 'i')) {
+                event.preventDefault();
+            }
+            if (event.key === 'F12') event.preventDefault();
+        });
+        document.body.style.webkitUserSelect = "none";
+        document.body.style.userSelect = "none";
+ 
     </script>
 </body>
 </html>
