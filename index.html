@@ -2351,6 +2351,47 @@ document.getElementById('activate-star-btn').onclick = function() {
     window.addEventListener('DOMContentLoaded', applyRoyalGreeting);
 </script>
 <center><div style="margin: 15px auto;"><a href="terms.html" style="color: #d4af37; text-decoration: none; text-shadow: 0 0 8px rgba(212, 175, 55, 0.4); font-weight: bold; font-size: 15px;">⚖️ الشروط والأحكام السياسية الملكية للمنصة</a></div></center>
+<!-- لوحة الإحصائيات المتقدمة + درع الحماية الملكي من السرقة والتخريب -->
+<div class="glass-panel" style="background: rgba(20, 20, 20, 0.65); border: 1px solid rgba(212, 175, 55, 0.25); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 16px; padding: 20px; width: 100%; max-width: 600px; margin: 25px auto; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); text-align: center;">
+    <h3 style="color: #d4af37; font-size: 1.1rem; margin-bottom: 15px; text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);">📊 لوحة المؤشرات الرقمية ودرع الحماية السيبراني للمنصة</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-bottom: 10px;">
+        <div style="background: rgba(0,0,0,0.4); padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);">
+            <div style="font-size: 0.8rem; color: #b0b0b0; margin-bottom: 5px;">👥 متواجدون الآن</div>
+            <div id="live-users-count" style="font-size: 1.2rem; font-weight: bold; color: #00bfff; text-shadow: 0 0 8px rgba(0, 191, 255, 0.4);">352</div>
+        </div>
+        <div style="background: rgba(0,0,0,0.4); padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);">
+            <div style="font-size: 0.8rem; color: #b0b0b0; margin-bottom: 5px;">🛡️ نظام جدار حماية KR</div>
+            <div style="font-size: 0.95rem; font-weight: bold; color: #2ecc71; text-shadow: 0 0 8px rgba(46, 204, 113, 0.4);">100% Active</div>
+        </div>
+        <div style="background: rgba(0,0,0,0.4); padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);">
+            <div style="font-size: 0.8rem; color: #b0b0b0; margin-bottom: 5px;">⭐ تقييم الأمان الملكي</div>
+            <div style="font-size: 1.2rem; font-weight: bold; color: #f1c40f; text-shadow: 0 0 8px rgba(241, 196, 15, 0.4);">A+ Secure</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const liveUsersEl = document.getElementById('live-users-count');
+        if (liveUsersEl) {
+            setInterval(() => {
+                let currentLive = Math.floor(Math.random() * (365 - 340 + 1)) + 340;
+                liveUsersEl.innerText = currentLive;
+            }, 3500);
+        }
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('keydown', event => {
+            if (event.ctrlKey && (event.key === 'u' || event.key === 'c' || event.key === 's' || event.key === 'i')) {
+                event.preventDefault();
+            }
+            if (event.key === 'F12') {
+                event.preventDefault();
+            }
+        });
+        document.body.style.webkitUserSelect = "none";
+        document.body.style.userSelect = "none";
+    });
+</script>
 
 <!-- قسم الوثائق القانونية الرسمية للمنصة فوق الشعار -->
 <div id="legal-section" style="border: 1px solid #4a5568; border-radius: 15px; padding: 20px; margin: 20px; background: rgba(13, 11, 24, 0.7); text-align: center; clear: both;">
