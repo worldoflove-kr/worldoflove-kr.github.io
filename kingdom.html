@@ -62,14 +62,13 @@
         <button onclick="switchLanguage('ar')" class="lang-btn active-lang" id="btnAr">العربية</button>
         <button onclick="switchLanguage('en')" class="lang-btn" id="btnEn">English</button>
     </div>
-<!-- منظومة الدرع الكوني والهالة الملكية التفاعلية مع الاختراق الشامل لعائلة KR -->
-<div id="cosmic-nebula-canvas-container" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2 !important; pointer-events: none; overflow: hidden; background: #0d0d0d !important;">
+<!-- منظومة الدرع الكوني الكامل: السحب المتموجة + النجوم المتلألئة + الهالة التفاعلية لعائلة KR -->
+<div id="cosmic-nebula-canvas-container" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -3 !important; pointer-events: none; overflow: hidden; background: #0d0d0d !important;">
     <div style="position: absolute; width: 150%; height: 150%; top: -25%; left: -25%; background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.15), transparent 50%), radial-gradient(circle at 70% 70%, rgba(0, 191, 255, 0.15), transparent 55%) !important; filter: blur(35px); animation: nebulaOrbit 40s linear infinite;"></div>
 </div>
 <canvas id="royalAuraCanvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1 !important; pointer-events: none;"></canvas>
 
 <style>
-    /* اختراق ذكي لإجبار جميع الحاويات واللوحات والخطوط على الشفافية والوضوح الملكي */
     body { background: transparent !important; }
     .glass-panel { background: rgba(20, 20, 20, 0.6) !important; border: 1px solid rgba(212, 175, 55, 0.3) !important; backdrop-filter: blur(12px) !important; -webkit-backdrop-filter: blur(12px) !important; color: #f5f5f5 !important; }
     .info-grid div, .info-grid span { color: #f5f5f5 !important; }
@@ -88,15 +87,32 @@
         const canvas = document.getElementById('royalAuraCanvas');
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
-        let particles = [];
+        let auraParticles = [];
+        let backgroundStars = [];
 
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+            initStars(); // إعادة توليد النجوم لتناسب حجم الشاشة الجديد
         }
         window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
 
+        // 1. توليد النجوم الفضائية الثابتة التي تومض برقة
+        function initStars() {
+            backgroundStars = [];
+            const starCount = Math.floor((canvas.width * canvas.height) / 6000); // كثافة متوازنة للنجوم
+            for (let i = 0; i < starCount; i++) {
+                backgroundStars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 1.5 + 0.5,
+                    alpha: Math.random(),
+                    speed: Math.random() * 0.02 + 0.01
+                });
+            }
+        }
+
+        // جزيئات الهالة التفاعلية للّمس
         class AuraParticle {
             constructor(x, y) {
                 this.x = x;
@@ -129,7 +145,7 @@
         function createAura(pointerX, pointerY) {
             if(pointerX && pointerY) {
                 for (let i = 0; i < 3; i++) {
-                    particles.push(new AuraParticle(pointerX, pointerY));
+                    auraParticles.push(new AuraParticle(pointerX, pointerY));
                 }
             }
         }
@@ -141,21 +157,46 @@
             }
         }, { passive: true });
 
-        function animateAura() {
+        // المحرك الأساسي للتحريك المدمج
+        function animateCosmos() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-                if (particles[i].alpha <= 0) {
-                    particles.splice(i, 1);
+
+            // أ) رسم وتحريك النجوم المتلألئة بالخلفية
+            backgroundStars.forEach(star => {
+                star.alpha += star.speed;
+                if (star.alpha > 1 || star.alpha < 0) {
+                    star.speed = -star.speed; // عكس الحركة لتأثير الوميض الناعم
+                }
+                ctx.save();
+                ctx.globalAlpha = Math.max(0.2, star.alpha);
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                ctx.fillStyle = '#ffffff';
+                ctx.fill();
+                ctx.restore();
+            });
+
+            // ب) رسم وتحديث جزيئات الهالة اللمسية
+            for (let i = 0; i < auraParticles.length; i++) {
+                auraParticles[i].update();
+                auraParticles[i].draw();
+                if (auraParticles[i].alpha <= 0) {
+                    auraParticles.splice(i, 1);
                     i--;
                 }
             }
-            requestAnimationFrame(animateAura);
+            requestAnimationFrame(animateCosmos);
         }
-        animateAura();
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        initStars();
+        animateCosmos();
     });
 </script>
+
+
+     
 
     
 
