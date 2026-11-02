@@ -57,28 +57,28 @@
             </span>
         </div>
     </div>
-<!-- منظومة المرصد الفلكي والقران الملكي التفاعلي للزوار -->
-<div class="glass-panel" style="background: rgba(15, 15, 15, 0.7) !important; border: 1px solid rgba(212, 175, 55, 0.25) !important; border-radius: 16px; padding: 25px; width: 100%; max-width: 600px; margin: 30px auto; text-align: center; box-shadow: 0 10px 35px rgba(0,0,0,0.6); position: relative; overflow: hidden;">
+<!-- منظومة المرصد الفلكي والقران الملكي التفاعلي للزوار - النسخة الناعمة والمصغرة -->
+<div class="glass-panel" style="background: rgba(15, 15, 15, 0.7) !important; border: 1px solid rgba(212, 175, 55, 0.25) !important; border-radius: 14px; padding: 15px; width: 95%; max-width: 480px; margin: 15px auto; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.5); position: relative; overflow: hidden;">
     
-    <!-- محاكاة الرادار الفلكي الدائري للمسارات الكونية -->
-    <div id="cosmic-radar" style="width: 120px; height: 120px; border: 1px dashed rgba(0, 191, 255, 0.3); border-radius: 50%; margin: 0 auto 15px auto; position: relative; animation: radarRotate 20s linear infinite;">
-        <div style="width: 80px; height: 80px; border: 1px dashed rgba(212, 175, 55, 0.25); border-radius: 50%; position: absolute; top: 20px; left: 20px;"></div>
-        <div style="width: 10px; height: 10px; background: #00bfff; border-radius: 50%; position: absolute; top: 5px; left: 55px; box-shadow: 0 0 10px #00bfff;"></div>
-        <div style="width: 8px; height: 8px; background: #d4af37; border-radius: 50%; position: absolute; top: 85px; left: 25px; box-shadow: 0 0 10px #d4af37;"></div>
+    <!-- محاكاة الرادار الفلكي الدائري المصغر -->
+    <div id="cosmic-radar" style="width: 70px; height: 70px; border: 1px dashed rgba(0, 191, 255, 0.3); border-radius: 50%; margin: 0 auto 10px auto; position: relative; animation: radarRotate 25s linear infinite;">
+        <div style="width: 46px; height: 46px; border: 1px dashed rgba(212, 175, 55, 0.25); border-radius: 50%; position: absolute; top: 11px; left: 11px;"></div>
+        <div style="width: 6px; height: 6px; background: #00bfff; border-radius: 50%; position: absolute; top: 3px; left: 32px; box-shadow: 0 0 8px #00bfff;"></div>
+        <div style="width: 5px; height: 5px; background: #d4af37; border-radius: 50%; position: absolute; top: 50px; left: 14px; box-shadow: 0 0 8px #d4af37;"></div>
     </div>
 
-    <h3 style="color: #d4af37; font-size: 1.1rem; margin-bottom: 10px; text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);">🌌 مرصد القران الفلكي الملكي للمنصة</h3>
-    <p style="color: #cbd5e0; font-size: 0.85rem; line-height: 1.6; margin-bottom: 15px;">انقر لتنشيط الاتصال بين عهود المملكة ومسارات النجوم الحية الحالية لمدينة بيروت والعالم.</p>
+    <h3 style="color: #d4af37; font-size: 0.9rem; margin-bottom: 6px; text-shadow: 0 0 6px rgba(212, 175, 55, 0.3);">🌌 مرصد القران الفلكي الملكي</h3>
+    <p style="color: #cbd5e0; font-size: 0.75rem; line-height: 1.5; margin: 0 auto 10px auto; max-width: 400px;">انقر لتنشيط الاتصال بين عهود المملكة ومسارات النجوم الحية الحالية لمدينة بيروت والعالم.</p>
     
-    <button id="activate-cosmic-btn" onclick="triggerCosmicAlignment()" style="background: linear-gradient(135deg, rgba(212,175,55,0.2), rgba(0,191,255,0.2)); border: 1px solid #d4af37; padding: 10px 20px; color: #fff; border-radius: 30px; font-size: 0.85rem; font-weight: bold; cursor: pointer; transition: all 0.4s ease; box-shadow: 0 0 12px rgba(212,175,55,0.2);">✨ تنشيط القران الملكي واستكشاف العهد</button>
+    <button id="activate-cosmic-btn" onclick="triggerCosmicAlignment()" style="background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(0,191,255,0.15)); border: 1px solid #d4af37; padding: 7px 15px; color: #fff; border-radius: 20px; font-size: 0.78rem; font-weight: bold; cursor: pointer; transition: all 0.4s ease; box-shadow: 0 0 10px rgba(212,175,55,0.15);">✨ تنشيط القران واستكشاف العهد</button>
 
-    <!-- لوحة ظهور النصوص والمعلومات السرية بعد الضغط -->
-    <div id="cosmic-alignment-info" style="max-height: 0; opacity: 0; overflow: hidden; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); margin-top: 0; text-align: right; direction: rtl;">
-        <div style="height: 1px; background: linear-gradient(to right, transparent, rgba(212,175,55,0.4), transparent); margin: 15px 0;"></div>
-        <p style="font-size: 0.88rem; color: #f5f5f5; line-height: 1.7; margin-bottom: 8px;">👑 <span style="color: #d4af37; font-weight: bold;">التقرير الفلكي المعتمد للمنصة:</span></p>
-        <p style="font-size: 0.82rem; color: #cbd5e0; line-height: 1.7; margin: 5px 0;">✨ في هذه اللحظة، تلتقي السدم الكونية المتموجة لتؤكد اصطفاف النجوم فوق سماء المملكة المشفرة لـ <span style="color: #d4af37;">Panda KR</span> الموثقة رقمياً.</p>
-        <p style="font-size: 0.82rem; color: #cbd5e0; line-height: 1.7; margin: 5px 0;">📅 <span style="color: #00bfff;">الرحلة الخالدة:</span> انطلقت هذه النبضة منذ تاريخ <span style="color: #d4af37; font-weight: bold;">02 / 08 / 2024</span>، ومحمية ببروتوكولات حماية سيبرانية تمنع التفتيش أو سرقة العهود بنسبة 100%.</p>
-        <p style="font-size: 0.82rem; color: #00bfff; font-weight: bold; text-align: center; margin-top: 10px; text-shadow: 0 0 8px rgba(0,191,255,0.3);">🔒 الاتصال الفلكي آمن ومستمر إلى الأبدية.</p>
+    <!-- لوحة ظهور النصوص والمعلومات السرية بعد الضغط - مصغرة وأنيقة -->
+    <div id="cosmic-alignment-info" style="max-height: 0; opacity: 0; overflow: hidden; transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); margin-top: 0; text-align: right; direction: rtl;">
+        <div style="height: 1px; background: linear-gradient(to right, transparent, rgba(212,175,55,0.3), transparent); margin: 10px 0;"></div>
+        <p style="font-size: 0.8rem; color: #f5f5f5; line-height: 1.6; margin-bottom: 5px;">👑 <span style="color: #d4af37; font-weight: bold;">التقرير الفلكي المعتمد للمنصة:</span></p>
+        <p style="font-size: 0.74rem; color: #cbd5e0; line-height: 1.6; margin: 3px 0;">✨ تلتقي السدم الكونية لتؤكد اصطفاف النجوم فوق سماء المملكة المشفرة لـ <span style="color: #d4af37;">Panda KR</span> الموثقة رقمياً.</p>
+        <p style="font-size: 0.74rem; color: #cbd5e0; line-height: 1.6; margin: 3px 0;">📅 <span style="color: #00bfff;">الرحلة الخالدة:</span> انطلقت النبضة منذ تاريخ <span style="color: #d4af37; font-weight: bold;">02 / 08 / 2024</span>، ومحمية ببروتوكولات سيبرانية تمنع التفتيش أو سرقة العهود بنسبة 100%.</p>
+        <p style="font-size: 0.74rem; color: #00bfff; font-weight: bold; text-align: center; margin-top: 8px; text-shadow: 0 0 6px rgba(0,191,255,0.3);">🔒 الاتصال الفلكي آمن ومستمر إلى الأبدية.</p>
     </div>
 </div>
 
@@ -90,6 +90,23 @@
 </style>
 
 <script>
+    function triggerCosmicAlignment() {
+        const infoBox = document.getElementById('cosmic-alignment-info');
+        const btn = document.getElementById('activate-cosmic-btn');
+        
+        if (infoBox && btn) {
+            infoBox.style.maxHeight = "250px";
+            infoBox.style.opacity = "1";
+            infoBox.style.marginTop = "10px";
+            btn.innerHTML = "🔒 تم تفعيل القران الفلكي وتوثيق البيانات";
+            btn.style.border = "1px solid #2ecc71";
+            btn.style.background = "rgba(46, 204, 113, 0.15)";
+            btn.style.boxShadow = "0 0 10px rgba(46, 204, 113, 0.2)";
+            btn.style.fontSize = "0.74rem";
+        }
+    }
+</script>
+
     function triggerCosmicAlignment() {
         const infoBox = document.getElementById('cosmic-alignment-info');
         const btn = document.getElementById('activate-cosmic-btn');
