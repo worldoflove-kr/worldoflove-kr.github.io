@@ -19,24 +19,25 @@
 <body>
 <div id="mainContainer" class="main-content">
     
-     <!-- 1. شريط البورصة الشامل والمزدوج المطور بنظام الجدول الشبكي والخطوط الرفيعة -->
-    <div class="royal-ticker-container">
-        <div class="royal-ticker-grid">
-            <span class="ticker-cell">👑 منصة عائلة KR الملكية</span>
-            <span class="ticker-cell">✨ الذهب العالمي: <span style="color: #2ecc71;">$2,735.40</span></span>
-            <span class="ticker-cell">🇸🇦 ذهب السعودية (24): <span style="color: #f1c40f;">330.15 ر.س</span></span>
-            <span class="ticker-cell">🇦🇪 ذهب الإمارات (24): <span style="color: #f1c40f;">322.50 د.إ</span></span>
-            <span class="ticker-cell">📊 بورصة الخليج: <span style="color: #2ecc71;">+0.45%</span></span>
-            <span class="ticker-cell">💵 مؤشر الدولار: <span style="color: #e74c3c;">104.20</span></span>
-            <!-- تكرار دقيق لضمان الانسيابية ودوران الجدول بدون أي قطع بصري -->
-            <span class="ticker-cell">👑 منصة عائلة KR الملكية</span>
-            <span class="ticker-cell">✨ الذهب العالمي: <span style="color: #2ecc71;">$2,735.40</span></span>
-            <span class="ticker-cell">🇸🇦 ذهب السعودية (24): <span style="color: #f1c40f;">330.15 ر.س</span></span>
-            <span class="ticker-cell">🇦🇪 ذهب الإمارات (24): <span style="color: #f1c40f;">322.50 د.إ</span></span>
-            <span class="ticker-cell">📊 بورصة الخليج: <span style="color: #2ecc71;">+0.45%</span></span>
-            <span class="ticker-cell">💵 مؤشر الدولار: <span style="color: #e74c3c;">104.20</span></span>
+     <!-- 1. شريط البورصة الممتد كجدول أفقي واحد متحرك في رأس الصفحة تماماً ومعزز بالخطوط الرفيعة -->
+    <div style="background: rgba(10,10,10,0.95) !important; border-bottom: 2px solid #d4af37 !important; overflow: hidden !important; width: 100vw !important; max-width: 100vw !important; position: fixed !important; top: 0 !important; left: 0 !important; z-index: 9999 !important; white-space: nowrap !important; display: flex !important; direction: ltr !important; height: 32px !important; align-items: center !important;">
+        <div style="display: inline-flex !important; white-space: nowrap !important; animation: scrollRoyalGrid 25s linear infinite !important;">
+            <span style="display: inline-block !important; padding: 0 20px !important; border-right: 1px solid rgba(212, 175, 55, 0.3) !important; border-left: 1px solid rgba(212, 175, 55, 0.3) !important; color: #fff !important; font-size: 0.76rem !important; font-weight: bold !important;">👑 منصة عائلة KR الملكية</span>
+            <span style="display: inline-block !important; padding: 0 20px !important; border-right: 1px solid rgba(212, 175, 55, 0.3) !important; color: #fff !important; font-size: 0.76rem !important;">✨ الذهب العالمي: <span style="color: #2ecc71 !important;">$2,735.40</span></span>
+            <span style="display: inline-block !important; padding: 0 20px !important; border-right: 1px solid rgba(212, 175, 55, 0.3) !important; color: #fff !important; font-size: 0.76rem !important;">🇸🇦 السعودية (24): <span style="color: #f1c40f !important;">330.15 ر.س</span></span>
+            <span style="display: inline-block !important; padding: 0 20px !important; border-right: 1px solid rgba(212, 175, 55, 0.3) !important; color: #fff !important; font-size: 0.76rem !important;">🇦🇪 الإمارات (24): <span style="color: #f1c40f !important;">322.50 د.إ</span></span>
+            <span style="display: inline-block !important; padding: 0 20px !important; border-right: 1px solid rgba(212, 175, 55, 0.3) !important; color: #fff !important; font-size: 0.76rem !important;">📊 بورصة الخليج: <span style="color: #2ecc71 !important;">+0.45%</span></span>
+            <span style="display: inline-block !important; padding: 0 20px !important; border-right: 1px solid rgba(212, 175, 55, 0.3) !important; color: #fff !important; font-size: 0.76rem !important;">💵 مؤشر الدولار: <span style="color: #e74c3c !important;">104.20</span></span>
+            <!-- تكرار فلكي لضمان انسيابية الدوران الكامل دون أي فجوة بصريّة -->
+            <span style="display: inline-block !important; padding: 0 20px !important; border-right: 1px solid rgba(212, 175, 55, 0.3) !important; border-left: 1px solid rgba(212, 175, 55, 0.3) !important; color: #fff !important; font-size: 0.76rem !important; font-weight: bold !important;">👑 منصة عائلة KR الملكية</span>
+            <span style="display: inline-block !important; padding: 0 20px !important; border-right: 1px solid rgba(212, 175, 55, 0.3) !important; color: #fff !important; font-size: 0.76rem !important;">✨ الذهب العالمي: <span style="color: #2ecc71 !important;">$2,735.40</span></span>
+            <span style="display: inline-block !important; padding: 0 20px !important; border-right: 1px solid rgba(212, 175, 55, 0.3) !important; color: #fff !important; font-size: 0.76rem !important;">🇸🇦 السعودية (24): <span style="color: #f1c40f !important;">330.15 ر.س</span></span>
         </div>
     </div>
+    
+    <!-- حشوة علوية لمنع تداخل المحتوى مع شريط رأس الصفحة الثابت -->
+    <div style="height: 38px;"></div>
+
 
 
     <!-- 2. شريط بحث غوغل الناعم والمستقل -->
@@ -70,15 +71,14 @@
         <p id="welcome-desc" style="font-size: 0.76rem; line-height: 1.6; color: #cbd5e0; margin: 0;">إذا كانت خطوتكم الأولى قد بدأت من (عالم الحب)، فإن تلك الرحلة قد قادتكم إلى هنا.. إلى المملكة التي تحمي ذلك الحب وتوثقه. هنا لا نكتب كلمات عابرة، بل نحفر عهوداً بحبر الذهب المشع لتبقى ثابتة كالنجوم في السماء.</p>
     </div>
 
-    <!-- 7. الجوهرة الكريستالية ثلاثية الأبعاد اللامعة الفخمة واللافتة للنظر جداً -->
-    <div style="margin: 20px auto; width: 60px; height: 60px; animation: gemFloat 3.5s ease-in-out infinite; position: relative;">
-        <svg viewBox="0 0 100 100" style="width: 100%; height: 100%; filter: drop-shadow(0 0 12px #00bfff);">
-            <polygon points="50,5 75,25 50,45 25,25" fill="rgba(0, 191, 255, 0.4)" stroke="#00bfff" stroke-width="2"/>
-            <polygon points="25,25 50,45 50,95 10,50" fill="rgba(0, 191, 255, 0.2)" stroke="rgba(0, 191, 255, 0.6)" stroke-width="1.5"/>
-            <polygon points="75,25 50,45 50,95 90,50" fill="rgba(212, 175, 55, 0.3)" stroke="#d4af37" stroke-width="1.5"/>
-            <line x1="50" y1="5" x2="50" y2="95" stroke="#fff" stroke-width="2" stroke-linecap="round" style="opacity: 0.8; filter: drop-shadow(0 0 4px #fff);"/>
-        </svg>
+      <!-- 7. الجوهرة الملكية الحقيقية اللامعة والمتحركة بنظام التوهج الكوني -->
+    <div style="margin: 20px auto; width: 65px; height: 65px; display: flex; justify-content: center; align-items: center; position: relative;">
+        <!-- هالة التوهج الكريستالي خلف الجوهرة -->
+        <div style="position: absolute; width: 50px; height: 50px; background: radial-gradient(circle, rgba(0, 191, 255, 0.4) 0%, transparent 70%); filter: blur(8px); animation: cosmicWave 3s ease-in-out infinite;"></div>
+        <!-- الجوهرة الحقيقية مع تأثير الطفو والوميض واللمعان الساحر -->
+        <div style="font-size: 3.2rem; filter: drop-shadow(0 0 10px rgba(0, 191, 255, 0.7)) drop-shadow(0 0 20px rgba(212, 175, 55, 0.4)); animation: gemFloat 4s ease-in-out infinite; user-select: none; display: inline-block; transform-origin: center;">💎</div>
     </div>
+
 
     <!-- 8. اسم الصفحة المتموج والمزخرف حركياً وثنائية اللغة -->
     <div style="margin: 10px auto; animation: cosmicWave 5s ease-in-out infinite;">
@@ -176,18 +176,20 @@
         }
     };
 
-    window.triggerCosmicAlignment = function() {
+      window.triggerCosmicAlignment = function() {
         const infoBox = document.getElementById('cosmic-alignment-info');
         const btn = document.getElementById('activate-cosmic-btn');
         if (infoBox && btn) {
-            infoBox.style.maxHeight = "250px";
+            infoBox.style.maxHeight = "350px"; 
             infoBox.style.opacity = "1";
-            infoBox.style.marginTop = "10px";
-            btn.innerHTML = "🔒 تم تفعيل القران الفلكي وتوثيق البيانات";
-            btn.style.border = "1px solid #2ecc71";
-            btn.style.background = "rgba(46, 204, 113, 0.15)";
+            infoBox.style.marginTop = "12px";
+            btn.innerHTML = "🔒 تم تفعيل القران الفلكي وتوثيق البيانات بنجاح";
+            btn.style.border = "1px solid #2ecc71 !important";
+            btn.style.background = "rgba(46, 204, 113, 0.18) !important";
+            btn.style.color = "#fff !important";
         }
     };
+
 
     window.switchLanguage = function(lang) {
         currentLang = lang;
