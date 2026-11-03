@@ -144,7 +144,8 @@
         const now = new Date();
         const month = now.getMonth() + 1; 
         
-        if (month === 11) {
+      if (month === 11 && now.getDate() >= 4) {
+
             const bDayDesc = document.getElementById('birthday-desc');
             if (bDayDesc) {
                 bDayDesc.innerHTML = `
