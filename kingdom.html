@@ -42,13 +42,14 @@
     </div>
     <div style="height: 42px;"></div>
 
-    <!-- 2. شريط بحث غوغل الناعم والمستقل تماماً (عند الضغط والبحث يفتح صفحة غوغل فوراً) -->
-    <div class="glass-panel" style="padding: 8px 12px; border-radius: 30px; max-width: 380px;">
+      <!-- 2. شريط بحث غوغل الناعم والمقفل (للقراءة واللمس فقط - يفتح غوغل فور النقر على بحث) -->
+    <div class="glass-panel" style="padding: 8px 12px; border-radius: 30px; max-width: 380px; margin-top: 15px;">
         <form action="https://google.com" method="get" target="_blank" style="display: flex; justify-content: center; align-items: center; gap: 5px; margin: 0;">
-            <input type="text" name="q" placeholder="البحث في غوغل من قلب المملكة..." style="background: rgba(255,255,255,0.08); border: 1px solid rgba(212,175,55,0.3); color: #fff; padding: 6px 12px; border-radius: 20px; width: 75%; font-size: 0.78rem; outline: none;">
-            <button type="submit" style="background: linear-gradient(135deg, #d4af37, #f3e5ab); border: none; padding: 6px 14px; border-radius: 20px; color: #000; font-weight: bold; font-size: 0.75rem; cursor: pointer;">بحث</button>
+            <input type="text" value="انقر على بحث للانتقال إلى غوغل..." readonly style="background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.2); color: #aaa; padding: 6px 12px; border-radius: 20px; width: 75%; font-size: 0.75rem; outline: none; cursor: pointer; text-align: center;">
+            <button type="submit" style="background: linear-gradient(135deg, #d4af37, #f3e5ab); border: none; padding: 6px 14px; border-radius: 20px; color: #000; font-weight: bold; font-size: 0.75rem; cursor: pointer; box-shadow: 0 0 8px rgba(212,175,55,0.2);">بحث</button>
         </form>
     </div>
+
 
     <!-- 3. صندوق التوقيت الفلكي والطقس الصغير الناعم المنفصل تماماً -->
     <div class="glass-panel" style="padding: 10px; max-width: 360px; font-size: 0.76rem; line-height: 1.4;">
