@@ -92,17 +92,22 @@
         <div id="golden-counter" style="text-align: center; margin: 5px auto; font-size: 0.78rem; font-weight: bold; color: #fff;">قيد التحديث الكوني...</div>
     </div>
 
-    <!-- 10. مرصد القران الفلكي الملكي التفاعلي للأمنيات وبوابات النجوم -->
-    <div class="glass-panel" style="background: rgba(15, 15, 15, 0.7) !important; border-radius: 14px; padding: 12px; max-width: 320px;">
-        <div id="cosmic-radar" style="width: 50px; height: 50px; border: 1px dashed rgba(0, 191, 255, 0.3) !important; border-radius: 50%; margin: 0 auto 8px auto; position: relative; animation: radarRotate 25s linear infinite;">
-            <div style="width: 30px; height: 30px; border: 1px dashed rgba(212, 175, 55, 0.25) !important; border-radius: 50%; position: absolute; top: 9px; left: 9px;"></div>
+     <!-- 10. مرصد القران الفلكي الملكي التفاعلي بالأقمار الذهبية المضيئة اللافتة للنظر -->
+    <div class="glass-panel" style="background: rgba(15, 15, 15, 0.72) !important; border-radius: 14px; padding: 15px; max-width: 320px; position: relative;">
+        <!-- الدائرة الدوارة المطورة بالنقاط الذهبية المضيئة الشبيهة بالحقيقة -->
+        <div id="cosmic-radar" style="width: 65px; height: 65px; border: 1px dashed rgba(0, 191, 255, 0.4) !important; border-radius: 50%; margin: 0 auto 12px auto; position: relative; animation: radarRotate 20s linear infinite;">
+            <!-- المسار الداخلي الرفيع -->
+            <div style="width: 41px; height: 41px; border: 1px dashed rgba(212, 175, 55, 0.3) !important; border-radius: 50%; position: absolute; top: 11px; left: 11px;"></div>
+            <!-- النقطة الذهبية المضيئة الأولى بقوة (توهج ذهبي ملكي) -->
+            <div style="width: 7px; height: 7px; background: #d4af37 !important; border-radius: 50%; position: absolute; top: 2px; left: 29px; box-shadow: 0 0 10px #d4af37, 0 0 15px #d4af37, 0 0 5px #fff !important;"></div>
+            <!-- النقطة الذهبية المضيئة الثانية (قمر فلكي مكمل على المسار الداخلي) -->
+            <div style="width: 6px; height: 6px; background: #f3e5ab !important; border-radius: 50%; position: absolute; top: 41px; left: 14px; box-shadow: 0 0 8px #f3e5ab, 0 0 12px #d4af37 !important;"></div>
         </div>
-        <h3 id="radar-title" style="color: #d4af37; font-size: 0.8rem; margin: 0 0 4px 0;">🌌 مرصد القران الفلكي الملكي</h3>
-        <button id="activate-cosmic-btn" onclick="window.triggerCosmicAlignment()" style="background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(0,191,255,0.15)); border: 1px solid #d4af37; padding: 5px 10px; color: #fff; border-radius: 15px; font-size: 0.7rem; font-weight: bold; cursor: pointer; display: inline-block;">✨ تنشيط القران واستكشاف العهد</button>
-        <div id="cosmic-alignment-info" style="max-height: 0; opacity: 0; overflow: hidden; transition: all 0.6s ease; font-size: 0.72rem; text-align: right; direction: rtl;">
-            <!-- سيتم حقن بيانات التقرير الفلكي الكامل آلياً وثنائية اللغة هنا عند الضغط -->
-        </div>
+        <h3 id="radar-title" style="color: #d4af37; font-size: 0.8rem; margin: 0 0 6px 0; text-shadow: 0 0 5px rgba(212,175,55,0.3);">🌌 مرصد القران الفلكي الملكي</h3>
+        <button id="activate-cosmic-btn" onclick="window.triggerCosmicAlignment()" style="background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(0,191,255,0.15)); border: 1px solid #d4af37; padding: 6px 12px; color: #fff; border-radius: 15px; font-size: 0.7rem; font-weight: bold; cursor: pointer; display: inline-block; transition: all 0.3s;">✨ تنشيط القران واستكشاف العهد</button>
+        <div id="cosmic-alignment-info" style="max-height: 0; opacity: 0; overflow: hidden; transition: all 0.6s ease; font-size: 0.72rem; text-align: right; direction: rtl;"></div>
     </div>
+
 
     <!-- 11. شريط يوم مشرق ومريح ناعم -->
     <div class="glass-panel" style="max-width: 340px; padding: 8px; border-radius: 20px; font-size: 0.8rem; color: #fff; margin: 15px auto;">
