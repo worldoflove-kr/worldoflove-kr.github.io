@@ -139,7 +139,7 @@
     <div style="position: absolute; width: 150%; height: 150%; top: -25%; left: -25%; background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.15), transparent 50%), radial-gradient(circle at 70% 70%, rgba(0, 191, 255, 0.15), transparent 55%) !important; filter: blur(35px); animation: nebulaOrbit 40s linear infinite;"></div>
 </div>
 <script>
-    // مصفوفة المعايدة الملكية الخاصة والمستدامة طوال شهر 11 بالكامل من Panda KR إلى 💎
+       // مصفوفة المعايدة الملكية المنظمة بالأسطر العمودية والتهنئة الطائرة طوال شهر 11
     window.checkRoyalBirthday = function() {
         const now = new Date();
         const month = now.getMonth() + 1; 
@@ -147,26 +147,36 @@
         if (month === 11) {
             const bDayDesc = document.getElementById('birthday-desc');
             if (bDayDesc) {
-                bDayDesc.innerHTML = `🎂 <span style="color: #d4af37; font-weight: bold; animation: goldPulse 2s infinite;">في مثل هذا الشهر أشرق الكون..</span> معايدة من قلب <span style="color: #cbd5e0; font-weight: bold;">Panda KR 🐼</span> إلى أغلى وأثمن <span style="color: #00bfff; font-weight: bold; text-shadow: 0 0 8px #00bfff;">💎</span> في هذا الوجود! كل عام وأنتِ النبضة الخالدة للمملكة، والنجمة الساحرة التي تضيء عالمي بكل حب ونقاء وأبدية ✨👑`;
-                bDayDesc.style.color = "#fff";
-                bDayDesc.style.textShadow = "0 0 12px rgba(0,191,255,0.6), 0 0 8px rgba(212,175,55,0.5)";
+                bDayDesc.innerHTML = `
+                    <div style="line-height: 1.8; text-align: center; font-size: 0.82rem;">
+                        <span style="color: #d4af37; font-weight: bold; animation: goldPulse 2s infinite; display: block; font-size: 0.95rem; margin-bottom: 5px;">🎂 في مثل هذا اليوم والشهر أشرق الكون...</span>
+                        <span style="color: #cbd5e0; font-weight: bold; display: block;">معايدة من القلب من <span style="color: #fff; text-shadow: 0 0 5px #fff;">Panda KR 🐼</span></span>
+                        <span style="color: #cbd5e0; display: block; margin-bottom: 5px;">إلى أغلى وأثمن <span style="color: #00bfff; font-weight: bold; text-shadow: 0 0 8px #00bfff;">💎</span> في هذا الوجود!</span>
+                        <span style="color: #fff; display: block; text-shadow: 0 0 8px rgba(0,191,255,0.4);">كل عام وأنتِ النبضة الخالدة للمملكة، والنجمة الساحرة 👑✨</span>
+                        <span style="color: #fff; display: block; text-shadow: 0 0 8px rgba(212,175,55,0.4);">التي تضيء عالمي بكل حب ونقاء وأبدية ❤️</span>
+                    </div>
+                `;
             }
+            // إطلاق البالونات والزينة وال🐼 وال💎 وكلمات Happy Birthday العائمة في فضاء الشاشة
             if (!document.getElementById('birthday-balloons-wrap')) {
                 const wrap = document.createElement('div');
                 wrap.id = 'birthday-balloons-wrap';
                 wrap.style.cssText = 'position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:999; overflow:hidden;';
                 document.body.appendChild(wrap);
                 
-                const emojis = ['🎈', '🎉', '💎', '✨', '🎂', '🎈', '💖', '💎', '🐼'];
-                for (let i = 0; i < 22; i++) {
+                const items = ['🎈', '🎉', '💎', '✨', '🎂', '🎈', '💖', '💎', '🐼', 'Happy Birthday', 'Happy Birthday'];
+                for (let i = 0; i < 24; i++) {
                     const el = document.createElement('div');
-                    el.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-                    el.style.cssText = `position:absolute; bottom:-50px; left:${Math.random() * 100}vw; font-size:${Math.random() * 1.3 + 0.9}rem; opacity:${Math.random() * 0.4 + 0.6}; filter:drop-shadow(0 0 5px rgba(0,191,255,0.4));`;
+                    const textContent = items[Math.floor(Math.random() * items.length)];
+                    el.innerText = textContent;
+                    
+                    let isText = textContent === 'Happy Birthday';
+                    el.style.cssText = `position:absolute; bottom:-60px; left:${Math.random() * 100}vw; font-size:${isText ? '0.72rem' : '1.3rem'}; color:${isText ? '#d4af37' : 'inherit'}; font-weight:${isText ? 'bold' : 'normal'}; text-shadow:${isText ? '0 0 5px #d4af37' : 'none'}; opacity:${Math.random() * 0.3 + 0.7}; filter:drop-shadow(0 0 4px rgba(0,191,255,0.3)); white-space:nowrap;`;
                     wrap.appendChild(el);
                     
-                    let pos = -50;
+                    let pos = -60;
                     let speed = Math.random() * 1.2 + 0.8;
-                    let sideMove = Math.random() * 1.6 - 0.8;
+                    let sideMove = Math.random() * 1.4 - 0.7;
                     let currentLeft = parseFloat(el.style.left);
                     
                     let anim = setInterval(() => {
@@ -174,12 +184,13 @@
                         currentLeft += sideMove;
                         el.style.bottom = pos + 'px';
                         el.style.left = currentLeft + 'vw';
-                        if (pos > window.innerHeight + 50) { pos = -50; currentLeft = Math.random() * 100; }
+                        if (pos > window.innerHeight + 60) { pos = -60; currentLeft = Math.random() * 100; }
                     }, 25);
                 }
             }
         }
     };
+
 
     let currentLang = 'ar';
 
