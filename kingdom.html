@@ -156,20 +156,27 @@
             📡 رادار فلكي رياضي مستقل ومحمي ومحدث تلقائياً لايف 🔒
         </div>
     </div>
-    <!-- 11-ج. محرك زلزال الملاعب المدريدي الحركي الأسطوري والأول عالمياً لعائلة KR -->
-    <div id="madrid-earthquake-zone" style="text-align: center; margin: 20px auto 15px auto; position: relative; z-index: 200;">
-        <button onclick="triggerMadridStadiumEarthquake()" class="glass-panel" style="background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(212,175,55,0.15)) !important; border: 1px solid rgba(212, 175, 55, 0.6) !important; padding: 12px 24px; border-radius: 30px; color: #fff; font-size: 0.78rem; font-weight: bold; cursor: pointer; box-shadow: 0 0 20px rgba(212, 175, 55, 0.3), inset 0 0 10px rgba(0, 191, 255, 0.2) !important; transition: all 0.3s; animation: cosmicWave 4s ease-in-out infinite;">
-            👑 بوابـة النصر: هلا مدريد العظيم 3-2 ⚪️
-        </button>
-    </div>
-
+    <!-- 11-ج. سكريبت محرك زلزال الملاعب المدريدي التلقائي لعائلة KR بمجرد لمس الرادار -->
     <script>
-    function triggerMadridStadiumEarthquake() {
-        // 1. تفعيل زلزال واهتزاز الشاشة بالكامل بقوة مذهلة تحاكي هتاف الجماهير
-        document.body.style.animation = 'madridEarthquake 0.15s linear infinite';
-        setTimeout(() => { document.body.style.animation = ''; }, 2000);
+    document.addEventListener('DOMContentLoaded', function() {
+        const sportsContainer = document.getElementById('sports-iframe') ? document.getElementById('sports-iframe').parentElement : null;
+        if (sportsContainer) {
+            // تفعيل السحر التلقائي بمجرد قيام الزائر بلمس أو تصفح منطقة الرادار الرياضي
+            sportsContainer.addEventListener('click', triggerMadridStadiumEarthquake);
+            sportsContainer.addEventListener('touchstart', triggerMadridStadiumEarthquake, {passive: true});
+        }
+    });
 
-        // 2. إطلاق رادارات الإشعاع والمفرقعات المضيئة الملوكية طائرة
+    function triggerMadridStadiumEarthquake() {
+        // منع التكرار اللحظي المزعج أثناء تصفح المباراة
+        if (window.madridCelebrated) return;
+        window.madridCelebrated = true;
+
+        // 1. تفعيل زلزال واهتزاز الشاشة بالكامل بقوة مذهلة تحاكي هتاف الجماهير الملكية
+        document.body.style.animation = 'madridEarthquake 0.15s linear infinite';
+        setTimeout(() => { document.body.style.animation = ''; window.madridCelebrated = false; }, 2500);
+
+        // 2. إطلاق رادارات الإشعاع والمفرقعات الملوكية الطائرة لشعار KR والـ Panda
         for (let i = 0; i < 45; i++) {
             const item = document.createElement('div');
             const itemsPool = ['👑', '⚽', '💎', '🐼', '⚪️'];
@@ -223,6 +230,7 @@
         document.head.appendChild(styles);
     }
     </script>
+
 
     <!-- 12. فوتير الهوية الملكية وشعار KR الذهبي النابض والمتحرك باستمرار -->
     <footer style="text-align: center; padding: 15px; color: #888; font-size: 0.72rem;">
