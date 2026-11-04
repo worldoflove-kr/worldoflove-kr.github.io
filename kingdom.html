@@ -408,7 +408,7 @@
     });
     document.body.style.webkitUserSelect = "none";
     document.body.style.userSelect = "none";
-      // 13. مصفوفة العازف الفلكي السحابي المفتوح لمعزوفة ضوء القمر 🎹
+    // 13. مصفوفة العازف الفلكي السحابي المفتوح لمعزوفة ضوء القمر 🎹
     function setupRoyalMusicEngine() {
         const audio = new Audio("https://soundhelix.com");
         audio.loop = true;
@@ -430,7 +430,9 @@
                     musicBtn.innerHTML = '⏸️ كتم نغمات ضوء القمر';
                     musicBtn.style.border = '1px solid #00bfff';
                     musicBtn.style.boxShadow = '0 0 15px #00bfff';
-                }).catch(e => console.log("تفاعل مطلوب"));
+                }).catch(e => {
+                    alert("الرجاء لمس أي مكان في الصفحة أولاً لتفعيل إذن الصوت بالمتصفح ✨");
+                });
             } else {
                 audio.pause();
                 isPlaying = false;
@@ -440,14 +442,16 @@
             }
         };
     }
-
-if (typeof setupRoyalMusicEngine === 'function') setupRoyalMusicEngine();
-
+    
+    // إطلاق محرك الموسيقى رسمياً بنقاء فائق فور جاهزية المتصفح
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupRoyalMusicEngine);
+    } else {
+        setupRoyalMusicEngine();
+    }
 </script>
 </body>
 </html>
-
-
 
  
 
