@@ -131,40 +131,56 @@
         <a href="index.html" class="glass-panel" style="text-decoration: none; padding: 8px 22px; border-radius: 30px; font-size: 0.78rem; font-weight: bold; display: inline-block; margin: 0 auto; border: 1px solid rgba(212,175,55,0.3) !important;">↪️ العودة إلى عالم الحب</a>
     </div>
 
-     <!-- 11-ب. رادار المملكة الرياضي المطور بالغطاء التفاعلي الشفاف والزلزال الذكي لعائلة KR -->
+    <!-- 11-ب. رادار المملكة الرياضي المطور الحركي والمستودع الزمني الذكي لعائلة KR -->
     <div class="glass-panel" style="background: rgba(10, 15, 30, 0.88) !important; border-radius: 16px; padding: 15px; max-width: 380px; margin: 25px auto; border: 1px solid rgba(0, 191, 255, 0.4) !important; box-shadow: 0 0 20px rgba(0, 191, 255, 0.25) !important; position: relative; overflow: hidden; z-index: 100;">
         
         <!-- كرة قدم مضيئة ومتحركة ثلاثية الأبعاد تسبح وتدور أعلى الصندوق بدقة سحرية -->
         <div style="width: 35px; height: 35px; background: radial-gradient(circle at 30% 30%, #fff 0%, #d4af37 60%, #000 100%); border-radius: 50%; margin: 0 auto 8px auto; box-shadow: 0 0 15px #d4af37, 0 0 8px #00bfff; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; animation: radarRotate 8s linear infinite; filter: drop-shadow(0 0 5px rgba(212,175,55,0.6));">⚽</div>
         
         <h3 style="color: #00bfff; font-size: 0.85rem; margin: 0 0 4px 0; text-shadow: 0 0 6px rgba(0,191,255,0.4); text-align: center;">⚽ رادار المملكة الكروي المطور</h3>
-        <p style="font-size: 0.72rem; color: #cbd5e0; margin: 0 0 12px 0; line-height: 1.4; text-align: center;">اضغطي على المربع الرياضي لتفعيل احتفال النصر وتحديث النتائج المباشرة.</p>
         
-        <!-- أدوات التصفح الزجاجية المدمجة -->
-        <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 8px;">
-            <button onclick="document.getElementById('sports-iframe').src='https://scorebat.com';" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(212,175,55,0.4); padding: 4px 12px; border-radius: 12px; color: #d4af37; font-size: 0.65rem; font-weight: bold; cursor: pointer;"><span style="direction: rtl; display: inline-block;">↩️ الجدول الرئيسي</span></button>
-            <button onclick="document.getElementById('sports-iframe').contentWindow.location.reload();" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(0, 191, 255, 0.4); padding: 4px 12px; border-radius: 12px; color: #00bfff; font-size: 0.65rem; font-weight: bold; cursor: pointer;">🔄 تحديث البث</button>
+        <!-- لوحة النصر الموثقة زمنياً والمستقرة طوال يوم الفولاذ الكروي (4 نوفمبر) وتختفي تلقائياً باليوم التالي -->
+        <div id="royal-madrid-static-card" class="glass-panel" style="display: none; padding: 12px; border-radius: 12px; text-align: center; color: #fff; border: 1px solid #d4af37; box-shadow: 0 0 15px rgba(212,175,55,0.3); background: rgba(6,10,25,0.85); font-size: 0.76rem; font-weight: bold; margin: 10px 0; animation: cosmicWave 4s ease-in-out infinite;">
+            👑 🏆 الملكي يحسم القمة الأسطورية 3-2 لايف! 👑<br>
+            <span style="color:#d4af37;">🤍 هلا مدريد! النصر ملكي دائماً في فضاء عائلة KR 🐼💎</span>
+        </div>
+
+        <!-- أدوات التحكم والتشغيل الحركي الحرة والمفتوحة للتصفح 🔓 -->
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 10px;">
+            <button onclick="triggerMadridStadiumEarthquake()" style="background: linear-gradient(135deg, rgba(212,175,55,0.2), rgba(255,255,255,0.1)); border: 1px solid #d4af37; padding: 5px 12px; border-radius: 12px; color: #fff; font-size: 0.68rem; font-weight: bold; cursor: pointer; box-shadow: 0 0 8px rgba(212,175,55,0.3);">🎉 تفجير زلزال الملوك 👑</button>
+            <button onclick="document.getElementById('sports-iframe').src='https://scorebat.com';" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(212,175,55,0.3); padding: 5px 10px; border-radius: 12px; color: #d4af37; font-size: 0.65rem; cursor: pointer;">↩️ الجدول</button>
+            <button onclick="document.getElementById('sports-iframe').contentWindow.location.reload();" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(0, 191, 255, 0.3); padding: 5px 10px; border-radius: 12px; color: #00bfff; font-size: 0.65rem; cursor: pointer;">🔄 تحديث</button>
         </div>
         
-        <!-- حاوية الشاشة المحمية بالغطاء التفاعلي الشفاف المستقل -->
+        <!-- حاوية الشاشة الحرة المفتوحة 100% للتصفح والضغط بداخل المباريات -->
         <div style="width: 100%; height: 380px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(212,175,55,0.3); background: #000; position: relative;">
-            <!-- الغطاء الشفاف الذكي لالتقاط اللمسات وفك قفل الأمان تلقائياً -->
-            <div onclick="triggerMadridStadiumEarthquake()" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 50; cursor: pointer; background: rgba(0,0,0,0);"></div>
             <iframe id="sports-iframe" src="https://scorebat.com" allowfullscreen allow="autoplay; encrypted-media" style="width: 100%; height: 100%; border: none; overflow: hidden; background: #050510; position: relative; z-index: 10;"></iframe>
         </div>
         
-        <div style="margin-top: 8px; font-size: 0.65rem; color: #d4af37; text-align: center; text-shadow: 0 0 3px rgba(212,175,55,0.2);">
-            📡 اضغطي لتشغيل زلزال الملوك والاحتفال المدريدي الفخم 🔒
+        <div style="margin-top: 8px; font-size: 0.65rem; color: #d4af37; text-align: center;">
+            📡 رادار حر ومفتوح بالكامل لمشاهدة الأهداف والملخصات بالفيديو 🔒
         </div>
     </div>
 
-    <!-- 11-ج. سكريبت مصفوفة زلزال الملاعب المدريدي التلقائي الشامل لعائلة KR -->
+    <!-- 11-ج. سكريبت مصفوفة زلزال الملاعب والمستودع الزمني الذكي لعائلة KR -->
     <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // إدارة بقاء لوحة النصر التلقائي: تظهر طوال يوم الفوز (4 نوفمبر) وتختفي باليوم التالي تلقائياً
+        const today = new Date();
+        const dateString = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        const matchDay = "2026-11-4"; // تاريخ فوز الريال الأسطوري 3-2
+        
+        const staticCard = document.getElementById('royal-madrid-static-card');
+        if (staticCard && dateString === matchDay) {
+            staticCard.style.display = 'block'; // تثبيت اللوحة طوال اليوم لايف!
+        }
+    });
+
     function triggerMadridStadiumEarthquake() {
         if (window.madridCelebrated) return;
         window.madridCelebrated = true;
 
-        // 1. إطلاق اهتزاز الشاشة بالكامل تحاكي صرخة الجماهير في الملعب
+        // 1. إطلاق اهتزاز الشاشة بالكامل تحاكي صرخة وفرحة الجماهير
         document.body.style.animation = 'madridEarthquake 0.15s linear infinite';
         setTimeout(() => { document.body.style.animation = ''; window.madridCelebrated = false; }, 2500);
 
@@ -184,16 +200,6 @@
             document.body.appendChild(item);
             setTimeout(() => item.remove(), 4500);
         }
-
-        // 3. انبثاق لوحة النصر الكريستالية العائمة بوسط فضاء الصفحة
-        const victoryCard = document.createElement('div');
-        victoryCard.className = 'glass-panel';
-        victoryCard.style.cssText = 'position:fixed; top:45%; left:50%; transform:translate(-50%, -50%) scale(0); z-index:1000000; padding:25px; border-radius:20px; text-align:center; color:#fff; border:2px solid #d4af37; box-shadow:0 0 35px rgba(212,175,55,0.6), inset 0 0 15px rgba(0,191,255,0.3); background:rgba(6,10,25,0.96); font-size:0.88rem; font-weight:bold; transition:all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events:none;';
-        victoryCard.innerHTML = '<span style="font-size:1.8rem; display:block; margin-bottom:8px; animation:bounce 2s infinite;">🏆</span>⚽️ فالفيردي يحسمها في الدقيقة 90! 👑<br><br><span style="color:#d4af37; font-size:1.05rem; text-shadow:0 0 8px #d4af37;">🤍 هلا مدريد دائماً وأبداً 🤍</span><br><br><span style="font-size:0.7rem; color:#888; font-weight:normal;">المملكة تهتز وتحتفل بالنصر الفخم لعائلة KR 🐼💎</span>';
-        document.body.appendChild(victoryCard);
-        
-        setTimeout(() => { victoryCard.style.transform = 'translate(-50%, -50%) scale(1)'; }, 100);
-        setTimeout(() => { victoryCard.style.transform = 'translate(-50%, -50%) scale(0)'; setTimeout(() => victoryCard.remove(), 400); }, 4500);
     }
 
     // زرع حركات الحركية للزلزال في رأس الصفحة آلياً
@@ -222,6 +228,7 @@
         document.head.appendChild(styles);
     }
     </script>
+
 
 
 
