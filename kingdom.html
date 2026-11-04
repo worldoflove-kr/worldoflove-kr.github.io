@@ -156,6 +156,73 @@
             📡 رادار فلكي رياضي مستقل ومحمي ومحدث تلقائياً لايف 🔒
         </div>
     </div>
+    <!-- 11-ج. محرك زلزال الملاعب المدريدي الحركي الأسطوري والأول عالمياً لعائلة KR -->
+    <div id="madrid-earthquake-zone" style="text-align: center; margin: 20px auto 15px auto; position: relative; z-index: 200;">
+        <button onclick="triggerMadridStadiumEarthquake()" class="glass-panel" style="background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(212,175,55,0.15)) !important; border: 1px solid rgba(212, 175, 55, 0.6) !important; padding: 12px 24px; border-radius: 30px; color: #fff; font-size: 0.78rem; font-weight: bold; cursor: pointer; box-shadow: 0 0 20px rgba(212, 175, 55, 0.3), inset 0 0 10px rgba(0, 191, 255, 0.2) !important; transition: all 0.3s; animation: cosmicWave 4s ease-in-out infinite;">
+            👑 بوابـة النصر: هلا مدريد العظيم 3-2 ⚪️
+        </button>
+    </div>
+
+    <script>
+    function triggerMadridStadiumEarthquake() {
+        // 1. تفعيل زلزال واهتزاز الشاشة بالكامل بقوة مذهلة تحاكي هتاف الجماهير
+        document.body.style.animation = 'madridEarthquake 0.15s linear infinite';
+        setTimeout(() => { document.body.style.animation = ''; }, 2000);
+
+        // 2. إطلاق رادارات الإشعاع والمفرقعات المضيئة الملوكية طائرة
+        for (let i = 0; i < 45; i++) {
+            const item = document.createElement('div');
+            const itemsPool = ['👑', '⚽', '💎', '🐼', '⚪️'];
+            item.innerText = itemsPool[i % itemsPool.length];
+            item.style.position = 'fixed';
+            item.style.left = Math.random() * 100 + 'vw';
+            item.style.top = '-30px';
+            item.style.fontSize = Math.random() * 20 + 15 + 'px';
+            item.style.zIndex = '999999';
+            item.style.pointerEvents = 'none';
+            item.style.filter = 'drop-shadow(0 0 6px #d4af37) drop-shadow(0 0 3px #00bfff)';
+            item.style.animation = `madridConfettiFall ${Math.random() * 2.5 + 2}s linear forwards`;
+            document.body.appendChild(item);
+            setTimeout(() => item.remove(), 4500);
+        }
+
+        // 3. انبثاق لوحة الملوك الكريستالية العائمة بوسط فضاء الصفحة
+        const victoryCard = document.createElement('div');
+        victoryCard.className = 'glass-panel';
+        victoryCard.style.cssText = 'position:fixed; top:45%; left:50%; transform:translate(-50%, -50%) scale(0); z-index:1000000; padding:25px; border-radius:20px; text-align:center; color:#fff; border:2px solid #d4af37; box-shadow:0 0 35px rgba(212,175,55,0.6), inset 0 0 15px rgba(0,191,255,0.3); background:rgba(6,10,25,0.96); font-size:0.88rem; font-weight:bold; transition:all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events:none;';
+        victoryCard.innerHTML = '<span style="font-size:1.8rem; display:block; margin-bottom:8px; animation:bounce 2s infinite;">🏆</span>⚽️ فالفيردي يحسمها في الدقيقة 90! 👑<br><br><span style="color:#d4af37; font-size:1.05rem; text-shadow:0 0 8px #d4af37;">🤍 هلا مدريد دائماً وأبداً 🤍</span><br><br><span style="font-size:0.7rem; color:#888; font-weight:normal;">المملكة تهتز وتحتفل بالنصر الفخم لعائلة KR 🐼💎</span>';
+        document.body.appendChild(victoryCard);
+        
+        setTimeout(() => { victoryCard.style.transform = 'translate(-50%, -50%) scale(1)'; }, 100);
+        setTimeout(() => { victoryCard.style.transform = 'translate(-50%, -50%) scale(0)'; setTimeout(() => victoryCard.remove(), 400); }, 4500);
+    }
+
+    // زرع حركات الزلزال وسقوط المفرقعات الكونية في رأس الصفحة آلياً
+    if (!document.getElementById('madrid-earthquake-styles')) {
+        const styles = document.createElement("style");
+        styles.id = 'madrid-earthquake-styles';
+        styles.innerText = `
+            @keyframes madridEarthquake {
+                0% { transform: translate(1px, 1px) rotate(0deg); }
+                10% { transform: translate(-1px, -2px) rotate(-1deg); }
+                20% { transform: translate(-3px, 0px) rotate(1deg); }
+                30% { transform: translate(0px, 2px) rotate(0deg); }
+                40% { transform: translate(1px, -1px) rotate(1deg); }
+                50% { transform: translate(-1px, 2px) rotate(-1deg); }
+                60% { transform: translate(-3px, 1px) rotate(0deg); }
+                70% { transform: translate(2px, 1px) rotate(-1deg); }
+                80% { transform: translate(-1px, -1px) rotate(1deg); }
+                90% { transform: translate(2px, 2px) rotate(0deg); }
+                100% { transform: translate(1px, -2px) rotate(-1deg); }
+            }
+            @keyframes madridConfettiFall {
+                0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+                100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(styles);
+    }
+    </script>
 
     <!-- 12. فوتير الهوية الملكية وشعار KR الذهبي النابض والمتحرك باستمرار -->
     <footer style="text-align: center; padding: 15px; color: #888; font-size: 0.72rem;">
