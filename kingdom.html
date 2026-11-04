@@ -408,6 +408,42 @@
     });
     document.body.style.webkitUserSelect = "none";
     document.body.style.userSelect = "none";
+    // 13. مصفوفة العازف الفلكي السحابي المطور لمعزوفة ضوء القمر 🎹
+    function setupRoyalMusicEngine() {
+        // إنشاء عنصر الصوت السحابي المشفر بالمعزوفة العالمية
+        const audio = new Audio("https://soundhelix.com");
+        audio.loop = true;
+        audio.volume = 0.45; // مستوى صوت ناعم ومريح بالخلفية
+
+        // إنشاء زر التحكم الزجاجي العائم الفخم بأسفل الشاشة فوق الفوتر
+        const musicBtn = document.createElement('div');
+        musicBtn.id = 'royal-music-controller';
+        musicBtn.style.cssText = 'position:fixed; bottom:15px; right:15px; z-index:10000; background:rgba(20,20,20,0.85); border:1px solid rgba(212,175,55,0.4); padding:8px 12px; border-radius:20px; color:#fff; font-size:0.7rem; font-weight:bold; cursor:pointer; display:flex; align-items:center; gap:6px; backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); box-shadow:0 0 10px rgba(0,191,255,0.2), inset 0 0 8px rgba(212,175,55,0.1); animation:cosmicWave 4s ease-in-out infinite; transition:all 0.3s;';
+        musicBtn.innerHTML = '🎵 تشغيل معزوفة ضوء القمر';
+        document.body.appendChild(musicBtn);
+
+        let isPlaying = false;
+        musicBtn.addEventListener('click', () => {
+            if (!isPlaying) {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    musicBtn.innerHTML = '⏸️ كتم نغمات ضوء القمر';
+                    musicBtn.style.border = '1px solid #00bfff';
+                    musicBtn.style.boxShadow = '0 0 15px #00bfff';
+                }).catch(err => {
+                    console.log("بروتوكول تفاعل المتصفح مطلوب للموسيقى");
+                });
+            } else {
+                audio.pause();
+                isPlaying = false;
+                musicBtn.innerHTML = '🎵 تشغيل معزوفة ضوء القمر';
+                musicBtn.style.border = '1px solid rgba(212,175,55,0.4)';
+                musicBtn.style.boxShadow = '0 0 10px rgba(0,191,255,0.2)';
+            }
+        });
+    }
+    if (typeof setupRoyalMusicEngine === 'function') setupRoyalMusicEngine();
+
 </script>
 </body>
 </html>
