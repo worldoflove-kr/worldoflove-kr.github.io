@@ -408,52 +408,11 @@
     });
     document.body.style.webkitUserSelect = "none";
     document.body.style.userSelect = "none";
-    // 13. مصفوفة العازف الفلكي السحابي المفتوح لمعزوفة ضوء القمر 🎹
-    function setupRoyalMusicEngine() {
-        const audio = new Audio("https://soundhelix.com");
-        audio.loop = true;
-        audio.volume = 0.5;
 
-        const musicBtn = document.getElementById('royal-music-controller') || document.createElement('div');
-        musicBtn.id = 'royal-music-controller';
-        musicBtn.style.cssText = 'position:fixed; bottom:15px; right:15px; z-index:10000; background:rgba(20,20,20,0.9); border:1px solid #d4af37; padding:8px 12px; border-radius:20px; color:#fff; font-size:0.7rem; font-weight:bold; cursor:pointer; display:flex; align-items:center; gap:6px; backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); box-shadow:0 0 10px rgba(212,175,55,0.3); animation:cosmicWave 4s ease-in-out infinite; transition:all 0.3s;';
-        musicBtn.innerHTML = '🎵 تشغيل معزوفة ضوء القمر';
-        if (!document.getElementById('royal-music-controller')) {
-            document.body.appendChild(musicBtn);
-        }
-
-        let isPlaying = false;
-        musicBtn.onclick = function() {
-            if (!isPlaying) {
-                audio.play().then(() => {
-                    isPlaying = true;
-                    musicBtn.innerHTML = '⏸️ كتم نغمات ضوء القمر';
-                    musicBtn.style.border = '1px solid #00bfff';
-                    musicBtn.style.boxShadow = '0 0 15px #00bfff';
-                }).catch(e => {
-                    alert("الرجاء لمس أي مكان في الصفحة أولاً لتفعيل إذن الصوت بالمتصفح ✨");
-                });
-            } else {
-                audio.pause();
-                isPlaying = false;
-                musicBtn.innerHTML = '🎵 تشغيل معزوفة ضوء القمر';
-                musicBtn.style.border = '1px solid #d4af37';
-                musicBtn.style.boxShadow = '0 0 10px rgba(212,175,55,0.3)';
-            }
-        };
-    }
-    
-    // إطلاق محرك الموسيقى رسمياً بنقاء فائق فور جاهزية المتصفح
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', setupRoyalMusicEngine);
-    } else {
-        setupRoyalMusicEngine();
-    }
 </script>
 </body>
 </html>
 
  
-
    
     
