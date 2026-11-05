@@ -229,7 +229,8 @@
     }
     </script>
     <!-- 11-ج. بوابة البصمة الكونية ومذنب توأم الروح العابر للقارات لـ مملكة الوعود وعائلة KR -->
-    <div class="glass-panel" style="background: rgba(12, 8, 24, 0.92) !important; border-radius: 16px; padding: 18px; max-width: 380px; margin: 25px auto; border: 1px solid rgba(212, 175, 55, 0.45) !important; box-shadow: 0 0 25px rgba(212, 175, 55, 0.35) !important; position: relative; overflow: hidden; z-index: 100;">
+       <div class="glass-panel" style="background: rgba(12, 8, 24, 0.95) !important; border-radius: 16px; padding: 18px; max-width: 380px; margin: 25px auto; border: 1px solid rgba(212, 175, 55, 0.5) !important; box-shadow: 0 0 35px rgba(212, 175, 55, 0.4), 0 0 50px rgba(0, 191, 255, 0.35), inset 0 0 15px rgba(212, 175, 55, 0.15) !important; position: relative; overflow: hidden; z-index: 100; animation: cosmicWave 4s ease-in-out infinite;">
+
         
         <!-- العبارة التشويقية الساحرة والمبهرة للزوار أعلى الصندوق -->
         <div style="font-size: 1.4rem; text-align: center; margin-bottom: 4px; filter: drop-shadow(0 0 6px #d4af37);">🧚‍♀️🏹☄️</div>
@@ -290,7 +291,7 @@
         </div>
     </div>
 
-    <script>
+     <script>
     function launchInterstellarSoulmateComet() {
         const sender = document.getElementById('comet-sender').value.trim();
         const srcCountry = document.getElementById('comet-country-src').value.trim();
@@ -317,47 +318,79 @@
         theater.style.display = 'block';
         fairy.style.display = 'none';
         
+        // ضبط المذنب عند نقطة البداية مع إضافة الذيل الزهري المشع المطوّر خلفه
         comet.style.display = 'block';
         comet.style.left = '30px';
         comet.style.top = '85px';
         comet.style.transition = 'none';
+        comet.style.boxShadow = '-10px 10px 15px #ff007f, -20px 20px 30px rgba(255, 0, 127, 0.4)';
 
-        // تنشيط هالة الكون الاهتزازية المضافة كإبداع فخم من الباندا
         document.body.style.animation = 'madridEarthquake 0.1s linear 5';
 
+        // ⏱️ انطلاق رحلة المذنب البطيئة (5 ثوانٍ) كعقرب الساعة يرسم منحنى فلكياً واقعياً
         setTimeout(() => {
-            comet.style.transition = 'all 1.8s cubic-bezier(0.25, 1, 0.5, 1)';
+            comet.style.transition = 'left 5s linear, top 5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
             comet.style.left = '290px';
             comet.style.top = '25px';
 
+            // تدرج اضمحلال وتلاشي الذيل الزهري كلما ابتعد الشهاب عن بلده
             setTimeout(() => {
-                comet.style.display = 'none';
-                fairy.style.display = 'block'; 
-                
-                const percent = (Math.random() * 3.9 + 96).toFixed(1) + '%';
-                
-                document.getElementById('cove-sender').innerText = sender;
-                document.getElementById('cove-src-country').innerText = srcCountry;
-                document.getElementById('cove-receiver').innerText = receiver;
-                document.getElementById('cove-dst-country').innerText = dstCountry;
-                document.getElementById('cove-percent').innerText = percent;
+                comet.style.boxShadow = '-5px 5px 10px #ff007f, -10px 10px 15px rgba(255, 0, 127, 0.2)';
+            }, 2500);
 
+            setTimeout(() => {
+                // 💖 حركة الدوران على شكل قلب حول علم بلد المستقبل عند الوصول
+                comet.style.transition = 'all 0.8s ease-in-out';
+                comet.style.transform = 'translate(-10px, -10px) rotate(45deg)';
+                
                 setTimeout(() => {
-                    theater.style.display = 'none';
-                    covenant.style.display = 'block';
-                    covenant.style.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    comet.style.display = 'none';
+                    comet.style.transform = 'none';
+                    fairy.style.display = 'block'; // ظهور الـ GIF الحركي للجنية وسهم الملاك
+                    
+                    // تفجير مفرقعات نجوم صغيرة ومضيئة فوق العلم مباشرة
+                    for (let i = 0; i < 15; i++) {
+                        const miniSpark = document.createElement('div');
+                        miniSpark.innerText = i % 2 === 0 ? '⭐' : '✨';
+                        miniSpark.style.position = 'absolute';
+                        miniSpark.style.right = '30px';
+                        miniSpark.style.top = '20px';
+                        miniSpark.style.fontSize = '10px';
+                        miniSpark.style.zIndex = '60';
+                        miniSpark.style.transition = 'all 0.6s ease-out';
+                        theater.appendChild(miniSpark);
+                        setTimeout(() => {
+                            miniSpark.style.transform = `translate(${(Math.random() - 0.5) * 40}px, ${(Math.random() - 0.5) * 40}px)`;
+                            miniSpark.style.opacity = '0';
+                            setTimeout(() => miniSpark.remove(), 600);
+                        }, 50);
+                    }
 
-                    // ⏱️ آلية التلاشي التلقائي بعد 3 دقائق كاملة لإشعال الحماس!
-                    window.covenantTimeout = setTimeout(() => {
-                        covenant.style.opacity = '0';
-                        setTimeout(() => { covenant.style.display = 'none'; }, 500);
-                    }, 180000);
+                    const percent = (Math.random() * 3.9 + 96).toFixed(1) + '%';
+                    document.getElementById('cove-sender').innerText = sender;
+                    document.getElementById('cove-src-country').innerText = srcCountry;
+                    document.getElementById('cove-receiver').innerText = receiver;
+                    document.getElementById('cove-dst-country').innerText = dstCountry;
+                    document.getElementById('cove-percent').innerText = percent;
 
-                }, 1500);
-            }, 1800);
-        }, 50);
+                    setTimeout(() => {
+                        theater.style.display = 'none';
+                        covenant.style.display = 'block';
+                        covenant.style.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                        // ⏱️ بقاء الصك لـ 3 دقائق ثم التلاشي التلقائي
+                        window.covenantTimeout = setTimeout(() => {
+                            covenant.style.opacity = '0';
+                            setTimeout(() => { covenant.style.display = 'none'; }, 500);
+                        }, 180000);
+
+                    }, 1800);
+                }, 800);
+            }, 5000);
+        }, 100);
     }
     </script>
+
 
 
 
