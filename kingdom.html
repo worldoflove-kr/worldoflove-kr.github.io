@@ -321,49 +321,54 @@
         document.getElementById('node-src-flag').innerText = flagMap[srcCountry] || "📍";
         document.getElementById('node-dst-flag').innerText = flagMap[dstCountry] || "🌍";
 
-            const theater = document.getElementById('comet-space-theater');
+        const theater = document.getElementById('comet-space-theater');
         const covenant = document.getElementById('comet-golden-covenant');
         const comet = document.getElementById('cosmic-comet-body');
         const fairy = document.getElementById('fairy-celebration');
         const srcNode = document.getElementById('comet-src-node');
         const dstNode = document.getElementById('comet-dst-node');
 
-        covenant.style.display = 'none';
-        covenant.style.opacity = '1';
-        theater.style.display = 'block';
-        fairy.style.display = 'none';
-        srcNode.style.display = 'block';
-        dstNode.style.display = 'block';
+        if (covenant) { covenant.style.display = 'none'; covenant.style.opacity = '1'; }
+        if (theater) { theater.style.display = 'block'; }
+        if (fairy) { fairy.style.display = 'none'; }
+        if (srcNode) { srcNode.style.display = 'block'; }
+        if (dstNode) { dstNode.style.display = 'block'; }
         
         const oldLoveCard = document.getElementById('royal-mid-love-card');
         if (oldLoveCard) oldLoveCard.remove();
 
-        comet.style.display = 'block';
-        comet.style.left = '30px';
-        comet.style.top = '85px';
-        comet.style.transition = 'none';
-        comet.style.boxShadow = '-10px 10px 15px #ff007f, -20px 20px 30px rgba(255, 0, 127, 0.4)';
+        if (comet) {
+            comet.style.display = 'block';
+            comet.style.left = '30px';
+            comet.style.top = '85px';
+            comet.style.transition = 'none';
+            comet.style.boxShadow = '-10px 10px 15px #ff007f, -20px 20px 30px rgba(255, 0, 127, 0.4)';
+        }
 
         document.body.style.animation = 'madridEarthquake 0.1s linear 5';
 
         setTimeout(() => {
-            comet.style.transition = 'left 5s linear, top 5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-            comet.style.left = '290px';
-            comet.style.top = '25px';
+            if (comet) {
+                comet.style.transition = 'left 5s linear, top 5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                comet.style.left = '290px';
+                comet.style.top = '25px';
+            }
 
             setTimeout(() => {
-                comet.style.boxShadow = '-5px 5px 10px #ff007f, -10px 10px 15px rgba(255, 0, 127, 0.2)';
+                if (comet) comet.style.boxShadow = '-5px 5px 10px #ff007f, -10px 10px 15px rgba(255, 0, 127, 0.2)';
             }, 2500);
 
             setTimeout(() => {
-                comet.style.transition = 'all 0.6s ease-in-out';
-                comet.style.transform = 'translate(-10px, -10px) rotate(45deg)';
+                if (comet) {
+                    comet.style.transition = 'all 0.6s ease-in-out';
+                    comet.style.transform = 'translate(-10px, -10px) rotate(45deg)';
+                }
                 
                 setTimeout(() => {
-                    comet.style.display = 'none';
-                    comet.style.transform = 'none';
-                    srcNode.style.display = 'none';
-                    dstNode.style.display = 'none';
+                    if (comet) comet.style.display = 'none';
+                    if (comet) comet.style.transform = 'none';
+                    if (srcNode) srcNode.style.display = 'none';
+                    if (dstNode) dstNode.style.display = 'none';
 
                     const loveCard = document.createElement('div');
                     loveCard.id = 'royal-mid-love-card';
@@ -373,7 +378,7 @@
                         <div style="font-size: 0.9rem; color: #d4af37; text-shadow: 0 0 6px #d4af37; margin-bottom: 3px;">بحبك ❤️ I Love U</div>
                         <div style="font-size: 0.58rem; color: #00bfff; letter-spacing: 0.5px;">مَمْلَكَةُ الْوُعُودِ • عائلة KR 👑</div>
                     `;
-                    theater.appendChild(loveCard);
+                    if (theater) theater.appendChild(loveCard);
                     setTimeout(() => { loveCard.style.transform = 'translate(-50%, -50%) scale(1)'; }, 50);
 
                     for (let i = 0; i < 35; i++) {
@@ -387,7 +392,7 @@
                         spark.style.zIndex = '75';
                         spark.style.transition = 'all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
                         spark.style.filter = 'drop-shadow(0 0 4px #ff007f) drop-shadow(0 0 2px #d4af37)';
-                        theater.appendChild(spark);
+                        if (theater) theater.appendChild(spark);
                         
                         setTimeout(() => {
                             const angle = (i / 35) * Math.PI * 2;
@@ -401,21 +406,31 @@
                     }
 
                     const percent = (Math.random() * 3.9 + 96).toFixed(1) + '%';
-                    document.getElementById('cove-sender').innerText = sender;
-                    document.getElementById('cove-src-country').innerText = srcCountry;
-                    document.getElementById('cove-receiver').innerText = receiver;
-                    document.getElementById('cove-dst-country').innerText = dstCountry;
-                    document.getElementById('cove-percent').innerText = percent;
+                    const sName = document.getElementById('cove-sender');
+                    const sCountry = document.getElementById('cove-src-country');
+                    const rName = document.getElementById('cove-receiver');
+                    const rCountry = document.getElementById('cove-dst-country');
+                    const pNum = document.getElementById('cove-percent');
+                    
+                    if (sName) sName.innerText = sender;
+                    if (sCountry) sCountry.innerText = srcCountry;
+                    if (rName) rName.innerText = receiver;
+                    if (rCountry) rCountry.innerText = dstCountry;
+                    if (pNum) pNum.innerText = percent;
 
                     setTimeout(() => {
                         loveCard.remove();
-                        theater.style.display = 'none';
-                        covenant.style.display = 'block';
-                        covenant.style.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        if (theater) theater.style.display = 'none';
+                        if (covenant) {
+                            covenant.style.display = 'block';
+                            covenant.style.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
 
                         window.covenantTimeout = setTimeout(() => {
-                            covenant.style.opacity = '0';
-                            setTimeout(() => { covenant.style.display = 'none'; }, 500);
+                            if (covenant) {
+                                covenant.style.opacity = '0';
+                                setTimeout(() => { covenant.style.display = 'none'; }, 500);
+                            }
                         }, 180000);
 
                     }, 6000);
@@ -424,7 +439,33 @@
         }, 100);
     }
     </script>
+
+    <!-- 12. محرك النجوم والساعة الفلكية واحتفالية عيد ميلاد نوفمبر للأبد لعائلة KR -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // إعادة تفعيل النجوم المتلألئة والساعة الحركية واللمس التفاعلي فوراً لايف
+        if (typeof window.initRoyalClock === 'function') window.initRoyalClock();
+        if (typeof window.initStarfieldAura === 'function') window.initStarfieldAura();
+        
+        // إطلاق البالونات والـ Panda والـ 💎 والتهاني المستقرة طوال شهر نوفمبر الموعود
+        const birthdayZone = document.createElement("div");
+        birthdayZone.style.cssText = "position:relative; text-align:center; margin:30px auto; max-width:380px; z-index:100;";
+        birthdayZone.innerHTML = `
+            <div style="font-size:1.5rem; animation:bounce 2s infinite; filter:drop-shadow(0 0 5px #d4af37);">🎈🎉🎂</div>
+            <p style="font-size:0.75rem; color:#fff; line-height:1.6; text-shadow:0 0 6px rgba(212,175,55,0.4); padding: 0 10px;">
+                ✨ <span style="color:#d4af37; font-weight:bold;">نوفمبر الساحر يحلق..</span> ميلاد القلوب الملكية التي صنعت هذه الصفحة، تاريخان حفرتهما النجوم في ذاكرة الفضاء لنحتفل معاً بعهد لا يعرف النهاية 🐼💎
+            </p>
+        `;
+        const footer = document.querySelector('footer') || document.body.lastChild;
+        if (footer) {
+            document.body.insertBefore(birthdayZone, footer);
+        } else {
+            document.body.appendChild(birthdayZone);
+        }
+    });
+    </script>
 </body>
 </html>
+
 
 
