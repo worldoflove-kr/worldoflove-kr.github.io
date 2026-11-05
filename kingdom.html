@@ -252,22 +252,40 @@
         </div>
 
         <button onclick="launchInterstellarSoulmateComet()" style="width: 100%; background: linear-gradient(135deg, rgba(212,175,55,0.35), rgba(0,191,255,0.25)); border: 1px solid #d4af37; padding: 11px; border-radius: 12px; color: #fff; font-size: 0.75rem; font-weight: bold; cursor: pointer; box-shadow: 0 0 12px rgba(212,175,55,0.3); transition: all 0.3s;">☄️ إطلاق المذنب الشائع عابر القارات 🚀</button>
-        <!-- مسرح الفضاء الكوني ثلاثي الأبعاد والـ GIF المطور لحركة المذنب والـ Fairy والرابط بالأسفل مدمج -->
+         <!-- مسرح الفضاء الكوني ثلاثي الأبعاد المطور بمحرك الأعلام الذكية التلقائي والرابط المدمج -->
         <div id="comet-space-theater" style="display: none; margin-top: 15px; width: 100%; height: 140px; border-radius: 12px; border: 1px solid rgba(0,191,255,0.35); background: #040310; position: relative; overflow: hidden; box-shadow: inset 0 0 15px rgba(0,191,255,0.2);">
-            <div id="comet-src-node" style="position: absolute; left: 15px; top: 85px; font-size: 0.65rem; color: #00bfff; font-weight: bold; text-align: center; text-shadow: 0 0 4px #00bfff;">🇱🇧<br><span id="node-src-txt"></span></div>
-            <div id="comet-dst-node" style="position: absolute; right: 15px; top: 20px; font-size: 0.65rem; color: #d4af37; font-weight: bold; text-align: center; text-shadow: 0 0 4px #d4af37;">🌍<br><span id="node-dst-txt"></span>
-                <!-- الـ GIF الحركي المطور للملاك والجنية يشتغل بتأثير متكرر مهضوم وفخم -->
+            
+            <!-- نقطة البداية ذكية: العلم والاسم يتغيران تلقائياً آلياً حسب كتابة الزائر لايف -->
+            <div id="comet-src-node" style="position: absolute; left: 15px; top: 75px; font-size: 0.65rem; color: #00bfff; font-weight: bold; text-align: center;">
+                <span id="node-src-flag" style="font-size: 1.2rem; display: block; filter: drop-shadow(0 0 5px #00bfff);">📍</span>
+                <span id="node-src-txt"></span>
+            </div>
+
+            <!-- نقطة النهاية ذكية: علم واسم بلد الحبيب يتغيران تلقائياً مع احتفالية الجنية السحرية فوق العلم -->
+            <div id="comet-dst-node" style="position: absolute; right: 15px; top: 15px; font-size: 0.65rem; color: #d4af37; font-weight: bold; text-align: center;">
+                <span id="node-dst-flag" style="font-size: 1.2rem; display: block; filter: drop-shadow(0 0 5px #d4af37);">🌍</span>
+                <span id="node-dst-txt"></span>
                 <div id="fairy-celebration" style="display:none; position:absolute; top:-30px; left:-10px; font-size:1.4rem; animation:bounce 1.2s infinite; filter:drop-shadow(0 0 6px #d4af37);">🧚‍♀️🏹</div>
             </div>
             
-            <!-- مجسم المذنب والشهاب الواقعي ذو المنحنى الفلكي والذيل المشع -->
+            <!-- مجسم المذنب والشهاب الواقعي ذو المنحنى الفلكي والذيل المشع خلفه -->
             <div id="cosmic-comet-body" style="position: absolute; left: 30px; top: 85px; font-size: 1.4rem; display: none; filter: drop-shadow(0 0 10px #00bfff) drop-shadow(0 0 5px #d4af37); z-index: 50;">☄️</div>
             
-            <!-- رابط الصفحة العالمي محفور بذكاء بداخل مسرح الـ GIF ليظهر تلقائياً في الصور والمشاركات الفخمة -->
+            <!-- رابط الصفحة العالمي محفور بذكاء بداخل مسرح الـ GIF ليظهر تلقائياً في الصور والمشاركات -->
             <div style="position: absolute; bottom: 5px; width: 100%; text-align: center; font-size: 0.55rem; color: rgba(0, 191, 255, 0.45); font-weight: bold; letter-spacing: 0.5px; pointer-events: none; text-shadow: 0 0 3px rgba(0,191,255,0.2);">
                 🔗 KR KINGDOM: worldoflove-kr.github.io
             </div>
         </div>
+
+            <!-- مجسم المذنب والشهاب الواقعي ذو المنحنى الفلكي والذيل المشع خلفه -->
+            <div id="cosmic-comet-body" style="position: absolute; left: 30px; top: 85px; font-size: 1.4rem; display: none; filter: drop-shadow(0 0 10px #00bfff) drop-shadow(0 0 5px #d4af37); z-index: 50;">☄️</div>
+            
+            <!-- رابط الصفحة العالمي محفور بذكاء بداخل مسرح الـ GIF ليظهر تلقائياً في الصور والمشاركات -->
+            <div style="position: absolute; bottom: 5px; width: 100%; text-align: center; font-size: 0.55rem; color: rgba(0, 191, 255, 0.45); font-weight: bold; letter-spacing: 0.5px; pointer-events: none; text-shadow: 0 0 3px rgba(0,191,255,0.2);">
+                🔗 KR KINGDOM: worldoflove-kr.github.io
+            </div>
+        </div>
+
         <!-- صك العهد الذهبي الفخم الموثق بشعار KR واسم مملكة الوعود والارتباط التلقائي -->
         <div id="comet-golden-covenant" class="glass-panel" style="display: none; margin-top: 15px; padding: 18px; border-radius: 12px; border: 2px solid #d4af37; box-shadow: 0 0 25px rgba(212,175,55,0.5); background: rgba(10,5,22,0.98); text-align: center; color: #fff; transition: opacity 0.5s ease;">
             <div style="font-size: 1.1rem; color: #d4af37; font-weight: bold; margin-bottom: 2px; text-shadow: 0 0 8px #d4af37;">👑 عائلة KR الملكية 👑</div>
@@ -291,7 +309,7 @@
         </div>
     </div>
 
-     <script>
+    <script>
     function launchInterstellarSoulmateComet() {
         const sender = document.getElementById('comet-sender').value.trim();
         const srcCountry = document.getElementById('comet-country-src').value.trim();
@@ -308,6 +326,11 @@
         document.getElementById('node-src-txt').innerText = srcCountry;
         document.getElementById('node-dst-txt').innerText = dstCountry;
 
+        // محرك رادار الأعلام الذكي السحابي المطور لمطابقة البلدان آلياً لايف وبمنتهى الدقة الرقمية
+        const flagMap = {"لبنان":"🇱🇧","البحرين":"🇧🇭","السعودية":"🇸🇦","دبي":"🇦🇪","الامارات":"🇦🇪","مصر":"🇪🇬","الكويت":"🇰🇼","قطر":"🇶🇦","عمان":"🇴🇲","العراق":"🇮🇶","الاردن":"🇯🇴","فلسطين":"🇵🇸","سوريا":"🇸🇾","تونس":"🇹🇳","الجزائر":"🇩🇿","المغرب":"🇲🇦","ليبيا":"🇱🇾","اليمن":"🇾🇪"};
+        document.getElementById('node-src-flag').innerText = flagMap[srcCountry] || "📍";
+        document.getElementById('node-dst-flag').innerText = flagMap[dstCountry] || "🌍";
+
         const theater = document.getElementById('comet-space-theater');
         const covenant = document.getElementById('comet-golden-covenant');
         const comet = document.getElementById('cosmic-comet-body');
@@ -318,7 +341,6 @@
         theater.style.display = 'block';
         fairy.style.display = 'none';
         
-        // ضبط المذنب عند نقطة البداية مع إضافة الذيل الزهري المشع المطوّر خلفه
         comet.style.display = 'block';
         comet.style.left = '30px';
         comet.style.top = '85px';
@@ -327,28 +349,27 @@
 
         document.body.style.animation = 'madridEarthquake 0.1s linear 5';
 
-        // ⏱️ انطلاق رحلة المذنب البطيئة (5 ثوانٍ) كعقرب الساعة يرسم منحنى فلكياً واقعياً
+        // ⏱️ انطلاق رحلة المذنب البطيئة (5 ثوانٍ) كعقرب الساعة يرسم منحنى فلكياً واقعياً بالعين المجردة
         setTimeout(() => {
             comet.style.transition = 'left 5s linear, top 5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
             comet.style.left = '290px';
             comet.style.top = '25px';
 
-            // تدرج اضمحلال وتلاشي الذيل الزهري كلما ابتعد الشهاب عن بلده
             setTimeout(() => {
                 comet.style.boxShadow = '-5px 5px 10px #ff007f, -10px 10px 15px rgba(255, 0, 127, 0.2)';
             }, 2500);
 
             setTimeout(() => {
-                // 💖 حركة الدوران على شكل قلب حول علم بلد المستقبل عند الوصول
+                // 💖 حركة الدوران على شكل قلب حول علم بلد المستقبل عند الوصول بالملّي
                 comet.style.transition = 'all 0.8s ease-in-out';
                 comet.style.transform = 'translate(-10px, -10px) rotate(45deg)';
                 
                 setTimeout(() => {
                     comet.style.display = 'none';
                     comet.style.transform = 'none';
-                    fairy.style.display = 'block'; // ظهور الـ GIF الحركي للجنية وسهم الملاك
+                    fairy.style.display = 'block'; // ظهور الجنية وسهم الملاك الاحتفالي
                     
-                    // تفجير مفرقعات نجوم صغيرة ومضيئة فوق العلم مباشرة
+                    // تفجير مفرقعات نجوم صغيرة ومضيئة فوق العلم المناسب مباشرة
                     for (let i = 0; i < 15; i++) {
                         const miniSpark = document.createElement('div');
                         miniSpark.innerText = i % 2 === 0 ? '⭐' : '✨';
@@ -378,7 +399,7 @@
                         covenant.style.display = 'block';
                         covenant.style.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-                        // ⏱️ بقاء الصك لـ 3 دقائق ثم التلاشي التلقائي
+                        // ⏱️ بقاء الصك لـ 3 دقائق ثم التلاشي التلقائي لإشعال الحماس للإعادة
                         window.covenantTimeout = setTimeout(() => {
                             covenant.style.opacity = '0';
                             setTimeout(() => { covenant.style.display = 'none'; }, 500);
@@ -390,10 +411,7 @@
         }, 100);
     }
     </script>
-
-
-
-
+ 
 
     <!-- 12. فوتير الهوية الملكية وشعار KR الذهبي النابض والمتحرك باستمرار -->
     <footer style="text-align: center; padding: 15px; color: #888; font-size: 0.72rem;">
