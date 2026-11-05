@@ -171,6 +171,50 @@
     </script>
 </body>
 </html>
+    <!-- محرك التوازن الملكي المكتمل: تشغيل الساعة، مرآة النجوم بالخلفية، لمسات الشاشة، وصندوق نوفمبر للأبد لعائلة KR -->
+    <script>
+    (function() {
+        function restoreRoyalCore() {
+            // 1. تشغيل عقارب الساعة الفلكية والترجمة لايف فوراً
+            if (typeof window.initRoyalClock === 'function') {
+                window.initRoyalClock();
+            } else if (typeof initRoyalClock === 'function') {
+                initRoyalClock();
+            }
+
+            // 2. إيقاظ مرآة النجوم المتلألئة بالخلفية وحركات لمسات الأصابع الحركية على الشاشة
+            if (typeof window.initStarfieldAura === 'function') {
+                window.initStarfieldAura();
+            } else if (typeof initStarfieldAura === 'function') {
+                initStarfieldAura();
+            }
+
+            // 3. فك قفل التحديث الكوني وإعادة طيران البالونات والـ Panda والـ 💎 لعيد ميلاد صديقتكِ بأسفل الصفحة بانتظام فخم
+            const statusText = document.body.innerHTML.match(/...قيد التحديث الكوني/);
+            if (statusText) {
+                const bZone = document.createElement("div");
+                bZone.id = "royal-november-birthday-card-fixed";
+                bZone.style.cssText = "position:relative; text-align:center; margin:35px auto; max-width:380px; padding:15px; z-index:100; clear:both;";
+                bZone.innerHTML = `
+                    <div style="font-size:1.6rem; animation:bounce 2s infinite; filter:drop-shadow(0 0 6px #d4af37);">🎈🎉🎂</div>
+                    <p style="font-size:0.75rem; color:#fff; line-height:1.6; text-shadow:0 0 6px rgba(212,175,55,0.4); margin-top:8px; font-weight:bold;">
+                        ✨ <span style="color:#d4af37;">نوفمبر الساحر يحلق..</span> ميلاد القلوب الملكية التي صنعت هذه الصفحة، تاريخان حفرتهما النجوم في ذاكرة الفضاء لنحتفل معاً بعهد لا يعرف النهاية 🐼💎
+                    </p>
+                `;
+                const footer = document.querySelector('footer') || document.body.lastChild;
+                if (footer) document.body.insertBefore(bZone, footer);
+            }
+        }
+
+        // إطلاق نبضات الترميم الفورية مع تحميل متصفح الزائر مباشرة
+        if (document.readyState === "complete" || document.readyState === "interactive") {
+            restoreRoyalCore();
+        } else {
+            document.addEventListener("DOMContentLoaded", restoreRoyalCore);
+        }
+        window.addEventListener("load", restoreRoyalCore);
+    })();
+    </script>
 
       
    
