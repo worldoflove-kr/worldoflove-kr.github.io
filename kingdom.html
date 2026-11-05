@@ -443,11 +443,11 @@
     <!-- 12. محرك النجوم والساعة الفلكية واحتفالية عيد ميلاد نوفمبر للأبد لعائلة KR -->
     <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // إعادة تفعيل النجوم المتلألئة والساعة الحركية واللمس التفاعلي فوراً لايف
+        // فك تجميد وتشغيل عقارب الساعة الفلكية والترجمة واللمس الحركي لايف فوراً
         if (typeof window.initRoyalClock === 'function') window.initRoyalClock();
         if (typeof window.initStarfieldAura === 'function') window.initStarfieldAura();
         
-        // إطلاق البالونات والـ Panda والـ 💎 والتهاني المستقرة طوال شهر نوفمبر الموعود
+        // إعادة إطلاق البالونات والـ Panda والـ 💎 والتهاني المستقرة طوال شهر نوفمبر الموعود
         const birthdayZone = document.createElement("div");
         birthdayZone.style.cssText = "position:relative; text-align:center; margin:30px auto; max-width:380px; z-index:100;";
         birthdayZone.innerHTML = `
@@ -464,6 +464,7 @@
         }
     });
     </script>
+
 </body>
 </html>
 
