@@ -161,56 +161,225 @@
             📡 رادار حر ومفتوح بالكامل لمشاهدة الأهداف والملخصات بالفيديو 🔒
         </div>
     </div>
+    <!-- 11-ج. بوابة البصمة الكونية ومذنب توأم الروح العابر للقارات لـ مملكة الوعود وعائلة KR -->
+    <div class="glass-panel" style="background: rgba(12, 8, 24, 0.95) !important; border-radius: 16px; padding: 18px; max-width: 380px; margin: 25px auto; border: 1px solid rgba(212, 175, 55, 0.5) !important; box-shadow: 0 0 35px rgba(212, 175, 55, 0.4), 0 0 50px rgba(0, 191, 255, 0.35), inset 0 0 15px rgba(212, 175, 55, 0.15) !important; position: relative; overflow: hidden; z-index: 100; animation: cosmicWave 4s ease-in-out infinite;">
+        
+        <div style="font-size: 1.4rem; text-align: center; margin-bottom: 4px; filter: drop-shadow(0 0 6px #d4af37);">🧚‍♀️🏹☄️</div>
+        <h3 style="color: #d4af37; font-size: 0.85rem; margin: 0 0 4px 0; text-shadow: 0 0 8px rgba(212,175,55,0.5); text-align: center;">🔮 رادار مَمْلَكَةُ الْوُعُودِ العابر للقارات</h3>
+        <p style="font-size: 0.74rem; color: #fff; margin: 0 0 14px 0; line-height: 1.5; text-align: center; text-shadow: 0 0 8px rgba(212,175,55,0.3); font-weight: bold;">
+            ✨ <span style="color: #d4af37;">هل تتساءلين أين يختبئ نصفكِ الآخر الحين؟</span> أطلقي مذنب الحب الشائع المشع، ودعيه يشق مجرات الكون ليرسم نبضات قلبكِ ويحدد موقع توأم روحكِ العابر للقارات لايف بالعين المجردة بداخل فضاء الملوك! 🌌🪐
+        </p>
+        
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px;">
+            <div style="display: flex; gap: 6px;">
+                <input type="text" id="comet-sender" placeholder="✍️ اسمِك..." style="width: 50%; background: rgba(255,255,255,0.05); border: 1px solid rgba(0,191,255,0.35); padding: 9px; border-radius: 10px; color: #fff; font-size: 0.72rem; text-align: center; outline: none; box-sizing: border-box;">
+                <input type="text" id="comet-country-src" placeholder="📍 بلدِك (مثلاً: لبنان)..." style="width: 50%; background: rgba(255,255,255,0.05); border: 1px solid rgba(0,191,255,0.35); padding: 9px; border-radius: 10px; color: #fff; font-size: 0.72rem; text-align: center; outline: none; box-sizing: border-box;">
+            </div>
+            <div style="display: flex; gap: 6px;">
+                <input type="text" id="comet-receiver" placeholder="✍️ اسم الحبيب..." style="width: 50%; background: rgba(212, 175, 55, 0.25); border: 1px solid rgba(212,175,55,0.4); padding: 9px; border-radius: 10px; color: #fff; font-size: 0.72rem; text-align: center; outline: none; box-sizing: border-box;">
+                <input type="text" id="comet-country-dst" placeholder="📍 بلده (مثلاً: دبي)..." style="width: 50%; background: rgba(212, 175, 55, 0.25); border: 1px solid rgba(212,175,55,0.4); padding: 9px; border-radius: 10px; color: #fff; font-size: 0.72rem; text-align: center; outline: none; box-sizing: border-box;">
+            </div>
+        </div>
+
+        <button onclick="launchInterstellarSoulmateComet()" style="width: 100%; background: linear-gradient(135deg, rgba(212,175,55,0.35), rgba(0,191,255,0.25)); border: 1px solid #d4af37; padding: 11px; border-radius: 12px; color: #fff; font-size: 0.75rem; font-weight: bold; cursor: pointer; box-shadow: 0 0 12px rgba(212,175,55,0.3); transition: all 0.3s;">☄️ إطلاق المذنب الشائع عابر القارات 🚀</button>
+
+        <div id="comet-space-theater" style="display: none; margin-top: 15px; width: 100%; height: 140px; border-radius: 12px; border: 1px solid rgba(0,191,255,0.35); background: #040310; position: relative; overflow: hidden; box-shadow: inset 0 0 15px rgba(0,191,255,0.2);">
+            <div id="comet-src-node" style="position: absolute; left: 15px; top: 75px; font-size: 0.65rem; color: #00bfff; font-weight: bold; text-align: center;"><span id="node-src-flag" style="font-size: 1.2rem; display: block; filter: drop-shadow(0 0 5px #00bfff);">📍</span><span id="node-src-txt"></span></div>
+            <div id="comet-dst-node" style="position: absolute; right: 15px; top: 15px; font-size: 0.65rem; color: #d4af37; font-weight: bold; text-align: center;"><span id="node-dst-flag" style="font-size: 1.2rem; display: block; filter: drop-shadow(0 0 5px #d4af37);">🌍</span><span id="node-dst-txt"></span><div id="fairy-celebration" style="display:none; position:absolute; top:-30px; left:-10px; font-size:1.4rem; animation:bounce 1.2s infinite; filter:drop-shadow(0 0 6px #d4af37);">🧚‍♀️🏹</div></div>
+            <div id="cosmic-comet-body" style="position: absolute; left: 30px; top: 85px; font-size: 1.4rem; display: none; filter: drop-shadow(0 0 10px #00bfff) drop-shadow(0 0 5px #d4af37); z-index: 50;">☄️</div>
+            <div style="position: absolute; bottom: 5px; width: 100%; text-align: center; font-size: 0.55rem; color: rgba(0, 191, 255, 0.45); font-weight: bold; letter-spacing: 0.5px; pointer-events: none; text-shadow: 0 0 3px rgba(0, 191, 255, 0.45);">🔗 KR KINGDOM: worldoflove-kr.github.io</div>
+        </div>
+
+        <div id="comet-golden-covenant" class="glass-panel" style="display: none; margin-top: 15px; padding: 18px; border-radius: 12px; border: 2px solid #d4af37; box-shadow: 0 0 25px rgba(212,175,55,0.5); background: rgba(10,5,22,0.98); text-align: center; color: #fff; transition: opacity 0.5s ease;">
+            <div style="font-size: 1.1rem; color: #d4af37; font-weight: bold; margin-bottom: 2px; text-shadow: 0 0 8px #d4af37;">👑 عائلة KR الملكية 👑</div>
+            <div style="font-size: 0.7rem; color: #00bfff; font-weight: bold; margin-bottom: 8px; letter-spacing: 0.5px;">✨ مَمْلَكَةُ الْوُعُودِ ✨</div>
+            <div style="font-size: 0.58rem; color: #aaa; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 6px;">وثيقة عهد الأرواح العابرة للقارات والحدود</div>
+            <div style="font-size: 0.8rem; line-height: 1.6; margin-bottom: 12px; direction: rtl; text-align: center;">
+                🚀 سافر المذنب الفلكي المشع من قلب <span id="cove-src-country" style="color:#00bfff; font-weight:bold;"></span> حاملاً نبض المرسل النبيل: <br><span id="cove-sender" style="color:#fff; font-weight:bold; font-size:0.85rem; border-bottom:1px dashed rgba(255,255,255,0.3);"></span> <br>
+                وشق مجرات الكون ليصل بسلام إلى <span id="cove-dst-country" style="color:#d4af37; font-weight:bold;"></span> ليستقر في روح توأم روحه: <br><span id="cove-receiver" style="color:#fff; font-weight:bold; font-size:0.85rem; border-bottom:1px dashed rgba(255,255,255,0.3);"></span> <br>
+                💞 نسبة الالتحام الأبدي العابر للقارات: <span id="cove-percent" style="color:#ff007f; font-weight:bold; font-size:1.15rem; text-shadow:0 0 8px #ff007f;"></span>
+            </div>
+            <div style="font-size: 0.72rem; color: #cbd5e0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px;">🐼 الأرواح ملتحمة ومحمية في عمق الفضاء التفاعلي للـ Panda 💎</div>
+            <div style="margin-top: 12px; font-size: 0.58rem; color: #00bfff; border-top: 1px dashed rgba(0,191,255,0.2); padding-top: 6px; font-weight: bold;">🔗 الرابط الموثق: worldoflove-kr.github.io/kingdom.html</div>
+        </div>
+    </div>
   
-    <!-- 12. نظام تشغيل السكريبتات وحفظ لفات الهوية الملوكية وعيد االميلاد-->
-    <script>
-     <!-- 12. محرك التوازن الملكي المكتمل والتشغيل الذاتي للساعة والنجوم ولمسات الأصابع والبالونات للأبد لعائلة KR -->
+      <!-- 12. محرك التوازن البرمجي الذاتي والأصيل للساعة والنجوم ولمسات الأصابع والبالونات للأبد لـ KR -->
+    <div id="starfield-core" style="position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:-1; background: radial-gradient(circle at center, #0a0f24 0%, #030511 100%) !important;"></div>
+    
     <script>
     (function() {
-        // 1. بناء وإيقاظ مرآة النجوم المتلألئة بالخلفية وحركات لمسات الأصابع الحركية على الشاشة ذاتياً
-        const bgField = document.getElementById('starfield-core') || document.createElement('div');
-        if (!bgField.id) {
-            bgField.id = 'starfield-core';
-            bgField.style.cssText = "position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:-1; background: radial-gradient(circle at center, #0a0f24 0%, #030511 100%) !important;";
-            document.body.appendChild(bgField);
-        }
-
-        // 2. تشغيل دقات وعقارب الساعة الفلكية لايف وتحديث التوقيت بانتظام
-        function updateRoyalClock() {
-            const clockEl = document.querySelector('.glass-panel h3') || document.body;
+        // أ) تشغيل دقات الساعة الحركية لايف وتحديث خلايا الوقت بالمتصفح تلقائياً
+        function runRoyalClockLive() {
+            const timeContainers = document.querySelectorAll('span, div, h3');
             const now = new Date();
-            const timeStr = now.toTimeString().split(' ');
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            const timeStr = `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
+            
+            timeContainers.forEach(el => {
+                if (el.textContent && (el.textContent.includes('--:--:--') || el.textContent.match(/^\d{2}:\d{2}:\d{2}/))) {
+                    el.textContent = timeStr;
+                }
+            });
         }
-        setInterval(updateRoyalClock, 1000);
+        setInterval(runRoyalClockLive, 1000);
 
-        function activateRoyalCore() {
-            document.body.style.background = "#030511";
-            // إزالة قفل التحديث الكوني وإعادة فرش صندوق البالونات وعيد ميلاد نوفمبر بالأسفل بانتظام فخم
-            const bZone = document.getElementById("royal-november-birthday-card-fixed") || document.createElement("div");
-            if (!document.getElementById("royal-november-birthday-card-fixed")) {
-                bZone.id = "royal-november-birthday-card-fixed";
-                bZone.style.cssText = "position:relative; text-align:center; margin:35px auto; max-width:380px; padding:15px; z-index:100; clear:both;";
-                bZone.innerHTML = `
-                    <div style="font-size:1.6rem; animation:bounce 2s infinite; filter:drop-shadow(0 0 6px #d4af37);">🎈🎉🎂</div>
-                    <p style="font-size:0.75rem; color:#fff; line-height:1.6; text-shadow:0 0 6px rgba(212,175,55,0.4); margin-top:8px; font-weight:bold;">
-                        ✨ <span style="color:#d4af37;">نوفمبر الساحر يحلق..</span> ميلاد القلوب الملكية التي صنعت هذه الصفحة، تاريخان حفرتهما النجوم في ذاكرة الفضاء لنحتفل معاً بعهد لا يعرف النهاية 🐼💎
-                    </p>
-                `;
-                const footer = document.querySelector('footer') || document.body.lastChild;
-                if (footer) document.body.insertBefore(bZone, footer);
+        // ب) إطلاق سقف مرآة النجوم المتلألئة المضيئة بالخلفية ونيازك لمسات الأصابع الحركية للشاشة
+        const canvas = document.createElement('canvas');
+        canvas.style.cssText = "position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:-1;";
+        document.getElementById('starfield-core').appendChild(canvas);
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+        
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        for(let i=0; i<80; i++) {
+            stars.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, r: Math.random()*1.5+0.5, d: Math.random()*0.05});
+        }
+
+        function drawStars() {
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            ctx.fillStyle = "rgba(255,255,255,0.8)";
+            stars.forEach(s => {
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+                ctx.fill();
+                s.x += s.d;
+                if(s.x > canvas.width) s.x = 0;
+            });
+            requestAnimationFrame(drawStars);
+        }
+        drawStars();
+
+        // ت) تنشيط حركات شهب لمسات الأصابع الحية على زجاج الشاشة
+        window.addEventListener('mousemove', function(e) {
+            for(let i=0; i<2; i++) {
+                stars.push({x: e.clientX, y: e.clientY, r: Math.random()*2+1, d: (Math.random()-0.5)*2});
+                if(stars.length > 150) stars.shift();
             }
+        });
+        window.addEventListener('touchmove', function(e) {
+            if(e.touches.length > 0) {
+                stars.push({x: e.touches[0].clientX, y: e.touches[0].clientY, r: Math.random()*2+1, d: (Math.random()-0.5)*2});
+                if(stars.length > 150) stars.shift();
+            }
+        });
+
+        // ث) إعادة فرش صندوق بالونات عيد ميلاد نوفمبر للأبد لعائلة KR والـ Panda والـ 💎 بالأسفل بنقاء تام
+        const bCard = document.createElement("div");
+        bCard.style.cssText = "position:relative; text-align:center; margin:35px auto; max-width:380px; padding:15px; z-index:100; clear:both;";
+        bCard.innerHTML = `
+            <div style="font-size:1.6rem; animation:bounce 2s infinite; filter:drop-shadow(0 0 6px #d4af37);">🎈🎉🎂</div>
+            <p style="font-size:0.75rem; color:#fff; line-height:1.6; text-shadow:0 0 6px rgba(212,175,55,0.4); margin-top:8px; font-weight:bold;">
+                ✨ <span style="color:#d4af37;">نوفمبر الساحر يحلق..</span> ميلاد القلوب الملكية التي صنعت هذه الصفحة، تاريخان حفرتهما النجوم في ذاكرة الفضاء لنحتفل معاً بعهد لا يعرف النهاية 🐼💎
+            </p>
+        `;
+        const footer = document.querySelector('footer') || document.body.lastChild;
+        if (footer) document.body.insertBefore(bCard, footer);
+    })();
+
+    function launchInterstellarSoulmateComet() {
+        const sender = document.getElementById('comet-sender').value.trim();
+        const srcCountry = document.getElementById('comet-country-src').value.trim();
+        const receiver = document.getElementById('comet-receiver').value.trim();
+        const dstCountry = document.getElementById('comet-country-dst').value.trim();
+
+        if (!sender || !srcCountry || !receiver || !dstCountry) {
+            alert("الرجاء تعبئة الأسماء والبلدان بالكامل لإطلاق المذنب لـ مَمْلَكَةُ الْوُعُودِ 🧚‍♀️🏹☄️");
+            return;
         }
 
-        if (document.readyState === "complete" || document.readyState === "interactive") {
-            activateRoyalCore();
-        } else {
-            document.addEventListener("DOMContentLoaded", activateRoyalCore);
+        if (window.covenantTimeout) clearTimeout(window.covenantTimeout);
+        document.getElementById('node-src-txt').innerText = srcCountry;
+        document.getElementById('node-dst-txt').innerText = dstCountry;
+
+        const flagMap = {
+            "لبنان": "🇱🇧", "البحرين": "🇧🇭", "السعودية": "🇸🇦", "دبي": "🇦🇪", "الامارات": "🇦🇪", 
+            "مصر": "🇪🇬", "الكويت": "🇰🇼", "قطر": "🇶🇦", "عمان": "🇴🇲", "العراق": "🇮🇶", 
+            "الاردن": "🇯🇴", "فلسطين": "🇵🇸", "سوريا": "🇸🇾", "تونس": "🇹🇳", "الجزائر": "🇩🇿", 
+            "المغرب": "🇲🇦", "ليبيا": "🇱🇾", "اليمن": "🇾🇪", "السودان": "🇸🇩", "تركيا": "🇹🇷", "فرنسا": "🇫🇷"
+        };
+        document.getElementById('node-src-flag').innerText = flagMap[srcCountry] || "📍";
+        document.getElementById('node-dst-flag').innerText = flagMap[dstCountry] || "🌍";
+
+        const theater = document.getElementById('comet-space-theater');
+        const covenant = document.getElementById('comet-golden-covenant');
+        const comet = document.getElementById('cosmic-comet-body');
+        const srcNode = document.getElementById('comet-src-node');
+        const dstNode = document.getElementById('comet-dst-node');
+
+        if (covenant) covenant.style.display = 'none';
+        if (theater) theater.style.display = 'block';
+        
+        const oldLoveCard = document.getElementById('royal-mid-love-card');
+        if (oldLoveCard) oldLoveCard.remove();
+
+        if (comet) {
+            comet.style.display = 'block';
+            comet.style.left = '30px';
+            comet.style.top = '85px';
+            comet.style.transition = 'none';
+            comet.style.boxShadow = '-10px 10px 15px #ff007f, -20px 20px 30px rgba(255, 0, 127, 0.4)';
         }
-        window.addEventListener("load", activateRoyalCore);
-    })();
+
+        setTimeout(() => {
+            if (comet) {
+                comet.style.transition = 'left 5s linear, top 5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                comet.style.left = '290px';
+                comet.style.top = '25px';
+            }
+
+            setTimeout(() => {
+                if (comet) {
+                    comet.style.transition = 'all 0.6s ease-in-out';
+                    comet.style.transform = 'translate(-10px, -10px) rotate(45deg)';
+                }
+                
+                setTimeout(() => {
+                    if (comet) comet.style.display = 'none';
+                    if (srcNode) srcNode.style.display = 'none';
+                    if (dstNode) dstNode.style.display = 'none';
+
+                    const loveCard = document.createElement('div');
+                    loveCard.id = 'royal-mid-love-card';
+                    loveCard.style.cssText = 'position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:85%; text-align:center; color:#fff; font-weight:bold; z-index:80;';
+                    loveCard.innerHTML = `
+                        <div style="font-size: 2rem; margin-bottom: 2px; animation: bounce 1s infinite;">🧚‍♀️🏹</div>
+                        <div style="font-size: 0.9rem; color: #d4af37; text-shadow: 0 0 6px #d4af37;">بحبك ❤️ I Love U</div>
+                        <div style="font-size: 0.58rem; color: #00bfff;">مَمْلَكَةُ الْوُعُودِ • عائلة KR 👑</div>
+                    `;
+                    if (theater) theater.appendChild(loveCard);
+
+                    const percent = (Math.random() * 3.9 + 96).toFixed(1) + '%';
+                    document.getElementById('cove-sender').innerText = sender;
+                    document.getElementById('cove-src-country').innerText = srcCountry;
+                    document.getElementById('cove-receiver').innerText = receiver;
+                    document.getElementById('cove-dst-country').innerText = dstCountry;
+                    document.getElementById('cove-percent').innerText = percent;
+
+                    setTimeout(() => {
+                        loveCard.remove();
+                        if (theater) theater.style.display = 'none';
+                        if (covenant) covenant.style.display = 'block';
+                    }, 6000);
+                }, 600);
+            }, 5000);
+        }, 100);
+    }
     </script>
 </body>
 </html>
+
     
       
 
