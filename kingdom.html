@@ -361,7 +361,7 @@
         }, 100);
     }
     </script>
-    <!-- 8. صُنْدُوقُ اللَّحْظَاتِ وَالتَّوَارِيخِ الخَالِدَةِ الأَصِيلِ المَعْزُولِ والمُطَوَّرِ لـ مَمْلَكَةُ الْوُعُودِ -->
+    <!-- 8. صُنْدُوقُ اللَّحْظَاتِ وَالتَّوَارِيخِ الخَالِدَةِ الأَصِيلِ المَعْزُولِ والمُطَوَّرِ الموحد لـ مَمْلَكَةُ الْوُعُودِ -->
     <div class="glass-panel" style="background: rgba(12, 8, 24, 0.75) !important; border-radius: 16px; padding: 18px; max-width: 380px; margin: 15px auto; border: 1px solid rgba(0, 191, 255, 0.4) !important; box-shadow: 0 0 25px rgba(0, 191, 255, 0.25) !important; text-align: center; position: relative; z-index: 100; animation: cosmicWave 4s ease-in-out infinite;">
         <div style="font-size: 1.1rem; margin-bottom: 4px;">📅</div>
         <h3 id="royal-moments-title" style="color: #00bfff; font-size: 0.85rem; margin: 0 0 12px 0; text-shadow: 0 0 8px rgba(0,191,255,0.4); font-family: 'Cairo', sans-serif;">الحظات والتواريخ الخالدة</h3>
@@ -395,6 +395,14 @@
         </div>
     </div>
 
+    <!-- 9. صندوق احتفالية نوفمبر الساحر الذكي التلقائي (يُفرش ويظهر تحت التواريخ فقط من يوم 4/11 لآخر الشهر ويختفي بعدها) -->
+    <div id="dynamic-november-celebration" class="glass-panel" style="display: none; background: rgba(12, 8, 24, 0.85) !important; border-radius: 16px; padding: 18px; max-width: 380px; margin: 25px auto; border: 2px solid #d4af37 !important; box-shadow: 0 0 35px rgba(212, 175, 55, 0.35), inset 0 0 15px rgba(212, 175, 55, 0.15) !important; text-align: center; position: relative; overflow: hidden; z-index: 100; animation: cosmicWave 4s ease-in-out infinite;">
+        <div style="font-size: 1.8rem; margin-bottom: 4px; filter: drop-shadow(0 0 6px #d4af37);">🎈🎉🎂</div>
+        <p id="royal-birthday-text" style="font-size: 0.76rem; color: #fff; line-height: 1.6; text-shadow: 0 0 8px rgba(212,175,55,0.4); margin: 5px 0 0 0; font-weight: bold; font-family: 'Cairo', sans-serif; direction: rtl;">
+            ✨ <span style="color: #d4af37;">نوفمبر الساحر يحلق..</span> ميلاد القلوب الملكية التي صنعت هذه الصفحة، تاريخان حفرتهما النجوم في ذاكرة الفضاء لنحتفل معاً بعهد جديد لا يعرف النهاية <span>Panda KR 🐼💎</span>
+        </p>
+    </div>
+
     <!-- مَسْرَح النُّجُومِ وَالِاحْتِفَالِ الطَّائِرِ الكَوْنِيِّ الشَّامِلِ بالأَعْمَاقِ خَلْفَ الزُّجَاجِ الشَّفَّافِ -->
     <div id="starfield-core" style="position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:-1; background: radial-gradient(circle at center, #0a0f24 0%, #030511 100%) !important;"></div>
     <div id="royal-flying-festival-zone" style="position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:10; overflow:hidden;"></div>
@@ -404,11 +412,11 @@
         <div style="position:absolute; bottom:0; left:50%; transform:translateX(-50%); font-size:1.8rem; filter:drop-shadow(0 0 12px #00bfff); animation:bounce 2s infinite ease-in-out; animation-delay:1s;">🪐</div>
     </div>
 
-    <!-- محرك التوازن والالتئام الملكي المكتمل: بناء العداد الموحد واحتفالية البالونات والـ Panda والكيك المتصاعدة للأعلى خلف المجرات لعائلة KR -->
+    <!-- محرك التوازن والالتئام الملكي المكتمل لـ مَمْلَكَةُ الْوُعُودِ وعائلة KR -->
     <script>
     (function() {
         function awakenOriginalFestival() {
-            // أ) تشغيل عقارب الساعة الفلكية لايف والتوقيت الحي بالثواني والدقائق
+            // 1. تشغيل عقارب الساعة الفلكية لايف والتوقيت الحي بالثواني والدقائق والساعات
             const clockEl = document.getElementById('astro-clock');
             if (clockEl) {
                 setInterval(function() {
@@ -420,7 +428,7 @@
                 }, 1000);
             }
 
-            // ب) محرك العداد الفلكي الحي لحساب الأيام والساعات والدقائق والثواني بدقة متناهية لايف تلقائياً
+            // 2. محرك العداد الفلكي الحي لحساب الأيام والساعات والدقائق والثواني بدقة متناهية لايف تلقائياً
             const daysCountEl = document.getElementById('calculated-days');
             if (daysCountEl) {
                 setInterval(function() {
@@ -440,7 +448,7 @@
                 }, 1000);
             }
 
-            // ت) تنشيط الجوهرة 💎 والاسم ليتحركوا بنبضات حركية ديناميكية مشعة تلقائياً
+            // 3. تنشيط الجوهرة 💎 والاسم ليتحركوا بنبضات حركية ديناميكية مشعة تلقائياً في المنتصف
             const gem = document.getElementById('royal-pulsing-gem');
             const titleAr = document.getElementById('royal-main-title');
             const titleEn = document.getElementById('royal-sub-title');
@@ -448,40 +456,74 @@
             if (titleAr) titleAr.style.animation = "bounce 3s infinite ease-in-out";
             if (titleEn) { titleEn.style.animation = "bounce 3s infinite ease-in-out"; titleEn.style.animationDelay = "1.5s"; }
 
-            // ث) بناء وإطلاق البصمة والاحتفال الطائر الكوني الشامل بالأعماق (البالونات، الباندا 🐼، الكيك 🎂، وهابي بيرثداي 🎉) يتصاعدون صعوداً نحو الأعلى خلف اللوحات
+            // 4. محرك الفحص والتشغيل التلقائي والدوري لعيد ميلاد نوفمبر الموعود (يفرش الصندوق ويطلق البالونات والـ Panda والكيك من يوم 4/11 لآخر الشهر كل سنة)
+            const now = new Date();
+            const month = now.getMonth() + 1; // نوفمبر هو شهر 11
+            const day = now.getDate();
+            const celebCard = document.getElementById('dynamic-november-celebration');
             const festivalZone = document.getElementById('royal-flying-festival-zone');
-            if (festivalZone) {
-                const items = ['🎈', '🐼', '🎂', '🎉', '✨', 'Happy Birthday'];
-                setInterval(function() {
-                    const el = document.createElement('div');
-                    el.textContent = items[Math.floor(Math.random() * items.length)];
-                    el.style.position = 'absolute';
-                    el.style.bottom = '-50px';
-                    el.style.left = Math.random() * 100 + 'vw';
-                    el.style.fontSize = (Math.random() * 1.2 + 0.8) + 'rem';
-                    el.style.color = '#fff';
-                    el.style.fontWeight = 'bold';
-                    el.style.textShadow = '0 0 10px #d4af37, 0 0 20px rgba(0,191,255,0.4)';
-                    el.style.transition = 'transform 8s linear, opacity 8s linear';
-                    el.style.zIndex = '5';
-                    festivalZone.appendChild(el);
 
-                    setTimeout(function() {
-                        el.style.transform = 'translateY(-110vh) rotate(' + (Math.random() * 360) + 'deg)';
-                        el.style.opacity = '0';
-                    }, 100);
+            if (month === 11 && day >= 4) {
+                // إظهار صندوق المعايدة التلقائي تحت التواريخ مباشرة في شهر نوفمبر
+                if (celebCard) celebCard.style.display = 'block';
 
-                    setTimeout(function() { el.remove(); }, 8500);
-                }, 400);
+                // ضخ وتطاير عناصر الاحتفال لتتصاعد صعوداً نحو الأعلى خلف اللوحات الزجاجية الشفافة
+                if (festivalZone) {
+                    const items = ['🎈', '🐼', '🎂', '🎉', '✨', 'Happy Birthday'];
+                    setInterval(function() {
+                        const el = document.createElement('div');
+                        el.textContent = items[Math.floor(Math.random() * items.length)];
+                        el.style.position = 'absolute';
+                        el.style.bottom = '-50px';
+                        el.style.left = Math.random() * 100 + 'vw';
+                        el.style.fontSize = (Math.random() * 1.2 + 0.8) + 'rem';
+                        el.style.color = '#fff';
+                        el.style.fontWeight = 'bold';
+                        el.style.textShadow = '0 0 10px #d4af37, 0 0 20px rgba(0,191,255,0.4)';
+                        el.style.transition = 'transform 8s linear, opacity 8s linear';
+                        el.style.zIndex = '5';
+                        festivalZone.appendChild(el);
+
+                        setTimeout(function() {
+                            el.style.transform = 'translateY(-110vh) rotate(' + (Math.random() * 360) + 'deg)';
+                            el.style.opacity = '0';
+                        }, 100);
+
+                        setTimeout(function() { el.remove(); }, 8500);
+                    }, 400);
+                }
+            } else {
+                // إخفاء العبارة والاحتفال تلقائياً بمجرد انتهاء شهر نوفمبر
+                if (celebCard) celebCard.style.display = 'none';
             }
+
+            // 5. إيقاظ سقف مرآة النجوم المتلألئة المضيئة بالخلفية ونيازك ومضات الأصابع التفاعلية
+            const canvas = document.createElement('canvas');
+            canvas.style.cssText = "position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:-1;";
+            document.getElementById('starfield-core').appendChild(canvas);
+            const ctx = canvas.getContext('2d'); let stars = [];
+            function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+            window.addEventListener('resize', resize); resize();
+            for(let i=0; i<75; i++) { stars.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, r: Math.random()*1.5+0.4, d: Math.random()*0.05}); }
+            function drawStars() {
+                ctx.clearRect(0,0,canvas.width,canvas.height); ctx.fillStyle = "rgba(255,255,255,0.75)";
+                stars.forEach(s => { ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI*2); ctx.fill(); s.x += s.d; if(s.x > canvas.width) s.x = 0; });
+                requestAnimationFrame(drawStars);
+            }
+            drawStars();
+            function createMeteorTrail(x, y) {
+                for(let i=0; i<2; i++) { stars.push({x: x, y: y, r: Math.random()*2+0.8, d: (Math.random()-0.5)*1.8}); if(stars.length > 140) stars.shift(); }
+            }
+            window.addEventListener('mousemove', function(e) { createMeteorTrail(e.clientX, e.clientY); });
+            window.addEventListener('touchmove', function(e) { if(e.touches.length > 0) createMeteorTrail(e.touches.clientX, e.touches.clientY); });
         }
 
         if (document.readyState === "complete" || document.readyState === "interactive") { awakenOriginalFestival(); }
         else { document.addEventListener("DOMContentLoaded", awakenOriginalFestival); }
-        window.addEventListener("load", awakenOriginalFestival);
+        window.addEventListener("load", awakenOriginalKingdom);
     })();
 
-    // ج) دالة تنشيط القِران الفلكي وإشعال ودوران كواكب النور الذهبية الشمس والقمر ☀️🪐
+    // دالة تنشيط القِران الفلكي وإشعال ودوران كواكب النور الذهبية الشمس والقمر ☀️🪐
     function toggleQuranAura() {
         const display = document.getElementById('quran-aura-display');
         const orbs = document.getElementById('cosmic-covenant-orbs');
@@ -489,7 +531,7 @@
         if (orbs) orbs.style.display = orbs.style.display === 'none' ? 'block' : 'none';
     }
 
-    // ح) دالة التبديل التفاعلي الفوري بين اللغات لايف والتحكم بنصوص الواجهة
+    // دالة التبديل التفاعلي الفوري بين اللغات لايف والتحكم بنصوص الواجهة
     function switchLanguage(lang) {
         const welcomeTxt = document.getElementById('royal-welcome-msg');
         const clockLabel = document.getElementById('platform-clock-label');
@@ -508,6 +550,6 @@
     </script>
 </body>
 </html>
-  
+ 
       
 
