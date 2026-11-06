@@ -377,6 +377,32 @@
         }, 100);
     }
     </script>
+    <!-- 12. محرك التوازن الملكي المكتمل للسكريبتات والدالات الشاملة لايف لعائلة KR -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // فك تجميد وتشغيل عقارب الساعة الفلكية والترجمة ومرآة النجوم واللمس فوراً لايف
+        if (typeof window.initRoyalClock === 'function') window.initRoyalClock();
+        if (typeof window.initStarfieldAura === 'function') window.initStarfieldAura();
+        
+        // إعادة فرش صندوق تهاني نوفمبر والبالونات لعيد ميلاد صديقتكِ بأسفل الصفحة بانتظام فخم
+        const birthdayZone = document.createElement("div");
+        birthdayZone.id = "royal-november-birthday-card-fixed";
+        birthdayZone.style.cssText = "position:relative; text-align:center; margin:35px auto; max-width:380px; padding:15px; z-index:100; clear:both;";
+        birthdayZone.innerHTML = `
+            <div style="font-size:1.6rem; animation:bounce 2s infinite; filter:drop-shadow(0 0 6px #d4af37);">🎈🎉🎂</div>
+            <p style="font-size:0.75rem; color:#fff; line-height:1.6; text-shadow:0 0 6px rgba(212,175,55,0.4); margin-top:8px; font-weight:bold;">
+                ✨ <span style="color:#d4af37;">نوفمبر الساحر يحلق..</span> ميلاد القلوب الملكية التي صنعت هذه الصفحة، تاريخان حفرتهما النجوم في ذاكرة الفضاء لنحتفل معاً بعهد لا يعرف النهاية 🐼💎
+            </p>
+        `;
+        const footer = document.querySelector('footer') || document.body.lastChild;
+        if (footer) {
+            document.body.insertBefore(birthdayZone, footer);
+        } else {
+            document.body.appendChild(birthdayZone);
+        }
+    });
+    </script>
+
 </body>
 </html>
 
