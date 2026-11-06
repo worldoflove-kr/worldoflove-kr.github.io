@@ -439,6 +439,90 @@
         if (orbs) orbs.style.display = orbs.style.display === 'none' ? 'block' : 'none';
     }
     </script>
+    <!-- محرك التوازن والالتئام الملكي المكتمل: بناء العداد الموحد واحتفالية البالونات والـ Panda والكيك المتصاعدة للأعلى خلف المجرات لعائلة KR -->
+    <script>
+    (function() {
+        function awakenOriginalFestival() {
+            // 1. تشغيل عقارب الساعة الفلكية لايف والتوقيت الحي بالثواني والدقائق
+            const clockEl = document.getElementById('astro-clock');
+            if (clockEl) {
+                setInterval(function() {
+                    const now = new Date(); let hours = now.getHours();
+                    const minutes = String(now.getMinutes()).padStart(2, '0');
+                    const seconds = String(now.getSeconds()).padStart(2, '0');
+                    const ampm = hours >= 12 ? 'PM' : 'AM'; hours = hours % 12; hours = hours ? hours : 12;
+                    clockEl.textContent = `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
+                }, 1000);
+            }
+
+            // 2. محرك العداد الفلكي الحي لحساب الأيام والساعات والدقائق والثواني بدقة متناهية لايف تلقائياً
+            const daysCountEl = document.getElementById('calculated-days');
+            if (daysCountEl) {
+                setInterval(function() {
+                    const startDate = new Date("2024-08-02T00:00:00");
+                    const now = new Date(); const diffTime = Math.abs(now - startDate);
+                    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+                    const diffHours = now.getHours(); const diffMins = now.getMinutes(); const diffSecs = now.getSeconds();
+                    
+                    const hEl = document.getElementById('calc-hours');
+                    const mEl = document.getElementById('calc-mins');
+                    const sEl = document.getElementById('calc-secs');
+                    
+                    if (daysCountEl) daysCountEl.textContent = diffDays;
+                    if (hEl) hEl.textContent = diffHours;
+                    if (mEl) mEl.textContent = diffMins;
+                    if (sEl) sEl.textContent = diffSecs;
+                }, 1000);
+            }
+
+            // 3. تنشيط الجوهرة 💎 والاسم ليتحركوا بنبضات حركية ديناميكية مشعة تلقائياً
+            const gem = document.getElementById('royal-pulsing-gem');
+            const titleAr = document.getElementById('royal-main-title');
+            const titleEn = document.getElementById('royal-sub-title');
+            if (gem) gem.style.animation = "bounce 2s infinite ease-in-out";
+            if (titleAr) titleAr.style.animation = "bounce 3s infinite ease-in-out";
+            if (titleEn) { titleEn.style.animation = "bounce 3s infinite ease-in-out"; titleEn.style.animationDelay = "1.5s"; }
+
+            // 4. بناء وإطلاق البصمة والاحتفال الطائر الكوني الشامل بالأعماق (البالونات، الباندا 🐼، الكيك 🎂، وهابي بيرثداي 🎉) يتصاعدون صعوداً نحو الأعلى
+            const festivalZone = document.getElementById('royal-flying-festival-zone');
+            if (festivalZone) {
+                const now = new Date();
+                const month = now.getMonth() + 1; // نوفمبر هو شهر 11
+                const day = now.getDate();
+
+                // التنشيط التلقائي والدوري المحمي: يبدأ يوم 4 نوفمبر ويستمر طوال الشهر الموعود ويتجدد كل سنة ذاتياً
+                if (month === 11 && day >= 4) {
+                    const items = ['🎈', '🐼', '🎂', '🎉', '✨', 'Happy Birthday'];
+                    setInterval(function() {
+                        const el = document.createElement('div');
+                        el.textContent = items[Math.floor(Math.random() * items.length)];
+                        el.style.position = 'absolute';
+                        el.style.bottom = '-50px';
+                        el.style.left = Math.random() * 100 + 'vw';
+                        el.style.fontSize = (Math.random() * 1.2 + 0.8) + 'rem';
+                        el.style.color = '#fff';
+                        el.style.fontWeight = 'bold';
+                        el.style.textShadow = '0 0 10px #d4af37, 0 0 20px rgba(0,191,255,0.4)';
+                        el.style.transition = 'transform 8s linear, opacity 8s linear';
+                        el.style.zIndex = '5';
+                        festivalZone.appendChild(el);
+
+                        setTimeout(function() {
+                            el.style.transform = 'translateY(-110vh) rotate(' + (Math.random() * 360) + 'deg)';
+                            el.style.opacity = '0';
+                        }, 100);
+
+                        setTimeout(function() { el.remove(); }, 8500);
+                    }, 500);
+                }
+            }
+        }
+
+        if (document.readyState === "complete" || document.readyState === "interactive") { awakenOriginalKingdom(); }
+        else { document.addEventListener("DOMContentLoaded", awakenOriginalKingdom); }
+        window.addEventListener("load", awakenOriginalKingdom);
+    })();
+    </script>
 </body>
 </html>
 
