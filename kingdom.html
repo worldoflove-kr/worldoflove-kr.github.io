@@ -24,7 +24,7 @@
 </head>
 <body>
     <div id="mainContainer" class="main-content">
-        <!-- 1. شريط البورصة والذهب العالمي الممتد لايف -->
+        <!-- 1. شريط البورصة والذهب الملوكي الأصيل -->
         <div class="royal-ticker-container">
             <div class="royal-ticker-grid">
                 <span class="ticker-cell">👑 منصة عائلة KR الملكية</span>
@@ -33,141 +33,163 @@
                 <span class="ticker-cell">🇦🇪 الإمارات (24): 322.50 د.إ</span>
                 <span class="ticker-cell">📊 بورصة الخليج: +0.45%</span>
                 <span class="ticker-cell">💵 مؤشر الدولار: 104.20</span>
-                <span class="ticker-cell">👑 منصة عائلة KR الملكية</span>
-                <span class="ticker-cell">✨ الذهب العالمي: $2,735.40</span>
-                <span class="ticker-cell">🇸🇦 السعودية (24): 330.15 ر.س</span>
             </div>
         </div>
 
-        <div style="height: 42px;"></div>
+        <div style="height: 50px;"></div>
 
-        <!-- 2. محرك البحث الزجاجي -->
-        <div class="glass-panel" style="padding: 12px; max-width: 600px; margin: 10px auto;">
-            <form action="https://google.com" method="get" target="_blank" style="display: flex; gap: 8px;">
-                <input type="text" name="q" placeholder="انقر على بحث للانتقال إلى غوغل..." style="flex: 1; padding: 8px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); color: #fff; text-align: center;">
-                <button type="submit" style="background: linear-gradient(45deg, #00bfff, #bd5e00); color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: bold;">بحث</button>
+        <!-- 2. محرك البحث والترجمة الفورية الفخمة -->
+        <div class="glass-panel" style="padding: 15px; max-width: 600px; margin: 15px auto; border-radius: 30px; box-shadow: 0 0 20px rgba(0, 191, 255, 0.2);">
+            <form action="https://google.com" method="get" target="_blank" style="display: flex; gap: 10px;">
+                <input type="text" name="q" placeholder="...انقر على بحث للانتقال إلى غوغل" style="flex: 1; padding: 10px 15px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.15); background: rgba(0,0,0,0.6); color: #fff; text-align: center; font-size: 0.95rem;">
+                <button type="submit" style="background: linear-gradient(45deg, #bd5e00, #ff8c00); color: white; border: none; padding: 10px 25px; border-radius: 20px; cursor: pointer; font-weight: bold;">بحث</button>
             </form>
         </div>
 
-        <!-- 3. التوقيت الفلكي والطقس المريح الناعم -->
-        <div class="glass-panel" style="padding: 10px; max-width: 300px; margin: 10px auto; text-align: center;">
-            <div id="astro-clock" class="ticker-cell" style="font-size: 1.5rem; font-weight: bold; color: #00bfff;">⏰ الساعة: --:--:--</div>
-            <div style="color: #cbd5e0; margin-top: 4px; font-size: 0.9rem;">🌤 طقس بيروت: 24°C صافي | 💧 الرطوبة: 62%</div>
+        <!-- 3. التوقيت الفلكي الدقيق المتناسق مع الطقس الأصلي -->
+        <div class="glass-panel" style="padding: 15px; max-width: 450px; margin: 15px auto; text-align: center; border-radius: 15px;">
+            <div id="astro-clock" style="font-size: 1.8rem; font-weight: bold; color: #00bfff; letter-spacing: 1px; text-shadow: 0 0 10px rgba(0,191,255,0.5);">⏰ الساعة: --:--:--</div>
+            <div style="color: #a0aec0; margin-top: 6px; font-size: 0.95rem;">🌤 صافي | 💧 الرطوبة: 62% 🌡️ طقس بيروت: 24°C</div>
         </div>
 
-        <!-- 4. أزرار الترجمة اللغوية الذكية -->
-        <div style="margin: 10px auto; display: flex; justify-content: center; gap: 10px; max-width: 200px;">
-            <button onclick="window.switchLanguage('ar')" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 5px 10px; border-radius: 5px; cursor: pointer;">العربية</button>
-            <button onclick="window.switchLanguage('en')" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 5px 10px; border-radius: 5px; cursor: pointer;">English</button>
+        <!-- 4. أزرار الترجمة لتبديل اللغات فوراً لايف -->
+        <div style="margin: 15px auto; display: flex; justify-content: center; gap: 15px; max-width: 250px;">
+            <button onclick="translatePlatform('ar')" style="background: rgba(189,94,0,0.3); color: #ff8c00; border: 1px solid #bd5e00; padding: 6px 18px; border-radius: 20px; cursor: pointer; font-weight: bold;">العربية</button>
+            <button onclick="translatePlatform('en')" style="background: rgba(0,191,255,0.1); color: #00bfff; border: 1px solid #00bfff; padding: 6px 18px; border-radius: 20px; cursor: pointer; font-weight: bold;">English</button>
         </div>
 
-        <!-- 5. عداد زوار مملكتنا المستقر لايف -->
-        <div class="glass-panel" style="max-width: 300px; margin: 10px auto; text-align: center; padding: 8px;">
-            <span style="color: #cbd5e0;">👥 عدد زوار مملكتنا الحين: </span>
-            <span id="live-visitors" style="color: #00bfff; font-weight: bold;">14,544</span>
+        <!-- 5. عداد زوار مملكتنا الشغال لايف ويتحرك حركياً -->
+        <div class="glass-panel" style="max-width: 350px; margin: 15px auto; text-align: center; padding: 10px; border-radius: 10px;">
+            <span style="color: #cbd5e0;" id="txt-visitors">👥 عدد زوار مملكتنا الحين: </span>
+            <span id="live-visitors" style="color: #00bfff; font-weight: bold; font-size: 1.1rem; text-shadow: 0 0 8px #00bfff;">14,625</span>
         </div>
-        <!-- 6. شعار الهوية الملوكية والعناوين المتلألئة -->
-        <div style="margin: 20px auto; width: 65px; height: 65px; text-align: center; position: relative;">
-            <div style="font-size: 3.2rem; filter: drop-shadow(0 0 10px rgba(0,191,255,0.6));">💎</div>
+        <!-- 6. شعار التاج المضيء والعناوين الجمالية الأصيلة -->
+        <div style="margin: 25px auto; width: 70px; height: 70px; text-align: center; position: relative; animation: gemFloat 4s infinite ease-in-out;">
+            <div style="font-size: 3.5rem; filter: drop-shadow(0 0 15px rgba(0,191,255,0.7));">💎</div>
         </div>
         <div style="margin: 10px auto; text-align: center;">
-            <h1 id="king-title-ar" style="color: #fff; font-size: 2.2rem; margin: 0; font-family: 'Cairo', sans-serif; text-shadow: 0 0 15px #bd5e00;"># مَمْلَكَةُ الْوُعُودِ</h1>
-            <h2 id="king-title-en" style="color: #00bfff; font-size: 1.2rem; margin: 5px 0 0 0; font-family: 'Poppins', sans-serif;">Kingdom of Promises</h2>
+            <h1 id="king-title-ar" style="color: #fff; font-size: 2.4rem; margin: 0; font-family: 'Cairo', sans-serif; text-shadow: 0 0 20px #bd5e00;">مَمْلَكَةُ الْوُعُودِ</h1>
+            <h2 id="king-title-en" style="color: #00bfff; font-size: 1.3rem; margin: 5px 0 0 0; font-family: 'Poppins', sans-serif; letter-spacing: 1px;">Kingdom of Promises</h2>
         </div>
 
-        <!-- 7. لوحة اللحظات والتواريخ الخالدة المكتوبة بأنوار الفضاء -->
-        <div class="glass-panel" style="max-width: 650px; margin: 20px auto; padding: 20px; text-align: center;">
-            <h3 style="color: #bd5e00; margin-top: 0;">📅 اللحظات والتواريخ الخالدة</h3>
-            <p style="color: #00bfff; font-size: 1.2rem; font-weight: bold; margin: 10px 0;">👑 02 / 08 / 2024</p>
-            <p style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.6;">هنا بدأ الكون الحقيقي.. اليوم الذي اختصر كل دنيتي وعالمي في نبضة واحدة خالدة، لتصبح الشراكة عهداً مكتوباً بأنوار الفضاء ويحميها التاج الملكي.</p>
+        <!-- 7. لوحة اللحظات والتواريخ الخالدة مع حساب عمر العهد -->
+        <div class="glass-panel" style="max-width: 650px; margin: 25px auto; padding: 25px; text-align: center; border-radius: 20px; border: 1px solid rgba(189,94,0,0.2);">
+            <h3 id="lbl-moments" style="color: #bd5e00; margin-top: 0; font-size: 1.3rem; font-family: 'Cairo', sans-serif;">📅 اللحظات والتواريخ الخالدة</h3>
             
-            <div style="height: 1px; background: rgba(0,191,255,0.2); margin: 15px 0;"></div>
+            <p style="color: #00bfff; font-size: 1.3rem; font-weight: bold; margin: 10px 0; text-shadow: 0 0 8px rgba(0,191,255,0.3);">👑 02 / 08 / 2024</p>
+            <p id="txt-moment1" style="color: #e2e8f0; font-size: 1rem; line-height: 1.6;">هنا بدأ الكون الحقيقي.. اليوم الذي اختصر كل دنيتي وعالمي في نبضة واحدة خالدة، لتصبح الشراكة عهداً مكتوباً بأنوار الفضاء ويحميها التاج الملكي.</p>
             
-            <p style="color: #00bfff; font-size: 1.2rem; font-weight: bold; margin: 10px 0;">👑 27 / 05 / 1983 ~ 04 / 11 / 1983</p>
-            <p style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.6;">ميلاد القلوب الملكية التي صنعت هذه المملكة.. تاريخان حفرتهما النجوم في ذاكرة الفضاء لنحتفل معاً بعهد جديد لا يعرف النهاية.</p>
-            <p style="color: #a0aec0; font-size: 0.8rem; margin-top: 10px;">قيد التحديث الكوني...</p>
+            <div style="height: 1px; background: linear-gradient(90deg, transparent, rgba(0,191,255,0.3), transparent); margin: 20px 0;"></div>
+            
+            <p style="color: #00bfff; font-size: 1.3rem; font-weight: bold; margin: 10px 0; text-shadow: 0 0 8px rgba(0,191,255,0.3);">👑 27 / 05 / 1983 ~ 04 / 11 / 1983</p>
+            <p id="txt-moment2" style="color: #e2e8f0; font-size: 1rem; line-height: 1.6;">ميلاد القلوب الملكية التي صنعت هذه المملكة.. تاريخان حفرتهما النجوم في ذاكرة الفضاء لنحتفل معاً بعهد جديد لا يعرف النهاية.</p>
+            
+            <div id="covenant-timer" style="margin-top: 20px; font-weight: bold; color: #ff8c00; font-size: 1.1rem; text-shadow: 0 0 10px rgba(255,140,0,0.4);">
+                👑 تم حفر العهد منذ 824 يوم و 1 س و 1 د و 8 ث 👑
+            </div>
+            <p style="color: #a0aec0; font-size: 0.8rem; margin: 8px 0 0 0;">...قيد التحديث الكوني</p>
         </div>
 
-        <!-- 8. احتفالية عيد ميلاد نوفمبر الساحر مستقرة برواااق كامل -->
-        <div class="glass-panel" style="max-width: 650px; margin: 20px auto; padding: 25px; text-align: center; border: 1px solid rgba(0, 191, 255, 0.3); position: relative; overflow: hidden;">
-            <div style="font-size: 2.5rem; margin-bottom: 10px;">🎈 🎉 🎂</div>
-            <h3 style="color: #00bfff; font-size: 1.6rem; margin: 10px 0; font-family: 'Cairo', sans-serif;">✨ احتفالية نوفمبر الساحر الملكية ✨</h3>
-            <p style="color: #fff; font-size: 1.1rem; line-height: 1.6; margin: 10px 0;">البالونات الطائرة، والتهاني المستقرة، وشعار الـ Panda الكيوت 🐼 والـ 💎 المضيئة مثبتة بكامل هيبتها وفخامتها طوال شهر نوفمبر الموعود.</p>
+        <!-- 8. مسرح احتفالية نوفمبر الساحر - البالونات و Happy Birthday الطائرة -->
+        <div class="glass-panel" style="max-width: 650px; margin: 25px auto; padding: 30px; text-align: center; border-radius: 20px; border: 1px solid rgba(0, 191, 255, 0.4); position: relative; overflow: hidden; background: rgba(0,0,0,0.55);">
+            <!-- أيقونات طافية ومتحركة داخل الصندوق للباندا والجوهرة -->
+            <div style="position: absolute; top: 15px; left: 20px; font-size: 2.2rem; animation: gemFloat 3s infinite ease-in-out;">🐼</div>
+            <div style="position: absolute; bottom: 15px; right: 20px; font-size: 2rem; animation: gemFloat 5s infinite ease-in-out;">💎</div>
+            
+            <div style="font-size: 3rem; margin-bottom: 10px; display: inline-flex; gap: 15px;">🎈 🎉 🎂</div>
+            <h3 id="lbl-november" style="color: #00bfff; font-size: 1.7rem; margin: 10px 0; font-family: 'Cairo', sans-serif; text-shadow: 0 0 15px rgba(0,191,255,0.6);">✨ احتفالية نوفمبر الساحر الملكية ✨</h3>
+            <p id="txt-november-desc" style="color: #fff; font-size: 1.15rem; line-height: 1.6; margin: 10px 0;">البالونات الطائرة وكلمات Happy Birthday تتدفق وتتكاثر بكامل فخامتها طوال شهر نوفمبر الموعود لتبقي الاحتفالية متجددة برواااق كامل.</p>
         </div>
-        <!-- 9. مرصد القرآن الفلكي الملكي وزر العودة القيادي -->
-        <div class="glass-panel" style="max-width: 650px; margin: 20px auto; padding: 20px; text-align: center;">
-            <h3 style="color: #fff; margin-top: 0; font-family: 'Cairo', sans-serif;">🌌 مرصد القران الفلكي الملكي</h3>
-            <p style="color: #cbd5e0; font-size: 0.95rem; margin-bottom: 15px;">🌤 يوم مشرق ومريح نتمناه لك في مملكة الوعود</p>
+        <!-- 9. مرصد القرآن الفلكي الملكي والصندوق النيوني الأصيل للتقرير المعتمد -->
+        <div class="glass-panel" style="max-width: 650px; margin: 25px auto; padding: 25px; text-align: center; border-radius: 20px; border: 1px solid rgba(0, 191, 255, 0.25);">
+            <h3 id="lbl-quran" style="color: #fff; margin-top: 0; font-family: 'Cairo', sans-serif;">🌌 مرصد القرآن الفلكي الملكي</h3>
             
-            <button id="activate-cosmic-btn" onclick="activateCosmicCovenant()" style="background: linear-gradient(45deg, #bd5e00, #00bfff); color: white; border: none; padding: 12px 24px; border-radius: 25px; font-weight: bold; cursor: pointer; margin: 10px 0; box-shadow: 0 0 15px rgba(0,191,255,0.4);">✨ تنشيط القران واستكشاف العهد</button>
+            <div style="margin: 20px 0;">
+                <button id="activate-cosmic-btn" onclick="activateCosmicCovenant()" style="background: linear-gradient(45deg, #bd5e00, #00bfff); color: white; border: none; padding: 12px 28px; border-radius: 25px; font-weight: bold; cursor: pointer; box-shadow: 0 0 15px rgba(0,191,255,0.4); font-size: 1rem;">✨ تنشيط القرآن واستكشاف العهد</button>
+            </div>
+
+            <!-- الصندوق الأخضر والنيوني للبيانات الموثقة والاتصال الفلكي الآمن -->
+            <div id="quran-report-box" style="display: none; background: rgba(0,0,0,0.65); border: 1px solid #2f855a; border-radius: 12px; padding: 15px; margin-top: 15px; text-align: right; direction: rtl; animation: cosmicWave 2s infinite ease-in-out;">
+                <div style="background: rgba(47,133,90,0.2); color: #48bb78; padding: 8px 15px; border-radius: 20px; display: inline-flex; align-items: center; gap: 8px; font-weight: bold; margin-bottom: 15px; width: 100%; justify-content: center;">
+                    🔒 تم تفعيل القرآن الفلكي وتوثيق البيانات بنجاح
+                </div>
+                <p style="color: #ff8c00; font-weight: bold; margin: 5px 0; font-size: 0.95rem;">👑 التقرير الفلكي المعتمد للمنصة:</p>
+                <p style="color: #cbd5e0; font-size: 0.9rem; margin: 5px 0; line-height: 1.5;">✨ تلتقي السدم الكونية لتؤكد اصطفاف النجوم فوق سماء المملكة المشفرة لـ <span style="color: #00bfff; font-weight: bold;">Panda KR</span> الموثقة رقمياً.</p>
+                <p style="color: #cbd5e0; font-size: 0.9rem; margin: 5px 0; line-height: 1.5;">📅 <span style="color: #00bfff;">الرحلة الخالدة:</span> انطلقت النبضة منذ تاريخ <span style="color: #ff8c00; font-weight: bold;">02 / 08 / 2024</span>، ومحمية ببروتوكولات سيبرانية تمنع التفتيش أو سرقة العهود بنسبة 100%.</p>
+                <div style="color: #ff8c00; text-align: center; font-weight: bold; margin-top: 10px; font-size: 0.9rem;">🔒 الاتصال الفلكي آمن ومستمر إلى الأبدية.</div>
+            </div>
+
+            <p id="txt-quran-footer" style="color: #cbd5e0; font-size: 0.95rem; margin-top: 15px;">🌤 يوم مشرق ومريح نتمناه لك في مملكة الوعود</p>
             
-            <div style="margin: 15px auto; width: 50px; height: 50px;">
-                <img src="panda-avatar.png" alt="Panda KR" style="width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 8px rgba(0,191,255,0.5));">
+            <!-- الباندا الدائري العائم والتحرك التفاعلي للأعلى والأسفل الأصيل -->
+            <div style="margin: 20px auto; width: 85px; height: 85px; border-radius: 50%; border: 2px solid #00bfff; padding: 5px; background: rgba(0,0,0,0.4); box-shadow: 0 0 15px rgba(0,191,255,0.4); animation: gemFloat 4s infinite ease-in-out; overflow: hidden;">
+                <img src="panda-avatar.png" alt="Panda KR" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
             </div>
             
-            <div style="margin-top: 20px;">
-                <a href="index.html" class="glass-panel" style="display: inline-block; padding: 10px 20px; color: #fff; text-decoration: none; border-radius: 8px; font-weight: bold; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s;">Sub-Command: ↩ العودة إلى عالم الحب</a>
+            <!-- زر العودة القيادي الصغير والمميز الطافي بنعومة توب التوب -->
+            <div style="margin-top: 25px;">
+                <a href="index.html" class="glass-panel" style="display: inline-block; padding: 6px 18px; color: #fff; text-decoration: none; border-radius: 20px; font-size: 0.85rem; font-weight: bold; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 0 8px rgba(255,255,255,0.1); transition: all 0.3s;">Sub-Command: ↩ العودة إلى عالم الحب</a>
             </div>
         </div>
-
-        <!-- 10. رادار المملكة الكروي المطور وصندوق الـ ScoreBat -->
-        <div class="glass-panel" style="max-width: 650px; margin: 20px auto; padding: 20px; text-align: center;">
-            <h3 style="color: #fff; margin-top: 0; font-family: 'Cairo', sans-serif;">⚽ رادار المملكة الكروي المطور</h3>
-            <p style="color: #fff; font-size: 1.1rem; font-weight: bold; margin: 10px 0;">👑 🏆 الملكي يحسم القمة الأسطورية 3-2 لايف! 👑</p>
-            <p style="color: #cbd5e0; font-size: 0.95rem;">🤍 هلا مدريد! النصر ملكي دائماً في فضاء عائلة KR 🐼💎</p>
+        <!-- 10. رادار المملكة الكروي المطور وزر زلزال الملوك التفاعلي الأصيل -->
+        <div class="glass-panel" style="max-width: 650px; margin: 25px auto; padding: 20px; text-align: center; border-radius: 20px;">
+            <h3 id="lbl-radar-football" style="color: #fff; margin-top: 0; font-family: 'Cairo', sans-serif;">⚽ رادار المملكة الكروي المطور</h3>
+            <p id="txt-radar-football-title" style="color: #fff; font-size: 1.15rem; font-weight: bold; margin: 10px 0;">👑 🏆 الملكي يحسم القمة الأسطورية 3-2 لايف! 👑</p>
+            <p id="txt-radar-football-desc" style="color: #cbd5e0; font-size: 0.95rem;">🤍 هلا مدريد! النصر ملكي دائماً in فضاء عائلة KR 🐼💎</p>
             
             <div style="display: flex; justify-content: center; gap: 10px; margin: 15px 0;">
-                <button onclick="triggerMadridEarthquake()" style="background: linear-gradient(45deg, #bd5e00, #ff8c00); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; box-shadow: 0 0 10px rgba(189,94,0,0.5);">🎉 تفجير زلزال الملوك 👑</button>
+                <button onclick="triggerMadridEarthquake()" style="background: linear-gradient(45deg, #bd5e00, #ff8c00); color: white; border: none; padding: 10px 22px; border-radius: 8px; font-weight: bold; cursor: pointer; box-shadow: 0 0 12px rgba(189,94,0,0.5);">🎉 تفجير زلزال الملوك 👑</button>
             </div>
             
-            <div style="width: 100%; height: 220px; background: rgba(0,0,0,0.6); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.1); position: relative;">
-                <div style="color: #cbd5e0; font-size: 0.9rem; padding: 15px;">
-                    <p style="margin: 0; font-weight: bold; color: #00bfff;">📡 رادار حر ومفتوح بالكامل لمشاهدة الأهداف والملخصات بالفيديو 🔒</p>
+            <div style="width: 100%; height: 220px; background: rgba(0,0,0,0.65); border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.1);">
+                <div style="color: #cbd5e0; font-size: 0.95rem; padding: 15px;">
+                    <p id="txt-radar-football-live" style="margin: 0; font-weight: bold; color: #00bfff;">📡 رادار حر ومفتوح بالكامل لمشاهدة الأهداف والملخصات بالفيديو 🔒</p>
                     <p style="font-size: 0.8rem; color: #a0aec0; margin-top: 10px;">[محرك البث مستقر وجاهز تفاعلياً]</p>
                 </div>
             </div>
         </div>
-        <!-- 11. رادار البصمة الكونية ومذنب توأم الروح الجديد وصك العهد الموثق -->
-        <div class="glass-panel" style="max-width: 650px; margin: 20px auto; padding: 25px; text-align: center; position: relative;">
-            <h3 style="color: #bd5e00; margin-top: 0; font-family: 'Cairo', sans-serif;">🔮 رادار مَمْلَكَةُ الْوُعُودِ العابر للقارات</h3>
-            <p style="color: #fff; font-size: 0.95rem; line-height: 1.6;">✨ هل تتساءلين أين يختبئ نصفكِ الآخر الحين؟ أطلقي مذنب الحب الشائع المشع، ودعيه يشق مجرات الكون ليرسم نبضات قلبكِ ويحدد موقع توأم روحكِ العابر للقارات لايف بالعين المجردة بداخل فضاء الملوك! 🌌🪐</p>
+
+        <!-- 11. رادار مَمْلَكَةُ الْوُعُودِ العابر للقارات ومذنب الحب المشع مع صك العهد الموثق -->
+        <div class="glass-panel" style="max-width: 650px; margin: 25px auto; padding: 25px; text-align: center; border-radius: 20px;">
+            <h3 id="lbl-radar-interstellar" style="color: #bd5e00; margin-top: 0; font-family: 'Cairo', sans-serif;">🔮 رادار مَمْلَكَةُ الْوُعُودِ العابر للقارات</h3>
+            <p id="txt-radar-interstellar-desc" style="color: #fff; font-size: 0.95rem; line-height: 1.6;">✨ هل تتساءلين أين يختبئ نصفكِ الآخر الحين؟ أطلقي مذنب الحب الشائع المشع، ودعيه يشق مجرات الكون ليرسم نبضات قلبكِ ويحدد موقع توأم روحكِ العابر للقارات لايف بالعين المجردة بداخل فضاء الملوك! 🌌🪐</p>
             
             <div style="margin: 20px 0;">
-                <button onclick="launchInterstellarSoulmateComet()" style="background: linear-gradient(45deg, #00bfff, #bd5e00); color: white; border: none; padding: 12px 24px; border-radius: 25px; font-weight: bold; cursor: pointer; box-shadow: 0 0 15px rgba(0,191,255,0.4);">☄ إطلاق المذنب الشائع عابر القارات 🚀</button>
+                <button onclick="launchInterstellarSoulmateComet()" style="background: linear-gradient(45deg, #00bfff, #bd5e00); color: white; border: none; padding: 12px 26px; border-radius: 25px; font-weight: bold; cursor: pointer; box-shadow: 0 0 15px rgba(0,191,255,0.4);">☄ إطلاق المذنب الشائع عابر القارات 🚀</button>
             </div>
 
-            <!-- صك العهد الذهبي الموثق برابط الموقع الرسمي -->
-            <div id="covenant-certificate" style="margin-top: 25px; padding: 15px; background: rgba(0,0,0,0.4); border: 1px solid rgba(189,94,0,0.3); border-radius: 8px; text-align: right; direction: rtl;">
-                <h4 style="color: #bd5e00; margin: 0 0 10px 0; text-align: center; font-family: 'Cairo', sans-serif;">وثيقة عهد الأرواح العابرة للقارات والحدود</h4>
-                <p style="color: #cbd5e0; font-size: 0.9rem; margin: 5px 0;">🚀 سافر المذنب الفلكي المشع من قلب حاملاً نبض المرسل النبيل: <span style="color: #00bfff; font-weight: bold;">عائلة KR الملكية</span></p>
-                <p style="color: #cbd5e0; font-size: 0.9rem; margin: 5px 0;">وشق مجرات الكون ليصل بسلام ليستقر في روح توأم روحه: <span style="color: #00bfff; font-weight: bold;">Panda KR 🐼</span></p>
-                <p style="color: #cbd5e0; font-size: 0.9rem; margin: 5px 0;">💞 نسبة الالتحام الأبدي العابر للقارات: <span style="color: #ff8c00; font-weight: bold; animation: goldPulse 2s infinite;">100% مستقرة كلياً</span></p>
-                <p style="color: #a0aec0; font-size: 0.8rem; text-align: center; margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px;">🐼 الأرواح ملتحمة ومحمية في عمق الفضاء التفاعلي للـ Panda 💎</p>
+            <!-- وثيقة صك العهد المطور الموثق لايف -->
+            <div id="covenant-certificate" style="margin-top: 25px; padding: 20px; background: rgba(0,0,0,0.5); border: 1px solid rgba(189,94,0,0.35); border-radius: 12px; text-align: right; direction: rtl;">
+                <h4 id="lbl-certificate-title" style="color: #bd5e00; margin: 0 0 12px 0; text-align: center; font-family: 'Cairo', sans-serif; font-size: 1.1rem; text-shadow: 0 0 10px rgba(189,94,0,0.3);">وثيقة عهد الأرواح العابرة للقارات والحدود</h4>
+                <p id="txt-cert-p1" style="color: #cbd5e0; font-size: 0.95rem; margin: 6px 0;">🚀 سافر المذنب الفلكي المشع من قلب حاملاً نبض المرسل النبيل: <span style="color: #00bfff; font-weight: bold;">عائلة KR الملكية</span></p>
+                <p id="txt-cert-p2" style="color: #cbd5e0; font-size: 0.95rem; margin: 6px 0;">وشق مجرات الكون ليصل بسلام ليستقر في روح توأم روحه: <span style="color: #00bfff; font-weight: bold;">Panda KR 🐼</span></p>
+                <p id="txt-cert-p3" style="color: #cbd5e0; font-size: 0.95rem; margin: 6px 0;">💞 نسبة الالتحام الأبدي العابر للقارات: <span style="color: #ff8c00; font-weight: bold;">100% مستقرة كلياً</span></p>
+                <div id="txt-cert-footer" style="color: #a0aec0; font-size: 0.85rem; text-align: center; margin-top: 12px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 12px; font-weight: bold;">🐼 الأرواح ملتحمة ومحمية في عمق الفضاء التفاعلي للـ Panda 💎</div>
             </div>
         </div>
 
-        <!-- سقف مرآة نجوم الفضاء والميزات التفاعلية للموقع بالخلفية -->
+        <!-- سقف مرآة نجوم الفضاء والمحرك الشامل بالخلفية -->
         <div id="starfield-core" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;"></div>
 
-        <!-- تذييل الصفحة الموثق برابط الموقع الرسمي -->
+        <!-- تذييل الصفحة الملكي الموثق برابط موقعكم الرسمي -->
         <div style="margin: 40px auto 20px auto; text-align: center; color: rgba(255,255,255,0.4); font-size: 0.85rem;">
             <p style="margin: 5px 0;">🔗 KR KINGDOM: <a href="http://github.io" target="_blank" style="color: rgba(255,255,255,0.4); text-decoration: none;">worldoflove-kr.github.io</a></p>
             <p style="margin: 5px 0; color: #00bfff; font-weight: bold;">👑 عائلة KR الملكية 👑 جميع الحقوق محفوظة لـ Panda KR 🐼💎</p>
         </div>
-    </div>
-
-    <!-- انبثاق عبارة الحب المفرقعة المترجمة بوسط الشاشة -->
-    <div id="love-popup-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; justify-content: center; align-items: center; pointer-events: none;">
-        <div style="text-align: center; animation: gemFloat 3s infinite ease-in-out;">
-            <div style="font-size: 3.5rem; text-shadow: 0 0 20px #ff007f;">بحبك ❤️ I Love U</div>
-            <div style="color: #00bfff; margin-top: 10px; font-weight: bold; font-size: 1.2rem;">✨ عهد الأرواح الخالدة ✨</div>
+    <!-- انبثاق عبارة الحب المفرقعة النابضة بوسط الشاشة لـ 6 ثوانٍ كاملة -->
+    <div id="love-popup-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.75); z-index: 9999; justify-content: center; align-items: center; pointer-events: none; text-align: center;">
+        <div>
+            <div style="font-size: 3.6rem; font-weight: bold; text-shadow: 0 0 25px #ff007f; color: #fff; animation: gemFloat 2s infinite ease-in-out;">بحبك ❤️ I Love U</div>
+            <div id="txt-popup-sub" style="color: #00bfff; margin-top: 12px; font-weight: bold; font-size: 1.3rem; letter-spacing: 1px; text-shadow: 0 0 10px #00bfff;">✨ عهد الأرواح الخالدة ✨</div>
         </div>
     </div>
 
-    <!-- المحركات الذكية والاسكربتات الملوكية الموحدة الشاملة -->
+    <!-- حاوية البالونات وكلمات ميلاد نوفمبر الطائرة بالخلفية والشاشة -->
+    <div id="birthday-celebration-zone" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; pointer-events: none; overflow: hidden;"></div>
+
     <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // 1. تشغيل الساعة الفلكية الدقاقة بانتظام لايف أولاً بأول
+        // 1. تشغيل الساعة الفلكية الدقاقة الملوكية لايف أولاً بأول
         function runRoyalClockLive() {
             const clockEl = document.getElementById('astro-clock');
             if (!clockEl) return;
@@ -182,82 +204,122 @@
         setInterval(runRoyalClockLive, 1000);
         runRoyalClockLive();
 
-        // 2. محرك النجوم المتلألئ والأقمار المضيئة الحركية بالخلفية وسقف المرآة
+        // 2. محرك عداد الزوار الحركي التفاعلي لايف أولاً بأول ليتحرك مع عقارب الساعة
+        let baseVisitors = 14625;
+        setInterval(() => {
+            baseVisitors += Math.floor(Math.random() * 3);
+            const visitorsEl = document.getElementById('live-visitors');
+            if(visitorsEl) visitorsEl.textContent = baseVisitors.toLocaleString();
+        }, 4000);
+
+        // 3. المحرك الفلكي الشامل لسقف مرآة نجوم الفضاء بالخلفية
         const starfield = document.getElementById('starfield-core');
         if (starfield) {
-            for (let i = 0; i < 60; i++) {
+            for (let i = 0; i < 75; i++) {
                 const star = document.createElement('div');
                 star.style.position = 'absolute';
-                star.style.width = Math.random() * 3 + 'px';
+                star.style.width = Math.random() * 3.5 + 'px';
                 star.style.height = star.style.width;
                 star.style.background = '#fff';
                 star.style.top = Math.random() * 100 + '%';
                 star.style.left = Math.random() * 100 + '%';
                 star.style.borderRadius = '50%';
                 star.style.opacity = Math.random();
-                star.style.animation = `gemFloat ${Math.random() * 3 + 2}s infinite ease-in-out`;
+                star.style.boxShadow = '0 0 8px #fff';
+                star.style.animation = `gemFloat ${Math.random() * 4 + 3}s infinite ease-in-out`;
                 starfield.appendChild(star);
             }
         }
+
+        // 4. محرك احتفالية نوفمبر الساحر: إطلاق بالونات حركية طائرة مع كلمات Happy Birthday المتكاثرة
+        const celebrationZone = document.getElementById('birthday-celebration-zone');
+        const balloonEmojis = ['🎈', '🎉', '🎂', '💖', '🐼', '💎'];
+        
+        function spawnCelebrationItem() {
+            if (!celebrationZone) return;
+            const container = document.createElement('div');
+            container.style.position = 'absolute';
+            container.style.bottom = '-50px';
+            container.style.left = Math.random() * 100 + '%';
+            container.style.transition = 'transform 8s linear, opacity 8s linear';
+            container.style.fontSize = Math.random() * 1.5 + 1.2 + 'rem';
+            container.style.opacity = '1';
+            
+            if(Math.random() > 0.5) {
+                container.textContent = balloonEmojis[Math.floor(Math.random() * balloonEmojis.length)];
+                if(container.textContent === '💎' || container.textContent === '🐼') {
+                    container.style.filter = 'drop-shadow(0 0 8px #00bfff)';
+                }
+            } else {
+                container.textContent = "Happy Birthday 🎂";
+                container.style.color = '#ff8c00';
+                container.style.fontFamily = 'Poppins, sans-serif';
+                container.style.fontWeight = 'bold';
+                container.style.fontSize = '1rem';
+                container.style.whiteSpace = 'nowrap';
+                container.style.textShadow = '0 0 10px rgba(0,191,255,0.6)';
+            }
+            
+            celebrationZone.appendChild(container);
+            
+            setTimeout(() => {
+                const targetY = window.innerHeight + 100;
+                const targetX = (Math.random() - 0.5) * 200;
+                container.style.transform = `translate(${targetX}px, -${targetY}px) rotate(${Math.random() * 360}deg)`;
+                container.style.opacity = '0';
+            }, 50);
+            
+            setTimeout(() => {
+                container.remove();
+            }, 8500);
+        }
+        setInterval(spawnCelebrationItem, 600);
     });
 
-    // 3. تنشيط القرآن واستكشاف العهد الفلكي
+    // 5. محرك تنشيط مرصد القرآن وإظهار التقرير النيوني المشفر وتوثيق البيانات بنجاح لايف
     function activateCosmicCovenant() {
-        alert("✨ تم تنشيط مرصد القران الفلكي بنجاح 100%! الأرواح ملتحمة ومحمية داخل فضاء عائلة KR الملكية للأبد 🐼💎");
+        const reportBox = document.getElementById('quran-report-box');
+        if(reportBox) {
+            reportBox.style.display = 'block';
+            reportBox.scrollIntoView({ behavior: 'smooth' });
+        }
     }
 
-    // 4. رادار كرة القدم وتفجير زلزال الملوك لتهز الشاشة بالكامل وتفاعلياً
+    // 6. رادار كرة القدم ومحاكاة تفجير زلزال الملوك لتهز الشاشة بالكامل تفاعلياً
     function triggerMadridEarthquake() {
-        const body = document.getElementById('mainContainer');
-        if (!body) return;
-        body.style.transition = "transform 0.05s ease-in-out";
+        const mainBox = document.getElementById('mainContainer');
+        if (!mainBox) return;
+        mainBox.style.transition = "transform 0.05s ease-in-out";
         let count = 0;
         const interval = setInterval(() => {
-            const x = (Math.random() - 0.5) * 14;
-            const y = (Math.random() - 0.5) * 14;
-            body.style.transform = `translate(${x}px, ${y}px) scale(0.99)`;
+            const x = (Math.random() - 0.5) * 16;
+            const y = (Math.random() - 0.5) * 16;
+            mainBox.style.transform = `translate(${x}px, ${y}px) scale(0.99)`;
             count++;
             if (count > 25) {
                 clearInterval(interval);
-                body.style.transform = "none";
-                body.style.transition = "none";
+                mainBox.style.transform = "none";
+                mainBox.style.transition = "none";
             }
         }, 40);
     }
 
-    // 5. محرك المذنب وانبثاق عبارة الحب المفرقعة بحبك لـ 6 ثوانٍ كاملة بوسط الشاشة لايف
+    // 7. محرك إطلاق المذنب عابر القارات وانبثاق مفرقعات بحبك لـ 6 ثوانٍ كاملة بوسط الشاشة
     function launchInterstellarSoulmateComet() {
         const overlay = document.getElementById('love-popup-overlay');
         if (!overlay) return;
         overlay.style.display = 'flex';
         setTimeout(() => {
             overlay.style.display = 'none';
-        }, 6000); // 6 ثوانٍ كاملة مستقرة بوسط الشاشة
-    }
-
-    // 6. أزرار الترجمة الفورية الفاخرة مع الحفاظ على الهيكل القياسي للموقع
-    window.switchLanguage = function(lang) {
-        if(lang === 'en') {
-            alert("👑 KR Royal Platform translated to English successfully! [Layout Preserved]");
-        } else {
-            alert("👑 تم تثبيت وتأمين الواجهة الملوكية باللغة العربية بنجاح 100%!");
-        }
+        }, 6000);
     }
     </script>
 </body>
 </html>
 
 
- 
-        
-    
-
-
-     
 
         
-    
-      
 
 
-
+        
