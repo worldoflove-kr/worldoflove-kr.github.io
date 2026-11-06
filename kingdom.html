@@ -361,85 +361,15 @@
         }, 100);
     }
     </script>
-    <!-- محرك الترميم الإمبراطوري الشامل والأصيل لإيقاظ الساعة والنجوم والتواريخ والجوهرة والزوار والكواكب الدوارة لـ KR -->
+     <!-- محرك الترميم الإمبراطوري الشامل والأصيل لإيقاظ الساعة والنجوم والتواريخ والجوهرة والزوار والكواكب الدوارة لـ KR -->
     <div id="starfield-core" style="position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:-1; background: radial-gradient(circle at center, #0a0f24 0%, #030511 100%) !important;"></div>
     
-    <!-- مجسم كواكب النور الذهبية الدوارة لمرصد عهد الأرواح الفلكي الملكي الجديد -->
+    <!-- مجسم كواكب النور الذهبية الدوارة لمرصد مَمْلَكَةِ الْوُعُودِ الْفَلَكِيُّ الجديد -->
     <div id="cosmic-covenant-orbs" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); width:280px; height:280px; pointer-events:none; z-index:90; border-radius:50%; border:1px dashed rgba(212,175,55,0.25); animation:spin 20s linear infinite;">
         <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); font-size:2rem; filter:drop-shadow(0 0 12px #d4af37); animation:bounce 2s infinite ease-in-out;">☀️</div>
         <div style="position:absolute; bottom:0; left:50%; transform:translateX(-50%); font-size:1.8rem; filter:drop-shadow(0 0 12px #00bfff); animation:bounce 2s infinite ease-in-out; animation-delay:1s;">🪐</div>
     </div>
 
-    <script>
-    (function() {
-        function awakenOriginalKingdom() {
-            // 1. تشغيل دقات الساعة الفلكية لايف بالثواني والتوقيت الحي
-            const clockEl = document.getElementById('astro-clock');
-            if (clockEl) {
-                setInterval(function() {
-                    const now = new Date(); let hours = now.getHours();
-                    const minutes = String(now.getMinutes()).padStart(2, '0');
-                    const seconds = String(now.getSeconds()).padStart(2, '0');
-                    const ampm = hours >= 12 ? 'PM' : 'AM'; hours = hours % 12; hours = hours ? hours : 12;
-                    clockEl.textContent = `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
-                }, 1000);
-            }
-
-            // 2. تنشيط العداد الحقيقي التلقائي الموثق لايف لعدد الأيام والساعات منذ حفر العهد بصورتكِ القديمة
-            const calculatedDaysEl = document.getElementById('calculated-days');
-            if (calculatedDaysEl) {
-                function updateDays() {
-                    const startDate = new Date("2024-08-02T00:00:00");
-                    const now = new Date(); const diffTime = Math.abs(now - startDate);
-                    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-                    calculatedDaysEl.textContent = diffDays;
-                }
-                updateDays(); setInterval(updateDays, 60000);
-            }
-
-            // 3. تنشيط محرك الاهتزاز والنبض الهيدروليكي للجوهرة 💎 والاسم بالعربي والإنجليزي
-            const gem = document.getElementById('royal-pulsing-gem');
-            const tAr = document.getElementById('royal-main-title');
-            const tEn = document.getElementById('royal-sub-title');
-            if (gem) gem.style.animation = "bounce 2s infinite ease-in-out";
-            if (tAr) tAr.style.animation = "bounce 3s infinite ease-in-out";
-            if (tEn) { tEn.style.animation = "bounce 3s infinite ease-in-out"; tEn.style.animationDelay = "1.5s"; }
-
-            // 4. إيقاظ سقف مرآة النجوم المتلألئة بالخلفية ونيازك ومضات الأصابع التفاعلية على زجاج الشاشة
-            const canvas = document.createElement('canvas');
-            canvas.style.cssText = "position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:-1;";
-            document.getElementById('starfield-core').appendChild(canvas);
-            const ctx = canvas.getContext('2d'); let stars = [];
-            function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-            window.addEventListener('resize', resize); resize();
-            for(let i=0; i<75; i++) { stars.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, r: Math.random()*1.5+0.4, d: Math.random()*0.05}); }
-            function drawStars() {
-                ctx.clearRect(0,0,canvas.width,canvas.height); ctx.fillStyle = "rgba(255,255,255,0.75)";
-                stars.forEach(s => { ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI*2); ctx.fill(); s.x += s.d; if(s.x > canvas.width) s.x = 0; });
-                requestAnimationFrame(drawStars);
-            }
-            drawStars();
-            function createMeteorTrail(x, y) {
-                for(let i=0; i<2; i++) { stars.push({x: x, y: y, r: Math.random()*2+0.8, d: (Math.random()-0.5)*1.8}); if(stars.length > 140) stars.shift(); }
-            }
-            window.addEventListener('mousemove', function(e) { createMeteorTrail(e.clientX, e.clientY); });
-            window.addEventListener('touchmove', function(e) { if(e.touches.length > 0) createMeteorTrail(e.touches.clientX, e.touches.clientY); });
-        }
-
-        if (document.readyState === "complete" || document.readyState === "interactive") { awakenOriginalKingdom(); }
-        else { document.addEventListener("DOMContentLoaded", awakenOriginalKingdom); }
-        window.addEventListener("load", awakenOriginalKingdom);
-    })();
-
-    // دالة تنشيط القِران الفلكي لمرصد مَمْلَكَةُ الْوُعُودِ لإشعال ودوران كواكب النور الذهبية ☀️🪐
-    function toggleQuranAura() {
-        const display = document.getElementById('quran-aura-display');
-        const orbs = document.getElementById('cosmic-covenant-orbs');
-        if (display) display.style.display = display.style.display === 'none' ? 'block' : 'none';
-        if (orbs) orbs.style.display = orbs.style.display === 'none' ? 'block' : 'none';
-    }
-    </script>
-    <!-- محرك التوازن والالتئام الملكي المكتمل: بناء العداد الموحد واحتفالية البالونات والـ Panda والكيك المتصاعدة للأعلى خلف المجرات لعائلة KR -->
     <script>
     (function() {
         function awakenOriginalFestival() {
@@ -483,7 +413,7 @@
             if (titleAr) titleAr.style.animation = "bounce 3s infinite ease-in-out";
             if (titleEn) { titleEn.style.animation = "bounce 3s infinite ease-in-out"; titleEn.style.animationDelay = "1.5s"; }
 
-            // 4. بناء وإطلاق البصمة والاحتفال الطائر الكوني الشامل بالأعماق (البالونات، الباندا 🐼، الكيك 🎂، وهابي بيرثداي 🎉) يتصاعدون صعوداً نحو الأعلى
+            // 4. بناء وإطلاق البصمة والاحتفال الطائر الكوني الشامل بالأعماق (البالونات، الباندا 🐼، الكيك 🎂، وهابي بيرثداي 🎉) يتصاعدون صعوداً نحو الأعلى خلف اللوحات
             const festivalZone = document.getElementById('royal-flying-festival-zone');
             if (festivalZone) {
                 const now = new Date();
@@ -518,15 +448,23 @@
             }
         }
 
-        if (document.readyState === "complete" || document.readyState === "interactive") { awakenOriginalKingdom(); }
-        else { document.addEventListener("DOMContentLoaded", awakenOriginalKingdom); }
-        window.addEventListener("load", awakenOriginalKingdom);
+        if (document.readyState === "complete" || document.readyState === "interactive") { awakenOriginalFestival(); }
+        else { document.addEventListener("DOMContentLoaded", awakenOriginalFestival); }
+        window.addEventListener("load", awakenOriginalFestival);
     })();
+
+    // دالة تنشيط القِران الفلكي وإشعال ودوران كواكب النور الذهبية الشمس والقمر ☀️🪐
+    function toggleQuranAura() {
+        const display = document.getElementById('quran-aura-display');
+        const orbs = document.getElementById('cosmic-covenant-orbs');
+        if (display) display.style.display = display.style.display === 'none' ? 'block' : 'none';
+        if (orbs) orbs.style.display = orbs.style.display === 'none' ? 'block' : 'none';
+    }
     </script>
 </body>
 </html>
 
-
+          
   
       
 
