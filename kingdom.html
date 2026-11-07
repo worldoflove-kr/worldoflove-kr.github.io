@@ -400,77 +400,7 @@
             </div>
         </div>
     </div>
-
-            // 2. محرك العداد الفلكي الحي لحساب الأيام والساعات والدقائق والثواني بدقة متناهية لايف تلقائياً
-            const daysCountEl = document.getElementById('calculated-days');
-            if (daysCountEl) {
-                setInterval(function() {
-                    const startDate = new Date("2024-08-02T00:00:00");
-                    const now = new Date(); const diffTime = Math.abs(now - startDate);
-                    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-                    const diffHours = now.getHours(); const diffMins = now.getMinutes(); const diffSecs = now.getSeconds();
-                    
-                    const hEl = document.getElementById('calc-hours');
-                    const mEl = document.getElementById('calc-mins');
-                    const sEl = document.getElementById('calc-secs');
-                    
-                    if (daysCountEl) daysCountEl.textContent = diffDays;
-                    if (hEl) hEl.textContent = diffHours;
-                    if (mEl) mEl.textContent = diffMins;
-                    if (sEl) sEl.textContent = diffSecs;
-                }, 1000);
-            }
-
-            // 3. تنشيط الجوهرة 💎 والاسم ليتحركوا بنبضات حركية ديناميكية مشعة تلقائياً في المنتصف
-            const gem = document.getElementById('royal-pulsing-gem');
-            const titleAr = document.getElementById('royal-main-title');
-            const titleEn = document.getElementById('royal-sub-title');
-            if (gem) gem.style.animation = "bounce 2s infinite ease-in-out";
-            if (titleAr) titleAr.style.animation = "bounce 3s infinite ease-in-out";
-            if (titleEn) { titleEn.style.animation = "bounce 3s infinite ease-in-out"; titleEn.style.animationDelay = "1.5s"; }
-
-            // 4. محرك الفحص والتشغيل التلقائي والدوري لعيد ميلاد نوفمبر الموعود (يفرش الصندوق ويطلق البالونات والـ Panda والكيك من يوم 4/11 لآخر الشهر كل سنة)
-            const now = new Date();
-            const month = now.getMonth() + 1; // نوفمبر هو شهر 11
-            const day = now.getDate();
-            const celebCard = document.getElementById('dynamic-november-celebration');
-            const festivalZone = document.getElementById('royal-flying-festival-zone');
-
-            if (month === 11 && day >= 4) {
-                // إظهار صندوق المعايدة التلقائي تحت التواريخ مباشرة في شهر نوفمبر
-                if (celebCard) celebCard.style.display = 'block';
-
-                // ضخ وتطاير عناصر الاحتفال لتتصاعد صعوداً نحو الأعلى خلف اللوحات الزجاجية الشفافة
-                if (festivalZone) {
-                    const items = ['🎈', '🐼', '🎂', '🎉', '✨', 'Happy Birthday'];
-                    setInterval(function() {
-                        const el = document.createElement('div');
-                        el.textContent = items[Math.floor(Math.random() * items.length)];
-                        el.style.position = 'absolute';
-                        el.style.bottom = '-50px';
-                        el.style.left = Math.random() * 100 + 'vw';
-                        el.style.fontSize = (Math.random() * 1.1 + 0.6) + 'rem';
-                        el.style.color = '#fff';
-                        el.style.fontWeight = 'bold';
-                        el.style.textShadow = '0 0 10px #d4af37, 0 0 20px rgba(0,191,255,0.4)';
-                        el.style.transition = 'transform 8s linear, opacity 8s linear';
-                        el.style.zIndex = '5';
-                        festivalZone.appendChild(el);
-
-                        setTimeout(function() {
-                            el.style.transform = 'translateY(-110vh) rotate(' + (Math.random() * 360) + 'deg)';
-                            el.style.opacity = '0';
-                        }, 100);
-
-                        setTimeout(function() { el.remove(); }, 8500);
-                    }, 450);
-                }
-            } else {
-                // إخفاء العبارة والاحتفال تلقائياً بمجرد انتهاء شهر نوفمبر
-                if (celebCard) celebCard.style.display = 'none';
-            }
-
-  <script>          
+          
 </body>
 </html>
 
