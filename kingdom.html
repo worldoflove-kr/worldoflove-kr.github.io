@@ -70,11 +70,25 @@
         <button onclick="switchLanguage('en')" style="background: rgba(12, 8, 24, 0.8); border: 1px solid rgba(0,191,255,0.5); padding: 8px 18px; border-radius: 10px; color: #00bfff; font-size: 0.75rem; font-weight: bold; cursor: pointer; transition: all 0.3s; box-shadow: 0 0 10px rgba(0,191,255,0.15); font-family: 'Orbitron', sans-serif;">English 🇬🇧</button>
     </div>
 
-    <!-- 6. عداد زوار مملكتنا الفخم الشغال والمتحرك حركياً لايف -->
-    <div class="glass-panel" style="background: rgba(12, 8, 24, 0.75) !important; border-radius: 12px; padding: 10px; max-width: 380px; margin: 15px auto; border: 1px solid rgba(255,255,255,0.1) !important; text-align: center; position: relative; z-index: 100;">
-        <p id="visitor-counter-txt" style="font-size: 0.75rem; color: #fff; margin: 0; font-weight: bold; font-family: 'Cairo', sans-serif;">
-            👥 عدد زوار مملكتنا الحين لايف: <span id="live-visitor-count" style="color: #00bfff; font-size: 0.85rem; font-family: 'Orbitron', sans-serif; text-shadow: 0 0 10px #00bfff;">14,544</span>
+    <!-- 6. عداد زوار مملكتنا المصغر والمشع باللون الأحمر النيوني النابض والمتحرك حركياً لايف تلقائياً -->
+    <div class="glass-panel" style="background: rgba(12, 8, 24, 0.85) !important; border-radius: 10px; padding: 6px 12px; max-width: 260px; margin: 10px auto; border: 1.5px solid #ff007f !important; box-shadow: 0 0 15px rgba(255, 0, 127, 0.4), inset 0 0 8px rgba(255, 0, 127, 0.15) !important; text-align: center; position: relative; z-index: 100; animation: pulse 2.5s infinite ease-in-out;">
+        <p id="visitor-counter-txt" style="font-size: 0.72rem; color: #fff; margin: 0; font-weight: bold; font-family: 'Cairo', sans-serif;">
+            👥 زوار مملكتنا لايف الحين: <span id="live-visitor-count" style="color: #ff007f; font-size: 0.78rem; font-family: 'Orbitron', sans-serif; font-weight: bold; text-shadow: 0 0 8px #ff007f;">14,544</span>
         </p>
+        <!-- محرك الالتئام الحركي الذاتي لتدوير الأرقام لايف من دون النزول لأسفل الملف نهائياً -->
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onload="(function(){
+            const countEl = document.getElementById('live-visitor-count');
+            if(countEl && !window.royalVisitorTimerStarted) {
+                window.royalVisitorTimerStarted = true;
+                let currentCount = 14544;
+                setInterval(function() {
+                    const fluctuation = Math.floor(Math.random() * 5) - 2;
+                    currentCount += fluctuation;
+                    if (currentCount < 14500) currentCount = 14544;
+                    countEl.textContent = currentCount.toLocaleString();
+                }, 3000);
+            }
+        })()" style="display:none;">
     </div>
 
     <!-- 7. المنصة الإمبراطورية لاسم مملكة الوعود المتحرك بالعربي والإنجليزي مع الجوهرة النابضة والـ Panda -->
