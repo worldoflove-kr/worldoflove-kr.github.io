@@ -401,22 +401,6 @@
         </div>
     </div>
 
-    <!-- 9. صندوق احتفالية نوفمبر الساحر الديناميكي الملموم والمصغر الذي يظهر دورياً وينبثق تحت التواريخ تلقائياً -->
-  
-    (function() {
-        function awakenOriginalFestival() {
-            // 1. تشغيل عقارب الساعة الفلكية لايف والتوقيت الحي بالثواني والدقائق والساعات
-            const clockEl = document.getElementById('astro-clock');
-            if (clockEl) {
-                setInterval(function() {
-                    const now = new Date(); let hours = now.getHours();
-                    const minutes = String(now.getMinutes()).padStart(2, '0');
-                    const seconds = String(now.getSeconds()).padStart(2, '0');
-                    const ampm = hours >= 12 ? 'PM' : 'AM'; hours = hours % 12; hours = hours ? hours : 12;
-                    clockEl.textContent = `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
-                }, 1000);
-            }
-
             // 2. محرك العداد الفلكي الحي لحساب الأيام والساعات والدقائق والثواني بدقة متناهية لايف تلقائياً
             const daysCountEl = document.getElementById('calculated-days');
             if (daysCountEl) {
