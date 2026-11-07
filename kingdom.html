@@ -47,11 +47,21 @@
             <button type="submit" style="width: 25%; background: linear-gradient(135deg, rgba(212,175,55,0.35), rgba(0,191,255,0.25)); border: 1px solid #d4af37; padding: 10px; border-radius: 10px; color: #fff; font-size: 0.74rem; font-weight: bold; cursor: pointer; box-shadow: 0 0 10px rgba(212,175,55,0.2); transition: all 0.3s; font-family: 'Cairo', sans-serif;">🔍 بحث</button>
         </form>
     </div>
-
-    <!-- 4. لوحة التوقيت الفلكي الحي عالي الدقة المتناسق مع الطقس الكوني الأصلي للأبد -->
-    <div class="glass-panel" style="background: rgba(12, 8, 24, 0.75) !important; border-radius: 16px; padding: 15px; max-width: 380px; margin: 15px auto; border: 1px solid rgba(0, 191, 255, 0.4) !important; box-shadow: 0 0 25px rgba(0, 191, 255, 0.25) !important; text-align: center; position: relative; z-index: 100;">
-        <div id="astro-clock" style="font-size: 1.5rem; font-weight: bold; color: #fff; font-family: 'Orbitron', monospace; letter-spacing: 2px; text-shadow: 0 0 15px #00bfff, 0 0 30px rgba(0,191,255,0.5); direction: ltr; margin-bottom: 5px;">--:--:-- --</div>
-        <div id="platform-clock-label" style="font-size: 0.75rem; color: #a0aec0; font-weight: bold; font-family: 'Cairo', sans-serif;">⏱️ التوقيت الفلكي لـ مَمْلَكَةُ الْوُعُودِ لايف الحين</div>
+    <!-- 4. مرصد التوقيت الحي والطقس الفلكي الشامل لبيروت ذو الخلفية الضوئية المتحركة والنيون البنفسجي -->
+    <div class="glass-panel" style="background: rgba(12, 8, 24, 0.85) !important; border-radius: 18px; padding: 14px 20px; max-width: 420px; margin: 15px auto; border: 2px solid #8a2be2 !important; box-shadow: 0 0 25px rgba(138, 43, 226, 0.5), inset 0 0 15px rgba(138, 43, 226, 0.2) !important; text-align: center; position: relative; z-index: 100; animation: cosmicWave 5s ease-in-out infinite;">
+        <!-- السطر العلوي: اليوم والتاريخ العربي المحدث مع الساعة الدقاقة بالثواني لايف -->
+        <div style="display: flex; justify-content: center; gap: 10px; align-items: center; color: #fff; font-family: 'Cairo', 'Orbitron', sans-serif; font-size: 0.88rem; font-weight: bold; text-shadow: 0 0 8px rgba(255,255,255,0.4); margin-bottom: 8px;">
+            <span id="royal-live-full-date">الاثنين، ٢ تشرين الثاني ٢٠٢٦</span>
+            <span style="color: rgba(138, 43, 226, 0.6);">|</span>
+            <span id="astro-clock" style="letter-spacing: 1px; font-family: 'Orbitron', monospace; color: #fff; text-shadow: 0 0 10px #8a2be2;">--:--:--</span>
+        </div>
+        
+        <!-- السطر السفلي: حالة الطقس لبيروت والاستقرار العام والرطوبة لايف المتحدث تلقائياً -->
+        <div style="display: flex; justify-content: center; gap: 10px; align-items: center; color: #fff; font-family: 'Cairo', sans-serif; font-size: 0.82rem; font-weight: bold; text-shadow: 0 0 6px rgba(255,255,255,0.3);">
+            <span id="royal-weather-status">الطقس في بيروت: <span style="color:#d4af37;">24°C صافي</span> ☀️</span>
+            <span style="color: rgba(138, 43, 226, 0.6);">|</span>
+            <span id="royal-humidity-status">الرطوبة: <span style="color:#00bfff;">62%</span> 💧</span>
+        </div>
     </div>
 
     <!-- 5. أزرار الترجمة الفورية والتبديل السريع للغات للمتصفح والموبايل لايف -->
