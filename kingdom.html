@@ -515,57 +515,7 @@
                 if (celebCard) celebCard.style.display = 'none';
             }
 
-            // 5. إيقاظ سقف مرآة النجوم المتلألئة المضيئة بالخلفية ونيازك ومضات الأصابع التفاعلية
-            const canvas = document.createElement('canvas');
-            canvas.style.cssText = "position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:-1;";
-            document.getElementById('starfield-core').appendChild(canvas);
-            const ctx = canvas.getContext('2d'); let stars = [];
-            function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-            window.addEventListener('resize', resize); resize();
-            for(let i=0; i<75; i++) { stars.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, r: Math.random()*1.4+0.4, d: Math.random()*0.05}); }
-            function drawStars() {
-                ctx.clearRect(0,0,canvas.width,canvas.height); ctx.fillStyle = "rgba(255,255,255,0.75)";
-                stars.forEach(s => { ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI*2); ctx.fill(); s.x += s.d; if(s.x > canvas.width) s.x = 0; });
-                requestAnimationFrame(drawStars);
-            }
-            drawStars();
-            function createMeteorTrail(x, y) {
-                for(let i=0; i<2; i++) { stars.push({x: x, y: y, r: Math.random()*2+0.8, d: (Math.random()-0.5)*1.8}); if(stars.length > 140) stars.shift(); }
-            }
-            window.addEventListener('mousemove', function(e) { createMeteorTrail(e.clientX, e.clientY); });
-            window.addEventListener('touchmove', function(e) { if(e.touches.length > 0) createMeteorTrail(e.touches.clientX, e.touches.clientY); });
-        }
-
-        if (document.readyState === "complete" || document.readyState === "interactive") { awakenOriginalFestival(); }
-        else { document.addEventListener("DOMContentLoaded", awakenOriginalFestival); }
-        window.addEventListener("load", awakenOriginalFestival);
-    })();
-
-    // دالة تنشيط القِران الفلكي وإشعال ودوران كواكب النور الذهبية الشمس والقمر ☀️🪐
-    function toggleQuranAura() {
-        const display = document.getElementById('quran-aura-display');
-        const orbs = document.getElementById('cosmic-covenant-orbs');
-        if (display) display.style.display = display.style.display === 'none' ? 'block' : 'none';
-        if (orbs) orbs.style.display = orbs.style.display === 'none' ? 'block' : 'none';
-    }
-
-    // دالة التبديل التفاعلي الفوري بين اللغات لايف والتحكم بنصوص الواجهة
-    function switchLanguage(lang) {
-        const welcomeTxt = document.getElementById('royal-welcome-msg');
-        const clockLabel = document.getElementById('platform-clock-label');
-        const momentsTitle = document.getElementById('royal-moments-title');
-        if(lang === 'en') {
-            if(welcomeTxt) welcomeTxt.innerHTML = `✨ Welcome to <span style="color:#d4af37;">Kingdom of Promises</span>.. The eternal celestial palace of the <span style="color:#00bfff;">KR Royal family</span>, where covenants are carved in the stars 💎 Panda 🐼`;
-            if(clockLabel) clockLabel.textContent = `⏱️ Celestial Live Clock of Promises`;
-            if(momentsTitle) momentsTitle.textContent = `📅 Eternal Immortal Dates`;
-        } else {
-            if(welcomeTxt) welcomeTxt.innerHTML = `✨ أهلاً بكم في <span style="color:#d4af37;">مَمْلَكَةُ الْوُعُودِ</span>.. صرح الفخامة الكونية الأبدية لعائلة <span style="color:#00bfff;">KR الملكية</span>، حيث تُحفر العهود في قلب النجوم وتُحمى الأرواح بنبض الوفاء المطلق 💎🐼`;
-            if(clockLabel) clockLabel.textContent = `⏱️ التوقيت الفلكي لـ مَمْلَكَةُ الْوُعُودِ لايف الحين`;
-            if(momentsTitle) momentsTitle.textContent = `📅 اللحظات والتواريخ الخالدة`;
-        }
-    }
-    function triggerMadridStadiumEarthquake() { document.body.style.animation = 'madridEarthquake 0.1s linear 8'; setTimeout(() => { document.body.style.animation = 'none'; }, 800); }
-    </script>
+           
 </body>
 </html>
 
