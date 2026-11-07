@@ -196,7 +196,7 @@
         </p>
     </div>
   
-    <!-- 8. صندوق اللحظات والتواريخ الخالدة الأصيل المنسق بحجم ناعم ومصغر 100% تحت اسم الصفحة مباشرة -->
+      <!-- 8. صندوق اللحظات والتواريخ الخالدة الأصيل المنسق بحجم ناعم ومصغر مع محرك التحريك الذاتي بالثواني لايف الشغال تلقائياً -->
     <div class="glass-panel" style="background: rgba(12, 8, 24, 0.75) !important; border-radius: 14px; padding: 14px; max-width: 360px; margin: 12px auto; border: 1px solid rgba(0, 191, 255, 0.35) !important; box-shadow: 0 0 20px rgba(0, 191, 255, 0.2) !important; text-align: center; position: relative; z-index: 100;">
         <div style="font-size: 1rem; margin-bottom: 2px;">📅</div>
         <h3 id="royal-moments-title" style="color: #00bfff; font-size: 0.8rem; margin: 0 0 8px 0; text-shadow: 0 0 6px rgba(0,191,255,0.3); font-family: 'Cairo', sans-serif;">اللَّحْظَاتُ وَالتَّوَارِيخُ الخَالِدَةُ</h3>
@@ -212,7 +212,6 @@
             <div style="font-size: 1.15rem; font-weight: bold; color: #00bfff; font-family: 'Orbitron', monospace; letter-spacing: 0.5px;">👑 27 / 05 / 1983 ~ 04 / 11 / 1983</div>
             <div style="font-size: 0.72rem; color: #fff; font-weight: bold; font-family: 'Cairo', sans-serif; margin-top: 1px;">👑 ... في مثل هذا اليوم والشهر أشرق الكون 👑</div>
             
-            <!-- نصوص وجمل المعايدة الأصلية الفخمة المصححة إملائياً وبخط ناعم متناسق ومتقارب جداً كالصورة تماماً -->
             <div id="royal-panda-wish" style="font-size: 0.72rem; color: #fff; font-family: 'Cairo', sans-serif; margin-top: 4px; line-height: 1.5; font-weight: bold; direction: rtl; text-shadow: 0 0 5px rgba(255,255,255,0.2);">
                 Panda KR 🐼 معايدة من القلب من <br>
                 إلى أغلى وأثمن 💎 في هذا الوجود <br>
@@ -222,11 +221,37 @@
             
             <div style="width: 85%; height: 1px; background: linear-gradient(90deg, transparent, rgba(0,191,255,0.25), transparent); margin: 5px 0;"></div>
             
-            <!-- العداد الدقاق الناعم الدقيق المحسوب لايف بالثواني المكتمل للأبد بعبارته الأصلية الملمومة -->
+            <!-- العداد الدقاق المطور المحمي ذو التحديث التلقائي الفوري بالثواني والدقائق والساعات لايف -->
             <div id="royal-days-counter" style="font-size: 0.68rem; color: #cbd5e0; font-weight: bold; font-family: 'Cairo', sans-serif; direction: rtl;">
-                تم حفر العهد منذ <span id="calculated-days" style="color:#d4af37; font-family:'Orbitron'; font-size:0.75rem; text-shadow: 0 0 5px #d4af37;">824</span> يوم و <span id="calc-hours" style="color:#00bfff; font-family:'Orbitron'; font-size:0.75rem;">1</span> ساعة و <span id="calc-mins" style="color:#00bfff; font-family:'Orbitron'; font-size:0.75rem;">1</span> دقيقة و <span id="calc-secs" style="color:#ff007f; font-family:'Orbitron'; font-size:0.75rem;">22</span> ث 👑
+                تم حفر العهد منذ <span id="calculated-days" style="color:#d4af37; font-family:'Orbitron'; font-size:0.75rem; text-shadow: 0 0 5px #d4af37;">824</span> يوم و <span id="calc-hours" style="color:#00bfff; font-family:'Orbitron'; font-size:0.75rem;">0</span> ساعة و <span id="calc-mins" style="color:#00bfff; font-family:'Orbitron'; font-size:0.75rem;">0</span> دقيقة و <span id="calc-secs" style="color:#ff007f; font-family:'Orbitron'; font-size:0.75rem;">00</span> ث 👑
             </div>
         </div>
+        <!-- ماكينة الضخ والتحريك الذاتي الفوري للعداد بالثواني من دون الحاجة لكود سفلي نهائياً -->
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onload="(function(){
+            const dCount = document.getElementById('calculated-days');
+            const hCount = document.getElementById('calc-hours');
+            const mCount = document.getElementById('calc-mins');
+            const sCount = document.getElementById('calc-secs');
+            if(dCount && !window.royalDaysTimerStarted) {
+                window.royalDaysTimerStarted = true;
+                function runClock() {
+                    const startDate = new Date('2024-08-02T00:00:00');
+                    const now = new Date();
+                    const diffTime = Math.abs(now - startDate);
+                    
+                    const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+                    const hours = now.getHours();
+                    const minutes = now.getMinutes();
+                    const seconds = now.getSeconds();
+                    
+                    if(dCount) dCount.textContent = days;
+                    if(hCount) hCount.textContent = hours;
+                    if(mCount) mCount.textContent = minutes;
+                    if(sCount) sCount.textContent = String(seconds).padStart(2, '0');
+                }
+                runClock(); setInterval(runClock, 1000);
+            }
+        })()" style="display:none;">
     </div>
 
   
