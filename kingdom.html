@@ -91,17 +91,42 @@
         })()" style="display:none;">
     </div>
 
-    <!-- 7. المنصة الإمبراطورية لاسم مملكة الوعود المتحرك بالعربي والإنجليزي مع الجوهرة النابضة والـ Panda -->
-    <div style="text-align: center; margin: 25px auto; position: relative; z-index: 100; max-width: 380px;">
-        <!-- الجوهرة الملكية النابضة والمشعة تفاعلياً كالمِرآة ثلاثية الأبعاد -->
+     <!-- 7. المنصة الإمبراطورية المطورة لاسم مملكة الوعود والجوهرة التفاعلية المشعة وشعار kℛ المزخرف بالخلفية الصفراء -->
+    <div style="text-align: center; margin: 20px auto; position: relative; z-index: 100; max-width: 380px;">
+        <!-- الجوهرة الملكية المضيئة والمشعة بحركات نبضية كونية عاكسة للضوء خلف المجرات -->
         <div id="royal-pulsing-gem" style="font-size: 2.2rem; display: inline-block; margin-bottom: 5px; filter: drop-shadow(0 0 15px #00bfff); animation: royalPulse 2s infinite ease-in-out;">💎</div>
         
-        <!-- حاوية الاسم المطور المتحرك هيدروليكياً في المنتصف -->
+        <!-- حاوية اسم الصفحة المطور المتحرك هيدروليكياً بموجات ناعمة ورقيقة جداً للغتين معاً وفي نفس الوقت -->
         <h1 id="royal-main-title" style="color: #fff; font-size: 1.6rem; font-weight: bold; margin: 0; text-shadow: 0 0 15px rgba(255,255,255,0.4); font-family: 'Cairo', sans-serif; animation: textGlowWave 3s infinite ease-in-out;">مَمْلَكَةُ الْوُعُودِ</h1>
         <h2 id="royal-sub-title" style="color: #d4af37; font-size: 0.85rem; font-weight: bold; margin: 4px 0 0 0; letter-spacing: 1.5px; text-shadow: 0 0 10px rgba(212,175,55,0.4); font-family: 'Orbitron', sans-serif; animation: textGlowWave 3s infinite ease-in-out; animation-delay: 1.5s;">Kingdom of Promises</h2>
         
-        <div style="font-size: 1.1rem; margin-top: 6px; animation: bounce 2s infinite;"> 👑 kR 👑</div>
+        <!-- حاوية شعار kℛ المزخرف الفخم المبرمج ليضوي ويشع بالخلفية الصفراء النيونية المتوهجة التفاعلية لايف -->
+        <div style="margin-top: 14px; display: inline-block; padding: 6px 18px; background: rgba(12, 8, 24, 0.9); border-radius: 20px; border: 1.5px solid #d4af37; box-shadow: 0 0 22px #e6b800, inset 0 0 8px rgba(212,175,55,0.3); animation: royalPulse 2s infinite ease-in-out;">
+            <span style="font-size: 1.15rem; font-weight: bold; color: #fff; font-family: 'Cairo', 'Orbitron', sans-serif; letter-spacing: 1px; text-shadow: 0 0 10px #e6b800;">
+                👑 <span style="font-family: 'Times New Roman', serif; font-style: italic; font-size: 1.4rem; color: #d4af37; font-weight: bold; letter-spacing: -0.5px;">𝓴ℛ</span> 👑
+            </span>
+        </div>
+        
+        <div style="font-size: 1.1rem; margin-top: 8px; animation: bounce 2s infinite;">🐼👑🐼</div>
+        
+        <!-- محرك الحقن التلقائي الذاتي لتشغيل حركات النبض والاهتزاز للمنصة من دون النزول لأسفل الملف نهائياً -->
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onload="(function(){
+            if(!window.royalStyleGlowInjected) {
+                window.royalStyleGlowInjected = true;
+                const style = document.createElement('style');
+                style.innerHTML = `
+                    @keyframes royalPulse { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px #00bfff); } 50% { transform: scale(1.05); filter: drop-shadow(0 0 25px #d4af37) drop-shadow(0 0 20px #e6b800); } }
+                    @keyframes textGlowWave { 0%, 100% { transform: translateY(0); text-shadow: 0 0 12px rgba(255,255,255,0.4); } 50% { transform: translateY(-4px); text-shadow: 0 0 22px #00bfff, 0 0 15px #d4af37; } }
+                `;
+                document.head.appendChild(style);
+            }
+            const titleAr = document.getElementById('royal-main-title');
+            const titleEn = document.getElementById('royal-sub-title');
+            if(titleAr) titleAr.style.animation = 'textGlowWave 3s infinite ease-in-out';
+            if(titleEn) { titleEn.style.animation = 'textGlowWave 3s infinite ease-in-out'; titleEn.style.animationDelay = '1.5s'; }
+        })()" style="display:none;">
     </div>
+
 
     <!-- 9. صندوق احتفالية عيد ميلاد صديقتكِ (نوفمبر الساحر للأبد) المستقر فوق الفوتر الملكي -->
     <div id="royal-november-birthday-card" class="glass-panel" style="background: rgba(12, 8, 24, 0.85) !important; border-radius: 16px; padding: 18px; max-width: 380px; margin: 25px auto; border: 2px solid #d4af37 !important; box-shadow: 0 0 35px rgba(212, 175, 55, 0.35), inset 0 0 15px rgba(212, 175, 55, 0.15) !important; text-align: center; position: relative; overflow: hidden; z-index: 100; animation: cosmicWave 4s ease-in-out infinite;">
