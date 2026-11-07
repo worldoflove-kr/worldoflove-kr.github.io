@@ -196,7 +196,7 @@
         </p>
     </div>
   
-      <!-- 8. صندوق اللحظات والتواريخ الخالدة الأصيل المنسق بحجم ناعم ومصغر مع محرك التحريك الذاتي بالثواني لايف الشغال تلقائياً -->
+      <!-- 8. صندوق اللحظات والتواريخ الخالدة الأصيل المنسق مع محرك التحريك الذاتي بالثواني ومكينة ضخ نوفمبر والبالونات الطائرة بالأعماق -->
     <div class="glass-panel" style="background: rgba(12, 8, 24, 0.75) !important; border-radius: 14px; padding: 14px; max-width: 360px; margin: 12px auto; border: 1px solid rgba(0, 191, 255, 0.35) !important; box-shadow: 0 0 20px rgba(0, 191, 255, 0.2) !important; text-align: center; position: relative; z-index: 100;">
         <div style="font-size: 1rem; margin-bottom: 2px;">📅</div>
         <h3 id="royal-moments-title" style="color: #00bfff; font-size: 0.8rem; margin: 0 0 8px 0; text-shadow: 0 0 6px rgba(0,191,255,0.3); font-family: 'Cairo', sans-serif;">اللَّحْظَاتُ وَالتَّوَارِيخُ الخَالِدَةُ</h3>
@@ -221,13 +221,19 @@
             
             <div style="width: 85%; height: 1px; background: linear-gradient(90deg, transparent, rgba(0,191,255,0.25), transparent); margin: 5px 0;"></div>
             
-            <!-- العداد الدقاق المطور المحمي ذو التحديث التلقائي الفوري بالثواني والدقائق والساعات لايف -->
+            <!-- العداد الدقاق المطور المحمي ذو التحديث التلقائي الفوري بالثواني والدقائق والساعات لايف الشغال تلقائياً -->
             <div id="royal-days-counter" style="font-size: 0.68rem; color: #cbd5e0; font-weight: bold; font-family: 'Cairo', sans-serif; direction: rtl;">
                 تم حفر العهد منذ <span id="calculated-days" style="color:#d4af37; font-family:'Orbitron'; font-size:0.75rem; text-shadow: 0 0 5px #d4af37;">824</span> يوم و <span id="calc-hours" style="color:#00bfff; font-family:'Orbitron'; font-size:0.75rem;">0</span> ساعة و <span id="calc-mins" style="color:#00bfff; font-family:'Orbitron'; font-size:0.75rem;">0</span> دقيقة و <span id="calc-secs" style="color:#ff007f; font-family:'Orbitron'; font-size:0.75rem;">00</span> ث 👑
             </div>
         </div>
-        <!-- ماكينة الضخ والتحريك الذاتي الفوري للعداد بالثواني من دون الحاجة لكود سفلي نهائياً -->
+
+        <!-- مسرح فضاء مرآة النجوم والاحتفال الطائر الكوني بالأعماق لخلفية الواجهة الشفافة كالمِرآة العاكسة للضوء -->
+        <div id="starfield-core" style="position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:-1;"></div>
+        <div id="royal-flying-festival-zone" style="position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:10; overflow:hidden;"></div>
+
+        <!-- ماكينة الضخ والتحريك الذاتي المشترك للعداد والبالونات بالأعماق من دون الحاجة لكود سفلي نهائياً -->
         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onload="(function(){
+            // أ) تشغيل العداد الدقاق بالثواني لايف
             const dCount = document.getElementById('calculated-days');
             const hCount = document.getElementById('calc-hours');
             const mCount = document.getElementById('calc-mins');
@@ -236,20 +242,33 @@
                 window.royalDaysTimerStarted = true;
                 function runClock() {
                     const startDate = new Date('2024-08-02T00:00:00');
-                    const now = new Date();
-                    const diffTime = Math.abs(now - startDate);
-                    
+                    const now = new Date(); const diffTime = Math.abs(now - startDate);
                     const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-                    const hours = now.getHours();
-                    const minutes = now.getMinutes();
-                    const seconds = now.getSeconds();
-                    
-                    if(dCount) dCount.textContent = days;
-                    if(hCount) hCount.textContent = hours;
-                    if(mCount) mCount.textContent = minutes;
-                    if(sCount) sCount.textContent = String(seconds).padStart(2, '0');
+                    const hours = now.getHours(); const minutes = now.getMinutes(); const seconds = now.getSeconds();
+                    if(dCount) dCount.textContent = days; if(hCount) hCount.textContent = hours;
+                    if(mCount) mCount.textContent = minutes; if(sCount) sCount.textContent = String(seconds).padStart(2, '0');
                 }
                 runClock(); setInterval(runClock, 1000);
+            }
+
+            // ب) إطلاق وتطاير بالونات وعناصر احتفال نوفمبر الساحر لتتصاعد للأعلى بالأعماق خلف اللوحات الزجاجية
+            const festivalZone = document.getElementById('royal-flying-festival-zone');
+            if (festivalZone && !window.royalFestivalTimerStarted) {
+                window.royalFestivalTimerStarted = true;
+                const items = ['🎈', '🐼', '🎂', '🎉', '✨', 'Happy Birthday'];
+                setInterval(function() {
+                    const el = document.createElement('div');
+                    el.textContent = items[Math.floor(Math.random() * items.length)];
+                    el.style.position = 'absolute'; el.style.bottom = '-50px'; el.style.left = (Math.random() * 100) + 'vw';
+                    el.style.fontSize = (Math.random() * 1.1 + 0.6) + 'rem'; el.style.color = '#fff'; el.style.fontWeight = 'bold';
+                    el.style.textShadow = '0 0 10px #d4af37, 0 0 20px rgba(0,191,255,0.4)';
+                    el.style.transition = 'transform 8s linear, opacity 8s linear'; el.style.zIndex = '5';
+                    festivalZone.appendChild(el);
+                    setTimeout(function() {
+                        el.style.transform = 'translateY(-110vh) rotate(' + (Math.random() * 360) + 'deg)'; el.style.opacity = '0';
+                    }, 100);
+                    setTimeout(function() { el.remove(); }, 8500);
+                }, 450);
             }
         })()" style="display:none;">
     </div>
