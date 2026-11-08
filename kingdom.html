@@ -180,21 +180,43 @@
         })()" style="display:none;">
     </div>
   
-
-    <!-- 9. صندوق احتفالية عيد ميلاد صديقتكِ (نوفمبر الساحر للأبد) المستقر فوق الفوتر الملكي -->
-    <div id="royal-november-birthday-card" class="glass-panel" style="background: rgba(12, 8, 24, 0.85) !important; border-radius: 16px; padding: 18px; max-width: 380px; margin: 25px auto; border: 2px solid #d4af37 !important; box-shadow: 0 0 35px rgba(212, 175, 55, 0.35), inset 0 0 15px rgba(212, 175, 55, 0.15) !important; text-align: center; position: relative; overflow: hidden; z-index: 100; animation: cosmicWave 4s ease-in-out infinite;">
-        <!-- تأثير البالونات المتحركة الطائرة بنعومة في خلفية الصندوق الزجاجي -->
-        <div style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; opacity: 0.25; z-index: 1;">
-            <span style="position: absolute; left: 15%; animation: floatUp 6s infinite ease-in; font-size: 1.2rem;">🎈</span>
-            <span style="position: absolute; left: 45%; animation: floatUp 8s infinite ease-in; animation-delay: 2s; font-size: 1.4rem;">🎈</span>
-            <span style="position: absolute; left: 75%; animation: floatUp 7s infinite ease-in; animation-delay: 4s; font-size: 1.1rem;">🎈</span>
-        </div>
-
-        <div style="font-size: 1.8rem; margin-bottom: 4px; filter: drop-shadow(0 0 6px #d4af37); position: relative; z-index: 2;">🎈🎉🎂</div>
-        <p id="royal-birthday-text" style="font-size: 0.76rem; color: #fff; line-height: 1.6; text-shadow: 0 0 8px rgba(212,175,55,0.4); margin: 5px 0 0 0; font-weight: bold; font-family: 'Cairo', sans-serif; position: relative; z-index: 2; direction: rtl;">
-            ✨ <span style="color: #d4af37;">نوفمبر الساحر يحلق..</span> ميلاد القلوب الملكية التي صنعت هذه الصفحة، تاريخان حفرتهما النجوم في ذاكرة الفضاء لنحتفل معاً بعهد جديد لا يعرف النهاية <span style="color: #00bfff;">🐼💎</span>
+     <!-- 8. لوحة الترحيب الإمبراطورية الناعمة والمصغرة بكامل سحر النيون المتحرك وتموج الألوان الرقيقة تحت اسم مَمْلَكَةُ الْوُعُودِ -->
+    <div id="royal-welcome-aurora-card" style="background: rgba(12, 8, 24, 0.8) !important; border-radius: 14px; padding: 12px 14px; max-width: 320px; margin: 12px auto; border: 1.2px solid #d4af37 !important; text-align: center; position: relative; z-index: 100; overflow: hidden; animation: welcomeAuroraGlowChange 6s infinite ease-in-out;">
+        
+        <!-- تاج وجواهر نبض الإشعاع العلوية الناعمة بحجم مصغر -->
+        <div style="font-size: 0.95rem; margin-bottom: 4px; animation: bounce 2.5s infinite ease-in-out;">👑 ✨ 💎</div>
+        
+        <!-- العنوان الترحيبي الأسطوري المحفور بأنوار الذهب بحجم رقيق ومتناسق -->
+        <h3 style="color: #d4af37; font-size: 0.92rem; font-weight: bold; margin: 0 0 8px 0; text-shadow: 0 0 12px #d4af37; font-family: 'Cairo', sans-serif; animation: welcomeTextPulse 3s infinite ease-in-out;">
+            أهلاً بك في فضاء الشراكة والعهد الجديد
+        </h3>
+        
+        <!-- العبارة الوجدانية الفخمة المنسقة بمقاس ناعم ورشيق جداً مريح مية مية للموبايل -->
+        <p style="font-size: 0.68rem; color: #fff; line-height: 1.5; margin: 0; font-family: 'Cairo', sans-serif; direction: rtl; text-align: center; text-shadow: 0 0 6px rgba(255,255,255,0.3);">
+            إذا كانت خطوتكم الأولى قد بدأت من <span style="color: #00bfff; font-weight: bold; text-shadow: 0 0 8px #00bfff;">(عالم الحب)</span>، فإن تلك الرحلة قد قادتكم إلى هنا.. إلى المملكة التي تحمي ذلك الحب وتوثقه. هنا لا نكتب كلمات عابرة، بل نحفر عهوداً بحبر الذهب المشع لتبقى ثابتة كالنجوم في السماء.
         </p>
+
+        <!-- محرك الحقن التلقائي المفتوح والمقفيل لتشغيل حركات تموج الألوان التفاعلية من دون النزول لأسفل الملف نهائياً -->
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onload="(function(){
+            if(!window.royalWelcomeStyleInjected) {
+                window.royalWelcomeStyleInjected = true;
+                const style = document.createElement('style');
+                style.innerHTML = `
+                    @keyframes welcomeAuroraGlowChange {
+                        0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.35), inset 0 0 10px rgba(212, 175, 55, 0.15); border-color: #d4af37; }
+                        33% { box-shadow: 0 0 22px rgba(255, 0, 127, 0.4), inset 0 0 10px rgba(255, 0, 127, 0.15); border-color: #ff007f; }
+                        66% { box-shadow: 0 0 22px rgba(0, 191, 255, 0.4), inset 0 0 10px rgba(0, 191, 255, 0.15); border-color: #00bfff; }
+                    }
+                    @keyframes welcomeTextPulse {
+                        0%, 100% { filter: brightness(1); text-shadow: 0 0 12px #d4af37, 0 0 20px rgba(212,175,55,0.5); }
+                        50% { filter: brightness(1.15); text-shadow: 0 0 20px #00bfff, 0 0 15px #ff007f; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        })()" style="display:none;">
     </div>
+
      <!-- 9. شريط ترحيب الليل والنهار الصلب التلقائي وصندوق الباندا الملكي ورابط العودة المباشر الصافي لعالم الحب -->
     <div style="text-align: center; margin: 20px auto 15px auto; max-width: 380px; padding: 12px 18px; border-radius: 12px; background: rgba(138, 43, 226, 0.12); border: 1.5px solid #8a2be2; box-shadow: 0 0 18px rgba(138, 43, 226, 0.45), inset 0 0 8px rgba(138, 43, 226, 0.15); transition: all 0.5s ease-in-out;">
         <p style="font-size: 0.76rem; color: #fff; font-weight: bold; font-family: 'Cairo', sans-serif; margin: 0; text-shadow: 0 0 8px #8a2be2, 0 0 15px #ff007f;">
