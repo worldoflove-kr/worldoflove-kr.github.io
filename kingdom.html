@@ -670,6 +670,8 @@
         }
     })()" style="display:none;">
     <!-- 12. محرك فضاء الخلفيات الكونية التناوبية وتوهج القمر والنجوم التفاعلية ودرع الحماية السيبراني المستقل تماماً بقاع الملف -->
+    </div></div></div></div> <!-- وسوم إغلاق احترازية صارمة لإغلاق أي حاويات مفتوحة فوق خطأ ومنع تسرب النجوم داخل الصناديق -->
+
     <div id="starfield-cosmic-canvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -2;"></div>
     <div id="royal-day-panda-bg" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -3; background: url('panda.png') no-repeat center center; background-size: cover; opacity: 0; transition: opacity 2.5s ease-in-out;"></div>
     <div id="royal-night-panda-bg" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -4; background: url('panda_night.png') no-repeat center center; background-size: cover; opacity: 0; transition: opacity 2.5s ease-in-out; animation: royalMoonGlowPulse 4s infinite ease-in-out;"></div>
@@ -693,10 +695,11 @@
         }
         checkCelestialBgs(); setInterval(checkCelestialBgs, 30000);
 
-        // [ب] إنشاء فضاء النجوم المتحركة والمضيئة بالأعماق خلف اللوحات الزجاجية الشفافة
+        // [ب] إنشاء فضاء النجوم المتحركة والمضيئة بالأعماق خلف اللوحات الزجاجية الشفافة على كامل مساحة الشاشة
         const canvas = document.getElementById('starfield-cosmic-canvas');
         if (canvas) {
-            for (let i = 0; i < 65; i++) {
+            canvas.innerHTML = '';
+            for (let i = 0; i < 75; i++) {
                 const star = document.createElement('div');
                 star.innerHTML = '✦'; star.style.position = 'absolute';
                 star.style.left = (Math.random() * 100) + 'vw'; star.style.top = (Math.random() * 100) + 'vh';
@@ -750,12 +753,10 @@
     </script>
     
     <style>
-    /* قفل التحديد الكلي وحماية الصور وهالة القمر الحركية المشعة المضيئة بالأعماق لايف */
+    /* فرض الشفافية الصارمة وقفل التحديد الكلي وحماية الصور وهالة القمر الحركية المشعة المضيئة بالأعماق لايف */
     body { background: transparent !important; background-color: transparent !important; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
     .main-container, .wrapper, #app, .content { background: transparent !important; background-color: transparent !important; }
     img { -webkit-user-drag: none; -khtml-user-drag: none; -moz-user-drag: none; -o-user-drag: none; pointer-events: none; }
-
-
     @keyframes royalMoonGlowPulse { 
         0%, 100% { filter: drop-shadow(0 0 20px rgba(255,255,255,0.45)) brightness(1); } 
         50% { filter: drop-shadow(0 0 45px rgba(0,191,255,0.7)) brightness(1.2); } 
@@ -763,9 +764,8 @@
     </style>
 </body>
 </html>
-  
 
-       
+ 
 
     
  
