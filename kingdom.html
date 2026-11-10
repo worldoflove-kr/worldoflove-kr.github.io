@@ -599,7 +599,9 @@
             }, 5000);
         }, 100);
     }
+
     </script>
+
     <!-- ماكينة الفحص والتحديث التلقائي لشريط الليل والنهار الكوني والعداد الحركي الحي لـ مَمْلَكَةُ الْوُعُودِ وعائلة KR -->
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onload="(function(){
         // 1. ماكينة الفحص والتحديث التلقائي لشريط الليل والنهار الكوني بحسب ساعة الموبايل لايف
@@ -667,6 +669,161 @@
             }, 450);
         }
     })()" style="display:none;">
+    <!-- 12. محرك فضاء الخلفيات الكونية التناوبية وتوهج القمر والنجوم التفاعلية المستقل تماماً بأسفل الملف -->
+    <div id="starfield-cosmic-canvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -2;"></div>
+    <div id="royal-day-panda-bg" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -3; background: url('panda.png') no-repeat center center; background-size: cover; opacity: 0; transition: opacity 2.5s ease-in-out;"></div>
+    <div id="royal-night-panda-bg" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -4; background: url('panda_night.png') no-repeat center center; background-size: cover; opacity: 0; transition: opacity 2.5s ease-in-out; animation: royalMoonGlowPulse 4s infinite ease-in-out;"></div>
+
+    <script>
+    (function(){
+        // ماكينة فحص الوقت وتغيير خلفية الأعماق الكاملة تلقائياً لايف
+        function checkCelestialBgs() {
+            const dayBg = document.getElementById('royal-day-panda-bg');
+            const nightBg = document.getElementById('royal-night-panda-bg');
+            if(dayBg && nightBg) {
+                const hour = new Date().getHours();
+                if (hour >= 5 && hour < 17) {
+                    dayBg.style.opacity = '0.35'; // خلفية نهارية ناعمة لباندا الورق الممزق
+                    nightBg.style.opacity = '0';
+                } else {
+                    dayBg.style.opacity = '0';
+                    nightBg.style.opacity = '0.4'; // خلفية ليلية مشعة لباندا القمر الكوني
+                }
+            }
+        }
+        checkCelestialBgs(); setInterval(checkCelestialBgs, 30000);
+
+        // إنشاء فضاء النجوم المتحركة بالأعماق
+        const canvas = document.getElementById('starfield-cosmic-canvas');
+        if (canvas) {
+            for (let i = 0; i < 65; i++) {
+                const star = document.createElement('div');
+                star.innerHTML = '✦'; star.style.position = 'absolute';
+                star.style.left = (Math.random() * 100) + 'vw'; star.style.top = (Math.random() * 100) + 'vh';
+                star.style.color = Math.random() > 0.5 ? '#d4af37' : '#00bfff';
+                star.style.fontSize = (Math.random() * 0.4 + 0.3) + 'rem';
+                star.style.opacity = Math.random(); star.style.pointerEvents = 'none';
+                star.style.transition = 'transform 12s linear, opacity 3s ease-in-out';
+                canvas.appendChild(star);
+                setInterval(function() {
+                    star.style.transform = 'translate(' + (Math.random() * 30 - 15) + 'px, ' + (Math.random() * 30 - 15) + 'px)';
+                    star.style.opacity = Math.random();
+                }, 3000);
+            }
+        }
+
+        // تشغيل لمسة الإصبع وانبثاق النجوم التفاعلية الملونة لايف على كامل الشاشة
+        const triggerTouchStars = function(e) {
+            const clientX = e.touches ? e.touches.clientX : e.clientX;
+            const clientY = e.touches ? e.touches.clientY : e.clientY;
+            for (let i = 0; i < 4; i++) {
+                const burst = document.createElement('div');
+                burst.innerHTML = '★'; burst.style.position = 'fixed';
+                burst.style.left = clientX + 'px'; burst.style.top = clientY + 'px';
+                burst.style.color = ['#d4af37', '#00bfff', '#ff007f', '#fff'][Math.floor(Math.random() * 4)];
+                burst.style.fontSize = (Math.random() * 0.6 + 0.5) + 'rem'; burst.style.pointerEvents = 'none';
+                burst.style.zIndex = '9999'; burst.style.transition = 'transform 1s cubic-bezier(0.1, 0.8, 0.3, 1), opacity 1s ease-out';
+                burst.style.textShadow = '0 0 8px ' + burst.style.color;
+                document.body.appendChild(burst);
+                setTimeout(function() {
+                    const angle = Math.random() * Math.PI * 2; const dist = Math.random() * 60 + 30;
+                    const x = Math.sin(angle) * dist; const y = Math.cos(angle) * dist;
+                    burst.style.transform = 'translate(' + x + 'px, ' + y + 'px) scale(0)'; burst.style.opacity = '0';
+                }, 50);
+                setTimeout(function() { burst.remove(); }, 1100);
+            }
+        };
+        document.addEventListener('mousemove', triggerTouchStars, { passive: true });
+        document.addEventListener('touchmove', triggerTouchStars, { passive: true });
+        
+        if(!window.royalMoonGlowInjected) {
+            window.royalMoonGlowInjected = true;
+            const style = document.createElement('style');
+            style.innerHTML = `@keyframes royalMoonGlowPulse { 0%, 100% { filter: drop-shadow(0 0 15px rgba(255,255,255,0.4)) brightness(1); } 50% { filter: drop-shadow(0 0 35px rgba(0,191,255,0.6)) brightness(1.15); } }`;
+            document.head.appendChild(style);
+        }
+    })();
+    </script>
+    <script>
+    (function(){
+        // إنشاء فضاء النجوم المتحركة بالأعماق خلف اللوحات الزجاجية
+        const canvas = document.getElementById('starfield-cosmic-canvas');
+        if (canvas) {
+            for (let i = 0; i < 65; i++) {
+                const star = document.createElement('div');
+                star.innerHTML = '✦'; star.style.position = 'absolute';
+                star.style.left = (Math.random() * 100) + 'vw'; star.style.top = (Math.random() * 100) + 'vh';
+                star.style.color = Math.random() > 0.5 ? '#d4af37' : '#00bfff';
+                star.style.fontSize = (Math.random() * 0.4 + 0.3) + 'rem';
+                star.style.opacity = Math.random(); star.style.pointerEvents = 'none';
+                star.style.transition = 'transform 12s linear, opacity 3s ease-in-out';
+                canvas.appendChild(star);
+                setInterval(function() {
+                    star.style.transform = 'translate(' + (Math.random() * 30 - 15) + 'px, ' + (Math.random() * 30 - 15) + 'px)';
+                    star.style.opacity = Math.random();
+                }, 3000);
+            }
+        }
+
+        // تشغيل لمسة الإصبع وانبثاق وتطاير النجوم التفاعلية الملونة لايف على كامل الشاشة
+        const triggerTouchStars = function(e) {
+            const clientX = e.touches ? e.touches.clientX : e.clientX;
+            const clientY = e.touches ? e.touches.clientY : e.clientY;
+            for (let i = 0; i < 4; i++) {
+                const burst = document.createElement('div');
+                burst.innerHTML = '★'; burst.style.position = 'fixed';
+                burst.style.left = clientX + 'px'; burst.style.top = clientY + 'px';
+                burst.style.color = ['#d4af37', '#00bfff', '#ff007f', '#fff'][Math.floor(Math.random() * 4)];
+                burst.style.fontSize = (Math.random() * 0.6 + 0.5) + 'rem'; burst.style.pointerEvents = 'none';
+                burst.style.zIndex = '9999'; burst.style.transition = 'transform 1s cubic-bezier(0.1, 0.8, 0.3, 1), opacity 1s ease-out';
+                burst.style.textShadow = '0 0 8px ' + burst.style.color;
+                document.body.appendChild(burst);
+                setTimeout(function() {
+                    const angle = Math.random() * Math.PI * 2; const dist = Math.random() * 60 + 30;
+                    const x = Math.sin(angle) * dist; const y = Math.cos(angle) * dist;
+                    burst.style.transform = 'translate(' + x + 'px, ' + y + 'px) scale(0)'; burst.style.opacity = '0';
+                }, 50);
+                setTimeout(function() { burst.remove(); }, 1100);
+            }
+        };
+        document.addEventListener('mousemove', triggerTouchStars, { passive: true });
+        document.addEventListener('touchmove', triggerTouchStars, { passive: true });
+        
+        if(!window.royalMoonGlowInjected) {
+            window.royalMoonGlowInjected = true;
+            const style = document.createElement('style');
+            style.innerHTML = `@keyframes royalMoonGlowPulse { 0%, 100% { filter: drop-shadow(0 0 15px rgba(255,255,255,0.4)) brightness(1); } 50% { filter: drop-shadow(0 0 35px rgba(0,191,255,0.6)) brightness(1.15); } }`;
+            document.head.appendChild(style);
+        }
+    })();
+    </script>
+
+
+    <!-- 13. درع الحماية السيبراني الإمبراطوري المحصن 100% لحظر النسخ والسرقة وفحص الأكواد من القراصنة -->
+    <script>
+    (function(){
+        // 1. حظر اللمس المطول والزر الأيمن للفأرة لمنع حفظ الصور والنسخ
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); }, false);
+        
+        // 2. حظر تحديد النصوص والتظليل الأزرق لحماية العبارات الملكية
+        document.addEventListener('selectstart', function(e) { e.preventDefault(); }, false);
+        
+        // 3. حظر أزرار اختصار لوحة المفاتيح وفحص الأكواد لمنع سرقة الشفرات البرمجية (F12, Ctrl+Shift+I, U)
+        document.addEventListener('keydown', function(e) {
+            if (e.keyCode == 123 || 
+                (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) || 
+                (e.ctrlKey && e.keyCode == 85)) {
+                e.preventDefault();
+                return false;
+            }
+        }, false);
+    })();
+    </script>
+    <style>
+    /* قفل التحديد وحماية الصور عبر الستايل لضمان الأمان المطلق */
+    body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+    img { -webkit-user-drag: none; -khtml-user-drag: none; -moz-user-drag: none; -o-user-drag: none; pointer-events: none; }
+    </style>
  
 </body>
 </html>
