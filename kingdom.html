@@ -829,26 +829,33 @@
         });
 
         // ماكينة التصحيح الفوري لليوم والوقت ليتطابق مع ساعة هاتف الزائر المحلي بدقة 100%
-        function fixCelestialDayName() {
+          function fixCelestialDayName() {
             const panels = document.querySelectorAll('.glass-panel');
             panels.forEach(panel => {
                 if (panel.innerHTML.includes(' الرطوبة') || panel.innerHTML.includes(' الطقس')) {
                     const daysOfWeek = ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
-                    const currentLocalDay = daysOfWeek[new Date().getDay()];
+                    const monthsOfYear = ['كانون الثاني', 'شباط', 'آذار', 'نيسان', 'أيار', 'حزيران', 'تموز', 'آب', 'أيلول', 'تشرين الأول', 'تشرين الثاني', 'كانون الأول'];
                     
+                    const now = new Date();
+                    const currentLocalDay = daysOfWeek[now.getDay()];
+                    const currentLocalDate = now.getDate();
+                    const currentLocalMonth = monthsOfYear[now.getMonth()];
+                    const currentLocalYear = now.getFullYear();
+                    
+                    // صياغة شريط الوقت الكوني المحدث والكامل ديناميكياً ليطابق هاتفِك الحين لايف
+                    const newCelestialString = `${currentLocalDay}، ${currentLocalDate} ${currentLocalMonth} ${currentLocalYear}`;
+                    
+                    // استبدال النص القديم الجامد بالكامل مهما كانت حالته السابقة بلمحة بصر
                     let boxHTML = panel.innerHTML;
-                    if (boxHTML.includes('الاثنين') && currentLocalDay === 'الأربعاء') {
-                        panel.innerHTML = boxHTML.replace('الاثنين', 'الأربعاء');
-                    } else if (boxHTML.includes('الثلاثاء') && currentLocalDay === 'الأربعاء') {
-                        panel.innerHTML = boxHTML.replace('الثلاثاء', 'الأربعاء');
-                    }
+                    panel.innerHTML = boxHTML.replace(/[الأحدالاثنينالثلاثاءالأربعاءالخميسالجمعةالسبت]+\s*،\s*\d+\s+[كانونشباطآذارنيسانأيارحزيرانتوزآبأيلولتشرينكانون]+\s+[الأولالثاني]+\s+\d+|[الاثنينالثلاثاءالأربعاء]+\s*،\s*\d+\s+تشرين\s+[الأولالثاني]+\s+\d+/g, newCelestialString);
                 }
             });
         }
-        setTimeout(fixCelestialDayName, 1000);
+        setTimeout(fixCelestialDayName, 500);
         window.addEventListener('load', fixCelestialDayName);
     })();
     </script>
+
 </body>
 </html>
 
