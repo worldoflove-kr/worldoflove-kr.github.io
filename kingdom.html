@@ -6,7 +6,7 @@
     <title>مَمْلَكَةُ الْوُعُودِ - عائلة KR</title>
     <link rel="stylesheet" href="style2.css">
      <style>
-        /* جدار الشفافية الصارم لإجبار فضاء النجوم وقمر الخلفية على الاختراق والظهور فوراً */
+        /* إعادة صياغة وضبط جدار الشفافية الصارم وحماية حركة شريط البورصة الأصيل للمملكة */
         html, body { background: transparent !important; background-color: transparent !important; background-image: none !important; }
         .main-container, .wrapper, #app, .content, .main-content { background: transparent !important; background-color: transparent !important; background-image: none !important; }
         .glass-panel { background: rgba(12, 8, 24, 0.75) !important; backdrop-filter: blur(8px) !important; -webkit-backdrop-filter: blur(8px) !important; }
@@ -18,11 +18,13 @@
             50% { filter: drop-shadow(0 0 45px rgba(0,191,255,0.7)) brightness(1.2); } 
         }
         
-        /* التنسيقات الأساسية لشريط البورصة العلوي */
-        .royal-ticker-container { background: rgba(10, 6, 20, 0.85); border-bottom: 1px solid rgba(0, 191, 255, 0.3); }
-        .royal-ticker-grid { display: inline-flex; animation: scrollRoyalGrid 25s linear infinite; }
-        .ticker-cell { display: inline-block; padding: 0 15px; font-family: 'Cairo', sans-serif; font-size: 0.72rem; color: #fff; }
+        /* كود التنسيقات الأصلي والحركي لشريط البورصة العائم لمنع التراكم العمودي */
+        .royal-ticker-container { background: rgba(10, 6, 20, 0.85) !important; border-bottom: 1px solid rgba(0, 191, 255, 0.3) !important; width: 100% !important; overflow: hidden !important; padding: 8px 0 !important; white-space: nowrap !important; display: block !important; }
+        .royal-ticker-grid { display: inline-flex !important; flex-direction: row !important; white-space: nowrap !important; animation: scrollRoyalGrid 25s linear infinite !important; }
+        .ticker-cell { display: inline-block !important; padding: 0 20px !important; font-family: 'Cairo', sans-serif !important; font-size: 0.75rem !important; color: #fff !important; text-align: center !important; }
+        @keyframes scrollRoyalGrid { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
     </style>
+
 
 </head>
 <body>
