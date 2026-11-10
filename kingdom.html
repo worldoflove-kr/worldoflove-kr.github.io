@@ -669,7 +669,7 @@
             }, 450);
         }
     })()" style="display:none;">
-    <!-- 12. محرك فضاء الخلفيات الكونية التناوبية وتوهج القمر والنجوم التفاعلية ودرع الحماية السيبراني المستقل تماماً بقاع الملف -->
+      <!-- 12. محرك فضاء الخلفيات الكونية التناوبية وتوهج القمر والنجوم التفاعلية ودرع الحماية السيبراني المستقل تماماً بقاع الملف -->
     <div id="starfield-cosmic-canvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -2;"></div>
     <div id="royal-day-panda-bg" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -3; background: url('panda.png') no-repeat center center; background-size: cover; opacity: 0; transition: opacity 2.5s ease-in-out;"></div>
     <div id="royal-night-panda-bg" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -4; background: url('panda_night.png') no-repeat center center; background-size: cover; opacity: 0; transition: opacity 2.5s ease-in-out; animation: royalMoonGlowPulse 4s infinite ease-in-out;"></div>
@@ -751,9 +751,10 @@
     </script>
     
     <style>
-    /* فرض الشفافية الصارمة وقفل التحديد الكلي وحماية الصور وهالة القمر الحركية المشعة المضيئة بالأعماق لايف */
-    body { background: transparent !important; background-color: transparent !important; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
-    .main-container, .wrapper, #app, .content { background: transparent !important; background-color: transparent !important; }
+    /* إجبار جدار الشفافية قسرياً وتذويب الألوان وتفعيل هالة القمر الحركية المشعة المضيئة بالأعماق لايف */
+    html, body { background: transparent !important; background-color: transparent !important; background-image: none !important; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+    .main-container, .wrapper, #app, .content { background: transparent !important; background-color: transparent !important; background-image: none !important; }
+    .glass-panel { background: rgba(12, 8, 24, 0.72) !important; backdrop-filter: blur(8px) !important; -webkit-backdrop-filter: blur(8px) !important; }
     img { -webkit-user-drag: none; -khtml-user-drag: none; -moz-user-drag: none; -o-user-drag: none; pointer-events: none; }
     @keyframes royalMoonGlowPulse { 
         0%, 100% { filter: drop-shadow(0 0 20px rgba(255,255,255,0.45)) brightness(1); } 
@@ -762,6 +763,7 @@
     </style>
 </body>
 </html>
+
 
 
  
