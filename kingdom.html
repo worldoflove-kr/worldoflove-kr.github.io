@@ -5,28 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مَمْلَكَةُ الْوُعُودِ - عائلة KR</title>
     <link rel="stylesheet" href="style2.css">
-    <style>
-     
-        body { background: transparent !important; margin: 0; padding: 0; overflow-x: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        html { background: transparent !important; background-color: transparent !important; }
-        .main-container, .wrapper, #app, .content, .glass-panel { background: rgba(12, 8, 24, 0.78) !important; background-color: rgba(12, 8, 24, 0.78) !important; }
-        #starfield-cosmic-canvas, #royal-day-panda-bg, #royal-night-panda-bg { display: block !important; }
-
-    
-        .main-content { position: relative; z-index: 10 !important; padding: 5px; text-align: center; }
-        .glass-panel { background: rgba(20, 20, 20, 0.65) !important; border: 1px solid rgba(212, 175, 55, 0.25) !important; backdrop-filter: blur(10px) !important; -webkit-backdrop-filter: blur(10px) !important; color: #f5f5f5 !important; border-radius: 12px; margin: 10px auto; width: 90%; max-width: 450px; box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
+     <style>
+        /* جدار الشفافية الصارم لإجبار فضاء النجوم وقمر الخلفية على الاختراق والظهور فوراً */
+        html, body { background: transparent !important; background-color: transparent !important; background-image: none !important; }
+        .main-container, .wrapper, #app, .content, .main-content { background: transparent !important; background-color: transparent !important; background-image: none !important; }
+        .glass-panel { background: rgba(12, 8, 24, 0.75) !important; backdrop-filter: blur(8px) !important; -webkit-backdrop-filter: blur(8px) !important; }
         
-        /* شريط الجدول الشبكي الممتد في رأس الصفحة والدوّار إجبارياً */
-        .royal-ticker-container { background: rgba(10,10,10,0.95); border-bottom: 2px solid #d4af37; overflow: hidden; width: 100vw; position: fixed; top: 0; left: 0; z-index: 9999 !important; white-space: nowrap; display: flex; direction: ltr; height: 34px; align-items: center; }
-        .royal-ticker-grid { display: inline-flex; animation: scrollRoyalGrid 25s linear infinite !important; }
-        .ticker-cell { display: inline-block; padding: 0 20px; border-right: 1px solid rgba(212, 175, 55, 0.3); border-left: 1px solid rgba(212, 175, 55, 0.3); color: #fff; font-size: 0.76rem; font-weight: bold; }
+        body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+        img { -webkit-user-drag: none; -khtml-user-drag: none; -moz-user-drag: none; pointer-events: none; }
+        @keyframes royalMoonGlowPulse { 
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(255,255,255,0.45)) brightness(1); } 
+            50% { filter: drop-shadow(0 0 45px rgba(0,191,255,0.7)) brightness(1.2); } 
+        }
         
-        @keyframes scrollRoyalGrid { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
-        @keyframes goldPulse { 0% { transform: scale(1); text-shadow: 0 0 8px rgba(212,175,55,0.4); } 50% { transform: scale(1.04); text-shadow: 0 0 18px rgba(212,175,55,0.8); } 100% { transform: scale(1); text-shadow: 0 0 8px rgba(212,175,55,0.4); } }
-        @keyframes cosmicWave { 0% { transform: translateY(0px); } 50% { transform: translateY(-4px); text-shadow: 0 0 12px rgba(0,191,255,0.5); } 100% { transform: translateY(0px); } }
-        @keyframes gemFloat { 0% { transform: translateY(0px) rotate(0deg); filter: drop-shadow(0 0 12px #00bfff); } 50% { transform: translateY(-8px) rotate(15deg) scale(1.06); filter: drop-shadow(0 0 25px #00bfff); } 100% { transform: translateY(0px) rotate(0deg); } }
-        @keyframes radarRotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        /* التنسيقات الأساسية لشريط البورصة العلوي */
+        .royal-ticker-container { background: rgba(10, 6, 20, 0.85); border-bottom: 1px solid rgba(0, 191, 255, 0.3); }
+        .royal-ticker-grid { display: inline-flex; animation: scrollRoyalGrid 25s linear infinite; }
+        .ticker-cell { display: inline-block; padding: 0 15px; font-family: 'Cairo', sans-serif; font-size: 0.72rem; color: #fff; }
     </style>
+
 </head>
 <body>
     <div id="mainContainer" class="main-content">
