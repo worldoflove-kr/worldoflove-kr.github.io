@@ -669,28 +669,14 @@
             }, 450);
         }
     })()" style="display:none;">
-    <!-- 12. الفوتر الملكي الرسمي المحصن لعائلة KR لتوثيق جميع الحقوق ومنع التداخل -->
-    <footer style="text-align: center; padding: 15px; margin-top: 25px; position: relative; z-index: 100; border-top: 1px solid rgba(255,255,255,0.05); font-family: 'Cairo', sans-serif;">
-        <div style="font-size: 1.1rem; animation: bounce 2s infinite; margin-bottom: 4px;">👑 𝓴ℛ 👑</div>
-        <div style="font-size: 0.75rem; color: #fff; font-weight: bold;">Panda KR 🐼</div>
-        <div style="font-size: 0.65rem; color: #a0aec0; margin-top: 4px;">جميع الحقوق محفوظة للمملكة 2026 ©</div>
-    </footer>
-
-    <script>
-    // ماكينة الهز والزلزال التابعة لزر رادار الملاعب الملكي مبرمجة ومعزولة بالكامل هنا
-    function triggerMadridStadiumEarthquake() { 
-        document.body.style.animation = 'madridEarthquake 0.1s linear 8'; 
-        setTimeout(() => { document.body.style.animation = 'none'; }, 800); 
-    }
-    </script>
-    <!-- 14. محرك فضاء الخلفيات الكونية التناوبية وتوهج القمر والنجوم التفاعلية التلقائي المعزول تماماً بقاع الملف -->
+    <!-- 12. محرك فضاء الخلفيات الكونية التناوبية وتوهج القمر والنجوم التفاعلية ودرع الحماية السيبراني المستقل تماماً بقاع الملف -->
     <div id="starfield-cosmic-canvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -2;"></div>
     <div id="royal-day-panda-bg" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -3; background: url('panda.png') no-repeat center center; background-size: cover; opacity: 0; transition: opacity 2.5s ease-in-out;"></div>
     <div id="royal-night-panda-bg" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -4; background: url('panda_night.png') no-repeat center center; background-size: cover; opacity: 0; transition: opacity 2.5s ease-in-out; animation: royalMoonGlowPulse 4s infinite ease-in-out;"></div>
 
     <script>
     (function(){
-        // ماكينة فحص الوقت وتغيير خلفية الأعماق الكاملة تلقائياً لايف بحسب ساعة الموبايل
+        // [أ] ماكينة فحص الوقت وتغيير خلفية الأعماق الكاملة تلقائياً لايف بحسب ساعة الهاتف
         function checkCelestialBgs() {
             const dayBg = document.getElementById('royal-day-panda-bg');
             const nightBg = document.getElementById('royal-night-panda-bg');
@@ -707,7 +693,7 @@
         }
         checkCelestialBgs(); setInterval(checkCelestialBgs, 30000);
 
-        // إنشاء فضاء النجوم المتحركة والمضيئة بالأعماق خلف اللوحات الزجاجية الشفافة
+        // [ب] إنشاء فضاء النجوم المتحركة والمضيئة بالأعماق خلف اللوحات الزجاجية الشفافة
         const canvas = document.getElementById('starfield-cosmic-canvas');
         if (canvas) {
             canvas.innerHTML = '';
@@ -728,7 +714,7 @@
             }
         }
 
-        // تشغيل لمسة الإصبع وانبثاق وتطاير النجوم التفاعلية الملونة لايف على كامل الشاشة خلف يدكِ
+        // [ت] تشغيل لمسة الإصبع وانبثاق وتطاير النجوم التفاعلية الملونة لايف على كامل الشاشة بدقة 100%
         const triggerTouchStars = function(e) {
             const clientX = e.touches ? e.touches.clientX : e.clientX;
             const clientY = e.touches ? e.touches.clientY : e.clientY;
@@ -752,19 +738,31 @@
         };
         document.addEventListener('mousemove', triggerTouchStars, { passive: true });
         document.addEventListener('touchmove', triggerTouchStars, { passive: true });
-        
-        if(!window.royalMoonGlowInjected) {
-            window.royalMoonGlowInjected = true;
-            const style = document.createElement('style');
-            style.innerHTML = `@keyframes royalMoonGlowPulse { 0%, 100% { filter: drop-shadow(0 0 15px rgba(255,255,255,0.4)) brightness(1); } 50% { filter: drop-shadow(0 0 35px rgba(0,191,255,0.6)) brightness(1.15); } }`;
-            document.head.appendChild(style);
-        }
+
+        // [ث] درع الحماية السيبراني لحظر النسخ والتظليل والسرقة وقفل جدار عائلة KR لحماية الشفرات
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); }, false);
+        document.addEventListener('selectstart', function(e) { e.preventDefault(); }, false);
+        document.addEventListener('keydown', function(e) {
+            if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) || (e.ctrlKey && e.keyCode == 85)) {
+                e.preventDefault(); return false;
+            }
+        }, false);
     })();
     </script>
+    
+    <style>
+    /* فرض الشفافية الصارمة وقفل التحديد الكلي وحماية الصور وهالة القمر الحركية المشعة المضيئة بالأعماق لايف */
+    body { background: transparent !important; background-color: transparent !important; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+    .main-container, .wrapper, #app, .content { background: transparent !important; background-color: transparent !important; }
+    img { -webkit-user-drag: none; -khtml-user-drag: none; -moz-user-drag: none; -o-user-drag: none; pointer-events: none; }
+    @keyframes royalMoonGlowPulse { 
+        0%, 100% { filter: drop-shadow(0 0 20px rgba(255,255,255,0.45)) brightness(1); } 
+        50% { filter: drop-shadow(0 0 45px rgba(0,191,255,0.7)) brightness(1.2); } 
+    }
+    </style>
 </body>
 </html>
 
-    
 
  
 
