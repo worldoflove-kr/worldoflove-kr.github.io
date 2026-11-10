@@ -829,10 +829,10 @@
         });
 
         // ماكينة التصحيح الفوري لليوم والوقت ليتطابق مع ساعة هاتف الزائر المحلي بدقة 100%
-          function fixCelestialDayName() {
+        function fixCelestialDayName() {
             const panels = document.querySelectorAll('.glass-panel');
             panels.forEach(panel => {
-                if (panel.innerHTML.includes(' الرطوبة') || panel.innerHTML.includes(' الطقس')) {
+                if (panel.innerHTML.includes('الرطوبة') || panel.innerHTML.includes('الطقس') || panel.innerHTML.includes('تشرين')) {
                     const daysOfWeek = ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
                     const monthsOfYear = ['كانون الثاني', 'شباط', 'آذار', 'نيسان', 'أيار', 'حزيران', 'تموز', 'آب', 'أيلول', 'تشرين الأول', 'تشرين الثاني', 'كانون الأول'];
                     
@@ -842,19 +842,22 @@
                     const currentLocalMonth = monthsOfYear[now.getMonth()];
                     const currentLocalYear = now.getFullYear();
                     
-                    // صياغة شريط الوقت الكوني المحدث والكامل ديناميكياً ليطابق هاتفِك الحين لايف
-                    const newCelestialString = `${currentLocalDay}، ${currentLocalDate} ${currentLocalMonth} ${currentLocalYear}`;
-                    
-                    // استبدال النص القديم الجامد بالكامل مهما كانت حالته السابقة بلمحة بصر
-                    let boxHTML = panel.innerHTML;
-                    panel.innerHTML = boxHTML.replace(/[الأحدالاثنينالثلاثاءالأربعاءالخميسالجمعةالسبت]+\s*،\s*\d+\s+[كانونشباطآذارنيسانأيارحزيرانتوزآبأيلولتشرينكانون]+\s+[الأولالثاني]+\s+\d+|[الاثنينالثلاثاءالأربعاء]+\s*،\s*\d+\s+تشرين\s+[الأولالثاني]+\s+\d+/g, newCelestialString);
+                    if (panel.innerHTML.includes('AM') || panel.innerHTML.includes('PM') || panel.innerHTML.includes('12:')) {
+                        const parts = panel.innerHTML.split('|');
+                        if (parts.length > 1) {
+                            const newDateStr = ` ${currentLocalDay}، ${currentLocalDate} ${currentLocalMonth} ${currentLocalYear} `;
+                            panel.innerHTML = panel.innerHTML.replace(/.*\|/g, newDateStr + ' |');
+                        }
+                    }
                 }
             });
         }
-        setTimeout(fixCelestialDayName, 500);
+        fixCelestialDayName();
+        setTimeout(fixCelestialDayName, 3000);
         window.addEventListener('load', fixCelestialDayName);
     })();
     </script>
+
 
 </body>
 </html>
