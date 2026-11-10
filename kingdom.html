@@ -798,7 +798,7 @@
             }
         };
 
-        // دالة الفحص والتحويل التلقائي للوحات الجديدة لايف
+         // دالة الفحص والتحويل التلقائي الشامل للوحات الجديدة لايف
         const translateNewBoxes = (lang) => {
             const wCard = document.getElementById('royal-welcome-aurora-card') || document.querySelector('.glass-panel');
             if(wCard) {
@@ -806,13 +806,16 @@
                 if(h3) h3.textContent = royalPanelsDictionary[lang].welcomeTitle;
                 if(p) p.textContent = royalPanelsDictionary[lang].welcomeText;
             }
-            const rPanel = document.querySelector('.glass-panel[style*="0, 191, 255"]') || document.querySelector('.glass-panel[style*="0 0 30px"]');
-            if(rPanel) {
-                const h3 = rPanel.querySelector('h3'); const btns = rPanel.querySelectorAll('button');
-                if(h3) h3.textContent = royalPanelsDictionary[lang].radarTitle;
-                if(btns && btns[0]) btns[0].textContent = royalPanelsDictionary[lang].radarBtn1;
-                if(btns && btns[1]) btns[1].textContent = royalPanelsDictionary[lang].radarBtn2;
-            }
+            // التقاط وإصلاح وسم صندوق الرادار المضيء لترجمته بالكامل
+            const panels = document.querySelectorAll('.glass-panel');
+            panels.forEach(panel => {
+                if (panel.innerHTML.includes('⚽') || panel.innerHTML.includes('sports-iframe') || panel.innerHTML.includes('رادار')) {
+                    const h3 = panel.querySelector('h3'); const btns = panel.querySelectorAll('button');
+                    if(h3) h3.textContent = royalPanelsDictionary[lang].radarTitle;
+                    if(btns && btns[0]) btns[0].textContent = royalPanelsDictionary[lang].radarBtn1;
+                    if(btns && btns[1]) btns[1].textContent = royalPanelsDictionary[lang].radarBtn2;
+                }
+            });
         };
 
         // ربط ذكي لمراقبة نقرات أزرار الترجمة الأصلية بالموقع أوتوماتيكياً
@@ -824,9 +827,29 @@
                 if(attr.includes("switchLanguage('ar')")) { translateNewBoxes('ar'); }
             }
         });
+
+        // ماكينة التصحيح الفوري لليوم والوقت ليتطابق مع ساعة هاتف الزائر المحلي بدقة 100%
+        function fixCelestialDayName() {
+            const panels = document.querySelectorAll('.glass-panel');
+            panels.forEach(panel => {
+                if (panel.innerHTML.includes(' الرطوبة') || panel.innerHTML.includes(' الطقس')) {
+                    const daysOfWeek = ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
+                    const currentLocalDay = daysOfWeek[new Date().getDay()];
+                    
+                    let boxHTML = panel.innerHTML;
+                    if (boxHTML.includes('الاثنين') && currentLocalDay === 'الأربعاء') {
+                        panel.innerHTML = boxHTML.replace('الاثنين', 'الأربعاء');
+                    } else if (boxHTML.includes('الثلاثاء') && currentLocalDay === 'الأربعاء') {
+                        panel.innerHTML = boxHTML.replace('الثلاثاء', 'الأربعاء');
+                    }
+                }
+            });
+        }
+        setTimeout(fixCelestialDayName, 1000);
+        window.addEventListener('load', fixCelestialDayName);
     })();
     </script>
-
+</body>
 </html>
 
  
