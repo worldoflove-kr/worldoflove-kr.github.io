@@ -731,7 +731,7 @@
                 burstElement.innerHTML = '★'; burstElement.style.position = 'fixed';
                 burstElement.style.left = clientX + 'px'; burstElement.style.top = clientY + 'px';
                 burstElement.style.color = ['#d4af37', '#00bfff', '#ff007f', '#fff'][Math.floor(Math.random() * 4)];
-                burstStar.style.fontSize = (Math.random() * 0.6 + 0.5) + 'rem'; burstElement.style.pointerEvents = 'none';
+                burstElement.style.fontSize = (Math.random() * 0.6 + 0.5) + 'rem'; burstElement.style.pointerEvents = 'none';
                 burstElement.style.zIndex = '9999'; burstElement.style.transition = 'transform 1.2s cubic-bezier(0.1, 0.8, 0.3, 1), opacity 1.2s ease-out';
                 burstElement.style.textShadow = '0 0 8px ' + burstElement.style.color;
                 document.body.appendChild(burstElement);
@@ -755,10 +755,10 @@
         }
     })();
     </script>
-
 </body>
 </html>
 
+    
 
  
 
