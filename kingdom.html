@@ -358,20 +358,22 @@
     </div>
 
   
-        <!-- محرك الحقن التلقائي الذاتي لتشغيل حركات النبض والاهتزاز للمنصة من دون النزول لأسفل الملف نهائياً -->
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onload="(function(){
-            const style = document.createElement('style');
-            style.innerHTML = `
-                @keyframes royalPulse { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px #00bfff); } 50% { transform: scale(1.06); filter: drop-shadow(0 0 25px #d4af37) drop-shadow(0 0 20px #e6b800); } }
-                @keyframes textGlowWave { 0%, 100% { transform: translateY(0); text-shadow: 0 0 12px rgba(255,255,255,0.4); } 50% { transform: translateY(-5px); text-shadow: 0 0 22px #00bfff, 0 0 15px #d4af37; } }
-            `;
-            document.head.appendChild(style);
-            const titleAr = document.getElementById('royal-main-title');
-            const titleEn = document.getElementById('royal-sub-title');
-            if(titleAr) titleAr.style.animation = 'textGlowWave 3s infinite ease-in-out';
-            if(titleEn) { titleEn.style.animation = 'textGlowWave 3s infinite ease-in-out'; titleEn.style.animationDelay = '1.5s'; }
-        })()" style="display:none;">
+       <!-- 11. صندوق رادار المملكة الرياضي للبث الفلكي مع أزرار التحكم لهز الشاشة وزلزال الملاعب المطور والمقفل بنقاء -->
+    <div class="glass-panel" style="background: rgba(12, 8, 24, 0.8) !important; border-radius: 16px; padding: 15px; max-width: 380px; margin: 20px auto; border: 1px solid rgba(0, 191, 255, 0.4) !important; box-shadow: 0 0 25px rgba(0, 191, 255, 0.25) !important; text-align: center; position: relative; z-index: 100;">
+        <div style="font-size: 1.3rem; margin-bottom: 2px;">⚽🔥</div>
+        <h3 style="color: #00bfff; font-size: 0.82rem; margin: 0 0 10px 0; font-family: 'Cairo', sans-serif; text-shadow: 0 0 6px rgba(0,191,255,0.3);">🏟️ رادار المملكة الرياضي للأهداف لايف</h3>
+        
+        <!-- زر تفجير زلزال الملاعب المطور العائم بداخل صندوق الرادار بنظافة -->
+        <button onclick="triggerMadridStadiumEarthquake()" style="width: 100%; background: linear-gradient(135deg, rgba(255,0,127,0.3), rgba(0,191,255,0.2)); border: 1px solid #ff007f; padding: 10px; border-radius: 10px; color: #fff; font-size: 0.72rem; font-weight: bold; box-shadow: 0 0 10px rgba(255,0,127,0.2); font-family: 'Cairo', sans-serif; margin-bottom: 10px; cursor: pointer;">🌋 تفجير زلزال الملوك وهز الشاشة 🌋</button>
+        
+        <!-- الشاشة الموسعة والذكية للمباريات المفتوحة مية مية -->
+        <div style="width: 100%; height: 380px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #000;">
+            <iframe id="sports-iframe" src="https://scorebat.com" allow="autoplay; fullscreen" style="width: 100%; height: 100%; border: none;"></iframe>
+        </div>
+        <p style="font-size: 0.65rem; color: #a0aec0; margin: 8px 0 0 0; font-family: 'Cairo', sans-serif;">أهداف وملخصات المباريات العالمية تتحدث أوتوماتيكياً أولاً بأول لايف</p>
     </div>
+
+
 
 
         <!-- الزر الإمبراطوري الرهيب لتفجير زلزال الملوك ومحاكاة صرخات الجماهير وهز الشاشة -->
