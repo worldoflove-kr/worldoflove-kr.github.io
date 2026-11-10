@@ -776,6 +776,57 @@
     }
     </style>
 </body>
+
+    <!-- 15. ملحق ماكينة الترجمة الذكية الفورية لترجمة لوحة الترحيب وصندوق رادار كرة القدم الجديد تلقائياً مع الزر -->
+    <script>
+    (function(){
+        // قاموس العبارات الملوكية الجديدة المترجمة ميكرومترياً بنقاء
+        const royalPanelsDictionary = {
+            en: {
+                welcomeTitle: "Welcome to the Space of Partnership and the New Covenant",
+                welcomeText: "If your first step started from (World of Love), then that journey has led you here.. to the Kingdom that protects and documents that love. Here we do not write transient words, but we engrave covenants with radiant gold ink to remain fixed like stars in the sky.",
+                radarTitle: " Kingdom of Promises Live Goals Radar ",
+                radarBtn1: "Volcano Earthquake & Shake Screen",
+                radarBtn2: "Instant Live Stream Update"
+            },
+            ar: {
+                welcomeTitle: "أهلاً بك في فضاء الشراكة والعهد الجديد",
+                welcomeText: "إذا كانت خطوتكم الأولى قد بدأت من (عالم الحب)، فإن تلك الرحلة قد قادتكم إلى هنا.. إلى المملكة التي تحمي ذلك الحب وتوثقه. هنا لا نكتب كلمات عابرة، بل نحفر عهوداً بحبر الذهب المشع لتبقى ثابتة كالنجوم في السماء.",
+                radarTitle: " رادار مَمْلَكَةُ الْوُعُودِ الرياضي للأهداف لايف ",
+                radarBtn1: " تفجير زلزال الملوك وهز الشاشة ",
+                radarBtn2: " تحديث فوري للبث المباشر للأهداف "
+            }
+        };
+
+        // دالة الفحص والتحويل التلقائي للوحات الجديدة لايف
+        const translateNewBoxes = (lang) => {
+            const wCard = document.getElementById('royal-welcome-aurora-card') || document.querySelector('.glass-panel');
+            if(wCard) {
+                const h3 = wCard.querySelector('h3'); const p = wCard.querySelector('p');
+                if(h3) h3.textContent = royalPanelsDictionary[lang].welcomeTitle;
+                if(p) p.textContent = royalPanelsDictionary[lang].welcomeText;
+            }
+            const rPanel = document.querySelector('.glass-panel[style*="0, 191, 255"]') || document.querySelector('.glass-panel[style*="0 0 30px"]');
+            if(rPanel) {
+                const h3 = rPanel.querySelector('h3'); const btns = rPanel.querySelectorAll('button');
+                if(h3) h3.textContent = royalPanelsDictionary[lang].radarTitle;
+                if(btns && btns[0]) btns[0].textContent = royalPanelsDictionary[lang].radarBtn1;
+                if(btns && btns[1]) btns[1].textContent = royalPanelsDictionary[lang].radarBtn2;
+            }
+        };
+
+        // ربط ذكي لمراقبة نقرات أزرار الترجمة الأصلية بالموقع أوتوماتيكياً
+        document.addEventListener('click', function(e) {
+            const target = e.target;
+            if(target && target.getAttribute('onclick')) {
+                const attr = target.getAttribute('onclick');
+                if(attr.includes("switchLanguage('en')")) { translateNewBoxes('en'); }
+                if(attr.includes("switchLanguage('ar')")) { translateNewBoxes('ar'); }
+            }
+        });
+    })();
+    </script>
+
 </html>
 
  
