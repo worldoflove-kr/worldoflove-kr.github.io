@@ -751,8 +751,11 @@
     
     <style>
     /* قفل التحديد الكلي وحماية الصور وهالة القمر الحركية المشعة المضيئة بالأعماق لايف */
-    body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+    body { background: transparent !important; background-color: transparent !important; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+    .main-container, .wrapper, #app, .content { background: transparent !important; background-color: transparent !important; }
     img { -webkit-user-drag: none; -khtml-user-drag: none; -moz-user-drag: none; -o-user-drag: none; pointer-events: none; }
+
+
     @keyframes royalMoonGlowPulse { 
         0%, 100% { filter: drop-shadow(0 0 20px rgba(255,255,255,0.45)) brightness(1); } 
         50% { filter: drop-shadow(0 0 45px rgba(0,191,255,0.7)) brightness(1.2); } 
