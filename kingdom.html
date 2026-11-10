@@ -127,7 +127,6 @@
 
     <script>
     (function(){
-        // المتغير الإمبراطوري الحاضن للغة الحالية بالموقع أوتوماتيكياً
         window.royalCurrentLang = window.royalCurrentLang || 'ar';
 
         function runRoyalClock() {
@@ -152,13 +151,12 @@
                     weatherDisplay.innerHTML = `<span>🔹 Humidity: <strong style="color: #00bfff; text-shadow: 0 0 5px #00bfff;">62% 💧</strong></span> <span>|</span> <span>☀️ Clear <strong style="color: #d4af37; text-shadow: 0 0 5px #d4af37;">24°C</strong> in Beirut</span>`;
                 } else {
                     display.innerHTML = `${daysAr[now.getDay()]}، ${now.getDate()} ${monthsAr[now.getMonth()]} ${now.getFullYear()} &nbsp;|&nbsp; <span style="color:#ff007f; text-shadow:0 0 8px #ff007f;">${hours}:${minutes}:${seconds} ${ampm}</span>`;
-                    weatherDisplay.innerHTML = `<span>🔹 الرطوبة: <strong style="color: #00bfff; text-shadow: 0 0 5px #00bfff;">62% 💧</strong></span> <span>|</span> <span>☀️ صافي <strong style="color: #d4af37; text-shadow: 0 0 5px #d4af37;">24°C</strong> في بيروت</span>`;
+                    weatherDisplay.innerHTML = `<span>🔹 الرطوبة: <strong style="color: #00bfff; text-shadow: 0 0 5px #00bfff;">62% 💧</strong></span> <span>|</span> <span>☀️ صافي <strong style="color: #d4af37; text-shadow: 0 0 5px #d4af37;">24°C</strong> in Beirut</span>`;
                 }
             }
         }
         setInterval(runRoyalClock, 1000); runRoyalClock();
 
-        // ربط ذكي لمراقبة نقرات زر الترجمة الأصلي وتغيير لغة الصندوق فوراً
         document.addEventListener('click', function(e) {
             const target = e.target;
             if(target && target.getAttribute('onclick')) {
@@ -170,12 +168,6 @@
     })();
     </script>
 
-
-    <!-- 5. أزرار الترجمة الفورية السريعة للغات للمتصفح والموبايل لايف -->
-    <div style="margin: 15px auto; max-width: 380px; display: flex; gap: 10px; justify-content: center; z-index: 100; position: relative;">
-        <button onclick="switchLanguage('ar')" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 8px; color: #fff; font-size: 0.72rem; font-family: 'Cairo', sans-serif; cursor: pointer;">العربية 🇱🇧</button>
-        <button onclick="switchLanguage('en')" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 8px; color: #fff; font-size: 0.72rem; font-family: 'Cairo', sans-serif; cursor: pointer;">English 🇬🇧</button>
-    </div>
 
     <!-- 6. عداد زوار مملكتنا المصغر والمشع باللون الأحمر النيوني النابض والمتحرك حركياً لايف تلقائياً -->
     <div class="glass-panel" style="background: rgba(12, 8, 24, 0.85) !important; border-radius: 10px; padding: 6px 12px; max-width: 260px; margin: 10px auto; border: 1.5px solid #ff007f !important; box-shadow: 0 0 15px rgba(255, 0, 127, 0.4), inset 0 0 8px rgba(255, 0, 127, 0.15) !important; text-align: center; position: relative; z-index: 100; animation: pulse 2.5s infinite ease-in-out;">
