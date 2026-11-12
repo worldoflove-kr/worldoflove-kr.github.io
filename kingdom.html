@@ -1049,12 +1049,45 @@
 
             document.documentElement.dir = (lang === 'en') ? 'ltr' : 'rtl';
         };
-    })();
-    </script>
+        // ترجمة فورية ومباشرة لحقول الإدخال والعبارات المتبقية بذكاء
+        const forceTranslateRemaining = window.switchLanguage;
+        window.switchLanguage = function(lang) {
+            if (typeof forceTranslateRemaining === 'function') forceTranslateRemaining(lang);
+            
+            // 1. ترجمة حقول الإدخال في صندوق توأم الروح
+            document.querySelectorAll('input').forEach(inp => {
+                let p = inp.getAttribute('placeholder') || '';
+                if (lang === 'en') {
+                    p = p.replace('اسمك', 'Your Name').replace('بلدك', 'Your Country').replace('مثلاً: لبنان', 'e.g., Lebanon').replace('البحرين', 'Bahrain');
+                } else {
+                    p = p.replace('Your Name', 'اسمك').replace('Your Country', 'بلدك').replace('e.g., Lebanon', 'مثلاً: لبنان').replace('Bahrain', 'البحرين');
+                }
+                inp.setAttribute('placeholder', p);
+            });
 
+            // 2. ترجمة الجمل المتبقية في صندوق التواريخ وتوأم الروح رغم الإيموجي
+            document.querySelectorAll('p, div, span').forEach(el => {
+                if (el.children.length === 0 && el.textContent.trim().length > 5) {
+                    let t = el.textContent;
+                    if (lang === 'en') {
+                        if (t.includes('كل عام وأنت النبضة الخالدة')) t = t.replace('كل عام وأنت النبضة الخالدة للمملكة', 'Happy birthday to the eternal heartbeat of the Kingdom').replace('والنجمة الساحرة', 'and the enchanting star');
+                        if (t.includes('هل تتساءلين أين يختبئ')) t = t.replace('هل تتساءلين أين يختبئ نصفك الآخر الحين؟', 'Wondering where your other half is hiding right now?');
+                        if (t.includes('ودعيه يشق مجرات الكون')) t = t.replace('ودعيه يشق مجرات الكون ليرسم نبضات قلبك ويحدد موقع توأم روحك العابر للقارات لايف بالعين المجردة بداخل فضاء الملوك!', "and let it cut through the galaxies to draw your heartbeats and locate your cross-continental soulmate live inside the Kings' space!");
+                    } else {
+                        if (t.includes('Happy birthday to the eternal heartbeat')) t = t.replace('Happy birthday to the eternal heartbeat of the Kingdom', 'كل عام وأنت النبضة الخالدة للمملكة').replace('and the enchanting star', 'والنجمة الساحرة');
+                        if (t.includes('Wondering where your other half')) t = t.replace('Wondering where your other half is hiding right now?', 'هل تتساءلين أين يختبئ نصفك الآخر الحين؟');
+                        if (t.includes('and let it cut through the galaxies')) t = t.replace("and let it cut through the galaxies to draw your heartbeats and locate your cross-continental soulmate live inside the Kings' space!", 'ودعيه يشق مجرات الكون ليرسم نبضات قلبك ويحدد موقع توأم روحك العابر للقارات لايف بالعين المجردة بداخل فضاء الملوك!');
+                    }
+                    el.textContent = t;
+                }
+            });
+        };
+        
+    })();
+        
+    </script>
             
             </body>
-
 
 </html>
 
