@@ -897,8 +897,58 @@
     })();
     </script>
 
-
 </body>
+    <!-- 16. محرك التبديل اللغوي الشامل والموحد لكل صناديق المملكة (عربي ⇄ إنجليزي) -->
+    <script>
+    (function(){
+        const fullKingdomDictionary = {
+            en: {
+                "مَمْلَكَةُ الْوُعُودِ": "Kingdom of Promises",
+                "العودة إلى عالم الحب": "Back to World of Love",
+                "أهلاً بك في فضاء الشراكة والعهد الجديد": "Welcome to the Space of Partnership and the New Covenant",
+                "إذا كانت خطوتكم الأولى قد بدأت من (عالم الحب)، فإن تلك الرحلة قد قادتكم إلى هنا.. إلى المملكة التي تحمي ذلك الحب وتوثقه. هنا لا نكتب كلمات عابرة، بل نحفر عهوداً بحبر الذهب المشع لتبقى ثابتة كالنجوم في السماء.": "If your first step started from (World of Love), then that journey has led you here.. to the Kingdom that protects and documents that love. Here we do not write transient words, but we engrave covenants with radiant gold ink to remain fixed like stars in the sky.",
+                "رادار مَمْلَكَةُ الْوُعُودِ الرياضي للأهداف لايف": "Kingdom of Promises Live Goals Radar",
+                "تفجير زلزال الملوك وهز الشاشة": "Trigger Kings Earthquake & Shake Screen",
+                "تحديث فوري للبث المباشر للأهداف": "Instant Live Stream Update",
+                "أهداف وملخصات المباريات العالمية تتحدث أوتوماتيكياً أولاً بأول لايف بداخل مجرات الملوك": "Global match goals and highlights update automatically live inside the Kings' galaxies",
+                "جميع الحقوق محفوظة للمملكة 2026 ©": "All Rights Reserved to the Kingdom 2026 ©"
+            },
+            ar: {
+                "Kingdom of Promises": "مَمْلَكَةُ الْوُعُودِ",
+                "Back to World of Love": "العودة إلى عالم الحب",
+                "Welcome to the Space of Partnership and the New Covenant": "أهلاً بك في فضاء الشراكة والعهد الجديد",
+                "If your first step started from (World of Love), then that journey has led you here.. to the Kingdom that protects and documents that love. Here we do not write transient words, but we engrave covenants with radiant gold ink to remain fixed like stars in the sky.": "إذا كانت خطوتكم الأولى قد بدأت من (عالم الحب)، فإن تلك الرحلة قد قادتكم إلى هنا.. إلى المملكة التي تحمي ذلك الحب وتوثقه. هنا لا نكتب كلمات عابرة، بل نحفر عهوداً بحبر الذهب المشع لتبقى ثابتة كالنجوم في السماء.",
+                "Kingdom of Promises Live Goals Radar": "رادار مَمْلَكَةُ الْوُعُودِ الرياضي للأهداف لايف",
+                "Trigger Kings Earthquake & Shake Screen": "تفجير زلزال الملوك وهز الشاشة",
+                "Instant Live Stream Update": "تحديث فوري للبث المباشر للأهداف",
+                "Global match goals and highlights update automatically live inside the Kings' galaxies": "أهداف وملخصات المباريات العالمية تتحدث أوتوماتيكياً أولاً بأول لايف بداخل مجرات الملوك",
+                "All Rights Reserved to the Kingdom 2026 ©": "جميع الحقوق محفوظة للمملكة 2026 ©"
+            }
+        };
+
+        const originalSwitch = window.switchLanguage;
+        window.switchLanguage = function(lang) {
+            if (typeof originalSwitch === 'function') originalSwitch(lang);
+            if (typeof window.royalCurrentLang !== 'undefined') window.royalCurrentLang = lang;
+
+            const dict = fullKingdomDictionary[lang];
+            if (!dict) return;
+
+            const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+            let node;
+            while (node = walker.nextNode()) {
+                let text = node.nodeValue;
+                for (const [key, val] of Object.entries(dict)) {
+                    if (text.includes(key)) {
+                        node.nodeValue = text.replace(key, val);
+                    }
+                }
+            }
+            document.documentElement.dir = (lang === 'en') ? 'ltr' : 'rtl';
+        };
+    })();
+    </script>
+
 </html>
 
  
