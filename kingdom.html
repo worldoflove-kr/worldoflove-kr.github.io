@@ -1049,7 +1049,7 @@
 
             document.documentElement.dir = (lang === 'en') ? 'ltr' : 'rtl';
         };
-        // ترجمة فورية ومباشرة لحقول الإدخال والعبارات المتبقية بذكاء
+             // ترجمة ذكية تتخطى الإيموجي وتترجم حقول الإدخال والعبارات المتبقية بدقة
         const forceTranslateRemaining = window.switchLanguage;
         window.switchLanguage = function(lang) {
             if (typeof forceTranslateRemaining === 'function') forceTranslateRemaining(lang);
@@ -1065,25 +1065,34 @@
                 inp.setAttribute('placeholder', p);
             });
 
-            // 2. ترجمة الجمل المتبقية في صندوق التواريخ وتوأم الروح رغم الإيموجي
-            document.querySelectorAll('p, div, span').forEach(el => {
-                if (el.children.length === 0 && el.textContent.trim().length > 5) {
-                    let t = el.textContent;
-                    if (lang === 'en') {
-                        if (t.includes('كل عام وأنت النبضة الخالدة')) t = t.replace('كل عام وأنت النبضة الخالدة للمملكة', 'Happy birthday to the eternal heartbeat of the Kingdom').replace('والنجمة الساحرة', 'and the enchanting star');
-                        if (t.includes('هل تتساءلين أين يختبئ')) t = t.replace('هل تتساءلين أين يختبئ نصفك الآخر الحين؟', 'Wondering where your other half is hiding right now?');
-                        if (t.includes('ودعيه يشق مجرات الكون')) t = t.replace('ودعيه يشق مجرات الكون ليرسم نبضات قلبك ويحدد موقع توأم روحك العابر للقارات لايف بالعين المجردة بداخل فضاء الملوك!', "and let it cut through the galaxies to draw your heartbeats and locate your cross-continental soulmate live inside the Kings' space!");
-                    } else {
-                        if (t.includes('Happy birthday to the eternal heartbeat')) t = t.replace('Happy birthday to the eternal heartbeat of the Kingdom', 'كل عام وأنت النبضة الخالدة للمملكة').replace('and the enchanting star', 'والنجمة الساحرة');
-                        if (t.includes('Wondering where your other half')) t = t.replace('Wondering where your other half is hiding right now?', 'هل تتساءلين أين يختبئ نصفك الآخر الحين؟');
-                        if (t.includes('and let it cut through the galaxies')) t = t.replace("and let it cut through the galaxies to draw your heartbeats and locate your cross-continental soulmate live inside the Kings' space!", 'ودعيه يشق مجرات الكون ليرسم نبضات قلبك ويحدد موقع توأم روحك العابر للقارات لايف بالعين المجردة بداخل فضاء الملوك!');
-                    }
-                    el.textContent = t;
+            // 2. ترجمة الجمل المتبقية بتقسيمها لأجزاء قصيرة لتتخطى الإيموجي
+            const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+            let node;
+            while (node = walker.nextNode()) {
+                let t = node.nodeValue;
+                if (!t || !t.trim()) continue;
+                if (lang === 'en') {
+                    t = t.replace('كل عام وأنت النبضة الخالدة للمملكة', 'Happy birthday to the eternal heartbeat of the Kingdom')
+                         .replace('والنجمة الساحرة', 'and the enchanting star')
+                         .replace('هل تتساءلين أين يختبئ نصفك الآخر الحين؟', 'Wondering where your other half is hiding right now?')
+                         .replace('أطلقي مذنب الحب الشائع المشع', 'Launch the radiant shooting love comet')
+                         .replace('ودعيه يشق مجرات الكون ليرسم نبضات قلبك ويحدد موقع توأم روحك العابر للقارات لايف بالعين المجردة بداخل فضاء الملوك!', "and let it cut through the galaxies to draw your heartbeats and locate your cross-continental soulmate live inside the Kings' space!")
+                         .replace('مَمْلَكَةُ الْوُعُودِ العظمى وعائلة', 'Great Kingdom of Promises &')
+                         .replace('الملكية للأبد', 'Royal Family Forever');
+                } else {
+                    t = t.replace('Happy birthday to the eternal heartbeat of the Kingdom', 'كل عام وأنت النبضة الخالدة للمملكة')
+                         .replace('and the enchanting star', 'والنجمة الساحرة')
+                         .replace('Wondering where your other half is hiding right now?', 'هل تتساءلين أين يختبئ نصفك الآخر الحين؟')
+                         .replace('Launch the radiant shooting love comet', 'أطلقي مذنب الحب الشائع المشع')
+                         .replace("and let it cut through the galaxies to draw your heartbeats and locate your cross-continental soulmate live inside the Kings' space!", 'ودعيه يشق مجرات الكون ليرسم نبضات قلبك ويحدد موقع توأم روحك العابر للقارات لايف بالعين المجردة بداخل فضاء الملوك!')
+                         .replace('Great Kingdom of Promises &', 'مَمْلَكَةُ الْوُعُودِ العظمى وعائلة')
+                         .replace('Royal Family Forever', 'الملكية للأبد');
                 }
-            });
+                node.nodeValue = t;
+            }
         };
-        
     })();
+
         
     </script>
             
