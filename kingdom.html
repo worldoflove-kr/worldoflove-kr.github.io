@@ -898,7 +898,7 @@
     </script>
 
 </body>
-    <!-- 16. محرك التبديل اللغوي الشامل والموحد لكل صناديق المملكة (عربي ⇄ إنجليزي) -->
+    <!-- 16. محرك التبديل اللغوي الشامل والموسع لكافة نصوص وعناوين صناديق المملكة (عربي ⇄ إنجليزي) -->
     <script>
     (function(){
         const fullKingdomDictionary = {
@@ -911,6 +911,18 @@
                 "تفجير زلزال الملوك وهز الشاشة": "Trigger Kings Earthquake & Shake Screen",
                 "تحديث فوري للبث المباشر للأهداف": "Instant Live Stream Update",
                 "أهداف وملخصات المباريات العالمية تتحدث أوتوماتيكياً أولاً بأول لايف بداخل مجرات الملوك": "Global match goals and highlights update automatically live inside the Kings' galaxies",
+                "صندوق التواريخ والذكريات الخالدة": "Eternal Dates & Memories Box",
+                "تاريخ بداية قصتنا": "Our Story Start Date",
+                "تاريخ أول لقاء": "First Meeting Date",
+                "ذكرى ارتباطنا": "Our Anniversary",
+                "يوم": "Days",
+                "ساعة": "Hours",
+                "دقيقة": "Minutes",
+                "ثانية": "Seconds",
+                "عدد زوار المملكة": "Kingdom Visitors Count",
+                "توأم الروح العابر للقارات": "Cross-Continental Soulmate",
+                "بيروت": "Beirut",
+                "لبنان": "Lebanon",
                 "جميع الحقوق محفوظة للمملكة 2026 ©": "All Rights Reserved to the Kingdom 2026 ©"
             },
             ar: {
@@ -922,6 +934,18 @@
                 "Trigger Kings Earthquake & Shake Screen": "تفجير زلزال الملوك وهز الشاشة",
                 "Instant Live Stream Update": "تحديث فوري للبث المباشر للأهداف",
                 "Global match goals and highlights update automatically live inside the Kings' galaxies": "أهداف وملخصات المباريات العالمية تتحدث أوتوماتيكياً أولاً بأول لايف بداخل مجرات الملوك",
+                "Eternal Dates & Memories Box": "صندوق التواريخ والذكريات الخالدة",
+                "Our Story Start Date": "تاريخ بداية قصتنا",
+                "First Meeting Date": "تاريخ أول لقاء",
+                "Our Anniversary": "ذكرى ارتباطنا",
+                "Days": "يوم",
+                "Hours": "ساعة",
+                "Minutes": "دقيقة",
+                "Seconds": "ثانية",
+                "Kingdom Visitors Count": "عدد زوار المملكة",
+                "Cross-Continental Soulmate": "توأم الروح العابر للقارات",
+                "Beirut": "بيروت",
+                "Lebanon": "لبنان",
                 "All Rights Reserved to the Kingdom 2026 ©": "جميع الحقوق محفوظة للمملكة 2026 ©"
             }
         };
@@ -934,15 +958,20 @@
             const dict = fullKingdomDictionary[lang];
             if (!dict) return;
 
+            // ترتيب المفاتيح من الأطول للأقصر لضمان ترجمة الجمل الكاملة قبل الكلمات المفردة
+            const sortedKeys = Object.keys(dict).sort((a, b) => b.length - a.length);
+
             const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
             let node;
             while (node = walker.nextNode()) {
                 let text = node.nodeValue;
-                for (const [key, val] of Object.entries(dict)) {
+                if (!text || !text.trim()) continue;
+                for (const key of sortedKeys) {
                     if (text.includes(key)) {
-                        node.nodeValue = text.replace(key, val);
+                        text = text.split(key).join(dict[key]);
                     }
                 }
+                node.nodeValue = text;
             }
             document.documentElement.dir = (lang === 'en') ? 'ltr' : 'rtl';
         };
