@@ -1719,7 +1719,8 @@
             </p>
 
             <input type="text" id="moon-user-name" class="moon-input" placeholder="✍️ اكتب اسمك الكريم...">
-            <input type="date" id="moon-birth-date" class="moon-input">
+                     <input type="date" id="moon-birth-date" class="moon-input" dir="ltr" style="text-align: center; letter-spacing: 2px;">
+
 
             <button type="button" class="moon-btn" onclick="revealBirthMoon()" id="moon-action-btn">🔭 اكشف لوحة قمر ميلادي ونجمتي الآن 🌟</button>
 
@@ -1763,10 +1764,41 @@
             if (age < 25.8) return { age, illum, nameAr: '🌗 التربيع الأخير (صفاء الروح)', nameEn: '🌗 Last Quarter', descAr: 'شخصية وفية عميقة الإحساس لا تنسى من تحب أبداً.', descEn: 'A deeply loyal soul who treasures every bond.' };
             return { age, illum, nameAr: '🌘 الهلال المتناقص (نور الهدوء)', nameEn: '🌘 Waning Crescent', descAr: 'روح شاعرية حالمة تحمل أسرار الجمال والسكينة.', descEn: 'A poetic dreamer carrying beauty and serenity.' };
         }
-          // تحميل صورة قمر فضائية حقيقية ساطعة ومضمونة 100% (NASA / Three.js CDN)
-        const realMoonImg = new Image();
-        realMoonImg.crossOrigin = "anonymous";
-        realMoonImg.src = "https://githubusercontent.com";
+             // توليد تضاريس قمرية فضية وبيضاء حقيقية مموجة (بحار قمرية وفوهات مجسمة)
+        const moonSurfaceCanvas = document.createElement('canvas');
+        moonSurfaceCanvas.width = 240; moonSurfaceCanvas.height = 240;
+        const mCtx = moonSurfaceCanvas.getContext('2d');
+        const mBase = mCtx.createRadialGradient(85, 85, 15, 120, 120, 120);
+        mBase.addColorStop(0, '#ffffff');
+        mBase.addColorStop(0.55, '#e2e8f0');
+        mBase.addColorStop(0.85, '#94a3b8');
+        mBase.addColorStop(1, '#475569');
+        mCtx.fillStyle = mBase;
+        mCtx.fillRect(0, 0, 240, 240);
+
+        const maria = [
+            {x:90,y:85,rx:38,ry:28,r:0.3},{x:145,y:95,rx:32,ry:35,r:-0.4},{x:115,y:140,rx:45,ry:25,r:0.1},
+            {x:75,y:135,rx:25,ry:30,r:0.5},{x:155,y:145,rx:22,ry:20,r:-0.2},{x:110,y:60,rx:30,ry:18,r:0}
+        ];
+        maria.forEach(m => {
+            mCtx.save(); mCtx.translate(m.x, m.y); mCtx.rotate(m.r);
+            const g = mCtx.createRadialGradient(0, 0, 2, 0, 0, m.rx);
+            g.addColorStop(0, 'rgba(71, 85, 105, 0.45)');
+            g.addColorStop(0.7, 'rgba(100, 116, 139, 0.25)');
+            g.addColorStop(1, 'rgba(148, 163, 184, 0)');
+            mCtx.fillStyle = g; mCtx.beginPath(); mCtx.ellipse(0, 0, m.rx, m.ry, 0, 0, Math.PI * 2); mCtx.fill();
+            mCtx.restore();
+        });
+
+        for (let i = 0; i < 45; i++) {
+            const cx = 40 + (i * 37) % 160;
+            const cy = 40 + (i * 53) % 160;
+            const cr = 3 + (i % 9);
+            mCtx.fillStyle = 'rgba(51, 65, 85, 0.22)';
+            mCtx.beginPath(); mCtx.arc(cx, cy, cr, 0, Math.PI * 2); mCtx.fill();
+            mCtx.strokeStyle = 'rgba(255, 255, 255, 0.45)';
+            mCtx.lineWidth = 1; mCtx.beginPath(); mCtx.arc(cx - 1, cy - 1, cr, 0.2, 2.8); mCtx.stroke();
+        }
 
         function drawBirthMoonScene(ctx, name, dateStr, phaseObj, isEn, pulse) {
             ctx.direction = isEn ? 'ltr' : 'rtl';
@@ -1774,7 +1806,6 @@
             grad.addColorStop(0, '#02040a'); grad.addColorStop(0.5, '#070e1f'); grad.addColorStop(1, '#02040a');
             ctx.fillStyle = grad; ctx.fillRect(0, 0, 800, 640);
 
-            // 1. حركة نجوم كونية حية ومستمرة خلف القمر
             fixedStars.forEach((s, idx) => {
                 const moveX = (s.x + pulse * (0.35 + (idx % 3) * 0.15)) % 760 + 20;
                 const moveY = (s.y + Math.sin(pulse * 0.03 + idx) * 4);
@@ -1783,85 +1814,66 @@
                 ctx.beginPath(); ctx.arc(moveX, moveY, s.r, 0, Math.PI * 2); ctx.fill();
             });
 
-            // 2. هالة ضوئية ساطعة ونجمة القدر الذهبية المشعة خلف القمر
             ctx.save();
-            ctx.translate(400, 290);
-            const stScale = 1 + 0.1 * Math.sin(pulse * 0.15);
+            ctx.translate(525, 225);
+            const stScale = 0.85 + 0.3 * Math.abs(Math.sin(pulse * 0.12));
             ctx.scale(stScale, stScale);
-            const stGlow = ctx.createRadialGradient(0, 0, 30, 0, 0, 210);
+            const stGlow = ctx.createRadialGradient(0, 0, 2, 0, 0, 32);
             stGlow.addColorStop(0, 'rgba(255, 255, 255, 1)');
-            stGlow.addColorStop(0.38, 'rgba(253, 224, 71, 0.75)');
-            stGlow.addColorStop(0.72, 'rgba(56, 189, 248, 0.3)');
+            stGlow.addColorStop(0.5, 'rgba(56, 189, 248, 0.6)');
             stGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
             ctx.fillStyle = stGlow;
-            ctx.beginPath(); ctx.arc(0, 0, 210, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath(); ctx.arc(0, 0, 32, 0, Math.PI * 2); ctx.fill();
 
-            ctx.fillStyle = 'rgba(255, 253, 230, 0.85)';
+            ctx.fillStyle = '#ffffff';
             ctx.beginPath();
-            ctx.moveTo(0, -180); ctx.quadraticCurveTo(8, -8, 180, 0);
-            ctx.quadraticCurveTo(8, 8, 0, 180); ctx.quadraticCurveTo(-8, 8, -180, 0);
-            ctx.quadraticCurveTo(-8, -8, 0, -180); ctx.fill();
+            ctx.moveTo(0, -24); ctx.quadraticCurveTo(3, -3, 24, 0);
+            ctx.quadraticCurveTo(3, 3, 0, 24); ctx.quadraticCurveTo(-3, 3, -24, 0);
+            ctx.quadraticCurveTo(-3, -3, 0, -24); ctx.fill();
             ctx.restore();
 
-            // 3. رسم القمر الفضائي الحقيقي المجسم (NASA Real Moon Texture) مع إضاءة ساطعة
             ctx.save();
             ctx.translate(400, 290);
-            ctx.shadowColor = '#ffffff'; ctx.shadowBlur = 45;
-            ctx.beginPath(); ctx.arc(0, 0, 92, 0, Math.PI * 2); ctx.clip();
-
-            if (realMoonImg.complete && realMoonImg.naturalWidth > 0) {
-                ctx.filter = 'brightness(1.25) contrast(1.15)';
-                ctx.drawImage(realMoonImg, 120, 40, 520, 520, -96, -96, 192, 192);
-                ctx.filter = 'none';
-            } else {
-                const fallbackGrad = ctx.createRadialGradient(-25, -25, 10, 0, 0, 95);
-                fallbackGrad.addColorStop(0, '#ffffff'); fallbackGrad.addColorStop(1, '#cbd5e1');
-                ctx.fillStyle = fallbackGrad; ctx.fillRect(-95, -95, 190, 190);
-            }
-
-            const sphereLight = ctx.createRadialGradient(-25, -25, 20, 0, 0, 94);
-            sphereLight.addColorStop(0, 'rgba(255, 255, 255, 0.15)');
-            sphereLight.addColorStop(0.75, 'rgba(0, 0, 0, 0)');
-            sphereLight.addColorStop(1, 'rgba(0, 0, 0, 0.55)');
-            ctx.fillStyle = sphereLight;
-            ctx.fillRect(-95, -95, 190, 190);
+            ctx.shadowColor = 'rgba(255, 255, 255, 0.85)'; ctx.shadowBlur = 35;
+            ctx.beginPath(); ctx.arc(0, 0, 88, 0, Math.PI * 2); ctx.clip();
+            ctx.drawImage(moonSurfaceCanvas, -120, -120, 240, 240);
 
             const p = phaseObj.age / 29.530588;
-            ctx.fillStyle = 'rgba(2, 5, 15, 0.88)';
+            ctx.fillStyle = 'rgba(3, 6, 16, 0.86)';
             ctx.beginPath();
             if (p <= 0.5) {
-                ctx.arc(0, 0, 94, Math.PI / 2, -Math.PI / 2, false);
-                const w = 94 * Math.cos(p * 2 * Math.PI);
-                ctx.ellipse(0, 0, Math.abs(w), 94, 0, -Math.PI / 2, Math.PI / 2, w < 0);
+                ctx.arc(0, 0, 90, Math.PI / 2, -Math.PI / 2, false);
+                const w = 90 * Math.cos(p * 2 * Math.PI);
+                ctx.ellipse(0, 0, Math.abs(w), 90, 0, -Math.PI / 2, Math.PI / 2, w < 0);
             } else {
-                ctx.arc(0, 0, 94, -Math.PI / 2, Math.PI / 2, false);
-                const w = 94 * Math.cos(p * 2 * Math.PI);
-                ctx.ellipse(0, 0, Math.abs(w), 94, 0, Math.PI / 2, -Math.PI / 2, w > 0);
+                ctx.arc(0, 0, 90, -Math.PI / 2, Math.PI / 2, false);
+                const w = 90 * Math.cos(p * 2 * Math.PI);
+                ctx.ellipse(0, 0, Math.abs(w), 90, 0, Math.PI / 2, -Math.PI / 2, w > 0);
             }
             ctx.fill();
             ctx.restore();
 
-            // 4. الإطار الذهبي والنصوص الفلكية الواضحة
             ctx.strokeStyle = '#d4af37'; ctx.lineWidth = 5; ctx.strokeRect(18, 18, 764, 604);
             ctx.textAlign = 'center';
             ctx.fillStyle = '#d4af37'; ctx.font = 'bold 19px Cairo, sans-serif';
             ctx.fillText('👑 مَمْلَكَةُ الْوُعُودِ العظمى • عائلة KR الملكية 👑', 400, 58);
             ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 14px Cairo, sans-serif';
-            ctx.fillText('Kingdom of Promises • NASA Real Astronomical Moon', 400, 82);
+            ctx.fillText('Kingdom of Promises • Real Astronomical Moon', 400, 82);
 
             ctx.fillStyle = '#ffffff'; ctx.font = 'bold 25px Cairo, sans-serif';
             ctx.fillText(isEn ? `✨ ${name}'s Birth Moon ✨` : `✨ قمر ميلاد: ${name} ✨`, 400, 126);
             ctx.fillStyle = '#cbd5e1'; ctx.font = 'bold 16px Cairo, sans-serif';
             ctx.fillText(isEn ? `${dateStr}  |  Illumination: ${phaseObj.illum}%` : `${dateStr}  |  نسبة إضاءة القمر: ${phaseObj.illum}%`, 400, 154);
 
-            ctx.fillStyle = '#fef08a'; ctx.font = 'bold 23px Cairo, sans-serif';
+            ctx.fillStyle = '#f8fafc'; ctx.font = 'bold 23px Cairo, sans-serif';
             ctx.fillText(isEn ? phaseObj.nameEn : phaseObj.nameAr, 400, 468);
-            ctx.fillStyle = '#f1f5f9'; ctx.font = '18px Cairo, sans-serif';
+            ctx.fillStyle = '#cbd5e1'; ctx.font = '18px Cairo, sans-serif';
             ctx.fillText(isEn ? phaseObj.descEn : phaseObj.descAr, 400, 505);
 
             ctx.fillStyle = '#d4af37'; ctx.font = 'bold 14px Cairo, sans-serif';
             ctx.fillText('© Official Observatory - worldoflove-kr.github.io 👑 KR 👑', 400, 595);
         }
+
 
         window.revealBirthMoon = function() {
             const name = document.getElementById('moon-user-name').value.trim() || 'نجم المملكة';
@@ -1872,6 +1884,12 @@
             const canvas = document.getElementById('birth-moon-canvas');
             const ctx = canvas.getContext('2d');
             drawBirthMoonScene(ctx, name, dateVal, phaseObj, isEn, 10);
+            if (window.liveMoonLoop) clearInterval(window.liveMoonLoop);
+            let liveFrame = 0;
+            window.liveMoonLoop = setInterval(() => {
+                liveFrame++;
+                drawBirthMoonScene(ctx, name, dateVal, phaseObj, isEn, liveFrame);
+            }, 45);
 
             document.getElementById('moon-download-btn').href = canvas.toDataURL('image/png');
             const resBox = document.getElementById('moon-result-box');
