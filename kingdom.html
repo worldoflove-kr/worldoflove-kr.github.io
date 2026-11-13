@@ -1290,63 +1290,46 @@
         }
     })();
     </script>
-    <!-- 18. خلفية صور الباندا الحقيقية (panda_night.png ليلاً / panda.png نهاراً) خلف عنوان مملكة الوعود -->
+    <!-- 18. خلفية صور الباندا الحقيقية لكامل الشاشة (panda_night.png ليلاً / panda.png نهاراً) مع النجوم -->
     <style>
-        #royal-panda-bg-scene {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 310px;
-            height: 310px;
+        #royal-fullscreen-panda-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             background-size: cover;
-            background-position: center;
-            border-radius: 50%;
-            opacity: 0.42;
+            background-position: center center;
+            background-repeat: no-repeat;
+            opacity: 0.26;
             mix-blend-mode: screen;
-            filter: drop-shadow(0 0 28px rgba(212, 175, 55, 0.5));
             pointer-events: none;
-            z-index: -1;
-            transition: background-image 1s ease-in-out;
+            z-index: 2;
+            transition: background-image 1.2s ease-in-out;
         }
     </style>
+
+    <div id="royal-fullscreen-panda-bg"></div>
 
     <script>
     (function() {
         const nightPandaImg = "panda_night.png";
         const dayPandaImg   = "panda.png";
 
-        function updateRealPandaScene() {
-            const headings = document.querySelectorAll('h1, h2');
-            let targetHeading = null;
-            headings.forEach(h => {
-                if (h.textContent.includes('مَمْلَكَةُ') || h.textContent.includes('Kingdom of Promises')) {
-                    targetHeading = h;
-                }
-            });
-
-            if (!targetHeading) return;
-            const parent = targetHeading.parentElement;
-            if (getComputedStyle(parent).position === 'static') {
-                parent.style.position = 'relative';
-            }
-
-            let scene = document.getElementById('royal-panda-bg-scene');
-            if (!scene) {
-                scene = document.createElement('div');
-                scene.id = 'royal-panda-bg-scene';
-                parent.insertBefore(scene, targetHeading);
-            }
+        function updateFullscreenPandaBg() {
+            const bg = document.getElementById('royal-fullscreen-panda-bg');
+            if (!bg) return;
 
             const hour = new Date().getHours();
-            const isDay = (hour >= 6 && hour < 18);
-            scene.style.backgroundImage = `url('${isDay ? dayPandaImg : nightPandaImg}')`;
+            const isDay = (hour >= 6 && hour < 18); // النهار من 6 صباحاً حتى 6 مساءً
+            bg.style.backgroundImage = `url('${isDay ? dayPandaImg : nightPandaImg}')`;
         }
 
-        updateRealPandaScene();
-        setInterval(updateRealPandaScene, 60000);
+        updateFullscreenPandaBg();
+        setInterval(updateFullscreenPandaBg, 60000);
     })();
     </script>
+
 
             
             </body>
