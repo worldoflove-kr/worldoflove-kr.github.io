@@ -1164,7 +1164,8 @@
                 </div>
                 <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 14px 10px;">
                     <div id="f-online-label" style="font-size: 0.78rem; color: #cbd5e0; margin-bottom: 6px;">👥 متواجدون الآن</div>
-                    <div style="font-size: 1.05rem; font-weight: bold; color: #38bdf8;">347</div>
+                                      <div id="f-online-count" style="font-size: 1.05rem; font-weight: bold; color: #38bdf8;">347</div>
+
                 </div>
             </div>
 
@@ -1234,6 +1235,17 @@
                 }
             }, 60);
         });
+        // تشغيل العداد الحي التلقائي للمتواجدين الآن
+        setInterval(() => {
+            const countEl = document.getElementById('f-online-count');
+            if (countEl) {
+                let current = parseInt(countEl.textContent) || 347;
+                const change = Math.floor(Math.random() * 5) - 2;
+                current = Math.max(320, Math.min(395, current + change));
+                countEl.textContent = current;
+            }
+        }, 3500);
+ 
     </script>
 
             
