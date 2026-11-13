@@ -1091,6 +1091,24 @@
             }, 50);
         });
     })();
+        // ترجمة عبارة شريط بحث جوجل المقفول فقط (عربي ⇄ إنجليزي)
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn) return;
+            const onclickVal = btn.getAttribute('onclick') || '';
+            if (!onclickVal.includes('switchLanguage')) return;
+
+            const isEn = onclickVal.includes("'en'");
+            setTimeout(() => {
+                document.querySelectorAll('input').forEach(inp => {
+                    if (inp.value && (inp.value.includes('مَمْلَكَةُ') || inp.value.includes('Great Kingdom'))) {
+                        inp.value = isEn 
+                            ? '✨ Great Kingdom of Promises & Royal KR Family Forever 👑' 
+                            : '✨ مَمْلَكَةُ الْوُعُودِ العظمى وعائلة KR الملكية للأبد 👑';
+                    }
+                });
+            }, 60);
+        });
         
     </script>
             
