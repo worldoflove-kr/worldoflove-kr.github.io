@@ -1457,7 +1457,7 @@
             txt.value = isEn ? presetsEn[num] : presetsAr[num];
         };
 
-        window.generateRoyalCertificate = function() {
+             window.generateRoyalCertificate = function() {
             const from = document.getElementById('cov-from').value.trim() || 'ملك المملكة';
             const to = document.getElementById('cov-to').value.trim() || 'توأم الروح';
             const promise = document.getElementById('cov-text').value.trim() || 'أعاهدك على الوفاء والمحبة الصادقة مدى الحياة تحت سماء مملكة الوعود.';
@@ -1465,17 +1465,17 @@
             const today = new Date().toLocaleDateString('en-GB');
             const serial = 'KR-' + Math.floor(100000 + Math.random() * 900000);
 
-            // 1. تحديث البطاقة المتحركة الحية
             document.getElementById('live-cert-header').textContent = isEn ? '📜 ROYAL COVENANT CERTIFICATE 📜' : '📜 وثيقة ميثاق وعهد ملكي معتمد 📜';
             document.getElementById('live-cert-names').textContent = isEn ? `From: ${from}  💖  To: ${to}` : `من: ${from}  💖  إلى: ${to}`;
             document.getElementById('live-cert-body').textContent = promise;
-            document.getElementById('live-cert-seal').textContent = isEn 
-                ? `Sealed on: ${today}  |  Seal: 👑 KR 👑  |  ID: ${serial}` 
-                : `حُرر ووُثق بتاريخ: ${today}  |  الختم: 👑 KR 👑  |  رقم التوثيق: ${serial}`;
+            document.getElementById('live-cert-seal').innerHTML = isEn 
+                ? `Sealed on: ${today} &nbsp;|&nbsp; Seal: 👑 KR 👑 &nbsp;|&nbsp; ID: ${serial}` 
+                : `حُرر ووُثق بتاريخ: ${today} &nbsp;|&nbsp; الختم: 👑 KR 👑 &nbsp;|&nbsp; رقم التوثيق: ${serial}`;
 
-            // 2. رسم نسخة عالية الدقة للتحميل في الاستوديو
             const canvas = document.getElementById('royal-cert-canvas');
             const ctx = canvas.getContext('2d');
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+
             const grad = ctx.createLinearGradient(0, 0, 800, 600);
             grad.addColorStop(0, '#070410'); grad.addColorStop(0.5, '#180c30'); grad.addColorStop(1, '#070410');
             ctx.fillStyle = grad; ctx.fillRect(0, 0, 800, 600);
@@ -1513,13 +1513,14 @@
             ctx.fillText(line, 400, y);
 
             ctx.fillStyle = '#d4af37'; ctx.font = 'bold 17px Cairo, sans-serif';
-            ctx.fillText(isEn ? `Sealed on: ${today}  |  Seal: 👑 KR 👑  |  ID: ${serial}` : `حُرر ووُثق بتاريخ: ${today}  |  الختم الملكي: 👑 KR 👑  |  رقم التوثيق: ${serial}`, 400, 505);
+            ctx.fillText(isEn ? `Date: ${today}  |  Seal: 👑 KR 👑  |  ID: ${serial}` : `التاريخ: ${today}  |  الختم الملكي: 👑 KR 👑  |  رقم التوثيق: ${serial}`, 400, 505);
             ctx.fillStyle = '#94a3b8'; ctx.font = 'bold 13px Cairo, sans-serif';
             ctx.fillText('© Verified Original Document - worldoflove-kr.github.io', 400, 535);
 
             document.getElementById('cov-download-link').href = canvas.toDataURL('image/png');
             document.getElementById('cov-result-area').style.display = 'block';
         };
+
 
         document.addEventListener('click', function(e) {
             const btn = e.target.closest('button');
