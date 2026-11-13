@@ -1247,6 +1247,49 @@
         }, 3500);
  
     </script>
+    <!-- 17. خلفية النجوم المتلألئة فقط في سماء المملكة -->
+    <style>
+        #royal-starfield {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 10;
+            overflow: hidden;
+        }
+        .royal-star {
+            position: absolute;
+            background: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ffffff, 0 0 18px #d4af37;
+            animation: starTwinkle var(--dur) infinite alternate ease-in-out;
+        }
+        @keyframes starTwinkle {
+            0% { opacity: 0.25; transform: scale(0.7); }
+            100% { opacity: 1; transform: scale(1.4); }
+        }
+    </style>
+
+    <div id="royal-starfield"></div>
+
+    <script>
+    (function() {
+        const starfield = document.getElementById('royal-starfield');
+        if (starfield) {
+            for (let i = 0; i < 95; i++) {
+                const star = document.createElement('div');
+                star.className = 'royal-star';
+                const size = (Math.random() * 3 + 1.5) + 'px';
+                star.style.width = size;
+                star.style.height = size;
+                star.style.top = (Math.random() * 100) + '%';
+                star.style.left = (Math.random() * 100) + '%';
+                star.style.setProperty('--dur', (Math.random() * 2.5 + 1.2) + 's');
+                star.style.animationDelay = (Math.random() * 2) + 's';
+                starfield.appendChild(star);
+            }
+        }
+    })();
+    </script>
 
             
             </body>
