@@ -1109,6 +1109,21 @@
                 });
             }, 60);
         });
+        // ترجمة الجملة الأخيرة المتبقية في صندوق التواريخ
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                document.querySelectorAll('.glass-panel').forEach(p => {
+                    if (p.innerHTML.includes('التواريخ الخالدة') || p.innerHTML.includes('Eternal Immortal Dates')) {
+                        p.innerHTML = isEn 
+                            ? p.innerHTML.replace('كل عام وأنت النبضة الخالدة للمملكة', 'Happy birthday to the eternal heartbeat of the Kingdom')
+                            : p.innerHTML.replace('Happy birthday to the eternal heartbeat of the Kingdom', 'كل عام وأنت النبضة الخالدة للمملكة');
+                    }
+                });
+            }, 80);
+        });
         
     </script>
             
