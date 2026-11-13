@@ -1049,49 +1049,48 @@
 
             document.documentElement.dir = (lang === 'en') ? 'ltr' : 'rtl';
         };
-             // ترجمة ذكية تتخطى الإيموجي وتترجم حقول الإدخال والعبارات المتبقية بدقة
+         // ترجمة ذكية تتخطى الإيموجي والهمزات وتترجم حقول الإدخال بدقة 100%
         const forceTranslateRemaining = window.switchLanguage;
         window.switchLanguage = function(lang) {
             if (typeof forceTranslateRemaining === 'function') forceTranslateRemaining(lang);
             
-            // 1. ترجمة حقول الإدخال في صندوق توأم الروح
-            document.querySelectorAll('input').forEach(inp => {
+            // 1. ترجمة حقول الإدخال الأربعة في صندوق توأم الروح بالترتيب
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(inp => {
                 let p = inp.getAttribute('placeholder') || '';
                 if (lang === 'en') {
-                    p = p.replace('اسمك', 'Your Name').replace('بلدك', 'Your Country').replace('مثلاً: لبنان', 'e.g., Lebanon').replace('البحرين', 'Bahrain');
+                    if (p.includes('اسمك')) inp.setAttribute('placeholder', '✍️ Your Name...');
+                    if (p.includes('بلدك')) inp.setAttribute('placeholder', '📍 Your Country (e.g., Lebanon)...');
+                    if (p.includes('اسم الحبيب') || p.includes("Partner's Name")) inp.setAttribute('placeholder', "✍️ Partner's Name...");
+                    if (p.includes('بلده') || p.includes('البحرين') || p.includes("Partner's Country")) inp.setAttribute('placeholder', "📍 Partner's Country (e.g., Bahrain)...");
                 } else {
-                    p = p.replace('Your Name', 'اسمك').replace('Your Country', 'بلدك').replace('e.g., Lebanon', 'مثلاً: لبنان').replace('Bahrain', 'البحرين');
+                    if (p.includes('Your Name')) inp.setAttribute('placeholder', '✍️ اسمك...');
+                    if (p.includes('Your Country')) inp.setAttribute('placeholder', '📍 بلدك (مثلاً: لبنان)...');
+                    if (p.includes("Partner's Name")) inp.setAttribute('placeholder', '✍️ اسم الحبيب...');
+                    if (p.includes("Partner's Country")) inp.setAttribute('placeholder', '📍 بلده (مثلاً: البحرين)...');
                 }
-                inp.setAttribute('placeholder', p);
             });
 
-            // 2. ترجمة الجمل المتبقية بتقسيمها لأجزاء قصيرة لتتخطى الإيموجي
+            // 2. ترجمة العبارات الثلاث المتبقية بغض النظر عن الهمزات
             const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
             let node;
             while (node = walker.nextNode()) {
                 let t = node.nodeValue;
                 if (!t || !t.trim()) continue;
                 if (lang === 'en') {
-                    t = t.replace('كل عام وأنت النبضة الخالدة للمملكة', 'Happy birthday to the eternal heartbeat of the Kingdom')
-                         .replace('والنجمة الساحرة', 'and the enchanting star')
-                         .replace('هل تتساءلين أين يختبئ نصفك الآخر الحين؟', 'Wondering where your other half is hiding right now?')
-                         .replace('أطلقي مذنب الحب الشائع المشع', 'Launch the radiant shooting love comet')
-                         .replace('ودعيه يشق مجرات الكون ليرسم نبضات قلبك ويحدد موقع توأم روحك العابر للقارات لايف بالعين المجردة بداخل فضاء الملوك!', "and let it cut through the galaxies to draw your heartbeats and locate your cross-continental soulmate live inside the Kings' space!")
-                         .replace('مَمْلَكَةُ الْوُعُودِ العظمى وعائلة', 'Great Kingdom of Promises &')
-                         .replace('الملكية للأبد', 'Royal Family Forever');
+                    t = t.replace(/كل عام و[أا]نت النبضة الخالدة للمملكة[،,]?/g, 'Happy birthday to the eternal heartbeat of the Kingdom,')
+                         .replace(/هل تتساءلين [أا]ين يختبئ نصفك ال[آا]خر الحين[؟?]?/g, 'Wondering where your other half is hiding right now?')
+                         .replace(/ودعيه يشق.*فضاء الملوك[!！]?/g, "and let it cut through the galaxies to draw your heartbeats and locate your cross-continental soulmate live inside the Kings' space!");
                 } else {
-                    t = t.replace('Happy birthday to the eternal heartbeat of the Kingdom', 'كل عام وأنت النبضة الخالدة للمملكة')
-                         .replace('and the enchanting star', 'والنجمة الساحرة')
+                    t = t.replace('Happy birthday to the eternal heartbeat of the Kingdom,', 'كل عام وأنت النبضة الخالدة للمملكة،')
                          .replace('Wondering where your other half is hiding right now?', 'هل تتساءلين أين يختبئ نصفك الآخر الحين؟')
-                         .replace('Launch the radiant shooting love comet', 'أطلقي مذنب الحب الشائع المشع')
-                         .replace("and let it cut through the galaxies to draw your heartbeats and locate your cross-continental soulmate live inside the Kings' space!", 'ودعيه يشق مجرات الكون ليرسم نبضات قلبك ويحدد موقع توأم روحك العابر للقارات لايف بالعين المجردة بداخل فضاء الملوك!')
-                         .replace('Great Kingdom of Promises &', 'مَمْلَكَةُ الْوُعُودِ العظمى وعائلة')
-                         .replace('Royal Family Forever', 'الملكية للأبد');
+                         .replace("and let it cut through the galaxies to draw your heartbeats and locate your cross-continental soulmate live inside the Kings' space!", 'ودعيه يشق مجرات الكون ليرسم نبضات قلبك ويحدد موقع توأم روحك العابر للقارات لايف بالعين المجردة بداخل فضاء الملوك!');
                 }
                 node.nodeValue = t;
             }
         };
     })();
+
 
         
     </script>
