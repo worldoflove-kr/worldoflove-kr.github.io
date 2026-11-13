@@ -1329,6 +1329,230 @@
         setInterval(updateFullscreenPandaBg, 60000);
     })();
     </script>
+    <!-- 19. خزنة الميثاق الكوني ووثيقة الوعد الملكية المتحركة (Animated Live Card) -->
+    <style>
+        @keyframes covenantGlow {
+            0% { box-shadow: 0 0 18px rgba(212, 175, 55, 0.45), inset 0 0 12px rgba(212, 175, 55, 0.2); border-color: #d4af37; }
+            50% { box-shadow: 0 0 32px rgba(255, 0, 127, 0.65), inset 0 0 18px rgba(138, 43, 226, 0.35); border-color: #ff007f; }
+            100% { box-shadow: 0 0 18px rgba(212, 175, 55, 0.45), inset 0 0 12px rgba(212, 175, 55, 0.2); border-color: #d4af37; }
+        }
+        @keyframes liveCardShimmer {
+            0% { background-position: 0% 50%; border-color: #d4af37; box-shadow: 0 0 25px rgba(212, 175, 55, 0.6); }
+            50% { background-position: 100% 50%; border-color: #ff007f; box-shadow: 0 0 35px rgba(255, 0, 127, 0.75); }
+            100% { background-position: 0% 50%; border-color: #d4af37; box-shadow: 0 0 25px rgba(212, 175, 55, 0.6); }
+        }
+        @keyframes textNeonPulse {
+            0% { text-shadow: 0 0 8px rgba(255, 0, 127, 0.6); transform: scale(1); }
+            50% { text-shadow: 0 0 18px rgba(212, 175, 55, 0.9), 0 0 25px rgba(255, 0, 127, 0.8); transform: scale(1.03); }
+            100% { text-shadow: 0 0 8px rgba(255, 0, 127, 0.6); transform: scale(1); }
+        }
+        #royal-covenant-vault {
+            max-width: 440px; margin: 28px auto; padding: 24px 18px;
+            background: rgba(14, 10, 28, 0.92); border: 2px solid #d4af37; border-radius: 18px;
+            animation: covenantGlow 4s infinite ease-in-out;
+            font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 50;
+        }
+        .cov-input {
+            width: 100%; box-sizing: border-box; background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(212, 175, 55, 0.45); border-radius: 10px; padding: 11px 14px;
+            color: #fff; font-family: 'Cairo', sans-serif; font-size: 0.9rem; margin-bottom: 12px; outline: none;
+        }
+        .cov-preset-btn {
+            background: rgba(138, 43, 226, 0.22); border: 1px solid rgba(138, 43, 226, 0.6);
+            color: #e2e8f0; border-radius: 20px; padding: 5px 12px; font-size: 0.78rem;
+            cursor: pointer; font-family: 'Cairo', sans-serif;
+        }
+        .cov-main-btn {
+            width: 100%; padding: 13px; background: linear-gradient(45deg, #d4af37, #ff007f);
+            border: none; border-radius: 12px; color: #fff; font-weight: bold; font-size: 0.98rem;
+            font-family: 'Cairo', sans-serif; cursor: pointer; box-shadow: 0 0 18px rgba(255, 0, 127, 0.5);
+        }
+        #live-animated-certificate {
+            margin-top: 20px; padding: 22px 15px; border-radius: 16px;
+            background: linear-gradient(-45deg, #090514, #1e0b36, #2b0924, #0a192f);
+            background-size: 400% 400%; border: 2px solid #d4af37;
+            animation: liveCardShimmer 5s ease infinite; position: relative; overflow: hidden;
+        }
+        .live-names-glow {
+            color: #ff007f; font-size: 1.15rem; font-weight: bold; margin: 12px 0;
+            display: inline-block; animation: textNeonPulse 2.5s infinite ease-in-out;
+        }
+        .live-promise-glow {
+            color: #ffffff; font-size: 0.96rem; line-height: 1.8; margin: 10px 0 16px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.45); position: relative; z-index: 2;
+        }
+    </style>
+    <script>
+    (function() {
+        const vaultHTML = `
+        <div id="royal-covenant-vault">
+            <div style="font-size: 1.8rem; margin-bottom: 6px;">📜✨👑</div>
+            <h3 id="cov-title" style="color: #d4af37; margin: 0 0 10px 0; font-size: 1.25rem; text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);">خزنة الميثاق الكوني ووثيقة الوعد الملكية</h3>
+            <p id="cov-desc" style="color: #e2e8f0; font-size: 0.86rem; line-height: 1.75; margin: 0 0 18px 0;">
+                الكلمات الصادقة تستحق أن تُخلّد كالنجوم.. اكتب وعدك أو عهدك لمن تحب هنا، ودع ماكينة المملكة تحفره بحبر الذهب وتُصدر لك <strong style="color:#ff007f;">وثيقة ميثاق متحركة ومختومة بالتاج الملكي</strong> لتنبض بالحب أو تحفظها في هاتفك!
+            </p>
+
+            <input type="text" id="cov-from" class="cov-input" placeholder="✍️ اسمك الكريم...">
+            <input type="text" id="cov-to" class="cov-input" placeholder="💎 اسم من تهديه الوعد...">
+            
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 10px;">
+                <button type="button" class="cov-preset-btn" onclick="fillRoyalPromise(1)" id="cov-p1">✨ وعد الوفاء الأبدي</button>
+                <button type="button" class="cov-preset-btn" onclick="fillRoyalPromise(2)" id="cov-p2">🌙 عهد السند والرفقة</button>
+                <button type="button" class="cov-preset-btn" onclick="fillRoyalPromise(3)" id="cov-p3">💖 ميثاق الحب الصادق</button>
+            </div>
+
+            <textarea id="cov-text" class="cov-input" rows="3" placeholder="📜 اكتب نص وعدك هنا أو اختر من الوعود الجاهزة أعلاه..."></textarea>
+
+            <button type="button" class="cov-main-btn" onclick="generateRoyalCertificate()" id="cov-btn">✨ حفر الوعد وإصدار الوثيقة الملكية ✨</button>
+
+            <div id="cov-result-area" style="display: none;">
+                <!-- البطاقة المتحركة الحية (Animated Live Card) -->
+                <div id="live-animated-certificate">
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 4rem; opacity: 0.06; pointer-events: none; font-weight: 900; color: #d4af37;">👑 KR 👑</div>
+                    <div style="color: #d4af37; font-size: 0.9rem; font-weight: bold;">👑 مَمْلَكَةُ الْوُعُودِ العظمى • عائلة KR الملكية 👑</div>
+                    <div style="color: #38bdf8; font-size: 0.72rem; font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 8px;">Kingdom of Promises • Royal KR Official Platform</div>
+                    <div id="live-cert-header" style="color: #fff; font-size: 1.05rem; font-weight: bold;">📜 وثيقة ميثاق وعهد ملكي معتمد 📜</div>
+                    <div id="live-cert-names" class="live-names-glow"></div>
+                    <div id="live-cert-body" class="live-promise-glow"></div>
+                    <div id="live-cert-seal" style="color: #d4af37; font-size: 0.78rem; font-weight: bold; border-top: 1px solid rgba(212,175,55,0.3); padding-top: 8px;"></div>
+                    <div style="color: #94a3b8; font-size: 0.65rem; margin-top: 4px;">© Verified Original Document - worldoflove-kr.github.io</div>
+                </div>
+
+                <canvas id="royal-cert-canvas" width="800" height="600" style="display: none;"></canvas>
+                <a id="cov-download-link" download="Kingdom-of-Promises-KR-Covenant.png" style="display: inline-block; margin-top: 14px; padding: 10px 22px; background: #10b981; color: #fff; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 0.9rem; box-shadow: 0 0 15px rgba(16,185,129,0.5);">📥 حفظ الوثيقة كصورة في الاستوديو</a>
+            </div>
+        </div>
+        `;
+
+        function mountCovenantVault() {
+            if (document.getElementById('royal-covenant-vault')) return;
+            let targetPanel = null;
+            document.querySelectorAll('.glass-panel').forEach(p => {
+                if (p.innerHTML.includes('التواريخ الخالدة') || p.innerHTML.includes('Eternal Immortal Dates')) {
+                    targetPanel = p;
+                }
+            });
+            if (targetPanel) {
+                targetPanel.insertAdjacentHTML('afterend', vaultHTML);
+            } else {
+                const footer = document.getElementById('royal-kingdom-footer');
+                if (footer) footer.insertAdjacentHTML('beforebegin', vaultHTML);
+            }
+        }
+        mountCovenantVault();
+        window.fillRoyalPromise = function(num) {
+            const isEn = document.documentElement.dir === 'ltr';
+            const txt = document.getElementById('cov-text');
+            if (!txt) return;
+            const presetsAr = {
+                1: "أعاهدك أمام نجوم هذه المملكة أن أبقى لك الوفاء الذي لا يتغير، والسند الذي لا يميل مهما طال الزمن وتبدلت الظروف.",
+                2: "أعدك أن أكون لك الأمان في كل عاصفة، والفرح في كل لحظة، وأن نحفظ عهدنا هذا مكتوباً بماء الذهب مدى الحياة.",
+                3: "ميثاق من القلب إلى القلب: ستبقى نبضتي الأولى والأخيرة، ورفيق دربي الأبدي تحت سماء مملكة الوعود."
+            };
+            const presetsEn = {
+                1: "I vow before the stars of this Kingdom to remain your unchanging loyalty and unshakable support through all times.",
+                2: "I promise to be your shelter in every storm and your joy in every moment, keeping our covenant written in gold forever.",
+                3: "A sacred pact from heart to heart: you will always be my eternal companion under the sky of the Kingdom of Promises."
+            };
+            txt.value = isEn ? presetsEn[num] : presetsAr[num];
+        };
+
+        window.generateRoyalCertificate = function() {
+            const from = document.getElementById('cov-from').value.trim() || 'ملك المملكة';
+            const to = document.getElementById('cov-to').value.trim() || 'توأم الروح';
+            const promise = document.getElementById('cov-text').value.trim() || 'أعاهدك على الوفاء والمحبة الصادقة مدى الحياة تحت سماء مملكة الوعود.';
+            const isEn = document.documentElement.dir === 'ltr';
+            const today = new Date().toLocaleDateString('en-GB');
+            const serial = 'KR-' + Math.floor(100000 + Math.random() * 900000);
+
+            // 1. تحديث البطاقة المتحركة الحية
+            document.getElementById('live-cert-header').textContent = isEn ? '📜 ROYAL COVENANT CERTIFICATE 📜' : '📜 وثيقة ميثاق وعهد ملكي معتمد 📜';
+            document.getElementById('live-cert-names').textContent = isEn ? `From: ${from}  💖  To: ${to}` : `من: ${from}  💖  إلى: ${to}`;
+            document.getElementById('live-cert-body').textContent = promise;
+            document.getElementById('live-cert-seal').textContent = isEn 
+                ? `Sealed on: ${today}  |  Seal: 👑 KR 👑  |  ID: ${serial}` 
+                : `حُرر ووُثق بتاريخ: ${today}  |  الختم: 👑 KR 👑  |  رقم التوثيق: ${serial}`;
+
+            // 2. رسم نسخة عالية الدقة للتحميل في الاستوديو
+            const canvas = document.getElementById('royal-cert-canvas');
+            const ctx = canvas.getContext('2d');
+            const grad = ctx.createLinearGradient(0, 0, 800, 600);
+            grad.addColorStop(0, '#070410'); grad.addColorStop(0.5, '#180c30'); grad.addColorStop(1, '#070410');
+            ctx.fillStyle = grad; ctx.fillRect(0, 0, 800, 600);
+
+            ctx.save();
+            ctx.fillStyle = 'rgba(212, 175, 55, 0.06)';
+            ctx.font = 'bold 95px Cairo, sans-serif'; ctx.textAlign = 'center';
+            ctx.fillText('👑 KR 👑', 400, 315);
+            ctx.font = 'bold 32px Cairo, sans-serif'; ctx.fillText('Kingdom of Promises', 400, 365);
+            ctx.restore();
+
+            ctx.strokeStyle = '#d4af37'; ctx.lineWidth = 6; ctx.strokeRect(20, 20, 760, 560);
+            ctx.strokeStyle = '#ff007f'; ctx.lineWidth = 2; ctx.strokeRect(32, 32, 736, 536);
+
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 20px Cairo, sans-serif';
+            ctx.fillText('👑 مَمْلَكَةُ الْوُعُودِ العظمى • عائلة KR الملكية 👑', 400, 68);
+            ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 15px Cairo, sans-serif';
+            ctx.fillText('Kingdom of Promises • Royal KR Official Platform', 400, 94);
+
+            ctx.fillStyle = '#ffffff'; ctx.font = 'bold 26px Cairo, sans-serif';
+            ctx.fillText(isEn ? '📜 ROYAL COVENANT CERTIFICATE 📜' : '📜 وثيقة ميثاق وعهد ملكي معتمد 📜', 400, 148);
+            ctx.fillStyle = '#ff007f'; ctx.font = 'bold 23px Cairo, sans-serif';
+            ctx.fillText(isEn ? `From: ${from}   💖   To: ${to}` : `من: ${from}   💖   إلى: ${to}`, 400, 198);
+
+            ctx.fillStyle = '#f8fafc'; ctx.font = '21px Cairo, sans-serif';
+            const words = promise.split(' ');
+            let line = ''; let y = 255;
+            for (let n = 0; n < words.length; n++) {
+                const testLine = line + words[n] + ' ';
+                if (ctx.measureText(testLine).width > 640 && n > 0) {
+                    ctx.fillText(line, 400, y); line = words[n] + ' '; y += 38;
+                } else { line = testLine; }
+            }
+            ctx.fillText(line, 400, y);
+
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 17px Cairo, sans-serif';
+            ctx.fillText(isEn ? `Sealed on: ${today}  |  Seal: 👑 KR 👑  |  ID: ${serial}` : `حُرر ووُثق بتاريخ: ${today}  |  الختم الملكي: 👑 KR 👑  |  رقم التوثيق: ${serial}`, 400, 505);
+            ctx.fillStyle = '#94a3b8'; ctx.font = 'bold 13px Cairo, sans-serif';
+            ctx.fillText('© Verified Original Document - worldoflove-kr.github.io', 400, 535);
+
+            document.getElementById('cov-download-link').href = canvas.toDataURL('image/png');
+            document.getElementById('cov-result-area').style.display = 'block';
+        };
+
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const title = document.getElementById('cov-title');
+                const desc = document.getElementById('cov-desc');
+                const f = document.getElementById('cov-from');
+                const t = document.getElementById('cov-to');
+                const tx = document.getElementById('cov-text');
+                const cBtn = document.getElementById('cov-btn');
+                const dl = document.getElementById('cov-download-link');
+                const p1 = document.getElementById('cov-p1');
+                const p2 = document.getElementById('cov-p2');
+                const p3 = document.getElementById('cov-p3');
+
+                if (title) title.textContent = isEn ? 'Cosmic Covenant Vault & Royal Promise Certificate' : 'خزنة الميثاق الكوني ووثيقة الوعد الملكية';
+                if (desc) desc.innerHTML = isEn 
+                    ? 'Sincere words deserve to be immortalized like stars.. Write your promise to someone special here, and let the Kingdom engrave it in gold ink to issue an <strong style="color:#ff007f;">animated sealed Royal Covenant Certificate</strong>!'
+                    : 'الكلمات الصادقة تستحق أن تُخلّد كالنجوم.. اكتب وعدك أو عهدك لمن تحب هنا، ودع ماكينة المملكة تحفره بحبر الذهب وتُصدر لك <strong style="color:#ff007f;">وثيقة ميثاق متحركة ومختومة بالتاج الملكي</strong> لتنبض بالحب أو تحفظها في هاتفك!';
+                if (f) f.placeholder = isEn ? '✍️ Your Noble Name...' : '✍️ اسمك الكريم...';
+                if (t) t.placeholder = isEn ? '💎 Name of Promise Recipient...' : '💎 اسم من تهديه الوعد...';
+                if (tx) tx.placeholder = isEn ? '📜 Write your promise here or pick a preset above...' : '📜 اكتب نص وعدك هنا أو اختر من الوعود الجاهزة أعلاه...';
+                if (cBtn) cBtn.textContent = isEn ? '✨ Engrave Promise & Issue Royal Certificate ✨' : '✨ حفر الوعد وإصدار الوثيقة الملكية ✨';
+                if (dl) dl.textContent = isEn ? '📥 Save Certificate Image to Gallery' : '📥 حفظ الوثيقة كصورة في الاستوديو';
+                if (p1) p1.textContent = isEn ? '✨ Eternal Loyalty' : '✨ وعد الوفاء الأبدي';
+                if (p2) p2.textContent = isEn ? '🌙 Lifelong Support' : '🌙 عهد السند والرفقة';
+                if (p3) p3.textContent = isEn ? '💖 True Love Pact' : '💖 ميثاق الحب الصادق';
+            }, 60);
+        });
+    })();
+    </script>
 
 
             
