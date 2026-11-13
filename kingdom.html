@@ -1682,6 +1682,251 @@
     })();
     </script>
 
+    <!-- 21. مرصد قمر الميلاد الكوني (إطار مضيء + نجمة ملكية مشعة خلف القمر + عبارات ملهمة) -->
+    <style>
+        @keyframes moonBoxGlow {
+            0% { box-shadow: 0 0 18px rgba(56, 189, 248, 0.45), inset 0 0 12px rgba(56, 189, 248, 0.2); border-color: #38bdf8; }
+            50% { box-shadow: 0 0 34px rgba(212, 175, 55, 0.7), inset 0 0 18px rgba(138, 43, 226, 0.35); border-color: #d4af37; }
+            100% { box-shadow: 0 0 18px rgba(56, 189, 248, 0.45), inset 0 0 12px rgba(56, 189, 248, 0.2); border-color: #38bdf8; }
+        }
+        #royal-moon-observatory {
+            max-width: 440px; margin: 28px auto; padding: 24px 18px;
+            background: rgba(10, 13, 28, 0.94); border: 2px solid #38bdf8; border-radius: 18px;
+            animation: moonBoxGlow 4.5s infinite ease-in-out;
+            font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 50;
+        }
+        .moon-input {
+            width: 100%; box-sizing: border-box; background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(56, 189, 248, 0.5); border-radius: 10px; padding: 11px 14px;
+            color: #fff; font-family: 'Cairo', sans-serif; font-size: 0.92rem; margin-bottom: 12px; outline: none;
+            color-scheme: dark;
+        }
+        .moon-btn {
+            width: 100%; padding: 13px; background: linear-gradient(45deg, #0284c7, #d4af37);
+            border: none; border-radius: 12px; color: #fff; font-weight: bold; font-size: 0.98rem;
+            font-family: 'Cairo', sans-serif; cursor: pointer; box-shadow: 0 0 20px rgba(56, 189, 248, 0.55);
+        }
+    </style>
+
+    <script>
+    (function() {
+        const moonHTML = `
+        <div id="royal-moon-observatory">
+            <div style="font-size: 1.9rem; margin-bottom: 6px;">🌕🌟🔭</div>
+            <h3 id="moon-title" style="color: #38bdf8; margin: 0 0 10px 0; font-size: 1.25rem; text-shadow: 0 0 12px rgba(56, 189, 248, 0.7);">مرصد قمر الميلاد ونجمة القدر الكونية</h3>
+            <p id="moon-desc" style="color: #e2e8f0; font-size: 0.86rem; line-height: 1.8; margin: 0 0 18px 0;">
+                في اللحظة التي أبصرت فيها الحياة، اصطفت النجوم في سماء الكون وأشرقت <strong style="color:#d4af37;">نجمة قدرك المضيئة خلف قمر ميلادك</strong> لتشهد على قدومك.. أدخل اسمك وتاريخ ميلادك ليكشف لك مرصد المملكة <strong style="color:#38bdf8;">لوحة قمرك الفلكي الحقيقي</strong> محاطاً بالنجوم!
+            </p>
+
+            <input type="text" id="moon-user-name" class="moon-input" placeholder="✍️ اكتب اسمك الكريم...">
+            <input type="date" id="moon-birth-date" class="moon-input">
+
+            <button type="button" class="moon-btn" onclick="revealBirthMoon()" id="moon-action-btn">🔭 اكشف لوحة قمر ميلادي ونجمتي الآن 🌟</button>
+
+            <div id="moon-result-box" style="display: none; margin-top: 20px;">
+                <canvas id="birth-moon-canvas" width="800" height="640" style="width: 100%; border-radius: 14px; border: 2px solid #d4af37; box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);"></canvas>
+                <a id="moon-download-btn" download="My-Birth-Moon-KR.png" style="display: inline-block; margin-top: 12px; padding: 10px 22px; background: #10b981; color: #fff; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 0.9rem; box-shadow: 0 0 15px rgba(16,185,129,0.5);">📥 حفظ لوحة قمر ميلادي في الاستوديو</a>
+            </div>
+        </div>
+        `;
+
+        const vault = document.getElementById('royal-covenant-vault');
+        if (vault) {
+            vault.insertAdjacentHTML('afterend', moonHTML);
+        } else {
+            const footer = document.getElementById('royal-kingdom-footer');
+            if (footer) footer.insertAdjacentHTML('beforebegin', moonHTML);
+        }
+        const moonCraters = [
+            {x:-25,y:-30,r:14},{x:22,y:-20,r:18},{x:-15,y:25,r:16},
+            {x:30,y:28,r:11},{x:-42,y:5,r:10},{x:5,y:-45,r:9},{x:10,y:8,r:13}
+        ];
+        const fixedStars = Array.from({length: 60}, () => ({
+            x: Math.random() * 740 + 30, y: Math.random() * 580 + 30,
+            r: Math.random() * 2.3 + 0.8, speed: Math.random() * 0.1 + 0.04, phase: Math.random() * 6.28
+        }));
+
+        function getMoonPhaseInfo(dateVal) {
+            const d = dateVal ? new Date(dateVal) : new Date();
+            const knownNewMoon = new Date('2000-01-06T18:14:00Z').getTime();
+            const cycle = 29.530588 * 86400000;
+            let age = ((d.getTime() - knownNewMoon) % cycle) / 86400000;
+            if (age < 0) age += 29.530588;
+            const illum = Math.round((1 - Math.cos((age / 29.530588) * 2 * Math.PI)) / 2 * 100);
+
+            if (age < 1.8) return { age, illum, nameAr: '🌑 قمر المحاق (بداية النور)', nameEn: '🌑 New Moon', descAr: 'شخصية قيادية ملهمة تبدأ الفصول الجديدة بشغف وأمل.', descEn: 'A visionary soul who inspires fresh beginnings.' };
+            if (age < 7.4) return { age, illum, nameAr: '🌒 الهلال المتزايد (نجم الطموح)', nameEn: '🌒 Waxing Crescent', descAr: 'روح متفائلة تحب الحياة وتنشر الدفء أينما حلّت.', descEn: 'An optimistic spirit spreading warmth everywhere.' };
+            if (age < 11.1) return { age, illum, nameAr: '🌓 التربيع الأول (قوة الإرادة)', nameEn: '🌓 First Quarter', descAr: 'قلب شجاع وعزيمة صلبة تصنع المستحيل بالحب.', descEn: 'A courageous heart turning dreams into reality.' };
+            if (age < 14.8) return { age, illum, nameAr: '🌔 الأحدب المتزايد (سحر الجاذبية)', nameEn: '🌔 Waxing Gibbous', descAr: 'حضور آسر وقلب كريم يفيض بالوفاء والعطاء.', descEn: 'A magnetic presence overflowing with loyalty.' };
+            if (age < 16.6) return { age, illum, nameAr: '🌕 البدر المكتمل (تاج الجمال والكمال)', nameEn: '🌕 Full Moon', descAr: 'وُلدت ليلة اكتمال القمر؛ روحك مضيئة واستثنائية كالبدر تماماً!', descEn: 'Born under the Full Moon; your soul shines brilliantly!' };
+            if (age < 22.1) return { age, illum, nameAr: '🌖 الأحدب المتناقص (حكمة القلب)', nameEn: '🌖 Waning Gibbous', descAr: 'عقل حكيم ومشاعر صادقة تمنح الأمان لكل من حولها.', descEn: 'A wise mind offering peace and true affection.' };
+            if (age < 25.8) return { age, illum, nameAr: '🌗 التربيع الأخير (صفاء الروح)', nameEn: '🌗 Last Quarter', descAr: 'شخصية وفية عميقة الإحساس لا تنسى من تحب أبداً.', descEn: 'A deeply loyal soul who treasures every bond.' };
+            return { age, illum, nameAr: '🌘 الهلال المتناقص (نور الهدوء)', nameEn: '🌘 Waning Crescent', descAr: 'روح شاعرية حالمة تحمل أسرار الجمال والسكينة.', descEn: 'A poetic dreamer carrying beauty and serenity.' };
+        }
+        function drawBirthMoonScene(ctx, name, dateStr, phaseObj, isEn, pulse) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            const grad = ctx.createLinearGradient(0, 0, 800, 640);
+            grad.addColorStop(0, '#040610'); grad.addColorStop(0.5, '#0c1326'); grad.addColorStop(1, '#040610');
+            ctx.fillStyle = grad; ctx.fillRect(0, 0, 800, 640);
+
+            fixedStars.forEach(s => {
+                const alpha = 0.25 + 0.75 * Math.abs(Math.sin(pulse * s.speed + s.phase));
+                ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+                ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
+            });
+
+            // النجمة الملكية المشعة خلف القمر
+            ctx.save();
+            ctx.translate(400, 290);
+            const stScale = 1 + 0.08 * Math.sin(pulse * 0.15);
+            ctx.scale(stScale, stScale);
+            const stGlow = ctx.createRadialGradient(0, 0, 12, 0, 0, 175);
+            stGlow.addColorStop(0, 'rgba(212, 175, 55, 0.9)');
+            stGlow.addColorStop(0.45, 'rgba(56, 189, 248, 0.35)');
+            stGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = stGlow;
+            ctx.beginPath(); ctx.arc(0, 0, 175, 0, Math.PI * 2); ctx.fill();
+
+            ctx.fillStyle = 'rgba(253, 224, 71, 0.7)';
+            ctx.beginPath();
+            ctx.moveTo(0, -155); ctx.quadraticCurveTo(10, -10, 155, 0);
+            ctx.quadraticCurveTo(10, 10, 0, 155); ctx.quadraticCurveTo(-10, 10, -155, 0);
+            ctx.quadraticCurveTo(-10, -10, 0, -155); ctx.fill();
+            ctx.restore();
+
+            // رسم القمر الواقعي ثلاثي الأبعاد مع الفوهات والظل الفلكي
+            ctx.save();
+            ctx.translate(400, 290);
+            ctx.beginPath(); ctx.arc(0, 0, 82, 0, Math.PI * 2); ctx.clip();
+
+            const moonGrad = ctx.createRadialGradient(-25, -25, 10, 0, 0, 85);
+            moonGrad.addColorStop(0, '#fffbeb');
+            moonGrad.addColorStop(0.6, '#fde68a');
+            moonGrad.addColorStop(1, '#b45309');
+            ctx.fillStyle = moonGrad;
+            ctx.fillRect(-85, -85, 170, 170);
+
+            // رسم تضاريس وفوهات القمر الواقعية
+            moonCraters.forEach(c => {
+                ctx.fillStyle = 'rgba(120, 53, 15, 0.22)';
+                ctx.beginPath(); ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2); ctx.fill();
+                ctx.strokeStyle = 'rgba(255, 251, 235, 0.25)'; ctx.lineWidth = 1.5; ctx.stroke();
+            });
+
+            // ظل الطور الفلكي الحقيقي فوق القمر
+            const p = phaseObj.age / 29.530588;
+            ctx.fillStyle = 'rgba(6, 10, 24, 0.88)';
+            ctx.beginPath();
+            if (p <= 0.5) {
+                ctx.arc(0, 0, 84, Math.PI / 2, -Math.PI / 2, false);
+                const w = 84 * Math.cos(p * 2 * Math.PI);
+                ctx.ellipse(0, 0, Math.abs(w), 84, 0, -Math.PI / 2, Math.PI / 2, w < 0);
+            } else {
+                ctx.arc(0, 0, 84, -Math.PI / 2, Math.PI / 2, false);
+                const w = 84 * Math.cos(p * 2 * Math.PI);
+                ctx.ellipse(0, 0, Math.abs(w), 84, 0, Math.PI / 2, -Math.PI / 2, w > 0);
+            }
+            ctx.fill();
+            ctx.restore();
+
+            // الإطار والنصوص الفلكية الواقعية
+            ctx.strokeStyle = '#d4af37'; ctx.lineWidth = 5; ctx.strokeRect(18, 18, 764, 604);
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText('👑 مَمْلَكَةُ الْوُعُودِ العظمى • عائلة KR الملكية 👑', 400, 58);
+            ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 14px Cairo, sans-serif';
+            ctx.fillText('Kingdom of Promises • Birth Moon & Destiny Star', 400, 82);
+
+            ctx.fillStyle = '#ffffff'; ctx.font = 'bold 25px Cairo, sans-serif';
+            ctx.fillText(isEn ? `✨ ${name}'s Birth Moon ✨` : `✨ قمر ميلاد: ${name} ✨`, 400, 126);
+            ctx.fillStyle = '#94a3b8'; ctx.font = 'bold 16px Cairo, sans-serif';
+            ctx.fillText(isEn ? `${dateStr}  |  Illumination: ${phaseObj.illum}%` : `${dateStr}  |  نسبة إضاءة القمر: ${phaseObj.illum}%`, 400, 154);
+
+            ctx.fillStyle = '#fde047'; ctx.font = 'bold 23px Cairo, sans-serif';
+            ctx.fillText(isEn ? phaseObj.nameEn : phaseObj.nameAr, 400, 468);
+            ctx.fillStyle = '#e2e8f0'; ctx.font = '18px Cairo, sans-serif';
+            ctx.fillText(isEn ? phaseObj.descEn : phaseObj.descAr, 400, 505);
+
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 14px Cairo, sans-serif';
+            ctx.fillText('© Official Observatory - worldoflove-kr.github.io 👑 KR 👑', 400, 595);
+        }
+        window.revealBirthMoon = function() {
+            const name = document.getElementById('moon-user-name').value.trim() || 'نجم المملكة';
+            const dateVal = document.getElementById('moon-birth-date').value || '2000-01-01';
+            const isEn = document.documentElement.dir === 'ltr';
+            const phaseObj = getMoonPhaseInfo(dateVal);
+
+            const canvas = document.getElementById('birth-moon-canvas');
+            const ctx = canvas.getContext('2d');
+            drawBirthMoonScene(ctx, name, dateVal, phaseObj, isEn, 10);
+
+            document.getElementById('moon-download-btn').href = canvas.toDataURL('image/png');
+            const resBox = document.getElementById('moon-result-box');
+            resBox.style.display = 'block';
+
+            if (!document.getElementById('moon-video-btn')) {
+                const vBtn = document.createElement('button');
+                vBtn.id = 'moon-video-btn';
+                vBtn.type = 'button';
+                vBtn.textContent = isEn ? '🎬 Save Birth Moon as Live Video' : '🎬 حفظ قمر ميلادي كفيديو متحرك (نجوم ونبض)';
+                vBtn.style.cssText = 'display: inline-block; margin-top: 10px; padding: 10px 20px; background: linear-gradient(45deg, #0284c7, #ff007f); color: #fff; border: none; border-radius: 10px; font-weight: bold; font-size: 0.9rem; font-family: Cairo, sans-serif; cursor: pointer; box-shadow: 0 0 15px rgba(56,189,248,0.5);';
+                resBox.appendChild(vBtn);
+
+                vBtn.addEventListener('click', function() {
+                    if (!canvas.captureStream || typeof MediaRecorder === 'undefined') return;
+                    const curName = document.getElementById('moon-user-name').value.trim() || 'نجم المملكة';
+                    const curDate = document.getElementById('moon-birth-date').value || '2000-01-01';
+                    const curPhase = getMoonPhaseInfo(curDate);
+                    const curEn = document.documentElement.dir === 'ltr';
+
+                    vBtn.disabled = true;
+                    vBtn.textContent = curEn ? '⏳ Recording 4s Moon Video...' : '⏳ جاري تصوير قمر ميلادك ونجمتك (4 ثوانٍ)...';
+
+                    const stream = canvas.captureStream(30);
+                    const rec = new MediaRecorder(stream, { mimeType: 'video/webm' });
+                    const chunks = [];
+                    rec.ondataavailable = e => { if (e.data.size > 0) chunks.push(e.data); };
+                    rec.onstop = () => {
+                        const blob = new Blob(chunks, { type: 'video/webm' });
+                        const a = document.createElement('a');
+                        a.href = URL.createObjectURL(blob);
+                        a.download = 'My-Birth-Moon-Animated-KR.webm';
+                        a.click();
+                        vBtn.disabled = false;
+                        vBtn.textContent = curEn ? '🎬 Save Birth Moon as Live Video' : '🎬 حفظ قمر ميلادي كفيديو متحرك (نجوم ونبض)';
+                    };
+                    rec.start();
+                    let f = 0;
+                    const timer = setInterval(() => {
+                        f++;
+                        drawBirthMoonScene(ctx, curName, curDate, curPhase, curEn, f);
+                        if (f >= 120) { clearInterval(timer); rec.stop(); }
+                    }, 33);
+                });
+            }
+        };
+
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const t = document.getElementById('moon-title');
+                const d = document.getElementById('moon-desc');
+                const n = document.getElementById('moon-user-name');
+                const b = document.getElementById('moon-action-btn');
+                const dl = document.getElementById('moon-download-btn');
+                if (t) t.textContent = isEn ? 'Birth Moon & Destiny Star Observatory' : 'مرصد قمر الميلاد ونجمة القدر الكونية';
+                if (d) d.innerHTML = isEn 
+                    ? 'At the moment you were born, the stars aligned and <strong style="color:#d4af37;">your radiant Destiny Star shone behind your Birth Moon</strong>.. Enter your name and birth date to reveal your <strong style="color:#38bdf8;">true astronomical moon</strong>!'
+                    : 'في اللحظة التي أبصرت فيها الحياة، اصطفت النجوم في سماء الكون وأشرقت <strong style="color:#d4af37;">نجمة قدرك المضيئة خلف قمر ميلادك</strong> لتشهد على قدومك.. أدخل اسمك وتاريخ ميلادك ليكشف لك مرصد المملكة <strong style="color:#38bdf8;">لوحة قمرك الفلكي الحقيقي</strong> محاطاً بالنجوم!';
+                if (n) n.placeholder = isEn ? '✍️ Enter your noble name...' : '✍️ اكتب اسمك الكريم...';
+                if (b) b.textContent = isEn ? '🔭 Reveal My Birth Moon & Star Now 🌟' : '🔭 اكشف لوحة قمر ميلادي ونجمتي الآن 🌟';
+                if (dl) dl.textContent = isEn ? '📥 Save Birth Moon Image to Gallery' : '📥 حفظ لوحة قمر ميلادي في الاستوديو';
+            }, 60);
+        });
+    })();
+    </script>
 
             
             </body>
