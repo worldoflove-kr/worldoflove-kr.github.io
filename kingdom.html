@@ -1128,7 +1128,7 @@
         });
         
     </script>
-      <!-- شريط الروابط وشعار المملكة المتلون والنابض مع الترجمة التلقائية -->
+     <!-- التذييل الملكي الموحد ولوحة المؤشرات المطابقة لصفحة عالم الحب مع الترجمة التلقائية -->
     <style>
         @keyframes royalRainbowPulse {
             0% { color: #ff007f; text-shadow: 0 0 15px #ff007f, 0 0 30px #ff007f; transform: scale(1); }
@@ -1146,26 +1146,64 @@
         }
     </style>
 
-    <footer id="royal-kingdom-footer" style="text-align: center; padding: 25px 15px; margin-top: 30px; border-top: 1px solid rgba(212, 175, 55, 0.25); font-family: 'Cairo', sans-serif; position: relative; z-index: 100;">
-        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 22px; font-size: 0.85rem;">
-            <a href="articles.html" id="f-link-articles" style="color: #d4af37; text-decoration: none; font-weight: bold;">📖 مدونة ومقالات المملكة</a>
+    <footer id="royal-kingdom-footer" style="max-width: 440px; margin: 35px auto 20px; padding: 0 15px; font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 100;">
+        
+        <!-- رابط الشروط والأحكام الملكية -->
+        <div style="margin-bottom: 20px;">
+            <a href="terms.html" id="f-terms-top" style="color: #d4af37; text-decoration: none; font-size: 0.95rem; font-weight: bold;">⚖️ الشروط والأحكام السياسية الملكية للمنصة</a>
+        </div>
+
+        <!-- لوحة المؤشرات الرقمية ودرع الحماية السيبراني -->
+        <div style="background: rgba(15, 17, 26, 0.9); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 16px; padding: 20px 15px; margin-bottom: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.4);">
+            <h4 id="f-shield-title" style="color: #d4af37; margin: 0 0 18px 0; font-size: 1rem; line-height: 1.5;">📊 لوحة المؤشرات الرقمية ودرع الحماية السيبراني للمنصة</h4>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+                <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 14px 10px;">
+                    <div id="f-fw-label" style="font-size: 0.78rem; color: #cbd5e0; margin-bottom: 6px;">🛡️ نظام جدار حماية KR</div>
+                    <div style="font-size: 0.95rem; font-weight: bold; color: #4ade80;">Active 100%</div>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 14px 10px;">
+                    <div id="f-online-label" style="font-size: 0.78rem; color: #cbd5e0; margin-bottom: 6px;">👥 متواجدون الآن</div>
+                    <div style="font-size: 1.05rem; font-weight: bold; color: #38bdf8;">347</div>
+                </div>
+            </div>
+
+            <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 14px 10px; max-width: 65%; margin: 0 auto;">
+                <div id="f-sec-label" style="font-size: 0.78rem; color: #cbd5e0; margin-bottom: 6px;">⭐ تقييم الأمان الملكي</div>
+                <div style="font-size: 0.95rem; font-weight: bold; color: #d4af37;">A+ Secure</div>
+            </div>
+        </div>
+
+        <!-- صندوق عهد KR وحقوق النشر -->
+        <div style="background: rgba(15, 17, 26, 0.9); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 16px; padding: 22px 18px; margin-bottom: 22px; box-shadow: 0 8px 25px rgba(0,0,0,0.4);">
+            <div id="f-box-title" style="color: #d4af37; font-size: 0.92rem; font-weight: bold; margin-bottom: 12px;">⚖️ الشروط والأحكام السياسية الملكية للمنصة</div>
+            <p id="f-box-p1" style="font-size: 0.82rem; color: #e2e8f0; line-height: 1.7; margin: 0 0 10px 0;">
+                👑 عهد KR 👑 مرحباً بك في النظام الرقمي المشفر لـ Panda KR الملكي. تصفح آمن مئة بالمائة وضمانة ملكية مطلقة.
+            </p>
+            <p id="f-box-p2" style="font-size: 0.88rem; color: #fff; font-weight: bold; line-height: 1.7; margin: 0;">
+                جميع الحقوق محفوظة ومحمية بروتوكولياً بموجب سياسات النشر العالمية لـ Google AdSense. تصفح آمن مئة بالمئة وضمانة ملوكية مطلقة. ✨
+            </p>
+        </div>
+
+        <!-- روابط الصفحات الإضافية لقبول AdSense -->
+        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; font-size: 0.82rem;">
+            <a href="articles.html" id="f-link-articles" style="color: #d4af37; text-decoration: none; font-weight: bold;">📖 مدونة المملكة</a>
             <span style="color: #718096;">|</span>
             <a href="about.html" id="f-link-about" style="color: #00bfff; text-decoration: none; font-weight: bold;">ℹ️ من نحن واتصل بنا</a>
             <span style="color: #718096;">|</span>
             <a href="privacy.html" id="f-link-privacy" style="color: #ff007f; text-decoration: none; font-weight: bold;">🔒 سياسة الخصوصية</a>
         </div>
 
-        <div style="margin-bottom: 10px;">
+        <!-- الشعار المتلون والنابض -->
+        <div style="margin-bottom: 8px;">
             <span style="font-size: 2rem;">👑</span>
             <span class="kr-rainbow-logo">KR</span>
             <span style="font-size: 2rem;">👑</span>
         </div>
-
-        <div id="f-royal-subtitle" style="font-size: 0.95rem; font-weight: bold; color: #d4af37; text-shadow: 0 0 8px rgba(212, 175, 55, 0.4); margin-bottom: 8px;">
+        <div id="f-royal-subtitle" style="font-size: 0.92rem; font-weight: bold; color: #d4af37; text-shadow: 0 0 8px rgba(212, 175, 55, 0.4); margin-bottom: 6px;">
             ✨ منصة العائلة الملكية المعتمدة عالمياً ✨
         </div>
-
-        <div style="font-size: 0.95rem; font-weight: bold; color: #e2e8f0; letter-spacing: 1px;">
+        <div style="font-size: 0.92rem; font-weight: bold; color: #e2e8f0; letter-spacing: 1px;">
             ✨ 🐼 Panda KR ✨
         </div>
     </footer>
@@ -1176,14 +1214,24 @@
             if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
             const isEn = btn.getAttribute('onclick').includes("'en'");
             setTimeout(() => {
-                const a1 = document.getElementById('f-link-articles');
-                const a2 = document.getElementById('f-link-about');
-                const a3 = document.getElementById('f-link-privacy');
-                const sub = document.getElementById('f-royal-subtitle');
-                if (a1) a1.textContent = isEn ? '📖 Kingdom Blog & Articles' : '📖 مدونة ومقالات المملكة';
-                if (a2) a2.textContent = isEn ? 'ℹ️ About & Contact Us' : 'ℹ️ من نحن واتصل بنا';
-                if (a3) a3.textContent = isEn ? '🔒 Privacy Policy' : '🔒 سياسة الخصوصية';
-                if (sub) sub.textContent = isEn ? '✨ Globally Accredited Royal Family Platform ✨' : '✨ منصة العائلة الملكية المعتمدة عالمياً ✨';
+                const map = {
+                    'f-terms-top': isEn ? '⚖️ Royal Platform Political Terms & Conditions' : '⚖️ الشروط والأحكام السياسية الملكية للمنصة',
+                    'f-shield-title': isEn ? '📊 Digital Indicators & Cyber Protection Shield' : '📊 لوحة المؤشرات الرقمية ودرع الحماية السيبراني للمنصة',
+                    'f-fw-label': isEn ? '🛡️ KR Firewall System' : '🛡️ نظام جدار حماية KR',
+                    'f-online-label': isEn ? '👥 Online Now' : '👥 متواجدون الآن',
+                    'f-sec-label': isEn ? '⭐ Royal Security Rating' : '⭐ تقييم الأمان الملكي',
+                    'f-box-title': isEn ? '⚖️ Royal Platform Political Terms & Conditions' : '⚖️ الشروط والأحكام السياسية الملكية للمنصة',
+                    'f-box-p1': isEn ? '👑 KR Covenant 👑 Welcome to the encrypted digital system of Royal Panda KR. 100% safe browsing and absolute royal guarantee.' : '👑 عهد KR 👑 مرحباً بك في النظام الرقمي المشفر لـ Panda KR الملكي. تصفح آمن مئة بالمائة وضمانة ملكية مطلقة.',
+                    'f-box-p2': isEn ? 'All rights reserved and protocol-protected under global publishing policies of Google AdSense. 100% safe browsing and absolute royal guarantee. ✨' : 'جميع الحقوق محفوظة ومحمية بروتوكولياً بموجب سياسات النشر العالمية لـ Google AdSense. تصفح آمن مئة بالمئة وضمانة ملوكية مطلقة. ✨',
+                    'f-link-articles': isEn ? '📖 Kingdom Blog' : '📖 مدونة المملكة',
+                    'f-link-about': isEn ? 'ℹ️ About & Contact' : 'ℹ️ من نحن واتصل بنا',
+                    'f-link-privacy': isEn ? '🔒 Privacy Policy' : '🔒 سياسة الخصوصية',
+                    'f-royal-subtitle': isEn ? '✨ Globally Accredited Royal Family Platform ✨' : '✨ منصة العائلة الملكية المعتمدة عالمياً ✨'
+                };
+                for (const [id, text] of Object.entries(map)) {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = text;
+                }
             }, 60);
         });
     </script>
