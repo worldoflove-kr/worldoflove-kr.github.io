@@ -1048,50 +1048,49 @@
             }
 
             document.documentElement.dir = (lang === 'en') ? 'ltr' : 'rtl';
-        };
-         // ترجمة ذكية تتخطى الإيموجي والهمزات وتترجم حقول الإدخال بدقة 100%
-        const forceTranslateRemaining = window.switchLanguage;
-        window.switchLanguage = function(lang) {
-            if (typeof forceTranslateRemaining === 'function') forceTranslateRemaining(lang);
-            
-            // 1. ترجمة حقول الإدخال الأربعة في صندوق توأم الروح بالترتيب
-            const inputs = document.querySelectorAll('input');
-            inputs.forEach(inp => {
-                let p = inp.getAttribute('placeholder') || '';
-                if (lang === 'en') {
-                    if (p.includes('اسمك')) inp.setAttribute('placeholder', '✍️ Your Name...');
-                    if (p.includes('بلدك')) inp.setAttribute('placeholder', '📍 Your Country (e.g., Lebanon)...');
-                    if (p.includes('اسم الحبيب') || p.includes("Partner's Name")) inp.setAttribute('placeholder', "✍️ Partner's Name...");
-                    if (p.includes('بلده') || p.includes('البحرين') || p.includes("Partner's Country")) inp.setAttribute('placeholder', "📍 Partner's Country (e.g., Bahrain)...");
-                } else {
-                    if (p.includes('Your Name')) inp.setAttribute('placeholder', '✍️ اسمك...');
-                    if (p.includes('Your Country')) inp.setAttribute('placeholder', '📍 بلدك (مثلاً: لبنان)...');
-                    if (p.includes("Partner's Name")) inp.setAttribute('placeholder', '✍️ اسم الحبيب...');
-                    if (p.includes("Partner's Country")) inp.setAttribute('placeholder', '📍 بلده (مثلاً: البحرين)...');
-                }
-            });
+        };        // فرض الترجمة المباشرة لصندوق توأم الروح وصندوق التواريخ وحقول الإدخال
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn) return;
+            const onclickVal = btn.getAttribute('onclick') || '';
+            if (!onclickVal.includes('switchLanguage')) return;
 
-            // 2. ترجمة العبارات الثلاث المتبقية بغض النظر عن الهمزات
-            const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
-            let node;
-            while (node = walker.nextNode()) {
-                let t = node.nodeValue;
-                if (!t || !t.trim()) continue;
-                if (lang === 'en') {
-                    t = t.replace(/كل عام و[أا]نت النبضة الخالدة للمملكة[،,]?/g, 'Happy birthday to the eternal heartbeat of the Kingdom,')
-                         .replace(/هل تتساءلين [أا]ين يختبئ نصفك ال[آا]خر الحين[؟?]?/g, 'Wondering where your other half is hiding right now?')
-                         .replace(/ودعيه يشق.*فضاء الملوك[!！]?/g, "and let it cut through the galaxies to draw your heartbeats and locate your cross-continental soulmate live inside the Kings' space!");
-                } else {
-                    t = t.replace('Happy birthday to the eternal heartbeat of the Kingdom,', 'كل عام وأنت النبضة الخالدة للمملكة،')
-                         .replace('Wondering where your other half is hiding right now?', 'هل تتساءلين أين يختبئ نصفك الآخر الحين؟')
-                         .replace("and let it cut through the galaxies to draw your heartbeats and locate your cross-continental soulmate live inside the Kings' space!", 'ودعيه يشق مجرات الكون ليرسم نبضات قلبك ويحدد موقع توأم روحك العابر للقارات لايف بالعين المجردة بداخل فضاء الملوك!');
-                }
-                node.nodeValue = t;
-            }
-        };
+            const isEn = onclickVal.includes("'en'");
+
+            setTimeout(() => {
+                // 1. ترجمة حقول الإدخال الأربعة في صندوق توأم الروح بالترتيب
+                document.querySelectorAll('.glass-panel').forEach(panel => {
+                    if (panel.innerHTML.includes('🌠') || panel.innerHTML.includes('مذنب') || panel.innerHTML.includes('comet')) {
+                        const inputs = panel.querySelectorAll('input');
+                        if (inputs[0]) inputs[0].placeholder = isEn ? '✍️ Your Name...' : '✍️ اسمك...';
+                        if (inputs[1]) inputs[1].placeholder = isEn ? '📍 Your Country (e.g., Lebanon)...' : '📍 بلدك (مثلاً: لبنان)...';
+                        if (inputs[2]) inputs[2].placeholder = isEn ? "✍️ Partner's Name..." : '✍️ اسم الحبيب...';
+                        if (inputs[3]) inputs[3].placeholder = isEn ? "📍 Partner's Country (e.g., Bahrain)..." : '📍 بلده (مثلاً: البحرين)...';
+
+                        const desc = panel.querySelector('p');
+                        if (desc) {
+                            desc.innerHTML = isEn 
+                                ? "Wondering where your other half is hiding right now? Launch the radiant shooting love comet 🌠, and let it cut through the galaxies to draw your heartbeats and locate your cross-continental soulmate live inside the Kings' space!"
+                                : "هل تتساءلين أين يختبئ نصفك الآخر الحين؟ أطلقي مذنب الحب الشائع المشع 🌠، ودعيه يشق مجرات الكون ليرسم نبضات قلبك ويحدد موقع توأم روحك العابر للقارات لايف بالعين المجردة بداخل فضاء الملوك!";
+                        }
+                    }
+
+                    // 2. ترجمة جملة المعايدة المتبقية في صندوق التواريخ الخالدة
+                    if (panel.innerHTML.includes('التواريخ الخالدة') || panel.innerHTML.includes('Eternal Immortal Dates')) {
+                        panel.querySelectorAll('p, div, span').forEach(el => {
+                            if (el.children.length === 0) {
+                                if (isEn && el.textContent.includes('النبضة الخالدة')) {
+                                    el.textContent = "Happy birthday to the eternal heartbeat of the Kingdom, and the enchanting star";
+                                } else if (!isEn && el.textContent.includes('eternal heartbeat')) {
+                                    el.textContent = "كل عام وأنت النبضة الخالدة للمملكة، والنجمة الساحرة";
+                                }
+                            }
+                        });
+                    }
+                });
+            }, 50);
+        });
     })();
-
-
         
     </script>
             
