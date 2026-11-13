@@ -1554,6 +1554,133 @@
         });
     })();
     </script>
+    <!-- 20. محرك تسجيل وحفظ الوثيقة كبطاقة متحركة (فيديو حي بنجوم وإطار متوهج) -->
+    <script>
+    (function() {
+        function attachMotionVideoRecorder() {
+            const dlLink = document.getElementById('cov-download-link');
+            if (!dlLink || document.getElementById('cov-video-btn')) return;
+
+            const videoBtn = document.createElement('button');
+            videoBtn.id = 'cov-video-btn';
+            videoBtn.type = 'button';
+            videoBtn.textContent = '🎬 حفظ كبطاقة متحركة (فيديو حي)';
+            videoBtn.style.cssText = 'display: inline-block; margin-top: 10px; margin-right: 8px; padding: 10px 20px; background: linear-gradient(45deg, #8a2be2, #ff007f); color: #fff; border: none; border-radius: 10px; font-weight: bold; font-size: 0.9rem; font-family: Cairo, sans-serif; cursor: pointer; box-shadow: 0 0 15px rgba(138,43,226,0.5);';
+            dlLink.parentElement.appendChild(videoBtn);
+
+            videoBtn.addEventListener('click', function() {
+                const isEn = document.documentElement.dir === 'ltr';
+                const from = document.getElementById('cov-from').value.trim() || 'ملك المملكة';
+                const to = document.getElementById('cov-to').value.trim() || 'توأم الروح';
+                const promise = document.getElementById('cov-text').value.trim() || 'أعاهدك على الوفاء والمحبة الصادقة مدى الحياة تحت سماء مملكة الوعود.';
+                const today = new Date().toLocaleDateString('en-GB');
+                const serial = 'KR-' + Math.floor(100000 + Math.random() * 900000);
+
+                const canvas = document.getElementById('royal-cert-canvas');
+                const ctx = canvas.getContext('2d');
+                ctx.direction = isEn ? 'ltr' : 'rtl';
+
+                if (!canvas.captureStream || typeof MediaRecorder === 'undefined') {
+                    alert(isEn ? 'Your browser does not support direct motion video recording, please use the Image download button.' : 'متصفح هاتفك لا يدعم تسجيل الفيديو المباشر، يرجى استخدام زر حفظ الصورة.');
+                    return;
+                }
+
+                videoBtn.disabled = true;
+                videoBtn.textContent = isEn ? '⏳ Recording 4s Motion Card...' : '⏳ جاري تصوير البطاقة المتحركة (4 ثوانٍ)...';
+
+                const stars = Array.from({length: 35}, () => ({
+                    x: Math.random() * 740 + 30,
+                    y: Math.random() * 540 + 30,
+                    r: Math.random() * 2.5 + 1,
+                    speed: Math.random() * 0.08 + 0.03,
+                    phase: Math.random() * Math.PI * 2
+                }));
+
+                const stream = canvas.captureStream(30);
+                const recorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
+                const chunks = [];
+                recorder.ondataavailable = e => { if (e.data.size > 0) chunks.push(e.data); };
+                recorder.onstop = () => {
+                    const blob = new Blob(chunks, { type: 'video/webm' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'Kingdom-of-Promises-Animated.webm';
+                    a.click();
+                    videoBtn.disabled = false;
+                    videoBtn.textContent = isEn ? '🎬 Save as Animated Motion Card' : '🎬 حفظ كبطاقة متحركة (فيديو حي)';
+                };
+
+                recorder.start();
+                let frame = 0;
+                const animInterval = setInterval(() => {
+                    frame++;
+                    const pulse = Math.sin(frame * 0.12);
+
+                    const grad = ctx.createLinearGradient(0, 0, 800, 600);
+                    grad.addColorStop(0, '#070410'); grad.addColorStop(0.5, '#1d0d3b'); grad.addColorStop(1, '#070410');
+                    ctx.fillStyle = grad; ctx.fillRect(0, 0, 800, 600);
+
+                    // رسم النجوم المتلألئة المتحركة داخل البطاقة
+                    stars.forEach(s => {
+                        const alpha = 0.3 + 0.7 * Math.abs(Math.sin(frame * s.speed + s.phase));
+                        ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+                        ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
+                    });
+
+                    // علامة مائية نابضة
+                    ctx.save();
+                    ctx.fillStyle = `rgba(212, 175, 55, ${0.06 + 0.03 * pulse})`;
+                    ctx.font = 'bold 95px Cairo, sans-serif'; ctx.textAlign = 'center';
+                    ctx.fillText('👑 KR 👑', 400, 315);
+                    ctx.restore();
+
+                    // إطار متوهج متغير اللون
+                    ctx.strokeStyle = pulse > 0 ? '#d4af37' : '#ff007f';
+                    ctx.lineWidth = 6 + pulse * 2;
+                    ctx.strokeRect(20, 20, 760, 560);
+
+                    ctx.textAlign = 'center';
+                    ctx.fillStyle = '#d4af37'; ctx.font = 'bold 20px Cairo, sans-serif';
+                    ctx.fillText('👑 مَمْلَكَةُ الْوُعُودِ العظمى • عائلة KR الملكية 👑', 400, 68);
+                    ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 15px Cairo, sans-serif';
+                    ctx.fillText('Kingdom of Promises • Royal KR Official Platform', 400, 94);
+
+                    ctx.fillStyle = '#ffffff'; ctx.font = 'bold 26px Cairo, sans-serif';
+                    ctx.fillText(isEn ? '📜 ROYAL COVENANT CERTIFICATE 📜' : '📜 وثيقة ميثاق وعهد ملكي معتمد 📜', 400, 148);
+
+                    // الأسماء تنبض بالحجم والإضاءة
+                    ctx.fillStyle = '#ff007f';
+                    ctx.font = `bold ${Math.round(24 + pulse * 2)}px Cairo, sans-serif`;
+                    ctx.fillText(isEn ? `From: ${from}   💖   To: ${to}` : `من: ${from}   💖   إلى: ${to}`, 400, 198);
+
+                    ctx.fillStyle = '#f8fafc'; ctx.font = '21px Cairo, sans-serif';
+                    const words = promise.split(' ');
+                    let line = ''; let y = 255;
+                    for (let n = 0; n < words.length; n++) {
+                        const testLine = line + words[n] + ' ';
+                        if (ctx.measureText(testLine).width > 640 && n > 0) {
+                            ctx.fillText(line, 400, y); line = words[n] + ' '; y += 38;
+                        } else { line = testLine; }
+                    }
+                    ctx.fillText(line, 400, y);
+
+                    ctx.fillStyle = '#d4af37'; ctx.font = 'bold 17px Cairo, sans-serif';
+                    ctx.fillText(isEn ? `Date: ${today}  |  Seal: 👑 KR 👑  |  ID: ${serial}` : `التاريخ: ${today}  |  الختم الملكي: 👑 KR 👑  |  رقم التوثيق: ${serial}`, 400, 505);
+                    ctx.fillStyle = '#94a3b8'; ctx.font = 'bold 13px Cairo, sans-serif';
+                    ctx.fillText('© Verified Original Document - worldoflove-kr.github.io', 400, 535);
+
+                    if (frame >= 120) {
+                        clearInterval(animInterval);
+                        recorder.stop();
+                    }
+                }, 33);
+            });
+        }
+
+        setTimeout(attachMotionVideoRecorder, 500);
+    })();
+    </script>
 
 
             
