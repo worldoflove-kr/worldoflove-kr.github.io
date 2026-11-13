@@ -1128,16 +1128,66 @@
         });
         
     </script>
-    <!-- شريط الروابط القانونية والمقالات لقبول Google AdSense -->
-    <footer style="text-align: center; padding: 20px 10px; margin-top: 30px; border-top: 1px solid rgba(212, 175, 55, 0.25); font-family: 'Cairo', sans-serif; font-size: 0.85rem; position: relative; z-index: 100;">
-        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 10px;">
-            <a href="articles.html" style="color: #d4af37; text-decoration: none; font-weight: bold;">📖 مدونة ومقالات المملكة</a>
+      <!-- شريط الروابط وشعار المملكة المتلون والنابض مع الترجمة التلقائية -->
+    <style>
+        @keyframes royalRainbowPulse {
+            0% { color: #ff007f; text-shadow: 0 0 15px #ff007f, 0 0 30px #ff007f; transform: scale(1); }
+            25% { color: #00bfff; text-shadow: 0 0 15px #00bfff, 0 0 30px #00bfff; transform: scale(1.06); }
+            50% { color: #10b981; text-shadow: 0 0 15px #10b981, 0 0 30px #10b981; transform: scale(1); }
+            75% { color: #d4af37; text-shadow: 0 0 15px #d4af37, 0 0 30px #d4af37; transform: scale(1.06); }
+            100% { color: #8a2be2; text-shadow: 0 0 15px #8a2be2, 0 0 30px #8a2be2; transform: scale(1); }
+        }
+        .kr-rainbow-logo {
+            display: inline-block;
+            font-size: 2.1rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            animation: royalRainbowPulse 4s infinite alternate ease-in-out;
+        }
+    </style>
+
+    <footer id="royal-kingdom-footer" style="text-align: center; padding: 25px 15px; margin-top: 30px; border-top: 1px solid rgba(212, 175, 55, 0.25); font-family: 'Cairo', sans-serif; position: relative; z-index: 100;">
+        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 22px; font-size: 0.85rem;">
+            <a href="articles.html" id="f-link-articles" style="color: #d4af37; text-decoration: none; font-weight: bold;">📖 مدونة ومقالات المملكة</a>
             <span style="color: #718096;">|</span>
-            <a href="about.html" style="color: #00bfff; text-decoration: none; font-weight: bold;">ℹ️ من نحن واتصل بنا</a>
+            <a href="about.html" id="f-link-about" style="color: #00bfff; text-decoration: none; font-weight: bold;">ℹ️ من نحن واتصل بنا</a>
             <span style="color: #718096;">|</span>
-            <a href="privacy.html" style="color: #ff007f; text-decoration: none; font-weight: bold;">🔒 سياسة الخصوصية</a>
+            <a href="privacy.html" id="f-link-privacy" style="color: #ff007f; text-decoration: none; font-weight: bold;">🔒 سياسة الخصوصية</a>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <span style="font-size: 2rem;">👑</span>
+            <span class="kr-rainbow-logo">KR</span>
+            <span style="font-size: 2rem;">👑</span>
+        </div>
+
+        <div id="f-royal-subtitle" style="font-size: 0.95rem; font-weight: bold; color: #d4af37; text-shadow: 0 0 8px rgba(212, 175, 55, 0.4); margin-bottom: 8px;">
+            ✨ منصة العائلة الملكية المعتمدة عالمياً ✨
+        </div>
+
+        <div style="font-size: 0.95rem; font-weight: bold; color: #e2e8f0; letter-spacing: 1px;">
+            ✨ 🐼 Panda KR ✨
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const a1 = document.getElementById('f-link-articles');
+                const a2 = document.getElementById('f-link-about');
+                const a3 = document.getElementById('f-link-privacy');
+                const sub = document.getElementById('f-royal-subtitle');
+                if (a1) a1.textContent = isEn ? '📖 Kingdom Blog & Articles' : '📖 مدونة ومقالات المملكة';
+                if (a2) a2.textContent = isEn ? 'ℹ️ About & Contact Us' : 'ℹ️ من نحن واتصل بنا';
+                if (a3) a3.textContent = isEn ? '🔒 Privacy Policy' : '🔒 سياسة الخصوصية';
+                if (sub) sub.textContent = isEn ? '✨ Globally Accredited Royal Family Platform ✨' : '✨ منصة العائلة الملكية المعتمدة عالمياً ✨';
+            }, 60);
+        });
+    </script>
+
             
             </body>
 
