@@ -1109,20 +1109,22 @@
                 });
             }, 60);
         });
-        // ترجمة الجملة الأخيرة المتبقية في صندوق التواريخ
+             // ترجمة الجملة الأخيرة في صندوق التواريخ بأمان تام دون المساس بالعداد
         document.addEventListener('click', function(e) {
             const btn = e.target.closest('button');
             if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
             const isEn = btn.getAttribute('onclick').includes("'en'");
             setTimeout(() => {
-                document.querySelectorAll('.glass-panel').forEach(p => {
-                    if (p.innerHTML.includes('التواريخ الخالدة') || p.innerHTML.includes('Eternal Immortal Dates')) {
-                        p.innerHTML = isEn 
-                            ? p.innerHTML.replace('كل عام وأنت النبضة الخالدة للمملكة', 'Happy birthday to the eternal heartbeat of the Kingdom')
-                            : p.innerHTML.replace('Happy birthday to the eternal heartbeat of the Kingdom', 'كل عام وأنت النبضة الخالدة للمملكة');
+                const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+                let n;
+                while (n = walker.nextNode()) {
+                    if (isEn && n.nodeValue.includes('النبضة الخالدة')) {
+                        n.nodeValue = n.nodeValue.replace(/كل عام.*للمملكة[،,]?/, 'Happy birthday to the eternal heartbeat of the Kingdom,');
+                    } else if (!isEn && n.nodeValue.includes('eternal heartbeat')) {
+                        n.nodeValue = n.nodeValue.replace(/Happy birthday.*Kingdom[،,]?/, 'كل عام وأنت النبضة الخالدة للمملكة،');
                     }
-                });
-            }, 80);
+                }
+            }, 100);
         });
         
     </script>
