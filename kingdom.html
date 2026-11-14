@@ -2179,6 +2179,91 @@
         });
     })();
     </script>
+    <!-- 23. أزرار المشاركة المباشرة والرجوع والتحديث داخل كبسولة الزمن الكونية (عربي ⇄ إنجليزي) -->
+    <script>
+    (function() {
+        function addCapsuleControlButtons() {
+            const shareArea = document.getElementById('cap-share-area');
+            if (!shareArea || document.getElementById('cap-share-direct-btn')) return;
+
+            const btnGroup = shareArea.querySelector('div:last-child');
+            if (!btnGroup) return;
+
+            // 1. زر المشاركة المباشرة (واتساب / فيسبوك / قائمة مشاركة الهاتف)
+            const shareBtn = document.createElement('button');
+            shareBtn.id = 'cap-share-direct-btn';
+            shareBtn.type = 'button';
+            shareBtn.textContent = '📤 مشاركة الكبسولة';
+            shareBtn.style.cssText = 'padding: 9px 16px; background: #10b981; color: #fff; border: none; border-radius: 10px; font-weight: bold; font-family: Cairo, sans-serif; cursor: pointer; box-shadow: 0 0 12px rgba(16,185,129,0.5);';
+            shareBtn.onclick = function() {
+                const link = document.getElementById('cap-generated-link')?.value || window.location.href;
+                const isEn = document.documentElement.dir === 'ltr';
+                const text = isEn 
+                    ? '🔐✨ I sealed a secret message for you inside a Cosmic Time Capsule at Kingdom of Promises! Open the link to see the countdown:'
+                    : '🔐✨ أغلقتُ لك رسالة سرية داخل كبسولة الزمن الكونية في مملكة الوعود! افتح الرابط لمراقبة العدّاد التنازلي:';
+                if (navigator.share) {
+                    navigator.share({ title: 'Kingdom of Promises - KR', text: text, url: link }).catch(() => {});
+                } else {
+                    window.open(`https://wa.me{encodeURIComponent(text + '\n' + link)}`, '_blank');
+                }
+            };
+
+            // 2. زر الرجوع للتعديل
+            const backBtn = document.createElement('button');
+            backBtn.id = 'cap-back-btn';
+            backBtn.type = 'button';
+            backBtn.textContent = '↩️ رجوع للتعديل';
+            backBtn.style.cssText = 'padding: 9px 16px; background: #d4af37; color: #090514; border: none; border-radius: 10px; font-weight: bold; font-family: Cairo, sans-serif; cursor: pointer;';
+            backBtn.onclick = function() {
+                const view = document.getElementById('cap-incoming-view');
+                if (view) view.style.display = 'none';
+                document.getElementById('cap-secret-msg')?.focus();
+            };
+
+            // 3. زر تحديث / كبسولة جديدة
+            const resetBtn = document.createElement('button');
+            resetBtn.id = 'cap-reset-btn';
+            resetBtn.type = 'button';
+            resetBtn.textContent = '🔄 تحديث / كبسولة جديدة';
+            resetBtn.style.cssText = 'padding: 9px 16px; background: #334155; color: #fff; border: 1px solid #94a3b8; border-radius: 10px; font-weight: bold; font-family: Cairo, sans-serif; cursor: pointer;';
+            resetBtn.onclick = function() {
+                if (window.capsuleTimerInterval) clearInterval(window.capsuleTimerInterval);
+                ['cap-sender', 'cap-receiver', 'cap-secret-msg', 'cap-unlock-time', 'cap-generated-link'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.value = '';
+                });
+                const view = document.getElementById('cap-incoming-view');
+                if (view) { view.style.display = 'none'; view.innerHTML = ''; }
+                shareArea.style.display = 'none';
+                if (window.location.search.includes('capsule=')) {
+                    window.history.replaceState({}, '', window.location.pathname);
+                }
+                document.getElementById('cap-sender')?.focus();
+            };
+
+            btnGroup.appendChild(shareBtn);
+            btnGroup.appendChild(backBtn);
+            btnGroup.appendChild(resetBtn);
+        }
+
+        setTimeout(addCapsuleControlButtons, 400);
+
+        // ربط الترجمة التلقائية للأزرار الثلاثة
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const s = document.getElementById('cap-share-direct-btn');
+                const b = document.getElementById('cap-back-btn');
+                const r = document.getElementById('cap-reset-btn');
+                if (s) s.textContent = isEn ? '📤 Share Capsule' : '📤 مشاركة الكبسولة';
+                if (b) b.textContent = isEn ? '↩️ Back to Edit' : '↩️ رجوع للتعديل';
+                if (r) r.textContent = isEn ? '🔄 Reset / New Capsule' : '🔄 تحديث / كبسولة جديدة';
+            }, 60);
+        });
+    })();
+    </script>
 
     
     
