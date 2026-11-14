@@ -4274,6 +4274,319 @@
         });
     })();
     </script>
+    <!-- 30. قبة الأكسجين النقي (مشهد فضائي متحرك بالكامل + أسماء وكلمات مضيئة + فيديو حي) -->
+    <style>
+        @keyframes oxygenDomeGlow {
+            0% { box-shadow: 0 0 24px rgba(56, 189, 248, 0.5), inset 0 0 24px rgba(34, 211, 238, 0.25); border-color: #38bdf8; }
+            50% { box-shadow: 0 0 42px rgba(34, 211, 238, 0.8), inset 0 0 34px rgba(253, 224, 71, 0.3); border-color: #fde047; }
+            100% { box-shadow: 0 0 24px rgba(56, 189, 248, 0.5), inset 0 0 24px rgba(34, 211, 238, 0.25); border-color: #38bdf8; }
+        }
+        @keyframes neonTextPulse {
+            0% { text-shadow: 0 0 8px rgba(56, 189, 248, 0.8), 0 0 18px rgba(34, 211, 238, 0.5); }
+            50% { text-shadow: 0 0 14px rgba(253, 224, 71, 0.95), 0 0 28px rgba(56, 189, 248, 0.9); }
+            100% { text-shadow: 0 0 8px rgba(56, 189, 248, 0.8), 0 0 18px rgba(34, 211, 238, 0.5); }
+        }
+        #royal-oxygen-dome {
+            max-width: 440px; margin: 30px auto; padding: 26px 18px;
+            background: linear-gradient(180deg, rgba(6, 16, 30, 0.96), rgba(12, 28, 48, 0.96));
+            border: 2px solid #38bdf8; border-radius: 20px;
+            animation: oxygenDomeGlow 4.5s infinite ease-in-out;
+            font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 50;
+        }
+        .ox-glow-input {
+            width: 100%; box-sizing: border-box; background: rgba(56, 189, 248, 0.09);
+            border: 1.5px solid #38bdf8; border-radius: 12px; padding: 11px 14px;
+            color: #fef08a; font-weight: bold; font-family: 'Cairo', sans-serif; font-size: 0.95rem;
+            margin-bottom: 12px; outline: none; text-align: center;
+            box-shadow: 0 0 14px rgba(56, 189, 248, 0.3);
+            animation: neonTextPulse 3s infinite ease-in-out;
+        }
+        .ox-btn {
+            width: 100%; padding: 13px; background: linear-gradient(45deg, #0284c7, #06b6d4, #d4af37);
+            background-size: 200% 200%; border: 1px solid #fde047; border-radius: 12px; color: #fff;
+            font-weight: bold; font-size: 0.96rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+            box-shadow: 0 0 22px rgba(34, 211, 238, 0.6);
+        }
+    </style>
+    <style>
+        .ox-quote-chip {
+            background: rgba(34, 211, 238, 0.14); border: 1px solid #38bdf8; color: #e0f2fe;
+            border-radius: 18px; padding: 6px 12px; font-size: 0.78rem; font-family: 'Cairo', sans-serif;
+            cursor: pointer; animation: neonTextPulse 3.5s infinite ease-in-out;
+        }
+    </style>
+
+    <script>
+    (function() {
+        const oxygenHTML = `
+        <div id="royal-oxygen-dome">
+            <div style="font-size: 2.1rem; margin-bottom: 6px;">🧑‍🚀🫧🌐✨</div>
+            <h3 id="ox-title" style="color: #fde047; margin: 0 0 10px 0; font-size: 1.26rem; animation: neonTextPulse 3s infinite;">قبة الأكسجين النقي — مَنْ هُوَ أُكْسِجِينُ رُوحِكَ؟</h3>
+            <p id="ox-desc" style="color: #e0f2fe; font-size: 0.86rem; line-height: 1.85; margin: 0 0 16px 0;">
+                في كوكبٍ مزدحم بالضجيج، هناك شخصٌ واحدٌ يمثّل <strong style="color:#38bdf8;">الأكسجين النقي</strong> لقلبك.. اكتب اسمك واسم من تُحب هنا، وشاهد <strong style="color:#fde047;">قبتكما الزجاجية المضيئة</strong> تسبح في الفضاء وسط الشهب والفقاعات المتوهجة!
+            </p>
+
+            <input type="text" id="ox-my-name" class="ox-glow-input" placeholder="✨ اكتب اسمك المضيء...">
+            <input type="text" id="ox-soul-name" class="ox-glow-input" placeholder="🫧 اسم الشخص الذي يمثّل أكسجين روحك...">
+
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 10px;">
+                <button type="button" class="ox-quote-chip" id="ox-q1">🫧 أكسجين روحي</button>
+                <button type="button" class="ox-quote-chip" id="ox-q2">🌐 كوكبنا الخاص</button>
+                <button type="button" class="ox-quote-chip" id="ox-q3">✨ نبض الحياة</button>
+            </div>
+
+            <textarea id="ox-msg-text" class="ox-glow-input" rows="2" placeholder="💫 اكتب همستك المضيئة هنا أو اختر من الأعلى..."></textarea>
+
+            <button type="button" class="ox-btn" id="ox-launch-btn">🧑‍🚀 أطلق قبة الأكسجين المضيئة 🫧</button>
+
+            <div id="ox-result-area" style="display: none; margin-top: 20px;">
+                <canvas id="oxygen-dome-canvas" width="800" height="640" style="width: 100%; border-radius: 14px; border: 2px solid #38bdf8; box-shadow: 0 0 30px rgba(56, 189, 248, 0.7);"></canvas>
+                <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 12px;">
+                    <button type="button" id="ox-video-btn" style="padding: 10px 18px; background: linear-gradient(45deg, #0284c7, #06b6d4); color: #fff; border: 1px solid #fde047; border-radius: 10px; font-weight: bold; font-size: 0.88rem; font-family: Cairo, sans-serif; cursor: pointer; box-shadow: 0 0 18px rgba(56,189,248,0.6);">🎬 حفظ القبة الفضائية كفيديو هادئ</button>
+                    <a id="ox-img-link" download="Pure-Oxygen-Dome-KR.png" style="padding: 10px 18px; background: #1e293b; color: #fde047; border: 1px solid #fde047; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 0.88rem;">📥 حفظ كصورة</a>
+                </div>
+            </div>
+        </div>
+        `;
+
+        const solarBox = document.getElementById('royal-solar-zodiac');
+        if (solarBox) {
+            solarBox.insertAdjacentHTML('afterend', oxygenHTML);
+        } else {
+            const footer = document.getElementById('royal-kingdom-footer');
+            if (footer) footer.insertAdjacentHTML('beforebegin', oxygenHTML);
+        }
+    })();
+    </script>
+    <script>
+    (function() {
+        const oxAr = {
+            1: "في كوكبٍ مزدحم بالبشر، كنتَ أنتَ الأكسجين النقي الوحيد لروحي.",
+            2: "هربنا من ضجيج الأرض لنبني قبتنا الخاصة تحت نجوم الوفاء.",
+            3: "معك فقط أتنفس الحياة بسلام، وكأن الكون كله لنا وحدنا."
+        };
+        const oxEn = {
+            1: "In a crowded planet, you were the only pure oxygen for my soul.",
+            2: "We escaped Earth's noise to build our glass dome beneath loyal stars.",
+            3: "Only with you do I breathe life in peace, as if the universe is ours alone."
+        };
+
+        [1, 2, 3].forEach(n => {
+            const btn = document.getElementById('ox-q' + n);
+            if (btn) btn.onclick = () => {
+                const isEn = document.documentElement.dir === 'ltr';
+                const box = document.getElementById('ox-msg-text');
+                if (box) box.value = isEn ? oxEn[n] : oxAr[n];
+            };
+        });
+
+        const oxBubbles = Array.from({length: 26}, (_, i) => ({
+            x: 180 + (i * 47) % 440,
+            y: 220 + (i * 39) % 340,
+            r: 3 + (i % 6),
+            speed: 0.35 + (i % 4) * 0.12,
+            wobble: i * 0.7
+        }));
+
+        function drawOxygenDomeScene(ctx, myName, soulName, msgText, isEn, frame) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            const sky = ctx.createLinearGradient(0, 0, 0, 640);
+            sky.addColorStop(0, '#071324'); sky.addColorStop(0.55, '#13314c'); sky.addColorStop(1, '#091929');
+            ctx.fillStyle = sky; ctx.fillRect(0, 0, 800, 640);
+
+            // 1. شهابان هادئان بطيئان يعبران السماء بنعومة
+            [0, 1].forEach(idx => {
+                const p = (((frame * 1.4) + idx * 450) % 900) / 900;
+                const sx = 520 + idx * 110 - p * 320;
+                const sy = 60 + idx * 40 + p * 230;
+                const tGrad = ctx.createLinearGradient(sx, sy, sx + 75, sy - 55);
+                tGrad.addColorStop(0, 'rgba(255, 255, 255, 0.9)');
+                tGrad.addColorStop(0.4, 'rgba(125, 211, 252, 0.45)');
+                tGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+                ctx.strokeStyle = tGrad; ctx.lineWidth = 3;
+                ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(sx + 75, sy - 55); ctx.stroke();
+                ctx.fillStyle = '#ffffff'; ctx.beginPath(); ctx.arc(sx, sy, 3.2, 0, Math.PI * 2); ctx.fill();
+            });
+
+            // 2. أرض الكوكب الضبابية الناعمة
+            const groundGrad = ctx.createLinearGradient(0, 460, 0, 640);
+            groundGrad.addColorStop(0, 'rgba(56, 189, 248, 0.18)');
+            groundGrad.addColorStop(1, 'rgba(6, 15, 28, 0.95)');
+            ctx.fillStyle = groundGrad; ctx.fillRect(0, 475, 800, 165);
+
+            // 3. رسم القبة الزجاجية الهندسية المتوهجة بنبض بطيء
+            const domePulse = 0.65 + 0.35 * Math.sin(frame * 0.04);
+            ctx.save();
+            ctx.translate(450, 480);
+            const dGlow = ctx.createRadialGradient(0, -80, 20, 0, -80, 220);
+            dGlow.addColorStop(0, `rgba(56, 189, 248, ${0.28 * domePulse})`);
+            dGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = dGlow; ctx.beginPath(); ctx.arc(0, -80, 220, Math.PI, 0); ctx.fill();
+
+            ctx.strokeStyle = `rgba(186, 230, 253, ${0.55 + 0.3 * domePulse})`;
+            ctx.lineWidth = 2.5;
+            ctx.beginPath(); ctx.arc(0, 0, 185, Math.PI, 0); ctx.closePath(); ctx.stroke();
+
+            // خطوط الشبكة الهندسية للقبة الزجاجية
+            [-120, -60, 0, 60, 120].forEach(gx => {
+                ctx.beginPath(); ctx.moveTo(0, -185); ctx.quadraticCurveTo(gx * 0.7, -95, gx * 1.45, 0); ctx.stroke();
+            });
+            [-55, -115, -160].forEach(gy => {
+                const hw = Math.sqrt(Math.max(0, 185 * 185 - gy * gy));
+                ctx.beginPath(); ctx.moveTo(-hw, gy); ctx.lineTo(hw, gy); ctx.stroke();
+            });
+            ctx.restore();
+            // 4. رسم رائد الفضاء يطفو ببطء شديد بانعدام الجاذبية بجانب القبة
+            const floatY = Math.sin(frame * 0.03) * 8;
+            const floatRot = Math.sin(frame * 0.025) * 0.04;
+            ctx.save();
+            ctx.translate(225, 435 + floatY);
+            ctx.rotate(floatRot);
+
+            // حقيبة الأكسجين المضيئة خلف الظهر
+            ctx.fillStyle = '#cbd5e1'; ctx.fillRect(-24, -38, 14, 34);
+            // بدلة رائد الفضاء البيضاء
+            ctx.fillStyle = '#f8fafc'; ctx.shadowColor = '#38bdf8'; ctx.shadowBlur = 15;
+            ctx.beginPath(); ctx.roundRect(-14, -42, 32, 46, 10); ctx.fill();
+            // الذراعان والساقان
+            ctx.fillRect(-22, -34, 9, 26); ctx.fillRect(18, -34, 9, 26);
+            ctx.fillRect(-12, 4, 11, 28); ctx.fillRect(4, 4, 11, 28);
+            // الخوذة والواجهة الزجاجية اللامعة
+            ctx.beginPath(); ctx.arc(2, -56, 18, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = '#0f172a';
+            ctx.beginPath(); ctx.ellipse(5, -56, 12, 10, 0, 0, Math.PI * 2); ctx.fill();
+            // نقطة ضوء أكسجين زرقاء على المعصم
+            ctx.fillStyle = '#38bdf8'; ctx.beginPath(); ctx.arc(22, -16, 3.5, 0, Math.PI * 2); ctx.fill();
+            ctx.restore();
+
+            // 5. تصاعد فقاعات الأكسجين المضيئة ببطء شديد نحو القبة
+            oxBubbles.forEach(b => {
+                const by = 480 - (((frame * b.speed) + b.y) % 290);
+                const bx = b.x + Math.sin(frame * 0.025 + b.wobble) * 10;
+                ctx.save();
+                ctx.strokeStyle = 'rgba(125, 211, 252, 0.75)';
+                ctx.fillStyle = 'rgba(56, 189, 248, 0.18)';
+                ctx.lineWidth = 1.5;
+                ctx.beginPath(); ctx.arc(bx, by, b.r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+                ctx.restore();
+            });
+
+            // 6. الإطار والهوية والأسماء والكلمات المضيئة المتوهجة باستمرار
+            const textGlow = 14 + 10 * Math.sin(frame * 0.06);
+            ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 5; ctx.strokeRect(18, 18, 764, 604);
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText('👑 مَمْلَكَةُ الْوُعُودِ العظمى • عائلة KR الملكية 👑', 400, 56);
+            ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 14px Cairo, sans-serif';
+            ctx.fillText('Kingdom of Promises • Pure Oxygen Dome', 400, 80);
+
+            // توهج الأسماء المضيئة
+            ctx.save();
+            ctx.shadowColor = '#fde047'; ctx.shadowBlur = textGlow;
+            ctx.fillStyle = '#fef08a'; ctx.font = 'bold 26px Cairo, sans-serif';
+            ctx.fillText(isEn ? `🫧 ${myName}  &  ${soulName} 🫧` : `🫧 ${myName}  &  ${soulName} 🫧`, 400, 130);
+            ctx.restore();
+
+            // توهج عبارة الحب المضيئة
+            ctx.save();
+            ctx.shadowColor = '#38bdf8'; ctx.shadowBlur = textGlow;
+            ctx.fillStyle = '#e0f2fe'; ctx.font = 'bold 21px Cairo, sans-serif';
+            const words = msgText.split(' ');
+            let line = ''; let y = 185;
+            for (let n = 0; n < words.length; n++) {
+                const testLine = line + words[n] + ' ';
+                if (ctx.measureText(testLine).width > 640 && n > 0) {
+                    ctx.fillText(line, 400, y); line = words[n] + ' '; y += 36;
+                } else { line = testLine; }
+            }
+            ctx.fillText(line, 400, y);
+            ctx.restore();
+
+            ctx.fillStyle = '#fde047'; ctx.font = 'bold 13px Cairo, sans-serif';
+            ctx.fillText('© Pure Oxygen Sanctuary - worldoflove-kr.github.io 👑 KR 👑', 400, 595);
+        }
+
+        const oxLaunchBtn = document.getElementById('ox-launch-btn');
+        if (oxLaunchBtn) oxLaunchBtn.onclick = () => {
+            const mName = document.getElementById('ox-my-name')?.value.trim() || 'نجمٌ حالم';
+            const sName = document.getElementById('ox-soul-name')?.value.trim() || 'أكسجين الروح';
+            const mText = document.getElementById('ox-msg-text')?.value.trim() || oxAr[1];
+            const isEn = document.documentElement.dir === 'ltr';
+
+            const canvas = document.getElementById('oxygen-dome-canvas');
+            const ctx = canvas.getContext('2d');
+            document.getElementById('ox-result-area').style.display = 'block';
+
+            if (window.liveOxygenLoop) clearInterval(window.liveOxygenLoop);
+            let f = 0; drawOxygenDomeScene(ctx, mName, sName, mText, isEn, 1);
+            document.getElementById('ox-img-link').href = canvas.toDataURL('image/png');
+            window.liveOxygenLoop = setInterval(() => {
+                f++; drawOxygenDomeScene(ctx, mName, sName, mText, isEn, f);
+            }, 55);
+        };
+
+        const oxVidBtn = document.getElementById('ox-video-btn');
+        if (oxVidBtn) oxVidBtn.onclick = () => {
+            const canvas = document.getElementById('oxygen-dome-canvas');
+            if (!canvas?.captureStream) return;
+            const mName = document.getElementById('ox-my-name')?.value.trim() || 'نجمٌ حالم';
+            const sName = document.getElementById('ox-soul-name')?.value.trim() || 'أكسجين الروح';
+            const mText = document.getElementById('ox-msg-text')?.value.trim() || oxAr[1];
+            const isEn = document.documentElement.dir === 'ltr';
+
+            oxVidBtn.disabled = true;
+            oxVidBtn.textContent = isEn ? '⏳ Recording Dreamy Dome...' : '⏳ جاري تصوير القبة الفضائية الهادئة (4 ثوانٍ)...';
+            const rec = new MediaRecorder(canvas.captureStream(30), { mimeType: 'video/webm' });
+            const chunks = [];
+            rec.ondataavailable = e => chunks.push(e.data);
+            rec.onstop = () => {
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(new Blob(chunks, { type: 'video/webm' }));
+                a.download = 'Pure-Oxygen-Dome-KR.webm';
+                a.click();
+                oxVidBtn.disabled = false;
+                oxVidBtn.textContent = isEn ? '🎬 Save Dreamy Space Video' : '🎬 حفظ القبة الفضائية كفيديو هادئ';
+            };
+            rec.start();
+            let c = 0; const ctx = canvas.getContext('2d');
+            const t = setInterval(() => {
+                c++; drawOxygenDomeScene(ctx, mName, sName, mText, isEn, c);
+                if (c >= 120) { clearInterval(t); rec.stop(); }
+            }, 40);
+        };
+
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const map = {
+                    'ox-title': isEn ? 'Pure Oxygen Dome — Who is Your Soul’s Oxygen?' : 'قبة الأكسجين النقي — مَنْ هُوَ أُكْسِجِينُ رُوحِكَ؟',
+                    'ox-q1': isEn ? '🫧 Oxygen of My Soul' : '🫧 أكسجين روحي',
+                    'ox-q2': isEn ? '🌐 Our Private Planet' : '🌐 كوكبنا الخاص',
+                    'ox-q3': isEn ? '✨ Pulse of Life' : '✨ نبض الحياة',
+                    'ox-launch-btn': isEn ? '🧑‍🚀 Launch Glowing Oxygen Dome 🫧' : '🧑‍🚀 أطلق قبة الأكسجين المضيئة 🫧',
+                    'ox-video-btn': isEn ? '🎬 Save Dreamy Space Video' : '🎬 حفظ القبة الفضائية كفيديو هادئ',
+                    'ox-img-link': isEn ? '📥 Save Image' : '📥 حفظ كصورة'
+                };
+                for (const [id, text] of Object.entries(map)) {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = text;
+                }
+                const desc = document.getElementById('ox-desc');
+                if (desc) desc.innerHTML = isEn 
+                    ? 'In a noisy, crowded planet, one person represents <strong style="color:#38bdf8;">pure oxygen</strong> for your heart.. Enter your name and your beloved’s to watch your <strong style="color:#fde047;">glowing glass dome</strong> float in space!'
+                    : 'في كوكبٍ مزدحم بالضجيج، هناك شخصٌ واحدٌ يمثّل <strong style="color:#38bdf8;">الأكسجين النقي</strong> لقلبك.. اكتب اسمك واسم من تُحب هنا، وشاهد <strong style="color:#fde047;">قبتكما الزجاجية المضيئة</strong> تسبح في الفضاء وسط الشهب والفقاعات المتوهجة!';
+                const m = document.getElementById('ox-my-name');
+                const s = document.getElementById('ox-soul-name');
+                const tx = document.getElementById('ox-msg-text');
+                if (m) m.placeholder = isEn ? '✨ Write your luminous name...' : '✨ اكتب اسمك المضيء...';
+                if (s) s.placeholder = isEn ? '🫧 Name of the person who is your oxygen...' : '🫧 اسم الشخص الذي يمثّل أكسجين روحك...';
+                if (tx) tx.placeholder = isEn ? '💫 Write your glowing whisper here or pick above...' : '💫 اكتب همستك المضيئة هنا أو اختر من الأعلى...';
+            }, 60);
+        });
+    })();
+    </script>
 
             
     
