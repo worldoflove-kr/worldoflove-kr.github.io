@@ -3722,6 +3722,278 @@
         };
     })();
     </script>
+    <!-- 28. مرصد توافق القمرين (Twin Moons Alignment - حساب فلكي لقمرين + فيديو حي) -->
+    <style>
+        @keyframes twinMoonsGlow {
+            0% { box-shadow: 0 0 22px rgba(56, 189, 248, 0.45), inset 0 0 22px rgba(212, 175, 55, 0.25); border-color: #38bdf8; }
+            50% { box-shadow: 0 0 38px rgba(253, 224, 71, 0.7), inset 0 0 32px rgba(236, 72, 153, 0.3); border-color: #fde047; }
+            100% { box-shadow: 0 0 22px rgba(56, 189, 248, 0.45), inset 0 0 22px rgba(212, 175, 55, 0.25); border-color: #38bdf8; }
+        }
+        #royal-twin-moons {
+            max-width: 440px; margin: 30px auto; padding: 26px 18px;
+            background: linear-gradient(180deg, rgba(8, 12, 28, 0.96), rgba(20, 14, 42, 0.96));
+            border: 2px solid #38bdf8; border-radius: 20px;
+            animation: twinMoonsGlow 5s infinite ease-in-out;
+            font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 50;
+        }
+        .tm-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;
+        }
+        .tm-card {
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(212, 175, 55, 0.45);
+            border-radius: 14px; padding: 12px 10px;
+        }
+        .tm-input {
+            width: 100%; box-sizing: border-box; background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.5); border-radius: 10px; padding: 9px 10px;
+            color: #f8fafc; font-family: 'Cairo', sans-serif; font-size: 0.86rem; margin-bottom: 8px; outline: none;
+            color-scheme: dark; text-align: center;
+        }
+        .tm-btn {
+            width: 100%; padding: 13px; background: linear-gradient(45deg, #0284c7, #db2777, #d4af37);
+            background-size: 200% 200%; border: 1px solid #fde047; border-radius: 12px; color: #fff;
+            font-weight: bold; font-size: 0.96rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.55);
+        }
+    </style>
+    <script>
+    (function() {
+        const twinMoonsHTML = `
+        <div id="royal-twin-moons">
+            <div style="font-size: 2.1rem; margin-bottom: 6px;">🌕✨🌗</div>
+            <h3 id="tm-title" style="color: #fde047; margin: 0 0 10px 0; font-size: 1.26rem; text-shadow: 0 0 14px rgba(253, 224, 71, 0.8);">مرصد توافق القمرين — التناغم الفلكي</h3>
+            <p id="tm-desc" style="color: #e2e8f0; font-size: 0.86rem; line-height: 1.85; margin: 0 0 16px 0;">
+                لكل روحٍ قمرٌ أضاء السماء ليلة ولادتها.. أدخل اسمك وتاريخ ميلادك مع اسم شريكك وتاريخ ميلاده، ليكشف المرصد كيف يجتمع <strong style="color:#38bdf8;">قمراكما في سماء واحدة</strong> ويحسب نسبة التناغم الروحي بينكما!
+            </p>
+
+            <div class="tm-grid">
+                <div class="tm-card">
+                    <div id="tm-p1-lbl" style="color: #38bdf8; font-weight: bold; font-size: 0.82rem; margin-bottom: 8px;">🌙 القمر الأول</div>
+                    <input type="text" id="tm-name1" class="tm-input" placeholder="✍️ الاسم الأول...">
+                    <input type="date" id="tm-date1" class="tm-input" dir="ltr">
+                </div>
+                <div class="tm-card">
+                    <div id="tm-p2-lbl" style="color: #f472b6; font-weight: bold; font-size: 0.82rem; margin-bottom: 8px;">🌙 القمر الثاني</div>
+                    <input type="text" id="tm-name2" class="tm-input" placeholder="✍️ الاسم الثاني...">
+                    <input type="date" id="tm-date2" class="tm-input" dir="ltr">
+                </div>
+            </div>
+
+            <button type="button" class="tm-btn" id="tm-calc-btn">✨ اجمع القمرين واكشف التوافق الفلكي 🌕</button>
+
+            <div id="tm-result-area" style="display: none; margin-top: 20px;">
+                <canvas id="twin-moons-canvas" width="800" height="620" style="width: 100%; border-radius: 14px; border: 2px solid #fde047; box-shadow: 0 0 28px rgba(56, 189, 248, 0.65);"></canvas>
+                <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 12px;">
+                    <button type="button" id="tm-video-btn" style="padding: 10px 18px; background: linear-gradient(45deg, #0284c7, #db2777); color: #fff; border: 1px solid #fde047; border-radius: 10px; font-weight: bold; font-size: 0.88rem; font-family: Cairo, sans-serif; cursor: pointer; box-shadow: 0 0 18px rgba(56,189,248,0.55);">🎬 حفظ القمرين كفيديو حي</button>
+                    <a id="tm-img-link" download="Twin-Moons-Alignment-KR.png" style="padding: 10px 18px; background: #1e293b; color: #fde047; border: 1px solid #fde047; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 0.88rem;">📥 حفظ كصورة</a>
+                </div>
+            </div>
+        </div>
+        `;
+
+        const wishDome = document.getElementById('royal-wishing-dome');
+        if (wishDome) {
+            wishDome.insertAdjacentHTML('afterend', twinMoonsHTML);
+        } else {
+            const footer = document.getElementById('royal-kingdom-footer');
+            if (footer) footer.insertAdjacentHTML('beforebegin', twinMoonsHTML);
+        }
+    })();
+    </script>
+    <script>
+    (function() {
+        function calcLunarAge(dateStr) {
+            const d = dateStr ? new Date(dateStr + 'T12:00:00Z') : new Date('1998-05-15T12:00:00Z');
+            const synodic = 29.53058867;
+            const knownNew = new Date('2000-01-06T18:14:00Z').getTime();
+            const diffDays = (d.getTime() - knownNew) / 86400000;
+            let age = diffDays % synodic;
+            if (age < 0) age += synodic;
+            return age;
+        }
+
+        // توليد تضاريس قمرية فضية مموجة واقعية
+        const tmMoonTex = document.createElement('canvas');
+        tmMoonTex.width = 200; tmMoonTex.height = 200;
+        const mCtx = tmMoonTex.getContext('2d');
+        const mGrad = mCtx.createRadialGradient(70, 70, 12, 100, 100, 100);
+        mGrad.addColorStop(0, '#ffffff'); mGrad.addColorStop(0.6, '#e2e8f0'); mGrad.addColorStop(1, '#64748b');
+        mCtx.fillStyle = mGrad; mCtx.fillRect(0, 0, 200, 200);
+        for (let i = 0; i < 32; i++) {
+            const cx = 30 + (i * 41) % 140, cy = 30 + (i * 59) % 140, cr = 4 + (i % 12);
+            mCtx.fillStyle = 'rgba(71, 85, 105, 0.25)';
+            mCtx.beginPath(); mCtx.arc(cx, cy, cr, 0, Math.PI * 2); mCtx.fill();
+        }
+
+        function drawSingleRealisticMoon(ctx, x, y, radius, age, glowColor) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.shadowColor = glowColor; ctx.shadowBlur = 32;
+            ctx.beginPath(); ctx.arc(0, 0, radius, 0, Math.PI * 2); ctx.clip();
+            ctx.drawImage(tmMoonTex, -radius, -radius, radius * 2, radius * 2);
+
+            const p = age / 29.53058867;
+            ctx.fillStyle = 'rgba(5, 8, 20, 0.86)';
+            ctx.beginPath();
+            if (p <= 0.5) {
+                ctx.arc(0, 0, radius + 2, Math.PI / 2, -Math.PI / 2, false);
+                const w = (radius + 2) * Math.cos(p * 2 * Math.PI);
+                ctx.ellipse(0, 0, Math.abs(w), radius + 2, 0, -Math.PI / 2, Math.PI / 2, w < 0);
+            } else {
+                ctx.arc(0, 0, radius + 2, -Math.PI / 2, Math.PI / 2, false);
+                const w = (radius + 2) * Math.cos(p * 2 * Math.PI);
+                ctx.ellipse(0, 0, Math.abs(w), radius + 2, 0, Math.PI / 2, -Math.PI / 2, w > 0);
+            }
+            ctx.fill();
+            ctx.restore();
+        }
+
+        const tmStars = Array.from({length: 50}, (_, i) => ({
+            x: (i * 89 + 25) % 760 + 20, y: (i * 53 + 20) % 580 + 20,
+            r: (i % 3) * 0.6 + 0.8, speed: 0.04 + (i % 4) * 0.015, phase: i * 0.6
+        }));
+
+        function drawTwinMoonsScene(ctx, n1, d1, n2, d2, isEn, frame) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            const bg = ctx.createLinearGradient(0, 0, 800, 620);
+            bg.addColorStop(0, '#040714'); bg.addColorStop(0.5, '#111633'); bg.addColorStop(1, '#040714');
+            ctx.fillStyle = bg; ctx.fillRect(0, 0, 800, 620);
+
+            tmStars.forEach(s => {
+                const alpha = 0.25 + 0.75 * Math.abs(Math.sin(frame * s.speed + s.phase));
+                ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+                ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
+            });
+            const age1 = calcLunarAge(d1);
+            const age2 = calcLunarAge(d2);
+
+            // هالة التناغم الكوني النابضة التي تجمع القمرين معاً
+            const pulse = 1 + 0.06 * Math.sin(frame * 0.12);
+            const unionGlow = ctx.createRadialGradient(400, 290, 20, 400, 290, 230 * pulse);
+            unionGlow.addColorStop(0, 'rgba(253, 224, 71, 0.45)');
+            unionGlow.addColorStop(0.5, 'rgba(56, 189, 248, 0.25)');
+            unionGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = unionGlow;
+            ctx.beginPath(); ctx.arc(400, 290, 230 * pulse, 0, Math.PI * 2); ctx.fill();
+
+            // رسم القمرين المتقاربين في سماء واحدة
+            const floatY = Math.sin(frame * 0.08) * 6;
+            drawSingleRealisticMoon(ctx, 315, 290 + floatY, 72, age1, '#38bdf8');
+            drawSingleRealisticMoon(ctx, 485, 290 - floatY, 72, age2, '#f472b6');
+
+            // حساب نسبة التناغم الروحي بين القمرين
+            const phaseSum = (age1 + age2) % 29.53;
+            const harmony = Math.round(84 + 15 * Math.abs(Math.cos((phaseSum - 14.76) * 0.2)));
+            const isComplementary = Math.abs(phaseSum - 14.76) < 4.5;
+
+            const statusAr = isComplementary
+                ? `✨ قمران متكاملان يكمل أحدهما نور الآخر (نسبة التناغم: ${harmony}%) ✨`
+                : `💫 توأم كوني يجمعهما مدار واحد من الحب (نسبة التناغم: ${harmony}%) 💫`;
+            const statusEn = isComplementary
+                ? `✨ Complementary Moons Completing Each Other's Light (Harmony: ${harmony}%) ✨`
+                : `💫 Cosmic Twin Moons Sharing One Orbit of Love (Harmony: ${harmony}%) 💫`;
+
+            // الإطار والهوية والأسماء
+            ctx.strokeStyle = '#fde047'; ctx.lineWidth = 5; ctx.strokeRect(18, 18, 764, 584);
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText('👑 مَمْلَكَةُ الْوُعُودِ العظمى • عائلة KR الملكية 👑', 400, 56);
+            ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 14px Cairo, sans-serif';
+            ctx.fillText('Kingdom of Promises • Twin Moons Alignment', 400, 80);
+
+            ctx.fillStyle = '#ffffff'; ctx.font = 'bold 25px Cairo, sans-serif';
+            ctx.fillText(`🌙 ${n1}   ❤️   ${n2} 🌙`, 400, 145);
+
+            ctx.fillStyle = '#fef08a'; ctx.font = 'bold 20px Cairo, sans-serif';
+            ctx.fillText(isEn ? statusEn : statusAr, 400, 445);
+
+            ctx.fillStyle = '#cbd5e1'; ctx.font = '16px Cairo, sans-serif';
+            ctx.fillText(isEn ? `Born under the same cosmic sky • Sealed Forever` : `وُلدا تحت سماءٍ كونية واحدة • وميثاقٍ لا يغيب`, 400, 488);
+
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 13px Cairo, sans-serif';
+            ctx.fillText('© Twin Moons Observatory - worldoflove-kr.github.io 👑 KR 👑', 400, 580);
+        }
+
+        const calcBtn = document.getElementById('tm-calc-btn');
+        if (calcBtn) calcBtn.onclick = () => {
+            const n1 = document.getElementById('tm-name1')?.value.trim() || 'القمر الأول';
+            const d1 = document.getElementById('tm-date1')?.value || '1998-05-15';
+            const n2 = document.getElementById('tm-name2')?.value.trim() || 'القمر الثاني';
+            const d2 = document.getElementById('tm-date2')?.value || '2000-08-20';
+            const isEn = document.documentElement.dir === 'ltr';
+
+            const canvas = document.getElementById('twin-moons-canvas');
+            const ctx = canvas.getContext('2d');
+            document.getElementById('tm-result-area').style.display = 'block';
+
+            if (window.liveTwinMoonsLoop) clearInterval(window.liveTwinMoonsLoop);
+            let f = 0; drawTwinMoonsScene(ctx, n1, d1, n2, d2, isEn, 1);
+            document.getElementById('tm-img-link').href = canvas.toDataURL('image/png');
+            window.liveTwinMoonsLoop = setInterval(() => {
+                f++; drawTwinMoonsScene(ctx, n1, d1, n2, d2, isEn, f);
+            }, 40);
+        };
+
+        const vidBtn = document.getElementById('tm-video-btn');
+        if (vidBtn) vidBtn.onclick = () => {
+            const canvas = document.getElementById('twin-moons-canvas');
+            if (!canvas?.captureStream) return;
+            const n1 = document.getElementById('tm-name1')?.value.trim() || 'القمر الأول';
+            const d1 = document.getElementById('tm-date1')?.value || '1998-05-15';
+            const n2 = document.getElementById('tm-name2')?.value.trim() || 'القمر الثاني';
+            const d2 = document.getElementById('tm-date2')?.value || '2000-08-20';
+            const isEn = document.documentElement.dir === 'ltr';
+
+            vidBtn.disabled = true;
+            vidBtn.textContent = isEn ? '⏳ Recording Twin Moons...' : '⏳ جاري تصوير القمرين (4 ثوانٍ)...';
+            const rec = new MediaRecorder(canvas.captureStream(30), { mimeType: 'video/webm' });
+            const chunks = [];
+            rec.ondataavailable = e => chunks.push(e.data);
+            rec.onstop = () => {
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(new Blob(chunks, { type: 'video/webm' }));
+                a.download = 'Twin-Moons-Alignment-KR.webm';
+                a.click();
+                vidBtn.disabled = false;
+                vidBtn.textContent = isEn ? '🎬 Save Twin Moons Video' : '🎬 حفظ القمرين كفيديو حي';
+            };
+            rec.start();
+            let c = 0; const ctx = canvas.getContext('2d');
+            const t = setInterval(() => {
+                c++; drawTwinMoonsScene(ctx, n1, d1, n2, d2, isEn, c);
+                if (c >= 120) { clearInterval(t); rec.stop(); }
+            }, 33);
+        };
+
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const map = {
+                    'tm-title': isEn ? 'Twin Moons Alignment — Cosmic Harmony' : 'مرصد توافق القمرين — التناغم الفلكي',
+                    'tm-p1-lbl': isEn ? '🌙 First Moon' : '🌙 القمر الأول',
+                    'tm-p2-lbl': isEn ? '🌙 Second Moon' : '🌙 القمر الثاني',
+                    'tm-calc-btn': isEn ? '✨ Unite the Two Moons & Reveal Harmony 🌕' : '✨ اجمع القمرين واكشف التوافق الفلكي 🌕',
+                    'tm-video-btn': isEn ? '🎬 Save Twin Moons Video' : '🎬 حفظ القمرين كفيديو حي',
+                    'tm-img-link': isEn ? '📥 Save Image' : '📥 حفظ كصورة'
+                };
+                for (const [id, text] of Object.entries(map)) {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = text;
+                }
+                const desc = document.getElementById('tm-desc');
+                if (desc) desc.innerHTML = isEn 
+                    ? 'Every soul has a moon that lit the sky on the night of its birth.. Enter your name and birth date with your partner’s to see <strong style="color:#38bdf8;">both moons united in one sky</strong>!'
+                    : 'لكل روحٍ قمرٌ أضاء السماء ليلة ولادتها.. أدخل اسمك وتاريخ ميلادك مع اسم شريكك وتاريخ ميلاده، ليكشف المرصد كيف يجتمع <strong style="color:#38bdf8;">قمراكما في سماء واحدة</strong> ويحسب نسبة التناغم الروحي بينكما!';
+                const i1 = document.getElementById('tm-name1');
+                const i2 = document.getElementById('tm-name2');
+                if (i1) i1.placeholder = isEn ? '✍️ First Name...' : '✍️ الاسم الأول...';
+                if (i2) i2.placeholder = isEn ? '✍️ Second Name...' : '✍️ الاسم الثاني...';
+            }, 60);
+        });
+    })();
+    </script>
 
             
     
