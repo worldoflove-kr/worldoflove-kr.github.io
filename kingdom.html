@@ -4898,6 +4898,142 @@
         });
     })();
     </script>
+    <!-- تشغيل مباشر ومضمون لمحارة اللؤلؤ الخليجي والحصان العربي -->
+    <script>
+    (function() {
+        const gAr = [
+            "يا درّةٍ في غبة البحر مكنونة.. غلاك في قلبي على مرّ الأزمان.",
+            "أنت الأصيل اللي على العزّ مرباه.. ووفاك في صدري مثل نور القمر.",
+            "في سماء الخليج نجومٍ كثيرة.. بس أنت وحدك لؤلؤة قلبي الوحيدة.",
+            "عزّ الله إنك فخرٍ لمن يماشيك.. ودرّةٍ نادرة ما لها في البشر ثاني.",
+            "مثل الأصايل في شموخك وطيبك.. ومثل اللآلئ في نقاوة ضميرك.",
+            "غلاك عندي مثل موج الخليج.. يمدّ بالوفا ولا يعرف الجزر أبداً."
+        ];
+        const gEn = [
+            "Like a hidden pearl in the Arabian Gulf depths.. your love shines forever in my heart.",
+            "Noble as a purebred Arabian horse.. your loyalty lights up my life like the full moon.",
+            "Many stars shine over the Gulf sky.. yet you alone are the precious pearl of my soul.",
+            "Rare in grace, pure in heart.. a timeless treasure that no ocean could ever replace.",
+            "With the pride of Arabian steeds and the glow of pearls.. our bond remains eternal.",
+            "My affection flows like the Gulf tide.. endless in loyalty and forever rising."
+        ];
+
+        let qIdx = Math.floor(Math.random() * gAr.length);
+
+        [0, 1, 2].forEach(i => {
+            const btn = document.getElementById('gp-c' + (i + 1));
+            if (btn) btn.onclick = () => {
+                const isEn = document.documentElement.dir === 'ltr';
+                const box = document.getElementById('gp-msg');
+                const p = (qIdx + i) % gAr.length;
+                if (box) box.value = isEn ? gEn[p] : gAr[p];
+            };
+        });
+
+        const refBtn = document.getElementById('gp-refresh-quotes');
+        if (refBtn) refBtn.onclick = () => {
+            qIdx = (qIdx + 3) % gAr.length;
+            const isEn = document.documentElement.dir === 'ltr';
+            const box = document.getElementById('gp-msg');
+            if (box) box.value = isEn ? gEn[qIdx] : gAr[qIdx];
+        };
+        function renderGulfScene(ctx, n1, n2, msg, isEn, f) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            const bg = ctx.createLinearGradient(0, 0, 0, 640);
+            bg.addColorStop(0, '#04121f'); bg.addColorStop(0.5, '#0a2a3f'); bg.addColorStop(1, '#041826');
+            ctx.fillStyle = bg; ctx.fillRect(0, 0, 800, 640);
+
+            for (let i = 0; i < 40; i++) {
+                const sx = (i * 91 + 20) % 760 + 20, sy = (i * 47 + 15) % 280 + 20;
+                const a = 0.25 + 0.75 * Math.abs(Math.sin(f * 0.04 + i));
+                ctx.fillStyle = `rgba(254, 240, 138, ${a})`;
+                ctx.beginPath(); ctx.arc(sx, sy, 1.8, 0, Math.PI * 2); ctx.fill();
+            }
+
+            for (let w = 0; w < 3; w++) {
+                ctx.beginPath(); ctx.moveTo(18, 620);
+                for (let x = 18; x <= 782; x += 20) {
+                    ctx.lineTo(x, 475 + w * 24 + Math.sin(x * 0.018 + f * 0.04 + w) * 7);
+                }
+                ctx.lineTo(782, 620); ctx.closePath();
+                ctx.fillStyle = w === 0 ? 'rgba(20, 184, 166, 0.35)' : 'rgba(13, 148, 136, 0.55)';
+                ctx.fill();
+            }
+
+            const hx = 180 + ((f * 0.9) % 440), hy = 395 + Math.sin(f * 0.14) * 7, leg = Math.sin(f * 0.14) * 14;
+            ctx.save(); ctx.translate(hx, hy); ctx.shadowColor = '#fde047'; ctx.shadowBlur = 22;
+            ctx.strokeStyle = '#fef08a'; ctx.lineWidth = 4; ctx.lineCap = 'round';
+            ctx.beginPath(); ctx.moveTo(-34, -6); ctx.quadraticCurveTo(-55, -14 + Math.sin(f * 0.15) * 6, -64, 6); ctx.stroke();
+            ctx.fillStyle = '#fde047';
+            ctx.beginPath(); ctx.ellipse(0, 0, 36, 15, -0.08, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath(); ctx.moveTo(22, -6); ctx.lineTo(44, -34); ctx.lineTo(58, -26); ctx.lineTo(52, -16); ctx.lineTo(36, 6); ctx.closePath(); ctx.fill();
+            ctx.beginPath(); ctx.moveTo(22, 10); ctx.lineTo(28 + leg, 34); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(14, 10); ctx.lineTo(10 - leg * 0.7, 34); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(-22, 10); ctx.lineTo(-28 - leg, 34); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(-14, 10); ctx.lineTo(-10 + leg * 0.7, 34); ctx.stroke();
+            ctx.restore();
+
+            ctx.save(); ctx.translate(400, 515);
+            const pp = 1 + 0.08 * Math.sin(f * 0.08);
+            ctx.fillStyle = '#0f766e'; ctx.strokeStyle = '#5eead4'; ctx.lineWidth = 2.5;
+            ctx.beginPath(); ctx.ellipse(0, 14, 68, 22, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+            ctx.beginPath(); ctx.ellipse(0, -18, 62, 20, -0.15, Math.PI, 0); ctx.fill(); ctx.stroke();
+            const pg = ctx.createRadialGradient(0, -2, 3, 0, -2, 48 * pp);
+            pg.addColorStop(0, '#ffffff'); pg.addColorStop(0.45, 'rgba(253, 224, 71, 0.7)'); pg.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.fillStyle = pg; ctx.beginPath(); ctx.arc(0, -2, 48 * pp, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = '#fef3c7'; ctx.beginPath(); ctx.arc(0, -2, 18, 0, Math.PI * 2); ctx.fill();
+            ctx.restore();
+
+            const tg = 12 + 8 * Math.sin(f * 0.06);
+            ctx.strokeStyle = '#2dd4bf'; ctx.lineWidth = 5; ctx.strokeRect(18, 18, 764, 604);
+            ctx.textAlign = 'center'; ctx.fillStyle = '#d4af37'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText('👑 مَمْلَكَةُ الْوُعُودِ العظمى • عائلة KR الملكية 👑', 400, 56);
+            ctx.save(); ctx.shadowColor = '#fde047'; ctx.shadowBlur = tg;
+            ctx.fillStyle = '#fef08a'; ctx.font = 'bold 26px Cairo, sans-serif';
+            ctx.fillText(`🦪 ${n1}   &   ${n2} 🐎`, 400, 130); ctx.restore();
+            ctx.save(); ctx.shadowColor = '#2dd4bf'; ctx.shadowBlur = tg;
+            ctx.fillStyle = '#ccfbf1'; ctx.font = 'bold 20px Cairo, sans-serif';
+            ctx.fillText(msg, 400, 210); ctx.restore();
+            ctx.fillStyle = '#fde047'; ctx.font = 'bold 13px Cairo, sans-serif';
+            ctx.fillText('© Arabian Gulf Heritage Sanctuary - worldoflove-kr.github.io 👑 KR 👑', 400, 605);
+        }
+
+        const openBtn = document.getElementById('gp-open-btn');
+        if (openBtn) openBtn.onclick = () => {
+            const n1 = document.getElementById('gp-name1')?.value.trim() || 'نجم الخليج';
+            const n2 = document.getElementById('gp-name2')?.value.trim() || 'درّة الوفاء';
+            const msg = document.getElementById('gp-msg')?.value.trim() || gAr[qIdx];
+            const isEn = document.documentElement.dir === 'ltr';
+            const canvas = document.getElementById('gulf-pearl-canvas');
+            const ctx = canvas.getContext('2d');
+            document.getElementById('gp-result-area').style.display = 'block';
+            if (window.liveGulfLoop) clearInterval(window.liveGulfLoop);
+            let f = 0; renderGulfScene(ctx, n1, n2, msg, isEn, 1);
+            document.getElementById('gp-img-link').href = canvas.toDataURL('image/png');
+            window.liveGulfLoop = setInterval(() => { f += 0.55; renderGulfScene(ctx, n1, n2, msg, isEn, f); }, 45);
+        };
+
+        const vidBtn = document.getElementById('gp-video-btn');
+        if (vidBtn) vidBtn.onclick = () => {
+            const canvas = document.getElementById('gulf-pearl-canvas');
+            if (!canvas?.captureStream) return;
+            const n1 = document.getElementById('gp-name1')?.value.trim() || 'نجم الخليج';
+            const n2 = document.getElementById('gp-name2')?.value.trim() || 'درّة الوفاء';
+            const msg = document.getElementById('gp-msg')?.value.trim() || gAr[qIdx];
+            const isEn = document.documentElement.dir === 'ltr';
+            vidBtn.disabled = true; vidBtn.textContent = isEn ? '⏳ Recording...' : '⏳ جاري تصوير المشهد الهادئ...';
+            const rec = new MediaRecorder(canvas.captureStream(25), { mimeType: 'video/webm' });
+            const chunks = []; rec.ondataavailable = e => chunks.push(e.data);
+            rec.onstop = () => {
+                const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(chunks, { type: 'video/webm' }));
+                a.download = 'Arabian-Gulf-Pearl-Steed-KR.webm'; a.click();
+                vidBtn.disabled = false; vidBtn.textContent = isEn ? '🎬 Save Pearl & Steed Video' : '🎬 حفظ المحارة واللؤلؤة كفيديو هادئ';
+            };
+            rec.start(); let c = 0; const ctx = canvas.getContext('2d');
+            const t = setInterval(() => { c += 0.55; renderGulfScene(ctx, n1, n2, msg, isEn, c); if (c >= 65) { clearInterval(t); rec.stop(); } }, 45);
+        };
+    })();
+    </script>
 
             
     
