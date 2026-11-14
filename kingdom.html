@@ -2873,7 +2873,315 @@
         }
     })();
     </script>
+    <!-- 26. ساعة القلب المتوقفة (ساعة جيب ملكية واقعية مجسمة + عداد زمن الفراق + فيديو حي) -->
+    <style>
+        @keyframes clockAuraGlow {
+            0% { box-shadow: 0 0 22px rgba(226, 232, 240, 0.4), inset 0 0 20px rgba(212, 175, 55, 0.2); border-color: #cbd5e1; }
+            50% { box-shadow: 0 0 38px rgba(212, 175, 55, 0.7), inset 0 0 30px rgba(244, 63, 94, 0.25); border-color: #d4af37; }
+            100% { box-shadow: 0 0 22px rgba(226, 232, 240, 0.4), inset 0 0 20px rgba(212, 175, 55, 0.2); border-color: #cbd5e1; }
+        }
+        #royal-stopped-clock {
+            max-width: 440px; margin: 30px auto; padding: 26px 18px;
+            background: linear-gradient(180deg, rgba(12, 14, 24, 0.96), rgba(24, 16, 28, 0.96));
+            border: 2px solid #cbd5e1; border-radius: 20px;
+            animation: clockAuraGlow 5s infinite ease-in-out;
+            font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 50;
+        }
+        .clk-input {
+            width: 100%; box-sizing: border-box; background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(212, 175, 55, 0.5); border-radius: 11px; padding: 11px 14px;
+            color: #f8fafc; font-family: 'Cairo', sans-serif; font-size: 0.92rem; margin-bottom: 12px; outline: none;
+            color-scheme: dark;
+        }
+        .clk-btn {
+            width: 100%; padding: 13px; background: linear-gradient(45deg, #334155, #b91c1c, #d4af37);
+            background-size: 200% 200%; border: 1px solid #fde047; border-radius: 12px; color: #fff;
+            font-weight: bold; font-size: 0.96rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+            box-shadow: 0 0 18px rgba(212, 175, 55, 0.5);
+        }
+    </style>
+    <style>
+        @keyframes clkQuoteShimmer {
+            0% { box-shadow: 0 0 8px rgba(244, 63, 94, 0.35); border-color: rgba(244, 63, 94, 0.6); }
+            50% { box-shadow: 0 0 18px rgba(212, 175, 55, 0.8); border-color: #fde047; }
+            100% { box-shadow: 0 0 8px rgba(244, 63, 94, 0.35); border-color: rgba(244, 63, 94, 0.6); }
+        }
+        .clk-quote-btn {
+            background: rgba(244, 63, 94, 0.15); border: 1px solid #f43f5e; color: #ffe4e6;
+            border-radius: 18px; padding: 6px 12px; font-size: 0.78rem; font-family: 'Cairo', sans-serif;
+            cursor: pointer; animation: clkQuoteShimmer 3s infinite ease-in-out;
+        }
+    </style>
 
+    <script>
+    (function() {
+        const clockHTML = `
+        <div id="royal-stopped-clock">
+            <div style="font-size: 2rem; margin-bottom: 6px;">🕰️💔✨</div>
+            <h3 id="clk-title" style="color: #fde047; margin: 0 0 10px 0; font-size: 1.26rem; text-shadow: 0 0 14px rgba(253, 224, 71, 0.75);">ساعة القلب المتوقفة — توقيت الفراق</h3>
+            <p id="clk-desc" style="color: #e2e8f0; font-size: 0.86rem; line-height: 1.85; margin: 0 0 16px 0;">
+                تمرّ الساعات في العالم كله، إلا في القلب الذي فارق من يحب؛ فهناك تتوقف العقارب عند <strong style="color:#f43f5e;">تلك اللحظة بالذات</strong>.. حدد تاريخ وساعة رحيلهم، وشاهد <strong style="color:#fde047;">ساعة جيبك الملكية المضيئة</strong> وهي توثق عمر الغياب بالثانية!
+            </p>
+
+            <input type="text" id="clk-owner" class="clk-input" placeholder="✍️ اسمك الكريم...">
+            <input type="text" id="clk-beloved" class="clk-input" placeholder="💔 اسم الشخص الذي توقف الزمن عند غيابه...">
+
+            <div id="clk-time-label" style="font-size: 0.82rem; color: #fde047; font-weight: bold; margin-bottom: 6px;">⏰ اختر تاريخ وساعة توقف القلب (لحظة الفراق):</div>
+            <input type="datetime-local" id="clk-stop-datetime" class="clk-input" dir="ltr" style="text-align: center;">
+
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 10px;">
+                <button type="button" class="clk-quote-btn" onclick="fillClockQuote(1)" id="clk-q1">🕰️ توقف الزمن هنا</button>
+                <button type="button" class="clk-quote-btn" onclick="fillClockQuote(2)" id="clk-q2">💔 عقارب لا تدور</button>
+                <button type="button" class="clk-quote-btn" onclick="fillClockQuote(3)" id="clk-q3">🥀 عمر الغياب</button>
+            </div>
+
+            <textarea id="clk-note" class="clk-input" rows="2" placeholder="📜 اكتب عبارة قصيرة تصف تلك اللحظة أو اختر من الأعلى..."></textarea>
+
+            <button type="button" class="clk-btn" onclick="freezeHeartClock()" id="clk-freeze-btn">🕰️ أوقف الساعة واحسب عمر الغياب ✨</button>
+
+            <div id="clk-result-area" style="display: none; margin-top: 20px;">
+                <canvas id="stopped-clock-canvas" width="800" height="640" style="width: 100%; border-radius: 14px; border: 2px solid #d4af37; box-shadow: 0 0 28px rgba(212, 175, 55, 0.65);"></canvas>
+                <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 12px;">
+                    <button type="button" id="clk-video-btn" style="padding: 10px 18px; background: linear-gradient(45deg, #be123c, #d97706); color: #fff; border: 1px solid #fde047; border-radius: 10px; font-weight: bold; font-size: 0.88rem; font-family: Cairo, sans-serif; cursor: pointer; box-shadow: 0 0 18px rgba(253,224,71,0.55);">🎬 حفظ الساعة المضيئة كفيديو حي</button>
+                    <a id="clk-img-link" download="Stopped-Heart-Clock-KR.png" style="padding: 10px 18px; background: #1e293b; color: #fde047; border: 1px solid #fde047; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 0.88rem;">📥 حفظ كصورة</a>
+                </div>
+            </div>
+        </div>
+        `;
+
+        const station = document.getElementById('royal-train-station');
+        if (station) {
+            station.insertAdjacentHTML('afterend', clockHTML);
+        } else {
+            const footer = document.getElementById('royal-kingdom-footer');
+            if (footer) footer.insertAdjacentHTML('beforebegin', clockHTML);
+        }
+    })();
+    </script>
+    <script>
+    (function() {
+        window.fillClockQuote = function(num) {
+            const isEn = document.documentElement.dir === 'ltr';
+            const box = document.getElementById('clk-note');
+            if (!box) return;
+            const ar = {
+                1: "توقف الزمن في قلبي عند هذه اللحظة تماماً.. وكل ما بعدها مجرد انتظار.",
+                2: "عقارب ساعتي ترفض أن تدور بعد رحيلك، كأنها تنتظر عودتك.",
+                3: "أعدّ الأيام والثواني منذ غيابك، وما زال مكانك في القلب كما هو."
+            };
+            const en = {
+                1: "Time stopped inside my heart at this exact moment.. everything after is just waiting.",
+                2: "The hands of my clock refuse to move since you left, waiting for your return.",
+                3: "I count the days and seconds since your absence, yet your place remains untouched."
+            };
+            box.value = isEn ? en[num] : ar[num];
+        };
+
+        const clkSparks = Array.from({length: 35}, () => ({
+            x: Math.random() * 760 + 20, y: Math.random() * 600 + 20,
+            r: Math.random() * 2.2 + 0.8, speed: Math.random() * 0.08 + 0.03, phase: Math.random() * 6.28
+        }));
+
+        function drawStoppedClockScene(ctx, owner, beloved, stopDateObj, note, isEn, frame) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            const grad = ctx.createLinearGradient(0, 0, 800, 640);
+            grad.addColorStop(0, '#070811'); grad.addColorStop(0.5, '#170f21'); grad.addColorStop(1, '#070811');
+            ctx.fillStyle = grad; ctx.fillRect(0, 0, 800, 640);
+
+            // 1. شرارات ضوئية ونجوم متلألئة في الخلفية
+            clkSparks.forEach(s => {
+                const alpha = 0.25 + 0.75 * Math.abs(Math.sin(frame * s.speed + s.phase));
+                ctx.fillStyle = `rgba(253, 224, 71, ${alpha})`;
+                ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
+            });
+
+            // 2. رسم ساعة الجيب الملكية المجسّمة والمضيئة في المنتصف
+            ctx.save();
+            ctx.translate(400, 300);
+
+            // هالة ضوئية ذهبية ووردية تنبض خلف الساعة
+            const pulse = 1 + 0.06 * Math.sin(frame * 0.12);
+            const aura = ctx.createRadialGradient(0, 0, 65, 0, 0, 155 * pulse);
+            aura.addColorStop(0, 'rgba(253, 224, 71, 0.85)');
+            aura.addColorStop(0.5, 'rgba(244, 63, 94, 0.35)');
+            aura.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = aura; ctx.beginPath(); ctx.arc(0, 0, 155 * pulse, 0, Math.PI * 2); ctx.fill();
+
+            // تاج الساعة العلوي (حلقة ساعة الجيب)
+            ctx.strokeStyle = '#fde047'; ctx.lineWidth = 6;
+            ctx.beginPath(); ctx.arc(0, -118, 16, 0, Math.PI * 2); ctx.stroke();
+            ctx.fillStyle = '#d97706'; ctx.fillRect(-10, -106, 20, 14);
+
+            // الإطار المعدني الخارجي المجسّم
+            const rimGrad = ctx.createLinearGradient(-100, -100, 100, 100);
+            rimGrad.addColorStop(0, '#fef08a'); rimGrad.addColorStop(0.5, '#b45309'); rimGrad.addColorStop(1, '#fde047');
+            ctx.fillStyle = rimGrad;
+            ctx.beginPath(); ctx.arc(0, 0, 102, 0, Math.PI * 2); ctx.fill();
+
+            // مينا الساعة الداخلي الداكن واللامع
+            const dialGrad = ctx.createRadialGradient(-25, -25, 10, 0, 0, 92);
+            dialGrad.addColorStop(0, '#1e293b'); dialGrad.addColorStop(0.8, '#090d16'); dialGrad.addColorStop(1, '#02040a');
+            ctx.fillStyle = dialGrad;
+            ctx.beginPath(); ctx.arc(0, 0, 90, 0, Math.PI * 2); ctx.fill();
+
+            // تروس ميكانيكية ذهبية داخل المينا
+            ctx.strokeStyle = 'rgba(212, 175, 55, 0.28)'; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.arc(-22, 18, 26, 0, Math.PI * 2); ctx.stroke();
+            ctx.beginPath(); ctx.arc(24, -15, 20, 0, Math.PI * 2); ctx.stroke();
+
+            // الأرقام الرومانية المضيئة
+            ctx.fillStyle = '#fef08a'; ctx.font = 'bold 16px serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            ctx.fillText('XII', 0, -72); ctx.fillText('III', 72, 0);
+            ctx.fillText('VI', 0, 72); ctx.fillText('IX', -72, 0);
+
+            // عقارب الساعة المتوقفة عند ساعة ودقيقة الفراق بالضبط
+            const hrs = stopDateObj.getHours() % 12;
+            const mins = stopDateObj.getMinutes();
+            const hrAngle = ((hrs + mins / 60) * 30 - 90) * Math.PI / 180;
+            const minAngle = (mins * 6 - 90) * Math.PI / 180;
+
+            // عقرب الساعات
+            ctx.strokeStyle = '#fde047'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+            ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(Math.cos(hrAngle) * 48, Math.sin(hrAngle) * 48); ctx.stroke();
+            // عقرب الدقائق
+            ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 3;
+            ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(Math.cos(minAngle) * 68, Math.sin(minAngle) * 68); ctx.stroke();
+
+            // قلب صغير متوهج في مركز العقارب
+            ctx.fillStyle = '#f43f5e';
+            ctx.beginPath(); ctx.arc(0, 0, 7, 0, Math.PI * 2); ctx.fill();
+
+            // انعكاس زجاجي لامع متحرك فوق الساعة
+            ctx.beginPath(); ctx.arc(0, 0, 88, 0, Math.PI * 2); ctx.clip();
+            const shineX = -120 + ((frame * 4) % 260);
+            const glassGrad = ctx.createLinearGradient(shineX, -90, shineX + 55, 90);
+            glassGrad.addColorStop(0, 'rgba(255,255,255,0)');
+            glassGrad.addColorStop(0.5, 'rgba(255,255,255,0.22)');
+            glassGrad.addColorStop(1, 'rgba(255,255,255,0)');
+            ctx.fillStyle = glassGrad; ctx.fillRect(-95, -95, 190, 190);
+            ctx.restore();
+            // 3. الإطار والهوية والنصوص وعمر الغياب الحقيقي
+            ctx.textBaseline = 'alphabetic';
+            ctx.strokeStyle = '#d4af37'; ctx.lineWidth = 5; ctx.strokeRect(18, 18, 764, 604);
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText('👑 مَمْلَكَةُ الْوُعُودِ العظمى • عائلة KR الملكية 👑', 400, 56);
+            ctx.fillStyle = '#f43f5e'; ctx.font = 'bold 14px Cairo, sans-serif';
+            ctx.fillText('Kingdom of Promises • The Stopped Heart Clock', 400, 80);
+
+            ctx.fillStyle = '#ffffff'; ctx.font = 'bold 23px Cairo, sans-serif';
+            ctx.fillText(isEn ? `🕰️ ${owner}'s Heart Stopped for ${beloved}` : `🕰️ توقف قلب (${owner}) عند غياب (${beloved})`, 400, 126);
+
+            // حساب عمر الغياب بالأيام والساعات والدقائق
+            const diffMs = Math.max(0, Date.now() - stopDateObj.getTime());
+            const days = Math.floor(diffMs / 86400000);
+            const hrs = Math.floor((diffMs % 86400000) / 3600000);
+            const mins = Math.floor((diffMs % 3600000) / 60000);
+
+            ctx.fillStyle = '#fde047'; ctx.font = 'bold 20px Cairo, sans-serif';
+            ctx.fillText(isEn ? `Absence Age: ${days} Days, ${hrs} Hours, ${mins} Mins` : `عمر الغياب: ${days} يوم ، ${hrs} ساعة ، ${mins} دقيقة`, 400, 465);
+
+            ctx.fillStyle = '#f1f5f9'; ctx.font = '18px Cairo, sans-serif';
+            ctx.fillText(note, 400, 505);
+
+            ctx.fillStyle = '#94a3b8'; ctx.font = 'bold 13px Cairo, sans-serif';
+            ctx.fillText('© Royal Time Archive - worldoflove-kr.github.io 👑 KR 👑', 400, 595);
+        }
+
+        window.freezeHeartClock = function() {
+            const owner = document.getElementById('clk-owner').value.trim() || 'قلبٌ وفيّ';
+            const beloved = document.getElementById('clk-beloved').value.trim() || 'من غاب';
+            const dtVal = document.getElementById('clk-stop-datetime').value;
+            const stopObj = dtVal ? new Date(dtVal) : new Date(Date.now() - 86400000 * 30);
+            const note = document.getElementById('clk-note').value.trim() || 'توقف الزمن في قلبي عند هذه اللحظة تماماً.. وكل ما بعدها مجرد انتظار.';
+            const isEn = document.documentElement.dir === 'ltr';
+
+            const canvas = document.getElementById('stopped-clock-canvas');
+            const ctx = canvas.getContext('2d');
+            document.getElementById('clk-result-area').style.display = 'block';
+
+            if (window.liveClockLoop) clearInterval(window.liveClockLoop);
+            let f = 0;
+            drawStoppedClockScene(ctx, owner, beloved, stopObj, note, isEn, 1);
+            document.getElementById('clk-img-link').href = canvas.toDataURL('image/png');
+
+            window.liveClockLoop = setInterval(() => {
+                f++;
+                drawStoppedClockScene(ctx, owner, beloved, stopObj, note, isEn, f);
+            }, 45);
+        };
+
+        document.addEventListener('click', function(e) {
+            if (e.target && e.target.id === 'clk-video-btn') {
+                const vBtn = e.target;
+                const canvas = document.getElementById('stopped-clock-canvas');
+                if (!canvas || !canvas.captureStream || typeof MediaRecorder === 'undefined') return;
+                const owner = document.getElementById('clk-owner').value.trim() || 'قلبٌ وفيّ';
+                const beloved = document.getElementById('clk-beloved').value.trim() || 'من غاب';
+                const dtVal = document.getElementById('clk-stop-datetime').value;
+                const stopObj = dtVal ? new Date(dtVal) : new Date(Date.now() - 86400000 * 30);
+                const note = document.getElementById('clk-note').value.trim() || 'توقف الزمن في قلبي عند هذه اللحظة تماماً.. وكل ما بعدها مجرد انتظار.';
+                const isEn = document.documentElement.dir === 'ltr';
+
+                vBtn.disabled = true;
+                vBtn.textContent = isEn ? '⏳ Recording 4s Clock Video...' : '⏳ جاري تصوير الساعة المضيئة (4 ثوانٍ)...';
+                const stream = canvas.captureStream(30);
+                const rec = new MediaRecorder(stream, { mimeType: 'video/webm' });
+                const chunks = [];
+                rec.ondataavailable = ev => { if (ev.data.size > 0) chunks.push(ev.data); };
+                rec.onstop = () => {
+                    const blob = new Blob(chunks, { type: 'video/webm' });
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = 'Stopped-Heart-Clock-Animated-KR.webm';
+                    link.click();
+                    vBtn.disabled = false;
+                    vBtn.textContent = isEn ? '🎬 Save Glowing Clock Video' : '🎬 حفظ الساعة المضيئة كفيديو حي';
+                };
+                rec.start();
+                let count = 0;
+                const ctx = canvas.getContext('2d');
+                const recTimer = setInterval(() => {
+                    count++;
+                    drawStoppedClockScene(ctx, owner, beloved, stopObj, note, isEn, count);
+                    if (count >= 120) { clearInterval(recTimer); rec.stop(); }
+                }, 33);
+            }
+
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const map = {
+                    'clk-title': isEn ? 'The Stopped Heart Clock — Moment of Parting' : 'ساعة القلب المتوقفة — توقيت الفراق',
+                    'clk-time-label': isEn ? '⏰ Select Date & Time When Your Heart Stopped:' : '⏰ اختر تاريخ وساعة توقف القلب (لحظة الفراق):',
+                    'clk-q1': isEn ? '🕰️ Time Stopped Here' : '🕰️ توقف الزمن هنا',
+                    'clk-q2': isEn ? '💔 Frozen Hands' : '💔 عقارب لا تدور',
+                    'clk-q3': isEn ? '🥀 Age of Absence' : '🥀 عمر الغياب',
+                    'clk-freeze-btn': isEn ? '🕰️ Freeze Clock & Calculate Absence ✨' : '🕰️ أوقف الساعة واحسب عمر الغياب ✨',
+                    'clk-video-btn': isEn ? '🎬 Save Glowing Clock Video' : '🎬 حفظ الساعة المضيئة كفيديو حي',
+                    'clk-img-link': isEn ? '📥 Save Image' : '📥 حفظ كصورة'
+                };
+                for (const [id, text] of Object.entries(map)) {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = text;
+                }
+                const desc = document.getElementById('clk-desc');
+                if (desc) desc.innerHTML = isEn 
+                    ? 'Clocks tick everywhere in the world, except in a heart parted from its beloved; there, the hands freeze at <strong style="color:#f43f5e;">that exact moment</strong>.. Set the date and time of departure to light up your <strong style="color:#fde047;">royal pocket watch</strong>!'
+                    : 'تمرّ الساعات في العالم كله، إلا في القلب الذي فارق من يحب؛ فهناك تتوقف العقارب عند <strong style="color:#f43f5e;">تلك اللحظة بالذات</strong>.. حدد تاريخ وساعة رحيلهم، وشاهد <strong style="color:#fde047;">ساعة جيبك الملكية المضيئة</strong> وهي توثق عمر الغياب بالثانية!';
+                const o = document.getElementById('clk-owner');
+                const b = document.getElementById('clk-beloved');
+                const n = document.getElementById('clk-note');
+                if (o) o.placeholder = isEn ? '✍️ Your Noble Name...' : '✍️ اسمك الكريم...';
+                if (b) b.placeholder = isEn ? '💔 Name of the Person Whose Absence Froze Time...' : '💔 اسم الشخص الذي توقف الزمن عند غيابه...';
+                if (n) n.placeholder = isEn ? '📜 Write a short note describing that moment or pick above...' : '📜 اكتب عبارة قصيرة تصف تلك اللحظة أو اختر من الأعلى...';
+            }, 60);
+        });
+    })();
+    </script>
+
+            
     
                 
             </body>
