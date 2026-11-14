@@ -3994,6 +3994,286 @@
         });
     })();
     </script>
+    <!-- 29. مرصد الكواكب والأبراج الفلكية المتجددة تلقائياً مدى الحياة (Solar System & Daily Zodiac) -->
+    <style>
+        @keyframes solarZodiacGlow {
+            0% { box-shadow: 0 0 24px rgba(249, 115, 22, 0.5), inset 0 0 22px rgba(56, 189, 248, 0.25); border-color: #f97316; }
+            50% { box-shadow: 0 0 40px rgba(253, 224, 71, 0.75), inset 0 0 32px rgba(168, 85, 247, 0.35); border-color: #fde047; }
+            100% { box-shadow: 0 0 24px rgba(249, 115, 22, 0.5), inset 0 0 22px rgba(56, 189, 248, 0.25); border-color: #f97316; }
+        }
+        #royal-solar-zodiac {
+            max-width: 440px; margin: 30px auto; padding: 26px 18px;
+            background: radial-gradient(circle at top, rgba(30, 18, 54, 0.96), rgba(7, 10, 22, 0.98));
+            border: 2px solid #f97316; border-radius: 20px;
+            animation: solarZodiacGlow 5s infinite ease-in-out;
+            font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 50;
+        }
+        .sz-input {
+            width: 100%; box-sizing: border-box; background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(251, 146, 60, 0.55); border-radius: 11px; padding: 11px 14px;
+            color: #fef3c7; font-family: 'Cairo', sans-serif; font-size: 0.92rem; margin-bottom: 12px; outline: none;
+            color-scheme: dark; text-align: center;
+        }
+        .sz-btn {
+            width: 100%; padding: 13px; background: linear-gradient(45deg, #ea580c, #9333ea, #0284c7);
+            background-size: 200% 200%; border: 1px solid #fde047; border-radius: 12px; color: #fff;
+            font-weight: bold; font-size: 0.96rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.55);
+        }
+    </style>
+    <script>
+    (function() {
+        const solarZodiacHTML = `
+        <div id="royal-solar-zodiac">
+            <div style="font-size: 2.1rem; margin-bottom: 6px;">☀️🪐♈✨</div>
+            <h3 id="sz-title" style="color: #fde047; margin: 0 0 10px 0; font-size: 1.26rem; text-shadow: 0 0 14px rgba(251, 146, 60, 0.85);">مرصد المجموعة الشمسية والأبراج المتجددة يومياً</h3>
+            <p id="sz-desc" style="color: #e2e8f0; font-size: 0.86rem; line-height: 1.85; margin: 0 0 16px 0;">
+                تتحرك الكواكب في مداراتها كل يوم لتُرسل طاقة جديدة لقلبك.. أدخل اسمك وتاريخ ميلادك ليتعرف المرصد تلقائياً على <strong style="color:#fb923c;">برجك الفلكي وكوكبك الحاكم</strong> في المجموعة الشمسية، ويكشف لك <strong style="color:#38bdf8;">رسالة الكون المتجددة لهذا اليوم</strong>!
+            </p>
+
+            <input type="text" id="sz-user-name" class="sz-input" placeholder="✨ اكتب اسمك الكريم...">
+            <div id="sz-dob-lbl" style="font-size: 0.82rem; color: #fb923c; font-weight: bold; margin-bottom: 6px;">📅 اختر تاريخ ميلادك (لتحديد برجك وكوكبك تلقائياً):</div>
+            <input type="date" id="sz-birth-date" class="sz-input" dir="ltr" style="letter-spacing: 1px;">
+
+            <button type="button" class="sz-btn" id="sz-reveal-btn">🪐 اكشف برجي وكوكبي وطاقة اليوم ☀️</button>
+
+            <div id="sz-result-area" style="display: none; margin-top: 20px;">
+                <canvas id="solar-zodiac-canvas" width="800" height="640" style="width: 100%; border-radius: 14px; border: 2px solid #fb923c; box-shadow: 0 0 28px rgba(249, 115, 22, 0.65);"></canvas>
+                <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 12px;">
+                    <button type="button" id="sz-video-btn" style="padding: 10px 18px; background: linear-gradient(45deg, #ea580c, #7e22ce); color: #fff; border: 1px solid #fde047; border-radius: 10px; font-weight: bold; font-size: 0.88rem; font-family: Cairo, sans-serif; cursor: pointer; box-shadow: 0 0 18px rgba(251,146,60,0.55);">🎬 حفظ المجموعة الشمسية كفيديو حي</button>
+                    <a id="sz-img-link" download="Solar-Zodiac-Horoscope-KR.png" style="padding: 10px 18px; background: #1e293b; color: #fde047; border: 1px solid #fde047; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 0.88rem;">📥 حفظ كصورة</a>
+                </div>
+            </div>
+        </div>
+        `;
+
+        const twinMoons = document.getElementById('royal-twin-moons');
+        if (twinMoons) {
+            twinMoons.insertAdjacentHTML('afterend', solarZodiacHTML);
+        } else {
+            const footer = document.getElementById('royal-kingdom-footer');
+            if (footer) footer.insertAdjacentHTML('beforebegin', solarZodiacHTML);
+        }
+    })();
+    </script>
+    <script>
+    (function() {
+        function getZodiacInfo(dateStr) {
+            const d = dateStr ? new Date(dateStr + 'T12:00:00') : new Date('1998-05-15T12:00:00');
+            const m = d.getMonth() + 1;
+            const day = d.getDate();
+
+            const signs = [
+                { id: 0, ar: 'برج الجدي ♑', en: 'Capricorn ♑', planetAr: 'كوكب زحل ذو الحلقات', planetEn: 'Saturn', color: '#eab308', ring: true },
+                { id: 1, ar: 'برج الدلو ♒', en: 'Aquarius ♒', planetAr: 'كوكب أورانوس الأزرق', planetEn: 'Uranus', color: '#38bdf8', ring: false },
+                { id: 2, ar: 'برج الحوت ♓', en: 'Pisces ♓', planetAr: 'كوكب نبتون العميق', planetEn: 'Neptune', color: '#6366f1', ring: false },
+                { id: 3, ar: 'برج الحمل ♈', en: 'Aries ♈', planetAr: 'كوكب المريخ الناري', planetEn: 'Mars', color: '#ef4444', ring: false },
+                { id: 4, ar: 'برج الثور ♉', en: 'Taurus ♉', planetAr: 'كوكب الزهرة المتألق', planetEn: 'Venus', color: '#f472b6', ring: false },
+                { id: 5, ar: 'برج الجوزاء ♊', en: 'Gemini ♊', planetAr: 'كوكب عطارد السريع', planetEn: 'Mercury', color: '#cbd5e1', ring: false },
+                { id: 6, ar: 'برج السرطان ♋', en: 'Cancer ♋', planetAr: 'القمر الفضي الحالم', planetEn: 'The Moon', color: '#e2e8f0', ring: false },
+                { id: 7, ar: 'برج الأسد ♌', en: 'Leo ♌', planetAr: 'الشمس الذهبية الساطعة', planetEn: 'The Sun', color: '#fbbf24', ring: false },
+                { id: 8, ar: 'برج العذراء ♍', en: 'Virgo ♍', planetAr: 'كوكب عطارد الحكيم', planetEn: 'Mercury', color: '#34d399', ring: false },
+                { id: 9, ar: 'برج الميزان ♎', en: 'Libra ♎', planetAr: 'كوكب الزهرة الساحر', planetEn: 'Venus', color: '#f9a8d4', ring: false },
+                { id: 10, ar: 'برج العقرب ♏', en: 'Scorpio ♏', planetAr: 'كوكب بلوتو الغامض', planetEn: 'Pluto', color: '#c084fc', ring: false },
+                { id: 11, ar: 'برج القوس ♐', en: 'Sagittarius ♐', planetAr: 'كوكب المشتري العملاق', planetEn: 'Jupiter', color: '#fb923c', ring: false }
+            ];
+
+            if ((m === 1 && day <= 19) || (m === 12 && day >= 22)) return signs[0];
+            if ((m === 1 && day >= 20) || (m === 2 && day <= 18)) return signs[1];
+            if ((m === 2 && day >= 19) || (m === 3 && day <= 20)) return signs[2];
+            if ((m === 3 && day >= 21) || (m === 4 && day <= 19)) return signs[3];
+            if ((m === 4 && day >= 20) || (m === 5 && day <= 20)) return signs[4];
+            if ((m === 5 && day >= 21) || (m === 6 && day <= 20)) return signs[5];
+            if ((m === 6 && day >= 21) || (m === 7 && day <= 22)) return signs[6];
+            if ((m === 7 && day >= 23) || (m === 8 && day <= 22)) return signs[7];
+            if ((m === 8 && day >= 23) || (m === 9 && day <= 22)) return signs[8];
+            if ((m === 9 && day >= 23) || (m === 10 && day <= 22)) return signs[9];
+            if ((m === 10 && day >= 23) || (m === 11 && day <= 21)) return signs[10];
+            return signs[11];
+        }
+
+        function getDailyCosmicMessage(signId, isEn) {
+            const now = new Date();
+            const daySeed = now.getFullYear() * 366 + (now.getMonth() + 1) * 31 + now.getDate() + signId;
+            const msgsAr = [
+                "اليوم تبتسم لك الكواكب؛ رسالة حب أو خبر مفرح في طريقه إلى قلبك.",
+                "جاذبيتك الكونية في أعلى مستوياتها اليوم، وكل من حولك يشعر بنور روحك.",
+                "كوكبك الحاكم يهمس لك: لا تفقد الأمل، فما تنتظره يقترب من مدارك.",
+                "يوم مثالي لبداية وعد جديد أو لقاء يعيد الدفء والسكينة إلى أيامك.",
+                "النجوم تحمي قلبك اليوم وتفتح لك أبواباً من الطمأنينة والسعادة غير المتوقعة.",
+                "طاقتك العاطفية مشرقة كالشمس؛ شارك ابتسامتك فهناك قلب يشتاق إليك بصمت."
+            ];
+            const msgsEn = [
+                "The planets smile upon you today; a message of love or joyful news is on its way.",
+                "Your cosmic magnetism is at its peak today, and everyone feels your radiant soul.",
+                "Your ruling planet whispers: never lose hope, what you await is entering your orbit.",
+                "A perfect day for a new promise or a reunion that brings warmth back to your life.",
+                "The stars guard your heart today and open doors to unexpected peace and joy.",
+                "Your emotional energy shines like the Sun; share your smile for someone misses you silently."
+            ];
+            const energyPct = 86 + (daySeed % 14);
+            const idx = daySeed % msgsAr.length;
+            return { text: isEn ? msgsEn[idx] : msgsAr[idx], energy: energyPct };
+        }
+
+        const szStars = Array.from({length: 55}, (_, i) => ({
+            x: (i * 87 + 20) % 760 + 20, y: (i * 59 + 25) % 600 + 20,
+            r: (i % 3) * 0.6 + 0.8, speed: 0.04 + (i % 4) * 0.015, phase: i * 0.5
+        }));
+
+        function drawSolarZodiacScene(ctx, userName, birthDate, isEn, frame) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            const bg = ctx.createRadialGradient(400, 310, 30, 400, 310, 460);
+            bg.addColorStop(0, '#1e1035'); bg.addColorStop(0.55, '#0b0e23'); bg.addColorStop(1, '#04050d');
+            ctx.fillStyle = bg; ctx.fillRect(0, 0, 800, 640);
+
+            szStars.forEach(s => {
+                const alpha = 0.25 + 0.75 * Math.abs(Math.sin(frame * s.speed + s.phase));
+                ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+                ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
+            });
+
+            const sign = getZodiacInfo(birthDate);
+            const daily = getDailyCosmicMessage(sign.id, isEn);
+
+            // رسم مدارات المجموعة الشمسية المائلة ثلاثية الأبعاد
+            ctx.save();
+            ctx.translate(400, 315);
+            [115, 175, 235].forEach((rx, idx) => {
+                ctx.strokeStyle = idx === 1 ? 'rgba(253, 224, 71, 0.35)' : 'rgba(148, 163, 184, 0.22)';
+                ctx.lineWidth = idx === 1 ? 2 : 1.2;
+                ctx.beginPath(); ctx.ellipse(0, 0, rx, rx * 0.42, -0.18, 0, Math.PI * 2); ctx.stroke();
+            });
+
+            // رسم الشمس الذهبية المشتعلة في المركز
+            const sunPulse = 1 + 0.05 * Math.sin(frame * 0.15);
+            const sunAura = ctx.createRadialGradient(0, 0, 15, 0, 0, 75 * sunPulse);
+            sunAura.addColorStop(0, '#ffffff'); sunAura.addColorStop(0.35, '#fbbf24');
+            sunAura.addColorStop(0.7, 'rgba(234, 88, 12, 0.55)'); sunAura.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.fillStyle = sunAura; ctx.beginPath(); ctx.arc(0, 0, 75 * sunPulse, 0, Math.PI * 2); ctx.fill();
+
+            ctx.fillStyle = '#f97316'; ctx.beginPath(); ctx.arc(0, 0, 38, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = '#fde047'; ctx.beginPath(); ctx.arc(-6, -6, 26, 0, Math.PI * 2); ctx.fill();
+
+            // رسم كوكب الزائر الحاكم وهو يدور في المدار الرئيسي المضيء
+            const angle = frame * 0.04;
+            const px = Math.cos(angle) * 175;
+            const py = Math.sin(angle) * (175 * 0.42);
+            ctx.save();
+            ctx.rotate(-0.18);
+            ctx.translate(px, py);
+            ctx.shadowColor = sign.color; ctx.shadowBlur = 22;
+            ctx.fillStyle = sign.color;
+            ctx.beginPath(); ctx.arc(0, 0, 17, 0, Math.PI * 2); ctx.fill();
+            if (sign.ring) {
+                ctx.strokeStyle = '#fef08a'; ctx.lineWidth = 3;
+                ctx.beginPath(); ctx.ellipse(0, 0, 30, 8, 0.3, 0, Math.PI * 2); ctx.stroke();
+            }
+            ctx.restore();
+
+            // كوكب مرافق صغير في المدار الخارجي
+            const a2 = -frame * 0.025 + 2;
+            ctx.save(); ctx.rotate(-0.18);
+            ctx.fillStyle = '#38bdf8';
+            ctx.beginPath(); ctx.arc(Math.cos(a2) * 235, Math.sin(a2) * (235 * 0.42), 10, 0, Math.PI * 2); ctx.fill();
+            ctx.restore();
+            ctx.restore();
+            // الإطار والهوية والبرج ورسالة الكون المتجددة يومياً
+            ctx.strokeStyle = '#fb923c'; ctx.lineWidth = 5; ctx.strokeRect(18, 18, 764, 604);
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText('👑 مَمْلَكَةُ الْوُعُودِ العظمى • عائلة KR الملكية 👑', 400, 56);
+            ctx.fillStyle = '#fb923c'; ctx.font = 'bold 14px Cairo, sans-serif';
+            ctx.fillText('Kingdom of Promises • Live Solar System & Zodiac', 400, 80);
+
+            const todayStr = new Date().toLocaleDateString(isEn ? 'en-US' : 'ar-EG', { year: 'numeric', month: 'short', day: 'numeric' });
+            ctx.fillStyle = '#ffffff'; ctx.font = 'bold 24px Cairo, sans-serif';
+            ctx.fillText(isEn ? `✨ ${userName}  •  ${sign.en} ✨` : `✨ ${userName}  •  ${sign.ar} ✨`, 400, 125);
+
+            ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 16px Cairo, sans-serif';
+            ctx.fillText(isEn ? `Ruling Planet: ${sign.planetEn}  |  Cosmic Energy Today (${todayStr}): ${daily.energy}%` : `الكوكب الحاكم: ${sign.planetAr}  |  طاقة اليوم (${todayStr}): ${daily.energy}%`, 400, 156);
+
+            // رسالة الكون المتجددة تلقائياً لهذا اليوم
+            ctx.fillStyle = '#fef08a'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText(daily.text, 400, 520);
+
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 13px Cairo, sans-serif';
+            ctx.fillText('© Live Cosmic Observatory - worldoflove-kr.github.io 👑 KR 👑', 400, 595);
+        }
+
+        const revealBtn = document.getElementById('sz-reveal-btn');
+        if (revealBtn) revealBtn.onclick = () => {
+            const name = document.getElementById('sz-user-name')?.value.trim() || 'نجمٌ متألق';
+            const dob = document.getElementById('sz-birth-date')?.value || '1998-05-15';
+            const isEn = document.documentElement.dir === 'ltr';
+
+            const canvas = document.getElementById('solar-zodiac-canvas');
+            const ctx = canvas.getContext('2d');
+            document.getElementById('sz-result-area').style.display = 'block';
+
+            if (window.liveSolarLoop) clearInterval(window.liveSolarLoop);
+            let f = 0; drawSolarZodiacScene(ctx, name, dob, isEn, 1);
+            document.getElementById('sz-img-link').href = canvas.toDataURL('image/png');
+            window.liveSolarLoop = setInterval(() => {
+                f++; drawSolarZodiacScene(ctx, name, dob, isEn, f);
+            }, 40);
+        };
+
+        const vidBtn = document.getElementById('sz-video-btn');
+        if (vidBtn) vidBtn.onclick = () => {
+            const canvas = document.getElementById('solar-zodiac-canvas');
+            if (!canvas?.captureStream) return;
+            const name = document.getElementById('sz-user-name')?.value.trim() || 'نجمٌ متألق';
+            const dob = document.getElementById('sz-birth-date')?.value || '1998-05-15';
+            const isEn = document.documentElement.dir === 'ltr';
+
+            vidBtn.disabled = true;
+            vidBtn.textContent = isEn ? '⏳ Recording Solar System...' : '⏳ جاري تصوير المجموعة الشمسية (4 ثوانٍ)...';
+            const rec = new MediaRecorder(canvas.captureStream(30), { mimeType: 'video/webm' });
+            const chunks = [];
+            rec.ondataavailable = e => chunks.push(e.data);
+            rec.onstop = () => {
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(new Blob(chunks, { type: 'video/webm' }));
+                a.download = 'Solar-Zodiac-Horoscope-KR.webm';
+                a.click();
+                vidBtn.disabled = false;
+                vidBtn.textContent = isEn ? '🎬 Save Solar System Video' : '🎬 حفظ المجموعة الشمسية كفيديو حي';
+            };
+            rec.start();
+            let c = 0; const ctx = canvas.getContext('2d');
+            const t = setInterval(() => {
+                c++; drawSolarZodiacScene(ctx, name, dob, isEn, c);
+                if (c >= 120) { clearInterval(t); rec.stop(); }
+            }, 33);
+        };
+
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const map = {
+                    'sz-title': isEn ? 'Live Solar System & Daily Zodiac Observatory' : 'مرصد المجموعة الشمسية والأبراج المتجددة يومياً',
+                    'sz-dob-lbl': isEn ? '📅 Select Birth Date (Auto-Detects Your Sign & Planet):' : '📅 اختر تاريخ ميلادك (لتحديد برجك وكوكبك تلقائياً):',
+                    'sz-reveal-btn': isEn ? '🪐 Reveal My Sign, Planet & Today’s Energy ☀️' : '🪐 اكشف برجي وكوكبي وطاقة اليوم ☀️',
+                    'sz-video-btn': isEn ? '🎬 Save Solar System Video' : '🎬 حفظ المجموعة الشمسية كفيديو حي',
+                    'sz-img-link': isEn ? '📥 Save Image' : '📥 حفظ كصورة'
+                };
+                for (const [id, text] of Object.entries(map)) {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = text;
+                }
+                const desc = document.getElementById('sz-desc');
+                if (desc) desc.innerHTML = isEn 
+                    ? 'Planets orbit every day to send fresh energy to your heart.. Enter your name and birth date to auto-detect your <strong style="color:#fb923c;">zodiac sign & ruling planet</strong> and reveal <strong style="color:#38bdf8;">today’s cosmic message</strong>!'
+                    : 'تتحرك الكواكب في مداراتها كل يوم لتُرسل طاقة جديدة لقلبك.. أدخل اسمك وتاريخ ميلادك ليتعرف المرصد تلقائياً على <strong style="color:#fb923c;">برجك الفلكي وكوكبك الحاكم</strong> في المجموعة الشمسية، ويكشف لك <strong style="color:#38bdf8;">رسالة الكون المتجددة لهذا اليوم</strong>!';
+                const u = document.getElementById('sz-user-name');
+                if (u) u.placeholder = isEn ? '✨ Write your noble name here...' : '✨ اكتب اسمك الكريم...';
+            }, 60);
+        });
+    })();
+    </script>
 
             
     
