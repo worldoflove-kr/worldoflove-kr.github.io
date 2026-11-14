@@ -2264,7 +2264,261 @@
         });
     })();
     </script>
+    <!-- 24. بحيرة الرسائل الغارقة وشمعة الحنين (مشهد حزين + فيديو حي للمطر والشمعة والرسالة) -->
+    <style>
+        @keyframes lakeDeepGlow {
+            0% { box-shadow: 0 0 22px rgba(56, 189, 248, 0.4), inset 0 0 25px rgba(14, 165, 233, 0.25); border-color: #0284c7; }
+            50% { box-shadow: 0 0 38px rgba(99, 102, 241, 0.65), inset 0 0 35px rgba(56, 189, 248, 0.35); border-color: #38bdf8; }
+            100% { box-shadow: 0 0 22px rgba(56, 189, 248, 0.4), inset 0 0 25px rgba(14, 165, 233, 0.25); border-color: #0284c7; }
+        }
+        @keyframes candleFlameDance {
+            0% { transform: scale(1) rotate(-2deg); filter: drop-shadow(0 0 12px #fbbf24); }
+            50% { transform: scale(1.12) rotate(3deg); filter: drop-shadow(0 0 22px #f59e0b); }
+            100% { transform: scale(0.96) rotate(-1deg); filter: drop-shadow(0 0 14px #fbbf24); }
+        }
+        #royal-sorrow-lake {
+            max-width: 440px; margin: 30px auto; padding: 26px 18px;
+            background: linear-gradient(180deg, rgba(6, 11, 25, 0.96), rgba(10, 22, 46, 0.96));
+            border: 2px solid #0284c7; border-radius: 20px;
+            animation: lakeDeepGlow 5s infinite ease-in-out;
+            font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 50;
+        }
+        .lake-flame-icon {
+            display: inline-block; font-size: 2.3rem;
+            animation: candleFlameDance 1.8s infinite alternate ease-in-out;
+        }
+        .lake-input {
+            width: 100%; box-sizing: border-box; background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(56, 189, 248, 0.45); border-radius: 12px; padding: 12px 14px;
+            color: #e2e8f0; font-family: 'Cairo', sans-serif; font-size: 0.92rem; margin-bottom: 12px; outline: none;
+        }
+        .lake-btn {
+            width: 100%; padding: 13px; background: linear-gradient(45deg, #0369a1, #4338ca);
+            border: none; border-radius: 12px; color: #fff; font-weight: bold; font-size: 0.96rem;
+            font-family: 'Cairo', sans-serif; cursor: pointer; box-shadow: 0 0 18px rgba(56, 189, 248, 0.45);
+        }
+    </style>
+    <style>
+        @keyframes lakeWaterWave {
+            0% { background-position: 0% 50%; opacity: 0.75; }
+            50% { background-position: 100% 50%; opacity: 1; }
+            100% { background-position: 0% 50%; opacity: 0.75; }
+        }
+        .glowing-lake-water {
+            height: 42px; margin-top: 18px; border-radius: 12px;
+            background: linear-gradient(90deg, rgba(2,132,199,0.2), rgba(56,189,248,0.65), rgba(129,140,248,0.5), rgba(56,189,248,0.65), rgba(2,132,199,0.2));
+            background-size: 300% 100%;
+            box-shadow: 0 0 22px rgba(56, 189, 248, 0.6), inset 0 0 12px rgba(255, 255, 255, 0.4);
+            animation: lakeWaterWave 4s linear infinite;
+            display: flex; align-items: center; justify-content: center;
+            color: #e0f2fe; font-size: 0.8rem; font-weight: bold; letter-spacing: 1px;
+        }
+    </style>
 
+    <script>
+    (function() {
+        const lakeHTML = `
+        <div id="royal-sorrow-lake">
+            <div class="lake-flame-icon">🕯️</div>
+            <h3 id="lake-title" style="color: #38bdf8; margin: 6px 0 10px 0; font-size: 1.26rem; text-shadow: 0 0 14px rgba(56, 189, 248, 0.75);">بحيرة الرسائل الغارقة وشمعة الحنين</h3>
+            <p id="lake-desc" style="color: #cbd5e1; font-size: 0.86rem; line-height: 1.85; margin: 0 0 18px 0;">
+                في بعض الليالي، يثقل القلب بكلماتٍ لم تُقَل، وعتابٍ لم يصل، وشوقٍ لشخصٍ غاب أو رحل.. أشعل شمعة حنينك هنا، واكتب ما يوجع قلبك، ثم أطلقه ليغوص بسلام في <strong style="color:#38bdf8;">أعماق البحيرة المضيئة</strong> أو احتفظ بمشهده كذكرى صامتة!
+            </p>
+
+            <input type="text" id="lake-to-whom" class="lake-input" placeholder="💧 إلى من تكتب هذه الهمسة الحزينة؟ (اختياري)...">
+            <textarea id="lake-sad-msg" class="lake-input" rows="3" placeholder="🕯️ اكتب عتابك، شوقك، أو رسالتك التي بقيت في قلبك هنا..."></textarea>
+
+            <button type="button" class="lake-btn" onclick="releaseSorrowLetter()" id="lake-release-btn">💧 أطلق الرسالة في البحيرة المضيئة 🕯️</button>
+
+            <div id="lake-scene-area" style="display: none; margin-top: 20px;">
+                <canvas id="sorrow-lake-canvas" width="800" height="620" style="width: 100%; border-radius: 14px; border: 2px solid #38bdf8; box-shadow: 0 0 25px rgba(56, 189, 248, 0.65);"></canvas>
+                <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 12px;">
+                    <button type="button" id="lake-video-btn" style="padding: 10px 18px; background: linear-gradient(45deg, #0284c7, #6366f1); color: #fff; border: none; border-radius: 10px; font-weight: bold; font-size: 0.88rem; font-family: Cairo, sans-serif; cursor: pointer; box-shadow: 0 0 16px rgba(56,189,248,0.6);">🎬 حفظ مشهد الشمعة والبحيرة كفيديو حي</button>
+                    <a id="lake-img-link" download="Sorrow-Lake-Candle-KR.png" style="padding: 10px 18px; background: #1e293b; color: #38bdf8; border: 1px solid #38bdf8; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 0.88rem;">📥 حفظ كصورة</a>
+                </div>
+            </div>
+
+            <div class="glowing-lake-water" id="lake-wave-bar">🌊✨ مياه البحيرة الكونية المضيئة تهمس بسلام ✨🌊</div>
+        </div>
+        `;
+
+        const capsule = document.getElementById('royal-time-capsule');
+        if (capsule) {
+            capsule.insertAdjacentHTML('afterend', lakeHTML);
+        } else {
+            const footer = document.getElementById('royal-kingdom-footer');
+            if (footer) footer.insertAdjacentHTML('beforebegin', lakeHTML);
+        }
+        const rainDrops = Array.from({length: 45}, () => ({
+            x: Math.random() * 760 + 20, y: Math.random() * 580 + 20,
+            len: Math.random() * 14 + 8, speed: Math.random() * 5 + 4
+        }));
+
+        function drawSorrowLakeScene(ctx, toWhom, msg, isEn, frame) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            const grad = ctx.createLinearGradient(0, 0, 800, 620);
+            grad.addColorStop(0, '#030712'); grad.addColorStop(0.65, '#09152b'); grad.addColorStop(1, '#0c274d');
+            ctx.fillStyle = grad; ctx.fillRect(0, 0, 800, 620);
+
+            // 1. تساقط قطرات المطر الليلية الهادئة
+            ctx.strokeStyle = 'rgba(186, 230, 253, 0.35)';
+            ctx.lineWidth = 1.5;
+            rainDrops.forEach(r => {
+                const ry = (r.y + frame * r.speed) % 520;
+                ctx.beginPath(); ctx.moveTo(r.x, ry); ctx.lineTo(r.x - 3, ry + r.len); ctx.stroke();
+            });
+
+            // 2. رسم أمواج البحيرة المضيئة المتحركة في أسفل اللوحة
+            for (let w = 0; w < 3; w++) {
+                ctx.beginPath();
+                ctx.moveTo(20, 600);
+                for (let x = 20; x <= 780; x += 20) {
+                    const yWave = 485 + w * 22 + Math.sin(x * 0.02 + frame * 0.1 + w) * 8;
+                    ctx.lineTo(x, yWave);
+                }
+                ctx.lineTo(780, 600);
+                ctx.closePath();
+                const waveGrad = ctx.createLinearGradient(0, 480, 0, 600);
+                waveGrad.addColorStop(0, w === 0 ? 'rgba(56, 189, 248, 0.55)' : 'rgba(14, 165, 233, 0.35)');
+                waveGrad.addColorStop(1, 'rgba(3, 105, 161, 0.85)');
+                ctx.fillStyle = waveGrad;
+                ctx.shadowColor = '#38bdf8'; ctx.shadowBlur = 18;
+                ctx.fill();
+            }
+            ctx.shadowBlur = 0;
+
+            // 3. رسم شمعة الحنين المضيئة ولهبها المتراقص
+            ctx.save();
+            ctx.translate(400, 445);
+            ctx.fillStyle = '#f8fafc';
+            ctx.fillRect(-14, 0, 28, 52);
+            const flicker = Math.sin(frame * 0.25) * 3;
+            const fGlow = ctx.createRadialGradient(flicker, -16, 2, flicker, -16, 55);
+            fGlow.addColorStop(0, 'rgba(254, 240, 138, 0.95)');
+            fGlow.addColorStop(0.5, 'rgba(245, 158, 11, 0.45)');
+            fGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = fGlow; ctx.beginPath(); ctx.arc(flicker, -16, 55, 0, Math.PI * 2); ctx.fill();
+
+            ctx.fillStyle = '#fde047';
+            ctx.beginPath();
+            ctx.moveTo(0, -32);
+            ctx.quadraticCurveTo(10 + flicker, -14, 0, -4);
+            ctx.quadraticCurveTo(-10 + flicker, -14, 0, -32);
+            ctx.fill();
+            ctx.restore();
+
+            // 4. الإطار والهوية الثنائية للمملكة
+            ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 5; ctx.strokeRect(18, 18, 764, 584);
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText('👑 مَمْلَكَةُ الْوُعُودِ العظمى • عائلة KR الملكية 👑', 400, 56);
+            ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 14px Cairo, sans-serif';
+            ctx.fillText('Kingdom of Promises • Sunken Letters Lake', 400, 80);
+
+            if (toWhom) {
+                ctx.fillStyle = '#7dd3fc'; ctx.font = 'bold 21px Cairo, sans-serif';
+                ctx.fillText(isEn ? `💧 A silent whisper to: ${toWhom}` : `💧 همسة صامتة إلى: ${toWhom}`, 400, 125);
+            }
+
+            // 5. نص الرسالة الحزينة
+            ctx.fillStyle = '#f1f5f9'; ctx.font = '21px Cairo, sans-serif';
+            const words = msg.split(' ');
+            let line = ''; let y = toWhom ? 175 : 155;
+            for (let n = 0; n < words.length; n++) {
+                const testLine = line + words[n] + ' ';
+                if (ctx.measureText(testLine).width > 640 && n > 0) {
+                    ctx.fillText(line, 400, y); line = words[n] + ' '; y += 36;
+                } else { line = testLine; }
+            }
+            ctx.fillText(line, 400, y);
+
+            ctx.fillStyle = '#e0f2fe'; ctx.font = 'bold 13px Cairo, sans-serif';
+            ctx.fillText('© Sunken Letters Sanctuary - worldoflove-kr.github.io 👑 KR 👑', 400, 585);
+        }
+
+        window.releaseSorrowLetter = function() {
+            const toWhom = document.getElementById('lake-to-whom').value.trim();
+            const msg = document.getElementById('lake-sad-msg').value.trim() || 'بعض الرسائل لا تُرسَل.. بل تُترك للبحيرة والنجوم لتحتضنها بسلام.';
+            const isEn = document.documentElement.dir === 'ltr';
+
+            const canvas = document.getElementById('sorrow-lake-canvas');
+            const ctx = canvas.getContext('2d');
+            document.getElementById('lake-scene-area').style.display = 'block';
+
+            if (window.liveLakeLoop) clearInterval(window.liveLakeLoop);
+            let f = 0;
+            drawSorrowLakeScene(ctx, toWhom, msg, isEn, 1);
+            document.getElementById('lake-img-link').href = canvas.toDataURL('image/png');
+
+            window.liveLakeLoop = setInterval(() => {
+                f++;
+                drawSorrowLakeScene(ctx, toWhom, msg, isEn, f);
+            }, 45);
+        };
+
+        document.addEventListener('click', function(e) {
+            if (e.target && e.target.id === 'lake-video-btn') {
+                const vBtn = e.target;
+                const canvas = document.getElementById('sorrow-lake-canvas');
+                if (!canvas || !canvas.captureStream || typeof MediaRecorder === 'undefined') return;
+                const toWhom = document.getElementById('lake-to-whom').value.trim();
+                const msg = document.getElementById('lake-sad-msg').value.trim() || 'بعض الرسائل لا تُرسَل.. بل تُترك للبحيرة والنجوم لتحتضنها بسلام.';
+                const isEn = document.documentElement.dir === 'ltr';
+
+                vBtn.disabled = true;
+                vBtn.textContent = isEn ? '⏳ Recording 4s Lake Video...' : '⏳ جاري تصوير البحيرة والشمعة (4 ثوانٍ)...';
+                const stream = canvas.captureStream(30);
+                const rec = new MediaRecorder(stream, { mimeType: 'video/webm' });
+                const chunks = [];
+                rec.ondataavailable = ev => { if (ev.data.size > 0) chunks.push(ev.data); };
+                rec.onstop = () => {
+                    const blob = new Blob(chunks, { type: 'video/webm' });
+                    const a = document.createElement('a');
+                    a.href = URL.createObjectURL(blob);
+                    a.download = 'Sorrow-Lake-Candle-Animated-KR.webm';
+                    a.click();
+                    vBtn.disabled = false;
+                    vBtn.textContent = isEn ? '🎬 Save Candle & Lake Video' : '🎬 حفظ مشهد الشمعة والبحيرة كفيديو حي';
+                };
+                rec.start();
+                let count = 0;
+                const ctx = canvas.getContext('2d');
+                const recTimer = setInterval(() => {
+                    count++;
+                    drawSorrowLakeScene(ctx, toWhom, msg, isEn, count);
+                    if (count >= 120) { clearInterval(recTimer); rec.stop(); }
+                }, 33);
+            }
+
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const map = {
+                    'lake-title': isEn ? 'Sunken Letters Lake & Nostalgia Candle' : 'بحيرة الرسائل الغارقة وشمعة الحنين',
+                    'lake-release-btn': isEn ? '💧 Release Letter into the Glowing Lake 🕯️' : '💧 أطلق الرسالة في البحيرة المضيئة 🕯️',
+                    'lake-video-btn': isEn ? '🎬 Save Candle & Lake Video' : '🎬 حفظ مشهد الشمعة والبحيرة كفيديو حي',
+                    'lake-img-link': isEn ? '📥 Save Image' : '📥 حفظ كصورة',
+                    'lake-wave-bar': isEn ? '🌊✨ Glowing Cosmic Lake Waters Whisper Peace ✨🌊' : '🌊✨ مياه البحيرة الكونية المضيئة تهمس بسلام ✨🌊'
+                };
+                for (const [id, text] of Object.entries(map)) {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = text;
+                }
+                const desc = document.getElementById('lake-desc');
+                if (desc) desc.innerHTML = isEn 
+                    ? 'On certain nights, the heart grows heavy with unsaid words and longing for someone distant.. Light your nostalgia candle here, write what aches in your heart, and release it into the <strong style="color:#38bdf8;">glowing lake depths</strong>!'
+                    : 'في بعض الليالي، يثقل القلب بكلماتٍ لم تُقَل، وعتابٍ لم يصل، وشوقٍ لشخصٍ غاب أو رحل.. أشعل شمعة حنينك هنا، واكتب ما يوجع قلبك، ثم أطلقه ليغوص بسلام في <strong style="color:#38bdf8;">أعماق البحيرة المضيئة</strong> أو احتفظ بمشهده كذكرى صامتة!';
+                const t = document.getElementById('lake-to-whom');
+                const m = document.getElementById('lake-sad-msg');
+                if (t) t.placeholder = isEn ? '💧 To whom is this silent whisper? (Optional)...' : '💧 إلى من تكتب هذه الهمسة الحزينة؟ (اختياري)...';
+                if (m) m.placeholder = isEn ? '🕯️ Write your longing, regret, or unsaid letter here...' : '🕯️ اكتب عتابك، شوقك، أو رسالتك التي بقيت في قلبك هنا...';
+            }, 60);
+        });
+    })();
+    </script>
+
+    
     
     
             
