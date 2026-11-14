@@ -2618,7 +2618,10 @@
             const footer = document.getElementById('royal-kingdom-footer');
             if (footer) footer.insertAdjacentHTML('beforebegin', stationHTML);
         }
-    <style>
+     })();
+    </script>
+
+        <style>
         @keyframes penPulseGlow {
             0% { transform: translateY(0px) rotate(0deg); filter: drop-shadow(0 0 6px #fbbf24); }
             50% { transform: translateY(-4px) rotate(-12deg); filter: drop-shadow(0 0 16px #fde047); }
@@ -2821,6 +2824,17 @@
                 if (m) m.placeholder = isEn ? '📜 Write your sad message here or pick a glowing quote above...' : '📜 اكتب عبارتك الحزينة هنا أو اضغط على إحدى العبارات المضيئة أعلاه...';
             }, 60);
         });
+    })();
+    </script>
+    <!-- إصلاح وتشغيل محطة القطارات فوراً -->
+    <script>
+    (function() {
+        if (!document.getElementById('royal-train-station')) {
+            const lake = document.getElementById('royal-sorrow-lake') || document.getElementById('royal-kingdom-footer');
+            if (lake && typeof stationHTML !== 'undefined') {
+                lake.insertAdjacentHTML(lake.id === 'royal-sorrow-lake' ? 'afterend' : 'beforebegin', stationHTML);
+            }
+        }
     })();
     </script>
 
