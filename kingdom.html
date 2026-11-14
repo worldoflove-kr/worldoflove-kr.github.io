@@ -1958,7 +1958,230 @@
         });
     })();
     </script>
+    <!-- 22. كبسولة الزمن الكونية المشفرة (خلفية مضيئة مبهرة + قفل زمني وعدّاد تنازلي حي) -->
+    <style>
+        @keyframes capsuleAuroraBg {
+            0% { background-position: 0% 50%; box-shadow: 0 0 25px rgba(212, 175, 55, 0.55), inset 0 0 25px rgba(138, 43, 226, 0.35); border-color: #d4af37; }
+            50% { background-position: 100% 50%; box-shadow: 0 0 40px rgba(56, 189, 248, 0.7), inset 0 0 35px rgba(255, 0, 127, 0.35); border-color: #38bdf8; }
+            100% { background-position: 0% 50%; box-shadow: 0 0 25px rgba(212, 175, 55, 0.55), inset 0 0 25px rgba(138, 43, 226, 0.35); border-color: #d4af37; }
+        }
+        #royal-time-capsule {
+            max-width: 440px; margin: 30px auto; padding: 26px 18px;
+            background: linear-gradient(-45deg, rgba(22, 12, 48, 0.95), rgba(45, 14, 58, 0.95), rgba(12, 34, 66, 0.95), rgba(32, 15, 52, 0.95));
+            background-size: 400% 400%;
+            border: 2px solid #d4af37; border-radius: 20px;
+            animation: capsuleAuroraBg 6s ease infinite;
+            font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 50;
+        }
+        .cap-input {
+            width: 100%; box-sizing: border-box; background: rgba(255, 255, 255, 0.09);
+            border: 1px solid rgba(212, 175, 55, 0.55); border-radius: 11px; padding: 11px 14px;
+            color: #fff; font-family: 'Cairo', sans-serif; font-size: 0.92rem; margin-bottom: 12px; outline: none;
+            color-scheme: dark;
+        }
+        .cap-btn {
+            width: 100%; padding: 13px; background: linear-gradient(45deg, #d4af37, #8a2be2, #ff007f);
+            background-size: 200% 200%; border: none; border-radius: 12px; color: #fff; font-weight: bold;
+            font-size: 0.98rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+            box-shadow: 0 0 22px rgba(212, 175, 55, 0.6);
+        }
+        .cap-locked-box {
+            margin-top: 18px; padding: 20px 14px; border-radius: 15px;
+            background: rgba(8, 6, 18, 0.85); border: 1.5px solid #ff007f;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
+        }
+        .cap-timer-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 14px 0;
+        }
+        .cap-time-unit {
+            background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(56, 189, 248, 0.4);
+            border-radius: 10px; padding: 8px 4px;
+        }
+    </style>
+    <script>
+    (function() {
+        const capsuleHTML = `
+        <div id="royal-time-capsule">
+            <div style="font-size: 2rem; margin-bottom: 6px;">⏳🔐✨</div>
+            <h3 id="cap-title" style="color: #fde047; margin: 0 0 10px 0; font-size: 1.28rem; text-shadow: 0 0 14px rgba(253, 224, 71, 0.75);">كبسولة الزمن الكونية المشفرة</h3>
+            <p id="cap-desc" style="color: #f1f5f9; font-size: 0.86rem; line-height: 1.8; margin: 0 0 18px 0;">
+                هل لديك سرٌّ في قلبك، أو رسالة حب تود أن تصل لمن تحب في لحظة مستقبلية خاصة؟ اكتب رسالتك هنا وحدد <strong style="color:#38bdf8;">تاريخ وساعة الفتح</strong>، وستقوم المملكة بقفلها داخل <strong style="color:#ff007f;">كبسولة زمنية مشفرة</strong> لا تفتح أبداً إلا في الموعد الذي اخترته!
+            </p>
 
+            <!-- شاشة استعراض كبسولة واردة من رابط -->
+            <div id="cap-incoming-view" style="display: none; margin-bottom: 18px;"></div>
+
+            <!-- شاشة إنشاء كبسولة جديدة -->
+            <div id="cap-creator-form">
+                <input type="text" id="cap-sender" class="cap-input" placeholder="✍️ اسمك (المرسل)...">
+                <input type="text" id="cap-receiver" class="cap-input" placeholder="💎 اسم المستلم...">
+                <textarea id="cap-secret-msg" class="cap-input" rows="3" placeholder="🔐 اكتب رسالتك السرية أو وعدك للمستقبل هنا..."></textarea>
+                
+                <div id="cap-date-label" style="font-size: 0.82rem; color: #38bdf8; font-weight: bold; margin-bottom: 6px;">⏰ اختر تاريخ وساعة فتح الكبسولة:</div>
+                <input type="datetime-local" id="cap-unlock-time" class="cap-input" dir="ltr" style="text-align: center;">
+
+                <button type="button" class="cap-btn" onclick="sealCosmicCapsule()" id="cap-seal-btn">🔐 تشفير الرسالة وإغلاق الكبسولة الزمنية 🔐</button>
+            </div>
+
+            <!-- نتيجة التشفير والرابط السري -->
+            <div id="cap-share-area" style="display: none; margin-top: 18px; padding: 16px; background: rgba(0,0,0,0.45); border: 1px solid #d4af37; border-radius: 14px;">
+                <div id="cap-ready-msg" style="color: #4ade80; font-weight: bold; font-size: 0.92rem; margin-bottom: 10px;">✅ تم قفل الكبسولة وتشفيرها بنجاح!</div>
+                <input type="text" id="cap-generated-link" class="cap-input" readonly dir="ltr" style="font-size: 0.78rem; text-align: center; background: rgba(255,255,255,0.12);">
+                <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+                    <button type="button" onclick="copyCapsuleLink()" id="cap-copy-btn" style="padding: 9px 16px; background: #0284c7; color: #fff; border: none; border-radius: 10px; font-weight: bold; font-family: Cairo, sans-serif; cursor: pointer;">📋 نسخ الرابط السري</button>
+                    <button type="button" onclick="previewMyCapsule()" id="cap-preview-btn" style="padding: 9px 16px; background: #ff007f; color: #fff; border: none; border-radius: 10px; font-weight: bold; font-family: Cairo, sans-serif; cursor: pointer;">👁️ معاينة القفل والعدّاد</button>
+                </div>
+            </div>
+        </div>
+        `;
+
+        const moonObs = document.getElementById('royal-moon-observatory');
+        if (moonObs) {
+            moonObs.insertAdjacentHTML('afterend', capsuleHTML);
+        } else {
+            const footer = document.getElementById('royal-kingdom-footer');
+            if (footer) footer.insertAdjacentHTML('beforebegin', capsuleHTML);
+        }
+        function encodeCapsuleData(obj) {
+            return btoa(unescape(encodeURIComponent(JSON.stringify(obj))));
+        }
+        function decodeCapsuleData(str) {
+            try { return JSON.parse(decodeURIComponent(escape(atob(str)))); } catch (e) { return null; }
+        }
+
+        function renderCapsuleState(data) {
+            const view = document.getElementById('cap-incoming-view');
+            if (!view || !data) return;
+            view.style.display = 'block';
+            const isEn = document.documentElement.dir === 'ltr';
+            const targetTime = new Date(data.t).getTime();
+
+            if (window.capsuleTimerInterval) clearInterval(window.capsuleTimerInterval);
+
+            function updateCapsuleTick() {
+                const now = Date.now();
+                const diff = targetTime - now;
+
+                if (diff <= 0) {
+                    clearInterval(window.capsuleTimerInterval);
+                    view.innerHTML = `
+                        <div style="padding: 20px 15px; border-radius: 16px; background: linear-gradient(135deg, rgba(212,175,55,0.2), rgba(255,0,127,0.25)); border: 2px solid #d4af37; box-shadow: 0 0 25px rgba(212,175,55,0.6);">
+                            <div style="font-size: 2rem; margin-bottom: 6px;">🔓✨💖</div>
+                            <div style="color: #fde047; font-weight: bold; font-size: 1.05rem; margin-bottom: 8px;">${isEn ? '🎉 Cosmic Time Capsule Unlocked!' : '🎉 انفتح القفل الزمني للكبسولة!'}</div>
+                            <div style="color: #38bdf8; font-size: 0.9rem; font-weight: bold; margin-bottom: 12px;">${isEn ? `From: ${data.s}  ➔  To: ${data.r}` : `من: ${data.s}  ➔  إلى: ${data.r}`}</div>
+                            <div style="color: #ffffff; font-size: 1rem; line-height: 1.85; background: rgba(0,0,0,0.45); padding: 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15);">${data.m}</div>
+                            <div style="color: #d4af37; font-size: 0.75rem; margin-top: 10px;">👑 Kingdom of Promises - KR Royal Seal 👑</div>
+                        </div>
+                    `;
+                } else {
+                    const days = Math.floor(diff / 86400000);
+                    const hrs = Math.floor((diff % 86400000) / 3600000);
+                    const mins = Math.floor((diff % 3600000) / 60000);
+                    const secs = Math.floor((diff % 60000) / 1000);
+
+                    view.innerHTML = `
+                        <div class="cap-locked-box">
+                            <div style="font-size: 2.1rem; margin-bottom: 6px;">🔒⏳👑</div>
+                            <div style="color: #ff007f; font-weight: bold; font-size: 1rem;">${isEn ? 'Sealed Cosmic Capsule' : 'كبسولة زمنية مغلقة بأمر المملكة'}</div>
+                            <div style="color: #e2e8f0; font-size: 0.85rem; margin: 6px 0;">${isEn ? `Secret message from <strong>${data.s}</strong> to <strong>${data.r}</strong>` : `رسالة سرية من <strong>${data.s}</strong> إلى <strong>${data.r}</strong>`}</div>
+                            <div class="cap-timer-grid" dir="ltr">
+                                <div class="cap-time-unit"><div style="color:#fde047;font-weight:bold;font-size:1.1rem;">${days}</div><div style="color:#94a3b8;font-size:0.7rem;">${isEn ? 'Days' : 'يوم'}</div></div>
+                                <div class="cap-time-unit"><div style="color:#38bdf8;font-weight:bold;font-size:1.1rem;">${hrs}</div><div style="color:#94a3b8;font-size:0.7rem;">${isEn ? 'Hours' : 'ساعة'}</div></div>
+                                <div class="cap-time-unit"><div style="color:#ff007f;font-weight:bold;font-size:1.1rem;">${mins}</div><div style="color:#94a3b8;font-size:0.7rem;">${isEn ? 'Mins' : 'دقيقة'}</div></div>
+                                <div class="cap-time-unit"><div style="color:#4ade80;font-weight:bold;font-size:1.1rem;">${secs}</div><div style="color:#94a3b8;font-size:0.7rem;">${isEn ? 'Secs' : 'ثانية'}</div></div>
+                            </div>
+                            <div style="color: #cbd5e1; font-size: 0.78rem;">${isEn ? 'Will automatically unlock when the countdown reaches zero ✨' : 'ستُفتح الرسالة تلقائياً بمجرد انتهاء العدّاد التنازلي ✨'}</div>
+                        </div>
+                    `;
+                }
+            }
+            updateCapsuleTick();
+            window.capsuleTimerInterval = setInterval(updateCapsuleTick, 1000);
+        }
+
+        let lastCreatedCapsule = null;
+
+        window.sealCosmicCapsule = function() {
+            const s = document.getElementById('cap-sender').value.trim() || 'قلب محب';
+            const r = document.getElementById('cap-receiver').value.trim() || 'توأم الروح';
+            const m = document.getElementById('cap-secret-msg').value.trim() || 'رسالة حب سرية محفوظة في مملكة الوعود حتى يحين موعدنا.';
+            let t = document.getElementById('cap-unlock-time').value;
+            if (!t) {
+                const nextMin = new Date(Date.now() + 60000);
+                t = nextMin.toISOString().slice(0, 16);
+            }
+            lastCreatedCapsule = { s, r, m, t };
+            const token = encodeCapsuleData(lastCreatedCapsule);
+            const baseUrl = window.location.origin + window.location.pathname;
+            const shareUrl = `${baseUrl}?capsule=${encodeURIComponent(token)}#royal-time-capsule`;
+
+            document.getElementById('cap-generated-link').value = shareUrl;
+            document.getElementById('cap-share-area').style.display = 'block';
+        };
+
+        window.copyCapsuleLink = function() {
+            const input = document.getElementById('cap-generated-link');
+            if (!input) return;
+            input.select();
+            navigator.clipboard?.writeText(input.value);
+            const btn = document.getElementById('cap-copy-btn');
+            const isEn = document.documentElement.dir === 'ltr';
+            if (btn) {
+                btn.textContent = isEn ? '✅ Link Copied!' : '✅ تم نسخ الرابط السري!';
+                setTimeout(() => { btn.textContent = isEn ? '📋 Copy Secret Link' : '📋 نسخ الرابط السري'; }, 2500);
+            }
+        };
+
+        window.previewMyCapsule = function() {
+            if (lastCreatedCapsule) renderCapsuleState(lastCreatedCapsule);
+        };
+
+        // فحص تلقائي إذا دخل الزائر عبر رابط كبسولة مشفرة
+        const urlParams = new URLSearchParams(window.location.search);
+        const incomingToken = urlParams.get('capsule');
+        if (incomingToken) {
+            const parsed = decodeCapsuleData(incomingToken);
+            if (parsed) {
+                renderCapsuleState(parsed);
+                setTimeout(() => { document.getElementById('royal-time-capsule')?.scrollIntoView({ behavior: 'smooth' }); }, 600);
+            }
+        }
+
+        // ربط الترجمة التلقائية للكبسولة (عربي ⇄ إنجليزي)
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const map = {
+                    'cap-title': isEn ? 'Cosmic Encrypted Time Capsule' : 'كبسولة الزمن الكونية المشفرة',
+                    'cap-date-label': isEn ? '⏰ Select Date & Time to Unlock Capsule:' : '⏰ اختر تاريخ وساعة فتح الكبسولة:',
+                    'cap-seal-btn': isEn ? '🔐 Encrypt Message & Seal Time Capsule 🔐' : '🔐 تشفير الرسالة وإغلاق الكبسولة الزمنية 🔐',
+                    'cap-ready-msg': isEn ? '✅ Capsule Locked & Encrypted Successfully!' : '✅ تم قفل الكبسولة وتشفيرها بنجاح!',
+                    'cap-copy-btn': isEn ? '📋 Copy Secret Link' : '📋 نسخ الرابط السري',
+                    'cap-preview-btn': isEn ? '👁️ Preview Lock & Timer' : '👁️ معاينة القفل والعدّاد'
+                };
+                for (const [id, text] of Object.entries(map)) {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = text;
+                }
+                const desc = document.getElementById('cap-desc');
+                if (desc) desc.innerHTML = isEn 
+                    ? 'Have a secret in your heart or a love letter for a special future moment? Write it here, pick the <strong style="color:#38bdf8;">unlock date & time</strong>, and the Kingdom will seal it inside an <strong style="color:#ff007f;">encrypted time capsule</strong>!'
+                    : 'هل لديك سرٌّ في قلبك، أو رسالة حب تود أن تصل لمن تحب في لحظة مستقبلية خاصة؟ اكتب رسالتك هنا وحدد <strong style="color:#38bdf8;">تاريخ وساعة الفتح</strong>، وستقوم المملكة بقفلها داخل <strong style="color:#ff007f;">كبسولة زمنية مشفرة</strong> لا تفتح أبداً إلا في الموعد الذي اخترته!';
+                const s = document.getElementById('cap-sender');
+                const r = document.getElementById('cap-receiver');
+                const m = document.getElementById('cap-secret-msg');
+                if (s) s.placeholder = isEn ? '✍️ Your Name (Sender)...' : '✍️ اسمك (المرسل)...';
+                if (r) r.placeholder = isEn ? '💎 Recipient Name...' : '💎 اسم المستلم...';
+                if (m) m.placeholder = isEn ? '🔐 Write your secret message or future promise here...' : '🔐 اكتب رسالتك السرية أو وعدك للمستقبل هنا...';
+            }, 60);
+        });
+    })();
+    </script>
+
+    
+    
             
             </body>
 
