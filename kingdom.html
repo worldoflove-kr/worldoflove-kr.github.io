@@ -2387,25 +2387,34 @@
             }
             ctx.shadowBlur = 0;
 
-            // 3. رسم شمعة الحنين المضيئة ولهبها المتراقص
+                 // 3. رسم الزورق الورقي المضيء يبحر ويتمايل فوق أمواج البحيرة
             ctx.save();
-            ctx.translate(400, 445);
-            ctx.fillStyle = '#f8fafc';
-            ctx.fillRect(-14, 0, 28, 52);
-            const flicker = Math.sin(frame * 0.25) * 3;
-            const fGlow = ctx.createRadialGradient(flicker, -16, 2, flicker, -16, 55);
-            fGlow.addColorStop(0, 'rgba(254, 240, 138, 0.95)');
-            fGlow.addColorStop(0.5, 'rgba(245, 158, 11, 0.45)');
-            fGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
-            ctx.fillStyle = fGlow; ctx.beginPath(); ctx.arc(flicker, -16, 55, 0, Math.PI * 2); ctx.fill();
+            const boatX = 400 + Math.sin(frame * 0.03) * 65;
+            const boatY = 478 + Math.sin(frame * 0.1) * 7;
+            const boatTilt = Math.cos(frame * 0.1) * 0.08;
+            ctx.translate(boatX, boatY);
+            ctx.rotate(boatTilt);
 
-            ctx.fillStyle = '#fde047';
+            const bGlow = ctx.createRadialGradient(0, -10, 5, 0, -10, 75);
+            bGlow.addColorStop(0, 'rgba(253, 224, 71, 0.65)');
+            bGlow.addColorStop(0.5, 'rgba(56, 189, 248, 0.3)');
+            bGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = bGlow;
+            ctx.beginPath(); ctx.arc(0, -10, 75, 0, Math.PI * 2); ctx.fill();
+
+            ctx.fillStyle = '#f8fafc';
+            ctx.shadowColor = '#fde047'; ctx.shadowBlur = 15;
             ctx.beginPath();
-            ctx.moveTo(0, -32);
-            ctx.quadraticCurveTo(10 + flicker, -14, 0, -4);
-            ctx.quadraticCurveTo(-10 + flicker, -14, 0, -32);
-            ctx.fill();
+            ctx.moveTo(-48, -8); ctx.lineTo(48, -8);
+            ctx.lineTo(30, 14); ctx.lineTo(-30, 14);
+            ctx.closePath(); ctx.fill();
+
+            ctx.fillStyle = '#fef08a';
+            ctx.beginPath();
+            ctx.moveTo(0, -46); ctx.lineTo(32, -10); ctx.lineTo(-32, -10);
+            ctx.closePath(); ctx.fill();
             ctx.restore();
+
 
             // 4. الإطار والهوية الثنائية للمملكة
             ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 5; ctx.strokeRect(18, 18, 764, 584);
