@@ -3300,6 +3300,280 @@
         };
     })();
     </script>
+    <!-- 27. قبة الأمنيات ونجمة الشهاب (شهاب ذهبي عابر + غبار نجمي + فيديو حي) -->
+    <style>
+        @keyframes domeStarGlow {
+            0% { box-shadow: 0 0 22px rgba(168, 85, 247, 0.45), inset 0 0 22px rgba(56, 189, 248, 0.25); border-color: #a855f7; }
+            50% { box-shadow: 0 0 38px rgba(253, 224, 71, 0.7), inset 0 0 32px rgba(168, 85, 247, 0.35); border-color: #fde047; }
+            100% { box-shadow: 0 0 22px rgba(168, 85, 247, 0.45), inset 0 0 22px rgba(56, 189, 248, 0.25); border-color: #a855f7; }
+        }
+        #royal-wishing-dome {
+            max-width: 440px; margin: 30px auto; padding: 26px 18px;
+            background: linear-gradient(180deg, rgba(13, 10, 28, 0.96), rgba(24, 14, 44, 0.96));
+            border: 2px solid #a855f7; border-radius: 20px;
+            animation: domeStarGlow 5s infinite ease-in-out;
+            font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 50;
+        }
+        .wish-input {
+            width: 100%; box-sizing: border-box; background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(168, 85, 247, 0.55); border-radius: 11px; padding: 11px 14px;
+            color: #f8fafc; font-family: 'Cairo', sans-serif; font-size: 0.92rem; margin-bottom: 12px; outline: none;
+        }
+        .wish-btn {
+            width: 100%; padding: 13px; background: linear-gradient(45deg, #7e22ce, #0284c7, #d4af37);
+            background-size: 200% 200%; border: 1px solid #fde047; border-radius: 12px; color: #fff;
+            font-weight: bold; font-size: 0.96rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.55);
+        }
+        .wish-chip-btn {
+            background: rgba(168, 85, 247, 0.18); border: 1px solid #c084fc; color: #f3e8ff;
+            border-radius: 18px; padding: 6px 12px; font-size: 0.78rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+        }
+    </style>
+    <style>
+        .wish-glowing-name {
+            color: #fde047 !important;
+            font-weight: bold !important;
+            text-shadow: 0 0 10px rgba(253, 224, 71, 0.85), 0 0 20px rgba(56, 189, 248, 0.6) !important;
+            border-color: #fde047 !important;
+            box-shadow: 0 0 16px rgba(253, 224, 71, 0.35), inset 0 0 10px rgba(168, 85, 247, 0.25) !important;
+        }
+    </style>
+
+    <script>
+    (function() {
+        const domeHTML = `
+        <div id="royal-wishing-dome">
+            <div style="font-size: 2.1rem; margin-bottom: 6px;">🌠✨🔮</div>
+            <h3 id="wish-title" style="color: #fde047; margin: 0 0 10px 0; font-size: 1.26rem; text-shadow: 0 0 14px rgba(253, 224, 71, 0.8);">قبة الأمنيات ونجمة الشهاب العابر</h3>
+            <p id="wish-desc" style="color: #e2e8f0; font-size: 0.86rem; line-height: 1.85; margin: 0 0 16px 0;">
+                تقول الأساطير السماوية إن كل أمنية صادقة تُهمس تحت النجوم تجد <strong style="color:#fde047;">شهاباً مضيئاً</strong> يحملها إلى عنان السماء.. اكتب اسمك المضيء وأمنيتك السرية هنا، وشاهد <strong style="color:#38bdf8;">نجمة الشهاب الساطعة</strong> وهي تعبر سماء المملكة لتخلّد أمنيتك!
+            </p>
+
+            <input type="text" id="wish-user-name" class="wish-input wish-glowing-name" placeholder="✨ اكتب اسمك المضيء هنا...">
+
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 10px;">
+                <button type="button" class="wish-chip-btn" onclick="fillWishText(1)" id="wish-c1">💖 لقاء قريب</button>
+                <button type="button" class="wish-chip-btn" onclick="fillWishText(2)" id="wish-c2">🕊️ طمأنينة القلب</button>
+                <button type="button" class="wish-chip-btn" onclick="fillWishText(3)" id="wish-c3">🌟 تحقيق حلم العمر</button>
+            </div>
+
+            <textarea id="wish-secret-text" class="wish-input" rows="3" placeholder="🌠 اكتب أمنيتك السرية هنا أو اختر إحدى الأمنيات أعلاه..."></textarea>
+
+            <button type="button" class="wish-btn" onclick="launchShootingStarWish()" id="wish-launch-btn">🌠 أطلق أمنيتي مع الشهاب المضيء ✨</button>
+
+            <div id="wish-result-area" style="display: none; margin-top: 20px;">
+                <canvas id="wishing-star-canvas" width="800" height="620" style="width: 100%; border-radius: 14px; border: 2px solid #fde047; box-shadow: 0 0 28px rgba(253, 224, 71, 0.65);"></canvas>
+                <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 12px;">
+                    <button type="button" id="wish-video-btn" style="padding: 10px 18px; background: linear-gradient(45deg, #7e22ce, #d97706); color: #fff; border: 1px solid #fde047; border-radius: 10px; font-weight: bold; font-size: 0.88rem; font-family: Cairo, sans-serif; cursor: pointer; box-shadow: 0 0 18px rgba(253,224,71,0.55);">🎬 حفظ الشهاب المضيء كفيديو حي</button>
+                    <a id="wish-img-link" download="Wishing-Shooting-Star-KR.png" style="padding: 10px 18px; background: #1e293b; color: #fde047; border: 1px solid #fde047; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 0.88rem;">📥 حفظ كصورة</a>
+                </div>
+            </div>
+        </div>
+        `;
+
+        const clockBox = document.getElementById('royal-stopped-clock');
+        if (clockBox) {
+            clockBox.insertAdjacentHTML('afterend', domeHTML);
+        } else {
+            const footer = document.getElementById('royal-kingdom-footer');
+            if (footer) footer.insertAdjacentHTML('beforebegin', domeHTML);
+        }
+    })();
+    </script>
+    <script>
+    (function() {
+        const wishAr = {
+            1: "يا رب اجمعني بمن أحب لقاءً جميلاً يُنسي القلب كل تعب الانتظار.",
+            2: "أتمنى لقلبي طمأنينةً لا تزول، وفرحاً يطرق بابي من حيث لا أحتسب.",
+            3: "يا نجمة السماء، اجعلي حلمي حقيقةً تضيء أيامي القادمة بالحب والسلام."
+        };
+        const wishEn = {
+            1: "May destiny bring a joyful reunion that heals every tired moment of waiting.",
+            2: "I wish for endless peace in my heart and unexpected joy knocking on my door.",
+            3: "O shooting star, turn my lifelong dream into a bright reality of love and peace."
+        };
+
+       .forEach(n => {
+            const btn = document.getElementById('wish-c' + n);
+            if (btn) btn.onclick = () => {
+                const isEn = document.documentElement.dir === 'ltr';
+                const box = document.getElementById('wish-secret-text');
+                if (box) box.value = isEn ? wishEn[n] : wishAr[n];
+            };
+        });
+
+        const domeStars = Array.from({length: 55}, () => ({
+            x: Math.random() * 760 + 20, y: Math.random() * 580 + 20,
+            r: Math.random() * 2.2 + 0.7, speed: Math.random() * 0.08 + 0.03, phase: Math.random() * 6.28
+        }));
+
+        function drawShootingStarScene(ctx, userName, wishText, isEn, frame) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            const bg = ctx.createLinearGradient(0, 0, 800, 620);
+            bg.addColorStop(0, '#060512'); bg.addColorStop(0.5, '#150d2e'); bg.addColorStop(1, '#070b1e');
+            ctx.fillStyle = bg; ctx.fillRect(0, 0, 800, 620);
+
+            // 1. النجوم المتلألئة في سماء القبة
+            domeStars.forEach(s => {
+                const alpha = 0.25 + 0.75 * Math.abs(Math.sin(frame * s.speed + s.phase));
+                ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+                ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
+            });
+
+            // 2. رسم الشهاب المضيء الساطع وهو يعبر السماء بذيله الذهبي المتوهج
+            const progress = ((frame * 7) % 900) / 900;
+            const starX = 720 - progress * 640;
+            const starY = 145 + progress * 250;
+
+            ctx.save();
+            // ذيل الشهاب الطويل المتوهج
+            const tailGrad = ctx.createLinearGradient(starX, starY, starX + 190, starY - 75);
+            tailGrad.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
+            tailGrad.addColorStop(0.3, 'rgba(253, 224, 71, 0.75)');
+            tailGrad.addColorStop(0.7, 'rgba(56, 189, 248, 0.3)');
+            tailGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.strokeStyle = tailGrad;
+            ctx.lineWidth = 7; ctx.lineCap = 'round';
+            ctx.beginPath(); ctx.moveTo(starX, starY); ctx.lineTo(starX + 190, starY - 75); ctx.stroke();
+
+            // شرارات الغبار النجمي المتناثرة خلف الشهاب
+            for (let g = 1; g <= 8; g++) {
+                const gx = starX + g * 20 + Math.sin(frame + g) * 6;
+                const gy = starY - g * 8 + Math.cos(frame + g) * 6;
+                ctx.fillStyle = `rgba(254, 240, 138, ${0.9 - g * 0.1})`;
+                ctx.beginPath(); ctx.arc(gx, gy, 2.5 - g * 0.2, 0, Math.PI * 2); ctx.fill();
+            }
+
+            // رأس الشهاب النجمي المضيء
+            const headGlow = ctx.createRadialGradient(starX, starY, 2, starX, starY, 36);
+            headGlow.addColorStop(0, 'rgba(255, 255, 255, 1)');
+            headGlow.addColorStop(0.4, 'rgba(253, 224, 71, 0.85)');
+            headGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = headGlow; ctx.beginPath(); ctx.arc(starX, starY, 36, 0, Math.PI * 2); ctx.fill();
+
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.moveTo(starX, starY - 14); ctx.quadraticCurveTo(starX + 3, starY - 3, starX + 14, starY);
+            ctx.quadraticCurveTo(starX + 3, starY + 3, starX, starY + 14);
+            ctx.quadraticCurveTo(starX - 3, starY + 3, starX - 14, starY);
+            ctx.quadraticCurveTo(starX - 3, starY - 3, starX, starY - 14);
+            ctx.fill();
+            ctx.restore();
+            // 3. الإطار والهوية والاسم المضيء المتوهج ونص الأمنية
+            ctx.strokeStyle = '#fde047'; ctx.lineWidth = 5; ctx.strokeRect(18, 18, 764, 584);
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText('👑 مَمْلَكَةُ الْوُعُودِ العظمى • عائلة KR الملكية 👑', 400, 56);
+            ctx.fillStyle = '#c084fc'; ctx.font = 'bold 14px Cairo, sans-serif';
+            ctx.fillText('Kingdom of Promises • Wishing Star Dome', 400, 80);
+
+            // توهج الاسم المضيء داخل اللوحة
+            ctx.save();
+            ctx.shadowColor = '#fde047'; ctx.shadowBlur = 22;
+            ctx.fillStyle = '#fef08a'; ctx.font = 'bold 26px Cairo, sans-serif';
+            ctx.fillText(isEn ? `🌠 Wish of the Shining Star: ${userName} 🌠` : `🌠 أمنية النجم المضيء: ${userName} 🌠`, 400, 145);
+            ctx.restore();
+
+            // نص الأمنية السرية
+            ctx.fillStyle = '#f8fafc'; ctx.font = '22px Cairo, sans-serif';
+            const words = wishText.split(' ');
+            let line = ''; let y = 265;
+            for (let n = 0; n < words.length; n++) {
+                const testLine = line + words[n] + ' ';
+                if (ctx.measureText(testLine).width > 620 && n > 0) {
+                    ctx.fillText(line, 400, y); line = words[n] + ' '; y += 38;
+                } else { line = testLine; }
+            }
+            ctx.fillText(line, 400, y);
+
+            ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 15px Cairo, sans-serif';
+            ctx.fillText(isEn ? 'Sealed under the Shooting Star of Kingdom of Promises ✨' : 'مختومة تحت نجمة الشهاب العابر في سماء مملكة الوعود ✨', 400, 515);
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 13px Cairo, sans-serif';
+            ctx.fillText('© Celestial Wishes Archive - worldoflove-kr.github.io 👑 KR 👑', 400, 580);
+        }
+
+        const launchBtn = document.getElementById('wish-launch-btn');
+        if (launchBtn) launchBtn.onclick = () => {
+            const name = document.getElementById('wish-user-name')?.value.trim() || 'نجمٌ حالم';
+            const wish = document.getElementById('wish-secret-text')?.value.trim() || wishAr;
+            const isEn = document.documentElement.dir === 'ltr';
+
+            const canvas = document.getElementById('wishing-star-canvas');
+            const ctx = canvas.getContext('2d');
+            document.getElementById('wish-result-area').style.display = 'block';
+
+            if (window.liveWishLoop) clearInterval(window.liveWishLoop);
+            let f = 0;
+            drawShootingStarScene(ctx, name, wish, isEn, 1);
+            document.getElementById('wish-img-link').href = canvas.toDataURL('image/png');
+
+            window.liveWishLoop = setInterval(() => {
+                f++;
+                drawShootingStarScene(ctx, name, wish, isEn, f);
+            }, 40);
+        };
+
+        const wishVidBtn = document.getElementById('wish-video-btn');
+        if (wishVidBtn) wishVidBtn.onclick = () => {
+            const canvas = document.getElementById('wishing-star-canvas');
+            if (!canvas?.captureStream) return;
+            const name = document.getElementById('wish-user-name')?.value.trim() || 'نجمٌ حالم';
+            const wish = document.getElementById('wish-secret-text')?.value.trim() || wishAr;
+            const isEn = document.documentElement.dir === 'ltr';
+
+            wishVidBtn.disabled = true;
+            wishVidBtn.textContent = isEn ? '⏳ Recording Shooting Star...' : '⏳ جاري تصوير الشهاب المضيء (4 ثوانٍ)...';
+            const rec = new MediaRecorder(canvas.captureStream(30), { mimeType: 'video/webm' });
+            const chunks = [];
+            rec.ondataavailable = e => chunks.push(e.data);
+            rec.onstop = () => {
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(new Blob(chunks, { type: 'video/webm' }));
+                a.download = 'Wishing-Shooting-Star-KR.webm';
+                a.click();
+                wishVidBtn.disabled = false;
+                wishVidBtn.textContent = isEn ? '🎬 Save Shooting Star Video' : '🎬 حفظ الشهاب المضيء كفيديو حي';
+            };
+            rec.start();
+            let c = 0; const ctx = canvas.getContext('2d');
+            const t = setInterval(() => {
+                c++;
+                drawShootingStarScene(ctx, name, wish, isEn, c);
+                if (c >= 120) { clearInterval(t); rec.stop(); }
+            }, 33);
+        };
+
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const map = {
+                    'wish-title': isEn ? 'Wishing Star Dome & Shooting Star' : 'قبة الأمنيات ونجمة الشهاب العابر',
+                    'wish-c1': isEn ? '💖 Joyful Reunion' : '💖 لقاء قريب',
+                    'wish-c2': isEn ? '🕊️ Peace of Heart' : '🕊️ طمأنينة القلب',
+                    'wish-c3': isEn ? '🌟 Lifelong Dream' : '🌟 تحقيق حلم العمر',
+                    'wish-launch-btn': isEn ? '🌠 Launch My Wish with Shooting Star ✨' : '🌠 أطلق أمنيتي مع الشهاب المضيء ✨',
+                    'wish-video-btn': isEn ? '🎬 Save Shooting Star Video' : '🎬 حفظ الشهاب المضيء كفيديو حي',
+                    'wish-img-link': isEn ? '📥 Save Image' : '📥 حفظ كصورة'
+                };
+                for (const [id, text] of Object.entries(map)) {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = text;
+                }
+                const desc = document.getElementById('wish-desc');
+                if (desc) desc.innerHTML = isEn 
+                    ? 'Celestial legends say every sincere wish whispered beneath the stars finds a <strong style="color:#fde047;">glowing shooting star</strong> to carry it skyward.. Write your luminous name and secret wish to watch the <strong style="color:#38bdf8;">shooting star</strong> cross the Kingdom sky!'
+                    : 'تقول الأساطير السماوية إن كل أمنية صادقة تُهمس تحت النجوم تجد <strong style="color:#fde047;">شهاباً مضيئاً</strong> يحملها إلى عنان السماء.. اكتب اسمك المضيء وأمنيتك السرية هنا، وشاهد <strong style="color:#38bdf8;">نجمة الشهاب الساطعة</strong> وهي تعبر سماء المملكة لتخلّد أمنيتك!';
+                const u = document.getElementById('wish-user-name');
+                const w = document.getElementById('wish-secret-text');
+                if (u) u.placeholder = isEn ? '✨ Write your luminous name here...' : '✨ اكتب اسمك المضيء هنا...';
+                if (w) w.placeholder = isEn ? '🌠 Write your secret wish here or pick above...' : '🌠 اكتب أمنيتك السرية هنا أو اختر إحدى الأمنيات أعلاه...';
+            }, 60);
+        });
+    })();
+    </script>
 
             
     
