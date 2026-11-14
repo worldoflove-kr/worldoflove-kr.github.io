@@ -3180,6 +3180,126 @@
         });
     })();
     </script>
+    <!-- تشغيل مباشر ومضمون لجميع أزرار ساعة القلب المتوقفة -->
+    <script>
+    (function() {
+        const qAr = {
+            1: "توقف الزمن في قلبي عند هذه اللحظة تماماً.. وكل ما بعدها مجرد انتظار.",
+            2: "عقارب ساعتي ترفض أن تدور بعد رحيلك، كأنها تنتظر عودتك.",
+            3: "أعدّ الأيام والثواني منذ غيابك، وما زال مكانك في القلب كما هو."
+        };
+        const qEn = {
+            1: "Time stopped inside my heart at this exact moment.. everything after is just waiting.",
+            2: "The hands of my clock refuse to move since you left, waiting for your return.",
+            3: "I count the days and seconds since your absence, yet your place remains untouched."
+        };
+
+        [1, 2, 3].forEach(n => {
+            const btn = document.getElementById('clk-q' + n);
+            if (btn) btn.onclick = () => {
+                const isEn = document.documentElement.dir === 'ltr';
+                const box = document.getElementById('clk-note');
+                if (box) box.value = isEn ? qEn[n] : qAr[n];
+            };
+        });
+
+        function renderClock(ctx, owner, beloved, stopObj, note, isEn, f) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            const bg = ctx.createLinearGradient(0, 0, 800, 640);
+            bg.addColorStop(0, '#070811'); bg.addColorStop(0.5, '#170f21'); bg.addColorStop(1, '#070811');
+            ctx.fillStyle = bg; ctx.fillRect(0, 0, 800, 640);
+
+            for (let i = 0; i < 35; i++) {
+                const sx = (i * 97 + 40) % 760 + 20, sy = (i * 61 + 30) % 600 + 20;
+                ctx.fillStyle = `rgba(253, 224, 71, ${0.3 + 0.7 * Math.abs(Math.sin(f * 0.08 + i))})`;
+                ctx.beginPath(); ctx.arc(sx, sy, 1.8, 0, Math.PI * 2); ctx.fill();
+            }
+
+            ctx.save(); ctx.translate(400, 300);
+            const p = 1 + 0.06 * Math.sin(f * 0.12);
+            const aura = ctx.createRadialGradient(0, 0, 60, 0, 0, 155 * p);
+            aura.addColorStop(0, 'rgba(253, 224, 71, 0.9)'); aura.addColorStop(0.5, 'rgba(244, 63, 94, 0.35)'); aura.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.fillStyle = aura; ctx.beginPath(); ctx.arc(0, 0, 155 * p, 0, Math.PI * 2); ctx.fill();
+
+            ctx.strokeStyle = '#fde047'; ctx.lineWidth = 6;
+            ctx.beginPath(); ctx.arc(0, -118, 16, 0, Math.PI * 2); ctx.stroke();
+            ctx.fillStyle = '#d97706'; ctx.fillRect(-10, -106, 20, 14);
+
+            const rim = ctx.createLinearGradient(-100, -100, 100, 100);
+            rim.addColorStop(0, '#fef08a'); rim.addColorStop(0.5, '#b45309'); rim.addColorStop(1, '#fde047');
+            ctx.fillStyle = rim; ctx.beginPath(); ctx.arc(0, 0, 102, 0, Math.PI * 2); ctx.fill();
+
+            ctx.fillStyle = '#090d16'; ctx.beginPath(); ctx.arc(0, 0, 90, 0, Math.PI * 2); ctx.fill();
+            ctx.strokeStyle = 'rgba(212,175,55,0.3)'; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.arc(-20, 18, 25, 0, Math.PI * 2); ctx.stroke();
+            ctx.beginPath(); ctx.arc(22, -15, 19, 0, Math.PI * 2); ctx.stroke();
+
+            ctx.fillStyle = '#fef08a'; ctx.font = 'bold 16px serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            ctx.fillText('XII', 0, -72); ctx.fillText('III', 72, 0); ctx.fillText('VI', 0, 72); ctx.fillText('IX', -72, 0);
+
+            const hA = (((stopObj.getHours() % 12) + stopObj.getMinutes() / 60) * 30 - 90) * Math.PI / 180;
+            const mA = (stopObj.getMinutes() * 6 - 90) * Math.PI / 180;
+            ctx.strokeStyle = '#fde047'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+            ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(Math.cos(hA) * 48, Math.sin(hA) * 48); ctx.stroke();
+            ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 3;
+            ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(Math.cos(mA) * 68, Math.sin(mA) * 68); ctx.stroke();
+            ctx.fillStyle = '#f43f5e'; ctx.beginPath(); ctx.arc(0, 0, 7, 0, Math.PI * 2); ctx.fill();
+            ctx.restore();
+
+            ctx.textBaseline = 'alphabetic'; ctx.strokeStyle = '#d4af37'; ctx.lineWidth = 5; ctx.strokeRect(18, 18, 764, 604);
+            ctx.textAlign = 'center'; ctx.fillStyle = '#d4af37'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText('👑 مَمْلَكَةُ الْوُعُودِ العظمى • عائلة KR الملكية 👑', 400, 56);
+            ctx.fillStyle = '#ffffff'; ctx.font = 'bold 23px Cairo, sans-serif';
+            ctx.fillText(isEn ? `🕰️ ${owner}'s Heart Stopped for ${beloved}` : `🕰️ توقف قلب (${owner}) عند غياب (${beloved})`, 400, 126);
+
+            const diff = Math.max(0, Date.now() - stopObj.getTime());
+            const d = Math.floor(diff / 86400000), h = Math.floor((diff % 86400000) / 3600000), m = Math.floor((diff % 3600000) / 60000);
+            ctx.fillStyle = '#fde047'; ctx.font = 'bold 20px Cairo, sans-serif';
+            ctx.fillText(isEn ? `Absence Age: ${d} Days, ${h} Hours, ${m} Mins` : `عمر الغياب: ${d} يوم ، ${h} ساعة ، ${m} دقيقة`, 400, 465);
+            ctx.fillStyle = '#f1f5f9'; ctx.font = '18px Cairo, sans-serif'; ctx.fillText(note, 400, 505);
+            ctx.fillStyle = '#94a3b8'; ctx.font = 'bold 13px Cairo, sans-serif'; ctx.fillText('© Royal Time Archive - worldoflove-kr.github.io 👑 KR 👑', 400, 595);
+        }
+
+        const freezeBtn = document.getElementById('clk-freeze-btn');
+        if (freezeBtn) freezeBtn.onclick = () => {
+            const owner = document.getElementById('clk-owner')?.value.trim() || 'قلبٌ وفيّ';
+            const beloved = document.getElementById('clk-beloved')?.value.trim() || 'من غاب';
+            const dtVal = document.getElementById('clk-stop-datetime')?.value;
+            const stopObj = dtVal ? new Date(dtVal) : new Date(Date.now() - 86400000 * 30);
+            const note = document.getElementById('clk-note')?.value.trim() || qAr[1];
+            const isEn = document.documentElement.dir === 'ltr';
+            const canvas = document.getElementById('stopped-clock-canvas');
+            const ctx = canvas.getContext('2d');
+            document.getElementById('clk-result-area').style.display = 'block';
+            if (window.liveClockLoop) clearInterval(window.liveClockLoop);
+            let f = 0; renderClock(ctx, owner, beloved, stopObj, note, isEn, 1);
+            document.getElementById('clk-img-link').href = canvas.toDataURL('image/png');
+            window.liveClockLoop = setInterval(() => { f++; renderClock(ctx, owner, beloved, stopObj, note, isEn, f); }, 45);
+        };
+
+        const vidBtn = document.getElementById('clk-video-btn');
+        if (vidBtn) vidBtn.onclick = () => {
+            const canvas = document.getElementById('stopped-clock-canvas');
+            if (!canvas?.captureStream) return;
+            const owner = document.getElementById('clk-owner')?.value.trim() || 'قلبٌ وفيّ';
+            const beloved = document.getElementById('clk-beloved')?.value.trim() || 'من غاب';
+            const dtVal = document.getElementById('clk-stop-datetime')?.value;
+            const stopObj = dtVal ? new Date(dtVal) : new Date(Date.now() - 86400000 * 30);
+            const note = document.getElementById('clk-note')?.value.trim() || qAr[1];
+            const isEn = document.documentElement.dir === 'ltr';
+            vidBtn.disabled = true; vidBtn.textContent = isEn ? '⏳ Recording...' : '⏳ جاري تصوير الساعة المضيئة...';
+            const rec = new MediaRecorder(canvas.captureStream(30), { mimeType: 'video/webm' });
+            const chunks = []; rec.ondataavailable = e => chunks.push(e.data);
+            rec.onstop = () => {
+                const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(chunks, { type: 'video/webm' }));
+                a.download = 'Stopped-Heart-Clock-KR.webm'; a.click();
+                vidBtn.disabled = false; vidBtn.textContent = isEn ? '🎬 Save Glowing Clock Video' : '🎬 حفظ الساعة المضيئة كفيديو حي';
+            };
+            rec.start(); let c = 0; const ctx = canvas.getContext('2d');
+            const t = setInterval(() => { c++; renderClock(ctx, owner, beloved, stopObj, note, isEn, c); if (c >= 120) { clearInterval(t); rec.stop(); } }, 33);
+        };
+    })();
+    </script>
 
             
     
