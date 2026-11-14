@@ -2731,6 +2731,42 @@
                 } else { line = testLine; }
             }
             ctx.fillText(line, 400, y);
+            // رسم سكة الحديد والقطار الكلاسيكي المتحرك مع الدخان المتصاعد
+            ctx.save();
+            ctx.strokeStyle = 'rgba(251, 191, 36, 0.45)';
+            ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.moveTo(110, 432); ctx.lineTo(690, 432); ctx.stroke();
+
+            const trainX = 160 + ((frame * 2.2) % 480);
+            const trainY = 412 + Math.sin(frame * 0.4) * 1.2;
+
+            // تصاعد دخان أبيض ناعم من مدخنة القطار
+            for (let s = 0; s < 5; s++) {
+                const age = (frame * 0.6 + s * 10) % 50;
+                const sx = trainX + 26 - age * 0.9;
+                const sy = trainY - 22 - age * 1.1;
+                const sr = 4 + age * 0.25;
+                const alpha = Math.max(0, 0.45 - age / 110);
+                ctx.fillStyle = `rgba(226, 232, 240, ${alpha})`;
+                ctx.beginPath(); ctx.arc(sx, sy, sr, 0, Math.PI * 2); ctx.fill();
+            }
+
+            // جسم القطار الكلاسيكي المذهب والمضيء
+            ctx.fillStyle = '#d97706';
+            ctx.shadowColor = '#fbbf24'; ctx.shadowBlur = 12;
+            ctx.fillRect(trainX - 35, trainY - 12, 70, 22);
+            ctx.fillStyle = '#92400e';
+            ctx.fillRect(trainX - 35, trainY - 24, 28, 14);
+            ctx.fillStyle = '#fef08a';
+            ctx.fillRect(trainX - 28, trainY - 20, 14, 8);
+            ctx.fillRect(trainX + 20, trainY - 22, 8, 10);
+
+            // عجلات القطار الذهبية
+            ctx.fillStyle = '#fde047';
+            [-22, 0, 22].forEach(wx => {
+                ctx.beginPath(); ctx.arc(trainX + wx, trainY + 13, 6, 0, Math.PI * 2); ctx.fill();
+            });
+            ctx.restore();
 
             ctx.fillStyle = '#fbbf24'; ctx.font = 'bold 15px Cairo, sans-serif';
             ctx.fillText(isEn ? 'Platform: Kingdom of Promises  |  Status: Still Waiting...' : 'الرصيف: مملكة الوعود  |  الحالة: القطار لم يصل بعد...', 400, 468);
