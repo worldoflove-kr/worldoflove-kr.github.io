@@ -2526,6 +2526,303 @@
         });
     })();
     </script>
+    <!-- 25. محطة القطارات التي لم تصل - تذكرة الانتظار (مشهد ضبابي + أوراق خريف متحركة) -->
+    <style>
+        @keyframes stationLanternGlow {
+            0% { box-shadow: 0 0 20px rgba(217, 119, 6, 0.45), inset 0 0 20px rgba(148, 163, 184, 0.2); border-color: #d97706; }
+            50% { box-shadow: 0 0 36px rgba(251, 191, 36, 0.7), inset 0 0 30px rgba(217, 119, 6, 0.3); border-color: #fbbf24; }
+            100% { box-shadow: 0 0 20px rgba(217, 119, 6, 0.45), inset 0 0 20px rgba(148, 163, 184, 0.2); border-color: #d97706; }
+        }
+        #royal-train-station {
+            max-width: 440px; margin: 30px auto; padding: 26px 18px;
+            background: linear-gradient(180deg, rgba(15, 17, 26, 0.96), rgba(28, 22, 18, 0.96));
+            border: 2px solid #d97706; border-radius: 20px;
+            animation: stationLanternGlow 5s infinite ease-in-out;
+            font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 50;
+        }
+        .st-input {
+            width: 100%; box-sizing: border-box; background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(251, 191, 36, 0.45); border-radius: 11px; padding: 11px 14px;
+            color: #fef3c7; font-family: 'Cairo', sans-serif; font-size: 0.92rem; margin-bottom: 12px; outline: none;
+        }
+        .st-btn {
+            width: 100%; padding: 13px; background: linear-gradient(45deg, #b45309, #78350f);
+            border: 1px solid #fbbf24; border-radius: 12px; color: #fff; font-weight: bold;
+            font-size: 0.96rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+            box-shadow: 0 0 18px rgba(217, 119, 6, 0.5);
+        }
+    </style>
+    <style>
+        @keyframes stationQuoteGlow {
+            0% { box-shadow: 0 0 8px rgba(251, 191, 36, 0.3); border-color: rgba(251, 191, 36, 0.5); text-shadow: 0 0 5px rgba(251, 191, 36, 0.4); }
+            50% { box-shadow: 0 0 18px rgba(251, 191, 36, 0.75); border-color: #fbbf24; text-shadow: 0 0 12px rgba(253, 224, 71, 0.9); }
+            100% { box-shadow: 0 0 8px rgba(251, 191, 36, 0.3); border-color: rgba(251, 191, 36, 0.5); text-shadow: 0 0 5px rgba(251, 191, 36, 0.4); }
+        }
+        .st-glow-quote-btn {
+            background: rgba(217, 119, 6, 0.18);
+            border: 1px solid #fbbf24;
+            color: #fef3c7;
+            border-radius: 18px;
+            padding: 6px 13px;
+            font-size: 0.78rem;
+            font-family: 'Cairo', sans-serif;
+            cursor: pointer;
+            animation: stationQuoteGlow 3s infinite ease-in-out;
+            transition: 0.3s;
+        }
+        .st-glow-quote-btn:hover {
+            background: rgba(251, 191, 36, 0.35);
+            color: #fff;
+        }
+    </style>
+
+    <script>
+    (function() {
+        const stationHTML = `
+        <div id="royal-train-station">
+            <div style="font-size: 2rem; margin-bottom: 6px;">🚂🍂🏮</div>
+            <h3 id="st-title" style="color: #fbbf24; margin: 0 0 10px 0; font-size: 1.26rem; text-shadow: 0 0 14px rgba(251, 191, 36, 0.75);">محطة القطارات التي لم تصل — تذكرة الانتظار</h3>
+            <p id="st-desc" style="color: #e2e8f0; font-size: 0.86rem; line-height: 1.85; margin: 0 0 16px 0;">
+                في كل قلبٍ محطةٌ قديمة، ورصيفٌ وقفنا عليه ننتظر عودة غائبٍ لم يأتِ قطاره أبداً.. اطبع <strong style="color:#fbbf24;">تذكرة انتظارك العتيقة</strong> هنا، واختر إحدى العبارات المضيئة أو اكتب ما في قلبك وسط ضباب الليل وأوراق الخريف!
+            </p>
+
+            <input type="text" id="st-passenger" class="st-input" placeholder="✍️ اسم المنتظِر (اسمك)...">
+            <input type="text" id="st-absent" class="st-input" placeholder="🥀 اسم الغائب الذي لم يصل قطاره...">
+
+            <div style="font-size: 0.8rem; color: #fde68a; margin-bottom: 8px; font-weight: bold;" id="st-pick-label">✨ اختر عبارة مضيئة جاهزة أو اكتب عبارتك الخاصة أدناه:</div>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 12px;">
+                <button type="button" class="st-glow-quote-btn" onclick="fillStationQuote(1)" id="st-q1">🚂 رصيف الوعود</button>
+                <button type="button" class="st-glow-quote-btn" onclick="fillStationQuote(2)" id="st-q2">🍂 تذكرة مبللة بالمطر</button>
+                <button type="button" class="st-glow-quote-btn" onclick="fillStationQuote(3)" id="st-q3">🕯️ ساعة المحطة المتوقفة</button>
+                <button type="button" class="st-glow-quote-btn" onclick="fillStationQuote(4)" id="st-q4">💔 قطار النسيان</button>
+            </div>
+
+            <textarea id="st-msg" class="st-input" rows="3" placeholder="📜 اكتب عبارتك الحزينة هنا أو اضغط على إحدى العبارات المضيئة أعلاه..."></textarea>
+
+            <button type="button" class="st-btn" onclick="issueStationTicket()" id="st-issue-btn">🎫 إصدار تذكرة الانتظار العتيقة 🍂</button>
+
+            <div id="st-result-area" style="display: none; margin-top: 20px;">
+                <canvas id="station-ticket-canvas" width="800" height="600" style="width: 100%; border-radius: 14px; border: 2px solid #fbbf24; box-shadow: 0 0 25px rgba(251, 191, 36, 0.6);"></canvas>
+                <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 12px;">
+                    <button type="button" id="st-video-btn" style="padding: 10px 18px; background: linear-gradient(45deg, #b45309, #d97706); color: #fff; border: 1px solid #fde047; border-radius: 10px; font-weight: bold; font-size: 0.88rem; font-family: Cairo, sans-serif; cursor: pointer; box-shadow: 0 0 16px rgba(251,191,36,0.5);">🎬 حفظ التذكرة كفيديو حي (ضباب وأوراق خريف)</button>
+                    <a id="st-img-link" download="Unarrived-Train-Ticket-KR.png" style="padding: 10px 18px; background: #1e293b; color: #fbbf24; border: 1px solid #fbbf24; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 0.88rem;">📥 حفظ كصورة</a>
+                </div>
+            </div>
+        </div>
+        `;
+
+        const lake = document.getElementById('royal-sorrow-lake');
+        if (lake) {
+            lake.insertAdjacentHTML('afterend', stationHTML);
+        } else {
+            const footer = document.getElementById('royal-kingdom-footer');
+            if (footer) footer.insertAdjacentHTML('beforebegin', stationHTML);
+        }
+    <style>
+        @keyframes penPulseGlow {
+            0% { transform: translateY(0px) rotate(0deg); filter: drop-shadow(0 0 6px #fbbf24); }
+            50% { transform: translateY(-4px) rotate(-12deg); filter: drop-shadow(0 0 16px #fde047); }
+            100% { transform: translateY(0px) rotate(0deg); filter: drop-shadow(0 0 6px #fbbf24); }
+        }
+        #st-msg {
+            box-shadow: 0 0 18px rgba(251, 191, 36, 0.35), inset 0 0 12px rgba(251, 191, 36, 0.15) !important;
+            border: 1.5px solid #fbbf24 !important;
+            background: rgba(251, 191, 36, 0.07) !important;
+            padding-right: 38px !important;
+        }
+        #st-glowing-pen {
+            position: absolute; top: 12px; right: 12px; font-size: 1.25rem;
+            pointer-events: none; animation: penPulseGlow 1.6s infinite ease-in-out;
+        }
+    </style>
+
+    <script>
+    (function() {
+        const msgBox = document.getElementById('st-msg');
+        if (msgBox && !document.getElementById('st-glowing-pen')) {
+            const wrap = document.createElement('div');
+            wrap.style.cssText = 'position: relative; width: 100%;';
+            msgBox.parentNode.insertBefore(wrap, msgBox);
+            wrap.appendChild(msgBox);
+            const pen = document.createElement('span');
+            pen.id = 'st-glowing-pen';
+            pen.textContent = '✒️';
+            wrap.appendChild(pen);
+        }
+
+        window.fillStationQuote = function(num) {
+            const isEn = document.documentElement.dir === 'ltr';
+            const box = document.getElementById('st-msg');
+            if (!box) return;
+            const ar = {
+                1: "انتظرتك طويلاً عند رصيف الوعود.. ولم يأتِ قطارك أبداً.",
+                2: "رحلوا دون وداع، وبقيت تذكرتي مبللة بالمطر في يدي.",
+                3: "توقفت ساعة المحطة عند لحظة غيابك، وما زلت أراقب الطريق.",
+                4: "كل القطارات تعود إلى محطاتها، إلا قطارك اختار النسيان."
+            };
+            const en = {
+                1: "I waited for you so long at the platform of promises.. yet your train never arrived.",
+                2: "They left without goodbye, leaving my ticket wet with rain in my hand.",
+                3: "The station clock stopped at the moment you left, and I still watch the tracks.",
+                4: "All trains return to their stations, except yours which chose oblivion."
+            };
+            box.value = isEn ? en[num] : ar[num];
+        };
+        const autumnLeaves = Array.from({length: 28}, () => ({
+            x: Math.random() * 760 + 20, y: Math.random() * 560 + 20,
+            size: Math.random() * 6 + 4, speedX: Math.random() * 1.5 + 0.6,
+            speedY: Math.random() * 1.8 + 0.8, rot: Math.random() * 6.28
+        }));
+
+        function drawStationTicketScene(ctx, passenger, absent, msg, isEn, frame) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            const grad = ctx.createLinearGradient(0, 0, 800, 600);
+            grad.addColorStop(0, '#090a0f'); grad.addColorStop(0.5, '#1c1612'); grad.addColorStop(1, '#090a0f');
+            ctx.fillStyle = grad; ctx.fillRect(0, 0, 800, 600);
+
+            const fogX = 400 + Math.sin(frame * 0.03) * 90;
+            const fogGrad = ctx.createRadialGradient(fogX, 300, 30, fogX, 300, 380);
+            fogGrad.addColorStop(0, 'rgba(251, 191, 36, 0.14)');
+            fogGrad.addColorStop(0.6, 'rgba(148, 163, 184, 0.08)');
+            fogGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = fogGrad; ctx.fillRect(0, 0, 800, 600);
+
+            autumnLeaves.forEach((l, i) => {
+                const lx = (l.x + frame * l.speedX) % 760 + 20;
+                const ly = (l.y + frame * l.speedY) % 560 + 20;
+                ctx.save();
+                ctx.translate(lx, ly);
+                ctx.rotate(l.rot + frame * 0.04);
+                ctx.fillStyle = i % 2 === 0 ? 'rgba(217, 119, 6, 0.7)' : 'rgba(251, 191, 36, 0.65)';
+                ctx.beginPath(); ctx.ellipse(0, 0, l.size, l.size * 0.5, 0, 0, Math.PI * 2); ctx.fill();
+                ctx.restore();
+            });
+
+            ctx.save();
+            ctx.fillStyle = 'rgba(28, 20, 15, 0.88)';
+            ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 3;
+            ctx.shadowColor = 'rgba(251, 191, 36, 0.45)'; ctx.shadowBlur = 22;
+            ctx.fillRect(65, 110, 670, 390);
+            ctx.strokeRect(65, 110, 670, 390);
+            ctx.restore();
+
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText('👑 مَمْلَكَةُ الْوُعُودِ العظمى • عائلة KR الملكية 👑', 400, 56);
+            ctx.fillStyle = '#fbbf24'; ctx.font = 'bold 14px Cairo, sans-serif';
+            ctx.fillText('Kingdom of Promises • The Unarrived Train Station', 400, 80);
+
+            ctx.fillStyle = '#fde68a'; ctx.font = 'bold 22px Cairo, sans-serif';
+            ctx.fillText(isEn ? '🎫 ONE-WAY WAITING TICKET 🎫' : '🎫 تذكرة انتظار على رصيف الوعود 🎫', 400, 155);
+
+            ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText(isEn ? `Waiting: ${passenger}   🥀   Absent: ${absent}` : `المنتظِر: ${passenger}   🥀   الغائب: ${absent}`, 400, 198);
+
+            ctx.fillStyle = '#fef3c7'; ctx.font = '21px Cairo, sans-serif';
+            const words = msg.split(' ');
+            let line = ''; let y = 258;
+            for (let n = 0; n < words.length; n++) {
+                const testLine = line + words[n] + ' ';
+                if (ctx.measureText(testLine).width > 580 && n > 0) {
+                    ctx.fillText(line, 400, y); line = words[n] + ' '; y += 36;
+                } else { line = testLine; }
+            }
+            ctx.fillText(line, 400, y);
+
+            ctx.fillStyle = '#fbbf24'; ctx.font = 'bold 15px Cairo, sans-serif';
+            ctx.fillText(isEn ? 'Platform: Kingdom of Promises  |  Status: Still Waiting...' : 'الرصيف: مملكة الوعود  |  الحالة: القطار لم يصل بعد...', 400, 468);
+            ctx.fillStyle = '#94a3b8'; ctx.font = 'bold 13px Cairo, sans-serif';
+            ctx.fillText('© Unarrived Station Archive - worldoflove-kr.github.io 👑 KR 👑', 400, 575);
+        }
+        window.issueStationTicket = function() {
+            const p = document.getElementById('st-passenger').value.trim() || 'قلبٌ منتظر';
+            const a = document.getElementById('st-absent').value.trim() || 'غائبٌ بلا عودة';
+            const m = document.getElementById('st-msg').value.trim() || 'انتظرتك طويلاً عند رصيف الوعود.. ولم يأتِ قطارك أبداً.';
+            const isEn = document.documentElement.dir === 'ltr';
+
+            const canvas = document.getElementById('station-ticket-canvas');
+            const ctx = canvas.getContext('2d');
+            document.getElementById('st-result-area').style.display = 'block';
+
+            if (window.liveStationLoop) clearInterval(window.liveStationLoop);
+            let f = 0;
+            drawStationTicketScene(ctx, p, a, m, isEn, 1);
+            document.getElementById('st-img-link').href = canvas.toDataURL('image/png');
+
+            window.liveStationLoop = setInterval(() => {
+                f++;
+                drawStationTicketScene(ctx, p, a, m, isEn, f);
+            }, 45);
+        };
+
+        document.addEventListener('click', function(e) {
+            if (e.target && e.target.id === 'st-video-btn') {
+                const vBtn = e.target;
+                const canvas = document.getElementById('station-ticket-canvas');
+                if (!canvas || !canvas.captureStream || typeof MediaRecorder === 'undefined') return;
+                const p = document.getElementById('st-passenger').value.trim() || 'قلبٌ منتظر';
+                const a = document.getElementById('st-absent').value.trim() || 'غائبٌ بلا عودة';
+                const m = document.getElementById('st-msg').value.trim() || 'انتظرتك طويلاً عند رصيف الوعود.. ولم يأتِ قطارك أبداً.';
+                const isEn = document.documentElement.dir === 'ltr';
+
+                vBtn.disabled = true;
+                vBtn.textContent = isEn ? '⏳ Recording 4s Ticket Video...' : '⏳ جاري تصوير التذكرة والضباب (4 ثوانٍ)...';
+                const stream = canvas.captureStream(30);
+                const rec = new MediaRecorder(stream, { mimeType: 'video/webm' });
+                const chunks = [];
+                rec.ondataavailable = ev => { if (ev.data.size > 0) chunks.push(ev.data); };
+                rec.onstop = () => {
+                    const blob = new Blob(chunks, { type: 'video/webm' });
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = 'Unarrived-Train-Ticket-Animated-KR.webm';
+                    link.click();
+                    vBtn.disabled = false;
+                    vBtn.textContent = isEn ? '🎬 Save Ticket as Live Video' : '🎬 حفظ التذكرة كفيديو حي (ضباب وأوراق خريف)';
+                };
+                rec.start();
+                let count = 0;
+                const ctx = canvas.getContext('2d');
+                const recTimer = setInterval(() => {
+                    count++;
+                    drawStationTicketScene(ctx, p, a, m, isEn, count);
+                    if (count >= 120) { clearInterval(recTimer); rec.stop(); }
+                }, 33);
+            }
+
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const map = {
+                    'st-title': isEn ? 'The Unarrived Train Station — Waiting Ticket' : 'محطة القطارات التي لم تصل — تذكرة الانتظار',
+                    'st-pick-label': isEn ? '✨ Pick a glowing quote or write your own below:' : '✨ اختر عبارة مضيئة جاهزة أو اكتب عبارتك الخاصة أدناه:',
+                    'st-q1': isEn ? '🚂 Platform of Promises' : '🚂 رصيف الوعود',
+                    'st-q2': isEn ? '🍂 Rain-Soaked Ticket' : '🍂 تذكرة مبللة بالمطر',
+                    'st-q3': isEn ? '🕯️ Stopped Station Clock' : '🕯️ ساعة المحطة المتوقفة',
+                    'st-q4': isEn ? '💔 Train of Oblivion' : '💔 قطار النسيان',
+                    'st-issue-btn': isEn ? '🎫 Issue Vintage Waiting Ticket 🍂' : '🎫 إصدار تذكرة الانتظار العتيقة 🍂',
+                    'st-video-btn': isEn ? '🎬 Save Ticket as Live Video' : '🎬 حفظ التذكرة كفيديو حي (ضباب وأوراق خريف)',
+                    'st-img-link': isEn ? '📥 Save Image' : '📥 حفظ كصورة'
+                };
+                for (const [id, text] of Object.entries(map)) {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = text;
+                }
+                const desc = document.getElementById('st-desc');
+                if (desc) desc.innerHTML = isEn 
+                    ? 'In every heart lies an old station where we stood waiting for someone whose train never arrived.. Issue your <strong style="color:#fbbf24;">vintage waiting ticket</strong> here using our glowing quotes or your own words!'
+                    : 'في كل قلبٍ محطةٌ قديمة، ورصيفٌ وقفنا عليه ننتظر عودة غائبٍ لم يأتِ قطاره أبداً.. اطبع <strong style="color:#fbbf24;">تذكرة انتظارك العتيقة</strong> هنا، واختر إحدى العبارات المضيئة أو اكتب ما في قلبك وسط ضباب الليل وأوراق الخريف!';
+                const p = document.getElementById('st-passenger');
+                const a = document.getElementById('st-absent');
+                const m = document.getElementById('st-msg');
+                if (p) p.placeholder = isEn ? '✍️ Name of the Waiting Soul (Your Name)...' : '✍️ اسم المنتظِر (اسمك)...';
+                if (a) a.placeholder = isEn ? '🥀 Name of the Absent Person...' : '🥀 اسم الغائب الذي لم يصل قطاره...';
+                if (m) m.placeholder = isEn ? '📜 Write your sad message here or pick a glowing quote above...' : '📜 اكتب عبارتك الحزينة هنا أو اضغط على إحدى العبارات المضيئة أعلاه...';
+            }, 60);
+        });
+    })();
+    </script>
 
     
     
