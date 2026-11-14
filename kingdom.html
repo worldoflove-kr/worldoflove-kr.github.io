@@ -4587,6 +4587,317 @@
         });
     })();
     </script>
+    <!-- 31. محارة اللؤلؤ الخليجي المتجددة تلقائياً (Arabian Gulf Pearl Oyster - عبارات متجددة + فيديو هادئ) -->
+    <style>
+        @keyframes gulfPearlGlow {
+            0% { box-shadow: 0 0 24px rgba(20, 184, 166, 0.5), inset 0 0 22px rgba(212, 175, 55, 0.25); border-color: #14b8a6; }
+            50% { box-shadow: 0 0 42px rgba(253, 224, 71, 0.75), inset 0 0 34px rgba(56, 189, 248, 0.35); border-color: #fde047; }
+            100% { box-shadow: 0 0 24px rgba(20, 184, 166, 0.5), inset 0 0 22px rgba(212, 175, 55, 0.25); border-color: #14b8a6; }
+        }
+        #royal-gulf-pearl {
+            max-width: 440px; margin: 30px auto; padding: 26px 18px;
+            background: linear-gradient(180deg, rgba(5, 22, 34, 0.96), rgba(9, 36, 52, 0.96));
+            border: 2px solid #14b8a6; border-radius: 20px;
+            animation: gulfPearlGlow 5s infinite ease-in-out;
+            font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 50;
+        }
+        .gp-input {
+            width: 100%; box-sizing: border-box; background: rgba(20, 184, 166, 0.09);
+            border: 1.5px solid #2dd4bf; border-radius: 12px; padding: 11px 14px;
+            color: #fef08a; font-weight: bold; font-family: 'Cairo', sans-serif; font-size: 0.94rem;
+            margin-bottom: 12px; outline: none; text-align: center;
+            box-shadow: 0 0 12px rgba(45, 212, 191, 0.25);
+        }
+        .gp-btn {
+            width: 100%; padding: 13px; background: linear-gradient(45deg, #0f766e, #0284c7, #d4af37);
+            background-size: 200% 200%; border: 1px solid #fde047; border-radius: 12px; color: #fff;
+            font-weight: bold; font-size: 0.96rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+            box-shadow: 0 0 22px rgba(20, 184, 166, 0.6);
+        }
+        .gp-chip {
+            background: rgba(20, 184, 166, 0.16); border: 1px solid #5eead4; color: #ccfbf1;
+            border-radius: 18px; padding: 6px 12px; font-size: 0.78rem; font-family: 'Cairo', sans-serif;
+            cursor: pointer; transition: 0.3s;
+        }
+    </style>
+    <script>
+    (function() {
+        const gulfPearlHTML = `
+        <div id="royal-gulf-pearl">
+            <div style="font-size: 2.1rem; margin-bottom: 6px;">🦪💎🌊✨</div>
+            <h3 id="gp-title" style="color: #fde047; margin: 0 0 10px 0; font-size: 1.26rem; text-shadow: 0 0 14px rgba(45, 212, 191, 0.85);">محارة اللؤلؤ الخليجي — درّة الوفاء المتجددة</h3>
+            <p id="gp-desc" style="color: #ccfbf1; font-size: 0.86rem; line-height: 1.85; margin: 0 0 16px 0;">
+                في أعماق الخليج العربي، لا تُهدى اللآلئ إلا لمن سكن القلب واستحق الوفاء.. اكتب اسمك واسم من تُحب، واختر من <strong style="color:#fde047;">العبارات الخليجية المتجددة تلقائياً</strong> لتُفتح المحارة وتكشف درّتكما المضيئة!
+            </p>
+
+            <input type="text" id="gp-name1" class="gp-input" placeholder="✨ اكتب اسمك المضيء...">
+            <input type="text" id="gp-name2" class="gp-input" placeholder="💎 اسم من تهديه درّة اللؤلؤ...">
+
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 8px;">
+                <button type="button" class="gp-chip" id="gp-c1">🦪 درّة الخليج</button>
+                <button type="button" class="gp-chip" id="gp-c2">👑 وفاء وأصالة</button>
+                <button type="button" class="gp-chip" id="gp-c3">🌊 غلا ما ينتهي</button>
+            </div>
+            <div style="margin-bottom: 12px;">
+                <button type="button" id="gp-refresh-quotes" style="background: transparent; border: 1px dashed #fde047; color: #fde047; border-radius: 14px; padding: 4px 12px; font-size: 0.76rem; font-family: Cairo, sans-serif; cursor: pointer;">🔄 جدّد العبارات الخليجية الآن</button>
+            </div>
+
+            <textarea id="gp-msg" class="gp-input" rows="2" placeholder="📜 اكتب إهداءك الخليجي المضيء أو اختر من العبارات المتجددة أعلاه..."></textarea>
+
+            <button type="button" class="gp-btn" id="gp-open-btn">🦪 افتح المحارة واكشف اللؤلؤة المضيئة 💎</button>
+
+            <div id="gp-result-area" style="display: none; margin-top: 20px;">
+                <canvas id="gulf-pearl-canvas" width="800" height="640" style="width: 100%; border-radius: 14px; border: 2px solid #2dd4bf; box-shadow: 0 0 30px rgba(45, 212, 191, 0.7);"></canvas>
+                <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 12px;">
+                    <button type="button" id="gp-video-btn" style="padding: 10px 18px; background: linear-gradient(45deg, #0f766e, #0284c7); color: #fff; border: 1px solid #fde047; border-radius: 10px; font-weight: bold; font-size: 0.88rem; font-family: Cairo, sans-serif; cursor: pointer; box-shadow: 0 0 18px rgba(45,212,191,0.6);">🎬 حفظ المحارة واللؤلؤة كفيديو هادئ</button>
+                    <a id="gp-img-link" download="Arabian-Gulf-Pearl-KR.png" style="padding: 10px 18px; background: #1e293b; color: #fde047; border: 1px solid #fde047; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 0.88rem;">📥 حفظ كصورة</a>
+                </div>
+            </div>
+        </div>
+        `;
+
+        const oxDome = document.getElementById('royal-oxygen-dome');
+        if (oxDome) {
+            oxDome.insertAdjacentHTML('afterend', gulfPearlHTML);
+        } else {
+            const footer = document.getElementById('royal-kingdom-footer');
+            if (footer) footer.insertAdjacentHTML('beforebegin', gulfPearlHTML);
+        }
+    })();
+    </script>
+    <script>
+    (function() {
+        const gulfBankAr = [
+            "يا درّةٍ في غبة البحر مكنونة.. غلاك في قلبي على مرّ الأزمان.",
+            "أنت الأصيل اللي على العزّ مرباه.. ووفاك في صدري مثل نور القمر.",
+            "في سماء الخليج نجومٍ كثيرة.. بس أنت وحدك لؤلؤة قلبي الوحيدة.",
+            "عزّ الله إنك فخرٍ لمن يماشيك.. ودرّةٍ نادرة ما لها في البشر ثاني.",
+            "مثل الأصايل في شموخك وطيبك.. ومثل اللآلئ في نقاوة ضميرك.",
+            "غلاك عندي مثل موج الخليج.. يمدّ بالوفا ولا يعرف الجزر أبداً."
+        ];
+        const gulfBankEn = [
+            "Like a hidden pearl in the Arabian Gulf depths.. your love shines forever in my heart.",
+            "Noble as a purebred Arabian horse.. your loyalty lights up my life like the full moon.",
+            "Many stars shine over the Gulf sky.. yet you alone are the precious pearl of my soul.",
+            "Rare in grace, pure in heart.. a timeless treasure that no ocean could ever replace.",
+            "With the pride of Arabian steeds and the glow of pearls.. our bond remains eternal.",
+            "My affection flows like the Gulf tide.. endless in loyalty and forever rising."
+        ];
+
+        let qOffset = Math.floor(Math.random() * gulfBankAr.length);
+
+        function bindGulfChips() {
+           .forEach(idx => {
+                const btn = document.getElementById('gp-c' + (idx + 1));
+                if (btn) btn.onclick = () => {
+                    const isEn = document.documentElement.dir === 'ltr';
+                    const box = document.getElementById('gp-msg');
+                    const pick = (qOffset + idx) % gulfBankAr.length;
+                    if (box) box.value = isEn ? gulfBankEn[pick] : gulfBankAr[pick];
+                };
+            });
+        }
+        bindGulfChips();
+
+        const refBtn = document.getElementById('gp-refresh-quotes');
+        if (refBtn) refBtn.onclick = () => {
+            qOffset = (qOffset + 3) % gulfBankAr.length;
+            const isEn = document.documentElement.dir === 'ltr';
+            const box = document.getElementById('gp-msg');
+            if (box) box.value = isEn ? gulfBankEn[qOffset] : gulfBankAr[qOffset];
+        };
+
+        const gpStars = Array.from({length: 40}, (_, i) => ({
+            x: (i * 91 + 20) % 760 + 20, y: (i * 47 + 15) % 280 + 20,
+            r: (i % 3) * 0.6 + 0.8, speed: 0.03 + (i % 4) * 0.01, phase: i * 0.6
+        }));
+
+        function drawGulfPearlAndHorseScene(ctx, n1, n2, msg, isEn, frame) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            const bg = ctx.createLinearGradient(0, 0, 0, 640);
+            bg.addColorStop(0, '#04121f'); bg.addColorStop(0.5, '#0a2a3f'); bg.addColorStop(1, '#041826');
+            ctx.fillStyle = bg; ctx.fillRect(0, 0, 800, 640);
+
+            // 1. النجوم المتلألئة في سماء الخليج
+            gpStars.forEach(s => {
+                const alpha = 0.25 + 0.75 * Math.abs(Math.sin(frame * s.speed + s.phase));
+                ctx.fillStyle = `rgba(254, 240, 138, ${alpha})`;
+                ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
+            });
+
+            // 2. أمواج بحر الخليج المضيئة المتحركة ببطء
+            for (let w = 0; w < 3; w++) {
+                ctx.beginPath();
+                ctx.moveTo(18, 620);
+                for (let x = 18; x <= 782; x += 20) {
+                    const wy = 475 + w * 24 + Math.sin(x * 0.018 + frame * 0.04 + w) * 7;
+                    ctx.lineTo(x, wy);
+                }
+                ctx.lineTo(782, 620); ctx.closePath();
+                ctx.fillStyle = w === 0 ? 'rgba(20, 184, 166, 0.35)' : 'rgba(13, 148, 136, 0.55)';
+                ctx.fill();
+            }
+            // 3. رسم الحصان العربي الأصيل يعدو ببطء وهيبة فوق الأمواج
+            const horseX = 180 + ((frame * 0.9) % 440);
+            const gallopY = 395 + Math.sin(frame * 0.14) * 7;
+            const legSwing = Math.sin(frame * 0.14) * 14;
+
+            ctx.save();
+            ctx.translate(horseX, gallopY);
+            ctx.shadowColor = '#fde047'; ctx.shadowBlur = 22;
+
+            ctx.strokeStyle = '#fef08a'; ctx.lineWidth = 4; ctx.lineCap = 'round';
+            ctx.beginPath();
+            ctx.moveTo(-34, -6);
+            ctx.quadraticCurveTo(-55, -14 + Math.sin(frame * 0.15) * 6, -64, 6);
+            ctx.stroke();
+
+            ctx.fillStyle = '#fde047';
+            ctx.beginPath(); ctx.ellipse(0, 0, 36, 15, -0.08, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath();
+            ctx.moveTo(22, -6); ctx.lineTo(44, -34); ctx.lineTo(58, -26);
+            ctx.lineTo(52, -16); ctx.lineTo(36, 6); ctx.closePath(); ctx.fill();
+
+            ctx.strokeStyle = '#fef08a'; ctx.lineWidth = 4;
+            ctx.beginPath(); ctx.moveTo(22, 10); ctx.lineTo(28 + legSwing, 34); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(14, 10); ctx.lineTo(10 - legSwing * 0.7, 34); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(-22, 10); ctx.lineTo(-28 - legSwing, 34); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(-14, 10); ctx.lineTo(-10 + legSwing * 0.7, 34); ctx.stroke();
+            ctx.restore();
+
+            // 4. رسم المحارة البحرية الملكية المفتوحة وبداخلها اللؤلؤة المتلألئة
+            ctx.save();
+            ctx.translate(400, 515);
+            const pearlPulse = 1 + 0.08 * Math.sin(frame * 0.08);
+
+            ctx.fillStyle = '#0f766e'; ctx.strokeStyle = '#5eead4'; ctx.lineWidth = 2.5;
+            ctx.beginPath(); ctx.ellipse(0, 14, 68, 22, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+            ctx.beginPath(); ctx.ellipse(0, -18, 62, 20, -0.15, Math.PI, 0); ctx.fill(); ctx.stroke();
+
+            const pGlow = ctx.createRadialGradient(0, -2, 3, 0, -2, 48 * pearlPulse);
+            pGlow.addColorStop(0, 'rgba(255, 255, 255, 1)');
+            pGlow.addColorStop(0.45, 'rgba(253, 224, 71, 0.7)');
+            pGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = pGlow; ctx.beginPath(); ctx.arc(0, -2, 48 * pearlPulse, 0, Math.PI * 2); ctx.fill();
+
+            const pSphere = ctx.createRadialGradient(-5, -7, 2, 0, -2, 18);
+            pSphere.addColorStop(0, '#ffffff'); pSphere.addColorStop(0.7, '#fef3c7'); pSphere.addColorStop(1, '#d4af37');
+            ctx.fillStyle = pSphere; ctx.beginPath(); ctx.arc(0, -2, 18, 0, Math.PI * 2); ctx.fill();
+            ctx.restore();
+            // 5. الإطار والهوية والأسماء والعبارات المضيئة
+            const textGlow = 12 + 8 * Math.sin(frame * 0.06);
+            ctx.strokeStyle = '#2dd4bf'; ctx.lineWidth = 5; ctx.strokeRect(18, 18, 764, 604);
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText('👑 مَمْلَكَةُ الْوُعُودِ العظمى • عائلة KR الملكية 👑', 400, 56);
+            ctx.fillStyle = '#5eead4'; ctx.font = 'bold 14px Cairo, sans-serif';
+            ctx.fillText('Kingdom of Promises • Arabian Gulf Pearl & Steed', 400, 80);
+
+            ctx.save();
+            ctx.shadowColor = '#fde047'; ctx.shadowBlur = textGlow;
+            ctx.fillStyle = '#fef08a'; ctx.font = 'bold 26px Cairo, sans-serif';
+            ctx.fillText(`🦪 ${n1}   &   ${n2} 🐎`, 400, 130);
+            ctx.restore();
+
+            ctx.save();
+            ctx.shadowColor = '#2dd4bf'; ctx.shadowBlur = textGlow;
+            ctx.fillStyle = '#ccfbf1'; ctx.font = 'bold 20px Cairo, sans-serif';
+            const words = msg.split(' ');
+            let line = ''; let y = 185;
+            for (let n = 0; n < words.length; n++) {
+                const testLine = line + words[n] + ' ';
+                if (ctx.measureText(testLine).width > 640 && n > 0) {
+                    ctx.fillText(line, 400, y); line = words[n] + ' '; y += 36;
+                } else { line = testLine; }
+            }
+            ctx.fillText(line, 400, y);
+            ctx.restore();
+
+            ctx.fillStyle = '#fde047'; ctx.font = 'bold 13px Cairo, sans-serif';
+            ctx.fillText('© Arabian Gulf Heritage Sanctuary - worldoflove-kr.github.io 👑 KR 👑', 400, 605);
+        }
+
+        const openBtn = document.getElementById('gp-open-btn');
+        if (openBtn) openBtn.onclick = () => {
+            const n1 = document.getElementById('gp-name1')?.value.trim() || 'نجم الخليج';
+            const n2 = document.getElementById('gp-name2')?.value.trim() || 'درّة الوفاء';
+            const msg = document.getElementById('gp-msg')?.value.trim() || gulfBankAr[qOffset];
+            const isEn = document.documentElement.dir === 'ltr';
+
+            const canvas = document.getElementById('gulf-pearl-canvas');
+            const ctx = canvas.getContext('2d');
+            document.getElementById('gp-result-area').style.display = 'block';
+
+            if (window.liveGulfLoop) clearInterval(window.liveGulfLoop);
+            let f = 0; drawGulfPearlAndHorseScene(ctx, n1, n2, msg, isEn, 1);
+            document.getElementById('gp-img-link').href = canvas.toDataURL('image/png');
+            window.liveGulfLoop = setInterval(() => {
+                f += 0.55; drawGulfPearlAndHorseScene(ctx, n1, n2, msg, isEn, f);
+            }, 45);
+        };
+        const vidBtn = document.getElementById('gp-video-btn');
+        if (vidBtn) vidBtn.onclick = () => {
+            const canvas = document.getElementById('gulf-pearl-canvas');
+            if (!canvas?.captureStream) return;
+            const n1 = document.getElementById('gp-name1')?.value.trim() || 'نجم الخليج';
+            const n2 = document.getElementById('gp-name2')?.value.trim() || 'درّة الوفاء';
+            const msg = document.getElementById('gp-msg')?.value.trim() || gulfBankAr[qOffset];
+            const isEn = document.documentElement.dir === 'ltr';
+
+            vidBtn.disabled = true;
+            vidBtn.textContent = isEn ? '⏳ Recording Slow-Motion Video...' : '⏳ جاري تصوير المشهد الخليجي الهادئ...';
+            const rec = new MediaRecorder(canvas.captureStream(25), { mimeType: 'video/webm' });
+            const chunks = [];
+            rec.ondataavailable = e => chunks.push(e.data);
+            rec.onstop = () => {
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(new Blob(chunks, { type: 'video/webm' }));
+                a.download = 'Arabian-Gulf-Pearl-Steed-KR.webm';
+                a.click();
+                vidBtn.disabled = false;
+                vidBtn.textContent = isEn ? '🎬 Save Pearl & Steed Video' : '🎬 حفظ المحارة واللؤلؤة كفيديو هادئ';
+            };
+            rec.start();
+            let c = 0; const ctx = canvas.getContext('2d');
+            const t = setInterval(() => {
+                c += 0.55; drawGulfPearlAndHorseScene(ctx, n1, n2, msg, isEn, c);
+                if (c >= 65) { clearInterval(t); rec.stop(); }
+            }, 45);
+        };
+
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const map = {
+                    'gp-title': isEn ? 'Arabian Gulf Pearl & Steed — Ever-Renewing Loyalty' : 'محارة اللؤلؤ الخليجي — درّة الوفاء المتجددة',
+                    'gp-c1': isEn ? '🦪 Gulf Pearl' : '🦪 درّة الخليج',
+                    'gp-c2': isEn ? '👑 Noble Loyalty' : '👑 وفاء وأصالة',
+                    'gp-c3': isEn ? '🌊 Endless Affection' : '🌊 غلا ما ينتهي',
+                    'gp-refresh-quotes': isEn ? '🔄 Refresh Gulf Quotes Now' : '🔄 جدّد العبارات الخليجية الآن',
+                    'gp-open-btn': isEn ? '🦪 Open Oyster & Reveal Glowing Pearl 💎' : '🦪 افتح المحارة واكشف اللؤلؤة المضيئة 💎',
+                    'gp-video-btn': isEn ? '🎬 Save Pearl & Steed Video' : '🎬 حفظ المحارة واللؤلؤة كفيديو هادئ',
+                    'gp-img-link': isEn ? '📥 Save Image' : '📥 حفظ كصورة'
+                };
+                for (const [id, text] of Object.entries(map)) {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = text;
+                }
+                const desc = document.getElementById('gp-desc');
+                if (desc) desc.innerHTML = isEn 
+                    ? 'In the Arabian Gulf depths, pearls are gifted only to those worthy of loyalty.. Enter your names and pick from <strong style="color:#fde047;">auto-renewing Gulf quotes</strong> to reveal your glowing pearl & Arabian steed!'
+                    : 'في أعماق الخليج العربي، لا تُهدى اللآلئ إلا لمن سكن القلب واستحق الوفاء.. اكتب اسمك واسم من تُحب، واختر من <strong style="color:#fde047;">العبارات الخليجية المتجددة تلقائياً</strong> لتُفتح المحارة وتكشف درّتكما المضيئة!';
+                const i1 = document.getElementById('gp-name1');
+                const i2 = document.getElementById('gp-name2');
+                const m = document.getElementById('gp-msg');
+                if (i1) i1.placeholder = isEn ? '✨ Write your luminous name...' : '✨ اكتب اسمك المضيء...';
+                if (i2) i2.placeholder = isEn ? '💎 Name of your beloved pearl...' : '💎 اسم من تهديه درّة اللؤلؤ...';
+                if (m) m.placeholder = isEn ? '📜 Write your Gulf dedication or pick above...' : '📜 اكتب إهداءك الخليجي المضيء أو اختر من العبارات المتجددة أعلاه...';
+            }, 60);
+        });
+    })();
+    </script>
 
             
     
