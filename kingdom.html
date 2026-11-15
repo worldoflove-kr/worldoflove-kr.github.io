@@ -6382,9 +6382,9 @@
             const badge = document.createElement('span');
             badge.id = 'ef-founders-forever-badge';
             badge.className = 'ef-badge ef-royal-forever';
-            badge.innerHTML = isEn
-                ? `👑 Advisor 🐼 Panda KR 👑  ❤️  Advisor Jawaher <span class="ef-jewel-icon">💎</span> <small style="font-size:0.7rem; color:#7dd3fc;">(✨ Eternal Light)</small>`
-                : `👑 المستشار 🐼 Panda KR 👑  ❤️  المستشارة جواهر <span class="ef-jewel-icon">💎</span> <small style="font-size:0.7rem; color:#7dd3fc;">(✨ مضيء للأبد)</small>`;
+                     badge.innerHTML = isEn
+                ? `<span style="display:inline-block;">Advisor 👑 panda🐼 KR</span> &nbsp;❤️&nbsp; <span style="display:inline-block;">Advisor Jawaher <span class="ef-jewel-icon">💎</span></span> <div style="font-size:0.7rem; color:#7dd3fc; margin-top:2px;">(✨ Eternal Light)</div>`
+                : `<span style="display:inline-block;">المستشار 👑 panda🐼 KR</span> &nbsp;❤️&nbsp; <span style="display:inline-block;">المستشارة جواهر <span class="ef-jewel-icon">💎</span></span> <div style="font-size:0.7rem; color:#7dd3fc; margin-top:2px;">(✨ مضيء للأبد)</div>`;
 
             wall.insertBefore(badge, wall.firstChild);
         }
