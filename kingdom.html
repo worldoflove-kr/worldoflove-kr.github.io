@@ -5042,6 +5042,55 @@
 
             drawShadedDolphin(leftX, dY, tilt, false, '#0284c7', '#38bdf8');
             drawShadedDolphin(rightX, dY, tilt, true, '#d97706', '#fde047');
+            // 5. احتفال قاع البحر المضيء وظهور عبارة (أحبك يا غلاتي • I Love You My Precious) عند التقاء الدولفينين
+            if (leap > 0.65) {
+                const celebAlpha = Math.min(1, (leap - 0.65) * 3.2);
+                ctx.save();
+                // أشعة نور احتفالية صاعدة من قاع البحر واللؤلؤة
+                for (let r = -2; r <= 2; r++) {
+                    const rayGrad = ctx.createLinearGradient(400, 520, 400 + r * 110, 220);
+                    rayGrad.addColorStop(0, `rgba(253, 224, 71, ${0.32 * celebAlpha})`);
+                    rayGrad.addColorStop(1, 'rgba(56, 189, 248, 0)');
+                    ctx.fillStyle = rayGrad;
+                    ctx.beginPath();
+                    ctx.moveTo(385, 520);
+                    ctx.lineTo(415, 520);
+                    ctx.lineTo(450 + r * 110, 220);
+                    ctx.lineTo(350 + r * 110, 220);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+
+                // شرارات احتفال متلألئة في قاع البحر وحول القلب
+                for (let sp = 0; sp < 24; sp++) {
+                    const ang = (sp / 24) * Math.PI * 2 + f * 0.05;
+                    const dist = 35 + ((sp * 19 + f * 2) % 130);
+                    const spX = 400 + Math.cos(ang) * dist;
+                    const spY = 430 + Math.sin(ang) * (dist * 0.65);
+                    ctx.fillStyle = sp % 2 === 0
+                        ? `rgba(253, 224, 71, ${0.9 * celebAlpha})`
+                        : `rgba(244, 114, 182, ${0.9 * celebAlpha})`;
+                    ctx.beginPath();
+                    ctx.arc(spX, spY, 2.8, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                // توهج عبارة (أحبك يا غلاتي • I Love You My Precious)
+                ctx.globalAlpha = celebAlpha;
+                ctx.textAlign = 'center';
+                ctx.shadowColor = '#f43f5e';
+                ctx.shadowBlur = 22;
+                ctx.fillStyle = '#fef08a';
+                ctx.font = 'bold 21px Cairo, sans-serif';
+                ctx.fillText('❤️ أحبك يا غلاتي ❤️', 400, 272);
+
+                ctx.shadowColor = '#38bdf8';
+                ctx.shadowBlur = 18;
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 16px Cairo, sans-serif';
+                ctx.fillText('✨ I Love You My Precious ✨', 400, 298);
+                ctx.restore();
+            }
 
             ctx.save(); ctx.translate(400, 515);
             const pp = 1 + 0.08 * Math.sin(f * 0.08);
