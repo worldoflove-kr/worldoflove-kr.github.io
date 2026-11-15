@@ -5748,6 +5748,285 @@
         }
     })();
     </script>
+    <!-- 34. مرآة الروح المائية (انعكاس الأسماء في بركة القمر + دوائر أمواج واقعية + ترجمة تلقائية) -->
+    <style>
+        @keyframes waterMirrorGlow {
+            0% { box-shadow: 0 0 28px rgba(56, 189, 248, 0.7), inset 0 0 24px rgba(14, 165, 233, 0.3); border-color: #38bdf8; }
+            50% { box-shadow: 0 0 46px rgba(192, 132, 252, 0.8), inset 0 0 34px rgba(56, 189, 248, 0.4); border-color: #c084fc; }
+            100% { box-shadow: 0 0 28px rgba(56, 189, 248, 0.7), inset 0 0 24px rgba(14, 165, 233, 0.3); border-color: #38bdf8; }
+        }
+        #royal-water-mirror {
+            max-width: 440px; margin: 30px auto; padding: 26px 18px;
+            background: radial-gradient(circle at top, rgba(14, 26, 52, 0.96), rgba(6, 12, 26, 0.98));
+            border: 2.5px solid #38bdf8; border-radius: 20px;
+            animation: waterMirrorGlow 4s infinite ease-in-out;
+            font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 50;
+        }
+        .wm-input {
+            width: 100%; box-sizing: border-box; background: rgba(56, 189, 248, 0.09);
+            border: 1.5px solid #7dd3fc; border-radius: 12px; padding: 11px 14px;
+            color: #fef08a; font-weight: bold; font-family: 'Cairo', sans-serif; font-size: 0.94rem;
+            margin-bottom: 12px; outline: none; text-align: center;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.35);
+        }
+        .wm-btn {
+            width: 100%; padding: 13px; background: linear-gradient(45deg, #0284c7, #7e22ce, #d4af37);
+            background-size: 200% 200%; border: 1px solid #fde047; border-radius: 12px; color: #fff;
+            font-weight: bold; font-size: 0.96rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+            box-shadow: 0 0 22px rgba(192, 132, 252, 0.6);
+        }
+        .wm-chip {
+            background: rgba(192, 132, 252, 0.16); border: 1px solid #c084fc; color: #f3e8ff;
+            border-radius: 18px; padding: 6px 12px; font-size: 0.78rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+        }
+    </style>
+    <script>
+    (function() {
+        const waterMirrorHTML = `
+        <div id="royal-water-mirror">
+            <div style="font-size: 2.1rem; margin-bottom: 6px;">🌕💧🪞✨</div>
+            <h3 id="wm-title" style="color: #fde047; margin: 0 0 10px 0; font-size: 1.26rem; text-shadow: 0 0 14px rgba(56, 189, 248, 0.85);">مرآة الروح المائية — انعكاس الأسماء في بركة القمر</h3>
+            <p id="wm-desc" style="color: #e0f2fe; font-size: 0.86rem; line-height: 1.85; margin: 0 0 16px 0;">
+                الماءُ الصافي لا يكذب أبداً.. اكتب اسمك واسم من تُحب، وشاهد كيف يتوهج اسماكما تحت <strong style="color:#fde047;">ضوء البدر</strong> وينعكسان على <strong style="color:#38bdf8;">سطح البركة المتموجة</strong> مع سقوط قطرات المطر الهادئة!
+            </p>
+
+            <input type="text" id="wm-name1" class="wm-input" placeholder="✨ اكتب اسمك المضيء...">
+            <input type="text" id="wm-name2" class="wm-input" placeholder="💧 اسم من يشاركك انعكاس الروح...">
+
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 10px;">
+                <button type="button" class="wm-chip" id="wm-c1">🌕 انعكاس الروح</button>
+                <button type="button" class="wm-chip" id="wm-c2">💧 قطرة حب</button>
+                <button type="button" class="wm-chip" id="wm-c3">✨ صفاء الأبد</button>
+            </div>
+
+            <textarea id="wm-msg" class="wm-input" rows="2" placeholder="📜 اكتب همستك المائية أو اختر من الأعلى..."></textarea>
+
+            <button type="button" class="wm-btn" id="wm-create-btn">🪞 اعكس أسماءنا في بركة القمر 💧</button>
+
+            <div id="wm-result-area" style="display: none; margin-top: 20px;">
+                <canvas id="water-mirror-canvas" width="800" height="640" style="width: 100%; border-radius: 14px; border: 2px solid #38bdf8; box-shadow: 0 0 30px rgba(56, 189, 248, 0.7);"></canvas>
+                <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 12px;">
+                    <button type="button" id="wm-video-btn" style="padding: 10px 18px; background: linear-gradient(45deg, #0284c7, #7e22ce); color: #fff; border: 1px solid #fde047; border-radius: 10px; font-weight: bold; font-size: 0.88rem; font-family: Cairo, sans-serif; cursor: pointer; box-shadow: 0 0 18px rgba(56,189,248,0.6);">🎬 حفظ مرآة الماء كفيديو هادئ</button>
+                    <a id="wm-img-link" download="Water-Mirror-Reflection-KR.png" style="padding: 10px 18px; background: #1e293b; color: #fde047; border: 1px solid #fde047; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 0.88rem;">📥 حفظ كصورة</a>
+                </div>
+            </div>
+        </div>
+        `;
+
+        const snowBox = document.getElementById('royal-snow-globe');
+        if (snowBox) {
+            snowBox.insertAdjacentHTML('afterend', waterMirrorHTML);
+        } else {
+            const footer = document.getElementById('royal-kingdom-footer');
+            if (footer) footer.insertAdjacentHTML('beforebegin', waterMirrorHTML);
+        }
+    })();
+    </script>
+    <script>
+    (function() {
+        const wmAr = {
+            1: "كلما نظرتُ في مرآة روحي، رأيتُ اسمك يضيء كالبدر في أعماقي.",
+            2: "قطرةٌ واحدةٌ من حبك تكفي لتهزّ سكون قلبي وتملأه بالحياة.",
+            3: "اسمك واسمي انعكاسٌ لروحٍ واحدةٍ لا تفرّقها الأيام أبداً."
+        };
+        const wmEn = {
+            1: "Whenever I look into my soul's mirror, I see your name shining like the full moon.",
+            2: "A single drop of your love ripples through my heart and fills it with life.",
+            3: "Your name and mine are the reflection of one soul that time can never divide."
+        };
+
+        const wb1 = document.getElementById('wm-c1');
+        const wb2 = document.getElementById('wm-c2');
+        const wb3 = document.getElementById('wm-c3');
+        if (wb1) wb1.onclick = () => { document.getElementById('wm-msg').value = document.documentElement.dir === 'ltr' ? wmEn[1] : wmAr[1]; };
+        if (wb2) wb2.onclick = () => { document.getElementById('wm-msg').value = document.documentElement.dir === 'ltr' ? wmEn[2] : wmAr[2]; };
+        if (wb3) wb3.onclick = () => { document.getElementById('wm-msg').value = document.documentElement.dir === 'ltr' ? wmEn[3] : wmAr[3]; };
+
+        function drawWaterMirrorScene(ctx, n1, n2, msg, isEn, f) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            const horizonY = 335;
+
+            // 1. سماء الليل فوق الأفق
+            const skyGrad = ctx.createLinearGradient(0, 0, 0, horizonY);
+            skyGrad.addColorStop(0, '#040918');
+            skyGrad.addColorStop(1, '#0f2547');
+            ctx.fillStyle = skyGrad;
+            ctx.fillRect(0, 0, 800, horizonY);
+
+            // نجوم السماء المتلألئة
+            for (let i = 0; i < 38; i++) {
+                const sx = (i * 89 + 25) % 760 + 20;
+                const sy = (i * 43 + 20) % 290 + 20;
+                const a = 0.3 + 0.7 * Math.abs(Math.sin(f * 0.04 + i));
+                ctx.fillStyle = `rgba(255, 255, 255, ${a})`;
+                ctx.beginPath(); ctx.arc(sx, sy, 1.7, 0, Math.PI * 2); ctx.fill();
+            }
+
+            // البدر الفضي الساطع في السماء
+            const moonGlow = ctx.createRadialGradient(400, 145, 18, 400, 145, 85);
+            moonGlow.addColorStop(0, '#ffffff');
+            moonGlow.addColorStop(0.45, 'rgba(224, 242, 254, 0.85)');
+            moonGlow.addColorStop(1, 'rgba(56, 189, 248, 0)');
+            ctx.fillStyle = moonGlow;
+            ctx.beginPath(); ctx.arc(400, 145, 85, 0, Math.PI * 2); ctx.fill();
+
+            ctx.fillStyle = '#f8fafc';
+            ctx.beginPath(); ctx.arc(400, 145, 36, 0, Math.PI * 2); ctx.fill();
+
+            // الأسماء المضيئة في السماء فوق الماء
+            const pulse = 12 + 10 * Math.abs(Math.sin(f * 0.08));
+            ctx.save();
+            ctx.textAlign = 'center';
+            ctx.shadowColor = '#fde047';
+            ctx.shadowBlur = pulse;
+            ctx.fillStyle = '#fef08a';
+            ctx.font = 'bold 28px Cairo, sans-serif';
+            ctx.fillText(`✨ ${n1}   ❤️   ${n2} ✨`, 400, 265);
+            ctx.restore();
+            // 2. بركة الماء الليلية الساكنة وانعكاس القمر والأسماء عليها بتموّج واقعي
+            const waterGrad = ctx.createLinearGradient(0, horizonY, 0, 640);
+            waterGrad.addColorStop(0, '#091b36');
+            waterGrad.addColorStop(0.5, '#051024');
+            waterGrad.addColorStop(1, '#020612');
+            ctx.fillStyle = waterGrad;
+            ctx.fillRect(0, horizonY, 800, 640 - horizonY);
+
+            // خط الأفق المضيء الفاصل بين السماء والماء
+            ctx.strokeStyle = 'rgba(125, 211, 252, 0.35)';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath(); ctx.moveTo(18, horizonY); ctx.lineTo(782, horizonY); ctx.stroke();
+
+            // انعكاس الأسماء المتموج على سطح الماء
+            ctx.save();
+            ctx.beginPath(); ctx.rect(18, horizonY, 764, 285); ctx.clip();
+            const waveShift = Math.sin(f * 0.09) * 5;
+            ctx.translate(400 + waveShift, horizonY + 72);
+            ctx.scale(1, -0.58);
+            ctx.globalAlpha = 0.42;
+            ctx.textAlign = 'center';
+            ctx.shadowColor = '#38bdf8';
+            ctx.shadowBlur = 16;
+            ctx.fillStyle = '#bae6fd';
+            ctx.font = 'bold 28px Cairo, sans-serif';
+            ctx.fillText(`✨ ${n1}   ❤️   ${n2} ✨`, 0, 0);
+            ctx.restore();
+
+            // انعكاس ضوء القمر المتموج على الماء
+            for (let r = 0; r < 14; r++) {
+                const ry = horizonY + 115 + r * 11;
+                const rw = 55 - r * 2.5 + Math.sin(f * 0.08 + r) * 10;
+                ctx.fillStyle = `rgba(224, 242, 254, ${0.28 - r * 0.016})`;
+                ctx.beginPath(); ctx.ellipse(400 + Math.sin(f * 0.07 + r) * 6, ry, Math.max(8, rw), 2.2, 0, 0, Math.PI * 2); ctx.fill();
+            }
+
+            // 3. دوائر أمواج قطرات المطر المتساقطة في بركة الماء (Water Ripples)
+            for (let d = 0; d < 3; d++) {
+                const rippleProg = (((f * 0.7) + d * 45) % 135) / 135;
+                const rx = 250 + d * 150;
+                const ry = 435 + (d % 2) * 45;
+                const rad = 8 + rippleProg * 85;
+                ctx.save();
+                ctx.strokeStyle = `rgba(125, 211, 252, ${(1 - rippleProg) * 0.65})`;
+                ctx.lineWidth = 2;
+                ctx.beginPath(); ctx.ellipse(rx, ry, rad, rad * 0.34, 0, 0, Math.PI * 2); ctx.stroke();
+                ctx.restore();
+            }
+
+            // 4. الإطار والهوية والرسالة المائية في الأسفل
+            ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 5; ctx.strokeRect(18, 18, 764, 604);
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText('👑 مَمْلَكَةُ الْوُعُودِ العظمى • عائلة KR الملكية 👑', 400, 56);
+            ctx.fillStyle = '#7dd3fc'; ctx.font = 'bold 14px Cairo, sans-serif';
+            ctx.fillText('Kingdom of Promises • Water Mirror Soul Reflection', 400, 80);
+
+            ctx.fillStyle = '#fef08a'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText(msg, 400, 568);
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 13px Cairo, sans-serif';
+            ctx.fillText('© Moonlit Water Sanctuary - worldoflove-kr.github.io 👑 KR 👑', 400, 605);
+        }
+
+        const createBtn = document.getElementById('wm-create-btn');
+        if (createBtn) createBtn.onclick = () => {
+            const n1 = document.getElementById('wm-name1')?.value.trim() || 'روحٌ صافية';
+            const n2 = document.getElementById('wm-name2')?.value.trim() || 'نبضُ القمر';
+            const msg = document.getElementById('wm-msg')?.value.trim() || wmAr;
+            const isEn = document.documentElement.dir === 'ltr';
+
+            const canvas = document.getElementById('water-mirror-canvas');
+            const ctx = canvas.getContext('2d');
+            document.getElementById('wm-result-area').style.display = 'block';
+
+            if (window.liveWaterMirrorLoop) clearInterval(window.liveWaterMirrorLoop);
+            let f = 0; drawWaterMirrorScene(ctx, n1, n2, msg, isEn, 1);
+            document.getElementById('wm-img-link').href = canvas.toDataURL('image/png');
+            window.liveWaterMirrorLoop = setInterval(() => {
+                f += 0.55; drawWaterMirrorScene(ctx, n1, n2, msg, isEn, f);
+            }, 45);
+        };
+
+        const vidBtn = document.getElementById('wm-video-btn');
+        if (vidBtn) vidBtn.onclick = () => {
+            const canvas = document.getElementById('water-mirror-canvas');
+            if (!canvas?.captureStream) return;
+            const n1 = document.getElementById('wm-name1')?.value.trim() || 'روحٌ صافية';
+            const n2 = document.getElementById('wm-name2')?.value.trim() || 'نبضُ القمر';
+            const msg = document.getElementById('wm-msg')?.value.trim() || wmAr;
+            const isEn = document.documentElement.dir === 'ltr';
+
+            vidBtn.disabled = true;
+            vidBtn.textContent = isEn ? '⏳ Recording Water Ripples...' : '⏳ جاري تصوير مرآة الماء الهادئة...';
+            const rec = new MediaRecorder(canvas.captureStream(25), { mimeType: 'video/webm' });
+            const chunks = [];
+            rec.ondataavailable = e => chunks.push(e.data);
+            rec.onstop = () => {
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(new Blob(chunks, { type: 'video/webm' }));
+                a.download = 'Water-Mirror-Reflection-KR.webm';
+                a.click();
+                vidBtn.disabled = false;
+                vidBtn.textContent = isEn ? '🎬 Save Water Mirror Video' : '🎬 حفظ مرآة الماء كفيديو هادئ';
+            };
+            rec.start();
+            let c = 0; const ctx = canvas.getContext('2d');
+            const t = setInterval(() => {
+                c += 0.55; drawWaterMirrorScene(ctx, n1, n2, msg, isEn, c);
+                if (c >= 65) { clearInterval(t); rec.stop(); }
+            }, 45);
+        };
+
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const map = {
+                    'wm-title': isEn ? 'Water Mirror — Names Reflected in the Moonlit Pond' : 'مرآة الروح المائية — انعكاس الأسماء في بركة القمر',
+                    'wm-c1': isEn ? '🌕 Soul Reflection' : '🌕 انعكاس الروح',
+                    'wm-c2': isEn ? '💧 Drop of Love' : '💧 قطرة حب',
+                    'wm-c3': isEn ? '✨ Eternal Purity' : '✨ صفاء الأبد',
+                    'wm-create-btn': isEn ? '🪞 Reflect Our Names in the Moonlit Pond 💧' : '🪞 اعكس أسماءنا في بركة القمر 💧',
+                    'wm-video-btn': isEn ? '🎬 Save Water Mirror Video' : '🎬 حفظ مرآة الماء كفيديو هادئ',
+                    'wm-img-link': isEn ? '📥 Save Image' : '📥 حفظ كصورة'
+                };
+                for (const [id, text] of Object.entries(map)) {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = text;
+                }
+                const desc = document.getElementById('wm-desc');
+                if (desc) desc.innerHTML = isEn 
+                    ? 'Pure water never lies.. Enter your name and your beloved’s to watch them glow beneath the <strong style="color:#fde047;">full moon</strong> and reflect across the <strong style="color:#38bdf8;">rippling pond</strong>!'
+                    : 'الماءُ الصافي لا يكذب أبداً.. اكتب اسمك واسم من تُحب، وشاهد كيف يتوهج اسماكما تحت <strong style="color:#fde047;">ضوء البدر</strong> وينعكسان على <strong style="color:#38bdf8;">سطح البركة المتموجة</strong> مع سقوط قطرات المطر الهادئة!';
+                const i1 = document.getElementById('wm-name1');
+                const i2 = document.getElementById('wm-name2');
+                const m = document.getElementById('wm-msg');
+                if (i1) i1.placeholder = isEn ? '✨ Write your luminous name...' : '✨ اكتب اسمك المضيء...';
+                if (i2) i2.placeholder = isEn ? '💧 Name of your soul reflection...' : '💧 اسم من يشاركك انعكاس الروح...';
+                if (m) m.placeholder = isEn ? '📜 Write your water whisper or pick above...' : '📜 اكتب همستك المائية أو اختر من الأعلى...';
+            }, 60);
+        });
+    })();
+    </script>
 
 
             
