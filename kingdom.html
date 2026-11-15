@@ -5210,6 +5210,303 @@
         });
     })();
     </script>
+    <!-- 33. الكرة الزجاجية الثلجية الملكية (Royal Crystal Snow-Globe - واقعية جداً + فيديو هادئ + ترجمة تلقائية) -->
+    <style>
+        @keyframes snowGlobeAura {
+            0% { box-shadow: 0 0 24px rgba(186, 230, 253, 0.5), inset 0 0 24px rgba(56, 189, 248, 0.25); border-color: #bae6fd; }
+            50% { box-shadow: 0 0 42px rgba(253, 224, 71, 0.7), inset 0 0 34px rgba(186, 230, 253, 0.35); border-color: #fde047; }
+            100% { box-shadow: 0 0 24px rgba(186, 230, 253, 0.5), inset 0 0 24px rgba(56, 189, 248, 0.25); border-color: #bae6fd; }
+        }
+        #royal-snow-globe {
+            max-width: 440px; margin: 30px auto; padding: 26px 18px;
+            background: linear-gradient(180deg, rgba(10, 18, 34, 0.96), rgba(18, 32, 54, 0.96));
+            border: 2px solid #bae6fd; border-radius: 20px;
+            animation: snowGlobeAura 5s infinite ease-in-out;
+            font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 50;
+        }
+        .sg-input {
+            width: 100%; box-sizing: border-box; background: rgba(186, 230, 253, 0.09);
+            border: 1.5px solid #7dd3fc; border-radius: 12px; padding: 11px 14px;
+            color: #fef08a; font-weight: bold; font-family: 'Cairo', sans-serif; font-size: 0.94rem;
+            margin-bottom: 12px; outline: none; text-align: center;
+            box-shadow: 0 0 12px rgba(125, 211, 252, 0.25);
+        }
+        .sg-btn {
+            width: 100%; padding: 13px; background: linear-gradient(45deg, #0369a1, #38bdf8, #d4af37);
+            background-size: 200% 200%; border: 1px solid #fde047; border-radius: 12px; color: #fff;
+            font-weight: bold; font-size: 0.96rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+            box-shadow: 0 0 22px rgba(125, 211, 252, 0.6);
+        }
+        .sg-chip {
+            background: rgba(125, 211, 252, 0.16); border: 1px solid #bae6fd; color: #f0f9ff;
+            border-radius: 18px; padding: 6px 12px; font-size: 0.78rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+        }
+    </style>
+    <script>
+    (function() {
+        const snowGlobeHTML = `
+        <div id="royal-snow-globe">
+            <div style="font-size: 2.1rem; margin-bottom: 6px;">🔮❄️🏡✨</div>
+            <h3 id="sg-title" style="color: #fde047; margin: 0 0 10px 0; font-size: 1.26rem; text-shadow: 0 0 14px rgba(186, 230, 253, 0.85);">الكرة الزجاجية الثلجية الملكية — دفءُ الشتاء</h3>
+            <p id="sg-desc" style="color: #e0f2fe; font-size: 0.86rem; line-height: 1.85; margin: 0 0 16px 0;">
+                في ليالي الشتاء الباردة، يكفي اسمٌ واحدٌ ليبعث الدفء في القلب.. اكتب اسمك واسم من تُحب وعبارتك الشتوية، وشاهد <strong style="color:#bae6fd;">الكرة الزجاجية البلورية</strong> وهي تحفظ كوخكما الدافئ تحت تساقط الثلج النقي!
+            </p>
+
+            <input type="text" id="sg-name1" class="sg-input" placeholder="✨ اكتب اسمك المضيء...">
+            <input type="text" id="sg-name2" class="sg-input" placeholder="❄️ اسم من يشاركك دفء الشتاء...">
+
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 10px;">
+                <button type="button" class="sg-chip" id="sg-c1">🏡 دفءُ لقائنا</button>
+                <button type="button" class="sg-chip" id="sg-c2">❄️ ثلجٌ ووفاء</button>
+                <button type="button" class="sg-chip" id="sg-c3">🕯️ شتاءُ العمر</button>
+            </div>
+
+            <textarea id="sg-msg" class="sg-input" rows="2" placeholder="📜 اكتب رسالتك الشتوية الدافئة أو اختر من الأعلى..."></textarea>
+
+            <button type="button" class="sg-btn" id="sg-create-btn">🔮 اصنع كرتي الثلجية المضيئة ❄️</button>
+
+            <div id="sg-result-area" style="display: none; margin-top: 20px;">
+                <canvas id="snow-globe-canvas" width="800" height="640" style="width: 100%; border-radius: 14px; border: 2px solid #bae6fd; box-shadow: 0 0 30px rgba(186, 230, 253, 0.7);"></canvas>
+                <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 12px;">
+                    <button type="button" id="sg-video-btn" style="padding: 10px 18px; background: linear-gradient(45deg, #0369a1, #38bdf8); color: #fff; border: 1px solid #fde047; border-radius: 10px; font-weight: bold; font-size: 0.88rem; font-family: Cairo, sans-serif; cursor: pointer; box-shadow: 0 0 18px rgba(186,230,253,0.6);">🎬 حفظ الكرة الثلجية كفيديو هادئ</button>
+                    <a id="sg-img-link" download="Royal-Crystal-Snow-Globe-KR.png" style="padding: 10px 18px; background: #1e293b; color: #fde047; border: 1px solid #fde047; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 0.88rem;">📥 حفظ كصورة</a>
+                </div>
+            </div>
+        </div>
+        `;
+
+        const gulfBox = document.getElementById('royal-gulf-pearl');
+        if (gulfBox) {
+            gulfBox.insertAdjacentHTML('afterend', snowGlobeHTML);
+        } else {
+            const footer = document.getElementById('royal-kingdom-footer');
+            if (footer) footer.insertAdjacentHTML('beforebegin', snowGlobeHTML);
+        }
+    })();
+    </script>
+    <script>
+    (function() {
+        const sgAr = {
+            1: "في برد الشتاء القارس، كان وجودك هو الدفء الوحيد لقلبي.",
+            2: "تتساقط الثلوج في الخارج، ويزداد حبك نقاءً ورسوخاً في صدري.",
+            3: "معك يبدو كل شتاءٍ كأنه ربيعٌ دافئٌ لا يغيب نوره أبداً."
+        };
+        const sgEn = {
+            1: "In the cold winter night, your presence is the only warmth for my heart.",
+            2: "Snow falls gently outside, while your love grows purer inside my soul.",
+            3: "With you, every winter feels like a warm eternal spring."
+        };
+
+        const sgChips =;
+        sgChips.forEach(n => {
+            const btn = document.getElementById('sg-c' + n);
+            if (btn) btn.onclick = () => {
+                const isEn = document.documentElement.dir === 'ltr';
+                const box = document.getElementById('sg-msg');
+                if (box) box.value = isEn ? sgEn[n] : sgAr[n];
+            };
+        });
+
+        const flakes = Array.from({length: 65}, (_, i) => ({
+            x: ((i * 53) % 310) - 155,
+            y: ((i * 41) % 280) - 150,
+            r: 1.5 + (i % 4) * 0.85,
+            sp: 0.35 + (i % 5) * 0.1,
+            sw: i * 0.5
+        }));
+
+        function drawSnowGlobeScene(ctx, n1, n2, msg, isEn, f) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            const bg = ctx.createRadialGradient(400, 310, 40, 400, 310, 460);
+            bg.addColorStop(0, '#162844'); bg.addColorStop(0.6, '#0a1426'); bg.addColorStop(1, '#040812');
+            ctx.fillStyle = bg; ctx.fillRect(0, 0, 800, 640);
+
+            // 1. القاعدة الخشبية الملكية المحفورة بالذهب أسفل الكرة
+            ctx.save();
+            ctx.translate(400, 485);
+            const baseGrad = ctx.createLinearGradient(-145, 0, 145, 0);
+            baseGrad.addColorStop(0, '#271308'); baseGrad.addColorStop(0.3, '#5c2d16');
+            baseGrad.addColorStop(0.5, '#783b1e'); baseGrad.addColorStop(0.7, '#5c2d16'); baseGrad.addColorStop(1, '#271308');
+            ctx.fillStyle = baseGrad;
+            ctx.beginPath();
+            ctx.moveTo(-125, -18); ctx.lineTo(125, -18);
+            ctx.lineTo(148, 48); ctx.lineTo(-148, 48);
+            ctx.closePath(); ctx.fill();
+
+            // إطار ذهبي على القاعدة
+            ctx.strokeStyle = '#fde047'; ctx.lineWidth = 2.5; ctx.stroke();
+
+            // لوحة ذهبية محفورة باسمي الحبيبين على القاعدة الخشبية
+            ctx.fillStyle = '#fde047';
+            ctx.fillRect(-105, -4, 210, 36);
+            ctx.fillStyle = '#1e1005'; ctx.font = 'bold 17px Cairo, sans-serif'; ctx.textAlign = 'center';
+            ctx.fillText(`${n1}  ❤️  ${n2}`, 0, 20);
+            ctx.restore();
+
+            // 2. رسم الكرة الزجاجية البلورية ومحتواها الشتوي الواقعي
+            ctx.save();
+            ctx.translate(400, 315);
+            ctx.beginPath(); ctx.arc(0, 0, 165, 0, Math.PI * 2); ctx.clip();
+
+            // سماء الليل داخل الكرة
+            const innerSky = ctx.createLinearGradient(0, -165, 0, 165);
+            innerSky.addColorStop(0, '#091933'); innerSky.addColorStop(0.7, '#1d3b66'); innerSky.addColorStop(1, '#e0f2fe');
+            ctx.fillStyle = innerSky; ctx.fillRect(-170, -170, 340, 340);
+
+            // أرضية الثلج المتراكمة داخل الكرة
+            ctx.fillStyle = '#f8fafc';
+            ctx.beginPath(); ctx.ellipse(0, 130, 175, 65, 0, 0, Math.PI * 2); ctx.fill();
+
+            // شجرتا صنوبر مكسوّتان بالثلج
+            [-85, 88].forEach(tx => {
+                ctx.fillStyle = '#064e3b';
+                ctx.beginPath(); ctx.moveTo(tx, 25); ctx.lineTo(tx - 26, 95); ctx.lineTo(tx + 26, 95); ctx.closePath(); ctx.fill();
+                ctx.beginPath(); ctx.moveTo(tx, 5); ctx.lineTo(tx - 20, 60); ctx.lineTo(tx + 20, 60); ctx.closePath(); ctx.fill();
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath(); ctx.moveTo(tx, 5); ctx.lineTo(tx - 10, 30); ctx.lineTo(tx + 10, 30); ctx.closePath(); ctx.fill();
+            });
+
+            // الكوخ الخشبي الدافئ ونوافذه المضيئة بالذهب
+            ctx.fillStyle = '#451a03'; ctx.fillRect(-36, 48, 72, 52);
+            ctx.fillStyle = '#78350f';
+            ctx.beginPath(); ctx.moveTo(-46, 50); ctx.lineTo(0, 16); ctx.lineTo(46, 50); ctx.closePath(); ctx.fill();
+            // سقف الثلج فوق الكوخ
+            ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+            ctx.beginPath(); ctx.moveTo(-46, 50); ctx.lineTo(0, 16); ctx.lineTo(46, 50); ctx.stroke();
+            // نوافذ الكوخ المضيئة بدفء
+            ctx.shadowColor = '#fde047'; ctx.shadowBlur = 16; ctx.fillStyle = '#fef08a';
+            ctx.fillRect(-22, 64, 16, 16); ctx.fillRect(6, 64, 16, 16);
+            ctx.shadowBlur = 0;
+
+            // تساقط ندفات الثلج الحقيقية ببطء ونعومة داخل الكرة
+            flakes.forEach(fl => {
+                const fy = -160 + (((f * fl.sp) + fl.y + 160) % 310);
+                const fx = fl.x + Math.sin(f * 0.025 + fl.sw) * 12;
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+                ctx.beginPath(); ctx.arc(fx, fy, fl.r, 0, Math.PI * 2); ctx.fill();
+            });
+
+            // انعكاس الزجاج الحقيقي اللامع (3D Glass Specular Reflection)
+            const glassShine = ctx.createRadialGradient(-65, -65, 8, -45, -45, 130);
+            glassShine.addColorStop(0, 'rgba(255, 255, 255, 0.45)');
+            glassShine.addColorStop(0.4, 'rgba(186, 230, 253, 0.12)');
+            glassShine.addColorStop(1, 'rgba(255, 255, 255, 0)');
+            ctx.fillStyle = glassShine; ctx.beginPath(); ctx.arc(0, 0, 165, 0, Math.PI * 2); ctx.fill();
+            ctx.restore();
+            // 3. إطار الكرة الزجاجية الخارجي اللامع والرسالة الشتوية
+            ctx.save();
+            ctx.strokeStyle = 'rgba(186, 230, 253, 0.75)';
+            ctx.lineWidth = 3.5;
+            ctx.shadowColor = '#38bdf8'; ctx.shadowBlur = 22;
+            ctx.beginPath(); ctx.arc(400, 315, 166, 0, Math.PI * 2); ctx.stroke();
+            ctx.restore();
+
+            ctx.strokeStyle = '#bae6fd'; ctx.lineWidth = 5; ctx.strokeRect(18, 18, 764, 604);
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText('👑 مَمْلَكَةُ الْوُعُودِ العظمى • عائلة KR الملكية 👑', 400, 56);
+            ctx.fillStyle = '#bae6fd'; ctx.font = 'bold 14px Cairo, sans-serif';
+            ctx.fillText('Kingdom of Promises • Royal Crystal Snow-Globe', 400, 80);
+
+            // الرسالة الشتوية الدافئة في الأسفل
+            ctx.fillStyle = '#fef08a'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText(msg, 400, 568);
+
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 13px Cairo, sans-serif';
+            ctx.fillText('© Royal Winter Sanctuary - worldoflove-kr.github.io 👑 KR 👑', 400, 605);
+        }
+
+        // ربط مضمون لأزرار العبارات الشتوية
+        [1, 2, 3].forEach(n => {
+            const b = document.getElementById('sg-c' + n);
+            if (b) b.onclick = () => {
+                const isEn = document.documentElement.dir === 'ltr';
+                const box = document.getElementById('sg-msg');
+                if (box) box.value = isEn ? sgEn[n] : sgAr[n];
+            };
+        });
+
+        const createBtn = document.getElementById('sg-create-btn');
+        if (createBtn) createBtn.onclick = () => {
+            const n1 = document.getElementById('sg-name1')?.value.trim() || 'قلبٌ دافئ';
+            const n2 = document.getElementById('sg-name2')?.value.trim() || 'رفيقُ الشتاء';
+            const msg = document.getElementById('sg-msg')?.value.trim() || sgAr[1];
+            const isEn = document.documentElement.dir === 'ltr';
+
+            const canvas = document.getElementById('snow-globe-canvas');
+            const ctx = canvas.getContext('2d');
+            document.getElementById('sg-result-area').style.display = 'block';
+
+            if (window.liveSnowGlobeLoop) clearInterval(window.liveSnowGlobeLoop);
+            let f = 0; drawSnowGlobeScene(ctx, n1, n2, msg, isEn, 1);
+            document.getElementById('sg-img-link').href = canvas.toDataURL('image/png');
+            window.liveSnowGlobeLoop = setInterval(() => {
+                f += 0.55; drawSnowGlobeScene(ctx, n1, n2, msg, isEn, f);
+            }, 45);
+        };
+
+        const vidBtn = document.getElementById('sg-video-btn');
+        if (vidBtn) vidBtn.onclick = () => {
+            const canvas = document.getElementById('snow-globe-canvas');
+            if (!canvas?.captureStream) return;
+            const n1 = document.getElementById('sg-name1')?.value.trim() || 'قلبٌ دافئ';
+            const n2 = document.getElementById('sg-name2')?.value.trim() || 'رفيقُ الشتاء';
+            const msg = document.getElementById('sg-msg')?.value.trim() || sgAr[1];
+            const isEn = document.documentElement.dir === 'ltr';
+
+            vidBtn.disabled = true;
+            vidBtn.textContent = isEn ? '⏳ Recording Slow Snowfall...' : '⏳ جاري تصوير الكرة الثلجية الهادئة...';
+            const rec = new MediaRecorder(canvas.captureStream(25), { mimeType: 'video/webm' });
+            const chunks = [];
+            rec.ondataavailable = e => chunks.push(e.data);
+            rec.onstop = () => {
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(new Blob(chunks, { type: 'video/webm' }));
+                a.download = 'Royal-Crystal-Snow-Globe-KR.webm';
+                a.click();
+                vidBtn.disabled = false;
+                vidBtn.textContent = isEn ? '🎬 Save Snow-Globe Video' : '🎬 حفظ الكرة الثلجية كفيديو هادئ';
+            };
+            rec.start();
+            let c = 0; const ctx = canvas.getContext('2d');
+            const t = setInterval(() => {
+                c += 0.55; drawSnowGlobeScene(ctx, n1, n2, msg, isEn, c);
+                if (c >= 65) { clearInterval(t); rec.stop(); }
+            }, 45);
+        };
+
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const map = {
+                    'sg-title': isEn ? 'Royal Crystal Snow-Globe — Winter Warmth' : 'الكرة الزجاجية الثلجية الملكية — دفءُ الشتاء',
+                    'sg-c1': isEn ? '🏡 Warmth of Reunion' : '🏡 دفءُ لقائنا',
+                    'sg-c2': isEn ? '❄️ Snow & Loyalty' : '❄️ ثلجٌ ووفاء',
+                    'sg-c3': isEn ? '🕯️ Winter of a Lifetime' : '🕯️ شتاءُ العمر',
+                    'sg-create-btn': isEn ? '🔮 Create My Glowing Snow-Globe ❄️' : '🔮 اصنع كرتي الثلجية المضيئة ❄️',
+                    'sg-video-btn': isEn ? '🎬 Save Snow-Globe Video' : '🎬 حفظ الكرة الثلجية كفيديو هادئ',
+                    'sg-img-link': isEn ? '📥 Save Image' : '📥 حفظ كصورة'
+                };
+                for (const [id, text] of Object.entries(map)) {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = text;
+                }
+                const desc = document.getElementById('sg-desc');
+                if (desc) desc.innerHTML = isEn 
+                    ? 'On cold winter nights, one name is enough to warm the heart.. Enter your names and winter message to watch the <strong style="color:#bae6fd;">crystal snow-globe</strong> preserve your warm cabin under falling snow!'
+                    : 'في ليالي الشتاء الباردة، يكفي اسمٌ واحدٌ ليبعث الدفء في القلب.. اكتب اسمك واسم من تُحب وعبارتك الشتوية، وشاهد <strong style="color:#bae6fd;">الكرة الزجاجية البلورية</strong> وهي تحفظ كوخكما الدافئ تحت تساقط الثلج النقي!';
+                const i1 = document.getElementById('sg-name1');
+                const i2 = document.getElementById('sg-name2');
+                const m = document.getElementById('sg-msg');
+                if (i1) i1.placeholder = isEn ? '✨ Write your luminous name...' : '✨ اكتب اسمك المضيء...';
+                if (i2) i2.placeholder = isEn ? '❄️ Name of your winter companion...' : '❄️ اسم من يشاركك دفء الشتاء...';
+                if (m) m.placeholder = isEn ? '📜 Write your warm winter message or pick above...' : '📜 اكتب رسالتك الشتوية الدافئة أو اختر من الأعلى...';
+            }, 60);
+        });
+    })();
+    </script>
 
 
             
