@@ -179,13 +179,13 @@
             const countEl = document.getElementById('live-visitor-count');
             if(countEl && !window.royalVisitorTimerStarted) {
                 window.royalVisitorTimerStarted = true;
-                let currentCount = 14544;
-                setInterval(function() {
-                    const fluctuation = Math.floor(Math.random() * 5) - 2;
-                    currentCount += fluctuation;
-                    if (currentCount < 14500) currentCount = 14544;
+                         let currentCount = 14544 + Math.floor((Date.now() - 1763000000000) / 18000);
                     countEl.textContent = currentCount.toLocaleString();
-                }, 3000);
+                    setInterval(function() {
+                        currentCount += Math.floor(Math.random() * 2) + 1;
+                        countEl.textContent = currentCount.toLocaleString();
+                    }, 5000);
+
             }
         })()" style="display:none;">
     </div>
