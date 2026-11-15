@@ -6027,6 +6027,317 @@
         });
     })();
     </script>
+    <!-- 35. حائط الخلود وفانوس اليراعات المضيئة (تبقى الأسماء مضيئة داخل الصندوق + فيديو هادئ + ترجمة تلقائية) -->
+    <style>
+        @keyframes fireflyBoxGlow {
+            0% { box-shadow: 0 0 28px rgba(234, 179, 8, 0.6), inset 0 0 24px rgba(16, 185, 129, 0.25); border-color: #eab308; }
+            50% { box-shadow: 0 0 46px rgba(52, 211, 153, 0.75), inset 0 0 34px rgba(253, 224, 71, 0.35); border-color: #34d399; }
+            100% { box-shadow: 0 0 28px rgba(234, 179, 8, 0.6), inset 0 0 24px rgba(16, 185, 129, 0.25); border-color: #eab308; }
+        }
+        @keyframes eternalNameTwinkle {
+            0%, 100% { transform: scale(1); text-shadow: 0 0 8px rgba(253, 224, 71, 0.8), 0 0 16px rgba(52, 211, 153, 0.5); }
+            50% { transform: scale(1.05); text-shadow: 0 0 14px rgba(253, 224, 71, 1), 0 0 24px rgba(251, 191, 36, 0.9); }
+        }
+        #royal-eternal-fireflies {
+            max-width: 440px; margin: 30px auto; padding: 26px 18px;
+            background: radial-gradient(circle at top, rgba(10, 32, 28, 0.96), rgba(5, 14, 16, 0.98));
+            border: 2.5px solid #eab308; border-radius: 20px;
+            animation: fireflyBoxGlow 4.5s infinite ease-in-out;
+            font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 50;
+        }
+        .ef-wall {
+            background: rgba(4, 15, 14, 0.85); border: 1.5px solid rgba(253, 224, 71, 0.45);
+            border-radius: 14px; padding: 12px 10px; margin-bottom: 14px;
+            max-height: 135px; overflow-y: auto; display: flex; flex-wrap: wrap;
+            gap: 8px; justify-content: center; box-shadow: inset 0 0 18px rgba(16, 185, 129, 0.2);
+        }
+        .ef-badge {
+            background: rgba(253, 224, 71, 0.12); border: 1px solid rgba(253, 224, 71, 0.55);
+            color: #fef08a; border-radius: 20px; padding: 5px 12px; font-size: 0.8rem;
+            font-weight: bold; animation: eternalNameTwinkle 3s infinite ease-in-out;
+        }
+        .ef-input {
+            width: 100%; box-sizing: border-box; background: rgba(52, 211, 153, 0.08);
+            border: 1.5px solid #34d399; border-radius: 12px; padding: 11px 14px;
+            color: #fef08a; font-weight: bold; font-family: 'Cairo', sans-serif; font-size: 0.94rem;
+            margin-bottom: 10px; outline: none; text-align: center;
+            box-shadow: 0 0 14px rgba(52, 211, 153, 0.3);
+        }
+        .ef-btn {
+            width: 100%; padding: 13px; background: linear-gradient(45deg, #059669, #d97706, #eab308);
+            background-size: 200% 200%; border: 1px solid #fde047; border-radius: 12px; color: #fff;
+            font-weight: bold; font-size: 0.96rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+            box-shadow: 0 0 22px rgba(234, 179, 8, 0.6);
+        }
+    </style>
+    <script>
+    (function() {
+        const firefliesHTML = `
+        <div id="royal-eternal-fireflies">
+            <div style="font-size: 2.1rem; margin-bottom: 6px;">🏮✨🌿💫</div>
+            <h3 id="ef-title" style="color: #fde047; margin: 0 0 10px 0; font-size: 1.26rem; text-shadow: 0 0 14px rgba(253, 224, 71, 0.85);">فانوس اليراعات المضيئة — قناديلُ الأسبوع</h3>
+            <p id="ef-desc" style="color: #d1fae5; font-size: 0.86rem; line-height: 1.85; margin: 0 0 10px 0;">
+                في قلب غابة السحر الليلية، تتجمع <strong style="color:#fde047;">اليراعات الذهبية</strong> حول أسماء المحبين لتضيء العتمة بنورها الدافئ.. أطلق اسمك واسم من تُحب ليُحفظ متوهجاً في <strong style="color:#34d399;">قناديل المملكة المضيئة</strong> أمام الجميع!
+            </p>
+            <div id="ef-week-note" style="background: rgba(253, 224, 71, 0.12); border: 1px dashed #fde047; border-radius: 10px; padding: 7px 10px; color: #fef08a; font-size: 0.78rem; margin-bottom: 12px; font-weight: bold;">
+                ⏳ تبقى الأسماء مضيئة داخل الفانوس لمدة أسبوعٍ كامل (7 أيام) ثم تختفي تلقائياً.. ويمكنكم العودة لتجديد نورها بعد كل أسبوع!
+            </div>
+
+            <div class="ef-wall" id="ef-names-wall"></div>
+
+            <input type="text" id="ef-name1" class="ef-input" placeholder="✨ اكتب اسمك المضيء...">
+            <input type="text" id="ef-name2" class="ef-input" placeholder="🌿 اسم من يشاركك نور اليراعات...">
+            <input type="text" id="ef-msg" class="ef-input" placeholder="💫 همسة قصيرة تضيء مع اسميكما...">
+
+            <button type="button" class="ef-btn" id="ef-launch-btn">🏮 أطلق يراعتنا في الفانوس لمدة أسبوع ✨</button>
+
+            <div id="ef-result-area" style="display: none; margin-top: 20px;">
+                <canvas id="firefly-lantern-canvas" width="800" height="640" style="width: 100%; border-radius: 14px; border: 2px solid #fde047; box-shadow: 0 0 30px rgba(253, 224, 71, 0.65);"></canvas>
+                <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 12px;">
+                    <button type="button" id="ef-video-btn" style="padding: 10px 18px; background: linear-gradient(45deg, #059669, #d97706); color: #fff; border: 1px solid #fde047; border-radius: 10px; font-weight: bold; font-size: 0.88rem; font-family: Cairo, sans-serif; cursor: pointer; box-shadow: 0 0 18px rgba(253,224,71,0.55);">🎬 حفظ الفانوس واليراعات كفيديو هادئ</button>
+                    <a id="ef-img-link" download="Enchanted-Firefly-Lantern-KR.png" style="padding: 10px 18px; background: #1e293b; color: #fde047; border: 1px solid #fde047; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 0.88rem;">📥 حفظ كصورة</a>
+                </div>
+            </div>
+        </div>
+        `;
+
+        const wmBox = document.getElementById('royal-water-mirror');
+        if (wmBox) {
+            wmBox.insertAdjacentHTML('afterend', firefliesHTML);
+        } else {
+            const footer = document.getElementById('royal-kingdom-footer');
+            if (footer) footer.insertAdjacentHTML('beforebegin', firefliesHTML);
+        }
+    })();
+    </script>
+    <script>
+    (function() {
+        const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
+        const STORAGE_KEY = 'kr_firefly_lantern_names_v1';
+
+        function getActiveLanterns() {
+            const now = Date.now();
+            let list = [];
+            try {
+                list = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            } catch (e) { list = []; }
+
+            // حذف أي اسم مرّ عليه 7 أيام (أسبوع كامل) تلقائياً
+            list = list.filter(item => item && item.ts && (now - item.ts) < WEEK_MS);
+
+            // إضافة أسماء ملكية افتتاحية متجددة تلقائياً إذا كانت القائمة فارغة
+            if (list.length === 0) {
+                list = [
+                    { n1: 'خالد', n2: 'منى', ts: now - 1 * 86400000 },
+                    { n1: 'سارة', n2: 'فيصل', ts: now - 3 * 86400000 },
+                    { n1: 'نور', n2: 'عمر', ts: now - 6.2 * 86400000 }
+                ];
+            }
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); } catch (e) {}
+            return list;
+        }
+
+        function renderLanternWall() {
+            const wall = document.getElementById('ef-names-wall');
+            if (!wall) return;
+            const now = Date.now();
+            const isEn = document.documentElement.dir === 'ltr';
+            const list = getActiveLanterns();
+
+            wall.innerHTML = list.map(item => {
+                const ageDays = (now - item.ts) / 86400000;
+                const daysLeft = Math.max(1, Math.ceil(7 - ageDays));
+                // يقوى الضوء خلال أول 5 أيام ثم يبدأ بالخفوت في آخر يومين قبل الانطفاء
+                let glowStrength = 1;
+                let statusTag = isEn ? `${daysLeft}d left` : `متبقي ${daysLeft} يوم`;
+                if (ageDays < 5) {
+                    glowStrength = 0.65 + (ageDays / 5) * 0.55;
+                } else {
+                    glowStrength = Math.max(0.28, (7 - ageDays) / 2);
+                    statusTag = isEn ? '🕯️ Fading soon' : '🕯️ يوشك أن ينطفئ';
+                }
+
+                const blurPx = Math.round(18 * glowStrength);
+                const opacityVal = Math.max(0.45, Math.min(1, glowStrength));
+                return `<span class="ef-badge" style="opacity:${opacityVal}; box-shadow: 0 0 ${blurPx}px rgba(253, 224, 71, ${glowStrength});">
+                    ✨ ${item.n1} ❤️ ${item.n2} <small style="font-size:0.68rem; color:#6ee7b7;">(${statusTag})</small>
+                </span>`;
+            }).join('');
+        }
+
+        renderLanternWall();
+
+        const fireflies = Array.from({length: 42}, (_, i) => ({
+            x: ((i * 73) % 720) + 40,
+            y: ((i * 59) % 520) + 60,
+            r: 1.8 + (i % 4) * 0.7,
+            sp: 0.02 + (i % 5) * 0.006,
+            ph: i * 0.7
+        }));
+
+        function drawFireflyLanternScene(ctx, n1, n2, msg, isEn, f) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            const bg = ctx.createRadialGradient(400, 340, 30, 400, 340, 460);
+            bg.addColorStop(0, '#0f2e28'); bg.addColorStop(0.55, '#071917'); bg.addColorStop(1, '#030a0a');
+            ctx.fillStyle = bg; ctx.fillRect(0, 0, 800, 640);
+
+            // أشجار الغابة الليلية في الخلفية
+            ctx.fillStyle = 'rgba(4, 15, 13, 0.85)';
+            [65, 145, 655, 735].forEach((tx, idx) => {
+                ctx.fillRect(tx - 14, 120 + (idx % 2) * 30, 28, 500);
+            });
+
+            // الفانوس الزجاجي العتيق في قلب الغابة
+            ctx.save();
+            ctx.translate(400, 355);
+            const lPulse = 0.85 + 0.15 * Math.sin(f * 0.06);
+
+            // هالة ضوء الفانوس الذهبية الدافئة
+            const aura = ctx.createRadialGradient(0, 0, 15, 0, 0, 195 * lPulse);
+            aura.addColorStop(0, 'rgba(254, 240, 138, 0.75)');
+            aura.addColorStop(0.45, 'rgba(234, 179, 8, 0.28)');
+            aura.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = aura; ctx.beginPath(); ctx.arc(0, 0, 195 * lPulse, 0, Math.PI * 2); ctx.fill();
+
+            // هيكل الفانوس المعدني الذهبي
+            ctx.strokeStyle = '#d4af37'; ctx.lineWidth = 4;
+            ctx.beginPath(); ctx.arc(0, -108, 16, 0, Math.PI * 2); ctx.stroke();
+            ctx.fillStyle = '#1c1917';
+            ctx.beginPath(); ctx.moveTo(-65, -70); ctx.lineTo(0, -98); ctx.lineTo(65, -70); ctx.closePath(); ctx.fill(); ctx.stroke();
+            ctx.fillRect(-58, 75, 116, 18); ctx.strokeRect(-58, 75, 116, 18);
+
+            // زجاج الفانوس المتوهج
+            const glass = ctx.createLinearGradient(-52, -70, 52, 75);
+            glass.addColorStop(0, 'rgba(254, 240, 138, 0.35)');
+            glass.addColorStop(0.5, 'rgba(253, 224, 71, 0.55)');
+            glass.addColorStop(1, 'rgba(217, 119, 6, 0.35)');
+            ctx.fillStyle = glass; ctx.fillRect(-52, -70, 104, 145); ctx.strokeRect(-52, -70, 104, 145);
+            ctx.restore();
+            // اليراعات الذهبية الصغيرة تطير ببطء ونعومة حول الفانوس
+            fireflies.forEach(ff => {
+                const fx = ff.x + Math.sin(f * ff.sp + ff.ph) * 28;
+                const fy = ff.y + Math.cos(f * ff.sp * 0.8 + ff.ph) * 22;
+                const blink = 0.35 + 0.65 * Math.abs(Math.sin(f * 0.05 + ff.ph));
+                ctx.save();
+                ctx.shadowColor = '#fde047';
+                ctx.shadowBlur = 14;
+                ctx.fillStyle = `rgba(254, 240, 138, ${blink})`;
+                ctx.beginPath(); ctx.arc(fx, fy, ff.r, 0, Math.PI * 2); ctx.fill();
+                ctx.restore();
+            });
+
+            // الإطار والهوية والأسماء المضيئة داخل الفانوس
+            const textPulse = 12 + 10 * Math.abs(Math.sin(f * 0.07));
+            ctx.strokeStyle = '#eab308'; ctx.lineWidth = 5; ctx.strokeRect(18, 18, 764, 604);
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText('👑 مَمْلَكَةُ الْوُعُودِ العظمى • عائلة KR الملكية 👑', 400, 56);
+            ctx.fillStyle = '#34d399'; ctx.font = 'bold 14px Cairo, sans-serif';
+            ctx.fillText('Kingdom of Promises • Enchanted Firefly Lantern (7-Day Glow)', 400, 80);
+
+            ctx.save();
+            ctx.shadowColor = '#fde047'; ctx.shadowBlur = textPulse;
+            ctx.fillStyle = '#fef08a'; ctx.font = 'bold 26px Cairo, sans-serif';
+            ctx.fillText(`🏮 ${n1}   ❤️   ${n2} 🏮`, 400, 145);
+            ctx.restore();
+
+            ctx.fillStyle = '#d1fae5'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText(msg, 400, 535);
+
+            ctx.fillStyle = '#fde047'; ctx.font = 'bold 13px Cairo, sans-serif';
+            ctx.fillText(isEn ? '✨ Lit for 7 Days in the Kingdom Wall • Renew Anytime ✨' : '✨ مضيء لمدة 7 أيام في قناديل المملكة • يُجدّد بعد كل أسبوع ✨', 400, 572);
+            ctx.fillText('© Enchanted Forest Sanctuary - worldoflove-kr.github.io 👑 KR 👑', 400, 605);
+        }
+
+        const launchBtn = document.getElementById('ef-launch-btn');
+        if (launchBtn) launchBtn.onclick = () => {
+            const isEn = document.documentElement.dir === 'ltr';
+            const n1 = document.getElementById('ef-name1')?.value.trim() || (isEn ? 'Shining Soul' : 'نورٌ مضيء');
+            const n2 = document.getElementById('ef-name2')?.value.trim() || (isEn ? 'Eternal Light' : 'نبضُ الوفاء');
+            const msg = document.getElementById('ef-msg')?.value.trim() || (isEn ? 'Our names glow together in the enchanted forest for 7 days.' : 'تتوهج أسماؤنا معاً في غابة الوفاء لمدة أسبوعٍ كامل.');
+
+            // حفظ أو تجديد الأسماء في حائط الفانوس لمدة أسبوع كامل (7 أيام)
+            let list = getActiveLanterns();
+            list = list.filter(item => !(item.n1 === n1 && item.n2 === n2));
+            list.unshift({ n1: n1, n2: n2, ts: Date.now() });
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(list.slice(0, 20))); } catch (e) {}
+            renderLanternWall();
+
+            const canvas = document.getElementById('firefly-lantern-canvas');
+            const ctx = canvas.getContext('2d');
+            document.getElementById('ef-result-area').style.display = 'block';
+
+            if (window.liveFireflyLoop) clearInterval(window.liveFireflyLoop);
+            let f = 0; drawFireflyLanternScene(ctx, n1, n2, msg, isEn, 1);
+            document.getElementById('ef-img-link').href = canvas.toDataURL('image/png');
+            window.liveFireflyLoop = setInterval(() => {
+                f += 0.55; drawFireflyLanternScene(ctx, n1, n2, msg, isEn, f);
+            }, 45);
+        };
+
+        const vidBtn = document.getElementById('ef-video-btn');
+        if (vidBtn) vidBtn.onclick = () => {
+            const canvas = document.getElementById('firefly-lantern-canvas');
+            if (!canvas?.captureStream) return;
+            const isEn = document.documentElement.dir === 'ltr';
+            const n1 = document.getElementById('ef-name1')?.value.trim() || (isEn ? 'Shining Soul' : 'نورٌ مضيء');
+            const n2 = document.getElementById('ef-name2')?.value.trim() || (isEn ? 'Eternal Light' : 'نبضُ الوفاء');
+            const msg = document.getElementById('ef-msg')?.value.trim() || (isEn ? 'Our names glow together in the enchanted forest for 7 days.' : 'تتوهج أسماؤنا معاً في غابة الوفاء لمدة أسبوعٍ كامل.');
+
+            vidBtn.disabled = true;
+            vidBtn.textContent = isEn ? '⏳ Recording Firefly Lantern...' : '⏳ جاري تصوير الفانوس واليراعات الهادئة...';
+            const rec = new MediaRecorder(canvas.captureStream(25), { mimeType: 'video/webm' });
+            const chunks = [];
+            rec.ondataavailable = e => chunks.push(e.data);
+            rec.onstop = () => {
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(new Blob(chunks, { type: 'video/webm' }));
+                a.download = 'Enchanted-Firefly-Lantern-KR.webm';
+                a.click();
+                vidBtn.disabled = false;
+                vidBtn.textContent = isEn ? '🎬 Save Firefly Lantern Video' : '🎬 حفظ الفانوس واليراعات كفيديو هادئ';
+            };
+            rec.start();
+            let c = 0; const ctx = canvas.getContext('2d');
+            const t = setInterval(() => {
+                c += 0.55; drawFireflyLanternScene(ctx, n1, n2, msg, isEn, c);
+                if (c >= 65) { clearInterval(t); rec.stop(); }
+            }, 45);
+        };
+
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const map = {
+                    'ef-title': isEn ? 'Enchanted Firefly Lantern — 7-Day Glowing Wall' : 'فانوس اليراعات المضيئة — قناديلُ الأسبوع',
+                    'ef-week-note': isEn
+                        ? '⏳ Names remain glowing inside the lantern for 7 full days before fading out.. Come back anytime after a week to renew your light!'
+                        : '⏳ تبقى الأسماء مضيئة داخل الفانوس لمدة أسبوعٍ كامل (7 أيام) ثم تختفي تلقائياً.. ويمكنكم العودة لتجديد نورها بعد كل أسبوع!',
+                    'ef-launch-btn': isEn ? '🏮 Light Our Firefly in the Lantern for 7 Days ✨' : '🏮 أطلق يراعتنا في الفانوس لمدة أسبوع ✨',
+                    'ef-video-btn': isEn ? '🎬 Save Firefly Lantern Video' : '🎬 حفظ الفانوس واليراعات كفيديو هادئ',
+                    'ef-img-link': isEn ? '📥 Save Image' : '📥 حفظ كصورة'
+                };
+                for (const [id, text] of Object.entries(map)) {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = text;
+                }
+                const desc = document.getElementById('ef-desc');
+                if (desc) desc.innerHTML = isEn
+                    ? 'Deep in the enchanted night forest, <strong style="color:#fde047;">golden fireflies</strong> gather around lovers’ names to light up the dark.. Launch your names into the <strong style="color:#34d399;">Kingdom Lantern Wall</strong>!'
+                    : 'في قلب غابة السحر الليلية، تتجمع <strong style="color:#fde047;">اليراعات الذهبية</strong> حول أسماء المحبين لتضيء العتمة بنورها الدافئ.. أطلق اسمك واسم من تُحب ليُحفظ متوهجاً في <strong style="color:#34d399;">قناديل المملكة المضيئة</strong> أمام الجميع!';
+                const i1 = document.getElementById('ef-name1');
+                const i2 = document.getElementById('ef-name2');
+                const m = document.getElementById('ef-msg');
+                if (i1) i1.placeholder = isEn ? '✨ Write your luminous name...' : '✨ اكتب اسمك المضيء...';
+                if (i2) i2.placeholder = isEn ? '🌿 Name of your firefly companion...' : '🌿 اسم من يشاركك نور اليراعات...';
+                if (m) m.placeholder = isEn ? '💫 Short whisper to glow with your names...' : '💫 همسة قصيرة تضيء مع اسميكما...';
+                renderLanternWall();
+            }, 60);
+        });
+    })();
+    </script>
 
 
             
