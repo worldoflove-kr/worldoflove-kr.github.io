@@ -4960,18 +4960,88 @@
                 ctx.fill();
             }
 
-            const hx = 180 + ((f * 0.9) % 440), hy = 395 + Math.sin(f * 0.14) * 7, leg = Math.sin(f * 0.14) * 14;
-            ctx.save(); ctx.translate(hx, hy); ctx.shadowColor = '#fde047'; ctx.shadowBlur = 22;
-            ctx.strokeStyle = '#fef08a'; ctx.lineWidth = 4; ctx.lineCap = 'round';
-            ctx.beginPath(); ctx.moveTo(-34, -6); ctx.quadraticCurveTo(-55, -14 + Math.sin(f * 0.15) * 6, -64, 6); ctx.stroke();
-            ctx.fillStyle = '#fde047';
-            ctx.beginPath(); ctx.ellipse(0, 0, 36, 15, -0.08, 0, Math.PI * 2); ctx.fill();
-            ctx.beginPath(); ctx.moveTo(22, -6); ctx.lineTo(44, -34); ctx.lineTo(58, -26); ctx.lineTo(52, -16); ctx.lineTo(36, 6); ctx.closePath(); ctx.fill();
-            ctx.beginPath(); ctx.moveTo(22, 10); ctx.lineTo(28 + leg, 34); ctx.stroke();
-            ctx.beginPath(); ctx.moveTo(14, 10); ctx.lineTo(10 - leg * 0.7, 34); ctx.stroke();
-            ctx.beginPath(); ctx.moveTo(-22, 10); ctx.lineTo(-28 - leg, 34); ctx.stroke();
-            ctx.beginPath(); ctx.moveTo(-14, 10); ctx.lineTo(-10 + leg * 0.7, 34); ctx.stroke();
+                    // بالونات وفقاعات ماء بلورية مضيئة متطايرة ببطء في المشهد
+            for (let b = 0; b < 28; b++) {
+                const bx = ((b * 67 + 40) % 720) + 40 + Math.sin(f * 0.03 + b) * 14;
+                const by = 590 - (((f * (0.45 + (b % 4) * 0.12)) + b * 43) % 470);
+                const br = 4 + (b % 7);
+
+                ctx.save();
+                const bGrad = ctx.createRadialGradient(bx - br * 0.3, by - br * 0.3, 1, bx, by, br);
+                bGrad.addColorStop(0, 'rgba(255, 255, 255, 0.9)');
+                bGrad.addColorStop(0.5, 'rgba(125, 211, 252, 0.35)');
+                bGrad.addColorStop(1, 'rgba(45, 212, 191, 0.65)');
+                ctx.fillStyle = bGrad;
+                ctx.strokeStyle = 'rgba(224, 242, 254, 0.8)';
+                ctx.lineWidth = 1.2;
+                ctx.beginPath(); ctx.arc(bx, by, br, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+                ctx.restore();
+            }
+
+            // دولفينان مضيئان متقابلان يقفزان ببطء ويرسمان شكل قلب فوق اللؤلؤة
+            const leap = 0.5 + 0.5 * Math.sin(f * 0.045);
+            const leftX = 275 + leap * 65;
+            const rightX = 525 - leap * 65;
+            const dY = 435 - leap * 95;
+            const tilt = -0.35 - leap * 0.45;
+
+            ctx.save();
+            ctx.strokeStyle = `rgba(253, 224, 71, ${0.25 + 0.45 * leap})`;
+            ctx.shadowColor = '#fde047';
+            ctx.shadowBlur = 18;
+            ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            ctx.moveTo(400, 445);
+            ctx.bezierCurveTo(290, 385, 310, 290, 400, 335);
+            ctx.bezierCurveTo(490, 290, 510, 385, 400, 445);
+            ctx.stroke();
             ctx.restore();
+
+            function drawShadedDolphin(x, y, angle, flipX, cTop, cMid) {
+                ctx.save();
+                ctx.translate(x, y);
+                if (flipX) ctx.scale(-1, 1);
+                ctx.rotate(angle);
+                ctx.shadowColor = cMid;
+                ctx.shadowBlur = 22;
+
+                const g = ctx.createLinearGradient(0, -22, 0, 20);
+                g.addColorStop(0, cTop);
+                g.addColorStop(0.55, cMid);
+                g.addColorStop(1, '#ffffff');
+                ctx.fillStyle = g;
+
+                ctx.beginPath();
+                ctx.moveTo(52, 2);
+                ctx.quadraticCurveTo(40, -4, 32, -11);
+                ctx.quadraticCurveTo(4, -25, -28, -9);
+                ctx.lineTo(-48, -19);
+                ctx.quadraticCurveTo(-42, -3, -50, 11);
+                ctx.lineTo(-28, 4);
+                ctx.quadraticCurveTo(4, 16, 34, 5);
+                ctx.quadraticCurveTo(42, 7, 52, 2);
+                ctx.closePath();
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.moveTo(-3, -16);
+                ctx.quadraticCurveTo(-12, -32, -19, -14);
+                ctx.closePath();
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.moveTo(9, 5);
+                ctx.quadraticCurveTo(0, 21, -9, 9);
+                ctx.closePath();
+                ctx.fill();
+
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath(); ctx.arc(30, -3, 2.1, 0, Math.PI * 2); ctx.fill();
+                ctx.restore();
+            }
+
+            drawShadedDolphin(leftX, dY, tilt, false, '#0284c7', '#38bdf8');
+            drawShadedDolphin(rightX, dY, tilt, true, '#d97706', '#fde047');
 
             ctx.save(); ctx.translate(400, 515);
             const pp = 1 + 0.08 * Math.sin(f * 0.08);
