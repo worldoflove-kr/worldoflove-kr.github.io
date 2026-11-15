@@ -179,7 +179,8 @@
             const countEl = document.getElementById('live-visitor-count');
             if(countEl && !window.royalVisitorTimerStarted) {
                 window.royalVisitorTimerStarted = true;
-                         let currentCount = 14544 + Math.floor((Date.now() - 1763000000000) / 18000);
+                                        let currentCount = 14544 + Math.max(0, Math.floor((Date.now() - 1794768000000) / 30000));
+
                     countEl.textContent = currentCount.toLocaleString();
                     setInterval(function() {
                         currentCount += Math.floor(Math.random() * 2) + 1;
