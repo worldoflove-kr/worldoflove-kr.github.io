@@ -5690,6 +5690,64 @@
         });
     })();
     </script>
+    <!-- توهج الصندوق + نبض الأسماء الحية + الترجمة الكاملة عربي/إنجليزي -->
+    <style>
+        @keyframes superSnowGlow {
+            0% { box-shadow: 0 0 32px rgba(56, 189, 248, 0.85), 0 0 60px rgba(186, 230, 253, 0.45), inset 0 0 28px rgba(56, 189, 248, 0.35); border-color: #38bdf8; }
+            50% { box-shadow: 0 0 48px rgba(253, 224, 71, 0.9), 0 0 75px rgba(56, 189, 248, 0.65), inset 0 0 38px rgba(253, 224, 71, 0.4); border-color: #fde047; }
+            100% { box-shadow: 0 0 32px rgba(56, 189, 248, 0.85), 0 0 60px rgba(186, 230, 253, 0.45), inset 0 0 28px rgba(56, 189, 248, 0.35); border-color: #38bdf8; }
+        }
+        @keyframes heartbeatNamePulse {
+            0%, 100% { transform: scale(1); text-shadow: 0 0 10px rgba(253, 224, 71, 0.7), 0 0 20px rgba(56, 189, 248, 0.5); }
+            50% { transform: scale(1.04); text-shadow: 0 0 18px rgba(253, 224, 71, 1), 0 0 32px rgba(244, 63, 94, 0.85); }
+        }
+        #royal-snow-globe {
+            border: 2.5px solid #38bdf8 !important;
+            background: radial-gradient(circle at top, rgba(16, 42, 76, 0.96), rgba(7, 16, 32, 0.98)) !important;
+            animation: superSnowGlow 3.5s infinite ease-in-out !important;
+        }
+        #royal-snow-globe .sg-input {
+            border: 1.5px solid #38bdf8 !important;
+            box-shadow: 0 0 18px rgba(56, 189, 248, 0.45), inset 0 0 10px rgba(56, 189, 248, 0.2) !important;
+            animation: heartbeatNamePulse 2.4s infinite ease-in-out !important;
+        }
+    </style>
+
+    <script>
+    (function() {
+        const origCreate = document.getElementById('sg-create-btn');
+        if (origCreate) {
+            const oldClick = origCreate.onclick;
+            origCreate.onclick = function() {
+                if (oldClick) oldClick();
+                const isEn = document.documentElement.dir === 'ltr';
+                const n1 = document.getElementById('sg-name1')?.value.trim() || (isEn ? 'Warm Heart' : 'قلبٌ دافئ');
+                const n2 = document.getElementById('sg-name2')?.value.trim() || (isEn ? 'Winter Soul' : 'رفيقُ الشتاء');
+                const canvas = document.getElementById('snow-globe-canvas');
+                const ctx = canvas.getContext('2d');
+                let pFrame = 0;
+                if (window.sgPulseOverlay) clearInterval(window.sgPulseOverlay);
+                window.sgPulseOverlay = setInterval(() => {
+                    pFrame++;
+                    const beat = 1 + 0.06 * Math.sin(pFrame * 0.14);
+                    const glow = 12 + 12 * Math.abs(Math.sin(pFrame * 0.14));
+                    ctx.save();
+                    ctx.translate(400, 118);
+                    ctx.scale(beat, beat);
+                    ctx.fillStyle = '#091529';
+                    ctx.fillRect(-240, -24, 480, 44);
+                    ctx.shadowColor = '#fde047';
+                    ctx.shadowBlur = glow;
+                    ctx.fillStyle = '#fef08a';
+                    ctx.font = 'bold 24px Cairo, sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(`❄️ ${n1}   ❤️   ${n2} ❄️`, 0, 8);
+                    ctx.restore();
+                }, 45);
+            };
+        }
+    })();
+    </script>
 
 
             
