@@ -7687,6 +7687,57 @@
         });
     })();
     </script>
+    <!-- ربط مقطوعة MP3 حقيقية من المستودع + السماح للزائر باختيار موسيقى من جهازه -->
+    <script>
+    (function() {
+        const playBtn = document.getElementById('mv-play-btn');
+        const stopBtn = document.getElementById('mv-stop-btn');
+        if (!playBtn) return;
+
+        // إضافة زر اختيار أغنية من جهاز الزائر فوق زر التشغيل
+        const uploadWrap = document.createElement('div');
+        uploadWrap.style.cssText = 'margin-bottom: 10px;';
+        uploadWrap.innerHTML = `
+            <label for="mv-custom-audio" style="display:inline-block; padding:8px 14px; background:rgba(253,224,71,0.14); border:1px dashed #fde047; border-radius:12px; color:#fef08a; font-size:0.82rem; cursor:pointer; font-weight:bold;">
+                🎵 اختر مقطوعة موسيقية من جهازك (اختياري)
+            </label>
+            <input type="file" id="mv-custom-audio" accept="audio/*" style="display:none;">
+            <div id="mv-audio-name" style="color:#d8b4fe; font-size:0.75rem; margin-top:4px;">🎶 المقطوعة الافتراضية: موسيقى مملكة الوعود الملكية</div>
+        `;
+        playBtn.parentNode.insertBefore(uploadWrap, playBtn);
+
+        const realAudio = new Audio('royal-melody.mp3');
+        realAudio.loop = true;
+
+        const fileInput = document.getElementById('mv-custom-audio');
+        if (fileInput) {
+            fileInput.onchange = function(e) {
+                const file = e.target.files && e.target.files;
+                if (file) {
+                    realAudio.src = URL.createObjectURL(file);
+                    document.getElementById('mv-audio-name').textContent = '🎶 تم اختيار: ' + file.name;
+                }
+            };
+        }
+
+        const prevPlay = playBtn.onclick;
+        playBtn.onclick = function() {
+            if (prevPlay) prevPlay();
+            // إيقاف أي نغمة إلكترونية قديمة وتشغيل الموسيقى الحقيقية
+            if (stopBtn && stopBtn.onclick) stopBtn.onclick();
+            realAudio.currentTime = 0;
+            realAudio.play().catch(() => {});
+        };
+
+        if (stopBtn) {
+            const prevStop = stopBtn.onclick;
+            stopBtn.onclick = function() {
+                if (prevStop) prevStop();
+                realAudio.pause();
+            };
+        }
+    })();
+    </script>
 
 
             
