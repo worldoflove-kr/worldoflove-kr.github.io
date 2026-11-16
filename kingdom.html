@@ -7738,6 +7738,155 @@
         }
     })();
     </script>
+    <!-- ترقية صندوق الموسيقى إلى تضاريس ضوئية ثلاثية الأبعاد + هوية أغنية "ما وراء الخيال المظلم" الحصرية -->
+    <script>
+    (function() {
+        const musicBox = document.getElementById('royal-music-vinyl');
+        if (!musicBox) return;
+
+        // 1. إضافة بطاقة تعريف الأغنية الحصرية وعبارة الملكية داخل الصندوق
+        const audioLbl = document.getElementById('mv-audio-name');
+        if (audioLbl) {
+            audioLbl.innerHTML = `
+                <div style="margin:8px 0; padding:10px; border-radius:12px; background:linear-gradient(90deg, rgba(168,85,247,0.18), rgba(14,165,233,0.18)); border:1px solid rgba(253,224,71,0.5);">
+                    <div style="color:#fde047; font-weight:bold; font-size:0.92rem;">🎵 ما وراء الخيال المظلم • Dark Beyond Fantasy</div>
+                    <div dir="rtl" style="color:#7dd3fc; font-size:0.8rem; margin-top:3px;">إبداع: <bdi dir="ltr" style="color:#fef08a; font-weight:bold;">panda🐼 KR 👑</bdi> — خاصة بمملكة الوعود</div>
+                    <div id="mv-exclusive-note" style="color:#f472b6; font-size:0.74rem; margin-top:4px; font-weight:bold;">✨ هذه الأغاني حصرية ومصنوعة خصيصاً لصفحة مملكة الوعود فقط ✨</div>
+                </div>
+            `;
+        }
+
+        // 2. دالة رسم التضاريس الضوئية المتموجة ثلاثية الأبعاد الحديثة (3D Luminous Wave Terrain)
+        window.drawLuminousTerrainScene = function(ctx, n1, n2, msg, isEn, f) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            const bg = ctx.createLinearGradient(0, 0, 0, 640);
+            bg.addColorStop(0, '#060312');
+            bg.addColorStop(0.5, '#13072c');
+            bg.addColorStop(1, '#050817');
+            ctx.fillStyle = bg;
+            ctx.fillRect(0, 0, 800, 640);
+
+            // هالة ضوئية خلف التضاريس
+            const aura = ctx.createRadialGradient(400, 320, 20, 400, 320, 340);
+            aura.addColorStop(0, 'rgba(56, 189, 248, 0.28)');
+            aura.addColorStop(0.5, 'rgba(192, 132, 252, 0.18)');
+            aura.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = aura;
+            ctx.fillRect(0, 0, 800, 640);
+
+            // رسم 6 طبقات من التضاريس الضوئية المتداخلة بالألوان المضيئة (تتفاعل بانسيابية مع النغمات)
+            const layers = [
+                { yBase: 310, amp: 52, freq: 0.011, speed: 0.045, c1: 'rgba(168, 85, 247, 0.45)', c2: 'rgba(56, 189, 248, 0.05)', stroke: '#c084fc' },
+                { yBase: 330, amp: 44, freq: 0.015, speed: -0.055, c1: 'rgba(56, 189, 248, 0.48)', c2: 'rgba(14, 165, 233, 0.05)', stroke: '#38bdf8' },
+                { yBase: 350, amp: 38, freq: 0.019, speed: 0.065, c1: 'rgba(244, 114, 182, 0.42)', c2: 'rgba(236, 72, 153, 0.04)', stroke: '#f472b6' },
+                { yBase: 370, amp: 32, freq: 0.023, speed: -0.04, c1: 'rgba(253, 224, 71, 0.35)', c2: 'rgba(234, 179, 8, 0.02)', stroke: '#fde047' }
+            ];
+
+            layers.forEach((L, idx) => {
+                ctx.save();
+                ctx.beginPath();
+                ctx.moveTo(22, 460);
+                for (let x = 22; x <= 778; x += 6) {
+                    const env = Math.sin(((x - 22) / 756) * Math.PI);
+                    const wave = Math.sin(x * L.freq + f * L.speed + idx) * L.amp * env
+                               + Math.cos(x * (L.freq * 1.8) - f * L.speed * 1.3) * (L.amp * 0.45) * env;
+                    const y = L.yBase - Math.abs(wave) * 0.85 + wave * 0.35;
+                    ctx.lineTo(x, y);
+                }
+                ctx.lineTo(778, 460);
+                ctx.closePath();
+
+                const grad = ctx.createLinearGradient(0, L.yBase - 65, 0, 460);
+                grad.addColorStop(0, L.c1);
+                grad.addColorStop(1, L.c2);
+                ctx.fillStyle = grad;
+                ctx.fill();
+
+                ctx.shadowColor = L.stroke;
+                ctx.shadowBlur = 16;
+                ctx.strokeStyle = L.stroke;
+                ctx.lineWidth = 2.4;
+                ctx.stroke();
+                ctx.restore();
+            });
+            // 3. تحديث عبارة الحصرية داخل الصندوق بالنص المطلوب حرفياً
+            const exNote = document.getElementById('mv-exclusive-note');
+            if (exNote) {
+                exNote.textContent = isEn
+                    ? '✨ Exclusive to Kingdom of Promises only — Not found anywhere else! ✨'
+                    : '✨ هذه الأغنية حصرية بس بمملكة الوعود.. ومش موجودة غير بصفحتنا ✨';
+            }
+
+            // 4. إظهار اسم الأغنية وتوقيعك الملكي والأسماء المضيئة فوق التضاريس الضوئية
+            const pulse = 1 + 0.045 * Math.sin(f * 0.1);
+            const glow = 16 + 12 * Math.abs(Math.sin(f * 0.1));
+
+            ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 5; ctx.strokeRect(18, 18, 764, 604);
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText('👑 مَمْلَكَةُ الْوُعُودِ العظمى • عائلة KR الملكية 👑', 400, 56);
+
+            // عنوان الأغنية وتوقيع panda KR
+            ctx.fillStyle = '#fde047'; ctx.font = 'bold 18px Cairo, sans-serif';
+            ctx.fillText('🎵 ما وراء الخيال المظلم • Dark Beyond Fantasy 🎵', 400, 92);
+            ctx.fillStyle = '#7dd3fc'; ctx.font = 'bold 14px Cairo, sans-serif';
+            ctx.fillText('panda🐼 KR 👑 — خاصة بمملكة الوعود', 400, 118);
+
+            // الأسماء المضيئة النابضة فوق قمم التضاريس
+            ctx.save();
+            ctx.translate(400, 185);
+            ctx.scale(pulse, pulse);
+            ctx.shadowColor = '#c084fc';
+            ctx.shadowBlur = glow;
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 28px Cairo, sans-serif';
+            ctx.fillText(`🎶 ${n1}   ❤️   ${n2} 🎶`, 0, 0);
+            ctx.restore();
+
+            // عبارة الإهداء والعبارة الحصرية في الأسفل
+            ctx.fillStyle = '#f3e8ff'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText(msg, 400, 515);
+
+            ctx.fillStyle = '#f472b6'; ctx.font = 'bold 14px Cairo, sans-serif';
+            ctx.fillText(
+                isEn ? '✨ Exclusive to Kingdom of Promises only — Not found anywhere else! ✨'
+                     : '✨ هذه الأغنية حصرية بس بمملكة الوعود.. ومش موجودة غير بصفحتنا ✨',
+                400, 560
+            );
+
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 13px Cairo, sans-serif';
+            ctx.fillText('© Royal Music Sanctuary - worldoflove-kr.github.io 👑 KR 👑', 400, 605);
+        };
+
+        // ربط التضاريس الضوئية الجديدة بزر التشغيل والفيديو
+        const playBtn = document.getElementById('mv-play-btn');
+        if (playBtn) {
+            const origPlay = playBtn.onclick;
+            playBtn.onclick = function(ev) {
+                if (origPlay) origPlay.call(this, ev);
+                setTimeout(() => {
+                    if (window.liveMusicVinylLoop) clearInterval(window.liveMusicVinylLoop);
+                    const canvas = document.getElementById('music-vinyl-canvas');
+                    if (!canvas) return;
+                    const ctx = canvas.getContext('2d');
+                    const isEn = document.documentElement.dir === 'ltr';
+                    const n1 = document.getElementById('mv-name1')?.value.trim() || (isEn ? 'Sweet Melody' : 'لحنُ القلب');
+                    const n2 = document.getElementById('mv-name2')?.value.trim() || (isEn ? 'Soul Harmony' : 'نبضُ الروح');
+                    const msg = document.getElementById('mv-msg')?.value.trim() || (isEn ? 'A timeless melody dedicated to you.' : 'مقطوعةٌ موسيقيةٌ تُعزف لاسمك وحدك في مملكة الوعود.');
+
+                    let f = 0;
+                    window.drawLuminousTerrainScene(ctx, n1, n2, msg, isEn, 1);
+                    const imgLink = document.getElementById('mv-img-link');
+                    if (imgLink) imgLink.href = canvas.toDataURL('image/png');
+                    window.liveMusicVinylLoop = setInterval(() => {
+                        f += 0.65;
+                        window.drawLuminousTerrainScene(ctx, n1, n2, msg, isEn, f);
+                    }, 45);
+                }, 80);
+            };
+        }
+    })();
+    </script>
 
 
             
