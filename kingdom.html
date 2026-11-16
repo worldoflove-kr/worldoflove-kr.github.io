@@ -7297,6 +7297,396 @@
         });
     })();
     </script>
+    <!-- 39. صندوق الموسيقى الملكي وأسطوانة الفينيل المضيئة (عزف موسيقي مدمج 100% + فيديو هادئ + ترجمة تلقائية) -->
+    <style>
+        @keyframes vinylBoxAura {
+            0% { box-shadow: 0 0 28px rgba(192, 132, 252, 0.75), inset 0 0 24px rgba(168, 85, 247, 0.3); border-color: #c084fc; }
+            50% { box-shadow: 0 0 46px rgba(253, 224, 71, 0.9), inset 0 0 36px rgba(192, 132, 252, 0.45); border-color: #fde047; }
+            100% { box-shadow: 0 0 28px rgba(192, 132, 252, 0.75), inset 0 0 24px rgba(168, 85, 247, 0.3); border-color: #c084fc; }
+        }
+        #royal-music-vinyl {
+            max-width: 440px; margin: 30px auto; padding: 26px 18px;
+            background: radial-gradient(circle at top, rgba(34, 14, 52, 0.96), rgba(12, 6, 22, 0.98));
+            border: 2.5px solid #c084fc; border-radius: 20px;
+            animation: vinylBoxAura 4s infinite ease-in-out;
+            font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 50;
+        }
+        .mv-input {
+            width: 100%; box-sizing: border-box; background: rgba(192, 132, 252, 0.09);
+            border: 1.5px solid #d8b4fe; border-radius: 12px; padding: 11px 14px;
+            color: #fef08a; font-weight: bold; font-family: 'Cairo', sans-serif; font-size: 0.94rem;
+            margin-bottom: 10px; outline: none; text-align: center;
+            box-shadow: 0 0 14px rgba(192, 132, 252, 0.35);
+        }
+        .mv-btn {
+            width: 100%; padding: 13px; background: linear-gradient(45deg, #7e22ce, #db2777, #eab308);
+            background-size: 200% 200%; border: 1px solid #fde047; border-radius: 12px; color: #fff;
+            font-weight: bold; font-size: 0.96rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+            box-shadow: 0 0 22px rgba(192, 132, 252, 0.65);
+        }
+        .mv-chip {
+            background: rgba(253, 224, 71, 0.14); border: 1px solid #fde047; color: #fef08a;
+            border-radius: 18px; padding: 6px 12px; font-size: 0.78rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+        }
+    </style>
+    <script>
+    (function() {
+        const musicVinylHTML = `
+        <div id="royal-music-vinyl">
+            <div style="font-size: 2.1rem; margin-bottom: 6px;">📀🎼🎹💫</div>
+            <h3 id="mv-title" style="color: #fde047; margin: 0 0 10px 0; font-size: 1.26rem; text-shadow: 0 0 14px rgba(192, 132, 252, 0.9);">صندوق الموسيقى الملكي — أسطوانة الإهداء المضيئة</h3>
+            <p id="mv-desc" style="color: #f3e8ff; font-size: 0.86rem; line-height: 1.85; margin: 0 0 14px 0;">
+                بعضُ المشاعر لا تكفيها الكلمات، بل تحتاجُ إلى لحنٍ يعزفها.. اكتب اسمك واسم من تُحب واختر اللحن الرومانسي، لتدور <strong style="color:#fde047;">أسطوانة الفينيل الذهبية</strong> وتُعزف مقطوعتكما الخاصة بالصوت والصورة!
+            </p>
+
+            <input type="text" id="mv-name1" class="mv-input" placeholder="✨ اكتب اسمك المضيء...">
+            <input type="text" id="mv-name2" class="mv-input" placeholder="🎼 اسم من تُهديه هذا اللحن...">
+
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 10px;">
+                <button type="button" class="mv-chip" id="mv-m1" data-melody="0">🎹 بيانو الحلم</button>
+                <button type="button" class="mv-chip" id="mv-m2" data-melody="1">🌙 لحن القمر</button>
+                <button type="button" class="mv-chip" id="mv-m3" data-melody="2">🎻 وعد الأبد</button>
+            </div>
+
+            <input type="text" id="mv-msg" class="mv-input" placeholder="💫 عبارة الإهداء المحفورة على الأسطوانة...">
+
+            <button type="button" class="mv-btn" id="mv-play-btn">📀 اعزف الإهداء وأدر الأسطوانة المضيئة 🎶</button>
+
+            <div id="mv-result-area" style="display: none; margin-top: 20px;">
+                <canvas id="music-vinyl-canvas" width="800" height="640" style="width: 100%; border-radius: 14px; border: 2px solid #c084fc; box-shadow: 0 0 30px rgba(192, 132, 252, 0.75);"></canvas>
+                <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 12px;">
+                    <button type="button" id="mv-stop-btn" style="padding: 10px 16px; background: #3b0764; color: #fde047; border: 1px solid #c084fc; border-radius: 10px; font-weight: bold; font-size: 0.86rem; font-family: Cairo, sans-serif; cursor: pointer;">⏹️ إيقاف الموسيقى</button>
+                    <button type="button" id="mv-video-btn" style="padding: 10px 18px; background: linear-gradient(45deg, #7e22ce, #db2777); color: #fff; border: 1px solid #fde047; border-radius: 10px; font-weight: bold; font-size: 0.88rem; font-family: Cairo, sans-serif; cursor: pointer; box-shadow: 0 0 18px rgba(192,132,252,0.65);">🎬 حفظ الإهداء كفيديو موسيقي (صوت + صورة)</button>
+                    <a id="mv-img-link" download="Royal-Vinyl-Dedication-KR.png" style="padding: 10px 18px; background: #1e293b; color: #fde047; border: 1px solid #fde047; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 0.88rem;">📥 حفظ كصورة</a>
+                </div>
+            </div>
+        </div>
+        `;
+
+        const skyBox = document.getElementById('royal-sky-lantern');
+        if (skyBox) {
+            skyBox.insertAdjacentHTML('afterend', musicVinylHTML);
+        } else {
+            const footer = document.getElementById('royal-kingdom-footer');
+            if (footer) footer.insertAdjacentHTML('beforebegin', musicVinylHTML);
+        }
+    })();
+    </script>
+    <style>
+        @keyframes mvDancingText {
+            0%, 100% { transform: translateY(0px) scale(1); text-shadow: 0 0 12px #fde047, 0 0 24px #c084fc; }
+            50% { transform: translateY(-3px) scale(1.04); text-shadow: 0 0 20px #ffffff, 0 0 34px #f472b6; }
+        }
+        #royal-music-vinyl .mv-input {
+            animation: mvDancingText 2.2s infinite ease-in-out !important;
+        }
+        .mv-chip-active {
+            background: linear-gradient(45deg, #9333ea, #eab308) !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 16px rgba(253, 224, 71, 0.85) !important;
+            transform: scale(1.06);
+        }
+    </style>
+
+    <script>
+    (function() {
+        let selectedMelody = 0;
+        let audioCtx = null;
+        let melodyTimer = null;
+        let activeDest = null;
+        let currentNoteLevel = 0;
+
+        const melodies = [
+            // 0: بيانو الحلم الملكي
+            [261.63, 329.63, 392.00, 493.88, 523.25, 493.88, 392.00, 329.63, 293.66, 349.23, 440.00, 523.25, 587.33, 493.88, 392.00, 329.63],
+            // 1: لحن ضوء القمر
+            [220.00, 261.63, 329.63, 440.00, 392.00, 329.63, 293.66, 349.23, 440.00, 523.25, 493.88, 392.00, 329.63, 392.00, 440.00, 523.25],
+            // 2: وعد الأبد الكلاسيكي
+            [329.63, 392.00, 493.88, 659.25, 587.33, 493.88, 440.00, 523.25, 587.33, 659.25, 587.33, 493.88, 392.00, 440.00, 493.88, 523.25]
+        ];
+
+        const mChips = [document.getElementById('mv-m1'), document.getElementById('mv-m2'), document.getElementById('mv-m3')];
+        if (mChips[0]) mChips[0].classList.add('mv-chip-active');
+        mChips.forEach((chip, idx) => {
+            if (!chip) return;
+            chip.onclick = () => {
+                selectedMelody = idx;
+                mChips.forEach(c => c && c.classList.remove('mv-chip-active'));
+                chip.classList.add('mv-chip-active');
+            };
+        });
+
+        function stopRoyalMusic() {
+            if (melodyTimer) { clearInterval(melodyTimer); melodyTimer = null; }
+            currentNoteLevel = 0;
+        }
+
+        function startRoyalMusic(recordStream) {
+            stopRoyalMusic();
+            const AC = window.AudioContext || window.webkitAudioContext;
+            if (!AC) return null;
+            if (!audioCtx) audioCtx = new AC();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+
+            activeDest = recordStream ? audioCtx.createMediaStreamDestination() : null;
+            const notes = melodies[selectedMelody] || melodies[0];
+            let step = 0;
+
+            function playOneNote() {
+                const freq = notes[step % notes.length];
+                step++;
+                currentNoteLevel = 1;
+
+                const now = audioCtx.currentTime;
+                const osc = audioCtx.createOscillator();
+                const osc2 = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+
+                osc.type = selectedMelody === 2 ? 'triangle' : 'sine';
+                osc2.type = 'sine';
+                osc.frequency.setValueAtTime(freq, now);
+                osc2.frequency.setValueAtTime(freq * 1.5, now);
+
+                gain.gain.setValueAtTime(0.001, now);
+                gain.gain.exponentialRampToValueAtTime(0.16, now + 0.06);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.58);
+
+                osc.connect(gain);
+                osc2.connect(gain);
+                gain.connect(audioCtx.destination);
+                if (activeDest) gain.connect(activeDest);
+
+                osc.start(now); osc2.start(now);
+                osc.stop(now + 0.6); osc2.stop(now + 0.6);
+            }
+
+            playOneNote();
+            melodyTimer = setInterval(playOneNote, 460);
+            return activeDest ? activeDest.stream : null;
+        }
+        function drawMusicVinylScene(ctx, n1, n2, msg, isEn, f) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            currentNoteLevel = Math.max(0.15, currentNoteLevel * 0.92);
+
+            const bg = ctx.createRadialGradient(400, 315, 40, 400, 315, 460);
+            bg.addColorStop(0, '#281042'); bg.addColorStop(0.6, '#130724'); bg.addColorStop(1, '#06020d');
+            ctx.fillStyle = bg; ctx.fillRect(0, 0, 800, 640);
+
+            // 1. طيف صوتي نيوني 360 درجة يتفاعل مع كل نغمة موسيقية
+            ctx.save();
+            ctx.translate(400, 320);
+            for (let b = 0; b < 48; b++) {
+                const ang = (b / 48) * Math.PI * 2 + f * 0.015;
+                const barH = 12 + Math.abs(Math.sin(f * 0.14 + b * 0.5)) * 34 * currentNoteLevel;
+                ctx.strokeStyle = b % 2 === 0 ? '#fde047' : '#e879f9';
+                ctx.lineWidth = 3.5;
+                ctx.beginPath();
+                ctx.moveTo(Math.cos(ang) * 134, Math.sin(ang) * 134);
+                ctx.lineTo(Math.cos(ang) * (134 + barH), Math.sin(ang) * (134 + barH));
+                ctx.stroke();
+            }
+
+            // 2. أسطوانة الفينيل الملكية الدوارة ببطء ونعومة
+            ctx.rotate(f * 0.035);
+            const discGrad = ctx.createRadialGradient(0, 0, 15, 0, 0, 128);
+            discGrad.addColorStop(0, '#1e1b4b'); discGrad.addColorStop(0.5, '#09090b'); discGrad.addColorStop(1, '#18181b');
+            ctx.fillStyle = discGrad;
+            ctx.beginPath(); ctx.arc(0, 0, 128, 0, Math.PI * 2); ctx.fill();
+
+            // أخاديد الأسطوانة اللامعة
+            ctx.strokeStyle = 'rgba(216, 180, 254, 0.25)'; ctx.lineWidth = 1.4;
+            for (let r = 52; r <= 116; r += 12) {
+                ctx.beginPath(); ctx.arc(0, 0, r, 0, Math.PI * 2); ctx.stroke();
+            }
+
+            // قلب الأسطوانة الذهبي
+            ctx.fillStyle = '#eab308';
+            ctx.beginPath(); ctx.arc(0, 0, 42, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = '#09090b';
+            ctx.beginPath(); ctx.arc(0, 0, 8, 0, Math.PI * 2); ctx.fill();
+            ctx.restore();
+
+            // 3. الأسماء المضيئة تتراقص وتتمايل مع النغمات الموسيقية
+            const danceY = Math.sin(f * 0.15) * 7 * currentNoteLevel;
+            const danceScale = 1 + 0.07 * currentNoteLevel;
+            ctx.save();
+            ctx.translate(400, 132 + danceY);
+            ctx.scale(danceScale, danceScale);
+            ctx.textAlign = 'center';
+            ctx.shadowColor = '#fde047';
+            ctx.shadowBlur = 18 + 14 * currentNoteLevel;
+            ctx.fillStyle = '#fef08a';
+            ctx.font = 'bold 28px Cairo, sans-serif';
+            ctx.fillText(`🎶 ${n1}   ❤️   ${n2} 🎶`, 0, 0);
+            ctx.restore();
+
+            // 4. الإطار والهوية وعبارة الإهداء في الأسفل
+            ctx.strokeStyle = '#c084fc'; ctx.lineWidth = 5; ctx.strokeRect(18, 18, 764, 604);
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText('👑 مَمْلَكَةُ الْوُعُودِ العظمى • عائلة KR الملكية 👑', 400, 56);
+            ctx.fillStyle = '#e879f9'; ctx.font = 'bold 14px Cairo, sans-serif';
+            ctx.fillText('Kingdom of Promises • Royal Vinyl Music Box', 400, 80);
+
+            ctx.fillStyle = '#f3e8ff'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText(msg, 400, 535);
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 13px Cairo, sans-serif';
+            ctx.fillText('© Royal Music Sanctuary - worldoflove-kr.github.io 👑 KR 👑', 400, 605);
+        }
+
+        const playBtn = document.getElementById('mv-play-btn');
+        if (playBtn) playBtn.onclick = () => {
+            const isEn = document.documentElement.dir === 'ltr';
+            const n1 = document.getElementById('mv-name1')?.value.trim() || (isEn ? 'Sweet Melody' : 'لحنُ القلب');
+            const n2 = document.getElementById('mv-name2')?.value.trim() || (isEn ? 'Soul Harmony' : 'نبضُ الروح');
+            const msg = document.getElementById('mv-msg')?.value.trim() || (isEn ? 'A timeless melody dedicated to the one my heart beats for.' : 'مقطوعةٌ موسيقيةٌ تُعزف لاسمك وحدك في مملكة الوعود.');
+
+            document.getElementById('mv-result-area').style.display = 'block';
+            startRoyalMusic(false);
+
+            const canvas = document.getElementById('music-vinyl-canvas');
+            const ctx = canvas.getContext('2d');
+            if (window.liveMusicVinylLoop) clearInterval(window.liveMusicVinylLoop);
+            let f = 0; drawMusicVinylScene(ctx, n1, n2, msg, isEn, 1);
+            document.getElementById('mv-img-link').href = canvas.toDataURL('image/png');
+            window.liveMusicVinylLoop = setInterval(() => {
+                f += 0.55; drawMusicVinylScene(ctx, n1, n2, msg, isEn, f);
+            }, 45);
+        };
+
+        const stopBtn = document.getElementById('mv-stop-btn');
+        if (stopBtn) stopBtn.onclick = () => stopRoyalMusic();
+
+        const vidBtn = document.getElementById('mv-video-btn');
+        if (vidBtn) vidBtn.onclick = () => {
+            const canvas = document.getElementById('music-vinyl-canvas');
+            if (!canvas?.captureStream) return;
+            const isEn = document.documentElement.dir === 'ltr';
+            const n1 = document.getElementById('mv-name1')?.value.trim() || (isEn ? 'Sweet Melody' : 'لحنُ القلب');
+            const n2 = document.getElementById('mv-name2')?.value.trim() || (isEn ? 'Soul Harmony' : 'نبضُ الروح');
+            const msg = document.getElementById('mv-msg')?.value.trim() || (isEn ? 'A timeless melody dedicated to the one my heart beats for.' : 'مقطوعةٌ موسيقيةٌ تُعزف لاسمك وحدك في مملكة الوعود.');
+
+            vidBtn.disabled = true;
+            vidBtn.textContent = isEn ? '⏳ Recording Musical Video...' : '⏳ جاري تسجيل الفيديو بالصوت والموسيقى...';
+
+            const audioStream = startRoyalMusic(true);
+            const canvasStream = canvas.captureStream(25);
+            const combined = new MediaStream([
+                ...canvasStream.getVideoTracks(),
+                ...(audioStream ? audioStream.getAudioTracks() : [])
+            ]);
+
+            const rec = new MediaRecorder(combined, { mimeType: 'video/webm' });
+            const chunks = [];
+            rec.ondataavailable = e => chunks.push(e.data);
+            rec.onstop = () => {
+                stopRoyalMusic();
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(new Blob(chunks, { type: 'video/webm' }));
+                a.download = 'Royal-Vinyl-Music-Dedication-KR.webm';
+                a.click();
+                vidBtn.disabled = false;
+                vidBtn.textContent = isEn ? '🎬 Save Musical Video (Sound + Visuals)' : '🎬 حفظ الإهداء كفيديو موسيقي (صوت + صورة)';
+            };
+            rec.start();
+            let c = 0; const ctx = canvas.getContext('2d');
+            const t = setInterval(() => {
+                c += 0.55; drawMusicVinylScene(ctx, n1, n2, msg, isEn, c);
+                if (c >= 75) { clearInterval(t); rec.stop(); }
+            }, 45);
+        };
+
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const map = {
+                    'mv-title': isEn ? 'Royal Music Box — Glowing Vinyl Dedication' : 'صندوق الموسيقى الملكي — أسطوانة الإهداء المضيئة',
+                    'mv-m1': isEn ? '🎹 Dream Piano' : '🎹 بيانو الحلم',
+                    'mv-m2': isEn ? '🌙 Moonlight Tune' : '🌙 لحن القمر',
+                    'mv-m3': isEn ? '🎻 Eternal Vow' : '🎻 وعد الأبد',
+                    'mv-play-btn': isEn ? '📀 Play Dedication & Spin Glowing Vinyl 🎶' : '📀 اعزف الإهداء وأدر الأسطوانة المضيئة 🎶',
+                    'mv-stop-btn': isEn ? '⏹️ Stop Music' : '⏹️ إيقاف الموسيقى',
+                    'mv-video-btn': isEn ? '🎬 Save Musical Video (Sound + Visuals)' : '🎬 حفظ الإهداء كفيديو موسيقي (صوت + صورة)',
+                    'mv-img-link': isEn ? '📥 Save Image' : '📥 حفظ كصورة'
+                };
+                for (const [id, text] of Object.entries(map)) {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = text;
+                }
+                const desc = document.getElementById('mv-desc');
+                if (desc) desc.innerHTML = isEn
+                    ? 'Some feelings go beyond words and need a melody.. Enter your names and choose a romantic tune to spin the <strong style="color:#fde047;">golden vinyl record</strong> with live sound and visuals!'
+                    : 'بعضُ المشاعر لا تكفيها الكلمات، بل تحتاجُ إلى لحنٍ يعزفها.. اكتب اسمك واسم من تُحب واختر اللحن الرومانسي، لتدور <strong style="color:#fde047;">أسطوانة الفينيل الذهبية</strong> وتُعزف مقطوعتكما الخاصة بالصوت والصورة!';
+                const i1 = document.getElementById('mv-name1');
+                const i2 = document.getElementById('mv-name2');
+                const m = document.getElementById('mv-msg');
+                if (i1) i1.placeholder = isEn ? '✨ Write your luminous name...' : '✨ اكتب اسمك المضيء...';
+                if (i2) i2.placeholder = isEn ? '🎼 Name of your dedication recipient...' : '🎼 اسم من تُهديه هذا اللحن...';
+                if (m) m.placeholder = isEn ? '💫 Dedication engraved on the record...' : '💫 عبارة الإهداء المحفورة على الأسطوانة...';
+            }, 60);
+        });
+    })();
+    </script>
+    <!-- 40. إضافة أبيات شعرية فاخرة للإرسال مع الموسيقى (عربي + إنجليزي تلقائي) -->
+    <script>
+    (function() {
+        const poemsAr = {
+            1: "يا نغمةً سكنتْ أوتارَ أوردتي .. ما عادَ لي في سِواكَ اليومَ ألحانُ",
+            2: "لو كانَ للحبِّ صوتٌ يُستضاءُ بهِ .. لكانَ اسمُكَ في قلبي هوَ النَّغَمُ",
+            3: "أهديكَ لحناً إذا ما الليلُ أرهقنا .. يروي حكايةَ قلبٍ فيكَ يكتملُ",
+            4: "تُغنّي الروحُ باسمِكَ كلَّ حينٍ .. كأنَّ الكونَ في عينيَّ لحنُ"
+        };
+        const poemsEn = {
+            1: "O melody dwelling within my heartstrings .. No tune exists for me today except you.",
+            2: "If love had a voice that radiates light .. Your name in my heart would be the song.",
+            3: "I dedicate a tune when night grows heavy .. Telling of a heart completed by you.",
+            4: "My soul sings your name at every moment .. As if the whole universe is your melody."
+        };
+
+        const msgBox = document.getElementById('mv-msg');
+        if (msgBox && !document.getElementById('mv-poems-bar')) {
+            const bar = document.createElement('div');
+            bar.id = 'mv-poems-bar';
+            bar.style.cssText = 'display:flex; gap:6px; flex-wrap:wrap; justify-content:center; margin-bottom:10px;';
+            bar.innerHTML = `
+                <button type="button" class="mv-chip" id="mv-p1">📜 بيت الوتر</button>
+                <button type="button" class="mv-chip" id="mv-p2">✨ صوت الحب</button>
+                <button type="button" class="mv-chip" id="mv-p3">🌙 حكاية قلب</button>
+                <button type="button" class="mv-chip" id="mv-p4">🎶 غناء الروح</button>
+            `;
+            msgBox.parentNode.insertBefore(bar, msgBox);
+
+            [1, 2, 3, 4].forEach(n => {
+                const b = document.getElementById('mv-p' + n);
+                if (b) b.onclick = () => {
+                    const isEn = document.documentElement.dir === 'ltr';
+                    msgBox.value = isEn ? poemsEn[n] : poemsAr[n];
+                };
+            });
+        }
+
+        // تحديث أسماء أزرار الأبيات الشعرية عند التبديل للإنجليزية
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const pMap = {
+                    'mv-p1': isEn ? '📜 Heartstring Verse' : '📜 بيت الوتر',
+                    'mv-p2': isEn ? '✨ Voice of Love' : '✨ صوت الحب',
+                    'mv-p3': isEn ? '🌙 Heart’s Tale' : '🌙 حكاية قلب',
+                    'mv-p4': isEn ? '🎶 Soul’s Song' : '🎶 غناء الروح'
+                };
+                for (const [id, txt] of Object.entries(pMap)) {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = txt;
+                }
+            }, 70);
+        });
+    })();
+    </script>
 
 
             
