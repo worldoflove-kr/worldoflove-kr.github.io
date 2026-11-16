@@ -7000,6 +7000,303 @@
         });
     })();
     </script>
+    <!-- 38. قنديل الأمنيات الطائر في سماء السنة الجديدة (متجدد تلقائياً + فيديو بطيء + ترجمة تلقائية) -->
+    <style>
+        @keyframes skyLanternGlow {
+            0% { box-shadow: 0 0 28px rgba(251, 146, 60, 0.75), inset 0 0 24px rgba(234, 88, 12, 0.3); border-color: #fb923c; }
+            50% { box-shadow: 0 0 46px rgba(253, 224, 71, 0.9), inset 0 0 36px rgba(251, 146, 60, 0.45); border-color: #fde047; }
+            100% { box-shadow: 0 0 28px rgba(251, 146, 60, 0.75), inset 0 0 24px rgba(234, 88, 12, 0.3); border-color: #fb923c; }
+        }
+        #royal-sky-lantern {
+            max-width: 440px; margin: 30px auto; padding: 26px 18px;
+            background: radial-gradient(circle at top, rgba(38, 18, 12, 0.96), rgba(10, 12, 26, 0.98));
+            border: 2.5px solid #fb923c; border-radius: 20px;
+            animation: skyLanternGlow 4s infinite ease-in-out;
+            font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 50;
+        }
+        .sl-input {
+            width: 100%; box-sizing: border-box; background: rgba(251, 146, 60, 0.09);
+            border: 1.5px solid #fdba74; border-radius: 12px; padding: 11px 14px;
+            color: #fef08a; font-weight: bold; font-family: 'Cairo', sans-serif; font-size: 0.94rem;
+            margin-bottom: 10px; outline: none; text-align: center;
+            box-shadow: 0 0 14px rgba(251, 146, 60, 0.35);
+        }
+        .sl-btn {
+            width: 100%; padding: 13px; background: linear-gradient(45deg, #c2410c, #ea580c, #eab308);
+            background-size: 200% 200%; border: 1px solid #fde047; border-radius: 12px; color: #fff;
+            font-weight: bold; font-size: 0.96rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+            box-shadow: 0 0 22px rgba(251, 146, 60, 0.65);
+        }
+    </style>
+    <script>
+    (function() {
+        const nextYr = new Date().getFullYear() + 1;
+        const skyLanternHTML = `
+        <div id="royal-sky-lantern">
+            <div style="font-size: 2.1rem; margin-bottom: 6px;">🎈🕊️🌌🌠</div>
+            <h3 id="sl-title" style="color: #fde047; margin: 0 0 10px 0; font-size: 1.26rem; text-shadow: 0 0 14px rgba(251, 146, 60, 0.9);">منطاد الأمنيات المحلّق في سماء ${nextYr}</h3>
+            <p id="sl-desc" style="color: #ffedd5; font-size: 0.86rem; line-height: 1.85; margin: 0 0 14px 0;">
+                ارفعوا أغلى أمنياتكم نحو السماء مع بداية <strong style="color:#fde047;">عام ${nextYr}</strong>.. اكتب اسمك واسم من تُحب وأمنيتكما، ليحملها <strong style="color:#fdba74;">منطاد النور الدافئ</strong> ويحلّق بها بهدوء وسط النجوم!
+            </p>
+
+            <input type="text" id="sl-name1" class="sl-input" placeholder="🪶 اكتب اسمك المضيء...">
+            <input type="text" id="sl-name2" class="sl-input" placeholder="🕊️ اسم من يشاركك التحليق والأمنية...">
+            <textarea id="sl-msg" class="sl-input" rows="2" placeholder="🌠 اكتب أمنيتكما لعام ${nextYr} لتطير نحو السماء..."></textarea>
+
+            <button type="button" class="sl-btn" id="sl-release-btn">🎈 أطلق منطاد أمنياتنا لعام ${nextYr} 🌠</button>
+
+            <div id="sl-result-area" style="display: none; margin-top: 20px;">
+                <canvas id="sky-lantern-canvas" width="800" height="640" style="width: 100%; border-radius: 14px; border: 2px solid #fb923c; box-shadow: 0 0 30px rgba(251, 146, 60, 0.75);"></canvas>
+                <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 12px;">
+                    <button type="button" id="sl-video-btn" style="padding: 10px 18px; background: linear-gradient(45deg, #c2410c, #eab308); color: #fff; border: 1px solid #fde047; border-radius: 10px; font-weight: bold; font-size: 0.88rem; font-family: Cairo, sans-serif; cursor: pointer; box-shadow: 0 0 18px rgba(251,146,60,0.65);">🎥 حفظ تحليق المنطاد كفيديو هادئ</button>
+                    <a id="sl-img-link" download="Sky-Wish-Balloon-KR.png" style="padding: 10px 18px; background: #1e293b; color: #fde047; border: 1px solid #fde047; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 0.88rem;">🖼️ حفظ كصورة</a>
+                </div>
+            </div>
+        </div>
+        `;
+
+        const mcBox = document.getElementById('royal-midnight-clock');
+        if (mcBox) {
+            mcBox.insertAdjacentHTML('afterend', skyLanternHTML);
+        } else {
+            const footer = document.getElementById('royal-kingdom-footer');
+            if (footer) footer.insertAdjacentHTML('beforebegin', skyLanternHTML);
+        }
+    })();
+    </script>
+    <style>
+        @keyframes liveBirdFly {
+            0%, 100% { transform: translateY(0px) rotate(-4deg) scale(1); }
+            50% { transform: translateY(-9px) rotate(5deg) scale(1.08); }
+        }
+        @keyframes birdAuraPulse {
+            0%, 100% { box-shadow: 0 0 18px rgba(253, 224, 71, 0.7), 0 0 36px rgba(56, 189, 248, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(253, 224, 71, 1), 0 0 55px rgba(251, 146, 60, 0.85); }
+        }
+        @keyframes liveShootingStar {
+            0% { transform: translate(35px, -12px) scale(0.7); opacity: 0; }
+            30% { opacity: 1; }
+            100% { transform: translate(-45px, 18px) scale(1.15); opacity: 0; }
+        }
+        #sl-live-header {
+            position: relative; width: 150px; height: 64px; margin: 0 auto 10px auto;
+            border-radius: 32px; background: radial-gradient(circle, rgba(251,146,60,0.35), rgba(15,23,42,0.85));
+            display: flex; align-items: center; justify-content: center; overflow: hidden;
+            animation: birdAuraPulse 2.8s infinite ease-in-out; border: 1px solid rgba(253, 224, 71, 0.6);
+        }
+        .sl-bird-actor {
+            font-size: 2.2rem; display: inline-block; z-index: 2;
+            filter: drop-shadow(0 0 12px #fde047) drop-shadow(0 0 22px #ffffff);
+            animation: liveBirdFly 2.2s infinite ease-in-out;
+        }
+        .sl-star-actor {
+            position: absolute; font-size: 1.2rem; z-index: 1;
+            animation: liveShootingStar 3.2s infinite linear;
+        }
+    </style>
+
+    <script>
+    (function() {
+        // تحويل الأيقونات الثابتة أعلى الصندوق إلى طائر متحرك بإضاءة خلفه وشهاب عابر
+        const box = document.getElementById('royal-sky-lantern');
+        if (box && box.firstElementChild) {
+            box.firstElementChild.outerHTML = `
+            <div id="sl-live-header">
+                <span class="sl-star-actor">🌠</span>
+                <span class="sl-bird-actor">🕊️</span>
+            </div>`;
+        }
+
+        const nextYr = new Date().getFullYear() + 1;
+
+        function drawSkyBalloonAndBirdScene(ctx, n1, n2, msg, isEn, f) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            const sky = ctx.createLinearGradient(0, 0, 0, 640);
+            sky.addColorStop(0, '#070b1e');
+            sky.addColorStop(0.55, '#1b1438');
+            sky.addColorStop(1, '#2b1218');
+            ctx.fillStyle = sky;
+            ctx.fillRect(0, 0, 800, 640);
+
+            // نجوم المجرة المتلألئة وشهاب عابر في الخلفية
+            for (let i = 0; i < 42; i++) {
+                const sx = (i * 89 + 20) % 760 + 20;
+                const sy = (i * 53 + 20) % 580 + 20;
+                const a = 0.25 + 0.75 * Math.abs(Math.sin(f * 0.04 + i));
+                ctx.fillStyle = `rgba(255, 255, 255, ${a})`;
+                ctx.beginPath(); ctx.arc(sx, sy, 1.7, 0, Math.PI * 2); ctx.fill();
+            }
+
+            // شهاب مضيء يعبر السماء ببطء
+            const meteorProg = ((f * 0.015) % 1);
+            const mx = 680 - meteorProg * 540;
+            const my = 95 + meteorProg * 140;
+            ctx.save();
+            const mGrad = ctx.createLinearGradient(mx, my, mx + 75, my - 22);
+            mGrad.addColorStop(0, 'rgba(254, 240, 138, 0.95)');
+            mGrad.addColorStop(1, 'rgba(254, 240, 138, 0)');
+            ctx.strokeStyle = mGrad; ctx.lineWidth = 3;
+            ctx.beginPath(); ctx.moveTo(mx, my); ctx.lineTo(mx + 75, my - 22); ctx.stroke();
+            ctx.restore();
+            // تحديث العبارة التحفيزية داخل الصندوق لتشجيع الزائر على التجربة فوراً
+            const descEl = document.getElementById('sl-desc');
+            if (descEl && !descEl.dataset.hyped) {
+                descEl.dataset.hyped = '1';
+                const isEnNow = document.documentElement.dir === 'ltr';
+                descEl.innerHTML = isEnNow
+                    ? `✨ <strong style="color:#fde047;">Don’t let your dream stay on earth!</strong> Write your name, your beloved’s name, and your biggest wish for <strong style="color:#fdba74;">${nextYr}</strong>—and watch the luminous dove carry your glowing lantern across the stars!`
+                    : `✨ <strong style="color:#fde047;">لا تترك أمنيتك حبيسة الأرض!</strong> اكتب اسمك واسم من تُحب وأغلى حلمٍ تتمناه في <strong style="color:#fdba74;">عام ${nextYr}</strong>، وشاهد بنفسك كيف يحلّق منطادكما المضيء برفقة طائر النور وسط النجوم والشُهب!`;
+            }
+
+            // رسم المنطاد المضيء يحلّق ببطء ونعومة في السماء
+            const floatY = 315 - ((f * 0.45) % 85);
+            const swayX = 400 + Math.sin(f * 0.04) * 18;
+
+            ctx.save();
+            ctx.translate(swayX, floatY);
+            const bGlow = ctx.createRadialGradient(0, -10, 15, 0, -10, 145);
+            bGlow.addColorStop(0, 'rgba(253, 224, 71, 0.65)');
+            bGlow.addColorStop(0.5, 'rgba(251, 146, 60, 0.25)');
+            bGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = bGlow; ctx.beginPath(); ctx.arc(0, -10, 145, 0, Math.PI * 2); ctx.fill();
+
+            const domeGrad = ctx.createLinearGradient(0, -85, 0, 35);
+            domeGrad.addColorStop(0, '#ea580c');
+            domeGrad.addColorStop(0.5, '#f59e0b');
+            domeGrad.addColorStop(1, '#fef08a');
+            ctx.fillStyle = domeGrad;
+            ctx.beginPath();
+            ctx.moveTo(-26, 35);
+            ctx.bezierCurveTo(-78, -25, -55, -90, 0, -90);
+            ctx.bezierCurveTo(55, -90, 78, -25, 26, 35);
+            ctx.closePath(); ctx.fill();
+
+            ctx.strokeStyle = '#fde047'; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.moveTo(-18, 35); ctx.lineTo(-12, 54); ctx.moveTo(18, 35); ctx.lineTo(12, 54); ctx.stroke();
+            ctx.fillStyle = '#78350f'; ctx.fillRect(-15, 54, 30, 16);
+            ctx.restore();
+            // رسم الطائر الأبيض المضيء يرفرف بجوار المنطاد وخلفه هالة نور
+            const birdX = swayX + 115 + Math.sin(f * 0.06) * 14;
+            const birdY = floatY - 35 + Math.cos(f * 0.08) * 12;
+            const wingFlap = Math.sin(f * 0.22) * 18;
+
+            ctx.save();
+            ctx.translate(birdX, birdY);
+            ctx.shadowColor = '#fde047'; ctx.shadowBlur = 24;
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath(); ctx.ellipse(0, 0, 16, 6, -0.2, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath(); ctx.moveTo(-2, -2); ctx.quadraticCurveTo(-12, -24 + wingFlap, -26, -10 + wingFlap); ctx.lineTo(-8, 2); ctx.fill();
+            ctx.beginPath(); ctx.moveTo(2, -2); ctx.quadraticCurveTo(10, -22 + wingFlap, 22, -8 + wingFlap); ctx.lineTo(6, 2); ctx.fill();
+            ctx.restore();
+
+            // الإطار والهوية والأسماء النابضة والأمنية في الأسفل
+            const beat = 1 + 0.05 * Math.sin(f * 0.12);
+            ctx.strokeStyle = '#fb923c'; ctx.lineWidth = 5; ctx.strokeRect(18, 18, 764, 604);
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText('👑 مَمْلَكَةُ الْوُعُودِ العظمى • عائلة KR الملكية 👑', 400, 56);
+            ctx.fillStyle = '#fdba74'; ctx.font = 'bold 14px Cairo, sans-serif';
+            ctx.fillText(`Kingdom of Promises • Sky Wish Balloon ${nextYr}`, 400, 80);
+
+            ctx.save();
+            ctx.translate(400, 132); ctx.scale(beat, beat);
+            ctx.shadowColor = '#fde047'; ctx.shadowBlur = 18;
+            ctx.fillStyle = '#fef08a'; ctx.font = 'bold 27px Cairo, sans-serif';
+            ctx.fillText(`🕊️ ${n1}   ❤️   ${n2} 🎈`, 0, 0);
+            ctx.restore();
+
+            ctx.fillStyle = '#ffedd5'; ctx.font = 'bold 19px Cairo, sans-serif';
+            const words = msg.split(' ');
+            let line = ''; let y = 465;
+            for (let n = 0; n < words.length; n++) {
+                const testLine = line + words[n] + ' ';
+                if (ctx.measureText(testLine).width > 640 && n > 0) {
+                    ctx.fillText(line, 400, y); line = words[n] + ' '; y += 34;
+                } else { line = testLine; }
+            }
+            ctx.fillText(line, 400, y);
+
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 13px Cairo, sans-serif';
+            ctx.fillText('© Celestial Sky Sanctuary - worldoflove-kr.github.io 👑 KR 👑', 400, 605);
+        }
+
+        const relBtn = document.getElementById('sl-release-btn');
+        if (relBtn) relBtn.onclick = () => {
+            const isEn = document.documentElement.dir === 'ltr';
+            const n1 = document.getElementById('sl-name1')?.value.trim() || (isEn ? 'Dreamer' : 'حالمٌ بالخير');
+            const n2 = document.getElementById('sl-name2')?.value.trim() || (isEn ? 'Beloved' : 'رفيقُ الدرب');
+            const msg = document.getElementById('sl-msg')?.value.trim() || (isEn ? `May ${nextYr} carry all our wishes to the stars.` : `يا رب في عام ${nextYr} حقّق لنا أغلى أمنياتنا واجمعنا على خير.`);
+
+            const canvas = document.getElementById('sky-lantern-canvas');
+            const ctx = canvas.getContext('2d');
+            document.getElementById('sl-result-area').style.display = 'block';
+
+            if (window.liveSkyBalloonLoop) clearInterval(window.liveSkyBalloonLoop);
+            let f = 0; drawSkyBalloonAndBirdScene(ctx, n1, n2, msg, isEn, 1);
+            document.getElementById('sl-img-link').href = canvas.toDataURL('image/png');
+            window.liveSkyBalloonLoop = setInterval(() => {
+                f += 0.55; drawSkyBalloonAndBirdScene(ctx, n1, n2, msg, isEn, f);
+            }, 45);
+        };
+        const vidBtn = document.getElementById('sl-video-btn');
+        if (vidBtn) vidBtn.onclick = () => {
+            const canvas = document.getElementById('sky-lantern-canvas');
+            if (!canvas?.captureStream) return;
+            const isEn = document.documentElement.dir === 'ltr';
+            const n1 = document.getElementById('sl-name1')?.value.trim() || (isEn ? 'Dreamer' : 'حالمٌ بالخير');
+            const n2 = document.getElementById('sl-name2')?.value.trim() || (isEn ? 'Beloved' : 'رفيقُ الدرب');
+            const msg = document.getElementById('sl-msg')?.value.trim() || (isEn ? `May ${nextYr} carry all our wishes to the stars.` : `يا رب في عام ${nextYr} حقّق لنا أغلى أمنياتنا واجمعنا على خير.`);
+
+            vidBtn.disabled = true;
+            vidBtn.textContent = isEn ? '⏳ Recording Sky Flight...' : '⏳ جاري تصوير تحليق المنطاد الهادئ...';
+            const rec = new MediaRecorder(canvas.captureStream(25), { mimeType: 'video/webm' });
+            const chunks = [];
+            rec.ondataavailable = e => chunks.push(e.data);
+            rec.onstop = () => {
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(new Blob(chunks, { type: 'video/webm' }));
+                a.download = `Sky-Wish-Balloon-${nextYr}-KR.webm`;
+                a.click();
+                vidBtn.disabled = false;
+                vidBtn.textContent = isEn ? '🎥 Save Sky Flight Video' : '🎥 حفظ تحليق المنطاد كفيديو هادئ';
+            };
+            rec.start();
+            let c = 0; const ctx = canvas.getContext('2d');
+            const t = setInterval(() => {
+                c += 0.55; drawSkyBalloonAndBirdScene(ctx, n1, n2, msg, isEn, c);
+                if (c >= 65) { clearInterval(t); rec.stop(); }
+            }, 45);
+        };
+
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const map = {
+                    'sl-title': isEn ? `Sky Wish Balloon — Soaring Into ${nextYr}` : `منطاد الأمنيات المحلّق في سماء ${nextYr}`,
+                    'sl-release-btn': isEn ? `🎈 Release Our ${nextYr} Wish Balloon 🌠` : `🎈 أطلق منطاد أمنياتنا لعام ${nextYr} 🌠`,
+                    'sl-video-btn': isEn ? '🎥 Save Sky Flight Video' : '🎥 حفظ تحليق المنطاد كفيديو هادئ',
+                    'sl-img-link': isEn ? '🖼️ Save Image' : '🖼️ حفظ كصورة'
+                };
+                for (const [id, text] of Object.entries(map)) {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = text;
+                }
+                const desc = document.getElementById('sl-desc');
+                if (desc) desc.innerHTML = isEn
+                    ? `✨ <strong style="color:#fde047;">Don’t let your dream stay on earth!</strong> Write your name, your beloved’s name, and your biggest wish for <strong style="color:#fdba74;">${nextYr}</strong>—and watch the luminous dove carry your glowing lantern across the stars!`
+                    : `✨ <strong style="color:#fde047;">لا تترك أمنيتك حبيسة الأرض!</strong> اكتب اسمك واسم من تُحب وأغلى حلمٍ تتمناه في <strong style="color:#fdba74;">عام ${nextYr}</strong>، وشاهد بنفسك كيف يحلّق منطادكما المضيء برفقة طائر النور وسط النجوم والشُهب!`;
+                const i1 = document.getElementById('sl-name1');
+                const i2 = document.getElementById('sl-name2');
+                const m = document.getElementById('sl-msg');
+                if (i1) i1.placeholder = isEn ? '🪶 Write your luminous name...' : '🪶 اكتب اسمك المضيء...';
+                if (i2) i2.placeholder = isEn ? '🕊️ Name of your sky companion...' : '🕊️ اسم من يشاركك التحليق والأمنية...';
+                if (m) m.placeholder = isEn ? `🌠 Write your ${nextYr} wish to soar into the sky...` : `🌠 اكتب أمنيتكما لعام ${nextYr} لتطير نحو السماء...`;
+            }, 60);
+        });
+    })();
+    </script>
 
 
             
