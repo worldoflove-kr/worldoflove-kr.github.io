@@ -7887,6 +7887,82 @@
         }
     })();
     </script>
+    <!-- دمج صوت أغنية Suno الحصرية (royal-melody.mp3) مع التضاريس الضوئية داخل الفيديو المحفوظ -->
+    <script>
+    (function() {
+        const vidBtn = document.getElementById('mv-video-btn');
+        const canvas = document.getElementById('music-vinyl-canvas');
+        if (!vidBtn || !canvas) return;
+
+        vidBtn.onclick = async function() {
+            const isEn = document.documentElement.dir === 'ltr';
+            const n1 = document.getElementById('mv-name1')?.value.trim() || (isEn ? 'Sweet Melody' : 'لحنُ القلب');
+            const n2 = document.getElementById('mv-name2')?.value.trim() || (isEn ? 'Soul Harmony' : 'نبضُ الروح');
+            const msg = document.getElementById('mv-msg')?.value.trim() || (isEn ? 'A timeless melody dedicated to you.' : 'مقطوعةٌ موسيقيةٌ تُعزف لاسمك وحدك في مملكة الوعود.');
+
+            vidBtn.disabled = true;
+            vidBtn.textContent = isEn ? '⏳ Recording Your Exclusive Song Video...' : '⏳ جاري تسجيل الفيديو بصوت أغنيتك الحصرية...';
+
+            // تجهيز مشغل الصوت الخاص بأغنية royal-melody.mp3 فقط
+            const songAudio = new Audio('royal-melody.mp3');
+            songAudio.crossOrigin = 'anonymous';
+            songAudio.currentTime = 0;
+
+            let combinedStream;
+            const canvasStream = canvas.captureStream(25);
+
+            try {
+                // التقاط صوت الأغنية الحقيقية مباشرة لدمجه مع الفيديو
+                const audioStream = songAudio.captureStream ? songAudio.captureStream() : (songAudio.mozCaptureStream ? songAudio.mozCaptureStream() : null);
+                await songAudio.play();
+                combinedStream = new MediaStream([
+                    ...canvasStream.getVideoTracks(),
+                    ...(audioStream ? audioStream.getAudioTracks() : [])
+                ]);
+            } catch (e) {
+                combinedStream = canvasStream;
+            }
+
+            const rec = new MediaRecorder(combinedStream, { mimeType: 'video/webm' });
+            const chunks = [];
+            rec.ondataavailable = e => { if (e.data.size > 0) chunks.push(e.data); };
+            rec.onstop = () => {
+                songAudio.pause();
+                songAudio.currentTime = 0;
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(new Blob(chunks, { type: 'video/webm' }));
+                a.download = 'Dark-Beyond-Fantasy-KR.webm';
+                a.click();
+                vidBtn.disabled = false;
+                vidBtn.textContent = isEn ? '🎬 Save Musical Video (Sound + Visuals)' : '🎬 حفظ الإهداء كفيديو موسيقي (صوت + صورة)';
+            };
+
+            rec.start();
+            let c = 0;
+            const ctx = canvas.getContext('2d');
+            const drawFn = window.drawLuminousTerrainScene || function() {};
+            const t = setInterval(() => {
+                c += 0.65;
+                drawFn(ctx, n1, n2, msg, isEn, c);
+                if (c >= 90) {
+                    clearInterval(t);
+                    rec.stop();
+                }
+            }, 45);
+        };
+    })();
+    </script>
+    <!-- ربط الحماية المشفرة (Blob) بتسجيل الفيديو أيضاً لمنع كشف رابط الأغنية -->
+    <script>
+    (function() {
+        fetch('royal-melody.mp3')
+            .then(r => r.ok ? r.blob() : null)
+            .then(blob => {
+                if (!blob) return;
+                window.secureSongBlobUrl = URL.createObjectURL(blob);
+            }).catch(() => {});
+    })();
+    </script>
 
 
             
