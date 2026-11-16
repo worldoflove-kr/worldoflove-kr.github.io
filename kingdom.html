@@ -6394,6 +6394,331 @@
         setInterval(pinRoyalFoundersForever, 1500);
     })();
     </script>
+    <!-- 36. مرصد الألعاب النارية والعدّ التنازلي الحي للسنة الجديدة (متجدد تلقائياً + فيديو بطيء + ترجمة تلقائية) -->
+    <style>
+        @keyframes nyCelebrationGlow {
+            0% { box-shadow: 0 0 28px rgba(253, 224, 71, 0.75), inset 0 0 24px rgba(244, 63, 94, 0.25); border-color: #fde047; }
+            50% { box-shadow: 0 0 46px rgba(244, 63, 94, 0.85), inset 0 0 34px rgba(253, 224, 71, 0.4); border-color: #fb7185; }
+            100% { box-shadow: 0 0 28px rgba(253, 224, 71, 0.75), inset 0 0 24px rgba(244, 63, 94, 0.25); border-color: #fde047; }
+        }
+        #royal-new-year-fireworks {
+            max-width: 440px; margin: 30px auto; padding: 26px 18px;
+            background: radial-gradient(circle at top, rgba(28, 14, 42, 0.96), rgba(8, 10, 24, 0.98));
+            border: 2.5px solid #fde047; border-radius: 20px;
+            animation: nyCelebrationGlow 4s infinite ease-in-out;
+            font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 50;
+        }
+        .ny-countdown-bar {
+            display: flex; justify-content: center; gap: 8px; margin-bottom: 14px; flex-wrap: wrap;
+        }
+        .ny-time-box {
+            background: rgba(253, 224, 71, 0.12); border: 1.5px solid #fde047; border-radius: 12px;
+            padding: 6px 10px; min-width: 58px; box-shadow: 0 0 12px rgba(253, 224, 71, 0.3);
+        }
+        .ny-time-num { display: block; color: #fef08a; font-weight: bold; font-size: 1.05rem; }
+        .ny-time-lbl { display: block; color: #fda4af; font-size: 0.7rem; }
+        .ny-input {
+            width: 100%; box-sizing: border-box; background: rgba(253, 224, 71, 0.08);
+            border: 1.5px solid #fde047; border-radius: 12px; padding: 11px 14px;
+            color: #fef08a; font-weight: bold; font-family: 'Cairo', sans-serif; font-size: 0.94rem;
+            margin-bottom: 10px; outline: none; text-align: center;
+            box-shadow: 0 0 14px rgba(253, 224, 71, 0.3);
+        }
+        .ny-btn {
+            width: 100%; padding: 13px; background: linear-gradient(45deg, #be123c, #d97706, #eab308);
+            background-size: 200% 200%; border: 1px solid #fde047; border-radius: 12px; color: #fff;
+            font-weight: bold; font-size: 0.96rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+            box-shadow: 0 0 22px rgba(253, 224, 71, 0.65);
+        }
+        .ny-chip {
+            background: rgba(244, 63, 94, 0.16); border: 1px solid #fb7185; color: #ffe4e6;
+            border-radius: 18px; padding: 6px 12px; font-size: 0.78rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+        }
+    </style>
+    <style>
+        @keyframes vintageRedGlow {
+            0% { box-shadow: 0 0 32px rgba(159, 18, 57, 0.85), 0 0 58px rgba(136, 19, 55, 0.5), inset 0 0 28px rgba(190, 18, 60, 0.4); border-color: #be123c; }
+            50% { box-shadow: 0 0 48px rgba(225, 29, 72, 0.95), 0 0 75px rgba(253, 224, 71, 0.45), inset 0 0 38px rgba(159, 18, 57, 0.55); border-color: #fb7185; }
+            100% { box-shadow: 0 0 32px rgba(159, 18, 57, 0.85), 0 0 58px rgba(136, 19, 55, 0.5), inset 0 0 28px rgba(190, 18, 60, 0.4); border-color: #be123c; }
+        }
+        #royal-new-year-fireworks {
+            background: radial-gradient(circle at top, rgba(68, 12, 26, 0.96), rgba(28, 5, 12, 0.98)) !important;
+            border: 2.5px solid #be123c !important;
+            animation: vintageRedGlow 4s infinite ease-in-out !important;
+        }
+    </style>
+
+    <script>
+    (function() {
+        const nextYear = new Date().getFullYear() + 1;
+        const newYearHTML = `
+        <div id="royal-new-year-fireworks">
+            <div style="font-size: 2.1rem; margin-bottom: 6px;">🎆🥂✨🕰️</div>
+            <h3 id="ny-title" style="color: #fde047; margin: 0 0 10px 0; font-size: 1.26rem; text-shadow: 0 0 14px rgba(225, 29, 72, 0.9);">مرصد الألعاب النارية واستقبال عام ${nextYear}</h3>
+            <p id="ny-desc" style="color: #ffe4e6; font-size: 0.86rem; line-height: 1.85; margin: 0 0 14px 0;">
+                مع اقتراب دقات منتصف الليل وبداية <strong style="color:#fde047;">عام ${nextYear}</strong>، اكتب اسمك واسم من تُحب وأغلى أمنياتكم لتنفجر <strong style="color:#fda4af;">الألعاب النارية الذهبية</strong> في سماء المملكة احتفالاً بكم!
+            </p>
+
+            <div class="ny-countdown-bar" id="ny-cd-bar">
+                <div class="ny-time-box"><span class="ny-time-num" id="ny-days">00</span><span class="ny-time-lbl" id="ny-lbl-d">يوم</span></div>
+                <div class="ny-time-box"><span class="ny-time-num" id="ny-hours">00</span><span class="ny-time-lbl" id="ny-lbl-h">ساعة</span></div>
+                <div class="ny-time-box"><span class="ny-time-num" id="ny-mins">00</span><span class="ny-time-lbl" id="ny-lbl-m">دقيقة</span></div>
+                <div class="ny-time-box"><span class="ny-time-num" id="ny-secs">00</span><span class="ny-time-lbl" id="ny-lbl-s">ثانية</span></div>
+            </div>
+
+            <input type="text" id="ny-name1" class="ny-input" placeholder="✨ اكتب اسمك المضيء...">
+            <input type="text" id="ny-name2" class="ny-input" placeholder="🎆 اسم من تستقبل معه العام الجديد...">
+
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 10px;">
+                <button type="button" class="ny-chip" id="ny-c1">🥂 بداية عمرنا</button>
+                <button type="button" class="ny-chip" id="ny-c2">🎆 عام الوفاء</button>
+                <button type="button" class="ny-chip" id="ny-c3">✨ أمنية السنة</button>
+            </div>
+
+            <textarea id="ny-msg" class="ny-input" rows="2" placeholder="📜 اكتب تهنئتك أو أمنيتك للعام الجديد أو اختر من الأعلى..."></textarea>
+
+            <button type="button" class="ny-btn" id="ny-launch-btn">🎆 أطلق ألعابنا النارية لعام ${nextYear} ✨</button>
+
+            <div id="ny-result-area" style="display: none; margin-top: 20px;">
+                <canvas id="new-year-canvas" width="800" height="640" style="width: 100%; border-radius: 14px; border: 2px solid #fb7185; box-shadow: 0 0 30px rgba(225, 29, 72, 0.75);"></canvas>
+                <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 12px;">
+                    <button type="button" id="ny-video-btn" style="padding: 10px 18px; background: linear-gradient(45deg, #9f1239, #d97706); color: #fff; border: 1px solid #fde047; border-radius: 10px; font-weight: bold; font-size: 0.88rem; font-family: Cairo, sans-serif; cursor: pointer; box-shadow: 0 0 18px rgba(225,29,72,0.65);">🎬 حفظ تهنئة العام الجديد كفيديو هادئ</button>
+                    <a id="ny-img-link" download="New-Year-Fireworks-KR.png" style="padding: 10px 18px; background: #1e293b; color: #fde047; border: 1px solid #fde047; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 0.88rem;">📥 حفظ كصورة</a>
+                </div>
+            </div>
+        </div>
+        `;
+
+        const fireflyBox = document.getElementById('royal-eternal-fireflies');
+        if (fireflyBox) {
+            fireflyBox.insertAdjacentHTML('afterend', newYearHTML);
+        } else {
+            const footer = document.getElementById('royal-kingdom-footer');
+            if (footer) footer.insertAdjacentHTML('beforebegin', newYearHTML);
+        }
+    })();
+    </script>
+    <script>
+    (function() {
+        const nextYr = new Date().getFullYear() + 1;
+        const targetTime = new Date(`January 1, ${nextYr} 00:00:00`).getTime();
+
+        // تحديث العدّ التنازلي الحي للسنة الجديدة كل ثانية
+        function updateNYCountdown() {
+            const diff = Math.max(0, targetTime - Date.now());
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const m = Math.floor((diff / 1000 / 60) % 60);
+            const s = Math.floor((diff / 1000) % 60);
+
+            const elD = document.getElementById('ny-days');
+            const elH = document.getElementById('ny-hours');
+            const elM = document.getElementById('ny-mins');
+            const elS = document.getElementById('ny-secs');
+            if (elD) elD.textContent = String(d).padStart(2, '0');
+            if (elH) elH.textContent = String(h).padStart(2, '0');
+            if (elM) elM.textContent = String(m).padStart(2, '0');
+            if (elS) elS.textContent = String(s).padStart(2, '0');
+        }
+        updateNYCountdown();
+        setInterval(updateNYCountdown, 1000);
+
+        const nyAr = {
+            1: `عام ${nextYr} يبدأ معك، فكل أيامي القادمة أعيادٌ لا تنتهي.`,
+            2: `نودّع عاماً مضى ونستقبل ${nextYr} على عهد الوفاء الذي لا يتغير.`,
+            3: `أمنيتي الوحيدة في ${nextYr} أن تبقى بجانبي كالنور في عتمة الليل.`
+        };
+        const nyEn = {
+            1: `Year ${nextYr} begins with you, making every upcoming day an endless celebration.`,
+            2: `Bidding farewell to the past and welcoming ${nextYr} with our unbreakable vow.`,
+            3: `My only wish for ${nextYr} is for you to stay beside me like light in the night.`
+        };
+
+        const nb1 = document.getElementById('ny-c1');
+        const nb2 = document.getElementById('ny-c2');
+        const nb3 = document.getElementById('ny-c3');
+        if (nb1) nb1.onclick = () => { document.getElementById('ny-msg').value = document.documentElement.dir === 'ltr' ? nyEn[1] : nyAr[1]; };
+        if (nb2) nb2.onclick = () => { document.getElementById('ny-msg').value = document.documentElement.dir === 'ltr' ? nyEn[2] : nyAr[2]; };
+        if (nb3) nb3.onclick = () => { document.getElementById('ny-msg').value = document.documentElement.dir === 'ltr' ? nyEn[3] : nyAr[3]; };
+
+        const bursts = [
+            { cx: 210, cy: 205, color: '#fde047', offset: 0 },
+            { cx: 590, cy: 195, color: '#fb7185', offset: 25 },
+            { cx: 400, cy: 155, color: '#38bdf8', offset: 50 },
+            { cx: 280, cy: 310, color: '#f472b6', offset: 75 },
+            { cx: 520, cy: 300, color: '#fef08a', offset: 100 }
+        ];
+
+        function drawNewYearFireworksScene(ctx, n1, n2, msg, isEn, f) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            const sky = ctx.createLinearGradient(0, 0, 0, 640);
+            sky.addColorStop(0, '#18050d');
+            sky.addColorStop(0.55, '#3b0b1c');
+            sky.addColorStop(1, '#12040a');
+            ctx.fillStyle = sky;
+            ctx.fillRect(0, 0, 800, 640);
+
+            // رسم الألعاب النارية المتفتحة ببطء ونعومة في السماء
+            bursts.forEach(b => {
+                const cycle = ((f * 0.75 + b.offset) % 120) / 120;
+                const radius = cycle * 115;
+                const alpha = Math.max(0, 1 - cycle * 1.05);
+
+                ctx.save();
+                ctx.shadowColor = b.color;
+                ctx.shadowBlur = 16;
+                for (let p = 0; p < 24; p++) {
+                    const angle = (p / 24) * Math.PI * 2;
+                    const px = b.cx + Math.cos(angle) * radius;
+                    const py = b.cy + Math.sin(angle) * radius + (cycle * cycle * 22);
+                    const tx = b.cx + Math.cos(angle) * (radius * 0.65);
+                    const ty = b.cy + Math.sin(angle) * (radius * 0.65) + (cycle * cycle * 14);
+
+                    ctx.strokeStyle = b.color;
+                    ctx.globalAlpha = alpha;
+                    ctx.lineWidth = 2.4;
+                    ctx.beginPath(); ctx.moveTo(tx, ty); ctx.lineTo(px, py); ctx.stroke();
+
+                    ctx.fillStyle = '#ffffff';
+                    ctx.beginPath(); ctx.arc(px, py, 2.2, 0, Math.PI * 2); ctx.fill();
+                }
+                ctx.restore();
+            });
+            // رقم العام الجديد المتوهج في السماء (2027)
+            const beat = 1 + 0.05 * Math.sin(f * 0.12);
+            const glow = 16 + 12 * Math.abs(Math.sin(f * 0.12));
+
+            ctx.save();
+            ctx.translate(400, 255);
+            ctx.scale(beat, beat);
+            ctx.textAlign = 'center';
+            ctx.shadowColor = '#fde047';
+            ctx.shadowBlur = glow;
+            ctx.fillStyle = '#fef08a';
+            ctx.font = 'bold 68px Cairo, sans-serif';
+            ctx.fillText(`✨ ${nextYr} ✨`, 0, 0);
+            ctx.restore();
+
+            // الأسماء النابضة في وسط المشهد
+            ctx.save();
+            ctx.translate(400, 360);
+            ctx.scale(beat, beat);
+            ctx.textAlign = 'center';
+            ctx.shadowColor = '#fb7185';
+            ctx.shadowBlur = glow;
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 28px Cairo, sans-serif';
+            ctx.fillText(`🥂 ${n1}   ❤️   ${n2} 🥂`, 0, 0);
+            ctx.restore();
+
+            // الإطار والهوية والرسالة الاحتفالية في الأسفل
+            ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 5; ctx.strokeRect(18, 18, 764, 604);
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText('👑 مَمْلَكَةُ الْوُعُودِ العظمى • عائلة KR الملكية 👑', 400, 56);
+            ctx.fillStyle = '#fda4af'; ctx.font = 'bold 14px Cairo, sans-serif';
+            ctx.fillText(`Kingdom of Promises • Happy New Year ${nextYr}`, 400, 80);
+
+            ctx.fillStyle = '#fef08a'; ctx.font = 'bold 19px Cairo, sans-serif';
+            const words = msg.split(' ');
+            let line = ''; let y = 445;
+            for (let n = 0; n < words.length; n++) {
+                const testLine = line + words[n] + ' ';
+                if (ctx.measureText(testLine).width > 640 && n > 0) {
+                    ctx.fillText(line, 400, y); line = words[n] + ' '; y += 34;
+                } else { line = testLine; }
+            }
+            ctx.fillText(line, 400, y);
+
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 13px Cairo, sans-serif';
+            ctx.fillText('© Royal New Year Sanctuary - worldoflove-kr.github.io 👑 KR 👑', 400, 605);
+        }
+
+        const launchBtn = document.getElementById('ny-launch-btn');
+        if (launchBtn) launchBtn.onclick = () => {
+            const isEn = document.documentElement.dir === 'ltr';
+            const n1 = document.getElementById('ny-name1')?.value.trim() || (isEn ? 'Shining Star' : 'نجمٌ ساطع');
+            const n2 = document.getElementById('ny-name2')?.value.trim() || (isEn ? 'Soulmate' : 'رفيقُ العمر');
+            const msg = document.getElementById('ny-msg')?.value.trim() || (isEn ? nyEn : nyAr);
+
+            const canvas = document.getElementById('new-year-canvas');
+            const ctx = canvas.getContext('2d');
+            document.getElementById('ny-result-area').style.display = 'block';
+
+            if (window.liveNewYearLoop) clearInterval(window.liveNewYearLoop);
+            let f = 0; drawNewYearFireworksScene(ctx, n1, n2, msg, isEn, 1);
+            document.getElementById('ny-img-link').href = canvas.toDataURL('image/png');
+            window.liveNewYearLoop = setInterval(() => {
+                f += 0.55; drawNewYearFireworksScene(ctx, n1, n2, msg, isEn, f);
+            }, 45);
+        };
+
+        const vidBtn = document.getElementById('ny-video-btn');
+        if (vidBtn) vidBtn.onclick = () => {
+            const canvas = document.getElementById('new-year-canvas');
+            if (!canvas?.captureStream) return;
+            const isEn = document.documentElement.dir === 'ltr';
+            const n1 = document.getElementById('ny-name1')?.value.trim() || (isEn ? 'Shining Star' : 'نجمٌ ساطع');
+            const n2 = document.getElementById('ny-name2')?.value.trim() || (isEn ? 'Soulmate' : 'رفيقُ العمر');
+            const msg = document.getElementById('ny-msg')?.value.trim() || (isEn ? nyEn : nyAr);
+
+            vidBtn.disabled = true;
+            vidBtn.textContent = isEn ? '⏳ Recording New Year Fireworks...' : '⏳ جاري تصوير الألعاب النارية الهادئة...';
+            const rec = new MediaRecorder(canvas.captureStream(25), { mimeType: 'video/webm' });
+            const chunks = [];
+            rec.ondataavailable = e => chunks.push(e.data);
+            rec.onstop = () => {
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(new Blob(chunks, { type: 'video/webm' }));
+                a.download = `Happy-New-Year-${nextYr}-KR.webm`;
+                a.click();
+                vidBtn.disabled = false;
+                vidBtn.textContent = isEn ? '🎬 Save New Year Video' : '🎬 حفظ تهنئة العام الجديد كفيديو هادئ';
+            };
+            rec.start();
+            let c = 0; const ctx = canvas.getContext('2d');
+            const t = setInterval(() => {
+                c += 0.55; drawNewYearFireworksScene(ctx, n1, n2, msg, isEn, c);
+                if (c >= 65) { clearInterval(t); rec.stop(); }
+            }, 45);
+        };
+
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const map = {
+                    'ny-title': isEn ? `New Year Fireworks & Welcoming ${nextYr}` : `مرصد الألعاب النارية واستقبال عام ${nextYr}`,
+                    'ny-lbl-d': isEn ? 'Days' : 'يوم',
+                    'ny-lbl-h': isEn ? 'Hours' : 'ساعة',
+                    'ny-lbl-m': isEn ? 'Mins' : 'دقيقة',
+                    'ny-lbl-s': isEn ? 'Secs' : 'ثانية',
+                    'ny-c1': isEn ? '🥂 New Chapter' : '🥂 بداية عمرنا',
+                    'ny-c2': isEn ? '🎆 Year of Loyalty' : '🎆 عام الوفاء',
+                    'ny-c3': isEn ? '✨ Annual Wish' : '✨ أمنية السنة',
+                    'ny-launch-btn': isEn ? `🎆 Launch Our ${nextYr} Fireworks ✨` : `🎆 أطلق ألعابنا النارية لعام ${nextYr} ✨`,
+                    'ny-video-btn': isEn ? '🎬 Save New Year Video' : '🎬 حفظ تهنئة العام الجديد كفيديو هادئ',
+                    'ny-img-link': isEn ? '📥 Save Image' : '📥 حفظ كصورة'
+                };
+                for (const [id, text] of Object.entries(map)) {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = text;
+                }
+                const desc = document.getElementById('ny-desc');
+                if (desc) desc.innerHTML = isEn
+                    ? `As midnight chimes and <strong style="color:#fde047;">Year ${nextYr}</strong> begins, enter your names and wish to launch <strong style="color:#fda4af;">golden fireworks</strong> across the Kingdom sky!`
+                    : `مع اقتراب دقات منتصف الليل وبداية <strong style="color:#fde047;">عام ${nextYr}</strong>، اكتب اسمك واسم من تُحب وأغلى أمنياتكم لتنفجر <strong style="color:#fda4af;">الألعاب النارية الذهبية</strong> في سماء المملكة احتفالاً بكم!`;
+                const i1 = document.getElementById('ny-name1');
+                const i2 = document.getElementById('ny-name2');
+                const m = document.getElementById('ny-msg');
+                if (i1) i1.placeholder = isEn ? '✨ Write your luminous name...' : '✨ اكتب اسمك المضيء...';
+                if (i2) i2.placeholder = isEn ? '🎆 Name of your New Year partner...' : '🎆 اسم من تستقبل معه العام الجديد...';
+                if (m) m.placeholder = isEn ? '📜 Write your New Year wish or pick above...' : '📜 اكتب تهنئتك أو أمنيتك للعام الجديد أو اختر من الأعلى...';
+            }, 60);
+        });
+    })();
+    </script>
 
 
             
