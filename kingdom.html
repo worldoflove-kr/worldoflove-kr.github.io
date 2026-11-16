@@ -7963,6 +7963,50 @@
             }).catch(() => {});
     })();
     </script>
+    <!-- تنظيف الصندوق من الألحان القديمة وزر التحميل من الجهاز + تجهيز قائمة أغانيك الحصرية -->
+    <script>
+    (function() {
+        // 1. حذف أزرار النغمات الإلكترونية القديمة نهائياً (وعد الأبد، لحن القمر، بيانو الحلم)
+        ['mv-m1', 'mv-m2', 'mv-m3'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                if (el.parentElement && el.parentElement.children.length <= 3) {
+                    el.parentElement.remove();
+                } else {
+                    el.remove();
+                }
+            }
+        });
+
+        // 2. حذف زر "اختر مقطوعة موسيقية من جهازك" نهائياً
+        const customInput = document.getElementById('mv-custom-audio');
+        if (customInput && customInput.parentElement) {
+            customInput.parentElement.remove();
+        }
+        const customLabel = document.querySelector('label[for="mv-custom-audio"]');
+        if (customLabel) customLabel.remove();
+
+        // 3. قائمة أغانيك الحصرية الخاصة بمملكة الوعود (قابلة لإضافة المزيد مستقبلاً بسهولة)
+        window.royalExclusiveSongs = [
+            {
+                id: 'song1',
+                arTitle: '🎵 ما وراء الخيال المظلم',
+                enTitle: '🎵 Dark Beyond Fantasy',
+                file: 'royal-melody.mp3'
+            }
+        ];
+        window.currentRoyalSong = window.royalExclusiveSongs;
+
+        // 4. تحديث نص زر التشغيل ليعبر عن التضاريس الضوئية الحديثة بدلاً من الأسطوانة
+        const playBtn = document.getElementById('mv-play-btn');
+        if (playBtn) {
+            const isEn = document.documentElement.dir === 'ltr';
+            playBtn.textContent = isEn
+                ? '🎶 Play Exclusive Song & Luminous Waves ✨'
+                : '🎶 اعزف الأغنية الحصرية وأشعل الأمواج المضيئة ✨';
+        }
+    })();
+    </script>
 
 
             
