@@ -6719,6 +6719,287 @@
         });
     })();
     </script>
+    <!-- 37. ساعة منتصف الليل الذهبية وعجلة الحظ السنوية (متجددة تلقائياً + فيديو بطيء + ترجمة تلقائية) -->
+    <style>
+        @keyframes midnightClockGlow {
+            0% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.8), inset 0 0 24px rgba(16, 185, 129, 0.25); border-color: #d4af37; }
+            50% { box-shadow: 0 0 48px rgba(253, 224, 71, 0.95), inset 0 0 36px rgba(212, 175, 55, 0.4); border-color: #fef08a; }
+            100% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.8), inset 0 0 24px rgba(16, 185, 129, 0.25); border-color: #d4af37; }
+        }
+        #royal-midnight-clock {
+            max-width: 440px; margin: 30px auto; padding: 26px 18px;
+            background: radial-gradient(circle at top, rgba(36, 26, 10, 0.96), rgba(14, 10, 4, 0.98));
+            border: 2.5px solid #d4af37; border-radius: 20px;
+            animation: midnightClockGlow 4s infinite ease-in-out;
+            font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 50;
+        }
+        .mc-input {
+            width: 100%; box-sizing: border-box; background: rgba(253, 224, 71, 0.08);
+            border: 1.5px solid #fde047; border-radius: 12px; padding: 11px 14px;
+            color: #fef08a; font-weight: bold; font-family: 'Cairo', sans-serif; font-size: 0.94rem;
+            margin-bottom: 10px; outline: none; text-align: center;
+            box-shadow: 0 0 14px rgba(253, 224, 71, 0.3);
+        }
+        .mc-btn {
+            width: 100%; padding: 13px; background: linear-gradient(45deg, #b45309, #d97706, #eab308);
+            background-size: 200% 200%; border: 1px solid #fef08a; border-radius: 12px; color: #fff;
+            font-weight: bold; font-size: 0.96rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+            box-shadow: 0 0 22px rgba(253, 224, 71, 0.65);
+        }
+    </style>
+    <style>
+        @keyframes mcNameGlowPulse {
+            0%, 100% { transform: scale(1); text-shadow: 0 0 10px #fde047, 0 0 20px #f59e0b; box-shadow: 0 0 14px rgba(253, 224, 71, 0.35); }
+            50% { transform: scale(1.03); text-shadow: 0 0 18px #ffffff, 0 0 30px #fde047; box-shadow: 0 0 24px rgba(253, 224, 71, 0.75); }
+        }
+        #royal-midnight-clock .mc-input {
+            animation: mcNameGlowPulse 2.4s infinite ease-in-out !important;
+        }
+    </style>
+
+    <script>
+    (function() {
+        const nextYr = new Date().getFullYear() + 1;
+        const midnightHTML = `
+        <div id="royal-midnight-clock">
+            <div style="font-size: 2.1rem; margin-bottom: 6px;">🕰️✨👑🥂</div>
+            <h3 id="mc-title" style="color: #fde047; margin: 0 0 10px 0; font-size: 1.26rem; text-shadow: 0 0 14px rgba(253, 224, 71, 0.9);">ساعة منتصف الليل الذهبية — بشارة عام ${nextYr}</h3>
+            <p id="mc-desc" style="color: #fef3c7; font-size: 0.86rem; line-height: 1.85; margin: 0 0 14px 0;">
+                عند دقات منتصف الليل وولادة <strong style="color:#fde047;">عام ${nextYr}</strong>، تفتح الساعة الذهبية أبواب الحظ والوفاء.. اكتب اسمك واسم من تُحب ليكشف لكما المرصد <strong style="color:#6ee7b7;">عنوان سنتكما الجديدة</strong> وسط قصاصات الذهب المتلألئة!
+            </p>
+
+            <input type="text" id="mc-name1" class="mc-input" placeholder="✨ اكتب اسمك المضيء...">
+            <input type="text" id="mc-name2" class="mc-input" placeholder="👑 اسم من يشاركك بشارة العام الجديد...">
+
+            <button type="button" class="mc-btn" id="mc-reveal-btn">🕰️ اكشف بشارة عام ${nextYr} المضيئة ✨</button>
+
+            <div id="mc-result-area" style="display: none; margin-top: 20px;">
+                <canvas id="midnight-clock-canvas" width="800" height="640" style="width: 100%; border-radius: 14px; border: 2px solid #fde047; box-shadow: 0 0 30px rgba(253, 224, 71, 0.75);"></canvas>
+                <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 12px;">
+                    <button type="button" id="mc-video-btn" style="padding: 10px 18px; background: linear-gradient(45deg, #b45309, #eab308); color: #fff; border: 1px solid #fef08a; border-radius: 10px; font-weight: bold; font-size: 0.88rem; font-family: Cairo, sans-serif; cursor: pointer; box-shadow: 0 0 18px rgba(253,224,71,0.65);">🎬 حفظ ساعة منتصف الليل كفيديو هادئ</button>
+                    <a id="mc-img-link" download="Golden-Midnight-Clock-KR.png" style="padding: 10px 18px; background: #1e293b; color: #fde047; border: 1px solid #fde047; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 0.88rem;">📥 حفظ كصورة</a>
+                </div>
+            </div>
+        </div>
+        `;
+
+        const nyBox = document.getElementById('royal-new-year-fireworks');
+        if (nyBox) {
+            nyBox.insertAdjacentHTML('afterend', midnightHTML);
+        } else {
+            const footer = document.getElementById('royal-kingdom-footer');
+            if (footer) footer.insertAdjacentHTML('beforebegin', midnightHTML);
+        }
+    })();
+    </script>
+    <script>
+    (function() {
+        const nextYr = new Date().getFullYear() + 1;
+        const fortunesAr = [
+            `✨ بشارة ${nextYr}: سنةُ اللقاءات السعيدة والوفاء الذي لا ينتهي ✨`,
+            `👑 بشارة ${nextYr}: سنةُ الوفرة والبركة وتحقيق أغلى الأمنيات 👑`,
+            `💫 بشارة ${nextYr}: سنةُ الفرح الدائم والنور الذي يملأ أيامكما 💫`,
+            `🌟 بشارة ${nextYr}: سنةُ العهد الأبدي والخطوات المباركة معاً 🌟`
+        ];
+        const fortunesEn = [
+            `✨ ${nextYr} Fortune: A Year of Joyful Reunions & Endless Loyalty ✨`,
+            `👑 ${nextYr} Fortune: A Year of Abundance & Fulfilled Dreams 👑`,
+            `💫 ${nextYr} Fortune: A Year of Pure Happiness & Glowing Days 💫`,
+            `🌟 ${nextYr} Fortune: A Year of Eternal Vows & Blessed Steps Together 🌟`
+        ];
+
+        const confetti = Array.from({length: 45}, (_, i) => ({
+            x: (i * 83 + 25) % 760 + 20,
+            y: (i * 53 + 15) % 600 + 20,
+            w: 6 + (i % 5),
+            h: 3 + (i % 3),
+            sp: 0.4 + (i % 4) * 0.15,
+            rot: i * 0.4,
+            col: i % 3 === 0 ? '#fde047' : (i % 3 === 1 ? '#fb7185' : '#34d399')
+        }));
+
+        function drawMidnightClockScene(ctx, n1, n2, fortuneText, isEn, f) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            const bg = ctx.createRadialGradient(400, 310, 40, 400, 310, 460);
+            bg.addColorStop(0, '#2a1d08'); bg.addColorStop(0.6, '#140d04'); bg.addColorStop(1, '#070401');
+            ctx.fillStyle = bg; ctx.fillRect(0, 0, 800, 640);
+
+            // 1. قصاصات الذهب والاحتفال المتساقطة ببطء ونعومة
+            confetti.forEach(c => {
+                const cy = 20 + (((f * c.sp) + c.y) % 600);
+                const cx = c.x + Math.sin(f * 0.03 + c.rot) * 14;
+                ctx.save();
+                ctx.translate(cx, cy);
+                ctx.rotate(f * 0.03 + c.rot);
+                ctx.fillStyle = c.col;
+                ctx.fillRect(-c.w / 2, -c.h / 2, c.w, c.h);
+                ctx.restore();
+            });
+
+            // 2. الساعة الكلاسيكية الذهبية في المنتصف
+            ctx.save();
+            ctx.translate(400, 295);
+            const clockGlow = 18 + 10 * Math.abs(Math.sin(f * 0.06));
+            ctx.shadowColor = '#fde047';
+            ctx.shadowBlur = clockGlow;
+
+            // إطار الساعة الذهبي
+            ctx.strokeStyle = '#fde047';
+            ctx.lineWidth = 7;
+            ctx.fillStyle = 'rgba(20, 14, 4, 0.92)';
+            ctx.beginPath(); ctx.arc(0, 0, 128, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+            ctx.strokeStyle = '#d4af37';
+            ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.arc(0, 0, 114, 0, Math.PI * 2); ctx.stroke();
+            ctx.shadowBlur = 0;
+
+            // أرقام الساعة الرومانية / الذهبية وعلامات الدقائق
+            for (let h = 0; h < 12; h++) {
+                const ang = (h / 12) * Math.PI * 2 - Math.PI / 2;
+                ctx.strokeStyle = h === 0 ? '#fb7185' : '#fde047';
+                ctx.lineWidth = h % 3 === 0 ? 3.5 : 2;
+                ctx.beginPath();
+                ctx.moveTo(Math.cos(ang) * 96, Math.sin(ang) * 96);
+                ctx.lineTo(Math.cos(ang) * 110, Math.sin(ang) * 110);
+                ctx.stroke();
+            }
+
+            // رقم 12 في القمة وعام 2027 داخل الميناء
+            ctx.fillStyle = '#fde047'; ctx.font = 'bold 20px Cairo, sans-serif'; ctx.textAlign = 'center';
+            ctx.fillText('12', 0, -74);
+            ctx.fillStyle = '#fef08a'; ctx.font = 'bold 24px Cairo, sans-serif';
+            ctx.fillText(String(nextYr), 0, 48);
+
+            // عقرب الساعات وعقرب الدقائق يقتربان من منتصف الليل بنعومة
+            const minAngle = -Math.PI / 2 - 0.25 + Math.sin(f * 0.03) * 0.25;
+            const hrAngle = -Math.PI / 2 - 0.04;
+
+            ctx.strokeStyle = '#fde047'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+            ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(Math.cos(hrAngle) * 62, Math.sin(hrAngle) * 62); ctx.stroke();
+
+            ctx.strokeStyle = '#fb7185'; ctx.lineWidth = 3.5;
+            ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(Math.cos(minAngle) * 88, Math.sin(minAngle) * 88); ctx.stroke();
+
+            ctx.fillStyle = '#ffffff'; ctx.beginPath(); ctx.arc(0, 0, 6, 0, Math.PI * 2); ctx.fill();
+            ctx.restore();
+            // 3. الأسماء المضيئة النابضة بالضوء الذهبي في اللوحة وفي الفيديو
+            const beat = 1 + 0.05 * Math.sin(f * 0.12);
+            const nameGlow = 16 + 14 * Math.abs(Math.sin(f * 0.12));
+
+            ctx.save();
+            ctx.translate(400, 128);
+            ctx.scale(beat, beat);
+            ctx.textAlign = 'center';
+            ctx.shadowColor = '#fde047';
+            ctx.shadowBlur = nameGlow;
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 28px Cairo, sans-serif';
+            ctx.fillText(`👑 ${n1}   ❤️   ${n2} 👑`, 0, 0);
+            ctx.restore();
+
+            // 4. الإطار والهوية وبشارة العام الجديد في الأسفل
+            ctx.strokeStyle = '#fde047'; ctx.lineWidth = 5; ctx.strokeRect(18, 18, 764, 604);
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText('👑 مَمْلَكَةُ الْوُعُودِ العظمى • عائلة KR الملكية 👑', 400, 56);
+            ctx.fillStyle = '#fef08a'; ctx.font = 'bold 14px Cairo, sans-serif';
+            ctx.fillText(`Kingdom of Promises • Golden Midnight Clock ${nextYr}`, 400, 80);
+
+            ctx.save();
+            ctx.shadowColor = '#fb7185';
+            ctx.shadowBlur = 14;
+            ctx.fillStyle = '#fef08a';
+            ctx.font = 'bold 21px Cairo, sans-serif';
+            ctx.fillText(fortuneText, 400, 485);
+            ctx.restore();
+
+            ctx.fillStyle = '#6ee7b7'; ctx.font = 'bold 16px Cairo, sans-serif';
+            ctx.fillText(isEn ? `🥂 May ${nextYr} Shine Brightly With Your Love 🥂` : `🥂 عام ${nextYr} يزهر بنور حبكما ووفائكما 🥂`, 400, 530);
+
+            ctx.fillStyle = '#d4af37'; ctx.font = 'bold 13px Cairo, sans-serif';
+            ctx.fillText('© Golden Midnight Sanctuary - worldoflove-kr.github.io 👑 KR 👑', 400, 605);
+        }
+
+        let fIdx = Math.floor(Math.random() * fortunesAr.length);
+
+        const revealBtn = document.getElementById('mc-reveal-btn');
+        if (revealBtn) revealBtn.onclick = () => {
+            const isEn = document.documentElement.dir === 'ltr';
+            const n1 = document.getElementById('mc-name1')?.value.trim() || (isEn ? 'Golden Soul' : 'قلبٌ ذهبي');
+            const n2 = document.getElementById('mc-name2')?.value.trim() || (isEn ? 'Midnight Star' : 'نجمُ منتصف الليل');
+            fIdx = (fIdx + 1) % fortunesAr.length;
+            const fortune = isEn ? fortunesEn[fIdx] : fortunesAr[fIdx];
+
+            const canvas = document.getElementById('midnight-clock-canvas');
+            const ctx = canvas.getContext('2d');
+            document.getElementById('mc-result-area').style.display = 'block';
+
+            if (window.liveMidnightLoop) clearInterval(window.liveMidnightLoop);
+            let f = 0; drawMidnightClockScene(ctx, n1, n2, fortune, isEn, 1);
+            document.getElementById('mc-img-link').href = canvas.toDataURL('image/png');
+            window.liveMidnightLoop = setInterval(() => {
+                f += 0.55; drawMidnightClockScene(ctx, n1, n2, fortune, isEn, f);
+            }, 45);
+        };
+
+        const vidBtn = document.getElementById('mc-video-btn');
+        if (vidBtn) vidBtn.onclick = () => {
+            const canvas = document.getElementById('midnight-clock-canvas');
+            if (!canvas?.captureStream) return;
+            const isEn = document.documentElement.dir === 'ltr';
+            const n1 = document.getElementById('mc-name1')?.value.trim() || (isEn ? 'Golden Soul' : 'قلبٌ ذهبي');
+            const n2 = document.getElementById('mc-name2')?.value.trim() || (isEn ? 'Midnight Star' : 'نجمُ منتصف الليل');
+            const fortune = isEn ? fortunesEn[fIdx] : fortunesAr[fIdx];
+
+            vidBtn.disabled = true;
+            vidBtn.textContent = isEn ? '⏳ Recording Midnight Clock...' : '⏳ جاري تصوير ساعة منتصف الليل الهادئة...';
+            const rec = new MediaRecorder(canvas.captureStream(25), { mimeType: 'video/webm' });
+            const chunks = [];
+            rec.ondataavailable = e => chunks.push(e.data);
+            rec.onstop = () => {
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(new Blob(chunks, { type: 'video/webm' }));
+                a.download = `Golden-Midnight-Clock-${nextYr}-KR.webm`;
+                a.click();
+                vidBtn.disabled = false;
+                vidBtn.textContent = isEn ? '🎬 Save Midnight Clock Video' : '🎬 حفظ ساعة منتصف الليل كفيديو هادئ';
+            };
+            rec.start();
+            let c = 0; const ctx = canvas.getContext('2d');
+            const t = setInterval(() => {
+                c += 0.55; drawMidnightClockScene(ctx, n1, n2, fortune, isEn, c);
+                if (c >= 65) { clearInterval(t); rec.stop(); }
+            }, 45);
+        };
+
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const map = {
+                    'mc-title': isEn ? `Golden Midnight Clock — ${nextYr} Fortune` : `ساعة منتصف الليل الذهبية — بشارة عام ${nextYr}`,
+                    'mc-reveal-btn': isEn ? `🕰️ Reveal Glowing ${nextYr} Fortune ✨` : `🕰️ اكشف بشارة عام ${nextYr} المضيئة ✨`,
+                    'mc-video-btn': isEn ? '🎬 Save Midnight Clock Video' : '🎬 حفظ ساعة منتصف الليل كفيديو هادئ',
+                    'mc-img-link': isEn ? '📥 Save Image' : '📥 حفظ كصورة'
+                };
+                for (const [id, text] of Object.entries(map)) {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = text;
+                }
+                const desc = document.getElementById('mc-desc');
+                if (desc) desc.innerHTML = isEn
+                    ? `As midnight strikes and <strong style="color:#fde047;">Year ${nextYr}</strong> is born, enter your names to reveal your <strong style="color:#6ee7b7;">annual fortune title</strong> amidst falling golden confetti!`
+                    : `عند دقات منتصف الليل وولادة <strong style="color:#fde047;">عام ${nextYr}</strong>، تفتح الساعة الذهبية أبواب الحظ والوفاء.. اكتب اسمك واسم من تُحب ليكشف لكما المرصد <strong style="color:#6ee7b7;">عنوان سنتكما الجديدة</strong> وسط قصاصات الذهب المتلألئة!`;
+                const i1 = document.getElementById('mc-name1');
+                const i2 = document.getElementById('mc-name2');
+                if (i1) i1.placeholder = isEn ? '✨ Write your luminous name...' : '✨ اكتب اسمك المضيء...';
+                if (i2) i2.placeholder = isEn ? '👑 Name of your New Year partner...' : '👑 اسم من يشاركك بشارة العام الجديد...';
+            }, 60);
+        });
+    })();
+    </script>
 
 
             
