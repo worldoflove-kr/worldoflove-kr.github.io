@@ -8007,6 +8007,180 @@
         }
     })();
     </script>
+    <!-- 41. مكتبة أغانيك الحصرية الأربعة في صندوق الموسيقى الملكي (عربي + إنجليزي + فيديو + رابط مشاركة) -->
+    <style>
+        .royal-song-btn {
+            background: rgba(56, 189, 248, 0.14); border: 1.5px solid #38bdf8; color: #e0f2fe;
+            border-radius: 14px; padding: 8px 12px; font-size: 0.8rem; font-weight: bold;
+            font-family: 'Cairo', sans-serif; cursor: pointer; transition: 0.25s;
+        }
+        .royal-song-btn.active-song {
+            background: linear-gradient(45deg, #7e22ce, #0284c7, #eab308);
+            border-color: #fde047; color: #ffffff;
+            box-shadow: 0 0 18px rgba(253, 224, 71, 0.85); transform: scale(1.04);
+        }
+    </style>
+
+    <script>
+    (function() {
+        const songsList = [
+            { id: 0, file: 'royal-melody.mp3', ar: '🎵 ما وراء الخيال المظلم', en: '🎵 Dark Beyond Fantasy' },
+            { id: 1, file: 'royal-song-22%20(1).mp3', ar: '💜 حبي وحبك خلق متوفي', en: '💜 Our Love Was Born Eternal' },
+            { id: 2, file: 'royal-song-4.mp3', ar: '🌙 يا غايب عن عيني', en: '🌙 O Absent From My Eyes' },
+            { id: 3, file: 'royal-song-33.mp3', ar: '💔 يا وجع قلبي', en: '💔 O Pain of My Heart' }
+        ];
+
+        window.selectedRoyalSongIndex = 0;
+        const audioLbl = document.getElementById('mv-audio-name');
+        if (!audioLbl) return;
+
+        // بناء أزرار الأغاني الأربعة المضيئة داخل الصندوق
+        const selectorBar = document.createElement('div');
+        selectorBar.id = 'mv-songs-selector';
+        selectorBar.style.cssText = 'display:flex; gap:7px; flex-wrap:wrap; justify-content:center; margin:10px 0;';
+
+        songsList.forEach((s, idx) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.id = 'mv-sbtn-' + idx;
+            btn.className = 'royal-song-btn' + (idx === 0 ? ' active-song' : '');
+            btn.textContent = document.documentElement.dir === 'ltr' ? s.en : s.ar;
+            btn.onclick = () => {
+                window.selectedRoyalSongIndex = idx;
+                document.querySelectorAll('.royal-song-btn').forEach(b => b.classList.remove('active-song'));
+                btn.classList.add('active-song');
+
+                const titleBanner = audioLbl.querySelector('div > div');
+                if (titleBanner) titleBanner.textContent = `${s.ar} • ${s.en.replace(/^[^\w]+/, '')}`;
+
+                // تشغيل الأغنية المختارة فوراً
+                const playBtn = document.getElementById('mv-play-btn');
+                if (playBtn) playBtn.click();
+            };
+            selectorBar.appendChild(btn);
+        });
+
+        audioLbl.parentNode.insertBefore(selectorBar, audioLbl.nextSibling);
+        window.royalSongsCatalog = songsList;
+        // 2. تحديث رسم التضاريس الضوئية ليُظهر اسم الأغنية المختارة ينبض ويتوهج فوق الأمواج المضيئة
+        const baseDraw = window.drawLuminousTerrainScene;
+        window.drawLuminousTerrainScene = function(ctx, n1, n2, msg, isEn, f) {
+            if (baseDraw) baseDraw(ctx, n1, n2, msg, isEn, f);
+            const curSong = songsList[window.selectedRoyalSongIndex || 0] || songsList;
+
+            // مسح السطر الثابت القديم في أعلى اللوحة وكتابة اسم الأغنية المختارة بنبض مضيء فوق الأمواج
+            ctx.save();
+            ctx.fillStyle = '#090418';
+            ctx.fillRect(40, 68, 720, 34);
+
+            const songBeat = 1 + 0.055 * Math.sin(f * 0.14);
+            const songGlow = 14 + 14 * Math.abs(Math.sin(f * 0.14));
+
+            ctx.translate(400, 92);
+            ctx.scale(songBeat, songBeat);
+            ctx.textAlign = 'center';
+            ctx.shadowColor = '#38bdf8';
+            ctx.shadowBlur = songGlow;
+            ctx.fillStyle = '#fef08a';
+            ctx.font = 'bold 20px Cairo, sans-serif';
+            ctx.fillText(`${curSong.ar} • ${curSong.en.replace(/^[^\w]+/, '')}`, 0, 0);
+            ctx.restore();
+        };
+
+        // 3. تشغيل الأغنية المختارة بدقة عند الضغط على زر التشغيل أو الإيقاف
+        let currentRoyalPlayer = null;
+        const playBtn = document.getElementById('mv-play-btn');
+        const stopBtn = document.getElementById('mv-stop-btn');
+
+        if (playBtn) {
+            const oldPlayHandler = playBtn.onclick;
+            playBtn.onclick = function(ev) {
+                if (currentRoyalPlayer) {
+                    currentRoyalPlayer.pause();
+                    currentRoyalPlayer.currentTime = 0;
+                }
+                if (oldPlayHandler) oldPlayHandler.call(this, ev);
+
+                setTimeout(() => {
+                    const curSong = songsList[window.selectedRoyalSongIndex || 0] || songsList;
+                    currentRoyalPlayer = new Audio(curSong.file);
+                    currentRoyalPlayer.loop = true;
+                    currentRoyalPlayer.play().catch(() => {});
+                }, 100);
+            };
+        }
+
+        if (stopBtn) {
+            stopBtn.onclick = function() {
+                if (currentRoyalPlayer) {
+                    currentRoyalPlayer.pause();
+                    currentRoyalPlayer.currentTime = 0;
+                }
+            };
+        }
+
+        // 4. تحديث زر حفظ الفيديو ليدمج الأغنية المختارة مع نبض اسمها فوق الأمواج
+        const vidBtn = document.getElementById('mv-video-btn');
+        const canvas = document.getElementById('music-vinyl-canvas');
+        if (vidBtn && canvas) {
+            vidBtn.onclick = async function() {
+                const isEn = document.documentElement.dir === 'ltr';
+                const curSong = songsList[window.selectedRoyalSongIndex || 0] || songsList;
+                const n1 = document.getElementById('mv-name1')?.value.trim() || (isEn ? 'Sweet Melody' : 'لحنُ القلب');
+                const n2 = document.getElementById('mv-name2')?.value.trim() || (isEn ? 'Soul Harmony' : 'نبضُ الروح');
+                const msg = document.getElementById('mv-msg')?.value.trim() || (isEn ? 'A timeless melody dedicated to you.' : 'مقطوعةٌ موسيقيةٌ تُعزف لاسمك وحدك في مملكة الوعود.');
+
+                vidBtn.disabled = true;
+                vidBtn.textContent = isEn ? '⏳ Recording Selected Song Video...' : '⏳ جاري تسجيل الفيديو بالأغنية المختارة...';
+
+                const songAudio = new Audio(curSong.file);
+                songAudio.crossOrigin = 'anonymous';
+                let combinedStream;
+                const canvasStream = canvas.captureStream(25);
+                try {
+                    const aStream = songAudio.captureStream ? songAudio.captureStream() : (songAudio.mozCaptureStream ? songAudio.mozCaptureStream() : null);
+                    await songAudio.play();
+                    combinedStream = new MediaStream([...canvasStream.getVideoTracks(), ...(aStream ? aStream.getAudioTracks() : [])]);
+                } catch (e) {
+                    combinedStream = canvasStream;
+                }
+
+                const rec = new MediaRecorder(combinedStream, { mimeType: 'video/webm' });
+                const chunks = [];
+                rec.ondataavailable = e => { if (e.data.size > 0) chunks.push(e.data); };
+                rec.onstop = () => {
+                    songAudio.pause();
+                    const a = document.createElement('a');
+                    a.href = URL.createObjectURL(new Blob(chunks, { type: 'video/webm' }));
+                    a.download = `Royal-Song-${curSong.id + 1}-KR.webm`;
+                    a.click();
+                    vidBtn.disabled = false;
+                    vidBtn.textContent = isEn ? '🎬 Save Musical Video (Sound + Visuals)' : '🎬 حفظ الإهداء كفيديو موسيقي (صوت + صورة)';
+                };
+                rec.start();
+                let c = 0; const ctx = canvas.getContext('2d');
+                const t = setInterval(() => {
+                    c += 0.65;
+                    window.drawLuminousTerrainScene(ctx, n1, n2, msg, isEn, c);
+                    if (c >= 90) { clearInterval(t); rec.stop(); }
+                }, 45);
+            };
+        }
+
+        // 5. ترجمة أزرار الأغاني الأربعة عند التبديل للإنجليزية
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                songsList.forEach((s, idx) => {
+                    const b = document.getElementById('mv-sbtn-' + idx);
+                    if (b) b.textContent = isEn ? s.en : s.ar;
+                });
+            }, 70);
+        });
+    })();
+    </script>
 
 
             
