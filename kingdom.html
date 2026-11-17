@@ -8181,6 +8181,92 @@
         });
     })();
     </script>
+    <!-- 42. تنسيق وترتيب العبارات الفنية الفاخرة لألحان مملكة الوعود الحصرية -->
+    <script>
+    (function() {
+        const audioLbl = document.getElementById('mv-audio-name');
+        if (!audioLbl) return;
+
+        function renderRoyalPoemBanner(isEn) {
+            audioLbl.innerHTML = isEn ? `
+                <div style="margin:12px 0; padding:14px 12px; border-radius:16px; background:linear-gradient(135deg, rgba(88,28,135,0.45), rgba(14,116,144,0.35)); border:1.5px solid #fde047; box-shadow:0 0 22px rgba(192,132,252,0.45); text-align:center;">
+                    <div style="color:#fde047; font-weight:bold; font-size:0.95rem; margin-bottom:6px; text-shadow:0 0 10px rgba(253,224,71,0.7);">
+                        👑 Custom Musical Creations — The Soul of Kingdom of Promises 👑
+                    </div>
+                    <div style="color:#f3e8ff; font-size:0.82rem; line-height:1.75; margin-bottom:8px;">
+                        Melodies crafted by our own hearts just for you.. Not mainstream commercial songs, but a rare artistic signature composed with love to be a gift like no other.
+                    </div>
+                    <div style="display:inline-block; padding:4px 12px; border-radius:20px; background:rgba(253,224,71,0.16); border:1px solid #f472b6; color:#fbcfe8; font-size:0.76rem; font-weight:bold;">
+                        ✨ Exclusive to Our Sanctuary Only • panda🐼 KR 👑 ✨
+                    </div>
+                </div>
+            ` : `
+                <div style="margin:12px 0; padding:14px 12px; border-radius:16px; background:linear-gradient(135deg, rgba(88,28,135,0.45), rgba(14,116,144,0.35)); border:1.5px solid #fde047; box-shadow:0 0 22px rgba(192,132,252,0.45); text-align:center;">
+                    <div style="color:#fde047; font-weight:bold; font-size:0.95rem; margin-bottom:6px; text-shadow:0 0 10px rgba(253,224,71,0.7);">
+                        👑 إبداعٌ موسيقي خاص صُمّم ليكون روح مملكة الوعود 👑
+                    </div>
+                    <div style="color:#f3e8ff; font-size:0.83rem; line-height:1.8; margin-bottom:8px;">
+                        ألحانٌ صُمّمت بأناملنا خصيصاً لقلوبكم.. ليست أغاني فنانين مكررة، بل بصمةٌ فنيةٌ حصرية صُغناها بالحب لتكون هديةً نادرة لا تُشبه سواها.
+                    </div>
+                    <div style="display:inline-block; padding:4px 12px; border-radius:20px; background:rgba(253,224,71,0.16); border:1px solid #f472b6; color:#fbcfe8; font-size:0.76rem; font-weight:bold;">
+                        ✨ حصرية لصفحتنا فقط • إبداع <bdi dir="ltr" style="color:#fde047;">panda🐼 KR 👑</bdi> ✨
+                    </div>
+                </div>
+            `;
+        }
+
+        renderRoyalPoemBanner(document.documentElement.dir === 'ltr');
+
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => renderRoyalPoemBanner(isEn), 75);
+        });
+    })();
+    </script>
+    <!-- 43. إضاءة نيونية ملكية متدرجة وبريق متحرك لصندوق الموسيقى الملكي -->
+    <style>
+        @keyframes royalMusicGrandGlow {
+            0% {
+                box-shadow: 0 0 28px rgba(192, 132, 252, 0.85), 0 0 55px rgba(56, 189, 248, 0.45), inset 0 0 30px rgba(168, 85, 247, 0.35);
+                border-color: #c084fc;
+            }
+            33% {
+                box-shadow: 0 0 35px rgba(56, 189, 248, 0.95), 0 0 65px rgba(244, 114, 182, 0.5), inset 0 0 36px rgba(56, 189, 248, 0.35);
+                border-color: #38bdf8;
+            }
+            66% {
+                box-shadow: 0 0 35px rgba(253, 224, 71, 0.95), 0 0 65px rgba(192, 132, 252, 0.55), inset 0 0 36px rgba(253, 224, 71, 0.32);
+                border-color: #fde047;
+            }
+            100% {
+                box-shadow: 0 0 28px rgba(192, 132, 252, 0.85), 0 0 55px rgba(56, 189, 248, 0.45), inset 0 0 30px rgba(168, 85, 247, 0.35);
+                border-color: #c084fc;
+            }
+        }
+        @keyframes royalShimmerSweep {
+            0% { transform: translateX(-150%) rotate(25deg); }
+            100% { transform: translateX(250%) rotate(25deg); }
+        }
+        #royal-music-vinyl {
+            background: radial-gradient(circle at top, rgba(67, 20, 107, 0.95), rgba(14, 24, 54, 0.97), rgba(10, 5, 20, 0.99)) !important;
+            border: 3px solid #fde047 !important;
+            animation: royalMusicGrandGlow 5s infinite ease-in-out !important;
+            overflow: hidden;
+        }
+        #royal-music-vinyl::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: 0;
+            width: 45%;
+            height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.14), transparent);
+            animation: royalShimmerSweep 4.5s infinite linear;
+            pointer-events: none;
+        }
+    </style>
 
 
             
