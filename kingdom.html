@@ -8423,6 +8423,382 @@
         }
     })();
     </script>
+    <!-- 46. جواز سفر الحب الملكي — تأشيرة عبور إلى قلبي (خطوط كبيرة وواضحة + فيديو هادئ + ترجمة تلقائية) -->
+    <style>
+        @keyframes passportRoyalShine {
+            0%, 100% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.8), inset 0 0 26px rgba(234, 179, 8, 0.25); border-color: #fde047; }
+            50% { box-shadow: 0 0 48px rgba(253, 224, 71, 0.95), inset 0 0 36px rgba(59, 130, 246, 0.45); border-color: #60a5fa; }
+        }
+        #royal-love-passport {
+            max-width: 450px; margin: 32px auto; padding: 28px 18px;
+            background: radial-gradient(circle at top, rgba(15, 29, 66, 0.97), rgba(7, 14, 36, 0.99));
+            border: 3px solid #fde047; border-radius: 22px;
+            animation: passportRoyalShine 4s infinite ease-in-out;
+            font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 50;
+        }
+        .lp-input {
+            width: 100%; box-sizing: border-box; background: rgba(59, 130, 246, 0.12);
+            border: 2px solid #93c5fd; border-radius: 14px; padding: 13px 14px;
+            color: #fef08a; font-weight: bold; font-family: 'Cairo', sans-serif; font-size: 1.05rem;
+            margin-bottom: 12px; outline: none; text-align: center;
+            box-shadow: 0 0 14px rgba(59, 130, 246, 0.35);
+        }
+        .lp-btn {
+            width: 100%; padding: 15px; background: linear-gradient(45deg, #1d4ed8, #0284c7, #eab308);
+            background-size: 200% 200%; border: 1.5px solid #fde047; border-radius: 14px; color: #fff;
+            font-weight: bold; font-size: 1.06rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+            box-shadow: 0 0 24px rgba(59, 130, 246, 0.7);
+        }
+    </style>
+    <script>
+    (function() {
+        const passportHTML = `
+        <div id="royal-love-passport">
+            <div style="display:inline-block; padding:5px 16px; border-radius:20px; background:rgba(253,224,71,0.16); border:1.5px solid #fde047; color:#fde047; font-weight:bold; font-size:1.05rem; margin-bottom:10px; letter-spacing:1px;">
+                <bdi dir="ltr">KR 👑</bdi> • مملكة الوعود
+            </div>
+            <div style="font-size: 2.3rem; margin-bottom: 6px;">🛂✈️🌍💎</div>
+            <h3 id="lp-title" style="color: #fde047; margin: 0 0 12px 0; font-size: 1.42rem; text-shadow: 0 0 14px rgba(59, 130, 246, 0.9);">جواز سفر الحب الملكي — تأشيرة عبور إلى قلبي</h3>
+            <p id="lp-desc" style="color: #dbeafe; font-size: 1.02rem; line-height: 1.85; margin: 0 0 16px 0;">
+                استخرج وثيقة سفركما الأبدية في <strong style="color:#fde047;">مملكة الوعود <bdi dir="ltr">KR 👑</bdi></strong>.. اكتب اسم المسافر واسم صاحب القلب، لتحصل على <strong style="color:#93c5fd;">تأشيرة دخول رسمية مختومة</strong> صالحة مدى الحياة!
+            </p>
+
+            <input type="text" id="lp-name1" class="lp-input" placeholder="🛂 اسم المسافر إلى القلب...">
+            <input type="text" id="lp-name2" class="lp-input" placeholder="💎 اسم صاحب القلب والمملكة...">
+            <input type="text" id="lp-dest" class="lp-input" placeholder="🌍 وجهة السفر (مثلاً: قلبك للأبد / شاطئ الأمان)...">
+
+            <button type="button" class="lp-btn" id="lp-issue-btn">🛂 إصدار جواز السفر وختم التأشيرة <bdi dir="ltr">KR 👑</bdi></button>
+
+            <div id="lp-result-area" style="display: none; margin-top: 22px;">
+                <canvas id="love-passport-canvas" width="800" height="680" style="width: 100%; border-radius: 16px; border: 2.5px solid #fde047; box-shadow: 0 0 32px rgba(59, 130, 246, 0.8);"></canvas>
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 14px;">
+                    <button type="button" id="lp-video-btn" style="padding: 12px 18px; background: linear-gradient(45deg, #1d4ed8, #eab308); color: #fff; border: 1.5px solid #fde047; border-radius: 12px; font-weight: bold; font-size: 0.98rem; font-family: Cairo, sans-serif; cursor: pointer; box-shadow: 0 0 20px rgba(59,130,246,0.7);">🎥 حفظ الجواز كفيديو مختوم</button>
+                    <a id="lp-img-link" download="Royal-Love-Passport-KR.png" style="padding: 12px 18px; background: #0f172a; color: #fde047; border: 1.5px solid #fde047; text-decoration: none; border-radius: 12px; font-weight: bold; font-size: 0.98rem;">🖼️ حفظ كصورة</a>
+                </div>
+            </div>
+        </div>
+        `;
+
+        const musicBox = document.getElementById('royal-music-vinyl');
+        if (musicBox) {
+            musicBox.insertAdjacentHTML('afterend', passportHTML);
+        } else {
+            const footer = document.getElementById('royal-kingdom-footer');
+            if (footer) footer.insertAdjacentHTML('beforebegin', passportHTML);
+        }
+    })();
+    </script>
+    <style>
+        @keyframes livePlaneTakeoff {
+            0% { transform: translate(-45px, 12px) rotate(-8deg) scale(0.95); opacity: 0.3; }
+            50% { transform: translate(0px, -6px) rotate(0deg) scale(1.12); opacity: 1; }
+            100% { transform: translate(48px, -14px) rotate(8deg) scale(0.95); opacity: 0.3; }
+        }
+        #lp-flight-banner {
+            position: relative; width: 210px; height: 58px; margin: 4px auto 10px auto;
+            border-radius: 30px; background: radial-gradient(circle, rgba(59,130,246,0.35), rgba(15,23,42,0.9));
+            border: 1.5px solid rgba(253, 224, 71, 0.7);
+            display: flex; align-items: center; justify-content: space-between; padding: 0 16px;
+            box-shadow: 0 0 22px rgba(59, 130, 246, 0.65); overflow: hidden;
+        }
+        .lp-plane-fly {
+            font-size: 2rem; display: inline-block;
+            filter: drop-shadow(0 0 10px #fde047);
+            animation: livePlaneTakeoff 3.2s infinite ease-in-out;
+        }
+    </style>
+
+    <script>
+    (function() {
+        // استبدال الأيقونات الثابتة بشريط طيران حي متحرك (🛫 🛩️ 🛬)
+        const box = document.getElementById('royal-love-passport');
+        if (box && box.children[1]) {
+            box.children[1].outerHTML = `
+            <div id="lp-flight-banner">
+                <span style="font-size:1.4rem;">🛫</span>
+                <span class="lp-plane-fly">🛩️</span>
+                <span style="font-size:1.4rem;">🛬</span>
+            </div>`;
+        }
+
+        window.drawRoyalPassportScene = function(ctx, n1, n2, dest, isEn, f) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            const bg = ctx.createLinearGradient(0, 0, 0, 680);
+            bg.addColorStop(0, '#0a1638');
+            bg.addColorStop(0.5, '#13275c');
+            bg.addColorStop(1, '#081029');
+            ctx.fillStyle = bg;
+            ctx.fillRect(0, 0, 800, 680);
+
+            // إطار الجواز الذهبي المزدوج الفاخر
+            ctx.strokeStyle = '#fde047';
+            ctx.lineWidth = 6;
+            ctx.strokeRect(20, 20, 760, 640);
+            ctx.strokeStyle = 'rgba(147, 197, 253, 0.5)';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(32, 32, 736, 616);
+
+            // الترويسة الملكية الكبيرة والشعار KR 👑
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#fde047';
+            ctx.font = 'bold 26px Cairo, sans-serif';
+            ctx.fillText('👑 مَمْلَكَةُ الْوُعُودِ • KR 👑', 400, 78);
+
+            ctx.fillStyle = '#93c5fd';
+            ctx.font = 'bold 20px Cairo, sans-serif';
+            ctx.fillText(isEn ? 'ROYAL LOVE PASSPORT • OFFICIAL VISA' : 'جواز سفر الحب الملكي • تأشيرة عبور أبدية', 400, 114);
+
+            // خط فاصل ذهبي مضيء
+            ctx.strokeStyle = 'rgba(253, 224, 71, 0.6)';
+            ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.moveTo(70, 134); ctx.lineTo(730, 134); ctx.stroke();
+            // 1. مسار طيران بطيء وناعم جداً مع ذيل مذنّب مضيء وبخار الأسماء في السماء
+            const progress = ((f * 0.0045) % 1);
+            const planeX = 110 + progress * 580;
+            const planeY = 235 - Math.sin(progress * Math.PI) * 58;
+
+            // ذيل مذنّب مضيء خلف الطائرة
+            ctx.save();
+            const tailStart = Math.max(85, planeX - 230);
+            const tailGrad = ctx.createLinearGradient(tailStart, planeY + 15, planeX, planeY);
+            tailGrad.addColorStop(0, 'rgba(56, 189, 248, 0)');
+            tailGrad.addColorStop(0.5, 'rgba(147, 197, 253, 0.55)');
+            tailGrad.addColorStop(1, 'rgba(253, 224, 71, 0.95)');
+            ctx.strokeStyle = tailGrad;
+            ctx.lineWidth = 7;
+            ctx.lineCap = 'round';
+            ctx.beginPath();
+            ctx.moveTo(tailStart, planeY + 14);
+            ctx.quadraticCurveTo((tailStart + planeX) / 2, planeY + 18, planeX - 16, planeY + 2);
+            ctx.stroke();
+
+            // سحب بخار مضيئة تتشكل فيها أسماء الحبيبين أو الصديقين خلف الطائرة
+            for (let v = 0; v < 7; v++) {
+                const vx = planeX - 55 - v * 36;
+                if (vx > 95) {
+                    const vy = planeY + 10 + Math.sin(f * 0.04 + v) * 6;
+                    const rad = 24 + v * 3.5;
+                    const puff = ctx.createRadialGradient(vx, vy, 2, vx, vy, rad);
+                    puff.addColorStop(0, 'rgba(255, 255, 255, 0.35)');
+                    puff.addColorStop(0.6, 'rgba(147, 197, 253, 0.16)');
+                    puff.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                    ctx.fillStyle = puff;
+                    ctx.beginPath(); ctx.arc(vx, vy, rad, 0, Math.PI * 2); ctx.fill();
+                }
+            }
+
+            // رسم الطائرة المضيئة
+            ctx.font = '34px sans-serif';
+            ctx.shadowColor = '#fde047';
+            ctx.shadowBlur = 18;
+            ctx.fillText('🛩️', planeX, planeY + 10);
+            ctx.restore();
+
+            // أسماء الحبيبين أو الصديقين مكتوبة كبخار مضيء متلألئ في السماء
+            const vaporPulse = 1 + 0.035 * Math.sin(f * 0.07);
+            ctx.save();
+            ctx.translate(400, 290);
+            ctx.scale(vaporPulse, vaporPulse);
+            ctx.textAlign = 'center';
+            ctx.shadowColor = '#38bdf8';
+            ctx.shadowBlur = 24;
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.96)';
+            ctx.font = 'bold 31px Cairo, sans-serif';
+            ctx.fillText(`☁️ ${n1}   ❤️   ${n2} ☁️`, 0, 0);
+            ctx.restore();
+
+            // 2. بيانات التأشيرة والوجهة بخطوط كبيرة وواضحة جداً
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#fef08a';
+            ctx.font = 'bold 23px Cairo, sans-serif';
+            ctx.fillText(isEn ? `🌍 Destination: ${dest}` : `🌍 وجهة العبور: ${dest}`, 400, 365);
+
+            ctx.fillStyle = '#e0f2fe';
+            ctx.font = 'bold 21px Cairo, sans-serif';
+            ctx.fillText(
+                isEn ? '🛂 Visa Status: APPROVED FOR ETERNITY' : '🛂 حالة التأشيرة: مقبولة للعبور مدى الحياة',
+                400, 415
+            );
+
+            // 3. ختم الملكية الرسمي الدائري مع شعار KR 👑
+            ctx.save();
+            ctx.translate(400, 515);
+            ctx.rotate(-0.08 + Math.sin(f * 0.04) * 0.03);
+            ctx.strokeStyle = '#fde047';
+            ctx.lineWidth = 4;
+            ctx.beginPath(); ctx.arc(0, 0, 62, 0, Math.PI * 2); ctx.stroke();
+            ctx.strokeStyle = '#60a5fa';
+            ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.arc(0, 0, 53, 0, Math.PI * 2); ctx.stroke();
+
+            ctx.fillStyle = '#fde047';
+            ctx.font = 'bold 22px Cairo, sans-serif';
+            ctx.fillText('KR 👑', 0, -6);
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 15px Cairo, sans-serif';
+            ctx.fillText(isEn ? 'OFFICIAL STAMP' : 'ختم مملكة الوعود', 0, 22);
+            ctx.restore();
+
+            // التوقيع السفلي الواضح
+            ctx.fillStyle = '#fde047';
+            ctx.font = 'bold 16px Cairo, sans-serif';
+            ctx.fillText('© Kingdom of Promises - worldoflove-kr.github.io • KR 👑', 400, 635);
+        };
+
+        // 4. ربط زر الإصدار وزر الفيديو البطيء والترجمة الإنجليزية التلقائية
+        const issueBtn = document.getElementById('lp-issue-btn');
+        if (issueBtn) {
+            issueBtn.onclick = function() {
+                const isEn = document.documentElement.dir === 'ltr';
+                const n1 = document.getElementById('lp-name1')?.value.trim() || (isEn ? 'Traveler' : 'مسافرُ الحب');
+                const n2 = document.getElementById('lp-name2')?.value.trim() || (isEn ? 'Soulmate' : 'مالكُ القلب');
+                const dest = document.getElementById('lp-dest')?.value.trim() || (isEn ? 'Your Heart Forever' : 'قلبك للأبد');
+
+                const canvas = document.getElementById('love-passport-canvas');
+                const ctx = canvas.getContext('2d');
+                document.getElementById('lp-result-area').style.display = 'block';
+
+                if (window.livePassportLoop) clearInterval(window.livePassportLoop);
+                let f = 0;
+                window.drawRoyalPassportScene(ctx, n1, n2, dest, isEn, 1);
+                document.getElementById('lp-img-link').href = canvas.toDataURL('image/png');
+                window.livePassportLoop = setInterval(() => {
+                    f += 0.35; // حركة بطيئة وهادئة جداً ليستمتع بها الزائر
+                    window.drawRoyalPassportScene(ctx, n1, n2, dest, isEn, f);
+                }, 45);
+            };
+        }
+
+        const vidBtn = document.getElementById('lp-video-btn');
+        if (vidBtn) {
+            vidBtn.onclick = function() {
+                const canvas = document.getElementById('love-passport-canvas');
+                if (!canvas?.captureStream) return;
+                const isEn = document.documentElement.dir === 'ltr';
+                const n1 = document.getElementById('lp-name1')?.value.trim() || (isEn ? 'Traveler' : 'مسافرُ الحب');
+                const n2 = document.getElementById('lp-name2')?.value.trim() || (isEn ? 'Soulmate' : 'مالكُ القلب');
+                const dest = document.getElementById('lp-dest')?.value.trim() || (isEn ? 'Your Heart Forever' : 'قلبك للأبد');
+
+                vidBtn.disabled = true;
+                vidBtn.textContent = isEn ? '⏳ Recording Slow Sky Flight...' : '⏳ جاري تصوير تحليق الطائرة البطيء...';
+                const rec = new MediaRecorder(canvas.captureStream(25), { mimeType: 'video/webm' });
+                const chunks = [];
+                rec.ondataavailable = e => chunks.push(e.data);
+                rec.onstop = () => {
+                    const a = document.createElement('a');
+                    a.href = URL.createObjectURL(new Blob(chunks, { type: 'video/webm' }));
+                    a.download = 'Royal-Love-Passport-KR.webm';
+                    a.click();
+                    vidBtn.disabled = false;
+                    vidBtn.textContent = isEn ? '🎥 Save Stamped Passport Video' : '🎥 حفظ الجواز كفيديو مختوم';
+                };
+                rec.start();
+                let c = 0; const ctx = canvas.getContext('2d');
+                const t = setInterval(() => {
+                    c += 0.35;
+                    window.drawRoyalPassportScene(ctx, n1, n2, dest, isEn, c);
+                    if (c >= 80) { clearInterval(t); rec.stop(); }
+                }, 45);
+            };
+        }
+
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const map = {
+                    'lp-title': isEn ? 'Royal Love Passport — Visa to My Heart' : 'جواز سفر الحب الملكي — تأشيرة عبور إلى قلبي',
+                    'lp-issue-btn': isEn ? '🛂 Issue Passport & Stamp Visa KR 👑' : '🛂 إصدار جواز السفر وختم التأشيرة KR 👑',
+                    'lp-video-btn': isEn ? '🎥 Save Stamped Passport Video' : '🎥 حفظ الجواز كفيديو مختوم',
+                    'lp-img-link': isEn ? '🖼️ Save Image' : '🖼️ حفظ كصورة'
+                };
+                for (const [id, text] of Object.entries(map)) {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = text;
+                }
+                const desc = document.getElementById('lp-desc');
+                if (desc) desc.innerHTML = isEn
+                    ? 'Issue your eternal travel document in <strong style="color:#fde047;">Kingdom of Promises KR 👑</strong>.. Enter the traveler’s name and the heart’s owner to get an <strong style="color:#93c5fd;">official stamped visa</strong> valid for life!'
+                    : 'استخرج وثيقة سفركما الأبدية في <strong style="color:#fde047;">مملكة الوعود <bdi dir="ltr">KR 👑</bdi></strong>.. اكتب اسم المسافر واسم صاحب القلب، لتحصل على <strong style="color:#93c5fd;">تأشيرة دخول رسمية مختومة</strong> صالحة مدى الحياة!';
+                const i1 = document.getElementById('lp-name1');
+                const i2 = document.getElementById('lp-name2');
+                const d = document.getElementById('lp-dest');
+                if (i1) i1.placeholder = isEn ? '🛂 Traveler to the heart...' : '🛂 اسم المسافر إلى القلب...';
+                if (i2) i2.placeholder = isEn ? '💎 Owner of the heart & kingdom...' : '💎 اسم صاحب القلب والمملكة...';
+                if (d) d.placeholder = isEn ? '🌍 Destination (e.g., Your Heart Forever)...' : '🌍 وجهة السفر (مثلاً: قلبك للأبد / شاطئ الأمان)...';
+            }, 75);
+        });
+    })();
+    </script>
+    <!-- 47. تحويل بخار الطائرة وذيل المذنّب وتوهج الأسماء إلى ضباب أحمر رومانسي يرمز للحب -->
+    <script>
+    (function() {
+        const origPassportDraw = window.drawRoyalPassportScene;
+        if (!origPassportDraw) return;
+
+        window.drawRoyalPassportScene = function(ctx, n1, n2, dest, isEn, f) {
+            // رسم أساس الجواز والبيانات والختم
+            origPassportDraw(ctx, n1, n2, dest, isEn, f);
+
+            // إعادة رسم منطقة الطيران بضباب أحمر رومانسي متوهج بدلاً من البخار الأبيض
+            ctx.save();
+            ctx.fillStyle = '#0f204b';
+            ctx.fillRect(45, 145, 710, 175);
+
+            const progress = ((f * 0.0045) % 1);
+            const planeX = 110 + progress * 580;
+            const planeY = 215 - Math.sin(progress * Math.PI) * 52;
+
+            // ذيل مذنّب أحمر قرمزي وذهبي مضيء خلف الطائرة
+            const tailStart = Math.max(85, planeX - 240);
+            const redTail = ctx.createLinearGradient(tailStart, planeY + 14, planeX, planeY);
+            redTail.addColorStop(0, 'rgba(239, 68, 68, 0)');
+            redTail.addColorStop(0.5, 'rgba(244, 63, 94, 0.65)');
+            redTail.addColorStop(1, 'rgba(253, 224, 71, 0.95)');
+            ctx.strokeStyle = redTail;
+            ctx.lineWidth = 8;
+            ctx.lineCap = 'round';
+            ctx.beginPath();
+            ctx.moveTo(tailStart, planeY + 14);
+            ctx.quadraticCurveTo((tailStart + planeX) / 2, planeY + 18, planeX - 16, planeY + 2);
+            ctx.stroke();
+
+            // سحب ضباب أحمر رومانسي دافئ خلف الطائرة
+            for (let v = 0; v < 8; v++) {
+                const vx = planeX - 50 - v * 34;
+                if (vx > 90) {
+                    const vy = planeY + 10 + Math.sin(f * 0.04 + v) * 6;
+                    const rad = 26 + v * 3.8;
+                    const redMist = ctx.createRadialGradient(vx, vy, 2, vx, vy, rad);
+                    redMist.addColorStop(0, 'rgba(239, 68, 68, 0.45)');
+                    redMist.addColorStop(0.55, 'rgba(225, 29, 72, 0.22)');
+                    redMist.addColorStop(1, 'rgba(225, 29, 72, 0)');
+                    ctx.fillStyle = redMist;
+                    ctx.beginPath(); ctx.arc(vx, vy, rad, 0, Math.PI * 2); ctx.fill();
+                }
+            }
+
+            // الطائرة المضيئة
+            ctx.font = '34px sans-serif';
+            ctx.shadowColor = '#ef4444';
+            ctx.shadowBlur = 20;
+            ctx.fillText('🛩️', planeX, planeY + 10);
+
+            // أسماء الحبيبين أو الصديقين تتوهج وسط الضباب الأحمر الرومانسي
+            const pulse = 1 + 0.035 * Math.sin(f * 0.07);
+            ctx.translate(400, 285);
+            ctx.scale(pulse, pulse);
+            ctx.textAlign = 'center';
+            ctx.shadowColor = '#ef4444';
+            ctx.shadowBlur = 28;
+            ctx.fillStyle = '#ffe4e6';
+            ctx.font = 'bold 31px Cairo, sans-serif';
+            ctx.fillText(`❤️ ${n1}   ✨   ${n2} ❤️`, 0, 0);
+            ctx.restore();
+        };
+    })();
+    </script>
 
 
             
