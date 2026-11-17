@@ -8267,6 +8267,79 @@
             pointer-events: none;
         }
     </style>
+    <!-- 44. إظهار بطاقة الإبداع الموسيقي + أزرار الأغاني الأربعة المضيئة في مكانها الصحيح -->
+    <script>
+    (function() {
+        const name1Input = document.getElementById('mv-name1');
+        if (!name1Input || document.getElementById('mv-songs-selector')) return;
+
+        const songsList = [
+            { id: 0, file: 'royal-melody.mp3', ar: '🎵 ما وراء الخيال المظلم', en: '🎵 Dark Beyond Fantasy' },
+            { id: 1, file: 'royal-song-22%20(1).mp3', ar: '💜 حبي وحبك خلق متوفي', en: '💜 Our Love Was Born Eternal' },
+            { id: 2, file: 'royal-song-4.mp3', ar: '🌙 يا غايب عن عيني', en: '🌙 O Absent From My Eyes' },
+            { id: 3, file: 'royal-song-33.mp3', ar: '💔 يا وجع قلبي', en: '💔 O Pain of My Heart' }
+        ];
+        window.selectedRoyalSongIndex = 0;
+
+        // 1. إنشاء بطاقة الترحيب والتقدير الفني الحصري
+        const banner = document.createElement('div');
+        banner.id = 'mv-royal-art-banner';
+        function fillBanner(isEn) {
+            banner.innerHTML = isEn ? `
+                <div style="margin:10px 0; padding:12px 10px; border-radius:16px; background:linear-gradient(135deg, rgba(88,28,135,0.5), rgba(14,116,144,0.4)); border:1.5px solid #fde047; box-shadow:0 0 20px rgba(192,132,252,0.5); text-align:center;">
+                    <div style="color:#fde047; font-weight:bold; font-size:0.9rem; margin-bottom:5px;">👑 Custom Musical Creations — Kingdom of Promises 👑</div>
+                    <div style="color:#f3e8ff; font-size:0.8rem; line-height:1.7; margin-bottom:6px;">Melodies crafted by our own hearts just for you.. Not commercial songs, but an exclusive artistic signature made with love.</div>
+                    <div style="display:inline-block; padding:3px 10px; border-radius:20px; background:rgba(253,224,71,0.16); border:1px solid #f472b6; color:#fbcfe8; font-size:0.74rem; font-weight:bold;">✨ Exclusive to Our Sanctuary Only • panda🐼 KR 👑 ✨</div>
+                </div>
+            ` : `
+                <div style="margin:10px 0; padding:12px 10px; border-radius:16px; background:linear-gradient(135deg, rgba(88,28,135,0.5), rgba(14,116,144,0.4)); border:1.5px solid #fde047; box-shadow:0 0 20px rgba(192,132,252,0.5); text-align:center;">
+                    <div style="color:#fde047; font-weight:bold; font-size:0.9rem; margin-bottom:5px;">👑 إبداعٌ موسيقي خاص صُمّم ليكون روح مملكة الوعود 👑</div>
+                    <div style="color:#f3e8ff; font-size:0.8rem; line-height:1.75; margin-bottom:6px;">ألحانٌ صُمّمت بأناملنا خصيصاً لقلوبكم.. ليست أغاني فنانين مكررة، بل بصمةٌ فنيةٌ حصرية صُغناها بالحب لتكون هديةً نادرة لا تُشبه سواها.</div>
+                    <div style="display:inline-block; padding:3px 10px; border-radius:20px; background:rgba(253,224,71,0.16); border:1px solid #f472b6; color:#fbcfe8; font-size:0.74rem; font-weight:bold;">✨ حصرية لصفحتنا فقط • إبداع <bdi dir="ltr" style="color:#fde047;">panda🐼 KR 👑</bdi> ✨</div>
+                </div>
+            `;
+        }
+        fillBanner(document.documentElement.dir === 'ltr');
+
+        // 2. إنشاء أزرار الأغاني الأربعة المضيئة
+        const selectorBar = document.createElement('div');
+        selectorBar.id = 'mv-songs-selector';
+        selectorBar.style.cssText = 'display:flex; gap:7px; flex-wrap:wrap; justify-content:center; margin:10px 0 14px 0;';
+
+        songsList.forEach((s, idx) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.id = 'mv-sbtn-' + idx;
+            btn.className = 'royal-song-btn' + (idx === 0 ? ' active-song' : '');
+            btn.textContent = document.documentElement.dir === 'ltr' ? s.en : s.ar;
+            btn.onclick = () => {
+                window.selectedRoyalSongIndex = idx;
+                document.querySelectorAll('.royal-song-btn').forEach(b => b.classList.remove('active-song'));
+                btn.classList.add('active-song');
+                const playBtn = document.getElementById('mv-play-btn');
+                if (playBtn) playBtn.click();
+            };
+            selectorBar.appendChild(btn);
+        });
+
+        name1Input.parentNode.insertBefore(banner, name1Input);
+        name1Input.parentNode.insertBefore(selectorBar, name1Input);
+
+        // 3. ربط التبديل للغة الإنجليزية تلقائياً
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                fillBanner(isEn);
+                songsList.forEach((s, idx) => {
+                    const b = document.getElementById('mv-sbtn-' + idx);
+                    if (b) b.textContent = isEn ? s.en : s.ar;
+                });
+            }, 80);
+        });
+    })();
+    </script>
 
 
             
