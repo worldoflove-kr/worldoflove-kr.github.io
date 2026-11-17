@@ -8340,6 +8340,89 @@
         });
     })();
     </script>
+    <!-- 45. إصلاح نهائي وحاسم لتبديل الصوت بين الأغاني الأربعة ومنع تداخل الأغنية الأولى -->
+    <script>
+    (function() {
+        const masterSongs = [
+            { id: 0, file: 'royal-melody.mp3', ar: '🎵 ما وراء الخيال المظلم', en: '🎵 Dark Beyond Fantasy' },
+            { id: 1, file: 'royal-song-22%20(1).mp3', ar: '💜 حبي وحبك خلق متوفي', en: '💜 Our Love Was Born Eternal' },
+            { id: 2, file: 'royal-song-4.mp3', ar: '🌙 يا غايب عن عيني', en: '🌙 O Absent From My Eyes' },
+            { id: 3, file: 'royal-song-33.mp3', ar: '💔 يا وجع قلبي', en: '💔 O Pain of My Heart' }
+        ];
+
+        // إيقاف أي مشغل قديم عالق في الخلفية
+        function killAllOldAudio() {
+            if (window.protectedRoyalAudio) {
+                window.protectedRoyalAudio.pause();
+                window.protectedRoyalAudio.src = '';
+            }
+            if (window.masterRoyalPlayer) {
+                window.masterRoyalPlayer.pause();
+                window.masterRoyalPlayer.currentTime = 0;
+            }
+        }
+
+        function playSelectedRoyalTrack(idx) {
+            killAllOldAudio();
+            window.selectedRoyalSongIndex = idx;
+            const track = masterSongs[idx] || masterSongs;
+
+            // تحديث الشكل المضيء للزر المختار
+            document.querySelectorAll('.royal-song-btn').forEach((b, i) => {
+                b.classList.toggle('active-song', i === idx);
+            });
+
+            // تشغيل الأغنية المختارة فقط
+            window.masterRoyalPlayer = new Audio(track.file);
+            window.masterRoyalPlayer.loop = true;
+            window.masterRoyalPlayer.play().catch(() => {});
+
+            // تشغيل التضاريس الضوئية وإظهار اسم الأغنية المختارة ينبض فوق الأمواج
+            document.getElementById('mv-result-area').style.display = 'block';
+            const canvas = document.getElementById('music-vinyl-canvas');
+            if (canvas && window.drawLuminousTerrainScene) {
+                if (window.liveMusicVinylLoop) clearInterval(window.liveMusicVinylLoop);
+                const ctx = canvas.getContext('2d');
+                const isEn = document.documentElement.dir === 'ltr';
+                const n1 = document.getElementById('mv-name1')?.value.trim() || (isEn ? 'Sweet Melody' : 'لحنُ القلب');
+                const n2 = document.getElementById('mv-name2')?.value.trim() || (isEn ? 'Soul Harmony' : 'نبضُ الروح');
+                const msg = document.getElementById('mv-msg')?.value.trim() || (isEn ? 'A timeless melody dedicated to you.' : 'مقطوعةٌ موسيقيةٌ تُعزف لاسمك وحدك في مملكة الوعود.');
+
+                let f = 0;
+                window.drawLuminousTerrainScene(ctx, n1, n2, msg, isEn, 1);
+                window.liveMusicVinylLoop = setInterval(() => {
+                    f += 0.65;
+                    window.drawLuminousTerrainScene(ctx, n1, n2, msg, isEn, f);
+                }, 45);
+            }
+        }
+
+        // ربط أزرار الأغاني الأربعة مباشرة بالتبديل والتشغيل الفوري
+        masterSongs.forEach((_, idx) => {
+            const btn = document.getElementById('mv-sbtn-' + idx);
+            if (btn) {
+                btn.onclick = function() {
+                    playSelectedRoyalTrack(idx);
+                };
+            }
+        });
+
+        // ربط زر التشغيل الرئيسي وزر الإيقاف
+        const playBtn = document.getElementById('mv-play-btn');
+        if (playBtn) {
+            playBtn.onclick = function() {
+                playSelectedRoyalTrack(window.selectedRoyalSongIndex || 0);
+            };
+        }
+
+        const stopBtn = document.getElementById('mv-stop-btn');
+        if (stopBtn) {
+            stopBtn.onclick = function() {
+                killAllOldAudio();
+            };
+        }
+    })();
+    </script>
 
 
             
