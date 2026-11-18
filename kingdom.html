@@ -9331,6 +9331,328 @@
         });
     })();
     </script>
+    <!-- 50. بطاقة وميثاق ثنائي الساحة الأسطوري KR 👑 (بخلفية pubg-arena.png + خطوط كبيرة + ترجمة تلقائية) -->
+    <style>
+        @keyframes arenaRoyalGlow {
+            0%, 100% { box-shadow: 0 0 32px rgba(245, 158, 11, 0.85), inset 0 0 28px rgba(234, 88, 12, 0.35); border-color: #fbbf24; }
+            50% { box-shadow: 0 0 50px rgba(253, 224, 71, 0.98), inset 0 0 40px rgba(245, 158, 11, 0.5); border-color: #fde047; }
+        }
+        @keyframes arenaShineSweep {
+            0% { transform: translateX(-150%) rotate(25deg); }
+            100% { transform: translateX(250%) rotate(25deg); }
+        }
+        #royal-arena-duo {
+            max-width: 450px; margin: 32px auto; padding: 28px 18px;
+            background: linear-gradient(180deg, rgba(15, 12, 8, 0.72), rgba(20, 14, 6, 0.86)), url('pubg-arena.png') center/cover no-repeat;
+            border: 3px solid #fde047; border-radius: 22px;
+            animation: arenaRoyalGlow 3.8s infinite ease-in-out;
+            font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 50; overflow: hidden;
+        }
+        #royal-arena-duo::before {
+            content: ""; position: absolute; top: -50%; left: 0; width: 45%; height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(253, 224, 71, 0.2), transparent);
+            animation: arenaShineSweep 4.2s infinite linear; pointer-events: none;
+        }
+        .ad-input {
+            width: 100%; box-sizing: border-box; background: rgba(15, 12, 8, 0.78);
+            border: 2px solid #fbbf24; border-radius: 14px; padding: 13px 14px;
+            color: #fef08a; font-weight: bold; font-family: 'Cairo', sans-serif; font-size: 1.04rem;
+            margin-bottom: 12px; outline: none; text-align: center;
+            box-shadow: 0 0 14px rgba(245, 158, 11, 0.4);
+        }
+        .ad-btn {
+            width: 100%; padding: 15px; background: linear-gradient(45deg, #d97706, #ea580c, #eab308);
+            border: 1.5px solid #fde047; border-radius: 14px; color: #fff;
+            font-weight: bold; font-size: 1.06rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+            box-shadow: 0 0 24px rgba(245, 158, 11, 0.8);
+        }
+    </style>
+    <style>
+        @keyframes arenaTitleGlow {
+            0%, 100% { text-shadow: 0 0 12px #fde047, 0 0 26px #ea580c; transform: scale(1); }
+            50% { text-shadow: 0 0 22px #ffffff, 0 0 38px #fbbf24; transform: scale(1.03); }
+        }
+        #ad-title {
+            animation: arenaTitleGlow 3s infinite ease-in-out;
+        }
+    </style>
+
+    <script>
+    (function() {
+        const arenaHTML = `
+        <div id="royal-arena-duo">
+            <div style="display:inline-block; padding:6px 18px; border-radius:22px; background:rgba(15,12,8,0.82); border:1.5px solid #fde047; color:#fde047; font-weight:bold; font-size:1.06rem; margin-bottom:10px; box-shadow:0 0 16px rgba(253,224,71,0.6);">
+                <bdi dir="ltr">KR 👑</bdi> • ساحة الأبطال والوعود
+            </div>
+            <div style="font-size: 2.3rem; margin-bottom: 6px; filter: drop-shadow(0 0 12px #fbbf24);">🏆🔥🪂👑</div>
+            <h3 id="ad-title" style="color: #fde047; margin: 0 0 12px 0; font-size: 1.44rem;">بطاقة وميثاق ثنائي الساحة الأسطوري</h3>
+            <p id="ad-desc" style="color: #fef3c7; font-size: 1.02rem; line-height: 1.85; margin: 0 0 16px 0; text-shadow: 0 2px 8px #000;">
+                سجّل اسمك واسم شريكك في اللعب والقلب داخل <strong style="color:#fde047;">مملكة الوعود <bdi dir="ltr">KR 👑</bdi></strong>.. لتصدرا <strong style="color:#fdba74;">وثيقة الثنائي الأسطوري</strong> الذي لا يُهزم في أي ساحة!
+            </p>
+
+            <input type="text" id="ad-name1" class="ad-input" placeholder="🔥 اسم البطل الأول...">
+            <input type="text" id="ad-name2" class="ad-input" placeholder="👑 اسم الشريك أو الصديق الأسطوري...">
+            <input type="text" id="ad-rank" class="ad-input" placeholder="🏆 لقب الثنائي (مثلاً: ملوك الساحة / ثنائي الفوز الأبدي)...">
+
+            <button type="button" class="ad-btn" id="ad-issue-btn">🏆 إصدار بطاقة وميثاق الثنائي <bdi dir="ltr">KR 👑</bdi></button>
+
+            <div id="ad-result-area" style="display: none; margin-top: 22px;">
+                <canvas id="arena-duo-canvas" width="800" height="720" style="width: 100%; border-radius: 16px; border: 2.5px solid #fde047; box-shadow: 0 0 34px rgba(245, 158, 11, 0.9);"></canvas>
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 14px;">
+                    <button type="button" id="ad-video-btn" style="padding: 12px 18px; background: linear-gradient(45deg, #d97706, #ea580c); color: #fff; border: 1.5px solid #fde047; border-radius: 12px; font-weight: bold; font-size: 0.98rem; font-family: Cairo, sans-serif; cursor: pointer;">🎥 حفظ البطاقة كفيديو</button>
+                    <a id="ad-img-link" download="Royal-Arena-Duo-KR.png" style="padding: 12px 18px; background: #1c1308; color: #fde047; border: 1.5px solid #fde047; text-decoration: none; border-radius: 12px; font-weight: bold; font-size: 0.98rem;">🖼️ حفظ كصورة</a>
+                </div>
+            </div>
+        </div>
+        `;
+
+        const courtBox = document.getElementById('royal-love-court');
+        if (courtBox) {
+            courtBox.insertAdjacentHTML('afterend', arenaHTML);
+        } else {
+            const footer = document.getElementById('royal-kingdom-footer');
+            if (footer) footer.insertAdjacentHTML('beforebegin', arenaHTML);
+        }
+    })();
+    </script>
+    <style>
+        @keyframes pubgNeonPulse {
+            0%, 100% {
+                transform: scale(1);
+                text-shadow: 0 0 10px #fde047, 0 0 24px #f59e0b, 0 0 38px #ea580c;
+                box-shadow: 0 0 18px rgba(253, 224, 71, 0.65);
+            }
+            50% {
+                transform: scale(1.09);
+                text-shadow: 0 0 18px #ffffff, 0 0 36px #fde047, 0 0 54px #f97316;
+                box-shadow: 0 0 32px rgba(253, 224, 71, 0.98);
+            }
+        }
+        #pubg-glow-badge {
+            display: inline-block;
+            margin: 6px auto 12px auto;
+            padding: 7px 22px;
+            border-radius: 14px;
+            background: linear-gradient(90deg, rgba(180, 83, 9, 0.45), rgba(15, 12, 8, 0.9), rgba(180, 83, 9, 0.45));
+            border: 2px solid #fde047;
+            color: #fde047;
+            font-weight: 900;
+            font-size: 1.32rem;
+            letter-spacing: 2.5px;
+            animation: pubgNeonPulse 1.8s infinite ease-in-out;
+        }
+    </style>
+
+    <script>
+    (function() {
+        // إضافة شارة PUBG MOBILE النابضة والمضيئة داخل رأس الصندوق
+        const titleEl = document.getElementById('ad-title');
+        if (titleEl && !document.getElementById('pubg-glow-badge')) {
+            const badge = document.createElement('div');
+            badge.id = 'pubg-glow-badge';
+            badge.dir = 'ltr';
+            badge.textContent = 'PUBG MOBILE';
+            titleEl.parentNode.insertBefore(badge, titleEl);
+        }
+
+        // تحميل صورة الخلفية pubg-arena.png لرسمها داخل الشهادة والفيديو
+        const arenaBgImg = new Image();
+        arenaBgImg.src = 'pubg-arena.png';
+
+        window.drawRoyalArenaDuo = function(ctx, n1, n2, rank, isEn, f) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            ctx.fillStyle = '#0f0c08';
+            ctx.fillRect(0, 0, 800, 720);
+
+            // رسم صورة الأبطال pubg-arena.png كخلفية واضحة
+            if (arenaBgImg.complete && arenaBgImg.naturalWidth > 0) {
+                ctx.save();
+                ctx.globalAlpha = 0.45;
+                ctx.drawImage(arenaBgImg, 20, 20, 760, 680);
+                ctx.restore();
+            }
+
+            // تظليل ملكي ناعم لتبرز النصوص والشرارات بوضوح تام
+            const shade = ctx.createLinearGradient(0, 0, 0, 720);
+            shade.addColorStop(0, 'rgba(12, 9, 5, 0.72)');
+            shade.addColorStop(0.5, 'rgba(18, 12, 6, 0.55)');
+            shade.addColorStop(1, 'rgba(10, 7, 4, 0.85)');
+            ctx.fillStyle = shade;
+            ctx.fillRect(20, 20, 760, 680);
+
+            // إطار ذهبي مزدوج فاخر
+            ctx.strokeStyle = '#fde047'; ctx.lineWidth = 6; ctx.strokeRect(20, 20, 760, 680);
+            ctx.strokeStyle = 'rgba(249, 115, 22, 0.65)'; ctx.lineWidth = 2; ctx.strokeRect(34, 34, 732, 652);
+
+            // كلمة PUBG MOBILE النابضة والمضيئة في أعلى اللوحة
+            const pBeat = 1 + 0.065 * Math.sin(f * 0.16);
+            const pGlow = 16 + 16 * Math.abs(Math.sin(f * 0.16));
+            ctx.save();
+            ctx.translate(400, 78);
+            ctx.scale(pBeat, pBeat);
+            ctx.textAlign = 'center';
+            ctx.shadowColor = '#f59e0b';
+            ctx.shadowBlur = pGlow;
+            ctx.fillStyle = '#fde047';
+            ctx.font = '900 32px Cairo, sans-serif';
+            ctx.fillText('🔥 PUBG MOBILE 🔥', 0, 0);
+            ctx.restore();
+
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#fdba74'; ctx.font = 'bold 21px Cairo, sans-serif';
+            ctx.fillText(isEn ? 'ROYAL ARENA DUO & ETERNAL OATH • KR 👑' : 'ميثاق وبطاقة ثنائي الساحة الأسطوري • KR 👑', 400, 120);
+            // شرارات نارية وذهبية متطايرة في سماء الساحة
+            for (let s = 0; s < 16; s++) {
+                const sx = 60 + ((s * 97 + f * 1.4) % 680);
+                const sy = 640 - ((s * 61 + f * 2.2) % 520);
+                ctx.fillStyle = s % 2 === 0 ? 'rgba(253, 224, 71, 0.85)' : 'rgba(249, 115, 22, 0.85)';
+                ctx.beginPath();
+                ctx.arc(sx, sy, 2.5 + (s % 2), 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // الأسماء المضيئة النابضة للبطلين بخط كبير جداً وواضح
+            const namePulse = 1 + 0.04 * Math.sin(f * 0.1);
+            ctx.save();
+            ctx.translate(400, 225);
+            ctx.scale(namePulse, namePulse);
+            ctx.shadowColor = '#f59e0b';
+            ctx.shadowBlur = 24;
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 33px Cairo, sans-serif';
+            ctx.fillText(`🔥 ${n1}   👑   ${n2} 🔥`, 0, 0);
+            ctx.restore();
+
+            // صندوق لقب الثنائي وميثاق الساحة بخط كبير وواضح جداً
+            ctx.fillStyle = 'rgba(245, 158, 11, 0.18)';
+            ctx.fillRect(55, 285, 690, 130);
+            ctx.strokeStyle = '#fde047';
+            ctx.lineWidth = 2.5;
+            ctx.strokeRect(55, 285, 690, 130);
+
+            ctx.fillStyle = '#fef08a';
+            ctx.font = 'bold 24px Cairo, sans-serif';
+            ctx.fillText(`🏆 ${rank} 🏆`, 400, 335);
+
+            ctx.fillStyle = '#ffedd5';
+            ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText(
+                isEn ? '⚔️ OATH: Never leave your partner behind • Victory Together!'
+                     : '⚔️ الميثاق: لا نترك شريكنا في الساحة أبداً.. معاً حتى النصر!',
+                400, 385
+            );
+
+            // ختم الملكية الرسمي الدائري مع شعار KR 👑
+            ctx.save();
+            ctx.translate(400, 525);
+            ctx.rotate(-0.06 + Math.sin(f * 0.05) * 0.03);
+            ctx.strokeStyle = '#fde047';
+            ctx.lineWidth = 4.5;
+            ctx.beginPath(); ctx.arc(0, 0, 64, 0, Math.PI * 2); ctx.stroke();
+            ctx.strokeStyle = '#f97316';
+            ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.arc(0, 0, 54, 0, Math.PI * 2); ctx.stroke();
+
+            ctx.fillStyle = '#fde047';
+            ctx.font = 'bold 23px Cairo, sans-serif';
+            ctx.fillText('KR 👑', 0, -6);
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 15px Cairo, sans-serif';
+            ctx.fillText(isEn ? 'LEGENDARY DUO' : 'ثنائي أسطوري', 0, 22);
+            ctx.restore();
+
+            // التوقيع السفلي الواضح
+            ctx.fillStyle = '#fde047';
+            ctx.font = 'bold 16px Cairo, sans-serif';
+            ctx.fillText('© Kingdom of Promises - worldoflove-kr.github.io • KR 👑', 400, 665);
+        };
+
+        // ربط زر الإصدار وزر الفيديو والترجمة التلقائية
+        const issueBtn = document.getElementById('ad-issue-btn');
+        if (issueBtn) {
+            issueBtn.onclick = function() {
+                const isEn = document.documentElement.dir === 'ltr';
+                const n1 = document.getElementById('ad-name1')?.value.trim() || (isEn ? 'Player 1' : 'البطل الأول');
+                const n2 = document.getElementById('ad-name2')?.value.trim() || (isEn ? 'Partner' : 'الشريك الأسطوري');
+                const rank = document.getElementById('ad-rank')?.value.trim() || (isEn ? 'Kings of the Arena' : 'ملوك الساحة والفوز الأبدي');
+
+                document.getElementById('ad-result-area').style.display = 'block';
+                const canvas = document.getElementById('arena-duo-canvas');
+                const ctx = canvas.getContext('2d');
+
+                if (window.liveArenaLoop) clearInterval(window.liveArenaLoop);
+                let f = 0;
+                window.drawRoyalArenaDuo(ctx, n1, n2, rank, isEn, 1);
+                document.getElementById('ad-img-link').href = canvas.toDataURL('image/png');
+                window.liveArenaLoop = setInterval(() => {
+                    f += 0.6;
+                    window.drawRoyalArenaDuo(ctx, n1, n2, rank, isEn, f);
+                }, 45);
+            };
+        }
+
+        const vidBtn = document.getElementById('ad-video-btn');
+        if (vidBtn) {
+            vidBtn.onclick = function() {
+                const canvas = document.getElementById('arena-duo-canvas');
+                if (!canvas?.captureStream) return;
+                const isEn = document.documentElement.dir === 'ltr';
+                const n1 = document.getElementById('ad-name1')?.value.trim() || (isEn ? 'Player 1' : 'البطل الأول');
+                const n2 = document.getElementById('ad-name2')?.value.trim() || (isEn ? 'Partner' : 'الشريك الأسطوري');
+                const rank = document.getElementById('ad-rank')?.value.trim() || (isEn ? 'Kings of the Arena' : 'ملوك الساحة والفوز الأبدي');
+
+                vidBtn.disabled = true;
+                vidBtn.textContent = isEn ? '⏳ Recording Duo Card...' : '⏳ جاري تصوير بطاقة الثنائي...';
+                const rec = new MediaRecorder(canvas.captureStream(25), { mimeType: 'video/webm' });
+                const chunks = [];
+                rec.ondataavailable = e => chunks.push(e.data);
+                rec.onstop = () => {
+                    const a = document.createElement('a');
+                    a.href = URL.createObjectURL(new Blob(chunks, { type: 'video/webm' }));
+                    a.download = 'Royal-PUBG-Duo-KR.webm';
+                    a.click();
+                    vidBtn.disabled = false;
+                    vidBtn.textContent = isEn ? '🎥 Save Duo Video' : '🎥 حفظ البطاقة كفيديو';
+                };
+                rec.start();
+                let c = 0; const ctx = canvas.getContext('2d');
+                const t = setInterval(() => {
+                    c += 0.6;
+                    window.drawRoyalArenaDuo(ctx, n1, n2, rank, isEn, c);
+                    if (c >= 75) { clearInterval(t); rec.stop(); }
+                }, 45);
+            };
+        }
+
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const map = {
+                    'ad-title': isEn ? 'Legendary Arena Duo Card & Oath' : 'بطاقة وميثاق ثنائي الساحة الأسطوري',
+                    'ad-issue-btn': isEn ? '🏆 Issue Duo Card & Seal KR 👑' : '🏆 إصدار بطاقة وميثاق الثنائي KR 👑',
+                    'ad-video-btn': isEn ? '🎥 Save Duo Video' : '🎥 حفظ البطاقة كفيديو',
+                    'ad-img-link': isEn ? '🖼️ Save Image' : '🖼️ حفظ كصورة'
+                };
+                for (const [id, text] of Object.entries(map)) {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = text;
+                }
+                const desc = document.getElementById('ad-desc');
+                if (desc) desc.innerHTML = isEn
+                    ? 'Register your name and your gaming & heart partner inside <strong style="color:#fde047;">Kingdom of Promises KR 👑</strong> to issue an <strong style="color:#fdba74;">unbeatable legendary duo certificate</strong>!'
+                    : 'سجّل اسمك واسم شريكك في اللعب والقلب داخل <strong style="color:#fde047;">مملكة الوعود <bdi dir="ltr">KR 👑</bdi></strong>.. لتصدرا <strong style="color:#fdba74;">وثيقة الثنائي الأسطوري</strong> الذي لا يُهزم في أي ساحة!';
+                const i1 = document.getElementById('ad-name1');
+                const i2 = document.getElementById('ad-name2');
+                const r = document.getElementById('ad-rank');
+                if (i1) i1.placeholder = isEn ? '🔥 First Hero Name...' : '🔥 اسم البطل الأول...';
+                if (i2) i2.placeholder = isEn ? '👑 Legendary Partner Name...' : '👑 اسم الشريك أو الصديق الأسطوري...';
+                if (r) r.placeholder = isEn ? '🏆 Duo Title (e.g., Kings of the Arena)...' : '🏆 لقب الثنائي (مثلاً: ملوك الساحة / ثنائي الفوز الأبدي)...';
+            }, 80);
+        });
+    })();
+    </script>
 
 
             
