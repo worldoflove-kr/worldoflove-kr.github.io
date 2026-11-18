@@ -9927,6 +9927,278 @@
         });
     })();
     </script>
+    <!-- 52. وثيقة الكفالة والتبنّي الملكية KR 👑 (تصميم مضيء + خطوط كبيرة + ترجمة تلقائية) -->
+    <style>
+        @keyframes adoptRoyalGlow {
+            0%, 100% { box-shadow: 0 0 32px rgba(6, 182, 212, 0.85), inset 0 0 28px rgba(253, 224, 71, 0.28); border-color: #22d3ee; }
+            50% { box-shadow: 0 0 50px rgba(253, 224, 71, 0.98), inset 0 0 40px rgba(6, 182, 212, 0.45); border-color: #fde047; }
+        }
+        @keyframes adoptShineSweep {
+            0% { transform: translateX(-150%) rotate(25deg); }
+            100% { transform: translateX(250%) rotate(25deg); }
+        }
+        @keyframes adoptTitlePulse {
+            0%, 100% { text-shadow: 0 0 12px #fde047, 0 0 26px #06b6d4; transform: scale(1); }
+            50% { text-shadow: 0 0 22px #ffffff, 0 0 38px #22d3ee; transform: scale(1.03); }
+        }
+        #royal-adoption-deed {
+            max-width: 450px; margin: 32px auto; padding: 28px 18px;
+            background: radial-gradient(circle at top, rgba(8, 51, 68, 0.96), rgba(15, 23, 42, 0.98), rgba(6, 12, 24, 0.99));
+            border: 3px solid #fde047; border-radius: 22px;
+            animation: adoptRoyalGlow 3.8s infinite ease-in-out;
+            font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 50; overflow: hidden;
+        }
+        #royal-adoption-deed::before {
+            content: ""; position: absolute; top: -50%; left: 0; width: 45%; height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+            animation: adoptShineSweep 4.2s infinite linear; pointer-events: none;
+        }
+        #adp-title { animation: adoptTitlePulse 3s infinite ease-in-out; }
+        .adp-input {
+            width: 100%; box-sizing: border-box; background: rgba(6, 182, 212, 0.14);
+            border: 2px solid #67e8f9; border-radius: 14px; padding: 13px 14px;
+            color: #fef08a; font-weight: bold; font-family: 'Cairo', sans-serif; font-size: 1.04rem;
+            margin-bottom: 12px; outline: none; text-align: center;
+        }
+        .adp-btn {
+            width: 100%; padding: 15px; background: linear-gradient(45deg, #0891b2, #0284c7, #eab308);
+            border: 1.5px solid #fde047; border-radius: 14px; color: #fff;
+            font-weight: bold; font-size: 1.06rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+            box-shadow: 0 0 24px rgba(6, 182, 212, 0.8);
+        }
+    </style>
+    <style>
+        @keyframes adoptBannerGlow {
+            0%, 100% { box-shadow: 0 0 16px rgba(34, 211, 238, 0.55), inset 0 0 14px rgba(253, 224, 71, 0.2); border-color: #22d3ee; }
+            50% { box-shadow: 0 0 28px rgba(253, 224, 71, 0.85), inset 0 0 22px rgba(34, 211, 238, 0.4); border-color: #fde047; }
+        }
+        #adp-funny-banner {
+            margin: 10px 0 16px 0; padding: 14px 12px; border-radius: 16px;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.22), rgba(253, 224, 71, 0.14));
+            border: 1.5px solid #22d3ee; animation: adoptBannerGlow 3.2s infinite ease-in-out;
+        }
+    </style>
+
+    <script>
+    (function() {
+        const adoptHTML = `
+        <div id="royal-adoption-deed">
+            <div style="display:inline-block; padding:6px 18px; border-radius:22px; background:rgba(253,224,71,0.18); border:1.5px solid #fde047; color:#fde047; font-weight:bold; font-size:1.06rem; margin-bottom:10px; box-shadow:0 0 16px rgba(253,224,71,0.55);">
+                <bdi dir="ltr">KR 👑</bdi> • سجل الكفالة الملكي
+            </div>
+            <div style="font-size: 2.3rem; margin-bottom: 6px; filter: drop-shadow(0 0 12px #22d3ee);">📜🧸☕💖</div>
+            <h3 id="adp-title" style="color: #fde047; margin: 0 0 10px 0; font-size: 1.44rem;">وثيقة كفالة وتبنّي صديق أو حبيب</h3>
+
+            <div id="adp-funny-banner">
+                <div id="adp-banner-head" style="color:#fde047; font-weight:bold; font-size:0.98rem; margin-bottom:5px; text-shadow:0 0 10px rgba(34,211,238,0.8);">
+                    ✨ نظام الكفالة الملكي — دلّع غاليك رسمياً! ✨
+                </div>
+                <p id="adp-desc" style="color: #cffafe; font-size: 0.96rem; line-height: 1.8; margin: 0;">
+                    لأن الغاليين علينا يحتاجون رعاية خاصة.. هنا تقدر توقّع <strong style="color:#fde047;">عقد كفالة وتبنّي معنوي</strong> لصديقك المقرّب أو حبيبك، وتتعهد رسمياً بتوفير القهوة، سماع الفضفضة، وتحمّل مزاجه المتقلب مدى الحياة! 😂💖
+                </p>
+            </div>
+
+            <input type="text" id="adp-name1" class="adp-input" placeholder="👑 اسم الكفيل الرسمي (المتكفّل بالرعاية)...">
+            <input type="text" id="adp-name2" class="adp-input" placeholder="🧸 اسم المكفول الغالي (الصديق أو الحبيب)...">
+            <input type="text" id="adp-clause" class="adp-input" placeholder="☕ بند إضافي (مثلاً: عزيمة قهوة أسبوعياً / ممنوع الزعل)...">
+
+            <button type="button" class="adp-btn" id="adp-issue-btn">📜 إصدار وثيقة الكفالة وختم <bdi dir="ltr">KR 👑</bdi></button>
+
+            <div id="adp-result-area" style="display: none; margin-top: 22px;">
+                <canvas id="adoption-deed-canvas" width="800" height="720" style="width: 100%; border-radius: 16px; border: 2.5px solid #fde047; box-shadow: 0 0 34px rgba(6, 182, 212, 0.85);"></canvas>
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 14px;">
+                    <button type="button" id="adp-video-btn" style="padding: 12px 18px; background: linear-gradient(45deg, #0891b2, #eab308); color: #fff; border: 1.5px solid #fde047; border-radius: 12px; font-weight: bold; font-size: 0.98rem; font-family: Cairo, sans-serif; cursor: pointer;">🎥 حفظ الوثيقة كفيديو</button>
+                    <a id="adp-img-link" download="Royal-Adoption-Deed-KR.png" style="padding: 12px 18px; background: #082f49; color: #fde047; border: 1.5px solid #fde047; text-decoration: none; border-radius: 12px; font-weight: bold; font-size: 0.98rem;">🖼️ حفظ كصورة</a>
+                </div>
+            </div>
+        </div>
+        `;
+
+        const scaleBox = document.getElementById('royal-jealousy-scale');
+        if (scaleBox) {
+            scaleBox.insertAdjacentHTML('afterend', adoptHTML);
+        } else {
+            const footer = document.getElementById('royal-kingdom-footer');
+            if (footer) footer.insertAdjacentHTML('beforebegin', adoptHTML);
+        }
+    })();
+    </script>
+    <script>
+    (function() {
+        window.drawRoyalAdoptionDeed = function(ctx, n1, n2, clause, isEn, f) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            const bg = ctx.createRadialGradient(400, 320, 40, 400, 320, 500);
+            bg.addColorStop(0, '#083344'); bg.addColorStop(0.55, '#0f172a'); bg.addColorStop(1, '#060c18');
+            ctx.fillStyle = bg; ctx.fillRect(0, 0, 800, 720);
+
+            // إطار ذهبي وفيروزي متوهج
+            ctx.strokeStyle = '#fde047'; ctx.lineWidth = 6; ctx.strokeRect(20, 20, 760, 680);
+            ctx.strokeStyle = 'rgba(34, 211, 238, 0.55)'; ctx.lineWidth = 2; ctx.strokeRect(34, 34, 732, 652);
+
+            // الترويسة الملكية وشعار KR 👑
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#fde047'; ctx.font = 'bold 26px Cairo, sans-serif';
+            ctx.fillText('📜 وَثِيقَةُ كَفَالَةٍ وَتَبَنٍّ مَلَكِيَّةٌ • KR 👑', 400, 76);
+
+            ctx.fillStyle = '#67e8f9'; ctx.font = 'bold 20px Cairo, sans-serif';
+            ctx.fillText(isEn ? 'OFFICIAL LIFETIME CARE & SPOILING DEED' : 'عقد رعاية ودلال رسمي ساري مدى الحياة', 400, 114);
+
+            // خط فاصل ذهبي مضيء
+            ctx.strokeStyle = 'rgba(253, 224, 71, 0.65)'; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.moveTo(75, 136); ctx.lineTo(725, 136); ctx.stroke();
+
+            // أيقونات متحركة لطيفة
+            const floatY = Math.sin(f * 0.08) * 6;
+            ctx.font = '32px sans-serif';
+            ctx.fillText('🧸', 220, 188 + floatY);
+            ctx.fillText('☕', 580, 188 - floatY);
+            ctx.fillText('💖', 400, 185 + floatY * 0.5);
+
+            // أسماء الكفيل والمكفول بخط كبير وواضح جداً
+            const pulse = 1 + 0.035 * Math.sin(f * 0.09);
+            ctx.save();
+            ctx.translate(400, 248);
+            ctx.scale(pulse, pulse);
+            ctx.shadowColor = '#22d3ee'; ctx.shadowBlur = 22;
+            ctx.fillStyle = '#ffffff'; ctx.font = 'bold 28px Cairo, sans-serif';
+            ctx.fillText(
+                isEn ? `👑 Sponsor: ${n1}  ➔  🧸 Adopted: ${n2}`
+                     : `👑 الكفيل: ${n1}  ⬅️  🧸 المكفول: ${n2}`,
+                0, 0
+            );
+            ctx.restore();
+            // بنود الكفالة المهضومة بخط كبير وواضح جداً
+            ctx.fillStyle = '#cffafe';
+            ctx.font = 'bold 20px Cairo, sans-serif';
+            ctx.fillText(
+                isEn ? '✅ TERMS: Unlimited coffee, listening to venting & tolerating mood swings!'
+                     : '✅ البنود: توفير القهوة، سماع الفضفضة، وتحمّل المزاج المتقلب!',
+                400, 315
+            );
+
+            // صندوق البند الإضافي المكتوب من الزائر
+            ctx.fillStyle = 'rgba(34, 211, 238, 0.16)';
+            ctx.fillRect(55, 348, 690, 95);
+            ctx.strokeStyle = '#fde047';
+            ctx.lineWidth = 2.5;
+            ctx.strokeRect(55, 348, 690, 95);
+
+            ctx.fillStyle = '#fef08a';
+            ctx.font = 'bold 23px Cairo, sans-serif';
+            ctx.fillText(`« ${clause} »`, 400, 405);
+
+            // ختم الملكية الرسمي الدائري مع شعار KR 👑
+            ctx.save();
+            ctx.translate(400, 540);
+            ctx.rotate(-0.06 + Math.sin(f * 0.05) * 0.03);
+            ctx.strokeStyle = '#fde047';
+            ctx.lineWidth = 4.5;
+            ctx.beginPath(); ctx.arc(0, 0, 64, 0, Math.PI * 2); ctx.stroke();
+            ctx.strokeStyle = '#22d3ee';
+            ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.arc(0, 0, 54, 0, Math.PI * 2); ctx.stroke();
+
+            ctx.fillStyle = '#fde047';
+            ctx.font = 'bold 23px Cairo, sans-serif';
+            ctx.fillText('KR 👑', 0, -6);
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 15px Cairo, sans-serif';
+            ctx.fillText(isEn ? 'ADOPTION SEALED' : 'كفالة معتمدة', 0, 22);
+            ctx.restore();
+
+            // التوقيع السفلي الواضح
+            ctx.fillStyle = '#fde047';
+            ctx.font = 'bold 16px Cairo, sans-serif';
+            ctx.fillText('© Kingdom of Promises - worldoflove-kr.github.io • KR 👑', 400, 665);
+        };
+
+        // ربط زر الإصدار وزر الفيديو والترجمة الإنجليزية التلقائية
+        const issueBtn = document.getElementById('adp-issue-btn');
+        if (issueBtn) {
+            issueBtn.onclick = function() {
+                const isEn = document.documentElement.dir === 'ltr';
+                const n1 = document.getElementById('adp-name1')?.value.trim() || (isEn ? 'Official Sponsor' : 'الكفيل الرسمي');
+                const n2 = document.getElementById('adp-name2')?.value.trim() || (isEn ? 'Dear Adopted' : 'المكفول الغالي');
+                const clause = document.getElementById('adp-clause')?.value.trim() || (isEn ? 'Weekly coffee treat & zero sulking!' : 'عزيمة قهوة أسبوعياً وممنوع الزعل أبداً!');
+
+                document.getElementById('adp-result-area').style.display = 'block';
+                const canvas = document.getElementById('adoption-deed-canvas');
+                const ctx = canvas.getContext('2d');
+
+                if (window.liveAdoptLoop) clearInterval(window.liveAdoptLoop);
+                let f = 0;
+                window.drawRoyalAdoptionDeed(ctx, n1, n2, clause, isEn, 1);
+                document.getElementById('adp-img-link').href = canvas.toDataURL('image/png');
+                window.liveAdoptLoop = setInterval(() => {
+                    f += 0.5;
+                    window.drawRoyalAdoptionDeed(ctx, n1, n2, clause, isEn, f);
+                }, 45);
+            };
+        }
+
+        const vidBtn = document.getElementById('adp-video-btn');
+        if (vidBtn) {
+            vidBtn.onclick = function() {
+                const canvas = document.getElementById('adoption-deed-canvas');
+                if (!canvas?.captureStream) return;
+                const isEn = document.documentElement.dir === 'ltr';
+                const n1 = document.getElementById('adp-name1')?.value.trim() || (isEn ? 'Official Sponsor' : 'الكفيل الرسمي');
+                const n2 = document.getElementById('adp-name2')?.value.trim() || (isEn ? 'Dear Adopted' : 'المكفول الغالي');
+                const clause = document.getElementById('adp-clause')?.value.trim() || (isEn ? 'Weekly coffee treat & zero sulking!' : 'عزيمة قهوة أسبوعياً وممنوع الزعل أبداً!');
+
+                vidBtn.disabled = true;
+                vidBtn.textContent = isEn ? '⏳ Recording Adoption Deed...' : '⏳ جاري تصوير وثيقة الكفالة...';
+                const rec = new MediaRecorder(canvas.captureStream(25), { mimeType: 'video/webm' });
+                const chunks = [];
+                rec.ondataavailable = e => chunks.push(e.data);
+                rec.onstop = () => {
+                    const a = document.createElement('a');
+                    a.href = URL.createObjectURL(new Blob(chunks, { type: 'video/webm' }));
+                    a.download = 'Royal-Adoption-Deed-KR.webm';
+                    a.click();
+                    vidBtn.disabled = false;
+                    vidBtn.textContent = isEn ? '🎥 Save Deed Video' : '🎥 حفظ الوثيقة كفيديو';
+                };
+                rec.start();
+                let c = 0; const ctx = canvas.getContext('2d');
+                const t = setInterval(() => {
+                    c += 0.5;
+                    window.drawRoyalAdoptionDeed(ctx, n1, n2, clause, isEn, c);
+                    if (c >= 70) { clearInterval(t); rec.stop(); }
+                }, 45);
+            };
+        }
+
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const map = {
+                    'adp-title': isEn ? 'Friend or Lover Adoption & Care Deed' : 'وثيقة كفالة وتبنّي صديق أو حبيب',
+                    'adp-banner-head': isEn ? '✨ Royal Care System — Spoil Your Favorite Person Officially! ✨' : '✨ نظام الكفالة الملكي — دلّع غاليك رسمياً! ✨',
+                    'adp-issue-btn': isEn ? '📜 Issue Adoption Deed & Seal KR 👑' : '📜 إصدار وثيقة الكفالة وختم KR 👑',
+                    'adp-video-btn': isEn ? '🎥 Save Deed Video' : '🎥 حفظ الوثيقة كفيديو',
+                    'adp-img-link': isEn ? '🖼️ Save Image' : '🖼️ حفظ كصورة'
+                };
+                for (const [id, text] of Object.entries(map)) {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = text;
+                }
+                const desc = document.getElementById('adp-desc');
+                if (desc) desc.innerHTML = isEn
+                    ? 'Because our loved ones need special care.. Here you can sign an <strong style="color:#fde047;">official moral adoption contract</strong> for your bestie or lover, pledging unlimited coffee, venting sessions & tolerating mood swings for life! 😂💖'
+                    : 'لأن الغاليين علينا يحتاجون رعاية خاصة.. هنا تقدر توقّع <strong style="color:#fde047;">عقد كفالة وتبنّي معنوي</strong> لصديقك المقرّب أو حبيبك، وتتعهد رسمياً بتوفير القهوة، سماع الفضفضة، وتحمّل مزاجه المتقلب مدى الحياة! 😂💖';
+                const i1 = document.getElementById('adp-name1');
+                const i2 = document.getElementById('adp-name2');
+                const cl = document.getElementById('adp-clause');
+                if (i1) i1.placeholder = isEn ? '👑 Official Sponsor Name...' : '👑 اسم الكفيل الرسمي (المتكفّل بالرعاية)...';
+                if (i2) i2.placeholder = isEn ? '🧸 Adopted Bestie / Lover Name...' : '🧸 اسم المكفول الغالي (الصديق أو الحبيب)...';
+                if (cl) cl.placeholder = isEn ? '☕ Extra Clause (e.g., Weekly coffee treat)...' : '☕ بند إضافي (مثلاً: عزيمة قهوة أسبوعياً / ممنوع الزعل)...';
+            }, 80);
+        });
+    })();
+    </script>
 
 
             
