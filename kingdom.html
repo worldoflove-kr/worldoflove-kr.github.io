@@ -9077,6 +9077,260 @@
         });
     })();
     </script>
+    <!-- 49. محكمة الحب الملكية — صك الصلح وتصفية القلوب KR 👑 (تصميم مضيء + خطوط كبيرة + ترجمة تلقائية) -->
+    <style>
+        @keyframes courtRoyalGlow {
+            0%, 100% { box-shadow: 0 0 30px rgba(244, 63, 94, 0.85), inset 0 0 26px rgba(253, 224, 71, 0.28); border-color: #fb7185; }
+            50% { box-shadow: 0 0 48px rgba(253, 224, 71, 0.98), inset 0 0 36px rgba(244, 63, 94, 0.45); border-color: #fde047; }
+        }
+        @keyframes courtShineSweep {
+            0% { transform: translateX(-150%) rotate(25deg); }
+            100% { transform: translateX(250%) rotate(25deg); }
+        }
+        #royal-love-court {
+            max-width: 450px; margin: 32px auto; padding: 28px 18px;
+            background: radial-gradient(circle at top, rgba(88, 16, 48, 0.96), rgba(45, 10, 34, 0.98), rgba(18, 5, 16, 0.99));
+            border: 3px solid #fde047; border-radius: 22px;
+            animation: courtRoyalGlow 4s infinite ease-in-out;
+            font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 50; overflow: hidden;
+        }
+        #royal-love-court::before {
+            content: ""; position: absolute; top: -50%; left: 0; width: 45%; height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+            animation: courtShineSweep 4.4s infinite linear; pointer-events: none;
+        }
+        .lc-input {
+            width: 100%; box-sizing: border-box; background: rgba(244, 63, 94, 0.14);
+            border: 2px solid #fda4af; border-radius: 14px; padding: 13px 14px;
+            color: #fef08a; font-weight: bold; font-family: 'Cairo', sans-serif; font-size: 1.04rem;
+            margin-bottom: 12px; outline: none; text-align: center;
+        }
+        .lc-btn {
+            width: 100%; padding: 15px; background: linear-gradient(45deg, #e11d48, #be185d, #eab308);
+            border: 1.5px solid #fde047; border-radius: 14px; color: #fff;
+            font-weight: bold; font-size: 1.06rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+            box-shadow: 0 0 24px rgba(244, 63, 94, 0.75);
+        }
+    </style>
+    <style>
+        @keyframes courtTitleNeon {
+            0%, 100% { text-shadow: 0 0 12px #fde047, 0 0 26px #f43f5e; transform: scale(1); }
+            50% { text-shadow: 0 0 20px #ffffff, 0 0 38px #fb7185; transform: scale(1.03); }
+        }
+        #lc-title {
+            animation: courtTitleNeon 3s infinite ease-in-out;
+        }
+    </style>
+
+    <script>
+    (function() {
+        const courtHTML = `
+        <div id="royal-love-court">
+            <div style="display:inline-block; padding:6px 18px; border-radius:22px; background:rgba(253,224,71,0.18); border:1.5px solid #fde047; color:#fde047; font-weight:bold; font-size:1.06rem; margin-bottom:10px; box-shadow:0 0 16px rgba(253,224,71,0.5);">
+                <bdi dir="ltr">KR 👑</bdi> • المحكمة الملكية العليا
+            </div>
+            <div style="font-size: 2.3rem; margin-bottom: 6px; filter: drop-shadow(0 0 12px #fb7185);">⚖️🕊️💖📜</div>
+            <h3 id="lc-title" style="color: #fde047; margin: 0 0 12px 0; font-size: 1.44rem;">محكمة الحب الملكية — صك الصلح وتصفية القلوب</h3>
+            <p id="lc-desc" style="color: #ffe4e6; font-size: 1.02rem; line-height: 1.85; margin: 0 0 16px 0;">
+                هل بينكما عتابٌ أو خصامٌ عابر؟ اكتب اسمك واسم من تُراضيه في <strong style="color:#fde047;">مملكة الوعود <bdi dir="ltr">KR 👑</bdi></strong>، لتُصدر المحكمة <strong style="color:#fda4af;">حكمها النهائي بالصلح الأبدي</strong> وتُذيب الجليد فوراً!
+            </p>
+
+            <input type="text" id="lc-name1" class="lc-input" placeholder="🕊️ اسم المبادر بالصلح والاعتذار...">
+            <input type="text" id="lc-name2" class="lc-input" placeholder="💖 اسم الغالي الذي نُراضيه...">
+            <input type="text" id="lc-reason" class="lc-input" placeholder="💌 كلمة تصفية قلب (مثلاً: حقك عليّ / ما يهون زعلك)...">
+
+            <button type="button" class="lc-btn" id="lc-verdict-btn">⚖️ إصدار صك الصلح والختم الملكي <bdi dir="ltr">KR 👑</bdi></button>
+
+            <div id="lc-result-area" style="display: none; margin-top: 22px;">
+                <canvas id="love-court-canvas" width="800" height="720" style="width: 100%; border-radius: 16px; border: 2.5px solid #fde047; box-shadow: 0 0 34px rgba(244, 63, 94, 0.85);"></canvas>
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 14px;">
+                    <button type="button" id="lc-video-btn" style="padding: 12px 18px; background: linear-gradient(45deg, #e11d48, #eab308); color: #fff; border: 1.5px solid #fde047; border-radius: 12px; font-weight: bold; font-size: 0.98rem; font-family: Cairo, sans-serif; cursor: pointer;">🎥 حفظ الصك كفيديو</button>
+                    <a id="lc-img-link" download="Royal-Peace-Treaty-KR.png" style="padding: 12px 18px; background: #2d0a22; color: #fde047; border: 1.5px solid #fde047; text-decoration: none; border-radius: 12px; font-weight: bold; font-size: 0.98rem;">🖼️ حفظ كصورة</a>
+                </div>
+            </div>
+        </div>
+        `;
+
+        const wheelBox = document.getElementById('royal-love-wheel');
+        if (wheelBox) {
+            wheelBox.insertAdjacentHTML('afterend', courtHTML);
+        } else {
+            const footer = document.getElementById('royal-kingdom-footer');
+            if (footer) footer.insertAdjacentHTML('beforebegin', courtHTML);
+        }
+    })();
+    </script>
+    <script>
+    (function() {
+        window.drawRoyalPeaceTreaty = function(ctx, n1, n2, reason, isEn, f) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            const bg = ctx.createRadialGradient(400, 320, 40, 400, 320, 500);
+            bg.addColorStop(0, '#581030'); bg.addColorStop(0.55, '#2d0a22'); bg.addColorStop(1, '#120510');
+            ctx.fillStyle = bg; ctx.fillRect(0, 0, 800, 720);
+
+            // إطار ذهبي ملكي مزدوج متوهج
+            ctx.strokeStyle = '#fde047'; ctx.lineWidth = 6; ctx.strokeRect(20, 20, 760, 680);
+            ctx.strokeStyle = 'rgba(251, 113, 133, 0.55)'; ctx.lineWidth = 2; ctx.strokeRect(34, 34, 732, 652);
+
+            // الترويسة الملكية وشعار KR 👑
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#fde047'; ctx.font = 'bold 26px Cairo, sans-serif';
+            ctx.fillText('⚖️ مَحْكَمَةُ الْحُبِّ الْمَلَكِيَّةُ • KR 👑', 400, 76);
+
+            ctx.fillStyle = '#fda4af'; ctx.font = 'bold 21px Cairo, sans-serif';
+            ctx.fillText(isEn ? 'OFFICIAL PEACE TREATY & HEART RECONCILIATION' : 'صك صلح ملكي رسمي وتصفية قلوب أبدية', 400, 114);
+
+            // خط فاصل ذهبي مضيء
+            ctx.strokeStyle = 'rgba(253, 224, 71, 0.65)'; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.moveTo(75, 136); ctx.lineTo(725, 136); ctx.stroke();
+
+            // حمامتا سلام مضيئتان تتحركان بنعومة فوق الأسماء
+            const doveFloat = Math.sin(f * 0.08) * 8;
+            ctx.font = '34px sans-serif';
+            ctx.fillText('🕊️', 220, 195 + doveFloat);
+            ctx.fillText('🕊️', 580, 195 - doveFloat);
+            ctx.fillText('💖', 400, 190 + doveFloat * 0.5);
+
+            // الأسماء المضيئة النابضة بخط كبير جداً وواضح
+            const pulse = 1 + 0.035 * Math.sin(f * 0.09);
+            ctx.save();
+            ctx.translate(400, 260);
+            ctx.scale(pulse, pulse);
+            ctx.shadowColor = '#fb7185'; ctx.shadowBlur = 22;
+            ctx.fillStyle = '#ffffff'; ctx.font = 'bold 31px Cairo, sans-serif';
+            ctx.fillText(`✨ ${n1}   🤝   ${n2} ✨`, 0, 0);
+            ctx.restore();
+            // نص حكم المحكمة بخط كبير وواضح جداً
+            ctx.fillStyle = '#ffe4e6';
+            ctx.font = 'bold 21px Cairo, sans-serif';
+            ctx.fillText(
+                isEn ? '📜 VERDICT: All past misunderstandings are erased forever!'
+                     : '📜 نص الحكم: يُلغى كل عتابٍ أو خصامٍ سابق من هذه اللحظة!',
+                400, 330
+            );
+
+            // صندوق رسالة تصفية القلب المكتوبة من الزائر
+            ctx.fillStyle = 'rgba(253, 224, 71, 0.14)';
+            ctx.fillRect(55, 360, 690, 95);
+            ctx.strokeStyle = '#fde047';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(55, 360, 690, 95);
+
+            ctx.fillStyle = '#fef08a';
+            ctx.font = 'bold 23px Cairo, sans-serif';
+            ctx.fillText(`« ${reason} »`, 400, 416);
+
+            // ختم الملكية الرسمي الدائري مع شعار KR 👑
+            ctx.save();
+            ctx.translate(400, 545);
+            ctx.rotate(-0.06 + Math.sin(f * 0.05) * 0.03);
+            ctx.strokeStyle = '#fde047';
+            ctx.lineWidth = 4.5;
+            ctx.beginPath(); ctx.arc(0, 0, 64, 0, Math.PI * 2); ctx.stroke();
+            ctx.strokeStyle = '#fb7185';
+            ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.arc(0, 0, 54, 0, Math.PI * 2); ctx.stroke();
+
+            ctx.fillStyle = '#fde047';
+            ctx.font = 'bold 23px Cairo, sans-serif';
+            ctx.fillText('KR 👑', 0, -6);
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 15px Cairo, sans-serif';
+            ctx.fillText(isEn ? 'PEACE SEALED' : 'صك صلح معتمد', 0, 22);
+            ctx.restore();
+
+            // التوقيع السفلي الواضح
+            ctx.fillStyle = '#fde047';
+            ctx.font = 'bold 16px Cairo, sans-serif';
+            ctx.fillText('© Kingdom of Promises - worldoflove-kr.github.io • KR 👑', 400, 665);
+        };
+
+        // ربط زر الإصدار وزر الفيديو والترجمة التلقائية
+        const verdictBtn = document.getElementById('lc-verdict-btn');
+        if (verdictBtn) {
+            verdictBtn.onclick = function() {
+                const isEn = document.documentElement.dir === 'ltr';
+                const n1 = document.getElementById('lc-name1')?.value.trim() || (isEn ? 'Peacemaker' : 'مُبادرُ الصلح');
+                const n2 = document.getElementById('lc-name2')?.value.trim() || (isEn ? 'Beloved' : 'غالي القلب');
+                const reason = document.getElementById('lc-reason')?.value.trim() || (isEn ? 'Your smile means the world to me.' : 'ما يهون زعلك، ورضاك أغلى من الدنيا.');
+
+                document.getElementById('lc-result-area').style.display = 'block';
+                const canvas = document.getElementById('love-court-canvas');
+                const ctx = canvas.getContext('2d');
+
+                if (window.liveCourtLoop) clearInterval(window.liveCourtLoop);
+                let f = 0;
+                window.drawRoyalPeaceTreaty(ctx, n1, n2, reason, isEn, 1);
+                document.getElementById('lc-img-link').href = canvas.toDataURL('image/png');
+                window.liveCourtLoop = setInterval(() => {
+                    f += 0.5;
+                    window.drawRoyalPeaceTreaty(ctx, n1, n2, reason, isEn, f);
+                }, 45);
+            };
+        }
+
+        const vidBtn = document.getElementById('lc-video-btn');
+        if (vidBtn) {
+            vidBtn.onclick = function() {
+                const canvas = document.getElementById('love-court-canvas');
+                if (!canvas?.captureStream) return;
+                const isEn = document.documentElement.dir === 'ltr';
+                const n1 = document.getElementById('lc-name1')?.value.trim() || (isEn ? 'Peacemaker' : 'مُبادرُ الصلح');
+                const n2 = document.getElementById('lc-name2')?.value.trim() || (isEn ? 'Beloved' : 'غالي القلب');
+                const reason = document.getElementById('lc-reason')?.value.trim() || (isEn ? 'Your smile means the world to me.' : 'ما يهون زعلك، ورضاك أغلى من الدنيا.');
+
+                vidBtn.disabled = true;
+                vidBtn.textContent = isEn ? '⏳ Recording Peace Treaty...' : '⏳ جاري تصوير صك الصلح...';
+                const rec = new MediaRecorder(canvas.captureStream(25), { mimeType: 'video/webm' });
+                const chunks = [];
+                rec.ondataavailable = e => chunks.push(e.data);
+                rec.onstop = () => {
+                    const a = document.createElement('a');
+                    a.href = URL.createObjectURL(new Blob(chunks, { type: 'video/webm' }));
+                    a.download = 'Royal-Peace-Treaty-KR.webm';
+                    a.click();
+                    vidBtn.disabled = false;
+                    vidBtn.textContent = isEn ? '🎥 Save Treaty Video' : '🎥 حفظ الصك كفيديو';
+                };
+                rec.start();
+                let c = 0; const ctx = canvas.getContext('2d');
+                const t = setInterval(() => {
+                    c += 0.5;
+                    window.drawRoyalPeaceTreaty(ctx, n1, n2, reason, isEn, c);
+                    if (c >= 70) { clearInterval(t); rec.stop(); }
+                }, 45);
+            };
+        }
+
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const map = {
+                    'lc-title': isEn ? 'Royal Court of Love — Official Peace Treaty' : 'محكمة الحب الملكية — صك الصلح وتصفية القلوب',
+                    'lc-verdict-btn': isEn ? '⚖️ Issue Peace Treaty & Royal Seal KR 👑' : '⚖️ إصدار صك الصلح والختم الملكي KR 👑',
+                    'lc-video-btn': isEn ? '🎥 Save Treaty Video' : '🎥 حفظ الصك كفيديو',
+                    'lc-img-link': isEn ? '🖼️ Save Image' : '🖼️ حفظ كصورة'
+                };
+                for (const [id, text] of Object.entries(map)) {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = text;
+                }
+                const desc = document.getElementById('lc-desc');
+                if (desc) desc.innerHTML = isEn
+                    ? 'Had a small misunderstanding? Enter your names in <strong style="color:#fde047;">Kingdom of Promises KR 👑</strong> to issue an <strong style="color:#fda4af;">official eternal peace verdict</strong> and melt the ice instantly!'
+                    : 'هل بينكما عتابٌ أو خصامٌ عابر؟ اكتب اسمك واسم من تُراضيه في <strong style="color:#fde047;">مملكة الوعود <bdi dir="ltr">KR 👑</bdi></strong>، لتُصدر المحكمة <strong style="color:#fda4af;">حكمها النهائي بالصلح الأبدي</strong> وتُذيب الجليد فوراً!';
+                const i1 = document.getElementById('lc-name1');
+                const i2 = document.getElementById('lc-name2');
+                const r = document.getElementById('lc-reason');
+                if (i1) i1.placeholder = isEn ? '🕊️ Peacemaker name...' : '🕊️ اسم المبادر بالصلح والاعتذار...';
+                if (i2) i2.placeholder = isEn ? '💖 Beloved name...' : '💖 اسم الغالي الذي نُراضيه...';
+                if (r) r.placeholder = isEn ? '💌 Peace message (e.g., Your smile is priceless)...' : '💌 كلمة تصفية قلب (مثلاً: حقك عليّ / ما يهون زعلك)...';
+            }, 80);
+        });
+    })();
+    </script>
 
 
             
