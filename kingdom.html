@@ -9653,6 +9653,280 @@
         });
     })();
     </script>
+    <!-- 51. ميزان الغيرة والدلال — من يحب الثاني أكثر؟ KR 👑 (تصميم مضيء + خطوط كبيرة + ترجمة تلقائية) -->
+    <style>
+        @keyframes scaleRoyalGlow {
+            0%, 100% { box-shadow: 0 0 32px rgba(236, 72, 153, 0.85), inset 0 0 28px rgba(168, 85, 247, 0.35); border-color: #f472b6; }
+            50% { box-shadow: 0 0 50px rgba(253, 224, 71, 0.98), inset 0 0 40px rgba(236, 72, 153, 0.5); border-color: #fde047; }
+        }
+        @keyframes scaleShineSweep {
+            0% { transform: translateX(-150%) rotate(25deg); }
+            100% { transform: translateX(250%) rotate(25deg); }
+        }
+        @keyframes scaleTitlePulse {
+            0%, 100% { text-shadow: 0 0 12px #fde047, 0 0 26px #ec4899; transform: scale(1); }
+            50% { text-shadow: 0 0 22px #ffffff, 0 0 38px #f472b6; transform: scale(1.03); }
+        }
+        #royal-jealousy-scale {
+            max-width: 450px; margin: 32px auto; padding: 28px 18px;
+            background: radial-gradient(circle at top, rgba(74, 14, 78, 0.96), rgba(38, 10, 56, 0.98), rgba(16, 5, 26, 0.99));
+            border: 3px solid #fde047; border-radius: 22px;
+            animation: scaleRoyalGlow 3.8s infinite ease-in-out;
+            font-family: 'Cairo', sans-serif; text-align: center; position: relative; z-index: 50; overflow: hidden;
+        }
+        #royal-jealousy-scale::before {
+            content: ""; position: absolute; top: -50%; left: 0; width: 45%; height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+            animation: scaleShineSweep 4.2s infinite linear; pointer-events: none;
+        }
+        #js-title { animation: scaleTitlePulse 3s infinite ease-in-out; }
+        .js-input {
+            width: 100%; box-sizing: border-box; background: rgba(236, 72, 153, 0.14);
+            border: 2px solid #f9a8d4; border-radius: 14px; padding: 13px 14px;
+            color: #fef08a; font-weight: bold; font-family: 'Cairo', sans-serif; font-size: 1.04rem;
+            margin-bottom: 12px; outline: none; text-align: center;
+        }
+        .js-btn {
+            width: 100%; padding: 15px; background: linear-gradient(45deg, #db2777, #9333ea, #eab308);
+            border: 1.5px solid #fde047; border-radius: 14px; color: #fff;
+            font-weight: bold; font-size: 1.06rem; font-family: 'Cairo', sans-serif; cursor: pointer;
+            box-shadow: 0 0 24px rgba(236, 72, 153, 0.8);
+        }
+    </style>
+    <script>
+    (function() {
+        const scaleHTML = `
+        <div id="royal-jealousy-scale">
+            <div style="display:inline-block; padding:6px 18px; border-radius:22px; background:rgba(253,224,71,0.18); border:1.5px solid #fde047; color:#fde047; font-weight:bold; font-size:1.06rem; margin-bottom:10px; box-shadow:0 0 16px rgba(253,224,71,0.55);">
+                <bdi dir="ltr">KR 👑</bdi> • مقياس الدلال والغيرة
+            </div>
+            <div style="font-size: 2.3rem; margin-bottom: 6px; filter: drop-shadow(0 0 12px #f472b6);">⚖️💘🔥👑</div>
+            <h3 id="js-title" style="color: #fde047; margin: 0 0 12px 0; font-size: 1.44rem;">ميزان الغيرة والدلال — من يحب الثاني أكثر؟</h3>
+            <p id="js-desc" style="color: #fce7f3; font-size: 1.02rem; line-height: 1.85; margin: 0 0 16px 0;">
+                اكتبا اسميكما ليحسم <strong style="color:#fde047;">ميزان مملكة الوعود <bdi dir="ltr">KR 👑</bdi></strong> الجدل الأبدي.. من يغار أكثر؟ ومن صاحب <strong style="color:#f9a8d4;">القلب الأكبر والدلال الأكثر</strong>؟
+            </p>
+
+            <input type="text" id="js-name1" class="js-input" placeholder="💘 اسم الطرف الأول...">
+            <input type="text" id="js-name2" class="js-input" placeholder="🔥 اسم الطرف الثاني...">
+
+            <button type="button" class="js-btn" id="js-weigh-btn">⚖️ ابدأ الوزن واحسم الجدل <bdi dir="ltr">KR 👑</bdi></button>
+
+            <div id="js-result-area" style="display: none; margin-top: 22px;">
+                <canvas id="jealousy-scale-canvas" width="800" height="720" style="width: 100%; border-radius: 16px; border: 2.5px solid #fde047; box-shadow: 0 0 34px rgba(236, 72, 153, 0.85);"></canvas>
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 14px;">
+                    <button type="button" id="js-video-btn" style="padding: 12px 18px; background: linear-gradient(45deg, #db2777, #eab308); color: #fff; border: 1.5px solid #fde047; border-radius: 12px; font-weight: bold; font-size: 0.98rem; font-family: Cairo, sans-serif; cursor: pointer;">🎥 حفظ النتيجة كفيديو</button>
+                    <a id="js-img-link" download="Royal-Jealousy-Scale-KR.png" style="padding: 12px 18px; background: #2e0836; color: #fde047; border: 1.5px solid #fde047; text-decoration: none; border-radius: 12px; font-weight: bold; font-size: 0.98rem;">🖼️ حفظ كصورة</a>
+                </div>
+            </div>
+        </div>
+        `;
+
+        const arenaBox = document.getElementById('royal-arena-duo');
+        if (arenaBox) {
+            arenaBox.insertAdjacentHTML('afterend', scaleHTML);
+        } else {
+            const footer = document.getElementById('royal-kingdom-footer');
+            if (footer) footer.insertAdjacentHTML('beforebegin', scaleHTML);
+        }
+    })();
+    </script>
+    <script>
+    (function() {
+        window.drawRoyalJealousyScale = function(ctx, n1, n2, tilt, love1, love2, isEn, f) {
+            ctx.direction = isEn ? 'ltr' : 'rtl';
+            const bg = ctx.createRadialGradient(400, 320, 40, 400, 320, 500);
+            bg.addColorStop(0, '#4a0e4e'); bg.addColorStop(0.55, '#260a38'); bg.addColorStop(1, '#10051a');
+            ctx.fillStyle = bg; ctx.fillRect(0, 0, 800, 720);
+
+            // إطار ذهبي ووردي متوهج
+            ctx.strokeStyle = '#fde047'; ctx.lineWidth = 6; ctx.strokeRect(20, 20, 760, 680);
+            ctx.strokeStyle = 'rgba(244, 114, 182, 0.55)'; ctx.lineWidth = 2; ctx.strokeRect(34, 34, 732, 652);
+
+            // الترويسة وشعار KR 👑
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#fde047'; ctx.font = 'bold 26px Cairo, sans-serif';
+            ctx.fillText('⚖️ مِيزَانُ الْغَيْرَةِ وَالدَّلَالِ • KR 👑', 400, 76);
+
+            ctx.fillStyle = '#f9a8d4'; ctx.font = 'bold 20px Cairo, sans-serif';
+            ctx.fillText(isEn ? 'OFFICIAL LOVE & JEALOUSY VERDICT' : 'الحكم الرسمي لحسم جدل الحب والغيرة', 400, 112);
+
+            // قاعدة وعمود الميزان الذهبي المضيء
+            ctx.strokeStyle = '#fde047'; ctx.lineWidth = 8; ctx.lineCap = 'round';
+            ctx.beginPath(); ctx.moveTo(400, 175); ctx.lineTo(400, 415); ctx.stroke();
+            ctx.fillStyle = '#fde047';
+            ctx.beginPath(); ctx.moveTo(310, 415); ctx.lineTo(490, 415); ctx.lineTo(465, 395); ctx.lineTo(335, 395); ctx.closePath(); ctx.fill();
+
+            // ذراع الميزان المتأرجح وكفتا الأسماء
+            ctx.save();
+            ctx.translate(400, 200);
+            ctx.rotate(tilt);
+            ctx.strokeStyle = '#fde047'; ctx.lineWidth = 7;
+            ctx.beginPath(); ctx.moveTo(-210, 0); ctx.lineTo(210, 0); ctx.stroke();
+
+            // كفة الطرف الأول (يسار)
+            ctx.save();
+            ctx.translate(-210, 0);
+            ctx.rotate(-tilt);
+            ctx.strokeStyle = '#f9a8d4'; ctx.lineWidth = 3;
+            ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(-45, 75); ctx.moveTo(0, 0); ctx.lineTo(45, 75); ctx.stroke();
+            ctx.fillStyle = 'rgba(236, 72, 153, 0.35)';
+            ctx.fillRect(-95, 75, 190, 72);
+            ctx.strokeStyle = '#fde047'; ctx.lineWidth = 2.5; ctx.strokeRect(-95, 75, 190, 72);
+            ctx.fillStyle = '#ffffff'; ctx.font = 'bold 21px Cairo, sans-serif';
+            ctx.fillText(n1, 0, 106);
+            ctx.fillStyle = '#fde047'; ctx.font = 'bold 20px Cairo, sans-serif';
+            ctx.fillText(`❤️ ${love1}%`, 0, 136);
+            ctx.restore();
+
+            // كفة الطرف الثاني (يمين)
+            ctx.save();
+            ctx.translate(210, 0);
+            ctx.rotate(-tilt);
+            ctx.strokeStyle = '#f9a8d4'; ctx.lineWidth = 3;
+            ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(-45, 75); ctx.moveTo(0, 0); ctx.lineTo(45, 75); ctx.stroke();
+            ctx.fillStyle = 'rgba(168, 85, 247, 0.35)';
+            ctx.fillRect(-95, 75, 190, 72);
+            ctx.strokeStyle = '#fde047'; ctx.lineWidth = 2.5; ctx.strokeRect(-95, 75, 190, 72);
+            ctx.fillStyle = '#ffffff'; ctx.font = 'bold 21px Cairo, sans-serif';
+            ctx.fillText(n2, 0, 106);
+            ctx.fillStyle = '#fde047'; ctx.font = 'bold 20px Cairo, sans-serif';
+            ctx.fillText(`🔥 ${love2}%`, 0, 136);
+            ctx.restore();
+            ctx.restore();
+            // صندوق قرار الميزان المهضوم بخط كبير وواضح جداً
+            const winnerName = love1 >= love2 ? n1 : n2;
+            const verdictAr = `👑 القرار: ${winnerName} يغار بجنون ويحب أكثر بـ ${Math.max(love1, love2)}%!`;
+            const verdictEn = `👑 VERDICT: ${winnerName} is crazily jealous & loves more (${Math.max(love1, love2)}%)!`;
+
+            ctx.fillStyle = 'rgba(253, 224, 71, 0.16)';
+            ctx.fillRect(45, 445, 710, 95);
+            ctx.strokeStyle = '#fde047';
+            ctx.lineWidth = 2.5;
+            ctx.strokeRect(45, 445, 710, 95);
+
+            ctx.fillStyle = '#fef08a';
+            ctx.font = 'bold 23px Cairo, sans-serif';
+            ctx.fillText(isEn ? verdictEn : verdictAr, 400, 488);
+
+            ctx.fillStyle = '#fce7f3';
+            ctx.font = 'bold 18px Cairo, sans-serif';
+            ctx.fillText(
+                isEn ? '💘 Jealousy is just proof of deep love — No appeals allowed!'
+                     : '💘 الغيرة دليل المحبة الزائدة.. قرار نهائي غير قابل للاستئناف!',
+                400, 524
+            );
+
+            // ختم الملكية الرسمي الدائري مع شعار KR 👑
+            ctx.save();
+            ctx.translate(400, 600);
+            ctx.rotate(-0.05 + Math.sin(f * 0.05) * 0.03);
+            ctx.strokeStyle = '#fde047';
+            ctx.lineWidth = 4;
+            ctx.beginPath(); ctx.arc(0, 0, 44, 0, Math.PI * 2); ctx.stroke();
+            ctx.fillStyle = '#fde047';
+            ctx.font = 'bold 19px Cairo, sans-serif';
+            ctx.fillText('KR 👑', 0, 6);
+            ctx.restore();
+
+            ctx.fillStyle = '#fde047';
+            ctx.font = 'bold 15px Cairo, sans-serif';
+            ctx.fillText('© Kingdom of Promises - worldoflove-kr.github.io • KR 👑', 400, 678);
+        };
+
+        // ربط زر الوزن وزر الفيديو والترجمة الإنجليزية التلقائية
+        let finalL1 = 99, finalL2 = 96;
+        const weighBtn = document.getElementById('js-weigh-btn');
+        if (weighBtn) {
+            weighBtn.onclick = function() {
+                const isEn = document.documentElement.dir === 'ltr';
+                const n1 = document.getElementById('js-name1')?.value.trim() || (isEn ? 'Partner 1' : 'الطرف الأول');
+                const n2 = document.getElementById('js-name2')?.value.trim() || (isEn ? 'Partner 2' : 'الطرف الثاني');
+
+                document.getElementById('js-result-area').style.display = 'block';
+                const canvas = document.getElementById('jealousy-scale-canvas');
+                const ctx = canvas.getContext('2d');
+
+                if (window.liveScaleLoop) clearInterval(window.liveScaleLoop);
+                finalL1 = 94 + Math.floor(Math.random() * 7);
+                finalL2 = 93 + Math.floor(Math.random() * 7);
+                if (finalL1 === finalL2) finalL1 = 100;
+
+                const finalTilt = finalL1 > finalL2 ? -0.18 : 0.18;
+                let step = 0;
+                window.liveScaleLoop = setInterval(() => {
+                    step++;
+                    const damp = Math.exp(-step * 0.07);
+                    const tilt = finalTilt + Math.sin(step * 0.35) * 0.25 * damp;
+                    window.drawRoyalJealousyScale(ctx, n1, n2, tilt, finalL1, finalL2, isEn, step);
+                    if (step === 45) {
+                        document.getElementById('js-img-link').href = canvas.toDataURL('image/png');
+                    }
+                }, 45);
+            };
+        }
+
+        const vidBtn = document.getElementById('js-video-btn');
+        if (vidBtn) {
+            vidBtn.onclick = function() {
+                const canvas = document.getElementById('jealousy-scale-canvas');
+                if (!canvas?.captureStream) return;
+                const isEn = document.documentElement.dir === 'ltr';
+                const n1 = document.getElementById('js-name1')?.value.trim() || (isEn ? 'Partner 1' : 'الطرف الأول');
+                const n2 = document.getElementById('js-name2')?.value.trim() || (isEn ? 'Partner 2' : 'الطرف الثاني');
+
+                vidBtn.disabled = true;
+                vidBtn.textContent = isEn ? '⏳ Recording Scale Verdict...' : '⏳ جاري تصوير تأرجح الميزان...';
+                const rec = new MediaRecorder(canvas.captureStream(25), { mimeType: 'video/webm' });
+                const chunks = [];
+                rec.ondataavailable = e => chunks.push(e.data);
+                rec.onstop = () => {
+                    const a = document.createElement('a');
+                    a.href = URL.createObjectURL(new Blob(chunks, { type: 'video/webm' }));
+                    a.download = 'Royal-Jealousy-Scale-KR.webm';
+                    a.click();
+                    vidBtn.disabled = false;
+                    vidBtn.textContent = isEn ? '🎥 Save Result Video' : '🎥 حفظ النتيجة كفيديو';
+                };
+                rec.start();
+                let s = 0; const ctx = canvas.getContext('2d');
+                const finalTilt = finalL1 > finalL2 ? -0.18 : 0.18;
+                const t = setInterval(() => {
+                    s++;
+                    const damp = Math.exp(-s * 0.07);
+                    const tilt = finalTilt + Math.sin(s * 0.35) * 0.25 * damp;
+                    window.drawRoyalJealousyScale(ctx, n1, n2, tilt, finalL1, finalL2, isEn, s);
+                    if (s >= 65) { clearInterval(t); rec.stop(); }
+                }, 45);
+            };
+        }
+
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !(btn.getAttribute('onclick') || '').includes('switchLanguage')) return;
+            const isEn = btn.getAttribute('onclick').includes("'en'");
+            setTimeout(() => {
+                const map = {
+                    'js-title': isEn ? 'Jealousy & Spoiling Scale — Who Loves More?' : 'ميزان الغيرة والدلال — من يحب الثاني أكثر؟',
+                    'js-weigh-btn': isEn ? '⚖️ Weigh Hearts & Settle Debate KR 👑' : '⚖️ ابدأ الوزن واحسم الجدل KR 👑',
+                    'js-video-btn': isEn ? '🎥 Save Result Video' : '🎥 حفظ النتيجة كفيديو',
+                    'js-img-link': isEn ? '🖼️ Save Image' : '🖼️ حفظ كصورة'
+                };
+                for (const [id, text] of Object.entries(map)) {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = text;
+                }
+                const desc = document.getElementById('js-desc');
+                if (desc) desc.innerHTML = isEn
+                    ? 'Enter your names to let <strong style="color:#fde047;">Kingdom of Promises Scale KR 👑</strong> settle the eternal debate.. Who gets more jealous & who has the <strong style="color:#f9a8d4;">bigger heart</strong>?'
+                    : 'اكتبا اسميكما ليحسم <strong style="color:#fde047;">ميزان مملكة الوعود <bdi dir="ltr">KR 👑</bdi></strong> الجدل الأبدي.. من يغار أكثر؟ ومن صاحب <strong style="color:#f9a8d4;">القلب الأكبر والدلال الأكثر</strong>؟';
+                const i1 = document.getElementById('js-name1');
+                const i2 = document.getElementById('js-name2');
+                if (i1) i1.placeholder = isEn ? '💘 First Partner Name...' : '💘 اسم الطرف الأول...';
+                if (i2) i2.placeholder = isEn ? '🔥 Second Partner Name...' : '🔥 اسم الطرف الثاني...';
+            }, 80);
+        });
+    })();
+    </script>
 
 
             
